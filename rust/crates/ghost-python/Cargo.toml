@@ -1,0 +1,32 @@
+[package]
+name = "ghost-python"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ghost_rust"
+crate-type = ["cdylib"]
+
+[dependencies]
+ghost-core = { path = "../ghost-core" }
+ghost-engine = { path = "../ghost-engine" }
+ghost-security = { path = "../ghost-security" }
+ghost-tools = { path = "../ghost-tools" }
+ghost-agents = { path = "../ghost-agents" }
+ghost-traces = { path = "../ghost-traces" }
+ghost-telemetry = { path = "../ghost-telemetry" }
+ghost-learning = { path = "../ghost-learning" }
+ghost-mcp = { path = "../ghost-mcp" }
+ghost-sessions = { path = "../ghost-sessions" }
+ghost-workflow = { path = "../ghost-workflow" }
+ghost-skills = { path = "../ghost-skills" }
+ghost-recipes = { path = "../ghost-recipes" }
+ghost-templates = { path = "../ghost-templates" }
+ghost-a2a = { path = "../ghost-a2a" }
+ghost-scheduler = { path = "../ghost-scheduler" }
+pyo3 = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tokio = { workspace = true }
+once_cell = { workspace = true }
+parking_lot = { workspace = true }

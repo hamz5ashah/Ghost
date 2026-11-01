@@ -1,0 +1,13 @@
+[package]
+name = "ghost-mcp"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ghost-core = { path = "../ghost-core" }
+ghost-tools = { path = "../ghost-tools" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+tokio = { workspace = true }
