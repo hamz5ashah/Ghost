@@ -1,18 +1,8 @@
 name: Deploy Documentation
 
+# Manual only (Actions → this workflow → Run workflow) to save Actions minutes
+# on this private repo. Restore push/pull_request triggers to run it automatically.
 on:
-  push:
-    branches: [main]
-    paths:
-      - "docs/**"
-      - "mkdocs.yml"
-      - "src/ghost/**"
-  pull_request:
-    branches: [main]
-    paths:
-      - "docs/**"
-      - "mkdocs.yml"
-      - "src/ghost/**"
   workflow_dispatch:
 
 permissions:

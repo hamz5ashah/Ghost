@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/mobile-schema.json",
+  "identifier": "default",
+  "description": "Ghost for Android: plain web view, no native commands",
+  "windows": ["main"],
+  "permissions": ["core:default"]
+}

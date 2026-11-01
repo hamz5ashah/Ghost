@@ -690,16 +690,26 @@ def serve(
     import os as _os
 
     api_key = _os.environ.get("GHOST_API_KEY", "")
-    if not api_key:
-        try:
-            import tomllib
+    _auth_cfg: dict = {}
+    try:
+        import tomllib
 
-            _cfg_path = str(get_config_dir() / "config.toml")
-            with open(_cfg_path, "rb") as _f:
-                _raw = tomllib.load(_f)
-            api_key = _raw.get("server", {}).get("auth", {}).get("api_key", "")
-        except (FileNotFoundError, ImportError):
-            pass
+        _cfg_path = str(get_config_dir() / "config.toml")
+        with open(_cfg_path, "rb") as _f:
+            _raw = tomllib.load(_f)
+        _auth_cfg = _raw.get("server", {}).get("auth", {}) or {}
+    except (FileNotFoundError, ImportError):
+        pass
+    if not api_key:
+        api_key = _auth_cfg.get("api_key", "")
+    # Phone access: let the desktop app on this PC skip the key while LAN
+    # clients (the Android app) must present it.
+    _trust_env = _os.environ.get("GHOST_TRUST_LOOPBACK", "").strip().lower()
+    trust_loopback = (
+        _trust_env in ("1", "true", "yes")
+        if _trust_env
+        else bool(_auth_cfg.get("trust_loopback", False))
+    )
 
     from ghost.server.auth_middleware import check_bind_safety
 
@@ -771,6 +781,7 @@ def serve(
         api_key=api_key,
         webhook_config=webhook_config,
         cors_origins=cors_origins,
+        trust_loopback=trust_loopback,
     )
 
     console.print(

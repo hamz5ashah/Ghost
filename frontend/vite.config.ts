@@ -13,7 +13,10 @@ const apiTarget = process.env.GHOST_VITE_PROXY_TARGET
   || process.env.VITE_API_URL
   || 'http://localhost:8000';
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
+  // `vite build --mode mobile` builds the Android app: a remote client for
+  // Ghost running on the user's PC (see src/components/MobileConnect.tsx).
+  define: mode === 'mobile' ? { 'import.meta.env.VITE_GHOST_MOBILE': JSON.stringify('1') } : {},
   resolve: {
     alias: {
       '@': path.resolve(import.meta.dirname, './src'),
@@ -23,6 +26,9 @@ export default defineConfig({
     react(),
     tailwindcss(),
     VitePWA({
+      // The Android app is a native shell; a service worker would only cache
+      // stale builds there.
+      disable: mode === 'mobile',
       registerType: 'autoUpdate',
       manifest: {
         name: 'Ghost',
@@ -79,4 +85,4 @@ export default defineConfig({
       '/api': apiTarget,
     },
   },
-});
+}));

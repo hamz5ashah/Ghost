@@ -83,7 +83,7 @@ class PearlDockerLauncher:
         Selection order (see spec §7.2):
         1. Image present locally → use it.
         2. Image pullable from a registry → pull and use.
-        3. ``tag`` matches OJ's default → clone Pearl + ``docker build``.
+        3. ``tag`` matches Ghost's default → clone Pearl + ``docker build``.
         4. Otherwise → ``ImageAcquisitionError``.
         """
         image_not_found, not_found, api_error = _docker_error_types()
@@ -100,7 +100,7 @@ class PearlDockerLauncher:
             return tag
         except (not_found, api_error) as exc:
             # Capture for context in the eventual ImageAcquisitionError below;
-            # we still fall through to the build path for the OJ default tag.
+            # we still fall through to the build path for the Ghost default tag.
             msg = str(exc).splitlines()[0] if str(exc) else exc.__class__.__name__
             pull_error = msg
 
@@ -109,12 +109,12 @@ class PearlDockerLauncher:
             return self._docker_build(cache, tag)
 
         raise ImageAcquisitionError(
-            f"image {tag!r} not present locally, not pullable, and not OJ's "
+            f"image {tag!r} not present locally, not pullable, and not Ghost's "
             f"default tag (no build fallback). Pull error: {pull_error}. "
             f"Either build it manually with "
             f"`docker buildx build -t {tag} -f miner/vllm-miner/Dockerfile .` "
             f"from the Pearl repo, or set [mining.extra].docker_image_tag to "
-            f"the OJ default ({PEARL_IMAGE_TAG}) to enable the build fallback."
+            f"the Ghost default ({PEARL_IMAGE_TAG}) to enable the build fallback."
         )
 
     def _clone_pearl_repo(self) -> Path:

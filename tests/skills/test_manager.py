@@ -483,8 +483,8 @@ class TestSkillManagerOverlayLoading:
         mgr.discover(paths=[tmp_path / "skills"])
 
         manifest = mgr.resolve("test-skill")
-        oj = manifest.metadata.get("ghost", {})
-        few_shot = oj.get("few_shot", [])
+        ghost_meta = manifest.metadata.get("ghost", {})
+        few_shot = ghost_meta.get("few_shot", [])
         assert len(few_shot) == 2
         assert few_shot[0]["input"] == "q1"
 

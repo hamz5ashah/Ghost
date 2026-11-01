@@ -49,7 +49,7 @@ class SoloTarget:
 
 @dataclass(slots=True)
 class PoolTarget:
-    """Mine through an OJ-operated pool. v2 — raises NotImplementedError in v1."""
+    """Mine through a Ghost-operated pool. v2 — raises NotImplementedError in v1."""
 
     url: str
     worker_id: Optional[str] = None
@@ -74,7 +74,7 @@ class MiningConfig:
     wallet_address: str
     submit_target: SubmitTarget
     fee_bps: int = 0  # v1: 0; v2: 2000 (=20%)
-    fee_payout_address: Optional[str] = None  # v1: ignored; v2: OJ's address
+    fee_payout_address: Optional[str] = None  # v1: ignored; v2: Ghost's address
     extra: dict[str, Any] = field(default_factory=dict)
 
 

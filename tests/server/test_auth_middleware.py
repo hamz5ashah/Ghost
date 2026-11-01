@@ -37,7 +37,7 @@ def _make_app(api_key: str) -> FastAPI:
 
 @pytest.fixture
 def client():
-    return TestClient(_make_app("oj_sk_test123"))
+    return TestClient(_make_app("ghost_sk_test123"))
 
 
 class TestAuthMiddleware:
@@ -57,7 +57,7 @@ class TestAuthMiddleware:
     def test_accepts_valid_key(self, client):
         resp = client.get(
             "/v1/models",
-            headers={"Authorization": "Bearer oj_sk_test123"},
+            headers={"Authorization": "Bearer ghost_sk_test123"},
         )
         assert resp.status_code == 200
 
@@ -74,7 +74,7 @@ class TestAuthMiddleware:
         assert resp.status_code == 401
 
     def test_metrics_accepts_valid_key(self, client):
-        resp = client.get("/metrics", headers={"Authorization": "Bearer oj_sk_test123"})
+        resp = client.get("/metrics", headers={"Authorization": "Bearer ghost_sk_test123"})
         assert resp.status_code == 200
 
     def test_no_key_configured_allows_all(self):
@@ -119,15 +119,15 @@ class TestApiDocsAreGated:
 
     @pytest.mark.parametrize("path", ["/openapi.json", "/docs", "/redoc"])
     def test_docs_require_auth(self, path):
-        app = _make_app("oj_sk_test123")
+        app = _make_app("ghost_sk_test123")
         with TestClient(app) as c:
             assert c.get(path).status_code == 401
 
     @pytest.mark.parametrize("path", ["/openapi.json", "/docs"])
     def test_docs_reachable_with_key(self, path):
-        app = _make_app("oj_sk_test123")
+        app = _make_app("ghost_sk_test123")
         with TestClient(app) as c:
-            r = c.get(path, headers={"Authorization": "Bearer oj_sk_test123"})
+            r = c.get(path, headers={"Authorization": "Bearer ghost_sk_test123"})
             assert r.status_code == 200
 
     @pytest.mark.parametrize("path", ["/openapi.json", "/docs"])
@@ -138,6 +138,6 @@ class TestApiDocsAreGated:
             assert c.get(path).status_code == 200
 
     def test_health_stays_open(self):
-        app = _make_app("oj_sk_test123")
+        app = _make_app("ghost_sk_test123")
         with TestClient(app) as c:
             assert c.get("/health").status_code == 200

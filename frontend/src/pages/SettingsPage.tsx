@@ -32,10 +32,12 @@ import {
   saveToolCredentials,
   deleteToolCredential,
   isTauri,
+  isMobileApp,
   type InferenceSource,
   type MemoryStats,
 } from '../lib/api';
 import { isAutoUpdateDisabled, setAutoUpdateDisabled } from '../components/Desktop/UpdateChecker';
+import { PhoneAccessSection } from '../components/Desktop/PhoneAccessSection';
 
 const CLOUD_KEY_STATUS_CHANGED = 'ghost-cloud-key-status-changed';
 
@@ -304,7 +306,7 @@ export function SettingsPage() {
   }, []);
 
   const handleCheckNow = useCallback(async () => {
-    if (!(window as any).__TAURI_INTERNALS__) return;
+    if (!isTauri()) return;
     setUpdateCheckState('checking');
     try {
       const { check } = await import('@tauri-apps/plugin-updater');
@@ -562,7 +564,11 @@ export function SettingsPage() {
             </SettingRow>
           </Section>
 
+          {/* Phone access (desktop app only) */}
+          {isTauri() && <PhoneAccessSection />}
+
           {/* Inference source */}
+          {!isMobileApp() && (
           <Section title="Inference source">
             <SettingRow label="Source" description="Where the app runs models. Applies after restart.">
               <select
@@ -613,6 +619,7 @@ export function SettingsPage() {
               </button>
             </SettingRow>
           </Section>
+          )}
 
           {/* Models */}
           <Section title="Models">
@@ -920,6 +927,7 @@ export function SettingsPage() {
           </Section>
 
           {/* Updates */}
+          {!isMobileApp() && (
           <Section title="Updates">
             <SettingRow label="Auto-update" description="Check for new desktop builds automatically every 30 minutes">
               <button
@@ -951,6 +959,7 @@ export function SettingsPage() {
               </button>
             </SettingRow>
           </Section>
+          )}
 
           {/* About */}
           <Section title="About">

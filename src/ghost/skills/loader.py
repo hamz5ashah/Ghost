@@ -255,9 +255,9 @@ def load_skill_directory(path: str | Path) -> SkillManifest:
         source_name = source_str.partition(":")[0] if source_str else ""
         if source_name:
             new_metadata = dict(manifest.metadata) if manifest.metadata else {}
-            oj = dict(new_metadata.get("ghost", {}) or {})
-            oj["source"] = source_name
-            new_metadata["ghost"] = oj
+            ghost_meta = dict(new_metadata.get("ghost", {}) or {})
+            ghost_meta["source"] = source_name
+            new_metadata["ghost"] = ghost_meta
             manifest.metadata = new_metadata
 
     return manifest

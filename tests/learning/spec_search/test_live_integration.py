@@ -106,7 +106,7 @@ class TestDiagnosisRunnerLive:
         )
 
         # Create minimal config
-        config_dir = tmp_path / "oj_home"
+        config_dir = tmp_path / "ghost_home"
         config_dir.mkdir()
         (config_dir / "config.toml").write_text("[learning]\nenabled = true\n")
 

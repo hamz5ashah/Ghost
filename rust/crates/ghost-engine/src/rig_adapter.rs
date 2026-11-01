@@ -56,7 +56,7 @@ impl<E: InferenceEngine> Clone for RigModelAdapter<E> {
 }
 
 /// Convert rig-core messages to ghost Messages.
-fn rig_request_to_oj_messages(request: &CompletionRequest) -> Vec<Message> {
+fn rig_request_to_ghost_messages(request: &CompletionRequest) -> Vec<Message> {
     let mut messages = Vec::new();
 
     // Add preamble as system message
@@ -177,7 +177,7 @@ impl<E: InferenceEngine + 'static> rig::completion::request::CompletionModel
         let model_id = self.model_id.clone();
 
         async move {
-            let messages = rig_request_to_oj_messages(&request);
+            let messages = rig_request_to_ghost_messages(&request);
             let temperature = request.temperature.unwrap_or(0.7);
             let max_tokens = request.max_tokens.unwrap_or(2048) as i64;
             let extra = tools_to_extra(&request.tools);
@@ -235,7 +235,7 @@ mod tests {
     use ghost_core::Role;
 
     #[test]
-    fn test_rig_request_to_oj_messages_basic() {
+    fn test_rig_request_to_ghost_messages_basic() {
         let request = CompletionRequest {
             model: None,
             preamble: Some("You are helpful".into()),
@@ -249,7 +249,7 @@ mod tests {
             output_schema: None,
         };
 
-        let msgs = rig_request_to_oj_messages(&request);
+        let msgs = rig_request_to_ghost_messages(&request);
         assert_eq!(msgs.len(), 2);
         assert_eq!(msgs[0].role, Role::System);
         assert_eq!(msgs[1].role, Role::User);

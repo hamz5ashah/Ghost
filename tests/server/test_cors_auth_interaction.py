@@ -43,7 +43,7 @@ class TestCorsPreflightWithApiKey:
             _make_engine(),
             "test-model",
             config=_test_config(),
-            api_key="oj_sk_test123",
+            api_key="ghost_sk_test123",
         )
         client = TestClient(app)
 
@@ -66,7 +66,7 @@ class TestCorsPreflightWithApiKey:
             _make_engine(),
             "test-model",
             config=_test_config(),
-            api_key="oj_sk_test123",
+            api_key="ghost_sk_test123",
             cors_origins=["https://explicit.example"],
         )
         client = TestClient(app)
@@ -95,7 +95,7 @@ class TestCorsPreflightWithApiKey:
             _make_engine(),
             "test-model",
             config=_test_config(),
-            api_key="oj_sk_test123",
+            api_key="ghost_sk_test123",
         )
         client = TestClient(app)
 
@@ -115,7 +115,7 @@ class TestCorsPreflightWithApiKey:
             _make_engine(),
             "test-model",
             config=_test_config(),
-            api_key="oj_sk_test123",
+            api_key="ghost_sk_test123",
             cors_origins=["https://example.com"],
         )
         client = TestClient(app)
@@ -137,7 +137,7 @@ class TestCorsPreflightWithApiKey:
             _make_engine(),
             "test-model",
             config=_test_config(),
-            api_key="oj_sk_test123",
+            api_key="ghost_sk_test123",
             cors_origins=["https://example.com"],
         )
         client = TestClient(app)
@@ -151,7 +151,7 @@ class TestCorsPreflightWithApiKey:
             _make_engine(),
             "test-model",
             config=_test_config(),
-            api_key="oj_sk_test123",
+            api_key="ghost_sk_test123",
             cors_origins=["https://example.com"],
         )
         client = TestClient(app)
@@ -164,7 +164,7 @@ class TestCorsPreflightWithApiKey:
             _make_engine(),
             "test-model",
             config=_test_config(),
-            api_key="oj_sk_test123",
+            api_key="ghost_sk_test123",
             cors_origins=["https://example.com"],
         )
         client = TestClient(app)

@@ -164,7 +164,7 @@ class ContainerRunner:
         """
         validated_mounts = self._validate_mounts(mounts)
 
-        container_name = f"oj-sandbox-{uuid.uuid4().hex[:12]}"
+        container_name = f"ghost-sandbox-{uuid.uuid4().hex[:12]}"
 
         # Build request payload
         payload = dict(input_data)

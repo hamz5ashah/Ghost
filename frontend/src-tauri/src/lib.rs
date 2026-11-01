@@ -284,6 +284,57 @@ fn resolve_bin(name: &str) -> String {
     name.to_string()
 }
 
+// ---------------------------------------------------------------------------
+// Bundled backend — the installer ships Ghost's Python source as a resource
+// ---------------------------------------------------------------------------
+
+/// Set once at startup from Tauri's resource directory.
+static BUNDLED_RESOURCE_DIR: std::sync::OnceLock<std::path::PathBuf> = std::sync::OnceLock::new();
+
+/// The backend source shipped inside the installer, if this build has one.
+fn bundled_backend_dir() -> Option<std::path::PathBuf> {
+    let dir = BUNDLED_RESOURCE_DIR.get()?.join("backend");
+    dir.join("pyproject.toml").is_file().then_some(dir)
+}
+
+/// Directories never copied out of the bundle (build/cache output).
+const BUNDLE_COPY_SKIP: &[&str] = &["target", "__pycache__", ".venv", "node_modules", ".git"];
+
+/// Recursively copy `src` into `dst` (created if missing), skipping caches.
+fn copy_dir_recursive(src: &std::path::Path, dst: &std::path::Path) -> std::io::Result<()> {
+    std::fs::create_dir_all(dst)?;
+    for entry in std::fs::read_dir(src)? {
+        let entry = entry?;
+        let name = entry.file_name();
+        if BUNDLE_COPY_SKIP.iter().any(|skip| name == *skip) {
+            continue;
+        }
+        let from = entry.path();
+        let to = dst.join(&name);
+        if entry.file_type()?.is_dir() {
+            copy_dir_recursive(&from, &to)?;
+        } else {
+            std::fs::copy(&from, &to)?;
+        }
+    }
+    Ok(())
+}
+
+/// First launch of an installed build: copy the bundled backend to
+/// `target` (normally ~/Ghost). Leaves no half-copied folder behind.
+fn install_bundled_backend(bundled: &std::path::Path, target: &std::path::Path) -> Result<(), String> {
+    let staging = target.with_extension("installing");
+    let _ = std::fs::remove_dir_all(&staging);
+    copy_dir_recursive(bundled, &staging).map_err(|e| {
+        let _ = std::fs::remove_dir_all(&staging);
+        format!("Could not set up Ghost in {}: {}", target.display(), e)
+    })?;
+    std::fs::rename(&staging, target).map_err(|e| {
+        let _ = std::fs::remove_dir_all(&staging);
+        format!("Could not set up Ghost in {}: {}", target.display(), e)
+    })
+}
+
 /// Find the Ghost project root (contains pyproject.toml).
 /// Checks GHOST_ROOT env var, the checkout beside the executable,
 /// then walks up from the executable before probing common clone locations.
@@ -933,6 +984,34 @@ fn prepare_backend_python(cmd: &mut tokio::process::Command) {
     }
 }
 
+/// Python version the installer's pre-built `ghost_rust` wheel targets.
+const BUNDLED_WHEEL_PYTHON: &str = "3.12";
+
+/// A pre-built `ghost_rust` wheel shipped with the installer, so users need
+/// no Rust toolchain (or Visual Studio Build Tools on Windows).
+fn bundled_rust_wheel(root: &std::path::Path) -> Option<std::path::PathBuf> {
+    let entries = std::fs::read_dir(root.join("wheels")).ok()?;
+    let mut wheels: Vec<std::path::PathBuf> = entries
+        .flatten()
+        .map(|e| e.path())
+        .filter(|p| {
+            p.file_name()
+                .and_then(|n| n.to_str())
+                .map(|n| n.starts_with("ghost_rust-") && n.ends_with(".whl"))
+                .unwrap_or(false)
+        })
+        .collect();
+    wheels.sort();
+    wheels.pop()
+}
+
+/// With a bundled wheel, pin the backend to the Python it was built for.
+fn prefer_bundled_python(cmd: &mut tokio::process::Command, root: &std::path::Path) {
+    if bundled_rust_wheel(root).is_some() {
+        cmd.env("UV_PYTHON", BUNDLED_WHEEL_PYTHON);
+    }
+}
+
 fn looks_like_rust_extension_build_error(stderr: &str) -> bool {
     let lower = stderr.to_ascii_lowercase();
     [
@@ -1001,6 +1080,7 @@ async fn verify_ghost_rust_extension(
         .current_dir(root);
     prepare_subprocess_for_appimage(&mut cmd);
     prepare_backend_python(&mut cmd);
+    prefer_bundled_python(&mut cmd, root);
     add_cargo_bin_to_path(&mut cmd);
     cmd.kill_on_drop(true);
 
@@ -1280,6 +1360,26 @@ async fn boot_backend(backend: SharedBackend, status: SharedStatus) {
 
     let mut project_root = find_project_root();
 
+    // Installed builds carry the backend source; copy it on first launch so a
+    // private repository never needs to be cloned.
+    if project_root.is_none() {
+        if let Some(bundled) = bundled_backend_dir() {
+            let target_path = std::path::PathBuf::from(home_dir()).join("Ghost");
+            if !target_path.exists() {
+                {
+                    let mut s = status.lock().await;
+                    s.detail = "Setting up Ghost (first launch)...".into();
+                }
+                if let Err(err) = install_bundled_backend(&bundled, &target_path) {
+                    let mut s = status.lock().await;
+                    s.error = Some(err);
+                    return;
+                }
+                project_root = Some(target_path);
+            }
+        }
+    }
+
     if project_root.is_none() {
         // Auto-clone on first launch
         let git_bin = resolve_bin("git");
@@ -1542,6 +1642,12 @@ async fn boot_backend(backend: SharedBackend, status: SharedStatus) {
         .stdout(std::process::Stdio::null())
         .stderr(std::process::Stdio::piped())
         .current_dir(root);
+    let bundled_wheel = bundled_rust_wheel(root);
+    if bundled_wheel.is_some() {
+        // Installed from the bundled wheel below instead of compiled here.
+        sync_cmd.args(["--no-install-package", "ghost-rust"]);
+    }
+    prefer_bundled_python(&mut sync_cmd, root);
     // Avoid LD_LIBRARY_PATH leak when running inside an AppImage (#455).
     prepare_subprocess_for_appimage(&mut sync_cmd);
     prepare_backend_python(&mut sync_cmd);
@@ -1561,6 +1667,39 @@ async fn boot_backend(backend: SharedBackend, status: SharedStatus) {
             return;
         }
         Ok(_) => {} // success — fall through
+    }
+
+    if let Some(wheel) = &bundled_wheel {
+        let mut pip_cmd = tokio::process::Command::new(&uv_bin);
+        pip_cmd
+            .arg("pip")
+            .arg("install")
+            .arg("--no-deps")
+            .arg(wheel)
+            .stdout(std::process::Stdio::null())
+            .stderr(std::process::Stdio::piped())
+            .current_dir(root);
+        prepare_subprocess_for_appimage(&mut pip_cmd);
+        prepare_backend_python(&mut pip_cmd);
+        prefer_bundled_python(&mut pip_cmd, root);
+        pip_cmd.kill_on_drop(true);
+        match pip_cmd.output().await {
+            Ok(out) if out.status.success() => {}
+            Ok(out) => {
+                let mut s = status.lock().await;
+                s.error = Some(format!(
+                    "Could not install Ghost's bundled extension ({}): {}",
+                    wheel.display(),
+                    String::from_utf8_lossy(&out.stderr).trim()
+                ));
+                return;
+            }
+            Err(e) => {
+                let mut s = status.lock().await;
+                s.error = Some(format_uv_sync_spawn_error(root, &uv_bin, &e.to_string()));
+                return;
+            }
+        }
     }
 
     {
@@ -1609,6 +1748,7 @@ async fn boot_backend(backend: SharedBackend, status: SharedStatus) {
     // additions aren't accidentally stripped.
     prepare_subprocess_for_appimage(&mut cmd);
     prepare_backend_python(&mut cmd);
+    prefer_bundled_python(&mut cmd, root);
 
     // Inject cloud API keys from secure desktop storage.
     for (key, value) in cloud_keys_for_inference(&cfg) {
@@ -1750,6 +1890,158 @@ fn api_base() -> String {
 #[tauri::command]
 async fn get_setup_status(state: tauri::State<'_, SharedStatus>) -> Result<SetupStatus, String> {
     Ok(state.lock().await.clone())
+}
+
+// ---------------------------------------------------------------------------
+// Phone access — expose the API on the local network for the Ghost Android app
+// ---------------------------------------------------------------------------
+//
+// Enabling it writes `[server] host = "0.0.0.0"` plus an API key into
+// ~/.ghost/config.toml and restarts `ghost serve`. `trust_loopback` keeps this
+// desktop app (same PC) working without the key; every other device on the
+// network must present it. Disabling it binds back to 127.0.0.1 but keeps the
+// key, so re-enabling later does not force the phone to be set up again.
+
+const PHONE_BIND_HOST: &str = "0.0.0.0";
+const LOCAL_BIND_HOST: &str = "127.0.0.1";
+
+#[derive(serde::Serialize, Clone, Debug, PartialEq, Eq)]
+struct PhoneAccess {
+    enabled: bool,
+    /// Address to type into the phone app, e.g. `http://192.168.1.20:8000`.
+    url: Option<String>,
+    api_key: Option<String>,
+    port: u16,
+}
+
+fn ghost_config_toml_path() -> std::path::PathBuf {
+    std::path::PathBuf::from(home_dir()).join(".ghost").join("config.toml")
+}
+
+/// Read `(enabled, api_key)` from a config.toml string. Pure.
+fn phone_access_from_config(existing: &str) -> (bool, Option<String>) {
+    let Ok(doc) = existing.parse::<toml_edit::DocumentMut>() else {
+        return (false, None);
+    };
+    let host = doc
+        .get("server")
+        .and_then(|s| s.get("host"))
+        .and_then(|h| h.as_str())
+        .unwrap_or(LOCAL_BIND_HOST)
+        .to_string();
+    let key = doc
+        .get("server")
+        .and_then(|s| s.get("auth"))
+        .and_then(|a| a.get("api_key"))
+        .and_then(|k| k.as_str())
+        .filter(|k| !k.is_empty())
+        .map(str::to_string);
+    (host == PHONE_BIND_HOST && key.is_some(), key)
+}
+
+/// Return config.toml with phone access switched on/off. Pure: keeps every
+/// other setting and comment, and reuses an existing key when there is one.
+fn apply_phone_access(existing: &str, enable: bool, new_key: &str) -> Result<String, String> {
+    let mut doc = existing
+        .parse::<toml_edit::DocumentMut>()
+        .map_err(|e| format!("Invalid config.toml: {}", e))?;
+    let (_, current_key) = phone_access_from_config(existing);
+    if enable {
+        let key = current_key.unwrap_or_else(|| new_key.to_string());
+        doc["server"]["host"] = toml_edit::value(PHONE_BIND_HOST);
+        doc["server"]["auth"]["api_key"] = toml_edit::value(key);
+        doc["server"]["auth"]["trust_loopback"] = toml_edit::value(true);
+    } else if doc.get("server").is_some() {
+        doc["server"]["host"] = toml_edit::value(LOCAL_BIND_HOST);
+    }
+    Ok(doc.to_string())
+}
+
+/// Replace the stored key (e.g. if it leaked). Pure.
+fn replace_phone_key(existing: &str, new_key: &str) -> Result<String, String> {
+    let mut doc = existing
+        .parse::<toml_edit::DocumentMut>()
+        .map_err(|e| format!("Invalid config.toml: {}", e))?;
+    doc["server"]["auth"]["api_key"] = toml_edit::value(new_key);
+    doc["server"]["auth"]["trust_loopback"] = toml_edit::value(true);
+    Ok(doc.to_string())
+}
+
+fn generate_phone_key() -> Result<String, String> {
+    let mut bytes = [0u8; 24];
+    getrandom::getrandom(&mut bytes).map_err(|e| format!("Could not generate a key: {}", e))?;
+    let hex: String = bytes.iter().map(|b| format!("{:02x}", b)).collect();
+    Ok(format!("ghost_sk_{}", hex))
+}
+
+/// This PC's address on the local network. Connecting a UDP socket only picks
+/// the outgoing interface; no packet is sent.
+fn lan_ip() -> Option<String> {
+    let sock = std::net::UdpSocket::bind(("0.0.0.0", 0)).ok()?;
+    sock.connect(("192.0.2.1", 80)).ok()?;
+    let ip = sock.local_addr().ok()?.ip();
+    if ip.is_loopback() || ip.is_unspecified() {
+        None
+    } else {
+        Some(ip.to_string())
+    }
+}
+
+fn read_phone_access() -> PhoneAccess {
+    let existing = std::fs::read_to_string(ghost_config_toml_path()).unwrap_or_default();
+    let (enabled, api_key) = phone_access_from_config(&existing);
+    PhoneAccess {
+        enabled,
+        url: if enabled {
+            lan_ip().map(|ip| format!("http://{}:{}", ip, GHOST_PORT))
+        } else {
+            None
+        },
+        api_key: if enabled { api_key } else { None },
+        port: GHOST_PORT,
+    }
+}
+
+fn write_ghost_config_toml(contents: &str) -> Result<(), String> {
+    let path = ghost_config_toml_path();
+    if let Some(parent) = path.parent() {
+        let _ = std::fs::create_dir_all(parent);
+    }
+    std::fs::write(&path, contents).map_err(|e| format!("Failed to write config.toml: {}", e))
+}
+
+async fn restart_backend_if_configured(backend: &SharedBackend, status: &SharedStatus) {
+    backend.lock().await.stop_all().await;
+    if read_configured_inference_config().is_some() {
+        start_managed_boot(backend.clone(), status.clone()).await;
+    }
+}
+
+#[tauri::command]
+fn get_phone_access() -> PhoneAccess {
+    read_phone_access()
+}
+
+/// Turn phone access on/off (or issue a new key) and restart the server so it
+/// takes effect. Returns the new state for the settings screen.
+#[tauri::command]
+async fn set_phone_access(
+    enabled: bool,
+    new_key: Option<bool>,
+    backend: tauri::State<'_, SharedBackend>,
+    status: tauri::State<'_, SharedStatus>,
+) -> Result<PhoneAccess, String> {
+    let existing = std::fs::read_to_string(ghost_config_toml_path()).unwrap_or_default();
+    let fresh_key = generate_phone_key()?;
+    let mut updated = apply_phone_access(&existing, enabled, &fresh_key)?;
+    if enabled && new_key.unwrap_or(false) {
+        updated = replace_phone_key(&updated, &fresh_key)?;
+    }
+    if updated != existing {
+        write_ghost_config_toml(&updated)?;
+        restart_backend_if_configured(backend.inner(), status.inner()).await;
+    }
+    Ok(read_phone_access())
 }
 
 #[tauri::command]
@@ -3373,6 +3665,9 @@ pub fn run() {
             }
         }))
         .setup(move |app| {
+            if let Ok(dir) = app.path().resource_dir() {
+                let _ = BUNDLED_RESOURCE_DIR.set(dir);
+            }
             // System tray
             let show = MenuItemBuilder::with_id("show", "Show / Hide").build(app)?;
             let health = MenuItemBuilder::with_id("health", "Health: starting...")
@@ -3474,6 +3769,8 @@ pub fn run() {
             toggle_overlay,
             hide_overlay,
             get_overlay_conversation,
+            get_phone_access,
+            set_phone_access,
         ])
         .build(tauri::generate_context!())
         .expect("error while building Ghost Desktop")
@@ -3493,6 +3790,84 @@ pub fn run() {
 
 #[cfg(test)]
 mod tests {
+    mod bundled_backend {
+        use super::super::{bundled_rust_wheel, install_bundled_backend};
+
+        #[test]
+        fn finds_the_bundled_wheel_only_when_present() {
+            let tmp = std::env::temp_dir().join(format!("ghost-wheel-test-{}", std::process::id()));
+            let _ = std::fs::remove_dir_all(&tmp);
+            std::fs::create_dir_all(tmp.join("wheels")).unwrap();
+            assert!(bundled_rust_wheel(&tmp).is_none());
+            std::fs::write(tmp.join("wheels/other-1.0-py3-none-any.whl"), "").unwrap();
+            assert!(bundled_rust_wheel(&tmp).is_none());
+            let wheel = tmp.join("wheels/ghost_rust-0.1.0-cp312-cp312-win_amd64.whl");
+            std::fs::write(&wheel, "").unwrap();
+            assert_eq!(bundled_rust_wheel(&tmp), Some(wheel));
+            let _ = std::fs::remove_dir_all(&tmp);
+        }
+
+        #[test]
+        fn copies_source_and_skips_build_output() {
+            let tmp = std::env::temp_dir().join(format!("ghost-bundle-test-{}", std::process::id()));
+            let _ = std::fs::remove_dir_all(&tmp);
+            let src = tmp.join("backend");
+            std::fs::create_dir_all(src.join("src/ghost/__pycache__")).unwrap();
+            std::fs::create_dir_all(src.join("rust/target")).unwrap();
+            std::fs::write(src.join("pyproject.toml"), "[project]").unwrap();
+            std::fs::write(src.join("src/ghost/__init__.py"), "").unwrap();
+            std::fs::write(src.join("src/ghost/__pycache__/x.pyc"), "").unwrap();
+            std::fs::write(src.join("rust/target/big"), "").unwrap();
+            let dst = tmp.join("Ghost");
+            install_bundled_backend(&src, &dst).unwrap();
+            assert!(dst.join("pyproject.toml").is_file());
+            assert!(dst.join("src/ghost/__init__.py").is_file());
+            assert!(!dst.join("src/ghost/__pycache__").exists());
+            assert!(!dst.join("rust/target").exists());
+            assert!(!tmp.join("Ghost.installing").exists());
+            let _ = std::fs::remove_dir_all(&tmp);
+        }
+    }
+
+    mod phone_access {
+        use super::super::{apply_phone_access, phone_access_from_config, replace_phone_key};
+
+        #[test]
+        fn empty_config_is_disabled() {
+            assert_eq!(phone_access_from_config(""), (false, None));
+        }
+
+        #[test]
+        fn enable_sets_lan_host_key_and_trusts_loopback() {
+            let out = apply_phone_access("# mine\n[engine]\ndefault = \"ollama\"\n", true, "ghost_sk_a").unwrap();
+            assert!(out.contains("# mine"));
+            assert!(out.contains("default = \"ollama\""));
+            assert_eq!(phone_access_from_config(&out), (true, Some("ghost_sk_a".into())));
+            assert!(out.contains("trust_loopback = true"));
+        }
+
+        #[test]
+        fn enable_keeps_existing_key() {
+            let first = apply_phone_access("", true, "ghost_sk_a").unwrap();
+            let off = apply_phone_access(&first, false, "ghost_sk_b").unwrap();
+            assert_eq!(phone_access_from_config(&off), (false, Some("ghost_sk_a".into())));
+            let on = apply_phone_access(&off, true, "ghost_sk_c").unwrap();
+            assert_eq!(phone_access_from_config(&on), (true, Some("ghost_sk_a".into())));
+        }
+
+        #[test]
+        fn disable_without_server_section_is_a_no_op() {
+            assert_eq!(apply_phone_access("", false, "k").unwrap(), "");
+        }
+
+        #[test]
+        fn new_key_replaces_old_one() {
+            let on = apply_phone_access("", true, "ghost_sk_a").unwrap();
+            let rotated = replace_phone_key(&on, "ghost_sk_z").unwrap();
+            assert_eq!(phone_access_from_config(&rotated), (true, Some("ghost_sk_z".into())));
+        }
+    }
+
     use super::{
         boot_plan, default_local_model, discard_pending_inference_setup_at,
         format_extension_import_failure, format_missing_rust_toolchain, format_port_unavailable,

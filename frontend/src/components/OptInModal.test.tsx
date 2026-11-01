@@ -31,11 +31,11 @@ describe('existing sharing modal', () => {
   it('offers explicit analytics actions without a checkbox or side effects on render', () => {
     const html = renderToStaticMarkup(<OptInModal onClose={vi.fn()} />);
     expect(html).not.toContain('type="checkbox"');
-    expect(html).toContain('Enable analytics &amp; enter giveaway');
-    expect(html).toContain('Enter giveaway only');
+    expect(html).toContain('Enable analytics &amp; join leaderboard');
+    expect(html).toContain('Join leaderboard only');
     expect(html).toContain('Enable analytics only');
     expect(html).toContain('Continue without sharing');
-    expect(html).toContain('Win a Mac mini');
+    expect(html).toContain('Share your savings');
     expect(html).toContain('Your name and savings are public');
     expect(mocks.savePreference).not.toHaveBeenCalled();
     expect(mocks.setOptIn).not.toHaveBeenCalled();

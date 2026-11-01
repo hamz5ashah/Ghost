@@ -109,8 +109,8 @@ class SkillTool(BaseTool):
         Includes the skill name, source provenance, and kind so downstream
         consumers (TraceCollector, SkillOptimizer) can bucket invocations.
         """
-        oj_meta = self._manifest.metadata.get("ghost", {}) or {}
-        source = oj_meta.get("source", "user")
+        ghost_meta = self._manifest.metadata.get("ghost", {}) or {}
+        source = ghost_meta.get("source", "user")
         kind = "executable" if self._manifest.steps else "instructional"
         return {
             "skill": self._manifest.name,

@@ -180,6 +180,7 @@ def create_app(
     api_key: str = "",
     webhook_config: dict | None = None,
     cors_origins: list[str] | None = None,
+    trust_loopback: bool = False,
 ) -> FastAPI:
     """Create and configure the FastAPI application.
 
@@ -317,6 +318,8 @@ def create_app(
     # Exposed so WebSocket handlers can authenticate the handshake (the HTTP
     # AuthMiddleware never sees WS upgrade requests). Empty = auth disabled.
     app.state.api_key = api_key
+    # Opt-in: requests from this machine skip the API key (see AuthMiddleware).
+    app.state.trust_loopback = bool(api_key) and trust_loopback
 
     @app.on_event("shutdown")
     async def _shutdown_managed_runtime() -> None:
@@ -502,7 +505,9 @@ def create_app(
         try:
             from ghost.server.auth_middleware import AuthMiddleware
 
-            app.add_middleware(AuthMiddleware, api_key=api_key)
+            app.add_middleware(
+                AuthMiddleware, api_key=api_key, trust_loopback=trust_loopback
+            )
         except Exception as exc:
             logger.debug("Auth middleware init skipped: %s", exc)
 

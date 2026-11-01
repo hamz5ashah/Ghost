@@ -41,7 +41,7 @@ class TestGetConfigDir:
         self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
     ) -> None:
         _clear_env(monkeypatch)
-        custom = tmp_path / "oj"
+        custom = tmp_path / "ghost"
         monkeypatch.setenv("GHOST_HOME", str(custom))
         assert paths.get_config_dir() == custom.resolve()
 
@@ -57,17 +57,17 @@ class TestGetConfigDir:
         self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
     ) -> None:
         _clear_env(monkeypatch)
-        oj = tmp_path / "oj_wins"
-        monkeypatch.setenv("GHOST_HOME", str(oj))
+        ghost_home = tmp_path / "ghost_wins"
+        monkeypatch.setenv("GHOST_HOME", str(ghost_home))
         monkeypatch.setenv("XDG_DATA_HOME", str(tmp_path / "xdg_loses"))
-        assert paths.get_config_dir() == oj.resolve()
+        assert paths.get_config_dir() == ghost_home.resolve()
 
     def test_expands_user_in_ghost_home(
         self, monkeypatch: pytest.MonkeyPatch
     ) -> None:
         _clear_env(monkeypatch)
-        monkeypatch.setenv("GHOST_HOME", "~/relocated-oj")
-        assert paths.get_config_dir() == (Path.home() / "relocated-oj").resolve()
+        monkeypatch.setenv("GHOST_HOME", "~/relocated-ghost")
+        assert paths.get_config_dir() == (Path.home() / "relocated-ghost").resolve()
 
     def test_returns_absolute_path(
         self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
@@ -82,22 +82,22 @@ class TestDerivedDirs:
 
     def test_config_path(self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
         _clear_env(monkeypatch)
-        monkeypatch.setenv("GHOST_HOME", str(tmp_path / "oj"))
-        assert paths.get_config_path() == (tmp_path / "oj" / "config.toml").resolve()
+        monkeypatch.setenv("GHOST_HOME", str(tmp_path / "ghost"))
+        assert paths.get_config_path() == (tmp_path / "ghost" / "config.toml").resolve()
 
     def test_data_dir_equals_config_dir(
         self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
     ) -> None:
         _clear_env(monkeypatch)
-        monkeypatch.setenv("GHOST_HOME", str(tmp_path / "oj"))
+        monkeypatch.setenv("GHOST_HOME", str(tmp_path / "ghost"))
         assert paths.get_data_dir() == paths.get_config_dir()
 
     def test_cache_dir_is_nested_cache(
         self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
     ) -> None:
         _clear_env(monkeypatch)
-        monkeypatch.setenv("GHOST_HOME", str(tmp_path / "oj"))
-        assert paths.get_cache_dir() == (tmp_path / "oj" / "cache").resolve()
+        monkeypatch.setenv("GHOST_HOME", str(tmp_path / "ghost"))
+        assert paths.get_cache_dir() == (tmp_path / "ghost" / "cache").resolve()
 
     def test_cache_dir_under_xdg(
         self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
@@ -157,8 +157,8 @@ class TestLegacyConstantsHonorEnv:
         _clear_env(monkeypatch)
         from ghost.core.config import SessionConfig, StorageConfig
 
-        monkeypatch.setenv("GHOST_HOME", str(tmp_path / "oj"))
-        root = (tmp_path / "oj").resolve()
+        monkeypatch.setenv("GHOST_HOME", str(tmp_path / "ghost"))
+        root = (tmp_path / "ghost").resolve()
         assert StorageConfig().db_path == str(root / "memory.db")
         assert SessionConfig().db_path == str(root / "sessions.db")
 
@@ -170,10 +170,10 @@ class TestLegacyConstantsHonorEnv:
         _clear_env(monkeypatch)
         from ghost.core import credentials
 
-        monkeypatch.setenv("GHOST_HOME", str(tmp_path / "oj"))
+        monkeypatch.setenv("GHOST_HOME", str(tmp_path / "ghost"))
         assert (
             credentials._default_path()
-            == (tmp_path / "oj" / "credentials.toml").resolve()
+            == (tmp_path / "ghost" / "credentials.toml").resolve()
         )
 
     def test_constant_never_resolves_to_the_real_developer_home(self) -> None:

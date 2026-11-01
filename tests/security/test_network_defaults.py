@@ -97,7 +97,7 @@ class TestNonLoopbackAuthEnforcement:
         starlette = pytest.importorskip("starlette")  # noqa: F841
         from ghost.server.auth_middleware import check_bind_safety
 
-        check_bind_safety("0.0.0.0", api_key="oj_sk_test123")
+        check_bind_safety("0.0.0.0", api_key="ghost_sk_test123")
 
 
 class TestCORSConfiguration:

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import base64
+import ipaddress
 import logging
 import os
 import secrets
@@ -15,6 +16,35 @@ logger = logging.getLogger(__name__)
 
 _WS_AUTH_PROTOCOL = "ghost.auth.v1"
 _WS_KEY_PROTOCOL_PREFIX = "ghost.key.b64url."
+# Headers a local reverse proxy adds; their presence means the TCP peer being
+# loopback says nothing about where the request really came from.
+_FORWARDING_HEADERS = ("forwarded", "x-forwarded-for", "x-real-ip")
+
+
+def is_trusted_loopback_request(conn) -> bool:  # noqa: ANN001
+    """Return True for a direct (non-proxied) connection from this machine.
+
+    Used by the opt-in ``trust_loopback`` mode: when Ghost is exposed on the
+    LAN for a phone, the desktop app on the same PC keeps working without
+    sending the API key, while every remote client must still present it.
+    """
+    client = getattr(conn, "client", None)
+    host = getattr(client, "host", None)
+    if not host:
+        return False
+    try:
+        if not ipaddress.ip_address(host).is_loopback:
+            return False
+    except ValueError:
+        return False
+    headers = getattr(conn, "headers", {}) or {}
+    return not any(h in headers for h in _FORWARDING_HEADERS)
+
+
+def _app_trusts_loopback(conn) -> bool:  # noqa: ANN001
+    app = getattr(conn, "app", None)
+    state = getattr(app, "state", None)
+    return bool(getattr(state, "trust_loopback", False))
 
 
 def _api_keys_match(presented: str, expected: str) -> bool:
@@ -34,9 +64,15 @@ class AuthMiddleware(BaseHTTPMiddleware):
     per-channel signature verification instead.
     """
 
-    def __init__(self, app, api_key: str = "") -> None:  # noqa: ANN001
+    def __init__(
+        self,
+        app,  # noqa: ANN001
+        api_key: str = "",
+        trust_loopback: bool = False,
+    ) -> None:
         super().__init__(app)
         self._api_key = api_key or os.environ.get("GHOST_API_KEY", "")
+        self._trust_loopback = trust_loopback
 
     async def dispatch(self, request: Request, call_next):  # noqa: ANN001
         # Browser CORS preflights never carry Authorization, and rejecting
@@ -45,6 +81,8 @@ class AuthMiddleware(BaseHTTPMiddleware):
         # outright (#758). Do not exempt arbitrary OPTIONS requests: a real
         # preflight is identified by both headers required by the CORS protocol.
         if self._is_cors_preflight(request):
+            return await call_next(request)
+        if self._trust_loopback and is_trusted_loopback_request(request):
             return await call_next(request)
         if self._api_key and self._requires_auth(request.url.path):
             auth = request.headers.get("Authorization", "")
@@ -97,8 +135,8 @@ class AuthMiddleware(BaseHTTPMiddleware):
 
 
 def generate_api_key() -> str:
-    """Generate a new API key with ``oj_sk_`` prefix."""
-    return f"oj_sk_{secrets.token_urlsafe(32)}"
+    """Generate a new API key with ``ghost_sk_`` prefix."""
+    return f"ghost_sk_{secrets.token_urlsafe(32)}"
 
 
 def check_bind_safety(host: str, *, api_key: str) -> None:
@@ -174,6 +212,8 @@ def authenticate_websocket(
     # offers a well-formed auth protocol, negotiate it so the browser does not
     # fail an otherwise allowed handshake.
     if not expected_key:
+        return True, selected_protocol
+    if _app_trusts_loopback(websocket) and is_trusted_loopback_request(websocket):
         return True, selected_protocol
 
     auth = websocket.headers.get("authorization", "")

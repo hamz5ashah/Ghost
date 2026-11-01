@@ -1,7 +1,7 @@
 # src/ghost/mining/_constants.py
 """Constants for the Pearl mining subsystem.
 
-Pinned Pearl ref OJ has tested against. Bumped per OJ release after
+Pinned Pearl ref Ghost has tested against. Bumped per Ghost release after
 re-testing the integration end-to-end on a real H100/H200 host. See
 spec ``docs/design/2026-05-05-vllm-pearl-mining-integration-design.md``
 section 7.3 for the rev-bump workflow.
@@ -13,7 +13,7 @@ from ghost.core.paths import get_config_dir
 
 PEARL_REPO = "https://github.com/pearl-research-labs/pearl.git"
 # TODO at implementation time: replace with the specific commit/tag verified
-# against H100. Document the chosen ref in the OJ release notes.
+# against H100. Document the chosen ref in the Ghost release notes.
 PEARL_PINNED_REF = "master"
 PEARL_IMAGE_TAG = f"ghost/pearl-miner:{PEARL_PINNED_REF}"
 

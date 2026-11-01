@@ -53,6 +53,20 @@
       "certificateThumbprint": null,
       "digestAlgorithm": "sha256",
       "timestampUrl": "http://timestamp.digicert.com"
+    },
+    "resources": {
+      "../../pyproject.toml": "backend/pyproject.toml",
+      "../../uv.lock": "backend/uv.lock",
+      "../../README.md": "backend/README.md",
+      "../../LICENSE": "backend/LICENSE",
+      "../../src/": "backend/src/",
+      "../../configs/": "backend/configs/",
+      "../../rust/Cargo.toml": "backend/rust/Cargo.toml",
+      "../../rust/Cargo.lock": "backend/rust/Cargo.lock",
+      "../../rust/rust-toolchain.toml": "backend/rust/rust-toolchain.toml",
+      "../../rust/crates/": "backend/rust/crates/",
+      "../../scripts/install/": "backend/scripts/install/",
+      "../../deploy/windows/": "backend/deploy/windows/"
     }
   },
   "plugins": {
@@ -65,7 +79,9 @@
     },
     "deep-link": {
       "desktop": {
-        "schemes": ["ghost"]
+        "schemes": [
+          "ghost"
+        ]
       }
     }
   }

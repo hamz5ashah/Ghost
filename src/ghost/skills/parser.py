@@ -177,7 +177,7 @@ class SkillParser:
         if not isinstance(raw_metadata, dict):
             raw_metadata = {}
         # Initialize ghost namespace
-        oj_meta = dict(raw_metadata.get("ghost") or {})
+        ghost_meta = dict(raw_metadata.get("ghost") or {})
 
         # Apply FIELD_MAPPING for non-spec top-level fields
         unmapped: Dict[str, Any] = {}
@@ -189,7 +189,7 @@ class SkillParser:
                 if target == "field":
                     setattr(manifest, attr, value)
                 else:  # "ghost_meta"
-                    oj_meta[attr] = value
+                    ghost_meta[attr] = value
             else:
                 unmapped[key] = value
                 LOGGER.warning(
@@ -210,17 +210,17 @@ class SkillParser:
             "user_invocable",
             "disable_model_invocation",
         ):
-            if key in oj_meta:
-                setattr(manifest, key, oj_meta[key])
+            if key in ghost_meta:
+                setattr(manifest, key, ghost_meta[key])
 
         # Preserve unmapped fields under metadata.ghost.original_frontmatter
         if unmapped:
-            oj_meta["original_frontmatter"] = unmapped
+            ghost_meta["original_frontmatter"] = unmapped
 
         # Stash the ghost metadata block back
-        if oj_meta:
+        if ghost_meta:
             new_metadata = dict(raw_metadata)
-            new_metadata["ghost"] = oj_meta
+            new_metadata["ghost"] = ghost_meta
             manifest.metadata = new_metadata
         else:
             manifest.metadata = raw_metadata

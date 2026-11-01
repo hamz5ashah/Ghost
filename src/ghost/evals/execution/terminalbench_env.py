@@ -45,9 +45,9 @@ class TerminalBenchTaskEnv:
 
         docker_image_prefix = f"tb__{task_id}".replace(".", "-")
         client_image_name = f"{docker_image_prefix}__client"
-        client_container_name = f"oj-{task_id}".replace(".", "-")
+        client_container_name = f"ghost-{task_id}".replace(".", "-")
 
-        self._logs_tmpdir = tempfile.TemporaryDirectory(prefix="oj_tb_logs_")
+        self._logs_tmpdir = tempfile.TemporaryDirectory(prefix="ghost_tb_logs_")
         logs_path = Path(self._logs_tmpdir.name)
 
         # Everything below is exception-safe: a failure mid-startup (docker

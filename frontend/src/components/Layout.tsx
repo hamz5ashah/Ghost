@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Outlet, useNavigate } from 'react-router';
+import { Outlet, useLocation, useNavigate } from 'react-router';
 import { ApprovalBell } from './ApprovalBell';
 import { Sidebar } from './Sidebar/Sidebar';
 import { SystemPulse } from './SystemPulse';
-import { useAppStore } from '../lib/store';
+import { isNarrowScreen, useAppStore } from '../lib/store';
 import { checkHealth } from '../lib/api';
 
 export function Layout() {
@@ -23,6 +23,14 @@ export function Layout() {
   }, []);
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const activeId = useAppStore((s) => s.activeId);
+
+  // On phones the sidebar is a drawer: close it once the user has picked a
+  // page or a conversation so the content is visible.
+  useEffect(() => {
+    if (isNarrowScreen()) useAppStore.getState().setSidebarOpen(false);
+  }, [location.pathname, activeId]);
 
   return (
     <div className="flex flex-col h-full w-full overflow-hidden relative" style={{ paddingTop: '3px' }}>

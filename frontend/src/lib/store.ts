@@ -36,6 +36,12 @@ export interface AgentEvent {
 
 const CONVERSATIONS_KEY = 'ghost-conversations';
 const SETTINGS_KEY = 'ghost-settings';
+
+/** Phone-sized viewport (below Tailwind's `md` breakpoint). */
+export const isNarrowScreen = (): boolean =>
+  typeof window !== 'undefined' &&
+  typeof window.matchMedia === 'function' &&
+  window.matchMedia('(max-width: 767px)').matches;
 const OPTIN_KEY = 'ghost-optin';
 const OPTIN_NAME_KEY = 'ghost-display-name';
 const OPTIN_EMAIL_KEY = 'ghost-email';
@@ -289,8 +295,9 @@ export const useAppStore = create<AppState>((set, get) => {
     settings: loadSettings(),
 
     commandPaletteOpen: false,
-    sidebarOpen: true,
-    systemPanelOpen: true,
+    // Phones start with the chat visible; panels open on demand.
+    sidebarOpen: !isNarrowScreen(),
+    systemPanelOpen: !isNarrowScreen(),
 
     optInEnabled: localStorage.getItem(OPTIN_KEY) === 'true',
     optInDisplayName: localStorage.getItem(OPTIN_NAME_KEY) || '',

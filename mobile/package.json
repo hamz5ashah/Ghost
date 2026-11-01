@@ -1,0 +1,17 @@
+{
+  "name": "ghost-mobile",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Ghost for Android — connects to Ghost running on your PC.",
+  "license": "UNLICENSED",
+  "scripts": {
+    "build:web": "npm --prefix ../frontend run build:mobile",
+    "tauri": "tauri",
+    "android:init": "tauri android init --ci && node scripts/patch-android.mjs",
+    "android:build": "tauri android build --apk",
+    "android:dev": "tauri android dev"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.12.1"
+  }
+}
