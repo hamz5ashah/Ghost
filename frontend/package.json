@@ -12,6 +12,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "build:tauri": "tsc -b && vite build --outDir dist",
+    "build:mobile": "tsc -b && vite build --mode mobile --outDir dist-mobile",
     "preview": "vite preview",
     "tauri": "tauri",
     "test": "vitest run"

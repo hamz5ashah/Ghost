@@ -1,16 +1,9 @@
 name: Bash tests
 
+# Manual only (Actions → this workflow → Run workflow) to save Actions minutes
+# on this private repo. Restore push/pull_request triggers to run it automatically.
 on:
-  pull_request:
-    paths:
-      - 'scripts/install/**'
-      - 'tests/install/bash/**'
-      - '.github/workflows/bash-tests.yml'
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/install/**'
-      - 'tests/install/bash/**'
+  workflow_dispatch:
 
 jobs:
   bats:

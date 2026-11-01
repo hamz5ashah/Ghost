@@ -195,9 +195,9 @@ class TestTolerantFieldMapping:
         }
         manifest = parser.parse_frontmatter(original)
         # Stored under metadata.ghost.original_frontmatter
-        oj = manifest.metadata.get("ghost", {})
-        assert "original_frontmatter" in oj
-        assert oj["original_frontmatter"]["weird_field"] == "preserved"
+        ghost_meta = manifest.metadata.get("ghost", {})
+        assert "original_frontmatter" in ghost_meta
+        assert ghost_meta["original_frontmatter"]["weird_field"] == "preserved"
 
     def test_platforms_list_mapped_to_compatibility_string(self):
         parser = SkillParser()
@@ -209,5 +209,5 @@ class TestTolerantFieldMapping:
             }
         )
         # Platforms get rendered into a compatibility string under metadata
-        oj = manifest.metadata.get("ghost", {})
-        assert "platforms" in oj or "compatibility" in oj
+        ghost_meta = manifest.metadata.get("ghost", {})
+        assert "platforms" in ghost_meta or "compatibility" in ghost_meta

@@ -351,15 +351,15 @@ import time
 from pathlib import Path
 from ghost.cli import daemon_cmd
 
-daemon_cmd._PID_FILE = Path(os.environ["OJ_TEST_PID_FILE"])
-daemon_cmd._STATE_FILE = Path(os.environ["OJ_TEST_STATE_FILE"])
-pid_file = Path(os.environ["OJ_TEST_CHILD_PID_FILE"])
+daemon_cmd._PID_FILE = Path(os.environ["GHOST_TEST_PID_FILE"])
+daemon_cmd._STATE_FILE = Path(os.environ["GHOST_TEST_STATE_FILE"])
+pid_file = Path(os.environ["GHOST_TEST_CHILD_PID_FILE"])
 pid_tmp = pid_file.with_suffix(".tmp")
 pid_tmp.write_text(str(os.getpid()))
 pid_tmp.replace(pid_file)
 try:
     daemon_cmd.record_server_state(os.getpid(), "127.0.0.1", 8899)
-    Path(os.environ["OJ_TEST_READY_FILE"]).write_text("ready")
+    Path(os.environ["GHOST_TEST_READY_FILE"]).write_text("ready")
     time.sleep(30)
 finally:
     daemon_cmd.clear_server_state(os.getpid())
@@ -367,10 +367,10 @@ finally:
     env = {
         **os.environ,
         daemon_cmd._LAUNCH_TOKEN_ENV: token,
-        "OJ_TEST_PID_FILE": str(pid_file),
-        "OJ_TEST_STATE_FILE": str(state_file),
-        "OJ_TEST_CHILD_PID_FILE": str(child_pid_file),
-        "OJ_TEST_READY_FILE": str(ready_file),
+        "GHOST_TEST_PID_FILE": str(pid_file),
+        "GHOST_TEST_STATE_FILE": str(state_file),
+        "GHOST_TEST_CHILD_PID_FILE": str(child_pid_file),
+        "GHOST_TEST_READY_FILE": str(ready_file),
     }
     with log_file.open("w") as log_fh:
         proc = subprocess.Popen(

@@ -67,6 +67,7 @@ site/
 # Frontend
 frontend/node_modules/
 frontend/dist/
+frontend/dist-mobile/
 
 # Desktop
 desktop/node_modules/
@@ -129,5 +130,13 @@ learning.db
 
 # Local dev artifacts (hybrid worker logs + cli debug dumps)
 minion_logs/
-*.oj-debug.json
-oj-debug.*.json
+*.ghost-debug.json
+ghost-debug.*.json
+
+# Android app (generated in CI by `tauri android init`)
+mobile/node_modules/
+mobile/src-tauri/gen/
+mobile/src-tauri/target/
+
+# Pre-built ghost_rust wheels bundled into installers by CI
+/wheels/

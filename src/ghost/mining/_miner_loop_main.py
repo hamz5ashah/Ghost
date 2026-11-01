@@ -11,7 +11,7 @@ Connects to pearl-gateway, polls for work via ``getMiningInfo``, runs
 to be killed via SIGTERM by the parent provider; no graceful shutdown
 handshake -- Pearl's gateway tolerates client disconnects cleanly.
 
-The parent OJ process spawns this module via ``python -m`` and never
+The parent Ghost process spawns this module via ``python -m`` and never
 imports it directly, keeping the parent's import graph free of
 ``pearl_mining`` (which is an optional dependency installed only with
 ``--extra mining-pearl-cpu``).

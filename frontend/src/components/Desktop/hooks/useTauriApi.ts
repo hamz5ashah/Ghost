@@ -5,6 +5,7 @@ import { useState, useEffect, useCallback } from 'react';
  * In Tauri, `window.__TAURI_INTERNALS__` is set.
  */
 export function isTauri(): boolean {
+  if (import.meta.env.VITE_GHOST_MOBILE === '1') return false;
   return typeof window !== 'undefined' && '__TAURI_INTERNALS__' in window;
 }
 

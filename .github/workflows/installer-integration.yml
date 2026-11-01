@@ -1,14 +1,9 @@
 name: Installer integration
 
+# Manual only (Actions → this workflow → Run workflow) to save Actions minutes
+# on this private repo. Restore push/pull_request triggers to run it automatically.
 on:
-  pull_request:
-    paths:
-      - 'scripts/install/**'
-      - 'src/ghost/cli/**'
-      - 'tests/install/**'
-      - '.github/workflows/installer-integration.yml'
-  schedule:
-    - cron: '0 6 * * *'
+  workflow_dispatch:
 
 jobs:
   container-matrix:

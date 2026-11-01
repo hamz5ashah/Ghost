@@ -380,19 +380,19 @@ def _build_run_id(instance_id: str, cell_name: Optional[str]) -> str:
     ``no_report`` if the two cells race on the summary file write). See
     :func:`_run_harness` for the full failure mode.
 
-    With ``cell_name`` we emit ``oj-<cell>-<instance>``, which keeps the
+    With ``cell_name`` we emit ``ghost-<cell>-<instance>``, which keeps the
     intra-cell resume cache working (same cell + same instance → same
     run_id → harness cache hit) while making inter-cell collisions
     impossible. Without ``cell_name`` we fall back to the legacy
-    ``oj-<instance>`` form for backwards compat with single-cell callers.
+    ``ghost-<instance>`` form for backwards compat with single-cell callers.
     """
     safe_instance = _sanitize_run_id_part(instance_id)
     if not cell_name:
-        return f"oj-{safe_instance}"
+        return f"ghost-{safe_instance}"
     safe_cell = _sanitize_run_id_part(cell_name)
     if not safe_cell:
-        return f"oj-{safe_instance}"
-    return f"oj-{safe_cell}-{safe_instance}"
+        return f"ghost-{safe_instance}"
+    return f"ghost-{safe_cell}-{safe_instance}"
 
 
 def _run_harness(

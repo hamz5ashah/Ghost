@@ -143,11 +143,11 @@ export function OptInModal({ onClose }: OptInModalProps) {
             style={{ background: 'var(--color-accent-subtle)', color: 'var(--color-accent)' }}
           ><Trophy size={20} /></div>
           <h2 id="sharing-modal-title" className="text-xl font-semibold" style={{ color: 'var(--color-text)' }}>
-            Win a Mac mini
+            Share your savings
           </h2>
         </div>
         <p className="text-sm leading-relaxed mb-3" style={{ color: 'var(--color-text-secondary)' }}>
-          Share your savings on the leaderboard for a chance to win a Mac mini.
+          Optionally share your savings on the leaderboard.
         </p>
 
         {error && <p role="alert" className="text-xs mb-3" style={{ color: 'var(--color-error)' }}>{error}</p>}
@@ -242,10 +242,10 @@ export function OptInModal({ onClose }: OptInModalProps) {
               disabled={busy}
               className={buttonClass + ' w-full'}
               style={primaryStyle}
-            >{saving ? 'Saving…' : 'Enable analytics & enter giveaway'}</button>
+            >{saving ? 'Saving…' : 'Enable analytics & join leaderboard'}</button>
             <div className="grid grid-cols-2 gap-2">
               <button type="submit" form="sharing-entry-form" disabled={busy} className={buttonClass} style={{ color: 'var(--color-text)' }}>
-                Enter giveaway only
+                Join leaderboard only
               </button>
               <button type="button" onClick={() => void handleAnalytics(true, true)} disabled={busy} className={buttonClass} style={{ color: 'var(--color-text)' }}>
                 Enable analytics only

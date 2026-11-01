@@ -1,10 +1,9 @@
 name: CI
 
+# Manual only (Actions → this workflow → Run workflow) to save Actions minutes
+# on this private repo. Restore push/pull_request triggers to run it automatically.
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  workflow_dispatch:
 
 concurrency:
   group: ci-${{ github.ref }}

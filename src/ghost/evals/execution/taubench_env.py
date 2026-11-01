@@ -23,24 +23,24 @@ LOGGER = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 
 
-def _tau2_to_oj_messages(
+def _tau2_to_ghost_messages(
     tau2_messages: list,
 ) -> list:
     """Convert tau2 Message objects to Ghost Message objects."""
     from ghost.core.types import Message, Role
     from ghost.core.types import ToolCall as OJToolCall
 
-    oj_msgs: list = []
+    ghost_msgs: list = []
     for m in tau2_messages:
         role_str = getattr(m, "role", "user")
         if role_str == "system":
-            oj_msgs.append(Message(role=Role.SYSTEM, content=m.content or ""))
+            ghost_msgs.append(Message(role=Role.SYSTEM, content=m.content or ""))
         elif role_str == "user":
-            oj_msgs.append(Message(role=Role.USER, content=m.content or ""))
+            ghost_msgs.append(Message(role=Role.USER, content=m.content or ""))
         elif role_str == "assistant":
             tc_list = getattr(m, "tool_calls", None)
             if tc_list:
-                oj_tool_calls = [
+                ghost_tool_calls = [
                     OJToolCall(
                         id=tc.id,
                         name=tc.name,
@@ -52,22 +52,22 @@ def _tau2_to_oj_messages(
                     )
                     for tc in tc_list
                 ]
-                oj_msgs.append(
+                ghost_msgs.append(
                     Message(
                         role=Role.ASSISTANT,
                         content=m.content or "",
-                        tool_calls=oj_tool_calls,
+                        tool_calls=ghost_tool_calls,
                     )
                 )
             else:
-                oj_msgs.append(Message(role=Role.ASSISTANT, content=m.content or ""))
+                ghost_msgs.append(Message(role=Role.ASSISTANT, content=m.content or ""))
         elif role_str == "tool":
             # tau2 ToolMessage uses 'id', not 'tool_call_id'
             raw_id = getattr(m, "id", "") or getattr(m, "tool_call_id", "") or ""
             import re as _re
 
             clean_id = _re.sub(r"[^a-zA-Z0-9_-]", "_", raw_id)
-            oj_msgs.append(
+            ghost_msgs.append(
                 Message(
                     role=Role.TOOL,
                     content=m.content or "",
@@ -75,7 +75,7 @@ def _tau2_to_oj_messages(
                     name=getattr(m, "name", ""),
                 )
             )
-    return oj_msgs
+    return ghost_msgs
 
 
 def _strip_think_tags(text: str) -> str:
@@ -87,7 +87,7 @@ def _strip_think_tags(text: str) -> str:
     return text.strip()
 
 
-def _oj_result_to_tau2_msg(result: dict):
+def _ghost_result_to_tau2_msg(result: dict):
     """Convert Ghost engine.generate() result to a tau2 AssistantMessage."""
     from tau2.data_model.message import AssistantMessage, ToolCall
 
@@ -179,7 +179,7 @@ class GhostHalfDuplexAgent:
             state.messages.append(message)
 
         # Convert to Ghost format
-        oj_messages = _tau2_to_oj_messages(
+        ghost_messages = _tau2_to_ghost_messages(
             state.system_messages + state.messages,
         )
 
@@ -206,10 +206,10 @@ class GhostHalfDuplexAgent:
             gen_kwargs.setdefault("extra_body", {})["chat_template_kwargs"] = {
                 "enable_thinking": False,
             }
-        result = self._engine.generate(oj_messages, **gen_kwargs)
+        result = self._engine.generate(ghost_messages, **gen_kwargs)
 
         # Convert result to tau2 AssistantMessage
-        assistant_msg = _oj_result_to_tau2_msg(result)
+        assistant_msg = _ghost_result_to_tau2_msg(result)
         state.messages.append(assistant_msg)
         return assistant_msg, state
 

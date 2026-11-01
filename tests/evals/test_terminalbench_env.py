@@ -148,7 +148,7 @@ class TestEnterExceptionSafety:
         with env:
             assert fake_tb.metadata["terminal"] is fake_tb.terminal
             assert fake_tb.metadata["session"] == "session-agent"
-            assert fake_tb.metadata["container"] == "oj-hello-world"
+            assert fake_tb.metadata["container"] == "ghost-hello-world"
             assert "compose_down" not in fake_tb.events
         assert fake_tb.events.count("compose_down") == 1
         assert "terminal" not in fake_tb.metadata

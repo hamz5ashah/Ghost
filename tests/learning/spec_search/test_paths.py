@@ -28,7 +28,7 @@ class TestResolveSpecSearchRoot:
     ) -> None:
         from ghost.learning.spec_search.storage import paths
 
-        custom = tmp_path / "custom_oj"
+        custom = tmp_path / "custom_ghost"
         monkeypatch.setenv("GHOST_HOME", str(custom))
         result = paths.resolve_spec_search_root()
         assert result == custom / "learning"
@@ -83,7 +83,7 @@ class TestEnsureSpecSearchDirs:
     ) -> None:
         from ghost.learning.spec_search.storage import paths
 
-        monkeypatch.setenv("GHOST_HOME", str(tmp_path / "oj"))
+        monkeypatch.setenv("GHOST_HOME", str(tmp_path / "ghost"))
         root = paths.ensure_spec_search_dirs()
 
         assert root.exists()
@@ -99,7 +99,7 @@ class TestEnsureSpecSearchDirs:
     ) -> None:
         from ghost.learning.spec_search.storage import paths
 
-        monkeypatch.setenv("GHOST_HOME", str(tmp_path / "oj"))
+        monkeypatch.setenv("GHOST_HOME", str(tmp_path / "ghost"))
         first = paths.ensure_spec_search_dirs()
         second = paths.ensure_spec_search_dirs()
 

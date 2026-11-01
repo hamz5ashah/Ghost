@@ -144,9 +144,9 @@ class SkillManager:
                 manifest.description = overlay.description
             if overlay.few_shot:
                 new_metadata = dict(manifest.metadata) if manifest.metadata else {}
-                oj = dict(new_metadata.get("ghost", {}) or {})
-                oj["few_shot"] = list(overlay.few_shot)
-                new_metadata["ghost"] = oj
+                ghost_meta = dict(new_metadata.get("ghost", {}) or {})
+                ghost_meta["few_shot"] = list(overlay.few_shot)
+                new_metadata["ghost"] = ghost_meta
                 manifest.metadata = new_metadata
 
     # ------------------------------------------------------------------
@@ -254,8 +254,8 @@ class SkillManager:
         for name, manifest in self._skills.items():
             if manifest.disable_model_invocation:
                 continue
-            oj = manifest.metadata.get("ghost", {}) if manifest.metadata else {}
-            few_shot = oj.get("few_shot", []) or []
+            ghost_meta = manifest.metadata.get("ghost", {}) if manifest.metadata else {}
+            few_shot = ghost_meta.get("few_shot", []) or []
             for ex in few_shot:
                 if not isinstance(ex, dict):
                     continue

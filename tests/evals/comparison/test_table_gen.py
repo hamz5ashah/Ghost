@@ -161,7 +161,7 @@ class TestT1Builder:
         fragment, standalone = _build_t1(frame)
         assert "\\begin{tabular}" in fragment
         assert "0.22" in fragment or "22.00" in fragment
-        assert "ghost-distilled" in fragment.lower() or "OJ-distilled" in fragment
+        assert "ghost-distilled" in fragment.lower() or "Ghost-distilled" in fragment
 
 
 class TestT2Builder:

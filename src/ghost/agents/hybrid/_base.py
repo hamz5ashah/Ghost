@@ -244,10 +244,10 @@ def _close_call_counts() -> None:
 # threads in this Python process** (singleton; lazy-initialized):
 #
 # - **Concurrency** — a ``threading.Semaphore``. Default 20 in-flight calls;
-#   override via ``OJ_OPENROUTER_MAX_CONCURRENT``. Held only around the SDK
+#   override via ``GHOST_OPENROUTER_MAX_CONCURRENT``. Held only around the SDK
 #   ``client.chat.completions.create`` invocation, not the bookkeeping.
 # - **RPM** — a sliding window of timestamps in a ``deque``. Default 60
-#   requests/minute; override via ``OJ_OPENROUTER_RPM``. If the deque has
+#   requests/minute; override via ``GHOST_OPENROUTER_RPM``. If the deque has
 #   already accumulated ``RPM`` timestamps within the last 60 seconds, the
 #   caller sleeps until the oldest entry ages out, then proceeds. Every
 #   completed call appends ``time.time()`` so the call we just made is
@@ -304,9 +304,9 @@ def _openrouter_limiter() -> _OpenRouterLimiter:
         with _OPENROUTER_LIMITER_LOCK:
             if _OPENROUTER_LIMITER is None:
                 max_concurrent = int(
-                    os.environ.get("OJ_OPENROUTER_MAX_CONCURRENT", "20") or 20
+                    os.environ.get("GHOST_OPENROUTER_MAX_CONCURRENT", "20") or 20
                 )
-                rpm = int(os.environ.get("OJ_OPENROUTER_RPM", "60") or 60)
+                rpm = int(os.environ.get("GHOST_OPENROUTER_RPM", "60") or 60)
                 _OPENROUTER_LIMITER = _OpenRouterLimiter(max_concurrent, rpm)
     return _OPENROUTER_LIMITER
 

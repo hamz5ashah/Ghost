@@ -233,6 +233,7 @@ export function detectPlatform(): string {
     typeof window !== 'undefined' &&
     !!(window as unknown as { __TAURI_INTERNALS__?: unknown })
       .__TAURI_INTERNALS__;
+  if (import.meta.env.VITE_GHOST_MOBILE === '1') return 'android';
   if (isTauri) {
     if (ua.includes('mac')) return 'tauri-macos';
     if (ua.includes('windows')) return 'tauri-windows';

@@ -194,7 +194,7 @@ def _default_pool(
     worker is in the paper's default — cells that want one should supply it
     explicitly via ``cfg["worker_pool"]``.
 
-    Each provider is gated by an ``OJ_CONDUCTOR_DISABLE_*`` env var so a cell
+    Each provider is gated by an ``GHOST_CONDUCTOR_DISABLE_*`` env var so a cell
     that lacks one set of credentials can still run the rest of the pool. If
     every provider is disabled the result is the empty list — the caller's
     "empty worker pool" check will surface it.
@@ -205,7 +205,7 @@ def _default_pool(
     """
     del local_model, local_endpoint  # paper default carries no local worker
     pool: List[Dict[str, Any]] = []
-    if not os.environ.get("OJ_CONDUCTOR_DISABLE_GEMINI"):
+    if not os.environ.get("GHOST_CONDUCTOR_DISABLE_GEMINI"):
         pool.append(
             {
                 "id": len(pool),
@@ -220,7 +220,7 @@ def _default_pool(
                 ),
             }
         )
-    if not os.environ.get("OJ_CONDUCTOR_DISABLE_ANTHROPIC"):
+    if not os.environ.get("GHOST_CONDUCTOR_DISABLE_ANTHROPIC"):
         pool.append(
             {
                 "id": len(pool),
@@ -235,7 +235,7 @@ def _default_pool(
                 ),
             }
         )
-    if not os.environ.get("OJ_CONDUCTOR_DISABLE_OPENAI"):
+    if not os.environ.get("GHOST_CONDUCTOR_DISABLE_OPENAI"):
         pool.append(
             {
                 "id": len(pool),
@@ -250,7 +250,7 @@ def _default_pool(
                 ),
             }
         )
-    if not os.environ.get("OJ_CONDUCTOR_DISABLE_OPENROUTER"):
+    if not os.environ.get("GHOST_CONDUCTOR_DISABLE_OPENROUTER"):
         pool.append(
             {
                 "id": len(pool),

@@ -54,7 +54,7 @@ def test_launchd_plist_binds_loopback():
     [
         ("127.0.0.1", "", False),
         ("localhost", "", False),
-        ("0.0.0.0", "oj_sk_x", False),
+        ("0.0.0.0", "ghost_sk_x", False),
         ("0.0.0.0", "", True),
         ("192.168.1.10", "", True),
     ],

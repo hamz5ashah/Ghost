@@ -12,11 +12,13 @@ import { CommandPalette } from './components/CommandPalette';
 import { SetupScreen } from './components/SetupScreen';
 import { Toaster } from './components/ui/sonner';
 import { useAppStore } from './lib/store';
-import { fetchModels, fetchServerInfo, fetchSavings, submitSavings, isTauri } from './lib/api';
+import { fetchModels, fetchServerInfo, fetchSavings, submitSavings, isTauri, isMobileApp } from './lib/api';
+import { MobileConnect } from './components/MobileConnect';
 import { OptInModal } from './components/OptInModal';
 import { UpdateChecker } from './components/Desktop/UpdateChecker';
 import { track, hashId } from './lib/analytics';
 import { offerAnalyticsChoice } from './lib/analytics-invitation';
+import { LEADERBOARD_ENABLED } from './lib/supabase';
 
 export default function App() {
   const [setupDone, setSetupDone] = useState(!isTauri());
@@ -24,8 +26,8 @@ export default function App() {
     setSetupDone(true);
     // Only fire once per install — guard against setup screen re-appearing
     // on reinstalls or dev reloads.
-    if (!localStorage.getItem('oj-setup-completed')) {
-      localStorage.setItem('oj-setup-completed', '1');
+    if (!localStorage.getItem('ghost-setup-completed')) {
+      localStorage.setItem('ghost-setup-completed', '1');
       track('setup_completed', { preset: 'default' });
     }
   }, []);
@@ -47,6 +49,8 @@ export default function App() {
   const setOptInModalOpen = useAppStore((s) => s.setOptInModalOpen);
   const markOptInModalSeen = useAppStore((s) => s.markOptInModalSeen);
   const savings = useAppStore((s) => s.savings);
+  // Android app: nothing works until the phone is paired with a Ghost PC.
+  const needsMobileConnect = isMobileApp() && !settings.apiUrl;
 
   // Apply theme class to <html>
   useEffect(() => {
@@ -118,13 +122,17 @@ export default function App() {
     return () => clearInterval(interval);
   }, [optInEnabled, optInDisplayName, optInEmail, optInAnonId]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Wait for desktop setup before fetching identity or marking the dialog seen.
-  useEffect(() => offerAnalyticsChoice({
-    ready: setupDone,
-    sharingModalSeen: optInModalSeen,
-    open: () => setOptInModalOpen(true),
-    markSharingModalSeen: markOptInModalSeen,
-  }), [setupDone, optInModalSeen, setOptInModalOpen, markOptInModalSeen]);
+  // Offer the sharing dialog only when a leaderboard/analytics destination is
+  // actually configured for this build; otherwise there is nothing to share.
+  useEffect(() => {
+    if (!LEADERBOARD_ENABLED) return;
+    return offerAnalyticsChoice({
+      ready: setupDone,
+      sharingModalSeen: optInModalSeen,
+      open: () => setOptInModalOpen(true),
+      markSharingModalSeen: markOptInModalSeen,
+    });
+  }, [setupDone, optInModalSeen, setOptInModalOpen, markOptInModalSeen]);
 
   // Fire model_changed when the user switches models. First mount is
   // not a "change" — only emit when both prev and current are real and
@@ -174,6 +182,11 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [commandPaletteOpen, setCommandPaletteOpen, toggleSystemPanel]);
 
+
+  if (needsMobileConnect) {
+    // Reload so every startup fetch (models, server info…) uses the new PC.
+    return <MobileConnect onConnected={() => window.location.reload()} />;
+  }
 
   if (!setupDone) {
     return <SetupScreen onReady={handleSetupReady} />;

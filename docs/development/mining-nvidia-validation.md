@@ -222,7 +222,7 @@ Check `pearld` connectivity using the same RPC configuration used by mining:
 
 ```bash
 curl --user "rpcuser:${PEARLD_RPC_PASSWORD}" \
-  --data-binary '{"jsonrpc":"1.0","id":"oj","method":"getblockchaininfo","params":[]}' \
+  --data-binary '{"jsonrpc":"1.0","id":"ghost","method":"getblockchaininfo","params":[]}' \
   -H 'content-type: text/plain;' \
   http://127.0.0.1:44107
 ```

@@ -3,7 +3,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 type UpdateState = 'idle' | 'available' | 'downloading' | 'ready' | 'error';
 
 const CHECK_INTERVAL_MS = 30 * 60 * 1000; // 30 minutes
-const DISABLED_KEY = 'oj-auto-update-disabled';
+const DISABLED_KEY = 'ghost-auto-update-disabled';
 
 export function isAutoUpdateDisabled(): boolean {
   try {
@@ -48,7 +48,7 @@ export function UpdateChecker() {
   }, []);
 
   useEffect(() => {
-    if (typeof window === 'undefined' || !(window as any).__TAURI_INTERNALS__) {
+    if (import.meta.env.VITE_GHOST_MOBILE === '1' || typeof window === 'undefined' || !(window as any).__TAURI_INTERNALS__) {
       return;
     }
     if (isAutoUpdateDisabled()) return;

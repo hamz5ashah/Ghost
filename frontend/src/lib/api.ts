@@ -12,7 +12,12 @@ declare global {
   }
 }
 
-export const isTauri = () => typeof window !== 'undefined' && !!window.__TAURI_INTERNALS__;
+/** True in the Ghost Android app, which talks to a Ghost server on the user's PC. */
+export const isMobileApp = () => import.meta.env.VITE_GHOST_MOBILE === '1';
+
+/** True only in the desktop app, which manages its own local backend. */
+export const isTauri = () =>
+  !isMobileApp() && typeof window !== 'undefined' && !!window.__TAURI_INTERNALS__;
 
 export type CloudKeyStatus = Record<string, boolean>;
 
@@ -119,6 +124,77 @@ export const apiFetch = (
   );
   return fetch(`${getBase()}${path}`, { ...init, headers });
 };
+
+// ---------------------------------------------------------------------------
+// Phone access (desktop only): lets the Ghost Android app reach this PC
+// ---------------------------------------------------------------------------
+
+export interface PhoneAccess {
+  enabled: boolean;
+  url: string | null;
+  api_key: string | null;
+  port: number;
+}
+
+export async function getPhoneAccess(): Promise<PhoneAccess> {
+  if (!isTauri()) throw new Error('Phone access is set up from the desktop app.');
+  const { invoke } = await import('@tauri-apps/api/core');
+  return invoke<PhoneAccess>('get_phone_access');
+}
+
+export async function setPhoneAccess(
+  enabled: boolean,
+  newKey = false,
+): Promise<PhoneAccess> {
+  if (!isTauri()) throw new Error('Phone access is set up from the desktop app.');
+  const { invoke } = await import('@tauri-apps/api/core');
+  return invoke<PhoneAccess>('set_phone_access', { enabled, newKey });
+}
+
+/** Normalise what a user types as their PC address: add http:// and :8000. */
+export function normalizeServerUrl(input: string): string {
+  let url = input.trim().replace(/\/+$/, '');
+  if (!url) return '';
+  if (!/^https?:\/\//i.test(url)) url = `http://${url}`;
+  try {
+    const parsed = new URL(url);
+    if (!parsed.port && parsed.protocol === 'http:') parsed.port = '8000';
+    return `${parsed.protocol}//${parsed.host}${parsed.pathname.replace(/\/+$/, '')}`;
+  } catch {
+    return url;
+  }
+}
+
+export type ConnectionCheck =
+  | { ok: true }
+  | { ok: false; reason: 'unreachable' | 'bad-key' | 'not-ghost' };
+
+/** Check that `url` is a Ghost server and that `apiKey` is accepted by it. */
+export async function checkServerConnection(
+  url: string,
+  apiKey: string,
+  timeoutMs = 8000,
+): Promise<ConnectionCheck> {
+  const withTimeout = (input: string, init: RequestInit = {}) => {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), timeoutMs);
+    return fetch(input, { ...init, signal: ctrl.signal }).finally(() => clearTimeout(timer));
+  };
+  try {
+    const health = await withTimeout(`${url}/health`);
+    if (!health.ok) return { ok: false, reason: 'not-ghost' };
+  } catch {
+    return { ok: false, reason: 'unreachable' };
+  }
+  try {
+    const headers: Record<string, string> = apiKey ? { Authorization: `Bearer ${apiKey}` } : {};
+    const models = await withTimeout(`${url}/v1/models`, { headers });
+    if (models.status === 401 || models.status === 403) return { ok: false, reason: 'bad-key' };
+    return models.ok ? { ok: true } : { ok: false, reason: 'not-ghost' };
+  } catch {
+    return { ok: false, reason: 'unreachable' };
+  }
+}
 
 async function tauriInvoke<T>(command: string, args: Record<string, unknown> = {}): Promise<T> {
   const { invoke } = await import('@tauri-apps/api/core');

@@ -29,7 +29,7 @@ class TestRollbackIntegration:
             CheckpointStore,
         )
 
-        root = tmp_path / "oj_home"
+        root = tmp_path / "ghost_home"
         _setup_config_tree(root)
 
         store = CheckpointStore(root)
@@ -77,7 +77,7 @@ class TestRollbackIntegration:
             CheckpointStore,
         )
 
-        root = tmp_path / "oj_home"
+        root = tmp_path / "ghost_home"
         _setup_config_tree(root)
 
         store = CheckpointStore(root)

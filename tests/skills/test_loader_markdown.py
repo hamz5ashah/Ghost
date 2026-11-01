@@ -186,8 +186,8 @@ class TestLoadSkillDirectorySourcePromotion:
             "scripts_imported = false\n"
         )
         manifest = load_skill_directory(skill_dir)
-        oj = manifest.metadata.get("ghost", {})
-        assert oj.get("source") == "hermes"
+        ghost_meta = manifest.metadata.get("ghost", {})
+        assert ghost_meta.get("source") == "hermes"
 
     def test_no_dot_source_file_no_metadata(self, tmp_path: Path):
         """When no .source file is present, metadata.ghost.source is unset."""
@@ -199,8 +199,8 @@ class TestLoadSkillDirectorySourcePromotion:
             "---\nname: user-skill\ndescription: x\n---\nBody"
         )
         manifest = load_skill_directory(skill_dir)
-        oj = manifest.metadata.get("ghost", {})
-        assert "source" not in oj
+        ghost_meta = manifest.metadata.get("ghost", {})
+        assert "source" not in ghost_meta
 
     def test_malformed_dot_source_does_not_crash(self, tmp_path: Path):
         """A malformed .source file is ignored, not crashed on."""
