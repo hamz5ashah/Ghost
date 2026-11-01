@@ -1,0 +1,118 @@
+name: Installer integration
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/install/**'
+      - 'src/ghost/cli/**'
+      - 'tests/install/**'
+      - '.github/workflows/installer-integration.yml'
+  schedule:
+    - cron: '0 6 * * *'
+
+jobs:
+  container-matrix:
+    name: ${{ matrix.image }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        image:
+          - ubuntu:22.04
+          - ubuntu:24.04
+          - fedora:40
+
+    container: ${{ matrix.image }}
+
+    steps:
+      - name: Install prereqs (Ubuntu/Debian)
+        if: contains(matrix.image, 'ubuntu') || contains(matrix.image, 'debian')
+        run: |
+          apt-get update
+          apt-get install -y curl git python3 sudo
+
+      - name: Install prereqs (Fedora)
+        if: contains(matrix.image, 'fedora')
+        run: |
+          dnf install -y curl git python3 sudo
+
+      - name: Create non-root user
+        run: useradd -m -s /bin/bash testuser
+
+      - uses: actions/checkout@v7
+        with:
+          path: ghost-src
+
+      - name: Install Ollama mock
+        run: install -m 755 "$GITHUB_WORKSPACE/ghost-src/tests/install/bash/stubs/ollama-mock" /usr/local/bin/ollama
+
+      - name: Run installer
+        run: |
+          chown -R testuser:testuser /home/testuser "$GITHUB_WORKSPACE/ghost-src"
+          su testuser -c '
+            export GHOST_REPO_URL=file://'"$GITHUB_WORKSPACE"'/ghost-src
+            cd '"$GITHUB_WORKSPACE"'/ghost-src
+            bash scripts/install/install.sh --no-bg-orchestrator
+          '
+
+      - name: Verify install state
+        run: |
+          su testuser -c '
+            test -d ~/.ghost/src
+            test -d ~/.ghost/.venv
+            test -f ~/.ghost/config.toml
+            test -f ~/.ghost/.state/install-state.json
+            test -L ~/.local/bin/ghost
+          '
+
+      - name: Verify ghost --version
+        run: su testuser -c '~/.local/bin/ghost --version'
+
+      - name: Verify ghost doctor exits 0
+        run: su testuser -c '~/.local/bin/ghost doctor'
+
+      - name: Verify uninstall is clean
+        run: |
+          su testuser -c '
+            ~/.local/bin/ghost-uninstall --yes
+            test ! -d ~/.ghost
+            test ! -L ~/.local/bin/ghost
+          '
+
+  macos:
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-14, macos-15]
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install Ollama mock
+        run: sudo install -m 755 tests/install/bash/stubs/ollama-mock /usr/local/bin/ollama
+
+      - name: Run installer
+        run: |
+          export GHOST_REPO_URL=file://$(pwd)
+          bash scripts/install/install.sh --no-bg-orchestrator
+
+      - name: Verify install state
+        run: |
+          test -d ~/.ghost/src
+          test -d ~/.ghost/.venv
+          test -f ~/.ghost/config.toml
+          test -L ~/.local/bin/ghost
+
+      - name: Verify ghost --version
+        run: ~/.local/bin/ghost --version
+
+      - name: Verify ghost doctor exits 0
+        run: ~/.local/bin/ghost doctor
+
+      - name: Verify uninstall is clean
+        run: |
+          ~/.local/bin/ghost-uninstall --yes
+          test ! -d ~/.ghost
+          test ! -L ~/.local/bin/ghost

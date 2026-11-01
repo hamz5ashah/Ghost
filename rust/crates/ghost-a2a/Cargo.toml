@@ -1,0 +1,10 @@
+[package]
+name = "ghost-a2a"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ghost-core = { path = "../ghost-core" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+uuid = { workspace = true }
