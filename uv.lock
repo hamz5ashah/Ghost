@@ -2040,7 +2040,7 @@ dependencies = [
     { name = "av" },
     { name = "ctranslate2" },
     { name = "huggingface-hub" },
-    { name = "onnxruntime", version = "1.23.2", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version < '3.11' and platform_machine == 's390x') or (python_full_version < '3.11' and sys_platform != 'darwin') or (platform_machine != 's390x' and sys_platform == 'darwin')" },
+    { name = "onnxruntime", version = "1.23.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or (platform_machine != 's390x' and sys_platform == 'darwin')" },
     { name = "onnxruntime", version = "1.24.2", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.11' and platform_machine == 's390x') or (python_full_version >= '3.11' and sys_platform != 'darwin')" },
     { name = "tokenizers" },
     { name = "tqdm" },
@@ -2374,6 +2374,374 @@ sdist = { url = "https://files.pythonhosted.org/packages/95/56/925779e5690971f1b
 wheels = [
     { url = "https://files.pythonhosted.org/packages/fd/77/5b3a281cfd9caaa9e68349b434cf27f1ca448003ee0067a1ae2184dc52d1/gepa-0.1.4-py3-none-any.whl", hash = "sha256:12b971039599625c156d2231f6d72a29c31a22e9c237689459b5f1a3c353f532", size = 290167, upload-time = "2026-07-15T14:53:58.422Z" },
 ]
+
+[[package]]
+name = "ghost"
+source = { editable = "." }
+dependencies = [
+    { name = "click" },
+    { name = "croniter" },
+    { name = "datasets" },
+    { name = "ddgs" },
+    { name = "httpx" },
+    { name = "nvidia-ml-py" },
+    { name = "openai" },
+    { name = "posthog" },
+    { name = "psutil" },
+    { name = "python-telegram-bot" },
+    { name = "rich" },
+    { name = "tomli", marker = "python_full_version < '3.11'" },
+    { name = "tomlkit" },
+    { name = "websockets" },
+]
+
+[package.optional-dependencies]
+afm = [
+    { name = "apple-fm-sdk", marker = "sys_platform == 'darwin'" },
+]
+browser = [
+    { name = "playwright" },
+]
+channel-discord = [
+    { name = "discord-py" },
+]
+channel-gmail = [
+    { name = "google-api-python-client" },
+    { name = "google-auth-httplib2" },
+    { name = "google-auth-oauthlib" },
+]
+channel-line = [
+    { name = "line-bot-sdk" },
+]
+channel-mastodon = [
+    { name = "mastodon-py" },
+]
+channel-messenger = [
+    { name = "pymessenger" },
+]
+channel-nostr = [
+    { name = "pynostr" },
+]
+channel-reddit = [
+    { name = "praw" },
+]
+channel-rocketchat = [
+    { name = "rocketchat-api" },
+]
+channel-slack = [
+    { name = "slack-sdk" },
+]
+channel-telegram = [
+    { name = "python-telegram-bot" },
+]
+channel-twilio = [
+    { name = "twilio" },
+]
+channel-twitch = [
+    { name = "twitchio", version = "2.10.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "twitchio", version = "3.2.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+]
+channel-twitter = [
+    { name = "httpx" },
+]
+channel-viber = [
+    { name = "viberbot" },
+]
+channel-xmpp = [
+    { name = "slixmpp", version = "1.12.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "slixmpp", version = "1.13.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+]
+channel-zulip = [
+    { name = "zulip" },
+]
+dashboard = [
+    { name = "textual" },
+]
+desktop = [
+    { name = "av" },
+    { name = "fastapi" },
+    { name = "faster-whisper" },
+    { name = "numpy" },
+    { name = "onnxruntime", version = "1.23.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or (platform_machine == 'x86_64' and sys_platform == 'darwin')" },
+    { name = "pydantic" },
+    { name = "python-multipart" },
+    { name = "sounddevice" },
+    { name = "soundfile" },
+    { name = "uvicorn" },
+]
+dev = [
+    { name = "maturin" },
+    { name = "pre-commit" },
+    { name = "pytest" },
+    { name = "pytest-asyncio" },
+    { name = "pytest-cov" },
+    { name = "pytest-xdist" },
+    { name = "respx" },
+    { name = "ruff" },
+]
+docs = [
+    { name = "mkdocs" },
+    { name = "mkdocs-gen-files" },
+    { name = "mkdocs-literate-nav" },
+    { name = "mkdocs-material" },
+    { name = "mkdocstrings", extra = ["python"] },
+]
+energy-all = [
+    { name = "amdsmi" },
+    { name = "pynvml" },
+    { name = "zeus-apple-silicon", marker = "sys_platform == 'darwin'" },
+]
+energy-amd = [
+    { name = "amdsmi" },
+]
+energy-apple = [
+    { name = "zeus-apple-silicon", marker = "sys_platform == 'darwin'" },
+]
+eval-sheets = [
+    { name = "google-auth" },
+    { name = "gspread" },
+]
+eval-wandb = [
+    { name = "wandb" },
+]
+framework-comparison = [
+    { name = "polars" },
+]
+gpu-metrics = [
+    { name = "pynvml" },
+]
+inference-cloud = [
+    { name = "anthropic" },
+    { name = "openai" },
+]
+inference-gemma = [
+    { name = "pygemma" },
+]
+inference-google = [
+    { name = "google-genai" },
+]
+inference-litellm = [
+    { name = "litellm" },
+]
+inference-mlx = [
+    { name = "mlx-lm", marker = "sys_platform == 'darwin'" },
+]
+inference-vllm = [
+    { name = "vllm" },
+]
+learning-dspy = [
+    { name = "dspy" },
+]
+learning-gepa = [
+    { name = "gepa" },
+]
+media = [
+    { name = "openai" },
+]
+memory-bm25 = [
+    { name = "rank-bm25" },
+]
+memory-colbert = [
+    { name = "colbert-ai" },
+    { name = "torch" },
+]
+memory-faiss = [
+    { name = "faiss-cpu" },
+    { name = "numpy" },
+    { name = "sentence-transformers" },
+]
+memory-pdf = [
+    { name = "pdfplumber" },
+]
+mining-pearl-vllm = [
+    { name = "docker" },
+    { name = "httpx" },
+]
+openhands = [
+    { name = "openhands-sdk", marker = "python_full_version >= '3.12'" },
+]
+orchestrator-training = [
+    { name = "torch" },
+    { name = "transformers" },
+]
+pdf = [
+    { name = "pdfplumber" },
+]
+sandbox-docker = [
+    { name = "docker" },
+]
+sandbox-wasm = [
+    { name = "wasmtime" },
+]
+scheduler = [
+    { name = "croniter" },
+]
+security-signing = [
+    { name = "cryptography" },
+]
+server = [
+    { name = "fastapi" },
+    { name = "pydantic" },
+    { name = "python-multipart" },
+    { name = "uvicorn" },
+]
+speech = [
+    { name = "av" },
+    { name = "faster-whisper" },
+    { name = "numpy" },
+    { name = "onnxruntime", version = "1.23.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or (platform_machine == 'x86_64' and sys_platform == 'darwin')" },
+    { name = "sounddevice" },
+    { name = "soundfile" },
+]
+speech-deepgram = [
+    { name = "deepgram-sdk" },
+]
+tools-search = [
+    { name = "ddgs" },
+    { name = "tavily-python" },
+]
+voice = [
+    { name = "kokoro" },
+    { name = "numpy" },
+    { name = "sounddevice" },
+    { name = "soundfile" },
+]
+
+[package.dev-dependencies]
+desktop-native = [
+    { name = "ghost-rust" },
+]
+dev = [
+    { name = "maturin" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "amdsmi", marker = "extra == 'energy-all'", specifier = ">=6.1" },
+    { name = "amdsmi", marker = "extra == 'energy-amd'", specifier = ">=6.1" },
+    { name = "anthropic", marker = "extra == 'inference-cloud'", specifier = ">=0.30" },
+    { name = "apple-fm-sdk", marker = "sys_platform == 'darwin' and extra == 'afm'", specifier = ">=0.2.1" },
+    { name = "av", marker = "extra == 'desktop'", specifier = ">=11,<19" },
+    { name = "av", marker = "extra == 'speech'", specifier = ">=11,<19" },
+    { name = "click", specifier = ">=8" },
+    { name = "colbert-ai", marker = "extra == 'memory-colbert'", specifier = ">=0.2" },
+    { name = "croniter", specifier = ">=2.0" },
+    { name = "croniter", marker = "extra == 'scheduler'", specifier = ">=2.0" },
+    { name = "cryptography", marker = "extra == 'security-signing'", specifier = ">=43" },
+    { name = "datasets", specifier = ">=4.5.0" },
+    { name = "ddgs", specifier = ">=9.11.4" },
+    { name = "ddgs", marker = "extra == 'tools-search'", specifier = ">=9.11.4" },
+    { name = "deepgram-sdk", marker = "extra == 'speech-deepgram'", specifier = ">=3.0" },
+    { name = "discord-py", marker = "extra == 'channel-discord'", specifier = ">=2.3" },
+    { name = "docker", marker = "extra == 'mining-pearl-vllm'", specifier = ">=7.0" },
+    { name = "docker", marker = "extra == 'sandbox-docker'", specifier = ">=7.0" },
+    { name = "dspy", marker = "extra == 'learning-dspy'", specifier = ">=2.6" },
+    { name = "faiss-cpu", marker = "extra == 'memory-faiss'", specifier = ">=1.7" },
+    { name = "fastapi", marker = "extra == 'desktop'", specifier = ">=0.110" },
+    { name = "fastapi", marker = "extra == 'server'", specifier = ">=0.110" },
+    { name = "faster-whisper", marker = "extra == 'desktop'", specifier = ">=1.0" },
+    { name = "faster-whisper", marker = "extra == 'speech'", specifier = ">=1.0" },
+    { name = "gepa", marker = "extra == 'learning-gepa'", specifier = ">=0.1" },
+    { name = "google-api-python-client", marker = "extra == 'channel-gmail'", specifier = ">=2.0" },
+    { name = "google-auth", marker = "extra == 'eval-sheets'", specifier = ">=2.0" },
+    { name = "google-auth-httplib2", marker = "extra == 'channel-gmail'", specifier = ">=0.2" },
+    { name = "google-auth-oauthlib", marker = "extra == 'channel-gmail'", specifier = ">=1.0" },
+    { name = "google-genai", marker = "extra == 'inference-google'", specifier = ">=1.0" },
+    { name = "gspread", marker = "extra == 'eval-sheets'", specifier = ">=6.0" },
+    { name = "httpx", specifier = ">=0.27" },
+    { name = "httpx", marker = "extra == 'channel-twitter'", specifier = ">=0.27" },
+    { name = "httpx", marker = "extra == 'mining-pearl-vllm'", specifier = ">=0.27" },
+    { name = "kokoro", marker = "extra == 'voice'", specifier = ">=0.9" },
+    { name = "line-bot-sdk", marker = "extra == 'channel-line'", specifier = ">=3.0" },
+    { name = "litellm", marker = "extra == 'inference-litellm'", specifier = "==1.104.2" },
+    { name = "mastodon-py", marker = "extra == 'channel-mastodon'", specifier = ">=1.8" },
+    { name = "maturin", marker = "extra == 'dev'", specifier = ">=1.12.6" },
+    { name = "mkdocs", marker = "extra == 'docs'", specifier = ">=1.6" },
+    { name = "mkdocs-gen-files", marker = "extra == 'docs'", specifier = ">=0.5" },
+    { name = "mkdocs-literate-nav", marker = "extra == 'docs'", specifier = ">=0.6" },
+    { name = "mkdocs-material", marker = "extra == 'docs'", specifier = ">=9.5" },
+    { name = "mkdocstrings", extras = ["python"], marker = "extra == 'docs'", specifier = ">=0.25" },
+    { name = "mlx-lm", marker = "sys_platform == 'darwin' and extra == 'inference-mlx'", specifier = ">=0.31.1" },
+    { name = "numpy", marker = "extra == 'desktop'", specifier = ">=1.24" },
+    { name = "numpy", marker = "extra == 'memory-faiss'", specifier = ">=1.24" },
+    { name = "numpy", marker = "extra == 'speech'", specifier = ">=1.24" },
+    { name = "numpy", marker = "extra == 'voice'", specifier = ">=1.24" },
+    { name = "nvidia-ml-py", specifier = ">=12.560.30" },
+    { name = "onnxruntime", marker = "python_full_version < '3.11' and extra == 'desktop'", specifier = "<1.24" },
+    { name = "onnxruntime", marker = "python_full_version < '3.11' and extra == 'speech'", specifier = "<1.24" },
+    { name = "onnxruntime", marker = "platform_machine == 'x86_64' and sys_platform == 'darwin' and extra == 'desktop'", specifier = "<1.24" },
+    { name = "onnxruntime", marker = "platform_machine == 'x86_64' and sys_platform == 'darwin' and extra == 'speech'", specifier = "<1.24" },
+    { name = "openai", specifier = ">=1.30" },
+    { name = "openai", marker = "extra == 'inference-cloud'", specifier = ">=1.30" },
+    { name = "openai", marker = "extra == 'media'", specifier = ">=1.30" },
+    { name = "openhands-sdk", marker = "python_full_version >= '3.12' and extra == 'openhands'", specifier = ">=1.0" },
+    { name = "pdfplumber", marker = "extra == 'memory-pdf'", specifier = ">=0.10" },
+    { name = "pdfplumber", marker = "extra == 'pdf'", specifier = ">=0.10" },
+    { name = "playwright", marker = "extra == 'browser'", specifier = ">=1.40" },
+    { name = "polars", marker = "extra == 'framework-comparison'", specifier = ">=1.0" },
+    { name = "posthog", specifier = ">=3.0" },
+    { name = "praw", marker = "extra == 'channel-reddit'", specifier = ">=7.0" },
+    { name = "pre-commit", marker = "extra == 'dev'", specifier = ">=3.0" },
+    { name = "psutil", specifier = ">=5.9" },
+    { name = "pydantic", marker = "extra == 'desktop'", specifier = ">=2.0" },
+    { name = "pydantic", marker = "extra == 'server'", specifier = ">=2.0" },
+    { name = "pygemma", marker = "extra == 'inference-gemma'", specifier = ">=0.1.3" },
+    { name = "pymessenger", marker = "extra == 'channel-messenger'", specifier = ">=0.0.7" },
+    { name = "pynostr", marker = "extra == 'channel-nostr'", specifier = ">=0.6" },
+    { name = "pynvml", marker = "extra == 'energy-all'", specifier = ">=12.0" },
+    { name = "pynvml", marker = "extra == 'gpu-metrics'", specifier = ">=12.0" },
+    { name = "pytest", marker = "extra == 'dev'", specifier = ">=8" },
+    { name = "pytest-asyncio", marker = "extra == 'dev'", specifier = ">=0.24" },
+    { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=5" },
+    { name = "pytest-xdist", marker = "extra == 'dev'", specifier = ">=3" },
+    { name = "python-multipart", marker = "extra == 'desktop'", specifier = ">=0.0.9" },
+    { name = "python-multipart", marker = "extra == 'server'", specifier = ">=0.0.9" },
+    { name = "python-telegram-bot", specifier = ">=22.8" },
+    { name = "python-telegram-bot", marker = "extra == 'channel-telegram'", specifier = ">=21.0" },
+    { name = "rank-bm25", marker = "extra == 'memory-bm25'", specifier = ">=0.2.2" },
+    { name = "respx", marker = "extra == 'dev'", specifier = ">=0.22" },
+    { name = "rich", specifier = ">=13" },
+    { name = "rocketchat-api", marker = "extra == 'channel-rocketchat'", specifier = ">=1.30" },
+    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.4" },
+    { name = "sentence-transformers", marker = "extra == 'memory-faiss'", specifier = ">=2.2" },
+    { name = "slack-sdk", marker = "extra == 'channel-slack'", specifier = ">=3.27" },
+    { name = "slixmpp", marker = "extra == 'channel-xmpp'", specifier = ">=1.8" },
+    { name = "sounddevice", marker = "extra == 'desktop'", specifier = ">=0.5" },
+    { name = "sounddevice", marker = "extra == 'speech'", specifier = ">=0.5" },
+    { name = "sounddevice", marker = "extra == 'voice'", specifier = ">=0.5" },
+    { name = "soundfile", marker = "extra == 'desktop'", specifier = ">=0.12" },
+    { name = "soundfile", marker = "extra == 'speech'", specifier = ">=0.12" },
+    { name = "soundfile", marker = "extra == 'voice'", specifier = ">=0.12" },
+    { name = "tavily-python", marker = "extra == 'tools-search'", specifier = ">=0.3" },
+    { name = "textual", marker = "extra == 'dashboard'", specifier = ">=0.80" },
+    { name = "tomli", marker = "python_full_version < '3.11'", specifier = ">=2.0" },
+    { name = "tomlkit", specifier = ">=0.12" },
+    { name = "torch", marker = "extra == 'memory-colbert'", specifier = ">=2.0" },
+    { name = "torch", marker = "extra == 'orchestrator-training'", specifier = ">=2.0" },
+    { name = "transformers", marker = "extra == 'orchestrator-training'", specifier = ">=4.40" },
+    { name = "twilio", marker = "extra == 'channel-twilio'", specifier = ">=9.0" },
+    { name = "twitchio", marker = "extra == 'channel-twitch'", specifier = ">=2.6" },
+    { name = "uvicorn", marker = "extra == 'desktop'", specifier = ">=0.30" },
+    { name = "uvicorn", marker = "extra == 'server'", specifier = ">=0.30" },
+    { name = "viberbot", marker = "extra == 'channel-viber'", specifier = ">=1.0" },
+    { name = "vllm", marker = "extra == 'inference-vllm'", specifier = ">=0.30.0" },
+    { name = "wandb", marker = "extra == 'eval-wandb'", specifier = ">=0.17" },
+    { name = "wasmtime", marker = "extra == 'sandbox-wasm'", specifier = ">=50.0.1" },
+    { name = "websockets", specifier = ">=15.0.1" },
+    { name = "zeus-apple-silicon", marker = "sys_platform == 'darwin' and extra == 'energy-all'", specifier = ">=1.1.0" },
+    { name = "zeus-apple-silicon", marker = "sys_platform == 'darwin' and extra == 'energy-apple'", specifier = ">=1.1.0" },
+    { name = "zulip", marker = "extra == 'channel-zulip'", specifier = ">=0.9" },
+]
+provides-extras = ["afm", "browser", "channel-discord", "channel-gmail", "channel-line", "channel-mastodon", "channel-messenger", "channel-nostr", "channel-reddit", "channel-rocketchat", "channel-slack", "channel-telegram", "channel-twilio", "channel-twitch", "channel-twitter", "channel-viber", "channel-xmpp", "channel-zulip", "dashboard", "desktop", "dev", "docs", "energy-all", "energy-amd", "energy-apple", "eval-sheets", "eval-wandb", "framework-comparison", "gpu-metrics", "inference-cloud", "inference-gemma", "inference-google", "inference-litellm", "inference-mlx", "inference-vllm", "learning-dspy", "learning-gepa", "media", "memory-bm25", "memory-colbert", "memory-faiss", "memory-pdf", "mining-pearl-cpu", "mining-pearl-vllm", "openhands", "orchestrator-training", "pdf", "sandbox-docker", "sandbox-wasm", "scheduler", "security-signing", "server", "speech", "speech-deepgram", "tools-search", "voice"]
+
+[package.metadata.requires-dev]
+desktop-native = [{ name = "ghost-rust", directory = "rust/crates/ghost-python" }]
+dev = [{ name = "maturin", specifier = ">=1.12.6" }]
+
+[[package]]
+name = "ghost-rust"
+version = "0.1.0"
+source = { directory = "rust/crates/ghost-python" }
 
 [[package]]
 name = "ghp-import"
@@ -5191,374 +5559,6 @@ sdist = { url = "https://files.pythonhosted.org/packages/3a/fc/cfb73768099be94c9
 wheels = [
     { url = "https://files.pythonhosted.org/packages/69/6b/21df2a5b9ed756a48566d96ad491c81609af804b271c370106a4ced4ed5c/openhands_sdk-1.11.5-py3-none-any.whl", hash = "sha256:f949cd540cbecc339d90fb0cca2a5f29e1b62566b82b5aee82ef40f259d14e60", size = 377527, upload-time = "2026-02-20T22:16:48.165Z" },
 ]
-
-[[package]]
-name = "ghost"
-source = { editable = "." }
-dependencies = [
-    { name = "click" },
-    { name = "croniter" },
-    { name = "datasets" },
-    { name = "ddgs" },
-    { name = "httpx" },
-    { name = "nvidia-ml-py" },
-    { name = "openai" },
-    { name = "posthog" },
-    { name = "psutil" },
-    { name = "python-telegram-bot" },
-    { name = "rich" },
-    { name = "tomli", marker = "python_full_version < '3.11'" },
-    { name = "tomlkit" },
-    { name = "websockets" },
-]
-
-[package.optional-dependencies]
-afm = [
-    { name = "apple-fm-sdk", marker = "sys_platform == 'darwin'" },
-]
-browser = [
-    { name = "playwright" },
-]
-channel-discord = [
-    { name = "discord-py" },
-]
-channel-gmail = [
-    { name = "google-api-python-client" },
-    { name = "google-auth-httplib2" },
-    { name = "google-auth-oauthlib" },
-]
-channel-line = [
-    { name = "line-bot-sdk" },
-]
-channel-mastodon = [
-    { name = "mastodon-py" },
-]
-channel-messenger = [
-    { name = "pymessenger" },
-]
-channel-nostr = [
-    { name = "pynostr" },
-]
-channel-reddit = [
-    { name = "praw" },
-]
-channel-rocketchat = [
-    { name = "rocketchat-api" },
-]
-channel-slack = [
-    { name = "slack-sdk" },
-]
-channel-telegram = [
-    { name = "python-telegram-bot" },
-]
-channel-twilio = [
-    { name = "twilio" },
-]
-channel-twitch = [
-    { name = "twitchio", version = "2.10.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "twitchio", version = "3.2.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
-]
-channel-twitter = [
-    { name = "httpx" },
-]
-channel-viber = [
-    { name = "viberbot" },
-]
-channel-xmpp = [
-    { name = "slixmpp", version = "1.12.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "slixmpp", version = "1.13.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
-]
-channel-zulip = [
-    { name = "zulip" },
-]
-dashboard = [
-    { name = "textual" },
-]
-desktop = [
-    { name = "av" },
-    { name = "fastapi" },
-    { name = "faster-whisper" },
-    { name = "numpy" },
-    { name = "onnxruntime", version = "1.23.2", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version < '3.11' and platform_machine != 'x86_64') or (python_full_version < '3.11' and sys_platform != 'darwin') or (platform_machine == 'x86_64' and sys_platform == 'darwin')" },
-    { name = "pydantic" },
-    { name = "python-multipart" },
-    { name = "sounddevice" },
-    { name = "soundfile" },
-    { name = "uvicorn" },
-]
-dev = [
-    { name = "maturin" },
-    { name = "pre-commit" },
-    { name = "pytest" },
-    { name = "pytest-asyncio" },
-    { name = "pytest-cov" },
-    { name = "pytest-xdist" },
-    { name = "respx" },
-    { name = "ruff" },
-]
-docs = [
-    { name = "mkdocs" },
-    { name = "mkdocs-gen-files" },
-    { name = "mkdocs-literate-nav" },
-    { name = "mkdocs-material" },
-    { name = "mkdocstrings", extra = ["python"] },
-]
-energy-all = [
-    { name = "amdsmi" },
-    { name = "pynvml" },
-    { name = "zeus-apple-silicon", marker = "sys_platform == 'darwin'" },
-]
-energy-amd = [
-    { name = "amdsmi" },
-]
-energy-apple = [
-    { name = "zeus-apple-silicon", marker = "sys_platform == 'darwin'" },
-]
-eval-sheets = [
-    { name = "google-auth" },
-    { name = "gspread" },
-]
-eval-wandb = [
-    { name = "wandb" },
-]
-framework-comparison = [
-    { name = "polars" },
-]
-gpu-metrics = [
-    { name = "pynvml" },
-]
-inference-cloud = [
-    { name = "anthropic" },
-    { name = "openai" },
-]
-inference-gemma = [
-    { name = "pygemma" },
-]
-inference-google = [
-    { name = "google-genai" },
-]
-inference-litellm = [
-    { name = "litellm" },
-]
-inference-mlx = [
-    { name = "mlx-lm", marker = "sys_platform == 'darwin'" },
-]
-inference-vllm = [
-    { name = "vllm" },
-]
-learning-dspy = [
-    { name = "dspy" },
-]
-learning-gepa = [
-    { name = "gepa" },
-]
-media = [
-    { name = "openai" },
-]
-memory-bm25 = [
-    { name = "rank-bm25" },
-]
-memory-colbert = [
-    { name = "colbert-ai" },
-    { name = "torch" },
-]
-memory-faiss = [
-    { name = "faiss-cpu" },
-    { name = "numpy" },
-    { name = "sentence-transformers" },
-]
-memory-pdf = [
-    { name = "pdfplumber" },
-]
-mining-pearl-vllm = [
-    { name = "docker" },
-    { name = "httpx" },
-]
-openhands = [
-    { name = "openhands-sdk", marker = "python_full_version >= '3.12'" },
-]
-orchestrator-training = [
-    { name = "torch" },
-    { name = "transformers" },
-]
-pdf = [
-    { name = "pdfplumber" },
-]
-sandbox-docker = [
-    { name = "docker" },
-]
-sandbox-wasm = [
-    { name = "wasmtime" },
-]
-scheduler = [
-    { name = "croniter" },
-]
-security-signing = [
-    { name = "cryptography" },
-]
-server = [
-    { name = "fastapi" },
-    { name = "pydantic" },
-    { name = "python-multipart" },
-    { name = "uvicorn" },
-]
-speech = [
-    { name = "av" },
-    { name = "faster-whisper" },
-    { name = "numpy" },
-    { name = "onnxruntime", version = "1.23.2", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version < '3.11' and platform_machine != 'x86_64') or (python_full_version < '3.11' and sys_platform != 'darwin') or (platform_machine == 'x86_64' and sys_platform == 'darwin')" },
-    { name = "sounddevice" },
-    { name = "soundfile" },
-]
-speech-deepgram = [
-    { name = "deepgram-sdk" },
-]
-tools-search = [
-    { name = "ddgs" },
-    { name = "tavily-python" },
-]
-voice = [
-    { name = "kokoro" },
-    { name = "numpy" },
-    { name = "sounddevice" },
-    { name = "soundfile" },
-]
-
-[package.dev-dependencies]
-desktop-native = [
-    { name = "ghost-rust" },
-]
-dev = [
-    { name = "maturin" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "amdsmi", marker = "extra == 'energy-all'", specifier = ">=6.1" },
-    { name = "amdsmi", marker = "extra == 'energy-amd'", specifier = ">=6.1" },
-    { name = "anthropic", marker = "extra == 'inference-cloud'", specifier = ">=0.30" },
-    { name = "apple-fm-sdk", marker = "sys_platform == 'darwin' and extra == 'afm'", specifier = ">=0.2.1" },
-    { name = "av", marker = "extra == 'desktop'", specifier = ">=11,<19" },
-    { name = "av", marker = "extra == 'speech'", specifier = ">=11,<19" },
-    { name = "click", specifier = ">=8" },
-    { name = "colbert-ai", marker = "extra == 'memory-colbert'", specifier = ">=0.2" },
-    { name = "croniter", specifier = ">=2.0" },
-    { name = "croniter", marker = "extra == 'scheduler'", specifier = ">=2.0" },
-    { name = "cryptography", marker = "extra == 'security-signing'", specifier = ">=43" },
-    { name = "datasets", specifier = ">=4.5.0" },
-    { name = "ddgs", specifier = ">=9.11.4" },
-    { name = "ddgs", marker = "extra == 'tools-search'", specifier = ">=9.11.4" },
-    { name = "deepgram-sdk", marker = "extra == 'speech-deepgram'", specifier = ">=3.0" },
-    { name = "discord-py", marker = "extra == 'channel-discord'", specifier = ">=2.3" },
-    { name = "docker", marker = "extra == 'mining-pearl-vllm'", specifier = ">=7.0" },
-    { name = "docker", marker = "extra == 'sandbox-docker'", specifier = ">=7.0" },
-    { name = "dspy", marker = "extra == 'learning-dspy'", specifier = ">=2.6" },
-    { name = "faiss-cpu", marker = "extra == 'memory-faiss'", specifier = ">=1.7" },
-    { name = "fastapi", marker = "extra == 'desktop'", specifier = ">=0.110" },
-    { name = "fastapi", marker = "extra == 'server'", specifier = ">=0.110" },
-    { name = "faster-whisper", marker = "extra == 'desktop'", specifier = ">=1.0" },
-    { name = "faster-whisper", marker = "extra == 'speech'", specifier = ">=1.0" },
-    { name = "gepa", marker = "extra == 'learning-gepa'", specifier = ">=0.1" },
-    { name = "google-api-python-client", marker = "extra == 'channel-gmail'", specifier = ">=2.0" },
-    { name = "google-auth", marker = "extra == 'eval-sheets'", specifier = ">=2.0" },
-    { name = "google-auth-httplib2", marker = "extra == 'channel-gmail'", specifier = ">=0.2" },
-    { name = "google-auth-oauthlib", marker = "extra == 'channel-gmail'", specifier = ">=1.0" },
-    { name = "google-genai", marker = "extra == 'inference-google'", specifier = ">=1.0" },
-    { name = "gspread", marker = "extra == 'eval-sheets'", specifier = ">=6.0" },
-    { name = "httpx", specifier = ">=0.27" },
-    { name = "httpx", marker = "extra == 'channel-twitter'", specifier = ">=0.27" },
-    { name = "httpx", marker = "extra == 'mining-pearl-vllm'", specifier = ">=0.27" },
-    { name = "kokoro", marker = "extra == 'voice'", specifier = ">=0.9" },
-    { name = "line-bot-sdk", marker = "extra == 'channel-line'", specifier = ">=3.0" },
-    { name = "litellm", marker = "extra == 'inference-litellm'", specifier = "==1.104.2" },
-    { name = "mastodon-py", marker = "extra == 'channel-mastodon'", specifier = ">=1.8" },
-    { name = "maturin", marker = "extra == 'dev'", specifier = ">=1.12.6" },
-    { name = "mkdocs", marker = "extra == 'docs'", specifier = ">=1.6" },
-    { name = "mkdocs-gen-files", marker = "extra == 'docs'", specifier = ">=0.5" },
-    { name = "mkdocs-literate-nav", marker = "extra == 'docs'", specifier = ">=0.6" },
-    { name = "mkdocs-material", marker = "extra == 'docs'", specifier = ">=9.5" },
-    { name = "mkdocstrings", extras = ["python"], marker = "extra == 'docs'", specifier = ">=0.25" },
-    { name = "mlx-lm", marker = "sys_platform == 'darwin' and extra == 'inference-mlx'", specifier = ">=0.31.1" },
-    { name = "numpy", marker = "extra == 'desktop'", specifier = ">=1.24" },
-    { name = "numpy", marker = "extra == 'memory-faiss'", specifier = ">=1.24" },
-    { name = "numpy", marker = "extra == 'speech'", specifier = ">=1.24" },
-    { name = "numpy", marker = "extra == 'voice'", specifier = ">=1.24" },
-    { name = "nvidia-ml-py", specifier = ">=12.560.30" },
-    { name = "onnxruntime", marker = "python_full_version < '3.11' and extra == 'desktop'", specifier = "<1.24" },
-    { name = "onnxruntime", marker = "python_full_version < '3.11' and extra == 'speech'", specifier = "<1.24" },
-    { name = "onnxruntime", marker = "platform_machine == 'x86_64' and sys_platform == 'darwin' and extra == 'desktop'", specifier = "<1.24" },
-    { name = "onnxruntime", marker = "platform_machine == 'x86_64' and sys_platform == 'darwin' and extra == 'speech'", specifier = "<1.24" },
-    { name = "openai", specifier = ">=1.30" },
-    { name = "openai", marker = "extra == 'inference-cloud'", specifier = ">=1.30" },
-    { name = "openai", marker = "extra == 'media'", specifier = ">=1.30" },
-    { name = "openhands-sdk", marker = "python_full_version >= '3.12' and extra == 'openhands'", specifier = ">=1.0" },
-    { name = "pdfplumber", marker = "extra == 'memory-pdf'", specifier = ">=0.10" },
-    { name = "pdfplumber", marker = "extra == 'pdf'", specifier = ">=0.10" },
-    { name = "playwright", marker = "extra == 'browser'", specifier = ">=1.40" },
-    { name = "polars", marker = "extra == 'framework-comparison'", specifier = ">=1.0" },
-    { name = "posthog", specifier = ">=3.0" },
-    { name = "praw", marker = "extra == 'channel-reddit'", specifier = ">=7.0" },
-    { name = "pre-commit", marker = "extra == 'dev'", specifier = ">=3.0" },
-    { name = "psutil", specifier = ">=5.9" },
-    { name = "pydantic", marker = "extra == 'desktop'", specifier = ">=2.0" },
-    { name = "pydantic", marker = "extra == 'server'", specifier = ">=2.0" },
-    { name = "pygemma", marker = "extra == 'inference-gemma'", specifier = ">=0.1.3" },
-    { name = "pymessenger", marker = "extra == 'channel-messenger'", specifier = ">=0.0.7" },
-    { name = "pynostr", marker = "extra == 'channel-nostr'", specifier = ">=0.6" },
-    { name = "pynvml", marker = "extra == 'energy-all'", specifier = ">=12.0" },
-    { name = "pynvml", marker = "extra == 'gpu-metrics'", specifier = ">=12.0" },
-    { name = "pytest", marker = "extra == 'dev'", specifier = ">=8" },
-    { name = "pytest-asyncio", marker = "extra == 'dev'", specifier = ">=0.24" },
-    { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=5" },
-    { name = "pytest-xdist", marker = "extra == 'dev'", specifier = ">=3" },
-    { name = "python-multipart", marker = "extra == 'desktop'", specifier = ">=0.0.9" },
-    { name = "python-multipart", marker = "extra == 'server'", specifier = ">=0.0.9" },
-    { name = "python-telegram-bot", specifier = ">=22.8" },
-    { name = "python-telegram-bot", marker = "extra == 'channel-telegram'", specifier = ">=21.0" },
-    { name = "rank-bm25", marker = "extra == 'memory-bm25'", specifier = ">=0.2.2" },
-    { name = "respx", marker = "extra == 'dev'", specifier = ">=0.22" },
-    { name = "rich", specifier = ">=13" },
-    { name = "rocketchat-api", marker = "extra == 'channel-rocketchat'", specifier = ">=1.30" },
-    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.4" },
-    { name = "sentence-transformers", marker = "extra == 'memory-faiss'", specifier = ">=2.2" },
-    { name = "slack-sdk", marker = "extra == 'channel-slack'", specifier = ">=3.27" },
-    { name = "slixmpp", marker = "extra == 'channel-xmpp'", specifier = ">=1.8" },
-    { name = "sounddevice", marker = "extra == 'desktop'", specifier = ">=0.5" },
-    { name = "sounddevice", marker = "extra == 'speech'", specifier = ">=0.5" },
-    { name = "sounddevice", marker = "extra == 'voice'", specifier = ">=0.5" },
-    { name = "soundfile", marker = "extra == 'desktop'", specifier = ">=0.12" },
-    { name = "soundfile", marker = "extra == 'speech'", specifier = ">=0.12" },
-    { name = "soundfile", marker = "extra == 'voice'", specifier = ">=0.12" },
-    { name = "tavily-python", marker = "extra == 'tools-search'", specifier = ">=0.3" },
-    { name = "textual", marker = "extra == 'dashboard'", specifier = ">=0.80" },
-    { name = "tomli", marker = "python_full_version < '3.11'", specifier = ">=2.0" },
-    { name = "tomlkit", specifier = ">=0.12" },
-    { name = "torch", marker = "extra == 'memory-colbert'", specifier = ">=2.0" },
-    { name = "torch", marker = "extra == 'orchestrator-training'", specifier = ">=2.0" },
-    { name = "transformers", marker = "extra == 'orchestrator-training'", specifier = ">=4.40" },
-    { name = "twilio", marker = "extra == 'channel-twilio'", specifier = ">=9.0" },
-    { name = "twitchio", marker = "extra == 'channel-twitch'", specifier = ">=2.6" },
-    { name = "uvicorn", marker = "extra == 'desktop'", specifier = ">=0.30" },
-    { name = "uvicorn", marker = "extra == 'server'", specifier = ">=0.30" },
-    { name = "viberbot", marker = "extra == 'channel-viber'", specifier = ">=1.0" },
-    { name = "vllm", marker = "extra == 'inference-vllm'", specifier = ">=0.30.0" },
-    { name = "wandb", marker = "extra == 'eval-wandb'", specifier = ">=0.17" },
-    { name = "wasmtime", marker = "extra == 'sandbox-wasm'", specifier = ">=25" },
-    { name = "websockets", specifier = ">=15.0.1" },
-    { name = "zeus-apple-silicon", marker = "sys_platform == 'darwin' and extra == 'energy-all'", specifier = ">=1.1.0" },
-    { name = "zeus-apple-silicon", marker = "sys_platform == 'darwin' and extra == 'energy-apple'", specifier = ">=1.1.0" },
-    { name = "zulip", marker = "extra == 'channel-zulip'", specifier = ">=0.9" },
-]
-provides-extras = ["afm", "browser", "channel-discord", "channel-gmail", "channel-line", "channel-mastodon", "channel-messenger", "channel-nostr", "channel-reddit", "channel-rocketchat", "channel-slack", "channel-telegram", "channel-twilio", "channel-twitch", "channel-twitter", "channel-viber", "channel-xmpp", "channel-zulip", "dashboard", "desktop", "dev", "docs", "energy-all", "energy-amd", "energy-apple", "eval-sheets", "eval-wandb", "framework-comparison", "gpu-metrics", "inference-cloud", "inference-gemma", "inference-google", "inference-litellm", "inference-mlx", "inference-vllm", "learning-dspy", "learning-gepa", "media", "memory-bm25", "memory-colbert", "memory-faiss", "memory-pdf", "mining-pearl-cpu", "mining-pearl-vllm", "openhands", "orchestrator-training", "pdf", "sandbox-docker", "sandbox-wasm", "scheduler", "security-signing", "server", "speech", "speech-deepgram", "tools-search", "voice"]
-
-[package.metadata.requires-dev]
-desktop-native = [{ name = "ghost-rust", directory = "rust/crates/ghost-python" }]
-dev = [{ name = "maturin", specifier = ">=1.12.6" }]
-
-[[package]]
-name = "ghost-rust"
-version = "0.1.0"
-source = { directory = "rust/crates/ghost-python" }
 
 [[package]]
 name = "opentelemetry-api"
@@ -9894,21 +9894,21 @@ wheels = [
 
 [[package]]
 name = "wasmtime"
-version = "49.0.0"
+version = "50.0.1"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/48/7e/eb4b868529a2ae444cd24ea3c2cf1dd6dd2ce8d67ed4fb27b4e84529a1bf/wasmtime-49.0.0.tar.gz", hash = "sha256:fe0bf510ebdaf9432b756e320d2da2347f159e241f468c961b95164ab06cfdc1", size = 129562, upload-time = "2026-09-21T18:59:02.159Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/df/b4/3f5b09b3298a9038136a6731a25d8346312db0b18bee334512da7ec5edc4/wasmtime-50.0.1.tar.gz", hash = "sha256:d9a1eb530e5c4a55853784ae6bff0053db3cad89299097ad00e352e3d48c3cc1", size = 132360, upload-time = "2026-10-22T03:00:11.978Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d0/17/33c1df06ddf0ae5e085def2f4cbe1cc7aa79af1619f624e71cdca1c7138e/wasmtime-49.0.0-py3-none-android_26_arm64_v8a.whl", hash = "sha256:376c60e195b22bbe07b10d517ed4a83bbcc1896df0065e523dd4801b22570a8c", size = 8981381, upload-time = "2026-09-21T18:58:34.69Z" },
-    { url = "https://files.pythonhosted.org/packages/9c/fc/a5b6fba6132de20494526a1b600612a4a0e10ca4c49f3fb005685ff0c86d/wasmtime-49.0.0-py3-none-android_26_x86_64.whl", hash = "sha256:0153c9d5fe061dd21e761f47cd65be36bf6656970c52df034e4db4871ad2b11a", size = 9928209, upload-time = "2026-09-21T18:58:37.753Z" },
-    { url = "https://files.pythonhosted.org/packages/17/3a/ff1b49ef5f66a2cfe6ff24eee44e092927fcc8e8374216fbd7de094320c7/wasmtime-49.0.0-py3-none-any.whl", hash = "sha256:3afc071340d9bb0cdf0fc0213e670c6c06ac193f2d73caf9b92d928496e49a51", size = 8262567, upload-time = "2026-09-21T18:58:40.244Z" },
-    { url = "https://files.pythonhosted.org/packages/9f/1b/2595e986f3f283b2942c410d655917064e4e8126b082d354cb1dea4db2fc/wasmtime-49.0.0-py3-none-macosx_10_13_x86_64.whl", hash = "sha256:839225359e01360974795bd7869c25d4305da96627df0af360b0668e20ecf1fb", size = 9460810, upload-time = "2026-09-21T18:58:42.183Z" },
-    { url = "https://files.pythonhosted.org/packages/b7/c1/2333bb9b9364c28b4d113853d4e002e6ee3ee8d87d33b413dfdb220ce4d1/wasmtime-49.0.0-py3-none-macosx_11_0_arm64.whl", hash = "sha256:de98d6282c61d5dd4dc1ff1b410936ceb6fff3a27439e9cab51a375b8da2ec2f", size = 8438112, upload-time = "2026-09-21T18:58:44.747Z" },
-    { url = "https://files.pythonhosted.org/packages/6b/49/d62b41a6ae9063681bb6af018ff49b75d49f853bbf672c7ddebedf21d69e/wasmtime-49.0.0-py3-none-manylinux1_x86_64.whl", hash = "sha256:94f0288f9e1c33924995a72bb769f4c4e2885002391589dd6992cdaa35d1990a", size = 9919038, upload-time = "2026-09-21T18:58:47.212Z" },
-    { url = "https://files.pythonhosted.org/packages/9c/f4/7889eb2fdbb11423e61f442af218441e0ae5749452bf8d2c1ade4ce630c5/wasmtime-49.0.0-py3-none-manylinux2014_aarch64.whl", hash = "sha256:263b924576d9519c43d5a1acff50a03ab03209d16d26c53543c9ab9a409fb93f", size = 8853040, upload-time = "2026-09-21T18:58:50.112Z" },
-    { url = "https://files.pythonhosted.org/packages/d1/8b/fb187eaed30738ce4b1f8ecdbb0be1b4c1750269ed63605286e253153329/wasmtime-49.0.0-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:8ab7e74c730bdda9613a8cd28b54aafa9e7f5d64aaff1a808751ccb142a76994", size = 8911214, upload-time = "2026-09-21T18:58:52.449Z" },
-    { url = "https://files.pythonhosted.org/packages/2d/b6/32cd30e1a38a06e01499aa50274a91b175a09b64754a06a0680e9881aa12/wasmtime-49.0.0-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:7198903d53c63673acdbe4753594703d090842c4c9e050d2d4ff14ecfebed00f", size = 9948354, upload-time = "2026-09-21T18:58:56.016Z" },
-    { url = "https://files.pythonhosted.org/packages/c7/41/b1d78d0ea1506abfa3005c8a50eee724b95a9cffbb2a0ed541f0965f5ab9/wasmtime-49.0.0-py3-none-win_amd64.whl", hash = "sha256:46a4e4220fd1bee45ad9c29a73cadad54373dad840eff104726490527bc7ef89", size = 8262572, upload-time = "2026-09-21T18:58:58.58Z" },
-    { url = "https://files.pythonhosted.org/packages/5d/fe/484658110d9b6ff54f4c16104f1313489432568a7eeb61b5bcf2c045a5ab/wasmtime-49.0.0-py3-none-win_arm64.whl", hash = "sha256:95ab8d3da870f38202f11c0933650cbdf014885335fcd407d6ae1a6b3d647599", size = 7157718, upload-time = "2026-09-21T18:59:00.864Z" },
+    { url = "https://files.pythonhosted.org/packages/42/9f/a854f2cb5ea4e654248fb2f25c0343153cad04d00108251a8f1f0121d749/wasmtime-50.0.1-py3-none-android_26_arm64_v8a.whl", hash = "sha256:62e4d9b9371b4766a3deb044618c17adad3983ab3333d1598df0e981ec88206f", size = 8574752, upload-time = "2026-10-22T02:59:50.664Z" },
+    { url = "https://files.pythonhosted.org/packages/58/11/2a70ef13312f5fa0321737a48841480883578579826e7e103e770e31ab81/wasmtime-50.0.1-py3-none-android_26_x86_64.whl", hash = "sha256:612ebd1874eeab5f3eb3f18e529ab8af4bff885b7450c58593e3c3889868406b", size = 9527728, upload-time = "2026-10-22T02:59:52.938Z" },
+    { url = "https://files.pythonhosted.org/packages/b1/27/728ee5fb19c5f0b09598d96953e21099e4ab7b81979fa53684036c87c199/wasmtime-50.0.1-py3-none-any.whl", hash = "sha256:d174cad86f66dd819b0c3a77f27e375ca1f106d3858be221ce924d57d3856050", size = 7991854, upload-time = "2026-10-22T02:59:55.133Z" },
+    { url = "https://files.pythonhosted.org/packages/89/1c/91bbf9d9a3846a174cdf6597b02d27d9f335c15a2d34d16fb8f46c81cb01/wasmtime-50.0.1-py3-none-macosx_10_13_x86_64.whl", hash = "sha256:13fe813b922712a9e10fe0f48b2c56da06432eea4b24269bb7cd3a6b2720560b", size = 9081696, upload-time = "2026-10-22T02:59:56.678Z" },
+    { url = "https://files.pythonhosted.org/packages/5d/c1/e8782c8c8756235bea9dcc7cef2a35d3691c0f573eed415ccbf871cd6b3e/wasmtime-50.0.1-py3-none-macosx_11_0_arm64.whl", hash = "sha256:ff4fc58ed3cbdb919d056accd4d280be13962a542754aaefd8a9b4654efa9bd9", size = 8096649, upload-time = "2026-10-22T02:59:58.595Z" },
+    { url = "https://files.pythonhosted.org/packages/d5/9d/97c109d4a25c716c4045644398d7e684e1d4fa5ec6c99412b5cba35a9a98/wasmtime-50.0.1-py3-none-manylinux1_x86_64.whl", hash = "sha256:cc14c3a17654e0394e0225b11813532ef0cd7bd1e222a0c5494cdedaabeddac4", size = 9586999, upload-time = "2026-10-22T03:00:00.159Z" },
+    { url = "https://files.pythonhosted.org/packages/8e/c4/58709b73e613e5366e4783537e2a861272d95f500c43fddf9b378d98415a/wasmtime-50.0.1-py3-none-manylinux2014_aarch64.whl", hash = "sha256:675484e525c028dc02762b777f1db4477ea70caa3fec6775426daff4d64edfb1", size = 8540007, upload-time = "2026-10-22T03:00:02.294Z" },
+    { url = "https://files.pythonhosted.org/packages/32/a2/29c2e104df33311e70ff44137ba1a345eb3eda16ceb0dc800a457bfecad2/wasmtime-50.0.1-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:f9c6973ae735946b3387b7a8e812ecd350eac3152c4b73998a57899dd9c4345c", size = 8590219, upload-time = "2026-10-22T03:00:04.583Z" },
+    { url = "https://files.pythonhosted.org/packages/0b/b8/18851a2017a3199cb2edccc24404b50e01a47ab02b675f26b440a4c84ece/wasmtime-50.0.1-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:e3e2051b02b8a47e2418f569e380843e87c1d74c40cd843bfa14c223245d420b", size = 9620371, upload-time = "2026-10-22T03:00:06.595Z" },
+    { url = "https://files.pythonhosted.org/packages/df/3a/e14287689ed571c9a001201a0349299d50bf6251ee09f4f6e467b4b1212b/wasmtime-50.0.1-py3-none-win_amd64.whl", hash = "sha256:a8999581230471f4ff62073b1111eff3a01d45ccec0a908da3f2ae3a499d459c", size = 7991861, upload-time = "2026-10-22T03:00:08.818Z" },
+    { url = "https://files.pythonhosted.org/packages/46/9e/c5d0f1f1d4b9d0f6f975de8017ba296e8a36e856d5efbcc76854c667e2fb/wasmtime-50.0.1-py3-none-win_arm64.whl", hash = "sha256:83ddab2358ebde392a065581f2c66995a711ccc25ad0aee7b1d20f8c688075d2", size = 6910407, upload-time = "2026-10-22T03:00:10.61Z" },
 ]
 
 [[package]]

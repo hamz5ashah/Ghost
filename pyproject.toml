@@ -170,7 +170,7 @@ pdf = ["pdfplumber>=0.10"]
 # a core scheduler contract now, so croniter is also installed unconditionally.
 scheduler = ["croniter>=2.0"]
 security-signing = ["cryptography>=43"]
-sandbox-wasm = ["wasmtime>=25"]
+sandbox-wasm = ["wasmtime>=50.0.1"]
 sandbox-docker = ["docker>=7.0"]
 dashboard = ["textual>=0.80"]
 speech = [
