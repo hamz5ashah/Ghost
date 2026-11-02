@@ -84,6 +84,16 @@ jobs:
             --manifest-path rust/crates/ghost-python/Cargo.toml --out wheels
           ls -la wheels
 
+      # Ship uv so users don't have to install it by hand.
+      - name: Stage uv.exe
+        shell: bash
+        run: |
+          mkdir -p frontend/src-tauri/binaries/uv-bundle
+          cp "$(command -v uv)" frontend/src-tauri/binaries/uv-bundle/uv.exe
+          frontend/src-tauri/binaries/uv-bundle/uv.exe --version
+
+      # The Ollama runtime (lib/ollama, CPU + Vulkan) must sit beside
+      # ollama.exe; uv.exe goes beside Ghost so the app finds both.
       - name: Write build config
         shell: bash
         run: |
@@ -92,7 +102,11 @@ jobs:
             "bundle": {
               "externalBin": ["binaries/ollama"],
               "createUpdaterArtifacts": false,
-              "resources": { "../../wheels/": "backend/wheels/" }
+              "resources": {
+                "../../wheels/": "backend/wheels/",
+                "binaries/ollama-runtime-x86_64-pc-windows-msvc/": "./",
+                "binaries/uv-bundle/uv.exe": "uv.exe"
+              }
             }
           }
           JSON
@@ -107,6 +121,65 @@ jobs:
           mkdir -p out
           cp frontend/src-tauri/target/release/bundle/nsis/*.exe out/
           ls -la out
+
+      - name: Check installer contents
+        shell: bash
+        run: |
+          7z l out/*.exe > contents.txt
+          for f in ghost-desktop.exe ollama.exe uv.exe lib/ollama/ggml-base.dll \
+                   backend/pyproject.toml backend/wheels/ghost_rust-; do
+            if ! grep -qF "${f//\//\\}" contents.txt && ! grep -qF "$f" contents.txt; then
+              echo "::error::Installer is missing $f"; exit 1
+            fi
+          done
+          echo "Installer contains Ghost, Ollama + runtime, uv and the backend."
+
+      # Install the real installer and exercise what Ghost does on first
+      # launch, from a folder whose name has spaces (like most user names).
+      - name: Smoke test the installed app
+        shell: bash
+        run: |
+          set -euo pipefail
+          INSTALLER=$(ls out/*.exe | head -1)
+          "$INSTALLER" /S
+          APP=""
+          for d in "$(cygpath "$LOCALAPPDATA")/Ghost" "$(cygpath "$PROGRAMFILES")/Ghost"; do
+            for i in $(seq 1 30); do [ -f "$d/ghost-desktop.exe" ] && break; sleep 2; done
+            [ -f "$d/ghost-desktop.exe" ] && APP="$d" && break
+          done
+          [ -n "$APP" ] || { echo "::error::Ghost was not installed"; exit 1; }
+          echo "Installed at: $APP"
+
+          # Bundled Ollama must start with its runtime DLLs.
+          "$APP/ollama.exe" serve > ollama.log 2>&1 &
+          for i in $(seq 1 30); do curl -sf http://127.0.0.1:11434/api/version && break; sleep 2; done
+          curl -sf http://127.0.0.1:11434/api/version || { cat ollama.log; echo "::error::Bundled Ollama did not start"; exit 1; }
+          echo
+
+          # First-launch backend setup with the bundled uv and wheel, no Rust.
+          WORK="$RUNNER_TEMP/Smoke User Name/Ghost"
+          mkdir -p "$(dirname "$WORK")"
+          cp -r "$APP/backend" "$WORK"
+          cd "$WORK"
+          export UV_PYTHON=3.12 PATH="$(echo "$PATH" | tr ':' '\n' | grep -vi cargo | paste -sd:)"
+          "$APP/uv.exe" sync --extra desktop --extra inference-cloud --extra inference-google \
+            --group desktop-native --no-install-package ghost-rust
+          "$APP/uv.exe" pip install --no-deps wheels/ghost_rust-*.whl
+          "$APP/uv.exe" run python -c "import ghost_rust, ghost.server.app; print('backend imports OK')"
+
+          # Start Ghost's server against a stand-in model and query it.
+          python "$GITHUB_WORKSPACE/scripts/ci/mock_openai_server.py" 1234 &
+          export GHOST_HOME="$RUNNER_TEMP/ghost home"
+          mkdir -p "$GHOST_HOME"
+          printf '[engine]\ndefault = "lmstudio"\n' > "$GHOST_HOME/config.toml"
+          "$APP/uv.exe" run ghost serve --port 8765 --model mock-model > serve.log 2>&1 &
+          for i in $(seq 1 60); do curl -sf http://127.0.0.1:8765/health && break; sleep 2; done
+          curl -sf http://127.0.0.1:8765/health || { cat serve.log; echo "::error::Ghost server did not start"; exit 1; }
+          echo
+          curl -sf http://127.0.0.1:8765/v1/chat/completions -H 'Content-Type: application/json' \
+            -d '{"model":"mock-model","messages":[{"role":"user","content":"hi"}]}' | head -c 300
+          echo
+          echo "Smoke test passed."
 
       - uses: actions/upload-artifact@v7
         with:

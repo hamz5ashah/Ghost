@@ -62,19 +62,20 @@ fn total_ram_gb() -> f64 {
     }
     #[cfg(target_os = "windows")]
     {
-        use std::process::Command;
-        // wmic returns TotalVisibleMemorySize in KB
-        if let Ok(output) = Command::new("wmic")
-            .args(["OS", "get", "TotalVisibleMemorySize", "/value"])
+        // `wmic` is gone from recent Windows 11 builds; CIM via PowerShell
+        // works on every supported version. Returns bytes.
+        if let Ok(output) = background_std_command("powershell")
+            .args([
+                "-NoProfile",
+                "-NonInteractive",
+                "-Command",
+                "(Get-CimInstance Win32_ComputerSystem).TotalPhysicalMemory",
+            ])
             .output()
         {
             if let Ok(s) = String::from_utf8(output.stdout) {
-                for line in s.lines() {
-                    if let Some(val) = line.strip_prefix("TotalVisibleMemorySize=") {
-                        if let Ok(kb) = val.trim().parse::<u64>() {
-                            return kb as f64 / (1024.0 * 1024.0);
-                        }
-                    }
+                if let Ok(bytes) = s.trim().parse::<u64>() {
+                    return bytes as f64 / (1024.0 * 1024.0 * 1024.0);
                 }
             }
         }
@@ -188,6 +189,33 @@ fn home_dir() -> String {
         .unwrap_or_default()
 }
 
+/// Windows: start helper programs (uv, Ollama, Python, git) without opening a
+/// console window. Each one otherwise pops up an empty terminal, and closing
+/// that window kills the process — e.g. Ghost's own API server.
+#[cfg(target_os = "windows")]
+const CREATE_NO_WINDOW: u32 = 0x0800_0000;
+
+/// `tokio::process::Command::new` that never shows a console window.
+fn background_command<S: AsRef<std::ffi::OsStr>>(program: S) -> tokio::process::Command {
+    #[allow(unused_mut)]
+    let mut cmd = tokio::process::Command::new(program);
+    #[cfg(target_os = "windows")]
+    cmd.creation_flags(CREATE_NO_WINDOW);
+    cmd
+}
+
+/// Blocking variant for quick lookups such as `where.exe`.
+fn background_std_command<S: AsRef<std::ffi::OsStr>>(program: S) -> std::process::Command {
+    #[allow(unused_mut)]
+    let mut cmd = std::process::Command::new(program);
+    #[cfg(target_os = "windows")]
+    {
+        use std::os::windows::process::CommandExt;
+        cmd.creation_flags(CREATE_NO_WINDOW);
+    }
+    cmd
+}
+
 /// Resolve full path to a binary by checking common locations.
 /// macOS .app bundles don't inherit the shell PATH, so we probe manually.
 fn resolve_bin(name: &str) -> String {
@@ -251,7 +279,7 @@ fn resolve_bin(name: &str) -> String {
     // On Windows this uses `where.exe`, on Unix `which`.
     #[cfg(target_os = "windows")]
     {
-        if let Ok(output) = std::process::Command::new("where")
+        if let Ok(output) = background_std_command("where")
             .arg(format!("{name}.exe"))
             .output()
         {
@@ -268,7 +296,7 @@ fn resolve_bin(name: &str) -> String {
     }
     #[cfg(not(target_os = "windows"))]
     {
-        if let Ok(output) = std::process::Command::new("which").arg(name).output() {
+        if let Ok(output) = background_std_command("which").arg(name).output() {
             if output.status.success() {
                 let stdout = String::from_utf8_lossy(&output.stdout);
                 if let Some(first_line) = stdout.lines().next() {
@@ -281,7 +309,27 @@ fn resolve_bin(name: &str) -> String {
         }
     }
 
+    // Last resort: helpers shipped inside the installer, next to the app
+    // (Ollama with its runtime, and uv on Windows). A user's own install wins
+    // above because it may have GPU support the bundled copy leaves out.
+    if let Some(bundled) = bundled_helper(name) {
+        return bundled;
+    }
+
     name.to_string()
+}
+
+/// A helper program installed beside the Ghost executable, if present.
+fn bundled_helper(name: &str) -> Option<String> {
+    let exe = std::env::current_exe().ok()?;
+    let dir = exe.parent()?;
+    let file = if cfg!(target_os = "windows") {
+        format!("{name}.exe")
+    } else {
+        name.to_string()
+    };
+    let path = dir.join(file);
+    path.is_file().then(|| path.to_string_lossy().into_owned())
 }
 
 // ---------------------------------------------------------------------------
@@ -1073,7 +1121,7 @@ async fn verify_ghost_rust_extension(
     root: &std::path::Path,
     uv_bin: &str,
 ) -> Result<(), String> {
-    let mut cmd = tokio::process::Command::new(uv_bin);
+    let mut cmd = background_command(uv_bin);
     cmd.args(["run", "python", "-c", "import ghost_rust"])
         .stdout(std::process::Stdio::null())
         .stderr(std::process::Stdio::piped())
@@ -1165,7 +1213,7 @@ async fn boot_backend(backend: SharedBackend, status: SharedStatus) {
         // Try the bundled sidecar first, fall back to system ollama
         let ollama_child = {
             let ollama_bin = resolve_bin("ollama");
-            let mut sidecar_cmd = tokio::process::Command::new(&ollama_bin);
+            let mut sidecar_cmd = background_command(&ollama_bin);
             sidecar_cmd
                 .arg("serve")
                 .env("OLLAMA_HOST", format!("127.0.0.1:{}", OLLAMA_PORT))
@@ -1414,7 +1462,7 @@ async fn boot_backend(backend: SharedBackend, status: SharedStatus) {
             s.detail = "Downloading Ghost (first launch)...".into();
         }
 
-        let mut clone_cmd = tokio::process::Command::new(&git_bin);
+        let mut clone_cmd = background_command(&git_bin);
         clone_cmd
             .args([
                 "clone",
@@ -1624,7 +1672,7 @@ async fn boot_backend(backend: SharedBackend, status: SharedStatus) {
         let mut s = status.lock().await;
         s.detail = "Installing dependencies (uv sync — may take 1-2 min on first boot)...".into();
     }
-    let mut sync_cmd = tokio::process::Command::new(&uv_bin);
+    let mut sync_cmd = background_command(&uv_bin);
     sync_cmd
         .args([
             "sync",
@@ -1670,7 +1718,7 @@ async fn boot_backend(backend: SharedBackend, status: SharedStatus) {
     }
 
     if let Some(wheel) = &bundled_wheel {
-        let mut pip_cmd = tokio::process::Command::new(&uv_bin);
+        let mut pip_cmd = background_command(&uv_bin);
         pip_cmd
             .arg("pip")
             .arg("install")
@@ -1717,7 +1765,7 @@ async fn boot_backend(backend: SharedBackend, status: SharedStatus) {
         s.detail = format!("Starting API server from {}...", root.display());
     }
 
-    let mut cmd = tokio::process::Command::new(&uv_bin);
+    let mut cmd = background_command(&uv_bin);
     let mut serve_argv: Vec<String> = vec![
         "run".into(),
         "ghost".into(),
@@ -2266,7 +2314,7 @@ async fn run_ghost_command(args: Vec<String>) -> Result<String, String> {
     let mut cmd_args = vec!["run".to_string(), "ghost".to_string()];
     cmd_args.extend(args.iter().cloned());
 
-    let mut cmd = tokio::process::Command::new(&uv_bin);
+    let mut cmd = background_command(&uv_bin);
     cmd.args(&cmd_args);
     // Run from the project root so `uv run ghost` resolves the Ghost
     // project regardless of the app's launch cwd. In a packaged install the
