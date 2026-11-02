@@ -4,7 +4,8 @@ import { ApprovalBell } from './ApprovalBell';
 import { Sidebar } from './Sidebar/Sidebar';
 import { SystemPulse } from './SystemPulse';
 import { isNarrowScreen, useAppStore } from '../lib/store';
-import { checkHealth } from '../lib/api';
+import { checkHealth, isTauri } from '../lib/api';
+import { DesktopStatusBanner } from './Desktop/DesktopStatusBanner';
 
 export function Layout() {
   const sidebarOpen = useAppStore((s) => s.sidebarOpen);
@@ -38,8 +39,11 @@ export function Layout() {
       <SystemPulse apiReachable={apiReachable} />
       <ApprovalBell />
 
-      {/* Health check banner */}
-      {apiReachable === false && (
+      {/* Desktop: model setup / startup status (links to Settings → Model) */}
+      {isTauri() && <DesktopStatusBanner />}
+
+      {/* Health check banner (browser / phone; the desktop banner covers it) */}
+      {apiReachable === false && !isTauri() && (
         <div
           className="flex items-center gap-3 px-4 py-2 text-sm shrink-0"
           style={{

@@ -9,7 +9,6 @@ import { AgentsPage } from './pages/AgentsPage';
 import { DataSourcesPage } from './pages/DataSourcesPage';
 import { LogsPage } from './pages/LogsPage';
 import { CommandPalette } from './components/CommandPalette';
-import { SetupScreen } from './components/SetupScreen';
 import { Toaster } from './components/ui/sonner';
 import { useAppStore } from './lib/store';
 import { fetchModels, fetchServerInfo, fetchSavings, submitSavings, isTauri, isMobileApp } from './lib/api';
@@ -21,16 +20,10 @@ import { offerAnalyticsChoice } from './lib/analytics-invitation';
 import { LEADERBOARD_ENABLED } from './lib/supabase';
 
 export default function App() {
-  const [setupDone, setSetupDone] = useState(!isTauri());
-  const handleSetupReady = useCallback(() => {
-    setSetupDone(true);
-    // Only fire once per install — guard against setup screen re-appearing
-    // on reinstalls or dev reloads.
-    if (!localStorage.getItem('ghost-setup-completed')) {
-      localStorage.setItem('ghost-setup-completed', '1');
-      track('setup_completed', { preset: 'default' });
-    }
-  }, []);
+  // The app always opens straight to the main screen. On the desktop, model
+  // setup lives in Settings → Model and a banner points there until a model
+  // is running (see DesktopStatusBanner).
+  const setupDone = true;
   const prevModelRef = useRef<string>('');
   const setModels = useAppStore((s) => s.setModels);
   const setModelsLoading = useAppStore((s) => s.setModelsLoading);
@@ -186,10 +179,6 @@ export default function App() {
   if (needsMobileConnect) {
     // Reload so every startup fetch (models, server info…) uses the new PC.
     return <MobileConnect onConnected={() => window.location.reload()} />;
-  }
-
-  if (!setupDone) {
-    return <SetupScreen onReady={handleSetupReady} />;
   }
 
   return (
