@@ -65,8 +65,9 @@ esac
 OUT_FILE="$BINARIES_DIR/ollama-${TARGET}${SUFFIX}"
 RUNTIME_DIR="$BINARIES_DIR/ollama-runtime-${TARGET}"
 
-# ARM64 inference also needs the archive's DLLs and lib/ollama runners.
-if [ -f "$OUT_FILE" ] && { [ "$TARGET" != "aarch64-pc-windows-msvc" ] || [ -d "$RUNTIME_DIR/lib/ollama" ]; }; then
+# Windows inference also needs the archive's DLLs and lib/ollama runners.
+case "$TARGET" in *windows*) NEEDS_RUNTIME=1 ;; *) NEEDS_RUNTIME=0 ;; esac
+if [ -f "$OUT_FILE" ] && { [ "$NEEDS_RUNTIME" = 0 ] || [ -d "$RUNTIME_DIR/lib/ollama" ]; }; then
     echo "Already exists: $OUT_FILE"
     echo "Delete it first to re-download."
     exit 0
@@ -151,7 +152,7 @@ if [ "$TARGET" = "universal-apple-darwin" ]; then
     fi
 fi
 
-if [ "$TARGET" = "aarch64-pc-windows-msvc" ]; then
+if [ "$NEEDS_RUNTIME" = 1 ]; then
     if [ ! -d "$OLLAMA_TMP_DIR/lib/ollama" ]; then
         echo "Windows Ollama archive is missing its lib/ollama inference runtime"
         exit 1
@@ -166,6 +167,11 @@ if [ "$TARGET" = "aarch64-pc-windows-msvc" ]; then
         esac
         cp -R "$resource" "$RUNTIME_DIR/"
     done
+    # NVIDIA CUDA / AMD ROCm runtimes are ~2 GB. Leave them out of the
+    # installer: CPU and Vulkan (most GPUs) still work, and users who want
+    # CUDA can install Ollama itself, which Ghost then prefers.
+    rm -rf "$RUNTIME_DIR"/lib/ollama/cuda_* "$RUNTIME_DIR"/lib/ollama/rocm*
+    du -sh "$RUNTIME_DIR"
 fi
 
 cp "$OLLAMA_BIN" "$OUT_FILE"
