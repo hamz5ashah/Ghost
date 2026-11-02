@@ -157,7 +157,6 @@ export default function App() {
     return () => clearTimeout(t);
   }, []);
 
-  const toggleSystemPanel = useAppStore((s) => s.toggleSystemPanel);
 
   // Global keyboard shortcuts
   useEffect(() => {
@@ -166,14 +165,10 @@ export default function App() {
         e.preventDefault();
         setCommandPaletteOpen(!commandPaletteOpen);
       }
-      if ((e.metaKey || e.ctrlKey) && e.key === 'i') {
-        e.preventDefault();
-        toggleSystemPanel();
-      }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [commandPaletteOpen, setCommandPaletteOpen, toggleSystemPanel]);
+  }, [commandPaletteOpen, setCommandPaletteOpen]);
 
 
   if (needsMobileConnect) {

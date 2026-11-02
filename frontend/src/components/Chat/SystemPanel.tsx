@@ -35,7 +35,8 @@ const CLOUD_PRICING = [
   { name: 'Gemini 3.1 Pro', input: 2.00, output: 12.00, primary: false },
 ];
 
-export function SystemPanel() {
+/** Usage, device and cost stats. `embedded` renders it inside Settings. */
+export function SystemPanel({ embedded = false }: { embedded?: boolean }) {
   const savings = useAppStore((s) => s.savings);
   const toggleSystemPanel = useAppStore((s) => s.toggleSystemPanel);
   const optInEnabled = useAppStore((s) => s.optInEnabled);
@@ -78,8 +79,8 @@ export function SystemPanel() {
 
   return (
     <div
-      className="flex flex-col h-full overflow-y-auto"
-      style={{
+      className={embedded ? 'flex flex-col' : 'flex flex-col h-full overflow-y-auto'}
+      style={embedded ? undefined : {
         width: 280,
         minWidth: 280,
         background: 'var(--color-bg)',
@@ -87,7 +88,7 @@ export function SystemPanel() {
       }}
     >
       {/* Header */}
-      <div
+      {!embedded && <div
         className="flex items-center justify-between px-4 py-3 shrink-0"
         style={{ borderBottom: '1px solid var(--color-border)' }}
       >
@@ -102,9 +103,9 @@ export function SystemPanel() {
         >
           <X size={14} />
         </button>
-      </div>
+      </div>}
 
-      <div className="flex flex-col gap-4 p-4">
+      <div className={embedded ? 'grid gap-5 sm:grid-cols-2' : 'flex flex-col gap-4 p-4'}>
         {/* Session Stats */}
         <section>
           <h4 className="text-[11px] font-medium uppercase tracking-wide mb-2" style={{ color: 'var(--color-text-tertiary)' }}>

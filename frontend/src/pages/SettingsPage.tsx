@@ -37,6 +37,7 @@ import { isAutoUpdateDisabled, setAutoUpdateDisabled } from '../components/Deskt
 import { PhoneAccessSection } from '../components/Desktop/PhoneAccessSection';
 import { ModelSetupSection } from '../components/Desktop/ModelSetupSection';
 import { CloudProvidersSection } from '../components/CloudProvidersSection';
+import { SystemPanel } from '../components/Chat/SystemPanel';
 
 const CLOUD_KEY_STATUS_CHANGED = 'ghost-cloud-key-status-changed';
 
@@ -421,6 +422,11 @@ export function SettingsPage() {
 
           {/* Cloud AI providers (API keys) */}
           <CloudProvidersSection />
+
+          {/* Usage & cost (moved here from the chat screen's side panel) */}
+          <Section title="Usage & cost">
+            <SystemPanel embedded />
+          </Section>
 
           <Section title="Appearance">
             <SettingRow label="Theme" description="Choose how Ghost looks">

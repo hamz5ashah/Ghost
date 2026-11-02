@@ -6,7 +6,7 @@ import { StreamingDots } from './StreamingDots';
 import { useAppStore } from '../../lib/store';
 import { shouldAutoplayFinishedReply, useTtsStore } from '../../lib/tts';
 import { stripThinkTags } from '../../lib/message-text';
-import { Sparkles, PanelRightOpen, PanelRightClose, Database, MessageSquare, X } from 'lucide-react';
+import { Sparkles, Database, MessageSquare, X } from 'lucide-react';
 import { listConnectors } from '../../lib/connectors-api';
 
 function getGreeting(): string {
@@ -20,8 +20,6 @@ export function ChatArea() {
   const activeId = useAppStore((s) => s.activeId);
   const messages = useAppStore((s) => s.messages);
   const streamState = useAppStore((s) => s.streamState);
-  const systemPanelOpen = useAppStore((s) => s.systemPanelOpen);
-  const toggleSystemPanel = useAppStore((s) => s.toggleSystemPanel);
   const navigate = useNavigate();
   const listRef = useRef<HTMLDivElement>(null);
   const shouldAutoScroll = useRef(true);
@@ -130,21 +128,11 @@ export function ChatArea() {
 
   const isEmpty = messages.length === 0 && !isCurrentChatStreaming;
 
-  const PanelIcon = systemPanelOpen ? PanelRightClose : PanelRightOpen;
-
   return (
     <div className="flex flex-col h-full">
-      {/* Toggle bar */}
-      <div className="flex items-center justify-end px-3 py-1.5 shrink-0">
-        <button
-          onClick={toggleSystemPanel}
-          className="p-1.5 rounded-md transition-colors cursor-pointer"
-          style={{ color: 'var(--color-text-tertiary)' }}
-          title={`${systemPanelOpen ? 'Hide' : 'Show'} system panel (${navigator.platform.includes('Mac') ? '⌘' : 'Ctrl'}+I)`}
-        >
-          <PanelIcon size={16} />
-        </button>
-      </div>
+      {/* Top spacing (the notifications bell sits here). Usage & cost moved
+          to Settings, so there is no side panel on the chat screen. */}
+      <div className="h-10 shrink-0" />
 
       {/* Data sources banner */}
       {hasConnectedSources === false && !bannerDismissed && (
