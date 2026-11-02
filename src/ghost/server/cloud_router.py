@@ -59,6 +59,7 @@ def _load_keys() -> dict[str, str]:
         "GOOGLE_API_KEY",
         "OPENROUTER_API_KEY",
         "MINIMAX_API_KEY",
+        "DEEPSEEK_API_KEY",
         "ATLASCLOUD_API_KEY",
     ):
         val = os.environ.get(name)

@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { Search, Cpu, X, Download, Loader2, Trash2, Check, Cloud, Key, Eye, EyeOff } from 'lucide-react';
+import { Search, Cpu, X, Download, Loader2, Trash2, Check, Cloud, Settings } from 'lucide-react';
+import { useNavigate } from 'react-router';
 import { useAppStore } from '../lib/store';
+import { CLOUD_KEY_STATUS_CHANGED, CLOUD_PROVIDERS } from '../lib/cloud-providers';
 import {
   pullModel,
   deleteModel,
@@ -8,7 +10,6 @@ import {
   preloadModel,
   isTauri,
   getCloudKeyStatus,
-  saveCloudKey,
 } from '../lib/api';
 
 /** Popular models that users can download from the catalogue. */
@@ -27,61 +28,6 @@ const CATALOGUE_MODELS = [
   { id: 'phi4:latest', size: '~9.1 GB', desc: 'Phi-4 14B' },
 ];
 
-/** Cloud provider definitions */
-interface CloudProvider {
-  name: string;
-  envKey: string;
-  models: Array<{ id: string; desc: string }>;
-}
-
-const CLOUD_PROVIDERS: CloudProvider[] = [
-  {
-    name: 'OpenAI',
-    envKey: 'OPENAI_API_KEY',
-    models: [
-      { id: 'gpt-4o', desc: 'GPT-4o — fast, multimodal' },
-      { id: 'gpt-4o-mini', desc: 'GPT-4o Mini — cheap, fast' },
-      { id: 'o3-mini', desc: 'o3-mini — reasoning' },
-    ],
-  },
-  {
-    name: 'Anthropic',
-    envKey: 'ANTHROPIC_API_KEY',
-    models: [
-      { id: 'claude-sonnet-4-6', desc: 'Claude Sonnet 4.6 — balanced' },
-      { id: 'claude-opus-4-6', desc: 'Claude Opus 4.6 — most capable' },
-      { id: 'claude-haiku-4-5', desc: 'Claude Haiku 4.5 — fastest' },
-    ],
-  },
-  {
-    name: 'Google',
-    envKey: 'GEMINI_API_KEY',
-    models: [
-      { id: 'gemini-2.5-pro', desc: 'Gemini 2.5 Pro — flagship' },
-      { id: 'gemini-2.5-flash', desc: 'Gemini 2.5 Flash — fast' },
-      { id: 'gemini-3-pro', desc: 'Gemini 3 Pro — latest' },
-    ],
-  },
-  {
-    name: 'OpenRouter',
-    envKey: 'OPENROUTER_API_KEY',
-    models: [
-      { id: 'openrouter/auto', desc: 'Auto — best model for the task' },
-      { id: 'openrouter/anthropic/claude-sonnet-4', desc: 'Claude Sonnet 4 via OpenRouter' },
-      { id: 'openrouter/deepseek/deepseek-r1', desc: 'DeepSeek R1 via OpenRouter' },
-    ],
-  },
-  {
-    name: 'Atlas Cloud',
-    envKey: 'ATLASCLOUD_API_KEY',
-    models: [
-      { id: 'atlascloud/openai/gpt-4.1-mini', desc: 'GPT-4.1 Mini via Atlas Cloud' },
-      { id: 'atlascloud/deepseek-ai/deepseek-v3.2', desc: 'DeepSeek V3.2 via Atlas Cloud' },
-      { id: 'atlascloud/Qwen/Qwen3-235B-A22B-Instruct-2507', desc: 'Qwen3 235B via Atlas Cloud' },
-    ],
-  },
-];
-
 type Tab = 'installed' | 'catalogue' | 'cloud';
 
 export function CommandPalette() {
@@ -93,12 +39,10 @@ export function CommandPalette() {
   const [pullSuccess, setPullSuccess] = useState<string | null>(null);
   const [deleting, setDeleting] = useState<string | null>(null);
   const [customModel, setCustomModel] = useState('');
-  const [showKeys, setShowKeys] = useState<Record<string, boolean>>({});
-  const [apiKeys, setApiKeys] = useState<Record<string, string>>({});
   const [cloudKeyStatus, setCloudKeyStatus] = useState<Record<string, boolean>>({});
   const [cloudKeyError, setCloudKeyError] = useState<string | null>(null);
-  const [savingKey, setSavingKey] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
 
   const models = useAppStore((s) => s.models);
   const selectedModel = useAppStore((s) => s.selectedModel);
@@ -139,6 +83,8 @@ export function CommandPalette() {
 
   useEffect(() => {
     void refreshCloudKeyStatus();
+    window.addEventListener(CLOUD_KEY_STATUS_CHANGED, refreshCloudKeyStatus);
+    return () => window.removeEventListener(CLOUD_KEY_STATUS_CHANGED, refreshCloudKeyStatus);
   }, [refreshCloudKeyStatus]);
 
   useEffect(() => {
@@ -225,32 +171,6 @@ export function CommandPalette() {
     if (!name) return;
     await handlePull(name);
     setCustomModel('');
-  };
-
-  const handleSaveKey = async (provider: CloudProvider, value: string) => {
-    const keyValue = value.trim();
-    setSavingKey(provider.envKey);
-    setCloudKeyError(null);
-
-    try {
-      await saveCloudKey(provider.envKey, keyValue);
-      setApiKeys((prev) => ({ ...prev, [provider.envKey]: '' }));
-      await refreshCloudKeyStatus();
-      useAppStore.getState().addLogEntry({
-        timestamp: Date.now(), level: 'info', category: 'model',
-        message: `${provider.name} API key ${keyValue ? 'saved' : 'removed'}. Refreshing model list...`,
-      });
-      await refreshModels();
-    } catch (e: any) {
-      setCloudKeyError(e?.message || `Failed to save ${provider.name} API key`);
-    } finally {
-      setSavingKey(null);
-    }
-  };
-
-  const handleKeyBlur = (provider: CloudProvider) => {
-    const draft = apiKeys[provider.envKey] || '';
-    if (draft.trim()) void handleSaveKey(provider, draft);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -463,102 +383,63 @@ export function CommandPalette() {
               </div>
             </>
           ) : (
-            /* ── Cloud Models tab ── */
+            /* ── Cloud Models tab: models of providers connected in Settings ── */
             <div className="px-4 py-2">
-              <div className="text-[11px] mb-3" style={{ color: 'var(--color-text-tertiary)' }}>
-                {desktopKeyStorage
-                  ? 'Add your API keys to use cloud models. Keys are stored in secure desktop storage.'
-                  : 'Configure cloud provider keys in the server environment to use cloud models.'}
-              </div>
-
-              {CLOUD_PROVIDERS.map((provider) => {
-                const key = apiKeys[provider.envKey] || '';
-                const hasSavedKey = !!cloudKeyStatus[provider.envKey];
-                const hasKey = hasSavedKey || !!key.trim();
-                const isVisible = showKeys[provider.envKey];
-                const isSaving = savingKey === provider.envKey;
-
-                return (
-                  <div key={provider.name} className="mb-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Cloud size={14} style={{ color: hasKey ? 'var(--color-success)' : 'var(--color-text-tertiary)' }} />
-                      <span className="text-xs font-medium" style={{ color: 'var(--color-text)' }}>{provider.name}</span>
-                      {hasKey && (
-                        <span className="text-[10px] px-1.5 py-0.5 rounded-full" style={{ background: 'color-mix(in srgb, var(--color-success) 10%, transparent)', color: 'var(--color-success)' }}>
-                          Connected
-                        </span>
-                      )}
-                    </div>
-
-                    {/* API key input */}
-                    <div className="flex gap-1.5 mb-2">
-                      <div className="flex-1 flex items-center rounded-lg" style={{ background: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)' }}>
-                        <Key size={12} className="ml-2.5 shrink-0" style={{ color: 'var(--color-text-tertiary)' }} />
-                        <input
-                          type={isVisible ? 'text' : 'password'}
-                          value={key}
-                          onChange={(e) => setApiKeys((prev) => ({ ...prev, [provider.envKey]: e.target.value }))}
-                          onBlur={() => handleKeyBlur(provider)}
-                          placeholder={hasSavedKey ? 'Saved in secure storage' : provider.envKey}
-                          disabled={!desktopKeyStorage || isSaving}
-                          className="flex-1 text-xs px-2 py-1.5 bg-transparent outline-none font-mono"
-                          style={{ color: 'var(--color-text)' }}
-                        />
-                        <button
-                          onClick={() => setShowKeys((prev) => ({ ...prev, [provider.envKey]: !prev[provider.envKey] }))}
-                          className="px-2 cursor-pointer" style={{ color: 'var(--color-text-tertiary)' }}
-                        >
-                          {isVisible ? <EyeOff size={12} /> : <Eye size={12} />}
-                        </button>
-                      </div>
-                      {hasSavedKey && (
-                        <button
-                          onClick={() => handleSaveKey(provider, '')}
-                          disabled={isSaving}
-                          className="px-2 py-1 rounded-lg text-[10px] cursor-pointer"
-                          style={{ color: 'var(--color-error)', border: '1px solid var(--color-error)', opacity: isSaving ? 0.5 : 1 }}
-                        >
-                          {isSaving ? 'Saving' : 'Remove'}
-                        </button>
-                      )}
-                    </div>
-
-                    {/* Models for this provider (only show if key is set) */}
-                    {hasKey && (
-                      <div className="ml-5 flex flex-col gap-1">
-                        {provider.models.map((model) => {
-                          const isActive = model.id === selectedModel;
-                          return (
-                            <button
-                              key={model.id}
-                              onClick={() => handleSelect(model.id)}
-                              className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-left cursor-pointer transition-colors"
-                              style={{ background: isActive ? 'var(--color-accent-subtle)' : 'transparent' }}
-                              onMouseEnter={(e) => { if (!isActive) e.currentTarget.style.background = 'var(--color-bg-secondary)'; }}
-                              onMouseLeave={(e) => { if (!isActive) e.currentTarget.style.background = 'transparent'; }}
-                            >
-                              <Cloud size={12} style={{ color: isActive ? 'var(--color-accent)' : 'var(--color-text-tertiary)' }} />
-                              <div className="flex-1 min-w-0">
-                                <div className="text-xs truncate" style={{ color: isActive ? 'var(--color-accent)' : 'var(--color-text)', fontWeight: isActive ? 500 : 400 }}>
-                                  {model.id}
-                                </div>
-                                <div className="text-[10px] truncate" style={{ color: 'var(--color-text-tertiary)' }}>
-                                  {model.desc}
-                                </div>
-                              </div>
-                              {isActive && (
-                                <span className="text-[9px] px-1.5 py-0.5 rounded-full shrink-0" style={{ background: 'var(--color-accent-subtle)', color: 'var(--color-accent)' }}>
-                                  Active
-                                </span>
-                              )}
-                            </button>
-                          );
-                        })}
-                      </div>
-                    )}
+              {CLOUD_PROVIDERS.filter((p) => cloudKeyStatus[p.envKey]).length === 0 ? (
+                <div className="py-6 text-center">
+                  <Cloud size={22} className="mx-auto mb-2" style={{ color: 'var(--color-text-tertiary)' }} />
+                  <div className="text-sm mb-1" style={{ color: 'var(--color-text)' }}>No cloud providers connected</div>
+                  <div className="text-xs mb-4" style={{ color: 'var(--color-text-tertiary)' }}>
+                    Add an API key for Anthropic, DeepSeek, OpenAI and others in Settings.
                   </div>
-                );
-              })}
+                  <button
+                    onClick={() => { setCommandPaletteOpen(false); navigate('/settings'); }}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium cursor-pointer"
+                    style={{ background: 'var(--color-accent)', color: 'var(--color-on-accent)' }}
+                  >
+                    <Settings size={12} /> Open Settings
+                  </button>
+                </div>
+              ) : (
+                CLOUD_PROVIDERS.filter((p) => cloudKeyStatus[p.envKey]).map((provider) => (
+                  <div key={provider.envKey} className="mb-4">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <Cloud size={14} style={{ color: 'var(--color-success)' }} />
+                      <span className="text-xs font-medium" style={{ color: 'var(--color-text)' }}>{provider.name}</span>
+                    </div>
+                    <div className="ml-5 flex flex-col gap-1">
+                      {provider.models.map((model) => {
+                        const isActive = model.id === selectedModel;
+                        return (
+                          <button
+                            key={model.id}
+                            onClick={() => handleSelect(model.id)}
+                            className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-left cursor-pointer transition-colors"
+                            style={{ background: isActive ? 'var(--color-accent-subtle)' : 'transparent' }}
+                            onMouseEnter={(e) => { if (!isActive) e.currentTarget.style.background = 'var(--color-bg-secondary)'; }}
+                            onMouseLeave={(e) => { if (!isActive) e.currentTarget.style.background = 'transparent'; }}
+                          >
+                            <Cloud size={12} style={{ color: isActive ? 'var(--color-accent)' : 'var(--color-text-tertiary)' }} />
+                            <div className="flex-1 min-w-0">
+                              <div className="text-xs truncate" style={{ color: isActive ? 'var(--color-accent)' : 'var(--color-text)', fontWeight: isActive ? 500 : 400 }}>
+                                {model.id}
+                              </div>
+                              <div className="text-[10px] truncate" style={{ color: 'var(--color-text-tertiary)' }}>
+                                {model.desc}
+                              </div>
+                            </div>
+                            {isActive && (
+                              <span className="text-[9px] px-1.5 py-0.5 rounded-full shrink-0" style={{ background: 'var(--color-accent-subtle)', color: 'var(--color-accent)' }}>
+                                Active
+                              </span>
+                            )}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))
+              )}
             </div>
           )}
         </div>
@@ -577,7 +458,7 @@ export function CommandPalette() {
           ) : tab === 'catalogue' ? (
             <span>Models are downloaded from the Ollama registry</span>
           ) : (
-            <span>API keys are stored locally and never sent to Ghost servers</span>
+            <button onClick={() => { setCommandPaletteOpen(false); navigate('/settings'); }} className="cursor-pointer underline" style={{ color: 'var(--color-text-tertiary)' }}>Manage cloud providers in Settings</button>
           )}
         </div>
       </div>

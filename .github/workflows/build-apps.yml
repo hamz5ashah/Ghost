@@ -44,6 +44,7 @@ jobs:
   windows:
     if: github.event_name == 'push' || inputs.platforms != 'android'
     runs-on: windows-latest
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v7
 
@@ -138,10 +139,13 @@ jobs:
       # launch, from a folder whose name has spaces (like most user names).
       - name: Smoke test the installed app
         shell: bash
+        timeout-minutes: 25
         run: |
           set -euo pipefail
           INSTALLER=$(ls out/*.exe | head -1)
-          "$INSTALLER" /S
+          # MSYS_NO_PATHCONV: Git Bash would otherwise rewrite "/S" into a
+          # drive path, and the installer would wait for clicks forever.
+          MSYS_NO_PATHCONV=1 timeout 600 "$INSTALLER" /S
           APP=""
           for d in "$(cygpath "$LOCALAPPDATA")/Ghost" "$(cygpath "$PROGRAMFILES")/Ghost"; do
             for i in $(seq 1 30); do [ -f "$d/ghost-desktop.exe" ] && break; sleep 2; done
@@ -168,7 +172,7 @@ jobs:
           "$APP/uv.exe" run python -c "import ghost_rust, ghost.server.app; print('backend imports OK')"
 
           # Start Ghost's server against a stand-in model and query it.
-          python "$GITHUB_WORKSPACE/scripts/ci/mock_openai_server.py" 1234 &
+          python "$GITHUB_WORKSPACE/scripts/ci/mock_openai_server.py" 1234 > mock.log 2>&1 &
           export GHOST_HOME="$RUNNER_TEMP/ghost home"
           mkdir -p "$GHOST_HOME"
           printf '[engine]\ndefault = "lmstudio"\n' > "$GHOST_HOME/config.toml"
@@ -180,6 +184,10 @@ jobs:
             -d '{"model":"mock-model","messages":[{"role":"user","content":"hi"}]}' | head -c 300
           echo
           echo "Smoke test passed."
+          # Stop background servers so the step can finish.
+          taskkill //F //IM ollama.exe //T > /dev/null 2>&1 || true
+          taskkill //F //IM python.exe //T > /dev/null 2>&1 || true
+          taskkill //F //IM uv.exe //T > /dev/null 2>&1 || true
 
       - uses: actions/upload-artifact@v7
         with:
@@ -189,6 +197,7 @@ jobs:
 
   macos:
     if: github.event_name == 'push' || inputs.platforms == 'all'
+    timeout-minutes: 90
     runs-on: macos-14
     steps:
       - uses: actions/checkout@v7
@@ -244,6 +253,7 @@ jobs:
 
   linux:
     if: github.event_name == 'push' || inputs.platforms == 'all'
+    timeout-minutes: 60
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v7
@@ -302,6 +312,7 @@ jobs:
   android:
     if: github.event_name == 'push' || inputs.platforms != 'windows'
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v7
 
