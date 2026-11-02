@@ -36,6 +36,7 @@ import {
 import { isAutoUpdateDisabled, setAutoUpdateDisabled } from '../components/Desktop/UpdateChecker';
 import { PhoneAccessSection } from '../components/Desktop/PhoneAccessSection';
 import { ModelSetupSection } from '../components/Desktop/ModelSetupSection';
+import { CloudProvidersSection } from '../components/CloudProvidersSection';
 
 const CLOUD_KEY_STATUS_CHANGED = 'ghost-cloud-key-status-changed';
 
@@ -164,40 +165,6 @@ function ApiKeyInput({
       {saved && <span className="text-[10px]" style={{ color: 'var(--color-success)' }}>Saved</span>}
       {error && <span className="text-[10px]" style={{ color: 'var(--color-error)' }}>{error}</span>}
     </div>
-  );
-}
-
-function CloudProviderStatus({ label, keyName }: { label: string; keyName: string }) {
-  const [hasKey, setHasKey] = useState(false);
-  const desktopKeyStorage = isTauri();
-
-  const refresh = useCallback(async () => {
-    if (!desktopKeyStorage) {
-      setHasKey(false);
-      return;
-    }
-    try {
-      const status = await getCloudKeyStatus();
-      setHasKey(!!status[keyName]);
-    } catch {
-      setHasKey(false);
-    }
-  }, [desktopKeyStorage, keyName]);
-
-  useEffect(() => {
-    void refresh();
-    window.addEventListener(CLOUD_KEY_STATUS_CHANGED, refresh);
-    return () => window.removeEventListener(CLOUD_KEY_STATUS_CHANGED, refresh);
-  }, [refresh]);
-
-  return (
-    <span className="flex items-center gap-1 text-xs" style={{ color: 'var(--color-text-secondary)' }}>
-      <span style={{
-        width: 6, height: 6, borderRadius: '50%', display: 'inline-block',
-        background: hasKey ? 'var(--color-success)' : 'var(--color-text-tertiary)',
-      }} />
-      {label}
-    </span>
   );
 }
 
@@ -452,6 +419,9 @@ export function SettingsPage() {
           {/* Model setup (desktop app) */}
           {isTauri() && <ModelSetupSection />}
 
+          {/* Cloud AI providers (API keys) */}
+          <CloudProvidersSection />
+
           <Section title="Appearance">
             <SettingRow label="Theme" description="Choose how Ghost looks">
               <div className="flex gap-1 p-0.5 rounded-lg" style={{ background: 'var(--color-bg-secondary)' }}>
@@ -549,34 +519,6 @@ export function SettingsPage() {
             <div className="text-xs mt-2 px-1" style={{ color: 'var(--color-text-tertiary)' }}>
               Run <code className="px-1 py-0.5 rounded text-[11px]" style={{ background: 'var(--color-bg-tertiary)' }}>ollama pull &lt;model-name&gt;</code> in your terminal to add more models
             </div>
-            <SettingRow label="Cloud providers" description="Green dot means API key is configured">
-              <div className="flex flex-wrap gap-3">
-                <CloudProviderStatus label="OpenAI" keyName="OPENAI_API_KEY" />
-                <CloudProviderStatus label="Anthropic" keyName="ANTHROPIC_API_KEY" />
-                <CloudProviderStatus label="Google" keyName="GEMINI_API_KEY" />
-                <CloudProviderStatus label="OpenRouter" keyName="OPENROUTER_API_KEY" />
-                <CloudProviderStatus label="Atlas Cloud" keyName="ATLASCLOUD_API_KEY" />
-              </div>
-            </SettingRow>
-          </Section>
-
-          {/* API Keys */}
-          <Section title="API Keys">
-            <SettingRow label="OpenAI" description="GPT-4, GPT-3.5, etc.">
-              <ApiKeyInput keyName="OPENAI_API_KEY" placeholder="sk-..." />
-            </SettingRow>
-            <SettingRow label="Anthropic" description="Claude models">
-              <ApiKeyInput keyName="ANTHROPIC_API_KEY" placeholder="sk-ant-..." />
-            </SettingRow>
-            <SettingRow label="Google" description="Gemini models">
-              <ApiKeyInput keyName="GEMINI_API_KEY" placeholder="AI..." />
-            </SettingRow>
-            <SettingRow label="OpenRouter" description="Multi-provider routing">
-              <ApiKeyInput keyName="OPENROUTER_API_KEY" placeholder="sk-or-..." />
-            </SettingRow>
-            <SettingRow label="Atlas Cloud" description="Models routed through Atlas Cloud">
-              <ApiKeyInput keyName="ATLASCLOUD_API_KEY" placeholder="Atlas Cloud API key" />
-            </SettingRow>
           </Section>
 
           {/* Tools */}
