@@ -58,7 +58,7 @@ export function Layout() {
           />
           <span>Cannot reach Ghost backend</span>
           <button
-            onClick={() => navigate('/settings')}
+            onClick={() => navigate('/settings?tab=phone')}
             className="text-sm underline cursor-pointer ml-auto shrink-0"
             style={{ color: 'var(--color-accent)' }}
           >

@@ -1,8 +1,8 @@
 {
   "name": "ghost-mobile",
   "private": true,
-  "version": "1.0.0",
-  "description": "Ghost for Android — connects to Ghost running on your PC.",
+  "version": "1.1.0",
+  "description": "Ghost for Android \u2014 connects to Ghost running on your PC.",
   "license": "UNLICENSED",
   "scripts": {
     "build:web": "npm --prefix ../frontend run build:mobile",

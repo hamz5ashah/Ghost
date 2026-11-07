@@ -1,6 +1,6 @@
 [package]
 name = "ghost-mobile"
-version = "1.0.0"
+version = "1.1.0"
 description = "Ghost for Android — a remote for Ghost running on your PC"
 edition = "2021"
 license = "LicenseRef-Proprietary"

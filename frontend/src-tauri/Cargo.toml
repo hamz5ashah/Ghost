@@ -1,6 +1,6 @@
 [package]
 name = "ghost-desktop"
-version = "1.0.1"
+version = "1.1.0"
 description = "Ghost Desktop — Native AI assistant with energy monitoring, trace debugging, and learning visualization"
 edition = "2021"
 license = "LicenseRef-Proprietary"

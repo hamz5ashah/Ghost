@@ -393,7 +393,7 @@ export function CommandPalette() {
                     Add an API key for Anthropic, DeepSeek, OpenAI and others in Settings.
                   </div>
                   <button
-                    onClick={() => { setCommandPaletteOpen(false); navigate('/settings'); }}
+                    onClick={() => { setCommandPaletteOpen(false); navigate('/settings?tab=cloud'); }}
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium cursor-pointer"
                     style={{ background: 'var(--color-accent)', color: 'var(--color-on-accent)' }}
                   >
@@ -458,7 +458,7 @@ export function CommandPalette() {
           ) : tab === 'catalogue' ? (
             <span>Models are downloaded from the Ollama registry</span>
           ) : (
-            <button onClick={() => { setCommandPaletteOpen(false); navigate('/settings'); }} className="cursor-pointer underline" style={{ color: 'var(--color-text-tertiary)' }}>Manage cloud providers in Settings</button>
+            <button onClick={() => { setCommandPaletteOpen(false); navigate('/settings?tab=cloud'); }} className="cursor-pointer underline" style={{ color: 'var(--color-text-tertiary)' }}>Manage cloud providers in Settings</button>
           )}
         </div>
       </div>

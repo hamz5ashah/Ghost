@@ -20,6 +20,7 @@ import type {
   TokenUsage,
   ToolCallInfo,
 } from '../../types';
+import { shortcutLabel } from '../../lib/shortcuts';
 
 // While Deep Research is toggled on, poll connected sources for sync
 // progress so we can surface "Searching over N items — sync in progress"
@@ -175,7 +176,7 @@ export function InputArea() {
     const content = input.trim();
     if (!content || streamState.isStreaming) return;
     if (!selectedModel) {
-      toast.error('Pick a model first (⌘K)');
+      toast.error(`Pick a model first (${shortcutLabel('K')})`);
       return;
     }
 
@@ -608,7 +609,7 @@ export function InputArea() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder={selectedModel ? 'Message Ghost...' : 'Pick a model first (⌘K)...'}
+          placeholder={selectedModel ? 'Message Ghost...' : `Pick a model first (${shortcutLabel('K')})...`}
           rows={1}
           className="flex-1 bg-transparent outline-none resize-none text-sm leading-relaxed"
           style={{ color: 'var(--color-text)', maxHeight: '200px' }}
@@ -634,7 +635,7 @@ export function InputArea() {
             <button
               onClick={sendMessage}
               disabled={streamState.isStreaming || !input.trim() || modelLoading || !selectedModel}
-              title={selectedModel ? 'Send message' : 'Pick a model first (⌘K)'}
+              title={selectedModel ? 'Send message' : `Pick a model first (${shortcutLabel('K')})`}
               className="p-2 rounded-xl transition-colors shrink-0 cursor-pointer disabled:opacity-30 disabled:cursor-default"
               style={{
                 background: input.trim() ? 'var(--color-accent)' : 'var(--color-bg-tertiary)',
