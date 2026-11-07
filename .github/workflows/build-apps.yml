@@ -200,6 +200,8 @@ jobs:
           name: ghost-windows
           path: out/*.exe
           if-no-files-found: error
+          # The release keeps the files; build copies only need to live briefly.
+          retention-days: 3
 
   macos:
     if: github.event_name == 'push' || inputs.platforms == 'all'
@@ -256,6 +258,8 @@ jobs:
           name: ghost-macos
           path: out/*.dmg
           if-no-files-found: error
+          # The release keeps the files; build copies only need to live briefly.
+          retention-days: 3
 
   linux:
     if: github.event_name == 'push' || inputs.platforms == 'all'
@@ -314,6 +318,8 @@ jobs:
           name: ghost-linux
           path: out/*
           if-no-files-found: error
+          # The release keeps the files; build copies only need to live briefly.
+          retention-days: 3
 
   android:
     if: github.event_name == 'push' || inputs.platforms != 'windows'
@@ -404,6 +410,8 @@ jobs:
           name: ghost-android
           path: out/Ghost-android.apk
           if-no-files-found: error
+          # The release keeps the files; build copies only need to live briefly.
+          retention-days: 3
 
   release:
     needs: [windows, macos, linux, android]
