@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { Check, Cloud, ExternalLink, Eye, EyeOff, Loader2 } from 'lucide-react';
 import { getCloudKeyStatus, isTauri, saveCloudKey } from '../lib/api';
 import { CLOUD_KEY_STATUS_CHANGED, CLOUD_PROVIDERS, type CloudProvider } from '../lib/cloud-providers';
+import { shortcutLabel } from '../lib/shortcuts';
 
 function ProviderRow({
   provider,
@@ -148,11 +149,11 @@ export function CloudProvidersSection() {
       style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)' }}
     >
       <h3 className="text-sm font-semibold mb-1 flex items-center gap-2" style={{ color: 'var(--color-text)' }}>
-        <Cloud size={15} /> Cloud AI providers
+        <Cloud size={15} /> Your API keys
       </h3>
       <p className="text-xs mb-1" style={{ color: 'var(--color-text-tertiary)' }}>
         Connect a provider with your own API key to use its models. Once connected, pick the model
-        from the model menu (⌘K / Ctrl+K) on the chat screen. Keys are stored in your computer's
+        from the model menu ({shortcutLabel('K')}) on the chat screen. Keys are stored in your computer's
         secure storage and sent only to that provider.
       </p>
       {!desktop && (

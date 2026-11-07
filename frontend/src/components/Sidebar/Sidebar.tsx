@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { ConversationList } from './ConversationList';
 import { useAppStore } from '../../lib/store';
+import { shortcutLabel } from '../../lib/shortcuts';
 
 export function Sidebar() {
   const navigate = useNavigate();
@@ -163,7 +164,7 @@ export function Sidebar() {
                 className="text-[10px] px-1.5 py-0.5 rounded font-mono"
                 style={{ background: 'var(--color-bg-tertiary)', color: 'var(--color-text-tertiary)' }}
               >
-                ⌘K
+                {shortcutLabel('K')}
               </kbd>
             )}
           </button>

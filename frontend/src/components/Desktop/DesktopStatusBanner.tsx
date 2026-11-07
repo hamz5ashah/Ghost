@@ -42,7 +42,7 @@ export function DesktopStatusBanner() {
       {icon}
       <span className="min-w-0 truncate" title={status.error ?? text}>{text}</span>
       <button
-        onClick={() => navigate('/settings')}
+        onClick={() => navigate('/settings?tab=model')}
         className="flex items-center gap-1.5 text-sm cursor-pointer ml-auto shrink-0"
         style={{ color: 'var(--color-accent)' }}
       >

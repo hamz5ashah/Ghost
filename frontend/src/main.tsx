@@ -5,7 +5,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import App from './App';
-import { initApiBase } from './lib/api';
+import { initApiBase, isTauri } from './lib/api';
 import { initAnalytics } from './lib/analytics';
 import './index.css';
 
@@ -26,21 +26,52 @@ function applyTheme() {
 
 applyTheme();
 
+/**
+ * Desktop app: make sure no service worker or cache from an older build is
+ * serving this page. If one was in control, reload once so the freshly
+ * installed version is what the user sees.
+ */
+async function dropStaleDesktopCache(): Promise<boolean> {
+  if (!isTauri() || !('serviceWorker' in navigator)) return false;
+  try {
+    const regs = await navigator.serviceWorker.getRegistrations();
+    await Promise.all(regs.map((r) => r.unregister()));
+    if ('caches' in window) {
+      const keys = await caches.keys();
+      await Promise.all(keys.map((k) => caches.delete(k)));
+    }
+    const servedByOldWorker = !!navigator.serviceWorker.controller;
+    if (servedByOldWorker && !sessionStorage.getItem('ghost-sw-cleared')) {
+      sessionStorage.setItem('ghost-sw-cleared', '1');
+      window.location.reload();
+      return true;
+    }
+  } catch { /* nothing to clean up */ }
+  return false;
+}
+
+dropStaleDesktopCache().then((reloading) => {
+  if (reloading) return;
+  void start();
+});
+
 // Fetch the API base URL from the Tauri backend before rendering.
 // This ensures GHOST_PORT is defined in one place (the Rust backend).
 // In non-Tauri environments this is a no-op.
-initApiBase().finally(() => {
-  // Kick off analytics init in the background — it's never awaited so
-  // a slow/failed identity fetch never delays UI render.
-  void initAnalytics();
+function start() {
+  initApiBase().finally(() => {
+    // Kick off analytics init in the background — it's never awaited so
+    // a slow/failed identity fetch never delays UI render.
+    void initAnalytics();
 
-  createRoot(document.getElementById('root')!).render(
-    <StrictMode>
-      <ErrorBoundary>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </ErrorBoundary>
-    </StrictMode>,
-  );
-});
+    createRoot(document.getElementById('root')!).render(
+      <StrictMode>
+        <ErrorBoundary>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </ErrorBoundary>
+      </StrictMode>,
+    );
+  });
+}

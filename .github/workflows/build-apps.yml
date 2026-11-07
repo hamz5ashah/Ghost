@@ -39,6 +39,11 @@ concurrency:
 env:
   # Desktop builds have no update server; hide the in-app updater.
   VITE_GHOST_NO_UPDATER: '1'
+  # Every build gets its own version, shown in Windows' app list, the
+  # installer name and Settings > About.
+  GHOST_VERSION: 1.1.${{ github.run_number }}
+  VITE_GHOST_VERSION: 1.1.${{ github.run_number }}
+  VITE_GHOST_BUILD: build-${{ github.run_number }}
 
 jobs:
   windows:
@@ -98,8 +103,9 @@ jobs:
       - name: Write build config
         shell: bash
         run: |
-          cat > frontend/src-tauri/tauri.build.conf.json <<'JSON'
+          cat > frontend/src-tauri/tauri.build.conf.json <<JSON
           {
+            "version": "$GHOST_VERSION",
             "bundle": {
               "externalBin": ["binaries/ollama"],
               "createUpdaterArtifacts": false,
@@ -232,8 +238,8 @@ jobs:
 
       - name: Write build config
         run: |
-          cat > frontend/src-tauri/tauri.build.conf.json <<'JSON'
-          { "bundle": { "externalBin": ["binaries/ollama"], "createUpdaterArtifacts": false } }
+          cat > frontend/src-tauri/tauri.build.conf.json <<JSON
+          { "version": "$GHOST_VERSION", "bundle": { "externalBin": ["binaries/ollama"], "createUpdaterArtifacts": false } }
           JSON
 
       - name: Build macOS app (unsigned)
@@ -289,8 +295,8 @@ jobs:
 
       - name: Write build config
         run: |
-          cat > frontend/src-tauri/tauri.build.conf.json <<'JSON'
-          { "bundle": { "externalBin": ["binaries/ollama"], "createUpdaterArtifacts": false } }
+          cat > frontend/src-tauri/tauri.build.conf.json <<JSON
+          { "version": "$GHOST_VERSION", "bundle": { "externalBin": ["binaries/ollama"], "createUpdaterArtifacts": false } }
           JSON
 
       - name: Build Linux packages
@@ -345,6 +351,11 @@ jobs:
         run: |
           echo "NDK_HOME=${ANDROID_NDK_LATEST_HOME}" >> "$GITHUB_ENV"
           echo "Using NDK ${ANDROID_NDK_LATEST_HOME}"
+
+      - name: Set app version
+        run: |
+          node -e "const f='mobile/src-tauri/tauri.conf.json';const fs=require('fs');const c=JSON.parse(fs.readFileSync(f));c.version=process.env.GHOST_VERSION;fs.writeFileSync(f,JSON.stringify(c,null,2))"
+          grep '"version"' mobile/src-tauri/tauri.conf.json
 
       - name: Generate Android project
         working-directory: mobile
@@ -414,5 +425,5 @@ jobs:
           gh release create "$TAG" dist/* \
             --repo "$GITHUB_REPOSITORY" \
             --target "$GITHUB_SHA" \
-            --title "Ghost $TAG" \
+            --title "Ghost $GHOST_VERSION ($TAG)" \
             --notes "Windows: run the Ghost .exe installer. Android: open Ghost-android.apk on your phone (allow installing from this source). See docs/getting-started/desktop-and-android.md."
