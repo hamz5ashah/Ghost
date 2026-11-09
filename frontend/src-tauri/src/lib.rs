@@ -1326,6 +1326,9 @@ async fn boot_backend(backend: SharedBackend, status: SharedStatus) {
         }
     } else {
         // Custom OpenAI-compatible endpoint: never start Ollama, never download.
+        // The built-in cloud engine has no endpoint to probe: `ghost serve`
+        // talks to the provider directly with the saved API keys.
+        let cloud_only = is_cloud_engine(cfg.engine.as_deref());
         let host = plan
             .engine_host
             .as_ref()
@@ -1336,7 +1339,10 @@ async fn boot_backend(backend: SharedBackend, status: SharedStatus) {
             s.phase = "model".into();
             s.detail = format!("Connecting to {}...", host);
         }
-        if host.is_empty() || !endpoint_reachable(&host, Duration::from_secs(15)).await {
+        if cloud_only {
+            let mut s = status.lock().await;
+            s.detail = "Using your cloud provider (no local model needed)...".into();
+        } else if host.is_empty() || !endpoint_reachable(&host, Duration::from_secs(15)).await {
             let mut s = status.lock().await;
             s.error = Some(format!(
                 "Could not reach your custom inference server at {}. \
@@ -1363,7 +1369,11 @@ async fn boot_backend(backend: SharedBackend, status: SharedStatus) {
             let mut s = status.lock().await;
             s.ollama_ready = true;
             s.model_ready = true;
-            s.detail = "Connected to custom endpoint.".into();
+            s.detail = if cloud_only {
+                "Cloud provider ready.".into()
+            } else {
+                "Connected to custom endpoint.".into()
+            };
         }
     }
 
@@ -2528,6 +2538,13 @@ fn validate_cloud_key_name(key_name: &str) -> Result<(), String> {
     }
 }
 
+/// Engine id of Ghost's built-in cloud engine (no local model or server).
+const CLOUD_ENGINE: &str = "cloud";
+
+fn is_cloud_engine(engine: Option<&str>) -> bool {
+    engine.map(|e| e.eq_ignore_ascii_case(CLOUD_ENGINE)).unwrap_or(false)
+}
+
 fn engine_api_key_name(engine: &str) -> String {
     let normalized: String = engine
         .chars()
@@ -2821,7 +2838,9 @@ async fn set_inference_source(
         .map(|key| key.trim().to_string())
         .filter(|key| !key.is_empty());
     if let SourceKind::Custom = cfg.kind {
-        if cfg.host.is_none() {
+        // The built-in cloud engine (DeepSeek, Anthropic, … with the keys from
+        // Settings → Cloud providers) has no server URL of its own.
+        if cfg.host.is_none() && !is_cloud_engine(cfg.engine.as_deref()) {
             return Err("A server URL is required for a custom endpoint.".into());
         }
         if cfg.model.as_deref().unwrap_or("").is_empty() {
@@ -3875,6 +3894,33 @@ mod tests {
             assert!(!dst.join("rust/target").exists());
             assert!(!tmp.join("Ghost.installing").exists());
             let _ = std::fs::remove_dir_all(&tmp);
+        }
+    }
+
+    mod cloud_source {
+        use super::super::{boot_plan, is_cloud_engine, InferenceConfig, SourceKind};
+
+        #[test]
+        fn cloud_engine_is_recognised() {
+            assert!(is_cloud_engine(Some("cloud")));
+            assert!(is_cloud_engine(Some("Cloud")));
+            assert!(!is_cloud_engine(Some("lmstudio")));
+            assert!(!is_cloud_engine(None));
+        }
+
+        #[test]
+        fn cloud_source_serves_with_the_cloud_engine_and_no_host() {
+            let cfg = InferenceConfig {
+                kind: SourceKind::Custom,
+                engine: Some("cloud".into()),
+                model: Some("deepseek-v4-flash".into()),
+                host: None,
+                ..Default::default()
+            };
+            let plan = boot_plan(&cfg, 16.0);
+            assert!(!plan.launch_ollama);
+            assert!(plan.engine_host.is_none());
+            assert_eq!(plan.serve_args, vec!["--engine", "cloud", "--model", "deepseek-v4-flash", "--agent", "simple"]);
         }
     }
 
