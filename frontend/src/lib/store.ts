@@ -35,6 +35,8 @@ export interface AgentEvent {
 // ── localStorage persistence ──────────────────────────────────────────
 
 const CONVERSATIONS_KEY = 'ghost-conversations';
+import type { ResponseStyle } from './assistant-prompt';
+
 const SETTINGS_KEY = 'ghost-settings';
 
 /** Phone-sized viewport (below Tailwind's `md` breakpoint). */
@@ -114,6 +116,10 @@ interface Settings {
   speechEnabled: boolean;
   voiceOutputEnabled: boolean;
   voiceAutoplay: boolean;
+  // Settings → Assistant (see lib/assistant-prompt.ts)
+  responseStyle: ResponseStyle;
+  aboutUser: string;
+  customInstructions: string;
 }
 
 function loadSettings(): Settings {
@@ -129,6 +135,9 @@ function loadSettings(): Settings {
     speechEnabled: false,
     voiceOutputEnabled: false,
     voiceAutoplay: false,
+    responseStyle: 'balanced',
+    aboutUser: '',
+    customInstructions: '',
   };
   try {
     const raw = localStorage.getItem(SETTINGS_KEY);

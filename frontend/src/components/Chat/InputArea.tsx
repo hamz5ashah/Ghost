@@ -21,6 +21,7 @@ import type {
   ToolCallInfo,
 } from '../../types';
 import { shortcutLabel } from '../../lib/shortcuts';
+import { buildSystemPrompt } from '../../lib/assistant-prompt';
 
 // While Deep Research is toggled on, poll connected sources for sync
 // progress so we can surface "Searching over N items — sync in progress"
@@ -197,10 +198,15 @@ export function InputArea() {
 
     // Build API messages before adding assistant placeholder
     const currentMessages = useAppStore.getState().messages;
-    const apiMessages = currentMessages.map((m) => ({
-      role: m.role,
-      content: m.content,
-    }));
+    const { settings: prefs } = useAppStore.getState();
+    const apiMessages = [
+      // Ghost's professional baseline + the user's Settings → Assistant prefs.
+      { role: 'system' as const, content: buildSystemPrompt(prefs) },
+      ...currentMessages.map((m) => ({
+        role: m.role,
+        content: m.content,
+      })),
+    ];
 
     const assistantMsg: ChatMessage = {
       id: generateId(),

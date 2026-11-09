@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Brain, CheckCircle2, Loader2, XCircle } from 'lucide-react';
+import { useNavigate } from 'react-router';
 import {
+  getCloudKeyStatus,
   getInferenceSource,
   resetInferenceSource,
-  type InferenceSource,
 } from '../../lib/api';
+import { CLOUD_KEY_STATUS_CHANGED, CLOUD_PROVIDERS } from '../../lib/cloud-providers';
 import { persistAndStartInferenceSource } from '../InferenceSourceSetup';
 import { refreshDesktopStatus, useDesktopStatus } from '../../hooks/useDesktopStatus';
 
@@ -38,7 +40,12 @@ function Row({ label, description, children }: { label: string; description?: st
  */
 export function ModelSetupSection() {
   const status = useDesktopStatus();
-  const [kind, setKind] = useState<InferenceSource['kind']>('ollama');
+  // 'cloud' = Ghost's built-in cloud engine with a provider from Settings →
+  // Cloud providers (DeepSeek, Anthropic, …): no local model, no server URL.
+  const [kind, setKind] = useState<'ollama' | 'custom' | 'cloud'>('ollama');
+  const [cloudModel, setCloudModel] = useState('deepseek-v4-flash');
+  const [connected, setConnected] = useState<Record<string, boolean>>({});
+  const navigate = useNavigate();
   const [host, setHost] = useState('http://localhost:1234/v1');
   const [model, setModel] = useState('');
   const [engine, setEngine] = useState('lmstudio');
@@ -48,12 +55,27 @@ export function ModelSetupSection() {
 
   useEffect(() => {
     getInferenceSource().then((s) => {
+      if (s.kind === 'custom' && s.engine === 'cloud') {
+        setKind('cloud');
+        if (s.model) setCloudModel(s.model);
+        return;
+      }
       setKind(s.kind);
       if (s.host) setHost(s.host);
       if (s.model) setModel(s.model);
       if (s.engine) setEngine(s.engine);
     }).catch(() => {});
   }, []);
+
+  useEffect(() => {
+    const refresh = () => { getCloudKeyStatus().then(setConnected).catch(() => {}); };
+    refresh();
+    window.addEventListener(CLOUD_KEY_STATUS_CHANGED, refresh);
+    return () => window.removeEventListener(CLOUD_KEY_STATUS_CHANGED, refresh);
+  }, []);
+
+  const connectedProviders = CLOUD_PROVIDERS.filter((p) => connected[p.envKey]);
+  const cloudModels = connectedProviders.flatMap((p) => p.models.map((m) => ({ ...m, provider: p.name })));
 
   const start = useCallback(async () => {
     setBusy(true);
@@ -62,13 +84,18 @@ export function ModelSetupSection() {
       if (kind === 'custom' && (!host.trim() || !model.trim())) {
         throw new Error('Enter the server URL and the model name.');
       }
+      if (kind === 'cloud' && !cloudModels.some((m) => m.id === cloudModel)) {
+        throw new Error('Connect a provider in Cloud providers first, then pick one of its models.');
+      }
       // Stop whatever is running and forget the old choice, then save the new
       // one and start it. Progress and errors show in the status row above.
       await resetInferenceSource().catch(() => {});
       await persistAndStartInferenceSource(
         kind === 'custom'
           ? { kind: 'custom', host: host.trim(), model: model.trim(), engine, apiKey: apiKey || undefined }
-          : { kind: 'ollama' },
+          : kind === 'cloud'
+            ? { kind: 'custom', engine: 'cloud', model: cloudModel }
+            : { kind: 'ollama' },
       );
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e));
@@ -76,7 +103,7 @@ export function ModelSetupSection() {
       setBusy(false);
       refreshDesktopStatus();
     }
-  }, [kind, host, model, engine, apiKey]);
+  }, [kind, host, model, engine, apiKey, cloudModel, cloudModels]);
 
   const ready = status?.phase === 'ready' && !status.error;
   const notSetUp = !status || status.requires_source;
@@ -120,11 +147,12 @@ export function ModelSetupSection() {
       <Row label="Source" description="Where the model runs">
         <select
           value={kind}
-          onChange={(e) => { setKind(e.target.value as InferenceSource['kind']); setError(''); }}
+          onChange={(e) => { setKind(e.target.value as 'ollama' | 'custom' | 'cloud'); setError(''); }}
           className="text-sm px-3 py-1.5 rounded-lg outline-none w-64"
           style={inputStyle}
         >
           <option value="ollama">On this PC (Ollama, included)</option>
+          <option value="cloud">Cloud: DeepSeek, Claude, GPT…</option>
           <option value="custom">My own OpenAI-compatible server</option>
         </select>
       </Row>
@@ -132,6 +160,37 @@ export function ModelSetupSection() {
         <p className="text-xs py-2" style={{ color: 'var(--color-text-tertiary)' }}>
           Ghost picks a model that fits your PC's memory and downloads it (a few GB) the first time.
         </p>
+      )}
+      {kind === 'cloud' && (
+        cloudModels.length === 0 ? (
+          <div className="text-xs py-3 flex flex-wrap items-center gap-2" style={{ color: 'var(--color-text-tertiary)' }}>
+            No cloud provider connected yet. Add your DeepSeek (or other) API key first.
+            <button
+              type="button"
+              onClick={() => navigate('/settings?tab=cloud')}
+              className="text-xs px-2.5 py-1 rounded-lg cursor-pointer"
+              style={{ color: 'var(--color-accent)', border: '1px solid var(--color-accent)' }}
+            >
+              Open Cloud providers
+            </button>
+          </div>
+        ) : (
+          <Row label="Model" description="Runs on the provider's servers with your API key">
+            <select
+              value={cloudModels.some((m) => m.id === cloudModel) ? cloudModel : ''}
+              onChange={(e) => setCloudModel(e.target.value)}
+              className="text-sm px-3 py-1.5 rounded-lg outline-none w-64"
+              style={inputStyle}
+            >
+              <option value="" disabled>Choose a model…</option>
+              {connectedProviders.map((p) => (
+                <optgroup key={p.envKey} label={p.name}>
+                  {p.models.map((m) => <option key={m.id} value={m.id}>{m.desc}</option>)}
+                </optgroup>
+              ))}
+            </select>
+          </Row>
+        )
       )}
       {kind === 'custom' && (
         <>

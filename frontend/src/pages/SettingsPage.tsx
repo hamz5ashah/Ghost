@@ -21,10 +21,12 @@ import {
   Smartphone,
   Wrench,
   Activity,
+  Sparkles,
 } from 'lucide-react';
 import { useSearchParams } from 'react-router';
 import { useAppStore, type ThemeMode } from '../lib/store';
 import { AboutSection } from '../components/AboutSection';
+import { AssistantSection } from '../components/AssistantSection';
 import {
   checkHealth,
   fetchSpeechHealth,
@@ -259,7 +261,7 @@ const themeOptions: { value: ThemeMode; label: string; icon: typeof Sun }[] = [
   { value: 'system', label: 'System', icon: Monitor },
 ];
 
-type SettingsTab = 'general' | 'model' | 'cloud' | 'phone' | 'tools' | 'usage' | 'data' | 'about';
+type SettingsTab = 'general' | 'assistant' | 'model' | 'cloud' | 'phone' | 'tools' | 'usage' | 'data' | 'about';
 
 const SETTINGS_TABS: Array<{
   key: SettingsTab;
@@ -268,6 +270,7 @@ const SETTINGS_TABS: Array<{
   icon: React.ComponentType<{ size?: number; style?: React.CSSProperties }>;
 }> = [
   { key: 'general', label: 'General', description: 'Theme and text size.', icon: Palette },
+  { key: 'assistant', label: 'Assistant', description: 'How Ghost answers you: style, what it knows about you and your instructions.', icon: Sparkles },
   { key: 'model', label: 'AI Model', description: 'Where Ghost runs its model, local models and defaults.', icon: Brain },
   { key: 'cloud', label: 'Cloud providers', description: 'Use Anthropic, DeepSeek, OpenAI and more with your own API key.', icon: Cloud },
   { key: 'phone', label: 'Phone & connection', description: 'Use Ghost from your phone, and the server this app talks to.', icon: Smartphone },
@@ -518,6 +521,12 @@ export function SettingsPage() {
                   </select>
                 </SettingRow>
               </Section>
+            </div>
+          )}
+
+          {tab === 'assistant' && (
+            <div className="flex flex-col gap-4">
+              <AssistantSection />
             </div>
           )}
 
