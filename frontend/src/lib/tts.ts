@@ -65,10 +65,49 @@ export function pickSystemVoice(preferredName: string, persona: string): SpeechS
   return voices.find((v) => /^en/i.test(v.lang)) ?? voices[0];
 }
 
+/**
+ * Voice engine chosen in Settings → Assistant → Voice:
+ *  - 'system': the computer's own voices (instant, always available)
+ *  - 'kokoro_onnx': Ghost's offline natural voice (downloaded once)
+ *  - 'elevenlabs': ElevenLabs, online, with the user's API key
+ *  - 'auto': the server's voice if it has one, otherwise the system voice
+ */
+export type VoiceEngine = 'auto' | 'system' | 'kokoro_onnx' | 'elevenlabs';
+
+interface VoicePrefs {
+  voiceName: string;
+  persona: string;
+  engine?: VoiceEngine;
+  kokoroVoice?: string;
+  elevenVoice?: string;
+}
+
 /** Voice preferences, read at speak time (set from Settings → Assistant). */
-let voicePrefs = { voiceName: '', persona: 'professional' };
-export function setVoicePreferences(prefs: { voiceName: string; persona: string }): void {
+let voicePrefs: VoicePrefs = { voiceName: '', persona: 'professional' };
+export function setVoicePreferences(prefs: VoicePrefs): void {
   voicePrefs = prefs;
+}
+
+/**
+ * Split text into speakable pieces (sentences, merged up to ~maxLen chars) so
+ * playback can start after the first piece instead of the whole reply.
+ */
+export function splitForSpeech(text: string, maxLen = 260): string[] {
+  const sentences = text.replace(/\s+/g, ' ').trim().match(/[^.!?…]+[.!?…]+["')\]]*\s*|[^.!?…]+$/g) ?? [];
+  const chunks: string[] = [];
+  let current = '';
+  for (const raw of sentences) {
+    const s = raw.trim();
+    if (!s) continue;
+    if (current && (current + ' ' + s).length > maxLen) {
+      chunks.push(current);
+      current = s;
+    } else {
+      current = current ? `${current} ${s}` : s;
+    }
+  }
+  if (current) chunks.push(current);
+  return chunks;
 }
 
 /** Only a stream ending in the active conversation may trigger autoplay. */
@@ -149,7 +188,25 @@ export const useTtsStore = create<TtsStore>((set, get) => ({
     teardown();
     set({ state: 'loading', speakingId: id, error: null, errorId: null });
 
-    if (useBrowserVoice) {
+    const engine = voicePrefs.engine ?? 'auto';
+    const serverEngine = engine === 'kokoro_onnx' || engine === 'elevenlabs' ? engine : undefined;
+    const viaSystem = engine === 'system' || (engine === 'auto' && useBrowserVoice);
+
+    if (!viaSystem) {
+      const voiceId = serverEngine === 'kokoro_onnx'
+        ? voicePrefs.kokoroVoice
+        : serverEngine === 'elevenlabs' ? voicePrefs.elevenVoice : undefined;
+      const result = await speakViaServer(trimmed, id, mine, serverEngine, voiceId || undefined, set);
+      if (result.ok || mine !== token) return;
+      // Server voice failed (engine not ready, offline, no key): fall back to
+      // the system voice, or report the failure if there is none.
+      if (!browserSpeech()) {
+        set({ state: 'idle', speakingId: null, error: result.error ?? 'Speech synthesis failed', errorId: id });
+        return;
+      }
+    }
+
+    {
       const synth = browserSpeech();
       if (!synth) return;
       const utterance = new SpeechSynthesisUtterance(trimmed);
@@ -165,43 +222,6 @@ export const useTtsStore = create<TtsStore>((set, get) => ({
       synth.speak(utterance);
       return;
     }
-
-    const ac = new AbortController();
-    controller = ac;
-
-    try {
-      const blob = await synthesizeSpeech(trimmed, { signal: ac.signal });
-      if (mine !== token) return;
-
-      const url = URL.createObjectURL(blob);
-      objectUrl = url;
-      const el = new Audio(url);
-      audio = el;
-
-      el.onended = () => {
-        if (mine !== token) return;
-        teardown();
-        set({ state: 'idle', speakingId: null });
-      };
-      el.onerror = () => {
-        if (mine !== token) return;
-        teardown();
-        set({ state: 'idle', speakingId: null, error: 'Playback failed', errorId: id });
-      };
-
-      await el.play();
-      if (mine === token) set({ state: 'speaking', speakingId: id });
-    } catch (err) {
-      if (mine !== token) return;
-      if (err instanceof DOMException && err.name === 'AbortError') return;
-      teardown();
-      set({
-        state: 'idle',
-        speakingId: null,
-        error: err instanceof Error ? err.message : 'Speech synthesis failed',
-        errorId: id,
-      });
-    }
   },
 
   stop: () => {
@@ -210,6 +230,90 @@ export const useTtsStore = create<TtsStore>((set, get) => ({
     set({ state: 'idle', speakingId: null, error: null, errorId: null });
   },
 }));
+
+type SetState = (partial: Partial<TtsStore>) => void;
+
+/** Play one audio blob; resolves when it ends (or rejects on failure). */
+function playBlob(blob: Blob, mine: number, onEnded?: () => void): Promise<void> {
+  return new Promise((resolve, reject) => {
+    if (mine !== token) return resolve();
+    if (objectUrl) URL.revokeObjectURL(objectUrl);
+    const url = URL.createObjectURL(blob);
+    objectUrl = url;
+    const el = new Audio(url);
+    audio = el;
+    el.onended = () => { onEnded?.(); resolve(); };
+    el.onerror = () => reject(new Error('Playback failed'));
+    el.play().catch(reject);
+  });
+}
+
+/**
+ * Speak with the server's voice engine, sentence by sentence: the next piece
+ * is synthesized while the current one plays. Resolves as soon as playback
+ * starts (`{ ok: true }`), or with the error if nothing could be synthesized,
+ * so the caller can fall back to the system voice. Playback of the remaining
+ * pieces continues in the background until done or superseded.
+ */
+function speakViaServer(
+  text: string,
+  id: string,
+  mine: number,
+  backend: string | undefined,
+  voiceId: string | undefined,
+  set: SetState,
+): Promise<{ ok: boolean; error?: string }> {
+  const ac = new AbortController();
+  controller = ac;
+  const chunks = splitForSpeech(text);
+  const synth = (t: string) => synthesizeSpeech(t, { signal: ac.signal, backend, voiceId });
+
+  let announce!: (r: { ok: boolean; error?: string }) => void;
+  const startedPromise = new Promise<{ ok: boolean; error?: string }>((res) => { announce = res; });
+  let started = false;
+
+  const finish = () => {
+    if (mine !== token) return;
+    teardown();
+    set({ state: 'idle', speakingId: null });
+  };
+
+  (async () => {
+    let next: Promise<Blob> | null = chunks.length ? synth(chunks[0]) : null;
+    for (let i = 0; i < chunks.length && next; i += 1) {
+      const blob = await next;
+      if (mine !== token) return announce({ ok: true });
+      next = i + 1 < chunks.length ? synth(chunks[i + 1]) : null;
+      next?.catch(() => { /* surfaced when awaited */ });
+      // The last piece finishes synchronously on `ended`, so the UI never
+      // lingers in "speaking" after the audio stops.
+      const playing = playBlob(blob, mine, i + 1 >= chunks.length ? finish : undefined);
+      if (!started) {
+        started = true;
+        set({ state: 'speaking', speakingId: id });
+        announce({ ok: true });
+      }
+      await playing;
+      if (mine !== token) return;
+    }
+    if (!started) announce({ ok: true });
+  })().catch((err) => {
+    if (mine !== token || (err instanceof DOMException && err.name === 'AbortError')) {
+      announce({ ok: true });
+      return;
+    }
+    const message = err instanceof Error ? err.message : 'Speech synthesis failed';
+    teardown();
+    if (started) {
+      set({ state: 'idle', speakingId: null, error: message, errorId: id });
+    } else {
+      set({ state: 'idle', speakingId: null });
+      announce({ ok: false, error: message });
+    }
+  });
+
+  return startedPromise;
+}
 
 /** Test seam: reset module-level playback handles between cases. */
 export function __resetTtsForTests(): void {

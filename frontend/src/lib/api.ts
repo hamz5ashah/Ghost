@@ -478,14 +478,36 @@ export interface TtsHealth {
   reason?: string;
 }
 
+export interface VoiceEngines {
+  kokoro_onnx: {
+    available: boolean;
+    download: { state: 'missing' | 'downloading' | 'ready' | 'error'; downloaded: number; total: number; error: string };
+    voices: Record<string, string>;
+  };
+  elevenlabs: { available: boolean };
+}
+
+/** Voice engines the server can use, and the offline model's download state. */
+export async function fetchVoiceEngines(): Promise<VoiceEngines> {
+  const res = await apiFetch('/v1/speech/voices');
+  if (!res.ok) throw new Error(`Voice engines unavailable: ${res.status}`);
+  return res.json();
+}
+
+/** Start the one-time download of the offline natural voice (~350 MB). */
+export async function startOfflineVoiceDownload(): Promise<void> {
+  const res = await apiFetch('/v1/speech/voices/kokoro_onnx/download', { method: 'POST' });
+  if (!res.ok) throw new Error(`Download could not start: ${res.status}`);
+}
+
 export async function synthesizeSpeech(
   text: string,
-  opts: { voiceId?: string; speed?: number; signal?: AbortSignal } = {},
+  opts: { voiceId?: string; speed?: number; backend?: string; signal?: AbortSignal } = {},
 ): Promise<Blob> {
   const res = await apiFetch(`/v1/speech/synthesize`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ text, voice_id: opts.voiceId, speed: opts.speed }),
+    body: JSON.stringify({ text, voice_id: opts.voiceId, speed: opts.speed, backend: opts.backend }),
     signal: opts.signal,
   });
   if (!res.ok) {

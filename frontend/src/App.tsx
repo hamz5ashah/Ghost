@@ -48,8 +48,14 @@ export default function App() {
 
   // Read-aloud uses the voice/persona chosen in Settings → Assistant.
   useEffect(() => {
-    setVoicePreferences({ voiceName: settings.voiceName, persona: settings.persona });
-  }, [settings.voiceName, settings.persona]);
+    setVoicePreferences({
+      voiceName: settings.voiceName,
+      persona: settings.persona,
+      engine: settings.voiceEngine,
+      kokoroVoice: settings.kokoroVoice,
+      elevenVoice: settings.elevenVoice,
+    });
+  }, [settings.voiceName, settings.persona, settings.voiceEngine, settings.kokoroVoice, settings.elevenVoice]);
 
   // Apply theme class to <html>
   useEffect(() => {

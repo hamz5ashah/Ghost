@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Sparkles, Volume2, Crown, Briefcase } from 'lucide-react';
-import { listSystemVoices, pickSystemVoice, useTtsStore } from '../lib/tts';
+import { useTtsStore } from '../lib/tts';
+import { VoiceEngineSection } from './VoiceEngineSection';
 import { butlerGreeting, type Persona } from '../lib/assistant-prompt';
 import { useAppStore } from '../lib/store';
 import type { ResponseStyle } from '../lib/assistant-prompt';
@@ -44,31 +45,16 @@ function PersonaAndVoice() {
   const updateSettings = useAppStore((s) => s.updateSettings);
   const ttsAvailable = useTtsStore((s) => s.available);
   const ensureHealth = useTtsStore((s) => s.ensureHealth);
-  const speak = useTtsStore((s) => s.speak);
-  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>(() => listSystemVoices());
   const [honorific, setHonorific] = useState(settings.honorific);
 
   useEffect(() => { void ensureHealth(); }, [ensureHealth]);
-  useEffect(() => {
-    const synth = typeof window !== 'undefined' && 'speechSynthesis' in window ? window.speechSynthesis : null;
-    if (!synth) return;
-    const load = () => setVoices(synth.getVoices());
-    load();
-    synth.addEventListener('voiceschanged', load);
-    return () => synth.removeEventListener('voiceschanged', load);
-  }, []);
   useEffect(() => {
     if (honorific === settings.honorific) return;
     const t = setTimeout(() => updateSettings({ honorific }), 400);
     return () => clearTimeout(t);
   }, [honorific, settings.honorific, updateSettings]);
 
-  const english = voices.filter((v) => /^en/i.test(v.lang));
-  const autoVoice = pickSystemVoice('', settings.persona);
   const voiceOn = settings.voiceOutputEnabled && settings.voiceAutoplay;
-  const sample = settings.persona === 'jarvis'
-    ? `${butlerGreeting(settings.honorific)} All systems are online. How may I assist you?`
-    : 'Hello. This is how Ghost will sound when it reads replies aloud.';
 
   return (
     <div className="rounded-xl p-5" style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)' }}>
@@ -138,37 +124,6 @@ function PersonaAndVoice() {
         />
       </div>
 
-      {english.length > 0 && (
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-3" style={{ borderTop: '1px solid var(--color-border-subtle)' }}>
-          <div>
-            <div className="text-sm" style={{ color: 'var(--color-text)' }}>Voice</div>
-            <div className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>
-              Automatic: {autoVoice?.name ?? 'system default'}. More voices: Windows Settings → Time & language → Speech.
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <select
-              value={settings.voiceName}
-              onChange={(e) => updateSettings({ voiceName: e.target.value })}
-              className="text-sm px-3 py-1.5 rounded-lg outline-none w-56"
-              style={fieldStyle}
-              aria-label="Voice"
-            >
-              <option value="">Automatic</option>
-              {english.map((v) => <option key={v.name} value={v.name}>{v.name}</option>)}
-            </select>
-            <button
-              type="button"
-              onClick={() => void speak('voice-test', sample)}
-              className="text-xs px-3 py-1.5 rounded-lg cursor-pointer"
-              style={{ color: 'var(--color-accent)', border: '1px solid var(--color-accent)' }}
-            >
-              Test
-            </button>
-          </div>
-        </div>
-      )}
-
       <div className="flex items-center justify-between gap-3 py-3" style={{ borderTop: '1px solid var(--color-border-subtle)' }}>
         <div>
           <div className="text-sm" style={{ color: 'var(--color-text)' }}>Greet me when Ghost opens</div>
@@ -207,6 +162,7 @@ export function AssistantSection() {
   return (
     <>
     <PersonaAndVoice />
+    <VoiceEngineSection />
     <div className="rounded-xl p-5" style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)' }}>
       <h3 className="text-sm font-semibold mb-1 flex items-center gap-2" style={{ color: 'var(--color-text)' }}>
         <Sparkles size={15} /> Personalise Ghost

@@ -175,7 +175,7 @@ jobs:
           "$APP/uv.exe" sync --extra desktop --extra inference-cloud --extra inference-google \
             --group desktop-native --no-install-package ghost-rust
           "$APP/uv.exe" pip install --no-deps wheels/ghost_rust-*.whl
-          "$APP/uv.exe" run python -c "import ghost_rust, ghost.server.app; print('backend imports OK')"
+          "$APP/uv.exe" run python -c "import ghost_rust, ghost.server.app, kokoro_onnx, espeakng_loader; print('backend imports OK (incl. offline voice)')"
 
           # Start Ghost's server against a stand-in model and query it.
           python "$GITHUB_WORKSPACE/scripts/ci/mock_openai_server.py" 1234 > mock.log 2>&1 &
