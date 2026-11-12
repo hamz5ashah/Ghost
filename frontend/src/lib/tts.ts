@@ -56,6 +56,10 @@ export function pickSystemVoice(preferredName: string, persona: string): SpeechS
   if (!voices.length) return null;
   const byName = voices.find((v) => v.name === preferredName);
   if (byName) return byName;
+  if (voicePrefs.language === 'urdu') {
+    const urdu = voices.find((v) => /^ur/i.test(v.lang)) ?? voices.find((v) => /^hi/i.test(v.lang));
+    if (urdu) return urdu;
+  }
   if (persona === 'jarvis') {
     const british = voices.filter((v) => /en[-_]GB/i.test(v.lang));
     const male = british.find((v) => /george|ryan|daniel|thomas|arthur|oliver|male/i.test(v.name));
@@ -80,6 +84,7 @@ interface VoicePrefs {
   engine?: VoiceEngine;
   kokoroVoice?: string;
   elevenVoice?: string;
+  language?: string;
 }
 
 /** Voice preferences, read at speak time (set from Settings → Assistant). */
@@ -93,7 +98,8 @@ export function setVoicePreferences(prefs: VoicePrefs): void {
  * playback can start after the first piece instead of the whole reply.
  */
 export function splitForSpeech(text: string, maxLen = 260): string[] {
-  const sentences = text.replace(/\s+/g, ' ').trim().match(/[^.!?…]+[.!?…]+["')\]]*\s*|[^.!?…]+$/g) ?? [];
+  // Includes the Urdu full stop "۔" and question mark "؟".
+  const sentences = text.replace(/\s+/g, ' ').trim().match(/[^.!?…۔؟]+[.!?…۔؟]+["')\]]*\s*|[^.!?…۔؟]+$/g) ?? [];
   const chunks: string[] = [];
   let current = '';
   for (const raw of sentences) {

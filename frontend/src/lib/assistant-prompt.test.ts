@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildSystemPrompt, butlerGreeting } from './assistant-prompt';
+import { buildSystemPrompt, butlerGreeting, butlerStatusLine } from './assistant-prompt';
 
 const base = { responseStyle: 'balanced' as const, aboutUser: '', customInstructions: '' };
 const day = new Date('2026-11-09T12:00:00');
@@ -32,5 +32,17 @@ describe('buildSystemPrompt', () => {
   it('greets by time of day', () => {
     expect(butlerGreeting('sir', new Date('2026-11-12T09:00:00'))).toBe('Good morning, sir.');
     expect(butlerGreeting('', new Date('2026-11-12T20:00:00'))).toBe('Good evening, sir.');
+  });
+
+  it('asks for Urdu script replies when Urdu is chosen', () => {
+    const p = buildSystemPrompt({ ...base, replyLanguage: 'urdu' }, day);
+    expect(p).toContain('always reply in Urdu written in Urdu script');
+    expect(buildSystemPrompt(base, day)).not.toContain('Urdu');
+  });
+
+  it('greets in Urdu', () => {
+    expect(butlerGreeting('sir', day, 'urdu')).toBe('السلام علیکم، سر۔');
+    expect(butlerGreeting('Hamza sahab', day, 'urdu')).toBe('السلام علیکم، Hamza sahab۔');
+    expect(butlerStatusLine(true, 'urdu')).toContain('آن لائن');
   });
 });

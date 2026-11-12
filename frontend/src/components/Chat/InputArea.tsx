@@ -611,6 +611,7 @@ export function InputArea() {
         }}
       >
         <textarea
+          dir="auto"
           ref={textareaRef}
           value={input}
           onChange={(e) => setInput(e.target.value)}

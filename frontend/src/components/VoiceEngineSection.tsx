@@ -12,7 +12,7 @@ import {
   type VoiceEngines,
 } from '../lib/api';
 import { listSystemVoices, pickSystemVoice, useTtsStore, type VoiceEngine } from '../lib/tts';
-import { butlerGreeting } from '../lib/assistant-prompt';
+import { butlerGreeting, butlerStatusLine } from '../lib/assistant-prompt';
 
 /** ElevenLabs premade voices (IDs are public, from ElevenLabs' voice library). */
 const ELEVEN_VOICES: Record<string, string> = {
@@ -93,9 +93,11 @@ export function VoiceEngineSection() {
     return () => clearInterval(t);
   }, [downloading, refresh]);
 
-  const sample = settings.persona === 'jarvis'
-    ? `${butlerGreeting(settings.honorific)} All systems are online. How may I assist you today?`
-    : 'Hello. This is how Ghost will sound when it reads replies aloud.';
+  const sample = settings.replyLanguage === 'urdu'
+    ? `${butlerGreeting(settings.honorific, new Date(), 'urdu')} ${butlerStatusLine(true, 'urdu')}`
+    : settings.persona === 'jarvis'
+      ? `${butlerGreeting(settings.honorific)} ${butlerStatusLine(true)}`
+      : 'Hello. This is how Ghost will sound when it reads replies aloud.';
 
   const download = async () => {
     setError('');

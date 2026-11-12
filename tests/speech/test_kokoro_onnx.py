@@ -50,12 +50,13 @@ def test_synthesize_uses_british_english_for_b_voices(tmp_path, monkeypatch):
     class FakeEngine:
         def create(self, text, voice, speed, lang):
             calls.update(voice=voice, lang=lang, speed=speed)
+            calls.setdefault("all", []).append((text, voice, lang))
             return np.zeros(2400, dtype="float32"), 24000
 
     backend = k.KokoroOnnxTTSBackend(model_path=str(tmp_path))
     monkeypatch.setattr(backend, "_load", lambda: FakeEngine())
     result = backend.synthesize("Good evening, sir.", voice_id="bm_lewis", speed=1.0)
-    assert calls == {"voice": "bm_lewis", "lang": "en-gb", "speed": 1.0}
+    assert {k: calls[k] for k in ("voice", "lang", "speed")} == {"voice": "bm_lewis", "lang": "en-gb", "speed": 1.0}
     assert result.format == "wav" and result.voice_id == "bm_lewis"
     # Unknown voices fall back to the default British male voice.
     backend.synthesize("Hi", voice_id="nope")
@@ -76,3 +77,29 @@ def test_elevenlabs_catalog_parses_names_and_labels():
         {"id": "abc", "name": "Narrator", "description": "british, male"},
         {"id": "xyz", "name": "Plain", "description": ""},
     ]
+
+
+def test_script_runs_split_urdu_and_english():
+    runs = k.script_runs("آپ کا Python کوڈ تیار ہے۔ Done!")
+    assert [u for _, u in runs] == [True, False, True, False]
+    assert runs[1][0].strip() == "Python"
+
+
+def test_urdu_text_uses_urdu_phonemizer_and_voice(tmp_path, monkeypatch):
+    np = pytest.importorskip("numpy")
+    seen = []
+
+    class FakeEngine:
+        def create(self, text, voice, speed, lang):
+            seen.append((text.strip(), voice, lang))
+            return np.zeros(240, dtype="float32"), 24000
+
+    backend = k.KokoroOnnxTTSBackend(model_path=str(tmp_path))
+    monkeypatch.setattr(backend, "_load", lambda: FakeEngine())
+    # English voice chosen: Urdu runs switch to the default Urdu voice.
+    backend.synthesize("Hello. السلام علیکم", voice_id="bm_george")
+    assert seen == [("Hello.", "bm_george", "en-gb"), ("السلام علیکم", "hm_omega", "ur")]
+    seen.clear()
+    # Urdu voice chosen: it speaks everything, English runs in English.
+    backend.synthesize("سسٹم OK ہے", voice_id="hf_alpha")
+    assert seen == [("سسٹم", "hf_alpha", "ur"), ("OK", "hf_alpha", "en-us"), ("ہے", "hf_alpha", "ur")]

@@ -12,11 +12,12 @@ from __future__ import annotations
 
 import io
 import logging
+import re
 import threading
 import urllib.request
 import wave
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 from ghost.core.registry import TTSRegistry
 from ghost.speech.tts import TTSBackend, TTSResult
@@ -31,10 +32,17 @@ MODEL_FILES: Dict[str, int] = {
 }
 
 DEFAULT_VOICE = "bm_george"
+# Kokoro has no Urdu voices, but its Hindi voices with espeak-ng's Urdu
+# phonemizer ("ur") speak Urdu-script text naturally.
+DEFAULT_URDU_VOICE = "hm_omega"
 
-# Voices offered in the app (Kokoro v1.0 names). Prefix: a = American,
-# b = British; then f/m = female/male.
+# Voices offered in the app (Kokoro v1.0 names). Prefix: h = Hindi/Urdu,
+# a = American, b = British; then f/m = female/male.
 VOICES: Dict[str, str] = {
+    "hm_omega": "Omega — Urdu male",
+    "hm_psi": "Psi — Urdu male, softer",
+    "hf_alpha": "Alpha — Urdu female",
+    "hf_beta": "Beta — Urdu female, softer",
     "bm_george": "George — British male (default)",
     "bm_lewis": "Lewis — British male, deeper",
     "bm_daniel": "Daniel — British male, calm",
@@ -143,6 +151,36 @@ def start_model_download() -> Dict[str, Any]:
 # ---------------------------------------------------------------------------
 
 
+_ARABIC_SCRIPT = re.compile(r"[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]")
+
+
+def script_runs(text: str) -> List[Tuple[str, bool]]:
+    """Split *text* into ``(chunk, is_urdu_script)`` runs.
+
+    Digits, spaces and punctuation stay with the run they sit in, so an Urdu
+    sentence with an English word in it becomes three runs, not dozens.
+    """
+    runs: List[Tuple[str, bool]] = []
+    current, current_urdu = "", None
+    for ch in text:
+        if _ARABIC_SCRIPT.match(ch):
+            is_urdu: Optional[bool] = True
+        elif ch.isalpha():
+            is_urdu = False
+        else:
+            is_urdu = None  # neutral: joins the current run
+        if is_urdu is None or current_urdu is None or is_urdu == current_urdu:
+            current += ch
+            if current_urdu is None and is_urdu is not None:
+                current_urdu = is_urdu
+        else:
+            runs.append((current, bool(current_urdu)))
+            current, current_urdu = ch, is_urdu
+    if current.strip():
+        runs.append((current, bool(current_urdu)))
+    return [(t, u) for t, u in runs if t.strip()]
+
+
 def _wav_bytes(samples: Any, sample_rate: int) -> bytes:
     import numpy as np
 
@@ -196,11 +234,28 @@ class KokoroOnnxTTSBackend(TTSBackend):
         speed: float = 1.0,
         output_format: str = "wav",
     ) -> TTSResult:
+        import numpy as np
+
         voice = voice_id if voice_id in VOICES else DEFAULT_VOICE
-        lang = "en-gb" if voice.startswith("b") else "en-us"
-        samples, sample_rate = self._load().create(
-            text, voice=voice, speed=max(0.5, min(float(speed or 1.0), 2.0)), lang=lang
-        )
+        speed = max(0.5, min(float(speed or 1.0), 2.0))
+        engine = self._load()
+        english_lang = "en-gb" if voice.startswith("b") else "en-us"
+        # Urdu-script runs use the Urdu phonemizer with an Urdu (Hindi) voice;
+        # other runs use English. If the chosen voice is an Urdu voice it
+        # speaks everything, so a mixed reply keeps one consistent voice.
+        urdu_voice = voice if voice.startswith("h") else DEFAULT_URDU_VOICE
+        pieces = []
+        sample_rate = 24000
+        for chunk, is_urdu in script_runs(text) or [(text, False)]:
+            samples, sample_rate = engine.create(
+                chunk,
+                voice=urdu_voice if is_urdu else voice,
+                speed=speed,
+                lang="ur" if is_urdu else english_lang,
+            )
+            pieces.append(samples)
+            pieces.append(np.zeros(int(sample_rate * 0.06), dtype="float32"))
+        samples = np.concatenate(pieces[:-1]) if pieces else np.zeros(1, dtype="float32")
         return TTSResult(
             audio=_wav_bytes(samples, sample_rate),
             format="wav",
