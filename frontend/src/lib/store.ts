@@ -35,7 +35,7 @@ export interface AgentEvent {
 // ── localStorage persistence ──────────────────────────────────────────
 
 const CONVERSATIONS_KEY = 'ghost-conversations';
-import type { ResponseStyle } from './assistant-prompt';
+import type { Persona, ResponseStyle } from './assistant-prompt';
 
 const SETTINGS_KEY = 'ghost-settings';
 
@@ -120,6 +120,12 @@ interface Settings {
   responseStyle: ResponseStyle;
   aboutUser: string;
   customInstructions: string;
+  persona: Persona;
+  honorific: string;
+  /** System voice name for read-aloud ('' = automatic). */
+  voiceName: string;
+  /** Greet the user aloud when the app opens (needs voice output). */
+  greetOnStartup: boolean;
 }
 
 function loadSettings(): Settings {
@@ -138,6 +144,10 @@ function loadSettings(): Settings {
     responseStyle: 'balanced',
     aboutUser: '',
     customInstructions: '',
+    persona: 'professional',
+    honorific: 'sir',
+    voiceName: '',
+    greetOnStartup: false,
   };
   try {
     const raw = localStorage.getItem(SETTINGS_KEY);

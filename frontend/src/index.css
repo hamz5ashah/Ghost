@@ -754,3 +754,13 @@
   background: var(--color-accent);
   text-decoration: none;
 }
+/* Butler (JARVIS-style) start screen: a softly spinning core. */
+.butler-core { position: relative; width: 132px; height: 132px; }
+.butler-ring { position: absolute; inset: 0; border-radius: 9999px; border: 2px solid transparent; }
+.butler-ring-outer { border-top-color: var(--color-accent); border-bottom-color: var(--color-accent); opacity: .55; animation: butler-spin 9s linear infinite; }
+.butler-ring-mid { inset: 16px; border-left-color: var(--color-accent); border-right-color: var(--color-accent); opacity: .75; animation: butler-spin 6s linear infinite reverse; }
+.butler-ring-inner { inset: 34px; border: 2px dashed color-mix(in srgb, var(--color-accent) 70%, transparent); animation: butler-spin 14s linear infinite; }
+.butler-glow { position: absolute; inset: 50px; border-radius: 9999px; background: radial-gradient(circle, #fff 0%, var(--color-accent) 45%, transparent 75%); box-shadow: 0 0 40px color-mix(in srgb, var(--color-accent) 60%, transparent); animation: butler-pulse 3.2s ease-in-out infinite; }
+@keyframes butler-spin { to { transform: rotate(360deg); } }
+@keyframes butler-pulse { 0%, 100% { opacity: .75; transform: scale(.94); } 50% { opacity: 1; transform: scale(1.05); } }
+@media (prefers-reduced-motion: reduce) { .butler-ring, .butler-glow { animation: none; } }

@@ -13,6 +13,7 @@ import { Toaster } from './components/ui/sonner';
 import { useAppStore } from './lib/store';
 import { fetchModels, fetchServerInfo, fetchSavings, submitSavings, isTauri, isMobileApp } from './lib/api';
 import { MobileConnect } from './components/MobileConnect';
+import { setVoicePreferences } from './lib/tts';
 import { OptInModal } from './components/OptInModal';
 import { UpdateChecker } from './components/Desktop/UpdateChecker';
 import { track, hashId } from './lib/analytics';
@@ -44,6 +45,11 @@ export default function App() {
   const savings = useAppStore((s) => s.savings);
   // Android app: nothing works until the phone is paired with a Ghost PC.
   const needsMobileConnect = isMobileApp() && !settings.apiUrl;
+
+  // Read-aloud uses the voice/persona chosen in Settings → Assistant.
+  useEffect(() => {
+    setVoicePreferences({ voiceName: settings.voiceName, persona: settings.persona });
+  }, [settings.voiceName, settings.persona]);
 
   // Apply theme class to <html>
   useEffect(() => {

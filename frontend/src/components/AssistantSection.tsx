@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Volume2, Crown, Briefcase } from 'lucide-react';
+import { listSystemVoices, pickSystemVoice, useTtsStore } from '../lib/tts';
+import { butlerGreeting, type Persona } from '../lib/assistant-prompt';
 import { useAppStore } from '../lib/store';
 import type { ResponseStyle } from '../lib/assistant-prompt';
 
@@ -14,6 +16,175 @@ const fieldStyle = {
   color: 'var(--color-text)',
   border: '1px solid var(--color-border)',
 };
+
+const PERSONAS: Array<{ key: Persona; label: string; hint: string; icon: typeof Crown }> = [
+  { key: 'professional', label: 'Professional', hint: 'Clear, neutral and to the point', icon: Briefcase },
+  { key: 'jarvis', label: 'AI butler (JARVIS-style)', hint: 'Composed, British, dry wit — calls you "sir"', icon: Crown },
+];
+
+function Toggle({ on, onChange, label }: { on: boolean; onChange: (v: boolean) => void; label: string }) {
+  return (
+    <button
+      type="button"
+      role="switch"
+      aria-checked={on}
+      aria-label={label}
+      onClick={() => onChange(!on)}
+      className="relative w-10 h-6 rounded-full transition-colors cursor-pointer shrink-0"
+      style={{ background: on ? 'var(--color-accent)' : 'var(--color-bg-tertiary, var(--color-border))' }}
+    >
+      <span className="absolute top-0.5 w-5 h-5 rounded-full bg-white transition-all" style={{ left: on ? '18px' : '2px' }} />
+    </button>
+  );
+}
+
+/** Personality (professional / JARVIS-style butler) and voice. */
+function PersonaAndVoice() {
+  const settings = useAppStore((s) => s.settings);
+  const updateSettings = useAppStore((s) => s.updateSettings);
+  const ttsAvailable = useTtsStore((s) => s.available);
+  const ensureHealth = useTtsStore((s) => s.ensureHealth);
+  const speak = useTtsStore((s) => s.speak);
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>(() => listSystemVoices());
+  const [honorific, setHonorific] = useState(settings.honorific);
+
+  useEffect(() => { void ensureHealth(); }, [ensureHealth]);
+  useEffect(() => {
+    const synth = typeof window !== 'undefined' && 'speechSynthesis' in window ? window.speechSynthesis : null;
+    if (!synth) return;
+    const load = () => setVoices(synth.getVoices());
+    load();
+    synth.addEventListener('voiceschanged', load);
+    return () => synth.removeEventListener('voiceschanged', load);
+  }, []);
+  useEffect(() => {
+    if (honorific === settings.honorific) return;
+    const t = setTimeout(() => updateSettings({ honorific }), 400);
+    return () => clearTimeout(t);
+  }, [honorific, settings.honorific, updateSettings]);
+
+  const english = voices.filter((v) => /^en/i.test(v.lang));
+  const autoVoice = pickSystemVoice('', settings.persona);
+  const voiceOn = settings.voiceOutputEnabled && settings.voiceAutoplay;
+  const sample = settings.persona === 'jarvis'
+    ? `${butlerGreeting(settings.honorific)} All systems are online. How may I assist you?`
+    : 'Hello. This is how Ghost will sound when it reads replies aloud.';
+
+  return (
+    <div className="rounded-xl p-5" style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)' }}>
+      <h3 className="text-sm font-semibold mb-1 flex items-center gap-2" style={{ color: 'var(--color-text)' }}>
+        <Crown size={15} /> Personality & voice
+      </h3>
+      <p className="text-xs mb-4" style={{ color: 'var(--color-text-tertiary)' }}>
+        Choose how Ghost talks to you, and let it speak its replies.
+      </p>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4" role="radiogroup" aria-label="Personality">
+        {PERSONAS.map((p) => {
+          const active = settings.persona === p.key;
+          const Icon = p.icon;
+          return (
+            <button
+              key={p.key}
+              type="button"
+              role="radio"
+              aria-checked={active}
+              onClick={() => updateSettings({ persona: p.key })}
+              className="flex items-start gap-3 text-left px-3 py-3 rounded-lg cursor-pointer transition-colors"
+              style={{
+                background: active ? 'var(--color-accent-subtle)' : 'var(--color-bg-secondary)',
+                border: `1px solid ${active ? 'var(--color-accent)' : 'var(--color-border)'}`,
+              }}
+            >
+              <Icon size={16} className="mt-0.5 shrink-0" style={{ color: active ? 'var(--color-accent)' : 'var(--color-text-tertiary)' }} />
+              <span>
+                <span className="block text-sm font-medium" style={{ color: active ? 'var(--color-accent)' : 'var(--color-text)' }}>{p.label}</span>
+                <span className="block text-xs mt-0.5" style={{ color: 'var(--color-text-tertiary)' }}>{p.hint}</span>
+              </span>
+            </button>
+          );
+        })}
+      </div>
+
+      {settings.persona === 'jarvis' && (
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-3" style={{ borderTop: '1px solid var(--color-border-subtle)' }}>
+          <div>
+            <div className="text-sm" style={{ color: 'var(--color-text)' }}>How should Ghost address you?</div>
+            <div className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>e.g. sir, ma'am, boss, Mr. Shah</div>
+          </div>
+          <input
+            value={honorific}
+            onChange={(e) => setHonorific(e.target.value)}
+            maxLength={40}
+            placeholder="sir"
+            aria-label="Honorific"
+            className="text-sm px-3 py-1.5 rounded-lg outline-none w-56"
+            style={fieldStyle}
+          />
+        </div>
+      )}
+
+      <div className="flex items-center justify-between gap-3 py-3" style={{ borderTop: '1px solid var(--color-border-subtle)' }}>
+        <div>
+          <div className="text-sm flex items-center gap-1.5" style={{ color: 'var(--color-text)' }}><Volume2 size={14} /> Speak replies aloud</div>
+          <div className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>
+            {ttsAvailable === false ? 'No voice is available on this device.' : 'Ghost reads each new reply out loud.'}
+          </div>
+        </div>
+        <Toggle
+          on={voiceOn}
+          label="Speak replies aloud"
+          onChange={(v) => updateSettings({ voiceOutputEnabled: v, voiceAutoplay: v })}
+        />
+      </div>
+
+      {english.length > 0 && (
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-3" style={{ borderTop: '1px solid var(--color-border-subtle)' }}>
+          <div>
+            <div className="text-sm" style={{ color: 'var(--color-text)' }}>Voice</div>
+            <div className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>
+              Automatic: {autoVoice?.name ?? 'system default'}. More voices: Windows Settings → Time & language → Speech.
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <select
+              value={settings.voiceName}
+              onChange={(e) => updateSettings({ voiceName: e.target.value })}
+              className="text-sm px-3 py-1.5 rounded-lg outline-none w-56"
+              style={fieldStyle}
+              aria-label="Voice"
+            >
+              <option value="">Automatic</option>
+              {english.map((v) => <option key={v.name} value={v.name}>{v.name}</option>)}
+            </select>
+            <button
+              type="button"
+              onClick={() => void speak('voice-test', sample)}
+              className="text-xs px-3 py-1.5 rounded-lg cursor-pointer"
+              style={{ color: 'var(--color-accent)', border: '1px solid var(--color-accent)' }}
+            >
+              Test
+            </button>
+          </div>
+        </div>
+      )}
+
+      <div className="flex items-center justify-between gap-3 py-3" style={{ borderTop: '1px solid var(--color-border-subtle)' }}>
+        <div>
+          <div className="text-sm" style={{ color: 'var(--color-text)' }}>Greet me when Ghost opens</div>
+          <div className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>
+            {settings.persona === 'jarvis' ? `"${butlerGreeting(settings.honorific)} All systems are online."` : 'A short spoken greeting at startup.'}
+          </div>
+        </div>
+        <Toggle
+          on={settings.greetOnStartup}
+          label="Greet me when Ghost opens"
+          onChange={(v) => updateSettings({ greetOnStartup: v, ...(v ? { voiceOutputEnabled: true } : {}) })}
+        />
+      </div>
+    </div>
+  );
+}
 
 /** Settings → Assistant: response style, what Ghost knows about you, custom instructions. */
 export function AssistantSection() {
@@ -34,6 +205,8 @@ export function AssistantSection() {
   }, [about, custom, settings.aboutUser, settings.customInstructions, updateSettings]);
 
   return (
+    <>
+    <PersonaAndVoice />
     <div className="rounded-xl p-5" style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)' }}>
       <h3 className="text-sm font-semibold mb-1 flex items-center gap-2" style={{ color: 'var(--color-text)' }}>
         <Sparkles size={15} /> Personalise Ghost
@@ -97,5 +270,6 @@ export function AssistantSection() {
         {savedAt > 0 && 'Saved'}
       </div>
     </div>
+    </>
   );
 }

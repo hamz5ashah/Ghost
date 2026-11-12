@@ -35,6 +35,41 @@ let objectUrl: string | null = null;
 let controller: AbortController | null = null;
 let token = 0;
 let healthProbe: Promise<void> | null = null;
+/** Speak with the system's built-in voices when the server has no TTS engine. */
+let useBrowserVoice = false;
+
+const browserSpeech = (): SpeechSynthesis | null =>
+  typeof window !== 'undefined' && 'speechSynthesis' in window ? window.speechSynthesis : null;
+
+/** Installed system voices (may be empty until the browser loads them). */
+export function listSystemVoices(): SpeechSynthesisVoice[] {
+  return browserSpeech()?.getVoices() ?? [];
+}
+
+/**
+ * The voice to use: the one the user picked, else (for the JARVIS persona) a
+ * British male voice such as "Microsoft George/Ryan" or "Daniel", else any
+ * English voice.
+ */
+export function pickSystemVoice(preferredName: string, persona: string): SpeechSynthesisVoice | null {
+  const voices = listSystemVoices();
+  if (!voices.length) return null;
+  const byName = voices.find((v) => v.name === preferredName);
+  if (byName) return byName;
+  if (persona === 'jarvis') {
+    const british = voices.filter((v) => /en[-_]GB/i.test(v.lang));
+    const male = british.find((v) => /george|ryan|daniel|thomas|arthur|oliver|male/i.test(v.name));
+    if (male) return male;
+    if (british[0]) return british[0];
+  }
+  return voices.find((v) => /^en/i.test(v.lang)) ?? voices[0];
+}
+
+/** Voice preferences, read at speak time (set from Settings → Assistant). */
+let voicePrefs = { voiceName: '', persona: 'professional' };
+export function setVoicePreferences(prefs: { voiceName: string; persona: string }): void {
+  voicePrefs = prefs;
+}
 
 /** Only a stream ending in the active conversation may trigger autoplay. */
 export function shouldAutoplayFinishedReply(
@@ -53,6 +88,7 @@ export function shouldAutoplayFinishedReply(
 }
 
 function teardown(): void {
+  browserSpeech()?.cancel();
   if (audio) {
     // Detach first: clearing src re-runs the media load algorithm, which fails
     // on an empty source and dispatches an `error` event. With the handler
@@ -84,13 +120,17 @@ export const useTtsStore = create<TtsStore>((set, get) => ({
 
   ensureHealth: () => {
     if (healthProbe) return healthProbe;
+    // Prefer the server's voice engine; fall back to the system's voices.
     healthProbe = fetchTtsHealth()
       .then((health) => {
-        set({ available: health.available });
+        useBrowserVoice = !health.available && !!browserSpeech();
+        set({ available: health.available || useBrowserVoice });
+        // Ask the server again next time: its voice engine may come up later.
         if (!health.available) healthProbe = null;
       })
       .catch(() => {
-        set({ available: false });
+        useBrowserVoice = !!browserSpeech();
+        set({ available: useBrowserVoice });
         healthProbe = null;
       });
     return healthProbe;
@@ -108,6 +148,23 @@ export const useTtsStore = create<TtsStore>((set, get) => ({
     const mine = token;
     teardown();
     set({ state: 'loading', speakingId: id, error: null, errorId: null });
+
+    if (useBrowserVoice) {
+      const synth = browserSpeech();
+      if (!synth) return;
+      const utterance = new SpeechSynthesisUtterance(trimmed);
+      const voice = pickSystemVoice(voicePrefs.voiceName, voicePrefs.persona);
+      if (voice) { utterance.voice = voice; utterance.lang = voice.lang; }
+      if (voicePrefs.persona === 'jarvis') { utterance.rate = 1.02; utterance.pitch = 0.9; }
+      utterance.onstart = () => { if (mine === token) set({ state: 'speaking', speakingId: id }); };
+      utterance.onend = () => { if (mine === token) set({ state: 'idle', speakingId: null }); };
+      utterance.onerror = (e) => {
+        if (mine !== token || e.error === 'canceled' || e.error === 'interrupted') return;
+        set({ state: 'idle', speakingId: null, error: 'Speech failed', errorId: id });
+      };
+      synth.speak(utterance);
+      return;
+    }
 
     const ac = new AbortController();
     controller = ac;
@@ -159,6 +216,7 @@ export function __resetTtsForTests(): void {
   teardown();
   token = 0;
   healthProbe = null;
+  useBrowserVoice = false;
   useTtsStore.setState({
     state: 'idle',
     speakingId: null,
