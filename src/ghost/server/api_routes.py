@@ -993,6 +993,47 @@ async def learning_policy(request: Request):
 speech_router = APIRouter(prefix="/v1/speech", tags=["speech"])
 
 
+# Whisper sizes the app may request. "small" is the minimum that handles
+# Urdu well; "large-v3-turbo" is the most accurate (~1.6 GB).
+_STT_MODEL_SIZES = ("tiny", "base", "small", "medium", "large-v3-turbo")
+_stt_prepare: Dict[str, Dict[str, str]] = {}
+
+
+@speech_router.get("/stt/status")
+async def stt_status(request: Request, model: str = "small"):
+    """Whether the speech-recognition model *model* is downloaded and loaded."""
+    backend = getattr(request.app.state, "speech_backend", None)
+    if backend is None:
+        return {"available": False, "state": "unavailable", "model": model}
+    if hasattr(backend, "has_model_size") and backend.has_model_size(model):
+        return {"available": True, "state": "ready", "model": model}
+    job = _stt_prepare.get(model, {})
+    return {"available": True, "state": job.get("state", "missing"), "error": job.get("error", ""), "model": model}
+
+
+@speech_router.post("/stt/prepare")
+async def stt_prepare(request: Request, model: str = "small"):
+    """Download/load a speech-recognition model in the background."""
+    if model not in _STT_MODEL_SIZES:
+        raise HTTPException(status_code=400, detail=f"Unknown speech model '{model}'")
+    backend = getattr(request.app.state, "speech_backend", None)
+    if backend is None or not hasattr(backend, "ensure_model_size"):
+        raise HTTPException(status_code=501, detail="Speech backend not configured")
+    if _stt_prepare.get(model, {}).get("state") == "downloading":
+        return {"state": "downloading", "model": model}
+    _stt_prepare[model] = {"state": "downloading"}
+
+    def load() -> None:
+        try:
+            backend.ensure_model_size(model)
+            _stt_prepare[model] = {"state": "ready"}
+        except Exception as exc:  # network, disk, …
+            _stt_prepare[model] = {"state": "error", "error": str(exc)[:300]}
+
+    asyncio.get_running_loop().run_in_executor(None, load)
+    return {"state": "downloading", "model": model}
+
+
 @speech_router.post("/transcribe")
 async def transcribe_speech(request: Request):
     """Transcribe uploaded audio to text."""
@@ -1007,18 +1048,19 @@ async def transcribe_speech(request: Request):
 
     audio_bytes = await audio_file.read()
     language = form.get("language")
+    model_size = form.get("model") or None
+    if model_size and model_size not in _STT_MODEL_SIZES:
+        raise HTTPException(status_code=400, detail=f"Unknown speech model '{model_size}'")
 
     # Detect format from filename
     filename = getattr(audio_file, "filename", "audio.wav")
     ext = filename.rsplit(".", 1)[-1] if "." in filename else "wav"
 
     try:
-        result = await asyncio.to_thread(
-            backend.transcribe,
-            audio_bytes,
-            format=ext,
-            language=language or None,
-        )
+        kwargs = {"format": ext, "language": language or None}
+        if model_size and hasattr(backend, "ensure_model_size"):
+            kwargs["model_size"] = model_size
+        result = await asyncio.to_thread(backend.transcribe, audio_bytes, **kwargs)
     except Exception as exc:
         logger.exception("Speech transcription failed")
         raise HTTPException(

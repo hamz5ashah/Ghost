@@ -10,5 +10,8 @@
     <key>NSAllowsArbitraryLoadsInWebContent</key>
     <true/>
   </dict>
+  <!-- Voice mode: talk to Ghost hands-free. -->
+  <key>NSMicrophoneUsageDescription</key>
+  <string>Ghost listens to your voice commands when you use voice mode.</string>
 </dict>
 </plist>

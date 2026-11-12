@@ -438,13 +438,19 @@ export interface SpeechHealth {
   reason?: string;
 }
 
-export async function transcribeAudio(audioBlob: Blob, filename = 'recording.webm'): Promise<TranscriptionResult> {
+export async function transcribeAudio(
+  audioBlob: Blob,
+  filename = 'recording.webm',
+  opts: { language?: string; model?: string } = {},
+): Promise<TranscriptionResult> {
   if (isTauri()) {
     try {
       const buffer = await audioBlob.arrayBuffer();
       return await tauriInvoke<TranscriptionResult>('transcribe_audio', {
         audioData: Array.from(new Uint8Array(buffer)),
         filename,
+        language: opts.language ?? null,
+        model: opts.model ?? null,
       });
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
@@ -453,6 +459,8 @@ export async function transcribeAudio(audioBlob: Blob, filename = 'recording.web
   }
   const formData = new FormData();
   formData.append('file', audioBlob, filename);
+  if (opts.language) formData.append('language', opts.language);
+  if (opts.model) formData.append('model', opts.model);
   const res = await apiFetch(`/v1/speech/transcribe`, {
     method: 'POST',
     body: formData,
@@ -492,6 +500,21 @@ export async function fetchVoiceEngines(): Promise<VoiceEngines> {
   const res = await apiFetch('/v1/speech/voices');
   if (!res.ok) throw new Error(`Voice engines unavailable: ${res.status}`);
   return res.json();
+}
+
+export interface SttStatus { available: boolean; state: 'unavailable' | 'missing' | 'downloading' | 'ready' | 'error'; error?: string; model: string }
+
+/** Whether the speech-recognition model for voice commands is ready. */
+export async function fetchSttStatus(model: string): Promise<SttStatus> {
+  const res = await apiFetch(`/v1/speech/stt/status?model=${encodeURIComponent(model)}`);
+  if (!res.ok) throw new Error(`Speech recognition unavailable: ${res.status}`);
+  return res.json();
+}
+
+/** Download/load the speech-recognition model in the background. */
+export async function prepareSttModel(model: string): Promise<void> {
+  const res = await apiFetch(`/v1/speech/stt/prepare?model=${encodeURIComponent(model)}`, { method: 'POST' });
+  if (!res.ok) throw new Error(`Could not prepare speech recognition: ${res.status}`);
 }
 
 export interface ElevenLabsVoice { id: string; name: string; description: string }

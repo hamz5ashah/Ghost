@@ -26,6 +26,9 @@ interface TtsStore {
   stop: () => void;
   ensureHealth: () => Promise<void>;
   markAutoSpoken: (id: string) => void;
+  /** Voice mode is running: it speaks replies itself (no autoplay). */
+  conversationActive: boolean;
+  setConversationActive: (active: boolean) => void;
 }
 
 // Playback handles are not render state -- keeping them out of the store avoids
@@ -182,6 +185,8 @@ export const useTtsStore = create<TtsStore>((set, get) => ({
   },
 
   markAutoSpoken: (id: string) => set({ autoSpokenId: id }),
+  conversationActive: false,
+  setConversationActive: (active: boolean) => set({ conversationActive: active }),
 
   speak: async (id: string, text: string) => {
     const trimmed = toSpeakableText(text);

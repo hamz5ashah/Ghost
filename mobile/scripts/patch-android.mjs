@@ -25,6 +25,12 @@ if (!manifest.includes('android.permission.INTERNET')) {
     '<uses-permission android:name="android.permission.INTERNET" />\n    <application',
   );
 }
+// Voice mode: microphone access for talking to Ghost.
+for (const perm of ['android.permission.RECORD_AUDIO', 'android.permission.MODIFY_AUDIO_SETTINGS']) {
+  if (!manifest.includes(perm)) {
+    manifest = manifest.replace(/<application\b/, `<uses-permission android:name="${perm}" />\n    <application`);
+  }
+}
 writeFileSync(manifestPath, manifest);
 
 for (const name of ['build.gradle.kts', 'build.gradle']) {

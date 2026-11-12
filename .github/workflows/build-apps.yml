@@ -190,6 +190,34 @@ jobs:
             -d '{"model":"mock-model","messages":[{"role":"user","content":"hi"}]}' | head -c 300
           echo
           echo "Smoke test passed."
+
+          # Voice round trip (report only): offline Urdu voice -> Whisper.
+          python - <<'PY' || echo "::warning::Voice round-trip check did not complete"
+          import json, time, urllib.request
+          base = "http://127.0.0.1:8765/v1/speech"
+          def call(path, data=None, ctype="application/json", timeout=600):
+              req = urllib.request.Request(base + path, data=data, headers={"Content-Type": ctype} if data else {}, method="POST" if data is not None else "GET")
+              return urllib.request.urlopen(req, timeout=timeout).read()
+          call("/voices/kokoro_onnx/download", b"")
+          call("/stt/prepare?model=small", b"")
+          for _ in range(120):
+              v = json.loads(call("/voices"))["kokoro_onnx"]["download"]["state"]
+              s = json.loads(call("/stt/status?model=small"))["state"]
+              if v in ("ready", "error") and s in ("ready", "error"):
+                  break
+              time.sleep(5)
+          print("offline voice:", v, "| speech recognition:", s)
+          text = "السلام علیکم۔ آج لاہور کا موسم بہت اچھا ہے۔"
+          wav = call("/synthesize", json.dumps({"text": text, "backend": "kokoro_onnx", "voice_id": "hm_omega"}).encode())
+          print("spoke", len(wav), "bytes of Urdu audio")
+          boundary = "ghostboundary"
+          body = (f"--{boundary}\r\nContent-Disposition: form-data; name=\"language\"\r\n\r\nur\r\n"
+                  f"--{boundary}\r\nContent-Disposition: form-data; name=\"model\"\r\n\r\nsmall\r\n"
+                  f"--{boundary}\r\nContent-Disposition: form-data; name=\"file\"; filename=\"a.wav\"\r\nContent-Type: audio/wav\r\n\r\n").encode() + wav + f"\r\n--{boundary}--\r\n".encode()
+          heard = json.loads(call("/transcribe", body, f"multipart/form-data; boundary={boundary}"))
+          print("said :", text)
+          print("heard:", heard["text"])
+          PY
           # Stop background servers so the step can finish.
           taskkill //F //IM ollama.exe //T > /dev/null 2>&1 || true
           taskkill //F //IM python.exe //T > /dev/null 2>&1 || true

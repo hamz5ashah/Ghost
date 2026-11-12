@@ -2426,6 +2426,8 @@ async fn transcribe_audio(
     api_url: String,
     audio_data: Vec<u8>,
     filename: String,
+    language: Option<String>,
+    model: Option<String>,
 ) -> Result<serde_json::Value, String> {
     let url = format!("{}/v1/speech/transcribe", api_url);
     let client = reqwest::Client::new();
@@ -2435,7 +2437,14 @@ async fn transcribe_audio(
         .mime_str("audio/webm")
         .map_err(|e| format!("Failed to create multipart: {}", e))?;
 
-    let form = reqwest::multipart::Form::new().part("file", part);
+    let mut form = reqwest::multipart::Form::new().part("file", part);
+    // Voice commands: spoken language (e.g. "ur") and Whisper size ("small").
+    if let Some(language) = language.filter(|l| !l.is_empty()) {
+        form = form.text("language", language);
+    }
+    if let Some(model) = model.filter(|m| !m.is_empty()) {
+        form = form.text("model", model);
+    }
 
     let resp = client
         .post(&url)

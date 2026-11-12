@@ -262,6 +262,9 @@ interface AppState {
 
   // Actions: UI
   setCommandPaletteOpen: (open: boolean) => void;
+  /** Hands-free voice conversation (Ctrl+Shift+Space). */
+  voiceModeOpen: boolean;
+  setVoiceModeOpen: (open: boolean) => void;
   toggleSidebar: () => void;
   setSidebarOpen: (open: boolean) => void;
   toggleSystemPanel: () => void;
@@ -325,6 +328,7 @@ export const useAppStore = create<AppState>((set, get) => {
     settings: loadSettings(),
 
     commandPaletteOpen: false,
+    voiceModeOpen: false,
     // Phones start with the chat visible; panels open on demand.
     sidebarOpen: !isNarrowScreen(),
     systemPanelOpen: !isNarrowScreen(),
@@ -587,6 +591,7 @@ export const useAppStore = create<AppState>((set, get) => {
 
     // ── UI ──────────────────────────────────────────────────────────
 
+    setVoiceModeOpen: (open: boolean) => set({ voiceModeOpen: open }),
     setCommandPaletteOpen: (open: boolean) => set({ commandPaletteOpen: open }),
     toggleSidebar: () => set((s) => ({ sidebarOpen: !s.sidebarOpen })),
     setSidebarOpen: (open: boolean) => set({ sidebarOpen: open }),
