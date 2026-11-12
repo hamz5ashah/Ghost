@@ -35,7 +35,7 @@ export interface AgentEvent {
 // ── localStorage persistence ──────────────────────────────────────────
 
 const CONVERSATIONS_KEY = 'ghost-conversations';
-import type { Persona, ResponseStyle } from './assistant-prompt';
+import type { Persona, ReplyLanguage, ResponseStyle } from './assistant-prompt';
 import type { VoiceEngine } from './tts';
 
 const SETTINGS_KEY = 'ghost-settings';
@@ -129,6 +129,8 @@ interface Settings {
   greetOnStartup: boolean;
   /** Settings → Assistant → Voice engine (see lib/tts.ts). */
   voiceEngine: VoiceEngine;
+  /** Language Ghost replies in (Settings → Assistant). */
+  replyLanguage: ReplyLanguage;
   kokoroVoice: string;
   elevenVoice: string;
 }
@@ -154,6 +156,7 @@ function loadSettings(): Settings {
     voiceName: '',
     greetOnStartup: false,
     voiceEngine: 'auto',
+    replyLanguage: 'auto',
     kokoroVoice: 'bm_george',
     elevenVoice: 'JBFqnCBsd6RMkjVDRZzb',
   };

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Sparkles, Volume2, Crown, Briefcase } from 'lucide-react';
 import { useTtsStore } from '../lib/tts';
 import { VoiceEngineSection } from './VoiceEngineSection';
-import { butlerGreeting, type Persona } from '../lib/assistant-prompt';
+import { butlerGreeting, butlerStatusLine, type Persona, type ReplyLanguage } from '../lib/assistant-prompt';
 import { useAppStore } from '../lib/store';
 import type { ResponseStyle } from '../lib/assistant-prompt';
 
@@ -17,6 +17,12 @@ const fieldStyle = {
   color: 'var(--color-text)',
   border: '1px solid var(--color-border)',
 };
+
+const LANGUAGES: Array<{ key: ReplyLanguage; label: string; hint: string }> = [
+  { key: 'urdu', label: 'اردو  Urdu', hint: 'Replies and voice in Urdu' },
+  { key: 'english', label: 'English', hint: 'Always reply in English' },
+  { key: 'auto', label: 'Match me', hint: 'Reply in the language you write in' },
+];
 
 const PERSONAS: Array<{ key: Persona; label: string; hint: string; icon: typeof Crown }> = [
   { key: 'professional', label: 'Professional', hint: 'Clear, neutral and to the point', icon: Briefcase },
@@ -92,6 +98,35 @@ function PersonaAndVoice() {
         })}
       </div>
 
+      <div className="text-sm mb-2" style={{ color: 'var(--color-text)' }}>Language</div>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-4" role="radiogroup" aria-label="Language">
+        {LANGUAGES.map((l) => {
+          const active = settings.replyLanguage === l.key;
+          return (
+            <button
+              key={l.key}
+              type="button"
+              role="radio"
+              aria-checked={active}
+              onClick={() => updateSettings({
+                replyLanguage: l.key,
+                // Urdu speech needs an Urdu voice for the offline engine.
+                ...(l.key === 'urdu' && !settings.kokoroVoice.startsWith('h') ? { kokoroVoice: 'hm_omega' } : {}),
+                ...(l.key === 'english' && settings.kokoroVoice.startsWith('h') ? { kokoroVoice: 'bm_george' } : {}),
+              })}
+              className="text-left px-3 py-2.5 rounded-lg cursor-pointer transition-colors"
+              style={{
+                background: active ? 'var(--color-accent-subtle)' : 'var(--color-bg-secondary)',
+                border: `1px solid ${active ? 'var(--color-accent)' : 'var(--color-border)'}`,
+              }}
+            >
+              <div className="text-sm font-medium" style={{ color: active ? 'var(--color-accent)' : 'var(--color-text)' }}>{l.label}</div>
+              <div className="text-xs mt-0.5" style={{ color: 'var(--color-text-tertiary)' }}>{l.hint}</div>
+            </button>
+          );
+        })}
+      </div>
+
       {settings.persona === 'jarvis' && (
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-3" style={{ borderTop: '1px solid var(--color-border-subtle)' }}>
           <div>
@@ -128,7 +163,9 @@ function PersonaAndVoice() {
         <div>
           <div className="text-sm" style={{ color: 'var(--color-text)' }}>Greet me when Ghost opens</div>
           <div className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>
-            {settings.persona === 'jarvis' ? `"${butlerGreeting(settings.honorific)} All systems are online."` : 'A short spoken greeting at startup.'}
+            {settings.persona === 'jarvis'
+              ? `"${butlerGreeting(settings.honorific, new Date(), settings.replyLanguage)} ${butlerStatusLine(true, settings.replyLanguage)}"`
+              : 'A short spoken greeting at startup.'}
           </div>
         </div>
         <Toggle

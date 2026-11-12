@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useAppStore } from '../../lib/store';
-import { butlerGreeting } from '../../lib/assistant-prompt';
+import { butlerGreeting, butlerStatusLine } from '../../lib/assistant-prompt';
 import { useTtsStore } from '../../lib/tts';
 
 /**
@@ -10,6 +10,8 @@ import { useTtsStore } from '../../lib/tts';
  */
 export function ButlerHome() {
   const honorific = useAppStore((s) => s.settings.honorific);
+  const language = useAppStore((s) => s.settings.replyLanguage);
+  const urdu = language === 'urdu';
   const greetOnStartup = useAppStore((s) => s.settings.greetOnStartup);
   const voiceOutputEnabled = useAppStore((s) => s.settings.voiceOutputEnabled);
   const selectedModel = useAppStore((s) => s.selectedModel);
@@ -23,7 +25,7 @@ export function ButlerHome() {
     return () => clearInterval(t);
   }, []);
 
-  const greeting = butlerGreeting(honorific, now);
+  const greeting = butlerGreeting(honorific, now, language);
   const online = !!selectedModel;
 
   // Spoken greeting, once per launch.
@@ -34,11 +36,9 @@ export function ButlerHome() {
       if (sessionStorage.getItem('ghost-greeted')) return;
       sessionStorage.setItem('ghost-greeted', '1');
     } catch { /* ignore */ }
-    const line = online
-      ? `${butlerGreeting(honorific)} All systems are online. How may I assist you?`
-      : `${butlerGreeting(honorific)} I'm awaiting a model. You'll find the options in Settings.`;
+    const line = `${butlerGreeting(honorific, new Date(), language)} ${butlerStatusLine(online, language)}`;
     void speak('ghost-greeting', line);
-  }, [greetOnStartup, voiceOutputEnabled, ttsAvailable, modelsLoading, online, honorific, speak]);
+  }, [greetOnStartup, voiceOutputEnabled, ttsAvailable, modelsLoading, online, honorific, language, speak]);
 
   return (
     <div className="flex flex-col items-center text-center">
@@ -48,11 +48,13 @@ export function ButlerHome() {
         <span className="butler-ring butler-ring-inner" />
         <span className="butler-glow" />
       </div>
-      <h2 className="text-2xl font-semibold mb-2 tracking-tight" style={{ color: 'var(--color-text)' }}>
+      <h2 dir="auto" className="text-2xl font-semibold mb-2 tracking-tight" style={{ color: 'var(--color-text)' }}>
         {greeting}
       </h2>
-      <p className="text-sm max-w-md mb-4" style={{ color: 'var(--color-text-secondary)' }}>
-        {online ? 'All systems online. How may I assist you today?' : 'Standing by. Set up a model in Settings to begin.'}
+      <p dir="auto" className="text-sm max-w-md mb-4" style={{ color: 'var(--color-text-secondary)' }}>
+        {urdu
+          ? butlerStatusLine(online, language)
+          : online ? 'All systems online. How may I assist you today?' : 'Standing by. Set up a model in Settings to begin.'}
       </p>
       <div className="flex flex-wrap justify-center gap-2 text-[11px] font-mono uppercase tracking-wider" style={{ color: 'var(--color-text-tertiary)' }}>
         <span className="px-2.5 py-1 rounded-full" style={{ border: '1px solid var(--color-border)' }}>

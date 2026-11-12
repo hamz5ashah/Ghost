@@ -129,6 +129,7 @@ export function MessageBubble({ message, isLive = false }: Props) {
             whiteSpace: 'pre-wrap',
             wordBreak: 'break-word',
           }}
+          dir="auto"
         >
           {message.content}
         </div>
@@ -161,7 +162,7 @@ export function MessageBubble({ message, isLive = false }: Props) {
 
       {/* Assistant message */}
       {cleanContent && (
-        <div className="prose max-w-none">
+        <div className="prose max-w-none" dir="auto">
           <ReactMarkdown
             remarkPlugins={[remarkGfm, remarkMath]}
             rehypePlugins={rehypePlugins}

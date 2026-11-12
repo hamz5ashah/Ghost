@@ -263,6 +263,13 @@ describe('natural voice playback', () => {
     expect(pieces.join(' ')).toBe(long);
   });
 
+  it('splits Urdu sentences on ۔ and ؟', () => {
+    const urdu = Array.from({ length: 10 }, () => 'یہ ایک لمبا اردو جملہ ہے جو بولا جائے گا۔').join(' ') + ' کیا آپ تیار ہیں؟';
+    const pieces = splitForSpeech(urdu, 90);
+    expect(pieces.length).toBeGreaterThan(3);
+    expect(pieces[pieces.length - 1].endsWith('؟')).toBe(true);
+  });
+
   it('plays pieces in order with the chosen engine and voice', async () => {
     setVoicePreferences({ voiceName: '', persona: 'jarvis', engine: 'kokoro_onnx', kokoroVoice: 'bm_lewis' });
     synth.mockResolvedValue(new Blob(['wav']));

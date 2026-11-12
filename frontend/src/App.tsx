@@ -54,8 +54,9 @@ export default function App() {
       engine: settings.voiceEngine,
       kokoroVoice: settings.kokoroVoice,
       elevenVoice: settings.elevenVoice,
+      language: settings.replyLanguage,
     });
-  }, [settings.voiceName, settings.persona, settings.voiceEngine, settings.kokoroVoice, settings.elevenVoice]);
+  }, [settings.voiceName, settings.persona, settings.voiceEngine, settings.kokoroVoice, settings.elevenVoice, settings.replyLanguage]);
 
   // Apply theme class to <html>
   useEffect(() => {

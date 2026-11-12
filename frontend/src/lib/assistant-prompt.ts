@@ -6,6 +6,8 @@
  */
 export type ResponseStyle = 'balanced' | 'concise' | 'detailed';
 export type Persona = 'professional' | 'jarvis';
+/** Language Ghost replies in. 'auto' = the user's language. */
+export type ReplyLanguage = 'auto' | 'urdu' | 'english';
 
 export interface AssistantPreferences {
   responseStyle: ResponseStyle;
@@ -14,7 +16,14 @@ export interface AssistantPreferences {
   persona?: Persona;
   /** How the butler persona addresses the user, e.g. "sir". */
   honorific?: string;
+  replyLanguage?: ReplyLanguage;
 }
+
+const LANGUAGE: Record<ReplyLanguage, string> = {
+  auto: '',
+  urdu: `Language: always reply in Urdu written in Urdu script (اردو), even when the user writes in English or Roman Urdu. Use natural, polite, everyday Pakistani Urdu — not overly formal or Persianised. Keep code, commands, product names and technical terms that have no common Urdu word in English. Use the Urdu full stop "۔" at the end of sentences.`,
+  english: 'Language: always reply in English, even when the user writes in another language.',
+};
 
 const BASELINE = `You are Ghost, a professional personal AI assistant.
 
@@ -33,6 +42,18 @@ const STYLE: Record<ResponseStyle, string> = {
   detailed: 'Response style: detailed. Give thorough, well-structured answers with steps, examples and context where useful.',
 };
 
+/** The butler's status line after the greeting. */
+export function butlerStatusLine(online: boolean, language: ReplyLanguage = 'auto'): string {
+  if (language === 'urdu') {
+    return online
+      ? 'تمام سسٹم آن لائن ہیں۔ میں آپ کی کیا خدمت کر سکتا ہوں؟'
+      : 'میں ماڈل کا انتظار کر رہا ہوں۔ سیٹنگز میں ماڈل منتخب کریں۔';
+  }
+  return online
+    ? 'All systems are online. How may I assist you?'
+    : "I'm awaiting a model. You'll find the options in Settings.";
+}
+
 function butlerPersona(honorific: string): string {
   const title = honorific.trim() || 'sir';
   return `Personality: you are a refined British AI butler and chief of staff — composed, impeccably polite, quietly confident, with a dry, understated wit.
@@ -43,8 +64,12 @@ function butlerPersona(honorific: string): string {
 }
 
 /** Spoken/visible greeting for the start screen, by time of day. */
-export function butlerGreeting(honorific: string, now: Date = new Date()): string {
+export function butlerGreeting(honorific: string, now: Date = new Date(), language: ReplyLanguage = 'auto'): string {
   const h = now.getHours();
+  if (language === 'urdu') {
+    const title = honorific.trim() && honorific.trim().toLowerCase() !== 'sir' ? honorific.trim() : 'سر';
+    return `السلام علیکم، ${title}۔`;
+  }
   const part = h < 5 ? 'evening' : h < 12 ? 'morning' : h < 17 ? 'afternoon' : 'evening';
   return `Good ${part}, ${honorific.trim() || 'sir'}.`;
 }
@@ -53,6 +78,8 @@ export function buildSystemPrompt(prefs: AssistantPreferences, now: Date = new D
   const parts = [BASELINE];
   if (prefs.persona === 'jarvis') parts.push(butlerPersona(prefs.honorific ?? ''));
   if (STYLE[prefs.responseStyle]) parts.push(STYLE[prefs.responseStyle]);
+  const lang = LANGUAGE[prefs.replyLanguage ?? 'auto'];
+  if (lang) parts.push(lang);
   parts.push(`Today's date is ${now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}.`);
   const about = prefs.aboutUser.trim();
   if (about) parts.push(`About the user (use this to personalise answers; don't repeat it back):\n${about}`);
