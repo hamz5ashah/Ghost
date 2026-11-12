@@ -60,3 +60,19 @@ def test_synthesize_uses_british_english_for_b_voices(tmp_path, monkeypatch):
     # Unknown voices fall back to the default British male voice.
     backend.synthesize("Hi", voice_id="nope")
     assert calls["voice"] == "bm_george"
+
+
+def test_elevenlabs_catalog_parses_names_and_labels():
+    import httpx
+
+    from ghost.speech.elevenlabs_tts import _voice_catalog
+
+    resp = httpx.Response(200, json={"voices": [
+        {"voice_id": "abc", "name": "Narrator", "labels": {"accent": "british", "gender": "male"}},
+        {"voice_id": "xyz", "name": "Plain"},
+        {"bad": True},
+    ]})
+    assert _voice_catalog(resp) == [
+        {"id": "abc", "name": "Narrator", "description": "british, male"},
+        {"id": "xyz", "name": "Plain", "description": ""},
+    ]

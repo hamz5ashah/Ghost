@@ -11,7 +11,7 @@ import os
 import re
 import wave
 from collections.abc import Callable
-from typing import Any, List, TypeVar
+from typing import Dict, Any, List, TypeVar
 
 import httpx
 
@@ -85,6 +85,27 @@ def _voice_ids(response: httpx.Response) -> List[str]:
     ):
         raise ValueError("Invalid voice list")
     return [voice["voice_id"] for voice in voices]
+
+
+def _voice_catalog(response: httpx.Response) -> List[Dict[str, str]]:
+    """``[{"id", "name", "description"}]`` for the voices in the account."""
+    payload = response.json()
+    voices = payload.get("voices", []) if isinstance(payload, dict) else []
+    out: List[Dict[str, str]] = []
+    for voice in voices if isinstance(voices, list) else []:
+        if not isinstance(voice, dict) or not isinstance(voice.get("voice_id"), str):
+            continue
+        labels = voice.get("labels") if isinstance(voice.get("labels"), dict) else {}
+        details = ", ".join(
+            str(labels[k]) for k in ("accent", "gender", "age", "description", "use_case")
+            if labels.get(k)
+        )
+        out.append({
+            "id": voice["voice_id"],
+            "name": str(voice.get("name") or voice["voice_id"]),
+            "description": details,
+        })
+    return out
 
 
 def _pcm_to_wav(pcm: bytes, sample_rate: int = _PCM_SAMPLE_RATE) -> bytes:
@@ -189,6 +210,12 @@ class ElevenLabsTTSBackend(TTSBackend):
             _voice_ids,
             timeout=30.0,
         )
+
+    def voice_catalog(self) -> List[Dict[str, str]]:
+        """Voices in the user's ElevenLabs account (incl. Voice Library adds)."""
+        if not self._api_key:
+            return []
+        return _request(httpx.get, "/voices", self._api_key, _voice_catalog, timeout=30.0)
 
     def health(self) -> bool:
         return bool(self._api_key)
