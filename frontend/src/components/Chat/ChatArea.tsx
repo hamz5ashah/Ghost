@@ -8,6 +8,7 @@ import { shouldAutoplayFinishedReply, useTtsStore } from '../../lib/tts';
 import { stripThinkTags } from '../../lib/message-text';
 import { Sparkles, Database, MessageSquare, X } from 'lucide-react';
 import { listConnectors } from '../../lib/connectors-api';
+import { ButlerHome } from './ButlerHome';
 
 function getGreeting(): string {
   const hour = new Date().getHours();
@@ -32,6 +33,7 @@ export function ChatArea() {
   // autoSpokenId fences the message so re-renders cannot repeat it.
   const voiceOutputEnabled = useAppStore((s) => s.settings.voiceOutputEnabled);
   const voiceAutoplay = useAppStore((s) => s.settings.voiceAutoplay);
+  const persona = useAppStore((s) => s.settings.persona);
   // Probe the backend as soon as voice output is switched on. Without this the
   // first reply could never autoplay: `available` is only set by ensureHealth,
   // which until now ran solely from the per-message read-aloud button -- and
@@ -170,6 +172,10 @@ export function ChatArea() {
       >
         {isEmpty ? (
           <div className="flex flex-col items-center justify-center h-full px-4">
+            {persona === 'jarvis' ? (
+              <div className="mb-6"><ButlerHome /></div>
+            ) : (
+            <>
             <div
               className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4"
               style={{ background: 'var(--color-accent-subtle)', color: 'var(--color-accent)' }}
@@ -182,6 +188,8 @@ export function ChatArea() {
             <p className="text-sm text-center max-w-sm mb-6" style={{ color: 'var(--color-text-secondary)' }}>
               Ask anything — Ghost is your personal AI assistant.
             </p>
+            </>
+            )}
 
             {/* Quick action hints */}
             <div className="flex gap-3">
