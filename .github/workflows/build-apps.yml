@@ -192,7 +192,8 @@ jobs:
           echo "Smoke test passed."
 
           # Voice round trip (report only): offline Urdu voice -> Whisper.
-          python - <<'PY' || echo "::warning::Voice round-trip check did not complete"
+          # UTF-8 so Urdu text can be printed on the Windows console.
+          PYTHONIOENCODING=utf-8 python - <<'PY' || echo "::warning::Voice round-trip check did not complete"
           import json, time, urllib.request
           base = "http://127.0.0.1:8765/v1/speech"
           def call(path, data=None, ctype="application/json", timeout=600):
