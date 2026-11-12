@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
-import { Send, Square, Paperclip, Search } from 'lucide-react';
+import { Send, Square, Paperclip, Search, AudioLines } from 'lucide-react';
 import { toast } from 'sonner';
 import { useAppStore, generateId } from '../../lib/store';
 import { streamChat, streamResearch } from '../../lib/sse';
@@ -22,6 +22,7 @@ import type {
 } from '../../types';
 import { shortcutLabel } from '../../lib/shortcuts';
 import { buildSystemPrompt } from '../../lib/assistant-prompt';
+import { VOICE_SEND_EVENT } from '../../lib/voice-activity';
 
 // While Deep Research is toggled on, poll connected sources for sync
 // progress so we can surface "Searching over N items — sync in progress"
@@ -173,15 +174,16 @@ export function InputArea() {
     resetStream();
   }, [resetStream]);
 
-  const sendMessage = useCallback(async () => {
-    const content = input.trim();
+  // `spoken` is text from voice mode; otherwise the typed input is sent.
+  const sendMessage = useCallback(async (spoken?: string) => {
+    const content = (spoken ?? input).trim();
     if (!content || streamState.isStreaming) return;
     if (!selectedModel) {
       toast.error(`Pick a model first (${shortcutLabel('K')})`);
       return;
     }
 
-    setInput('');
+    if (spoken === undefined) setInput('');
 
     let convId = activeId;
     if (!convId) {
@@ -561,6 +563,18 @@ export function InputArea() {
     maxTokens,
   ]);
 
+  // Voice mode hands recognised speech to the normal send path.
+  const sendRef = useRef(sendMessage);
+  sendRef.current = sendMessage;
+  useEffect(() => {
+    const onVoice = (e: Event) => {
+      const text = (e as CustomEvent<string>).detail;
+      if (typeof text === 'string' && text.trim()) void sendRef.current(text);
+    };
+    window.addEventListener(VOICE_SEND_EVENT, onVoice);
+    return () => window.removeEventListener(VOICE_SEND_EVENT, onVoice);
+  }, []);
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
@@ -640,7 +654,18 @@ export function InputArea() {
               reason={micReason}
             />
             <button
-              onClick={sendMessage}
+              type="button"
+              onClick={() => useAppStore.getState().setVoiceModeOpen(true)}
+              disabled={!selectedModel}
+              className="p-2 rounded-xl transition-all shrink-0 cursor-pointer disabled:opacity-35 disabled:cursor-default"
+              style={{ color: 'var(--color-accent)' }}
+              title={`Talk to Ghost hands-free (${shortcutLabel('Shift+Space')})`}
+              aria-label="Voice mode"
+            >
+              <AudioLines size={16} />
+            </button>
+            <button
+              onClick={() => void sendMessage()}
               disabled={streamState.isStreaming || !input.trim() || modelLoading || !selectedModel}
               title={selectedModel ? 'Send message' : `Pick a model first (${shortcutLabel('K')})`}
               className="p-2 rounded-xl transition-colors shrink-0 cursor-pointer disabled:opacity-30 disabled:cursor-default"

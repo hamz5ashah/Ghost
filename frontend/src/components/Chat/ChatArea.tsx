@@ -63,6 +63,8 @@ export function ChatArea() {
 
     if (!justFinished) return;
     if (!voiceOutputEnabled || !voiceAutoplay) return;
+    // Voice mode speaks replies itself.
+    if (tts.conversationActive) return;
 
     if (!last || last.role !== 'assistant' || activeId === null) return;
 

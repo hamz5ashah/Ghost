@@ -764,3 +764,7 @@
 @keyframes butler-spin { to { transform: rotate(360deg); } }
 @keyframes butler-pulse { 0%, 100% { opacity: .75; transform: scale(.94); } 50% { opacity: 1; transform: scale(1.05); } }
 @media (prefers-reduced-motion: reduce) { .butler-ring, .butler-glow { animation: none; } }
+
+/* Voice mode: the core spins faster while Ghost is thinking. */
+.voice-thinking .butler-ring-outer { animation-duration: 2.2s; }
+.voice-thinking .butler-ring-mid { animation-duration: 1.6s; }

@@ -5,6 +5,7 @@ from __future__ import annotations
 import logging
 import os
 import tempfile
+import threading
 from typing import List, Optional
 
 from ghost.core.registry import SpeechRegistry
@@ -40,6 +41,9 @@ class FasterWhisperBackend(SpeechBackend):
         self._compute_type = compute_type
         self._model: Optional[WhisperModel] = None
         self._last_error: Optional[str] = None
+        # Extra model sizes requested per call (e.g. "small" for Urdu).
+        self._models_by_size: dict = {}
+        self._load_lock = threading.Lock()
 
     def _resolve_compute_type(self) -> str:
         """Pick a CTranslate2 compute type supported by the configured device."""
@@ -77,6 +81,22 @@ class FasterWhisperBackend(SpeechBackend):
         )
         return fallback
 
+    def ensure_model_size(self, size: str) -> WhisperModel:
+        """Load (downloading on first use) the Whisper model *size*."""
+        if size == self._model_size:
+            return self._ensure_model()
+        with self._load_lock:
+            model = self._models_by_size.get(size)
+            if model is None:
+                if WhisperModel is None:
+                    raise ImportError("faster-whisper is not installed")
+                model = WhisperModel(size, device=self._device, compute_type=self._resolve_compute_type())
+                self._models_by_size[size] = model
+        return model
+
+    def has_model_size(self, size: str) -> bool:
+        return (size == self._model_size and self._model is not None) or size in self._models_by_size
+
     def _ensure_model(self) -> WhisperModel:
         """Lazy-load the Whisper model on first use."""
         if self._model is None:
@@ -101,10 +121,15 @@ class FasterWhisperBackend(SpeechBackend):
         *,
         format: str = "wav",
         language: Optional[str] = None,
+        model_size: Optional[str] = None,
     ) -> TranscriptionResult:
-        """Transcribe audio bytes using Faster-Whisper."""
+        """Transcribe audio bytes using Faster-Whisper.
+
+        *model_size* picks a different Whisper size for this call (e.g.
+        "small" for Urdu, which the default "base" handles poorly).
+        """
         try:
-            model = self._ensure_model()
+            model = self.ensure_model_size(model_size) if model_size else self._ensure_model()
 
             # Write audio to a temp file (faster-whisper needs a file path).
             # delete=False + manual unlink: on Windows an open
@@ -116,7 +141,8 @@ class FasterWhisperBackend(SpeechBackend):
                 with tmp:
                     tmp.write(audio)
 
-                kwargs = {}
+                # Skip silence/noise so pauses don't turn into invented words.
+                kwargs = {"vad_filter": True}
                 if language:
                     kwargs["language"] = language
 

@@ -13,6 +13,7 @@ import { Toaster } from './components/ui/sonner';
 import { useAppStore } from './lib/store';
 import { fetchModels, fetchServerInfo, fetchSavings, submitSavings, isTauri, isMobileApp } from './lib/api';
 import { MobileConnect } from './components/MobileConnect';
+import { VoiceMode } from './components/Chat/VoiceMode';
 import { setVoicePreferences } from './lib/tts';
 import { OptInModal } from './components/OptInModal';
 import { UpdateChecker } from './components/Desktop/UpdateChecker';
@@ -34,6 +35,8 @@ export default function App() {
   const settings = useAppStore((s) => s.settings);
   const commandPaletteOpen = useAppStore((s) => s.commandPaletteOpen);
   const setCommandPaletteOpen = useAppStore((s) => s.setCommandPaletteOpen);
+  const voiceModeOpen = useAppStore((s) => s.voiceModeOpen);
+  const setVoiceModeOpen = useAppStore((s) => s.setVoiceModeOpen);
   const optInEnabled = useAppStore((s) => s.optInEnabled);
   const optInDisplayName = useAppStore((s) => s.optInDisplayName);
   const optInEmail = useAppStore((s) => s.optInEmail);
@@ -174,6 +177,12 @@ export default function App() {
   // Global keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.code === 'Space') {
+        e.preventDefault();
+        const app = useAppStore.getState();
+        app.setVoiceModeOpen(!app.voiceModeOpen);
+        return;
+      }
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
         setCommandPaletteOpen(!commandPaletteOpen);
@@ -205,6 +214,7 @@ export default function App() {
       </Routes>
       <Toaster position="bottom-right" />
       {commandPaletteOpen && <CommandPalette />}
+      {voiceModeOpen && <VoiceMode onClose={() => setVoiceModeOpen(false)} />}
       {optInModalOpen && (
         <OptInModal onClose={() => setOptInModalOpen(false)} />
       )}
