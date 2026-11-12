@@ -6,7 +6,7 @@ vi.mock('./api', () => ({
 }));
 
 import { synthesizeSpeech, fetchTtsHealth } from './api';
-import { useTtsStore, __resetTtsForTests, shouldAutoplayFinishedReply } from './tts';
+import { useTtsStore, __resetTtsForTests, shouldAutoplayFinishedReply, splitForSpeech, setVoicePreferences } from './tts';
 
 const synth = vi.mocked(synthesizeSpeech);
 const health = vi.mocked(fetchTtsHealth);
@@ -250,5 +250,33 @@ describe('autoplay gating', () => {
     expect(
       shouldAutoplayFinishedReply('chat-1', 'chat-2', true, { role: 'assistant', id: 'old' }, null),
     ).toBe(false);
+  });
+});
+
+describe('natural voice playback', () => {
+  it('splits long replies into sentence-sized pieces', () => {
+    expect(splitForSpeech('Short one. Another!')).toEqual(['Short one. Another!']);
+    const long = Array.from({ length: 12 }, (_, i) => `Sentence number ${i} is here.`).join(' ');
+    const pieces = splitForSpeech(long, 80);
+    expect(pieces.length).toBeGreaterThan(3);
+    expect(pieces.every((p) => p.length <= 80)).toBe(true);
+    expect(pieces.join(' ')).toBe(long);
+  });
+
+  it('plays pieces in order with the chosen engine and voice', async () => {
+    setVoicePreferences({ voiceName: '', persona: 'jarvis', engine: 'kokoro_onnx', kokoroVoice: 'bm_lewis' });
+    synth.mockResolvedValue(new Blob(['wav']));
+    const text = Array.from({ length: 20 }, (_, i) => `This is sentence ${i}.`).join(' ');
+
+    await useTtsStore.getState().speak('m1', text);
+    expect(synth.mock.calls[0][1]).toMatchObject({ backend: 'kokoro_onnx', voiceId: 'bm_lewis' });
+    expect(FakeAudio.instances).toHaveLength(1);
+    expect(useTtsStore.getState().state).toBe('speaking');
+
+    FakeAudio.instances[0].onended?.();
+    await new Promise((r) => setTimeout(r, 0));
+    expect(FakeAudio.instances).toHaveLength(2);
+
+    setVoicePreferences({ voiceName: '', persona: 'professional' });
   });
 });

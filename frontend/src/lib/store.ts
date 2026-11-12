@@ -36,6 +36,7 @@ export interface AgentEvent {
 
 const CONVERSATIONS_KEY = 'ghost-conversations';
 import type { Persona, ResponseStyle } from './assistant-prompt';
+import type { VoiceEngine } from './tts';
 
 const SETTINGS_KEY = 'ghost-settings';
 
@@ -126,6 +127,10 @@ interface Settings {
   voiceName: string;
   /** Greet the user aloud when the app opens (needs voice output). */
   greetOnStartup: boolean;
+  /** Settings → Assistant → Voice engine (see lib/tts.ts). */
+  voiceEngine: VoiceEngine;
+  kokoroVoice: string;
+  elevenVoice: string;
 }
 
 function loadSettings(): Settings {
@@ -148,6 +153,9 @@ function loadSettings(): Settings {
     honorific: 'sir',
     voiceName: '',
     greetOnStartup: false,
+    voiceEngine: 'auto',
+    kokoroVoice: 'bm_george',
+    elevenVoice: 'JBFqnCBsd6RMkjVDRZzb',
   };
   try {
     const raw = localStorage.getItem(SETTINGS_KEY);

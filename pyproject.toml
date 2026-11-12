@@ -108,6 +108,9 @@ desktop = [
     "numpy>=1.24",
     "sounddevice>=0.5",
     "soundfile>=0.12",
+    # Offline natural voice (Kokoro on ONNX Runtime): no PyTorch, and espeak-ng
+    # ships inside espeakng-loader, so it installs cleanly on Windows.
+    "kokoro-onnx>=0.5",
 ]
 # Local neural TTS. Kokoro pulls spacy/misaki for G2P; espeak-ng must also be
 # present on PATH (brew install espeak-ng) for out-of-dictionary words.

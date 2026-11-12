@@ -38,6 +38,9 @@ class SpeechSynthesizeRequest(BaseModel):
     text: str
     voice_id: Optional[str] = None
     speed: Optional[float] = None
+    # Explicit engine chosen in the app ("kokoro_onnx", "elevenlabs", …).
+    # Omitted: the server's configured/discovered backend.
+    backend: Optional[str] = None
 
 
 class MemoryStoreRequest(BaseModel):
@@ -1128,6 +1131,66 @@ def _tts_voice_and_speed(request: Request, backend) -> tuple[str, float]:
     return voice_id, speed
 
 
+# Engines the app can pick explicitly (Settings → Assistant → Voice).
+_SELECTABLE_TTS = ("kokoro_onnx", "elevenlabs")
+
+
+def _named_tts_backend(request: Request, name: str):
+    """Return a ready instance of the TTS backend *name*, or None.
+
+    Instances are cached per engine; a cached one is re-checked each time so a
+    just-finished model download or a newly saved API key takes effect.
+    """
+    if name not in _SELECTABLE_TTS:
+        return None
+    import ghost.speech  # noqa: F401  (registers built-in backends)
+    from ghost.core.registry import TTSRegistry
+
+    if not TTSRegistry.contains(name):
+        return None
+    cache = getattr(request.app.state, "tts_engines", None)
+    if cache is None:
+        cache = request.app.state.tts_engines = {}
+    backend = cache.get(name)
+    try:
+        if backend is None or not backend.health():
+            backend = TTSRegistry.get(name)()
+            if not backend.health():
+                return None
+            cache[name] = backend
+    except Exception:
+        logger.debug("TTS engine %s unavailable", name, exc_info=True)
+        return None
+    return backend
+
+
+@speech_router.get("/voices")
+async def list_voice_engines(request: Request):
+    """Which voice engines are ready, plus the offline model's download state."""
+    from ghost.speech import kokoro_onnx_tts as kokoro
+
+    def probe():
+        return {name: _named_tts_backend(request, name) is not None for name in _SELECTABLE_TTS}
+
+    ready = await asyncio.to_thread(probe)
+    return {
+        "kokoro_onnx": {
+            "available": ready.get("kokoro_onnx", False),
+            "download": kokoro.download_status(),
+            "voices": kokoro.VOICES,
+        },
+        "elevenlabs": {"available": ready.get("elevenlabs", False)},
+    }
+
+
+@speech_router.post("/voices/kokoro_onnx/download")
+async def download_offline_voice():
+    """Start the one-time offline voice model download (~350 MB)."""
+    from ghost.speech import kokoro_onnx_tts as kokoro
+
+    return kokoro.start_model_download()
+
+
 @speech_router.post("/synthesize")
 async def synthesize_speech(request: Request, body: SpeechSynthesizeRequest):
     """Synthesize text to speech and return the audio as WAV."""
@@ -1140,7 +1203,15 @@ async def synthesize_speech(request: Request, body: SpeechSynthesizeRequest):
             detail=f"Text exceeds {_MAX_TTS_CHARS} characters",
         )
 
-    backend = await _resolve_tts_backend(request)
+    if body.backend:
+        backend = await asyncio.to_thread(_named_tts_backend, request, body.backend)
+        if backend is None:
+            raise HTTPException(
+                status_code=503,
+                detail=f"Voice engine '{body.backend}' is not ready",
+            )
+    else:
+        backend = await _resolve_tts_backend(request)
     if backend is None:
         raise HTTPException(
             status_code=501, detail="No text-to-speech backend available"
