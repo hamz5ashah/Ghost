@@ -1183,6 +1183,19 @@ async def list_voice_engines(request: Request):
     }
 
 
+@speech_router.get("/voices/elevenlabs")
+async def list_elevenlabs_voices(request: Request):
+    """Voices in the user's ElevenLabs account, for the app's voice picker."""
+    backend = await asyncio.to_thread(_named_tts_backend, request, "elevenlabs")
+    if backend is None:
+        raise HTTPException(status_code=503, detail="ElevenLabs is not connected")
+    try:
+        voices = await asyncio.to_thread(backend.voice_catalog)
+    except Exception as exc:
+        raise HTTPException(status_code=502, detail=str(exc)) from None
+    return {"voices": voices}
+
+
 @speech_router.post("/voices/kokoro_onnx/download")
 async def download_offline_voice():
     """Start the one-time offline voice model download (~350 MB)."""

@@ -2,7 +2,9 @@ import { useCallback, useEffect, useState } from 'react';
 import { AudioLines, Check, Download, Loader2, Monitor, Sparkles, Cloud, ExternalLink } from 'lucide-react';
 import { useAppStore } from '../lib/store';
 import {
+  fetchElevenLabsVoices,
   fetchVoiceEngines,
+  type ElevenLabsVoice,
   getCloudKeyStatus,
   isTauri,
   saveCloudKey,
@@ -46,6 +48,8 @@ export function VoiceEngineSection() {
   const [elevenConnected, setElevenConnected] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
+  const [accountVoices, setAccountVoices] = useState<ElevenLabsVoice[]>([]);
+  const [customVoiceId, setCustomVoiceId] = useState('');
   const [systemVoiceList, setSystemVoiceList] = useState<SpeechSynthesisVoice[]>(() => listSystemVoices());
 
   // System voices load asynchronously in Chromium/WebView2.
@@ -73,6 +77,13 @@ export function VoiceEngineSection() {
   }, []);
 
   useEffect(() => { void refresh(); }, [refresh]);
+
+  // ElevenLabs: load the voices in the user's account once it is connected.
+  const elevenReady = !!engines?.elevenlabs.available || elevenConnected;
+  useEffect(() => {
+    if (engine !== 'elevenlabs' || !elevenReady) return;
+    fetchElevenLabsVoices().then(setAccountVoices).catch(() => setAccountVoices([]));
+  }, [engine, elevenReady]);
 
   // Poll while the offline voice downloads.
   const downloading = engines?.kokoro_onnx.download.state === 'downloading';
@@ -247,13 +258,50 @@ export function VoiceEngineSection() {
                 style={fieldStyle}
                 aria-label="ElevenLabs voice"
               >
-                {Object.entries(ELEVEN_VOICES).map(([id, label]) => <option key={id} value={id}>{label}</option>)}
+                {accountVoices.length > 0 && (
+                  <optgroup label="Your ElevenLabs voices">
+                    {accountVoices.map((v) => (
+                      <option key={v.id} value={v.id}>{v.name}{v.description ? ` — ${v.description}` : ''}</option>
+                    ))}
+                  </optgroup>
+                )}
+                <optgroup label="Popular voices">
+                  {Object.entries(ELEVEN_VOICES).map(([id, label]) => <option key={id} value={id}>{label}</option>)}
+                </optgroup>
+                {!ELEVEN_VOICES[settings.elevenVoice] && !accountVoices.some((v) => v.id === settings.elevenVoice) && (
+                  <option value={settings.elevenVoice}>Custom: {settings.elevenVoice}</option>
+                )}
               </select>
               <TestButton onClick={() => void speak('voice-test', sample)} />
             </div>
           </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <input
+              value={customVoiceId}
+              onChange={(e) => setCustomVoiceId(e.target.value)}
+              placeholder="Or paste a voice ID from the ElevenLabs Voice Library"
+              spellCheck={false}
+              aria-label="ElevenLabs voice ID"
+              className="flex-1 min-w-[220px] text-sm px-3 py-1.5 rounded-lg outline-none font-mono"
+              style={fieldStyle}
+            />
+            <button
+              type="button"
+              disabled={!/^[A-Za-z0-9]{10,40}$/.test(customVoiceId.trim())}
+              onClick={() => { updateSettings({ elevenVoice: customVoiceId.trim() }); setCustomVoiceId(''); }}
+              className="text-xs px-3 py-1.5 rounded-lg cursor-pointer disabled:opacity-50"
+              style={{ color: 'var(--color-accent)', border: '1px solid var(--color-accent)' }}
+            >
+              Use this voice
+            </button>
+            <a href="https://elevenlabs.io/app/voice-library" target="_blank" rel="noopener noreferrer"
+              className="text-xs flex items-center gap-1" style={{ color: 'var(--color-accent)' }}>
+              Browse Voice Library <ExternalLink size={11} />
+            </a>
+          </div>
           <p className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>
-            Text is sent to ElevenLabs to be spoken; usage counts against your ElevenLabs plan.
+            Voices you add in ElevenLabs show up in the list above. Text is sent to ElevenLabs to be spoken;
+            usage counts against your ElevenLabs plan.
           </p>
         </div>
       )}

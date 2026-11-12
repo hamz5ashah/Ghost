@@ -494,6 +494,15 @@ export async function fetchVoiceEngines(): Promise<VoiceEngines> {
   return res.json();
 }
 
+export interface ElevenLabsVoice { id: string; name: string; description: string }
+
+/** Voices in the user's ElevenLabs account (including Voice Library additions). */
+export async function fetchElevenLabsVoices(): Promise<ElevenLabsVoice[]> {
+  const res = await apiFetch('/v1/speech/voices/elevenlabs');
+  if (!res.ok) throw new Error(`ElevenLabs voices unavailable: ${res.status}`);
+  return (await res.json()).voices ?? [];
+}
+
 /** Start the one-time download of the offline natural voice (~350 MB). */
 export async function startOfflineVoiceDownload(): Promise<void> {
   const res = await apiFetch('/v1/speech/voices/kokoro_onnx/download', { method: 'POST' });
