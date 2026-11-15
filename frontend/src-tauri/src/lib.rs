@@ -345,6 +345,60 @@ fn bundled_backend_dir() -> Option<std::path::PathBuf> {
     dir.join("pyproject.toml").is_file().then_some(dir)
 }
 
+// ---------------------------------------------------------------------------
+// Stonic media resources (Phase 1 of /STONIC_PORT_PLAN.md)
+// ---------------------------------------------------------------------------
+
+/// Subfolders of `stonic/` the frontend may ask for. An allow-list rather than
+/// a free path, so a renderer bug or an injected string cannot turn this into
+/// an arbitrary file read.
+const STONIC_ASSET_KINDS: [&str; 1] = ["video"];
+
+/// Reject anything that is not a plain file name: no separators, no `..`, no
+/// absolute paths, no leading dot. Pure, so it is tested directly.
+fn is_safe_asset_name(name: &str) -> bool {
+    !name.is_empty()
+        && name.len() <= 128
+        && !name.starts_with('.')
+        && !name.contains("..")
+        && !name.contains('/')
+        && !name.contains('\\')
+        && !name.contains('\0')
+        && !name.contains(':')
+}
+
+/// Resolve `stonic/<kind>/<name>` under a resource root. Pure.
+fn stonic_asset_in(
+    root: &std::path::Path,
+    kind: &str,
+    name: &str,
+) -> Option<std::path::PathBuf> {
+    if !STONIC_ASSET_KINDS.contains(&kind) || !is_safe_asset_name(name) {
+        return None;
+    }
+    let path = root.join("stonic").join(kind).join(name);
+    path.is_file().then_some(path)
+}
+
+/// Absolute path to a bundled Stonic media file, or `None` when this build
+/// does not ship it. The frontend passes the result through `convertFileSrc`.
+#[tauri::command]
+fn stonic_asset_path(kind: String, name: String) -> Option<String> {
+    let root = BUNDLED_RESOURCE_DIR.get()?;
+    stonic_asset_in(root, &kind, &name).map(|p| p.to_string_lossy().into_owned())
+}
+
+/// Whether the Windows-only Stonic helpers shipped beside the executable.
+/// Phase 2 needs `elevate` for the computer-use agent; reporting it here lets
+/// Settings show the real state instead of failing at first use.
+#[tauri::command]
+fn stonic_helpers() -> std::collections::BTreeMap<String, bool> {
+    ["elevate", "swap-helper"]
+        .into_iter()
+        .map(|name| (name.to_string(), bundled_helper(name).is_some()))
+        .collect()
+}
+
 /// Directories never copied out of the bundle (build/cache output).
 const BUNDLE_COPY_SKIP: &[&str] = &["target", "__pycache__", ".venv", "node_modules", ".git"];
 
@@ -3902,6 +3956,8 @@ pub fn run() {
             get_overlay_conversation,
             get_phone_access,
             stonic_flags,
+            stonic_asset_path,
+            stonic_helpers,
             set_phone_access,
         ])
         .build(tauri::generate_context!())
@@ -4047,6 +4103,62 @@ mod tests {
             );
             assert_eq!(flags.get("realtime_voice"), Some(&true));
             assert!(flags.get("auto_install").is_none());
+        }
+
+        #[test]
+        fn safe_asset_names_accept_the_shipped_videos() {
+            for name in [
+                "stonic-ai-engine-guide.mp4",
+                "light-female-1.mp4",
+                "light-female-1r.mp4",
+            ] {
+                assert!(super::super::is_safe_asset_name(name), "{name}");
+            }
+        }
+
+        #[test]
+        fn unsafe_asset_names_are_rejected() {
+            for name in [
+                "",
+                ".hidden",
+                "../secrets",
+                "../../etc/passwd",
+                "a/b.mp4",
+                "a\\b.mp4",
+                "C:/windows/system32/config",
+                "with\0null",
+                "..",
+            ] {
+                assert!(!super::super::is_safe_asset_name(name), "{name:?}");
+            }
+        }
+
+        #[test]
+        fn overlong_asset_names_are_rejected() {
+            let long = format!("{}.mp4", "a".repeat(200));
+            assert!(!super::super::is_safe_asset_name(&long));
+        }
+
+        #[test]
+        fn asset_lookup_rejects_an_unknown_kind() {
+            let dir = std::env::temp_dir();
+            assert!(super::super::stonic_asset_in(&dir, "audio", "x.wav").is_none());
+            assert!(super::super::stonic_asset_in(&dir, "../", "x.wav").is_none());
+        }
+
+        #[test]
+        fn asset_lookup_finds_a_file_that_exists() {
+            let root = std::env::temp_dir().join("ghost-stonic-asset-test");
+            let dir = root.join("stonic").join("video");
+            std::fs::create_dir_all(&dir).unwrap();
+            let file = dir.join("clip.mp4");
+            std::fs::write(&file, b"x").unwrap();
+            assert_eq!(
+                super::super::stonic_asset_in(&root, "video", "clip.mp4"),
+                Some(file)
+            );
+            assert!(super::super::stonic_asset_in(&root, "video", "absent.mp4").is_none());
+            std::fs::remove_dir_all(&root).ok();
         }
 
         #[test]

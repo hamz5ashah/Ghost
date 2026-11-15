@@ -67,7 +67,8 @@
       "../../rust/rust-toolchain.toml": "backend/rust/rust-toolchain.toml",
       "../../rust/crates/": "backend/rust/crates/",
       "../../scripts/install/": "backend/scripts/install/",
-      "../../deploy/windows/": "backend/deploy/windows/"
+      "../../deploy/windows/": "backend/deploy/windows/",
+      "resources/stonic/video/": "stonic/video/"
     }
   },
   "plugins": {

@@ -100,6 +100,11 @@ jobs:
 
       # The Ollama runtime (lib/ollama, CPU + Vulkan) must sit beside
       # ollama.exe; uv.exe goes beside Ghost so the app finds both.
+      # The Stonic helpers (elevate.exe, swap-helper.exe) are Windows-only, so
+      # they are mapped here rather than in tauri.conf.json — that file is
+      # shared with the macOS/Linux jobs, where these binaries do not exist.
+      # Landing them in "./" puts them beside the exe, which is exactly where
+      # bundled_helper() in src/lib.rs looks.
       - name: Write build config
         shell: bash
         run: |
@@ -112,7 +117,8 @@ jobs:
               "resources": {
                 "../../wheels/": "backend/wheels/",
                 "binaries/ollama-runtime-x86_64-pc-windows-msvc/": "./",
-                "binaries/uv-bundle/uv.exe": "uv.exe"
+                "binaries/uv-bundle/uv.exe": "uv.exe",
+                "resources/stonic/win32/": "./"
               }
             }
           }

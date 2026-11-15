@@ -17,6 +17,20 @@ export interface AssistantPreferences {
   /** How the butler persona addresses the user, e.g. "sir". */
   honorific?: string;
   replyLanguage?: ReplyLanguage;
+  /**
+   * Spoken-delivery profile from configs/characters (Stonic port, Phase 1).
+   * Shapes how a reply is *performed* aloud, never who Ghost is. Only takes
+   * effect with a TTS engine that understands bracket cues, which arrives with
+   * the realtime voice engine in Phase 3 — until then this is inert.
+   */
+  character?: CharacterDelivery;
+}
+
+/** The subset of a character file that reaches the system prompt. */
+export interface CharacterDelivery {
+  id: string;
+  /** One line describing the unbracketed voice, e.g. "calm, composed". */
+  naturalVoice?: string;
 }
 
 const LANGUAGE: Record<ReplyLanguage, string> = {
@@ -74,9 +88,29 @@ export function butlerGreeting(honorific: string, now: Date = new Date(), langua
   return `Good ${part}, ${honorific.trim() || 'sir'}.`;
 }
 
+/**
+ * How a spoken reply is delivered, for a selected character.
+ *
+ * Deliberately narrow: it adds performance direction and nothing about
+ * identity. Stonic's original also told the character to deny being an AI and
+ * to credit the Stonic team — both dropped, since the baseline above states
+ * plainly what Ghost is. See configs/prompts/voice_delivery.md.
+ */
+export function characterDelivery(character: CharacterDelivery): string {
+  const voice = (character.naturalVoice ?? '').trim();
+  const natural = voice ? ` Your natural voice is ${voice}.` : '';
+  return `Spoken delivery: this reply is read aloud, so write the words and the performance together.${natural}
+- Square brackets carry performance and are not spoken: a few plain English words set how the sentences after them sound — [warm, delighted], [soft and slow], [urgent, quick], [gentle, reassuring].
+- A bracketed sound happens at that exact spot — [laugh], [chuckle], [sigh], [breath], [short pause], [long pause].
+- Most of what you say needs no brackets at all; use them only where real feeling enters, so they still mean something when they come.
+- Only the words inside brackets are English — everything spoken stays in the user's language.
+- Delivery never outranks accuracy, honesty or the formatting rules above.`;
+}
+
 export function buildSystemPrompt(prefs: AssistantPreferences, now: Date = new Date()): string {
   const parts = [BASELINE];
   if (prefs.persona === 'jarvis') parts.push(butlerPersona(prefs.honorific ?? ''));
+  if (prefs.character) parts.push(characterDelivery(prefs.character));
   if (STYLE[prefs.responseStyle]) parts.push(STYLE[prefs.responseStyle]);
   const lang = LANGUAGE[prefs.replyLanguage ?? 'auto'];
   if (lang) parts.push(lang);

@@ -20,6 +20,7 @@ import { UpdateChecker } from './components/Desktop/UpdateChecker';
 import { track, hashId } from './lib/analytics';
 import { offerAnalyticsChoice } from './lib/analytics-invitation';
 import { LEADERBOARD_ENABLED } from './lib/supabase';
+import { useStonicSounds } from './hooks/useStonicSounds';
 
 export default function App() {
   // The app always opens straight to the main screen. On the desktop, model
@@ -48,6 +49,9 @@ export default function App() {
   const savings = useAppStore((s) => s.savings);
   // Android app: nothing works until the phone is paired with a Ghost PC.
   const needsMobileConnect = isMobileApp() && !settings.apiUrl;
+
+  // Stonic UI sounds. No-op unless the `ui_sounds` flag is on.
+  useStonicSounds();
 
   // Read-aloud uses the voice/persona chosen in Settings → Assistant.
   useEffect(() => {
