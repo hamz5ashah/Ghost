@@ -1427,6 +1427,36 @@ async def stonic_flags(request: Request):
     return {"flags": flags, "available": True}
 
 
+@stonic_router.get("/characters")
+async def stonic_characters(request: Request):
+    """List the character delivery profiles available to the voice engine.
+
+    Reports an empty list when the `characters` flag is off, so the UI needs no
+    separate flag check before rendering the picker. Like the flags endpoint,
+    this is advisory and never raises.
+    """
+    try:
+        config = getattr(request.app.state, "config", None)
+        if config is None:
+            from ghost.core.config import load_config  # noqa: PLC0415
+
+            config = load_config()
+        enabled = bool(getattr(getattr(config, "stonic", None), "characters", False))
+        if not enabled:
+            return {"characters": [], "enabled": False}
+
+        from ghost.speech.characters import selectable_characters  # noqa: PLC0415
+
+        found = selectable_characters()
+        return {
+            "characters": [c.to_dict() for c in found],
+            "enabled": True,
+        }
+    except Exception as exc:
+        logger.warning("Failed to list Stonic characters: %s", exc)
+        return {"characters": [], "enabled": False}
+
+
 @optimize_router.get("/runs/{run_id}")
 async def get_optimize_run(run_id: str, request: Request):
     """Get optimization run details."""

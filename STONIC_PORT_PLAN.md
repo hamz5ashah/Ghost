@@ -68,21 +68,60 @@ Phase 0 result: Python **9,400 passed** / 4 pre-existing failures · frontend
 
 ---
 
-## Phase 1 — media, audio and character assets
+## Phase 1 — media, audio and character assets ✅ complete
 
-- [ ] UI sound effects (16 `.wav`) → `frontend/public/audio/`, behind `ui_sounds`
-- [ ] Sound hook wired to interface events (click, hover, scan, access granted,
-      error, room-tone loop)
-- [ ] Videos (`stonic-ai-engine-guide.mp4`, `light-female-1.mp4`,
-      `light-female-1r.mp4`) → Tauri `bundle.resources`
-- [ ] Avatar image + earth day/night textures
-- [ ] `male_jarvis-*` voice lines kept (14 files); Stonic-specific screen and
-      billing tour lines **dropped** per approval
-- [ ] Character TOMLs → `configs/characters/`, surfaced through
-      `frontend/src/lib/assistant-prompt.ts` next to the `jarvis` persona,
-      behind `characters`
-- [ ] System prompts (`prompt.md`, `agent_prompt.md`, `work_prompt.md`) ported
-- [ ] `elevate.exe` + `swap-helper.exe` → `bundle.externalBin`
+- [x] UI sound effects (16 `.wav`, 8.8 MB) → `frontend/public/stonic/audio/`,
+      behind `ui_sounds`
+- [x] `frontend/src/lib/stonic-sounds.ts` — semantic cue manifest, lazy load
+      (`preload="none"`), volume/mute, loop handling for the ambience bed;
+      playback never throws on a blocked autoplay policy
+- [x] `frontend/src/hooks/useStonicSounds.ts` — delegated click/hover at the
+      document root, one call site in `App.tsx`. Registers **no listeners at
+      all** while the flag is off. Per-element override via `data-sound="…"`
+- [x] Videos (3 files, 12 MB) → `frontend/src-tauri/resources/stonic/video/`,
+      mapped in `tauri.conf.json` as `stonic/video/`
+- [x] `stonic_asset_path` + `stonic_helpers` Tauri commands, with an
+      allow-listed asset kind and a pure `is_safe_asset_name` guard
+- [x] Avatar image + earth day/night textures →
+      `frontend/public/stonic/images/`
+- [x] `male_jarvis-*` voice lines (14 files) → `frontend/public/stonic/voice/`;
+      Stonic-specific screen and billing tour lines dropped per approval
+- [x] Character TOMLs → `configs/characters/`; `src/ghost/speech/characters.py`
+      loader; `GET /v1/stonic/characters` (flag-gated, dev-only hidden);
+      `characterDelivery()` in `assistant-prompt.ts`
+- [x] Voice delivery prompt → `configs/prompts/voice_delivery.md`
+- [x] `elevate.exe` + `swap-helper.exe` → `frontend/src-tauri/resources/stonic/win32/`,
+      mapped to `./` in the **CI Windows overlay** (not `tauri.conf.json`,
+      which is shared with the macOS/Linux jobs where these binaries don't
+      exist), landing beside the exe where `bundled_helper()` already looks
+- [x] Tests: **+37 Python**, **+65 frontend**, **+5 Rust**
+
+Phase 1 result: Python **9,437 passed** / 4 pre-existing failures · frontend
+**215** · desktop **73** · lint still 25.
+
+### Decisions taken in Phase 1
+
+**Three instructions from Stonic's `prompt.md` were deliberately not ported**
+(recorded at the top of `configs/prompts/voice_delivery.md`): never calling
+itself an AI, never using the word "AI" about itself, and crediting the Stonic
+AI team / "Inventor Usman" as its maker and owner. Ghost's own baseline prompt
+says plainly that it is the user's personal AI assistant and forbids claiming
+to be another branded assistant, so those lines would have contradicted it. The
+valuable part — the bracket performance system — was ported in full. Tests
+assert the omissions stay omitted.
+
+**Bracket cues are inert until Phase 3.** They need a TTS engine that
+understands them. Kokoro ONNX does not, so selecting a character changes
+nothing audible until the realtime voice engine lands.
+
+**Five of the 14 `male_jarvis-*` lines narrate Stonic's own screens** —
+`billing`, `classic`, `new`, `lanes`, `floating`. All 14 are committed, but
+those five describe features and a subscription model Ghost does not have, so
+they need re-recording before any guided tour uses them.
+
+**Installer cost: ~21 MB** (8.8 MB audio + 12 MB video + 600 KB images +
+672 KB voice). The WAVs are lossless; re-encoding to Opus would recover ~8 MB
+if that matters more than keeping the originals byte-exact.
 
 ## Phase 2 — computer use (Agent S3) + OCR fix
 
