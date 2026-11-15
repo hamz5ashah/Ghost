@@ -1938,6 +1938,147 @@ async def facelock_asset(request: Request, name: str):
     )
 
 
+# ---------------------------------------------------------------------------
+# Awareness (Stonic port, Phase 5)
+# ---------------------------------------------------------------------------
+#
+# Off unless [stonic].awareness is on AND the user switches it on in Settings.
+# Signals come from the desktop shell's sensor; nothing here reads the screen.
+
+awareness_router = APIRouter(prefix="/v1/awareness", tags=["awareness"])
+
+
+class AwarenessConfigBody(BaseModel):
+    enabled: Optional[bool] = None
+    character: Optional[Dict[str, Any]] = None
+
+
+class AwarenessOutcomeBody(BaseModel):
+    t: float
+    outcome: str
+    reply: str = ""
+
+
+class AwarenessQuietBody(BaseModel):
+    minutes: float = 60
+
+
+def _awareness(request: Request):
+    if not _stonic_flag(request, "awareness"):
+        return None, JSONResponse(
+            status_code=403,
+            content={
+                "ok": False,
+                "error": "disabled",
+                "message": "Turn on [stonic].awareness to use awareness.",
+            },
+        )
+    from ghost.daemon.awareness import service  # noqa: PLC0415
+
+    return service.ensure_service(request.app.state), None
+
+
+@awareness_router.get("/status")
+async def awareness_status(request: Request):
+    if not _stonic_flag(request, "awareness"):
+        return {"available": False, "enabled": False}
+    svc, _ = _awareness(request)
+    return await asyncio.to_thread(svc.status)
+
+
+@awareness_router.post("/configure")
+async def awareness_configure(request: Request, body: AwarenessConfigBody):
+    svc, refused = _awareness(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(svc.configure, body.enabled, body.character)
+
+
+@awareness_router.post("/signals")
+async def awareness_signals(request: Request):
+    """One sample from the desktop shell's sensor. Write-only: returns nothing."""
+    if not _stonic_flag(request, "awareness"):
+        return JSONResponse(status_code=204, content=None)
+    try:
+        sample = await request.json()
+    except ValueError:
+        return JSONResponse(status_code=400, content={"ok": False})
+    if not isinstance(sample, dict):
+        return JSONResponse(status_code=400, content={"ok": False})
+    svc, _ = _awareness(request)
+    await asyncio.to_thread(svc.ingest, sample)
+    return JSONResponse(status_code=204, content=None)
+
+
+@awareness_router.post("/activity")
+async def awareness_activity(request: Request):
+    svc, refused = _awareness(request)
+    if refused is not None:
+        return refused
+    try:
+        body = await request.json()
+    except ValueError:
+        body = {}
+    svc.activity(body if isinstance(body, dict) else {})
+    return {"ok": True}
+
+
+@awareness_router.post("/outcome")
+async def awareness_outcome(request: Request, body: AwarenessOutcomeBody):
+    svc, refused = _awareness(request)
+    if refused is not None:
+        return refused
+    ok = await asyncio.to_thread(
+        svc.engine.report_outcome, body.t, body.outcome, body.reply
+    )
+    return {"ok": ok}
+
+
+@awareness_router.post("/quiet")
+async def awareness_quiet(request: Request, body: AwarenessQuietBody):
+    svc, refused = _awareness(request)
+    if refused is not None:
+        return refused
+    svc.engine.quiet_for(min(max(body.minutes, 1), 720), "you asked")
+    return {"ok": True, **svc.status()}
+
+
+@awareness_router.post("/think-now")
+async def awareness_think_now(request: Request):
+    svc, refused = _awareness(request)
+    if refused is not None:
+        return refused
+    decision = await asyncio.to_thread(svc.engine.beat_now)
+    return {"ok": decision is not None, "decision": decision}
+
+
+@awareness_router.get("/events")
+async def awareness_events(request: Request, after: int = 0):
+    svc, refused = _awareness(request)
+    if refused is not None:
+        return refused
+    return svc.events(after)
+
+
+@awareness_router.get("/diary")
+async def awareness_diary(request: Request):
+    """What the eyes recorded today, the same text the model reads."""
+    svc, refused = _awareness(request)
+    if refused is not None:
+        return refused
+    snap = await asyncio.to_thread(svc.eyes.snapshot)
+    keep = ("running", "digest", "recentDays", "today", "todayApps", "active")
+    return {k: snap.get(k) for k in keep}
+
+
+@awareness_router.post("/forget")
+async def awareness_forget(request: Request):
+    svc, refused = _awareness(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(svc.forget)
+
+
 @optimize_router.get("/runs/{run_id}")
 async def get_optimize_run(run_id: str, request: Request):
     """Get optimization run details."""
@@ -1999,6 +2140,7 @@ def include_all_routes(app) -> None:
     app.include_router(realtime_router)
     app.include_router(facelock_router)
     app.include_router(facelock_assets_router)
+    app.include_router(awareness_router)
 
     # Agent Manager routes (if available)
     try:
@@ -2057,4 +2199,5 @@ __all__ = [
     "realtime_router",
     "facelock_router",
     "facelock_assets_router",
+    "awareness_router",
 ]

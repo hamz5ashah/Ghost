@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "presence",
+  "description": "Desktop presence (Stonic port, phase 5): the notch overlay and the living wallpaper. They only listen for Ghost's own events and call Ghost's presence commands — no shell, dialog, updater or file access.",
+  "windows": ["presence", "wallpaper"],
+  "permissions": ["core:event:default", "core:app:default"]
+}

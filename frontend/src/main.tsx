@@ -7,6 +7,9 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 import App from './App';
 import { initApiBase, isTauri } from './lib/api';
 import { initAnalytics } from './lib/analytics';
+import { modeFromSearch } from './lib/presence';
+import { PresenceOverlay } from './components/presence/PresenceOverlay';
+import { LivingWallpaper } from './components/presence/LivingWallpaper';
 import './index.css';
 
 function applyTheme() {
@@ -59,6 +62,17 @@ dropStaleDesktopCache().then((reloading) => {
 // This ensures GHOST_PORT is defined in one place (the Rust backend).
 // In non-Tauri environments this is a no-op.
 function start() {
+  // Desktop presence windows (Stonic port, phase 5) render a single small
+  // page each: no router, no analytics, no app shell.
+  const { mode, size } = modeFromSearch(window.location.search);
+  if (mode !== 'app') {
+    createRoot(document.getElementById('root')!).render(
+      <StrictMode>
+        {mode === 'presence' ? <PresenceOverlay initialSize={size} /> : <LivingWallpaper />}
+      </StrictMode>,
+    );
+    return;
+  }
   initApiBase().finally(() => {
     // Kick off analytics init in the background — it's never awaited so
     // a slow/failed identity fetch never delays UI render.

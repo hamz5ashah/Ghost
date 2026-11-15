@@ -716,6 +716,9 @@ GATE_ALLOW_PREFIXES = (
     # The desktop shell pushes keyring keys at startup; refusing it would leave
     # the backend keyless after the owner unlocks.
     "/v1/cloud/reload",
+    # The desktop shell's awareness sensor: write-only, nothing comes back.
+    # Refusing it would make awareness miss the unlock it should notice.
+    "/v1/awareness/signals",
 )
 
 
