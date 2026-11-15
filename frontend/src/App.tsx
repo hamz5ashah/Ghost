@@ -23,6 +23,7 @@ import { LEADERBOARD_ENABLED } from './lib/supabase';
 import { useStonicSounds } from './hooks/useStonicSounds';
 import { useWakeWord } from './hooks/useWakeWord';
 import { FaceLockGate } from './components/facelock/FaceLockGate';
+import { useAwareness } from './hooks/useAwareness';
 
 export default function App() {
   // The app always opens straight to the main screen. On the desktop, model
@@ -57,6 +58,9 @@ export default function App() {
   useWakeWord();
 
   // Read-aloud uses the voice/persona chosen in Settings → Assistant.
+  // Phase 5: awareness lines and desktop-presence relay (no-op unless their flags are on).
+  useAwareness();
+
   useEffect(() => {
     setVoicePreferences({
       voiceName: settings.voiceName,

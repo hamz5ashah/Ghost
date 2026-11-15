@@ -315,6 +315,8 @@ select = ["E", "F", "I", "W"]
 # stonic-voice with its Roman Urdu comments kept verbatim.
 "src/ghost/voice_sidecar/*.py" = ["E501"]
 "src/ghost/voice_sidecar/ghost_voice/*.py" = ["E501"]
+# Awareness prompt and log text is kept verbatim from Stonic (Phase 5).
+"src/ghost/daemon/awareness/*.py" = ["E501"]
 
 [dependency-groups]
 dev = [

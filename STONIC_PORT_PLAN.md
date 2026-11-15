@@ -364,13 +364,113 @@ Both features are off unless `[stonic].facelock` / `[stonic].gestures` is on.
       0.59 signatures but not compiled for Windows here (the Windows Rust
       target could not be downloaded); the Windows build confirms it
 
-## Phase 5 — awareness and desktop presence
+## Phase 5 — awareness and desktop presence — complete
 
-- [ ] `awareness-manager` / `-timeline` / `-focus-watch` → Rust + `src/ghost/daemon/`
-- [ ] Idle / lock / sleep / battery / active-window / mic state
-- [ ] Local diary + proactive speak decision
-- [ ] `desktop-presence` — always-on-top notch overlay with click-through
-- [ ] Living wallpaper layer (Windows only)
+Flags: `[stonic].awareness` and `[stonic].desktop_presence`, both off. Each
+also needs the user's own switch in Settings → Security & input (awareness is
+double opt-in: flag + `<config>/awareness/settings.json`; presence prefs live
+in `~/.ghost/desktop-presence.json`, `enabled: false` by default).
+
+### Done
+
+- [x] **Eyes** — `src/ghost/daemon/awareness/{timeline,eyes,moments}.py`,
+      ported from `awareness-manager.js` / `awareness-timeline.js` and the
+      moment detector recovered from Stonic's renderer bundle: away / back,
+      Windows lock and sleep, battery, front app and title, mic-in-call,
+      "screen kept awake" (video), the day ledger (5 AM day cut), a rolling
+      diary at `<config>/awareness/diary.json` (stale diary deleted after 18 h
+      off), and the moments: call ended, video ended, stretch, late night,
+      restless switching
+- [x] **Sensor** — `frontend/src-tauri/src/awareness_sensor.rs` replaces
+      Stonic's PowerShell/C# `awareness-focus-watch`: native Win32 every 2 s
+      (`GetLastInputInfo`, input-desktop lock check, `GetSystemPowerStatus`,
+      foreground window/process, ConsentStore mic users, `ES_DISPLAY_REQUIRED`,
+      a 30 s wall-clock gap = slept), posted to `POST /v1/awareness/signals`.
+      It runs in the shell, not the WebView, so minimising Ghost doesn't
+      throttle it, and it sends nothing unless the flag is on
+- [x] **Brain** — `brain.py` + `engine.py`: Stonic's decision prompt and
+      parser, and the whole engine (`TFe`): pending triggers with settle
+      times, hello / heartbeat / follow-ups, the call / rest / cap /
+      in-conversation / away / unchanged-screen gates, the token bucket and
+      adaptive gap (answered ×0.7, ignored ×1.4, dismissed ×2, 4–60 min),
+      300 thoughts / 30 spoken lines a day, all tunables as recovered.
+      Thinks with Ghost's own engine and model (`make_think`); state in
+      `state.json` / `thoughts.json` / `journal.json`
+- [x] **API** — `/v1/awareness/*`: status, configure, signals (write-only,
+      204, allowed through the Face Lock gate), activity, outcome, quiet,
+      think-now, events, diary, forget; everything but status/signals is 403
+      while the flag is off
+- [x] **Voice** — `useAwareness` (main window): polls events, speaks a line
+      with Ghost's own TTS (never during voice mode, a streaming reply or
+      other speech; stale lines from before launch are dropped), reports
+      answered / dismissed (ignored settles by itself after 2 min), and sends
+      the conversation state every 10 s so the brain never talks over you
+- [x] **Desktop presence** — `frontend/src-tauri/src/presence.rs` +
+      `components/presence/PresenceOverlay.tsx`: Stonic's notch (236×38 pill
+      → 376-wide panel with the character, caption, talk / quiet / open /
+      more; size S/M/L, "Leave the desktop"; thought bubble for 3 min).
+      Transparent, always on top, no taskbar entry, never focusable, top
+      centre of the work area of the screen Ghost was on. Click-through
+      everywhere except the hit rect the page reports (the shell polls the
+      cursor, since Tauri has no "ignore but forward" mode). Shows on
+      minimise, hides on restore, full-screen apps
+      (`SHQueryUserNotificationState`) and Windows lock
+- [x] **Living wallpaper** (Windows) — Stonic's WorkerW attach ported to
+      Rust (Progman `0x052C`, raised 24H2+ desktop vs classic WorkerW,
+      layered child under `SHELLDLL_DefView`, spans the virtual screen,
+      fades in), "covered" detection (every monitor's work area ≥90 % under a
+      visible window → rest), re-attach after Explorer restarts, switches
+      itself off with a reason if attach fails. The page
+      (`LivingWallpaper.tsx` + `lib/wallpaper-gl.ts`) uses the recovered
+      shaders verbatim: quarter-res fbm nebula, dither blit, 3800 stars +
+      2200 orbiting motes (seed 334462), 20/30 fps, 12/24 on battery, night
+      dimming 20:00–07:00, flare when a conversation starts
+- [x] Asset protocol enabled, scoped to `$RESOURCE/stonic/video/*` only, with
+      `asset:` / `http://asset.localhost` added to CSP `media-src`, for the
+      optional "Light figure" avatar (`light-female-1.mp4`)
+- [x] New windows get their own capability (`capabilities/presence.json`):
+      events only — no shell, dialog, updater or file permissions
+
+### Deviations
+
+- **No screen or camera looks.** Stonic's brain could ask to look at the
+  screen or camera; Ghost's schema offers only `silent` / `speak`, and a
+  `look` answer from the model is treated as silent
+- **No memory or promises.** Stonic's awareness wrote to its memory store and
+  tracked promises; that waits for Phase 6. The engine keeps only its own
+  short journal
+- **Awareness context is not injected into chats.** Stonic added the diary to
+  ordinary chat prompts; Ghost keeps it to the awareness brain
+- **Simpler avatar.** Stonic's particle-from-video character is replaced by
+  Ghost's orb (default) or a masked `<video>` of the light figure using the
+  same per-phase tempo table; the 5 tour clips stay unwired
+- "Mute" on the notch means *quiet for an hour* (stop talking, awareness
+  rests), not mic mute — voice mode owns the mic
+- Stonic's computer-use "ghost" mode (overlay steps aside while an agent
+  drives the screen) is not wired; computer use is still opt-in and its
+  Windows wiring is Phase 2's remaining item
+
+### Verified
+
+- Python: 59 new awareness tests (eyes, moments, prompt, parser, engine
+  gates and pacing, routes, flag gating); full suite 24 failed = the
+  pre-existing baseline (re-checked at HEAD for the `server/` ones)
+- Rust: 90/90 (12 new: sample JSON matches the backend, sleep gap, mic key
+  names, battery decoding, overlay sizes, top-centre placement on
+  multi-monitor / top taskbar, hit-testing at 150 % scaling, prefs
+  sanitising, flag default off, 90 % cover rule, show/hide conditions)
+- Frontend: 275/275 (13 new), `tsc -b` clean, production build OK
+- ruff 25 (unchanged), formatting unchanged
+
+### Remaining
+
+- [ ] On Windows: the sensor's real readings (lock, mic in a Zoom/Teams call,
+      video keeping the display awake, sleep), the notch over a minimised
+      Ghost (click-through, hover, full-screen hide, DPI), and the wallpaper
+      attach on both a classic and a 24H2 "raised" desktop
+- [ ] Like Phase 4, the Win32 code was checked against the `windows-sys`
+      0.59 signatures but not compiled for Windows here (the Windows Rust
+      target could not be downloaded); the Windows build confirms it
 
 ## Phase 6 — memory merge ⚠ highest risk
 
@@ -419,6 +519,8 @@ Flags live in `~/.ghost/config.toml`:
 [stonic]
 computer_use = true
 realtime_voice = true
+awareness = true
+desktop_presence = true
 wake_word_name = "Ghost"
 
 [stonic.voice_runtime]

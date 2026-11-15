@@ -1,5 +1,7 @@
 use std::sync::Arc;
+mod awareness_sensor;
 mod hand_control;
+mod presence;
 
 use std::time::Duration;
 use tauri::menu::{MenuBuilder, MenuItemBuilder};
@@ -2188,6 +2190,24 @@ const STONIC_FLAG_NAMES: [&str; 11] = [
 /// switching a ported subsystem on by accident. `computer_overlay` is the one
 /// flag whose Python default is `true`, but it only applies while
 /// `computer_use` is on, so defaulting it to `false` here is still inert.
+/// One `[stonic]` flag, read from disk with a 2 s cache (the sensor asks every pass).
+fn stonic_flag_on(name: &str) -> bool {
+    use std::sync::Mutex;
+    use std::time::{Duration, Instant};
+    type Cache = Option<(Instant, std::collections::BTreeMap<String, bool>)>;
+    static CACHE: Mutex<Cache> = Mutex::new(None);
+    let mut cache = CACHE.lock().unwrap_or_else(|e| e.into_inner());
+    let fresh = matches!(&*cache, Some((at, _)) if at.elapsed() < Duration::from_secs(2));
+    if !fresh {
+        let text = std::fs::read_to_string(ghost_config_toml_path()).unwrap_or_default();
+        *cache = Some((Instant::now(), stonic_flags_from_config(&text)));
+    }
+    cache
+        .as_ref()
+        .and_then(|(_, f)| f.get(name).copied())
+        .unwrap_or(false)
+}
+
 fn stonic_flags_from_config(existing: &str) -> std::collections::BTreeMap<String, bool> {
     let mut flags: std::collections::BTreeMap<String, bool> = STONIC_FLAG_NAMES
         .iter()
@@ -3947,10 +3967,27 @@ pub fn run() {
                 tauri::async_runtime::spawn(start_managed_boot(boot_backend_ref, boot_status_ref));
             }
 
+            // Phase 5: awareness sensor and desktop presence. Both idle until
+            // their [stonic] flag is on.
+            tauri::async_runtime::spawn(awareness_sensor::run(
+                || stonic_flag_on("awareness"),
+                format!("http://127.0.0.1:{GHOST_PORT}/v1/awareness/signals"),
+            ));
+            presence::start(app.handle().clone());
+            if let Some(main) = app.get_webview_window("main") {
+                let handle = app.handle().clone();
+                main.on_window_event(move |event| presence::on_main_event(&handle, event));
+            }
+
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
             hand_control::hand_screen_size,
+            presence::presence_state,
+            presence::presence_set_prefs,
+            presence::presence_hit,
+            presence::presence_command,
+            presence::presence_snapshot,
             hand_control::hand_mouse_move,
             hand_control::hand_mouse_button,
             hand_control::hand_mouse_click,
