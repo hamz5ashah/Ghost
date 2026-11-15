@@ -1769,6 +1769,77 @@ class DigestConfig:
     )
 
 
+@dataclass(slots=True)
+class StonicRuntimeConfig:
+    """A Python sidecar runtime installed on demand under <config>/runtimes/.
+
+    The Stonic engines are not part of Ghost's own environment: their pins were
+    resolved for Python 3.11 and together they weigh ~820 MB, so merging them
+    into `uv.lock` would both bloat the installer and risk Ghost's own
+    resolution. Each lives in its own venv, created on first use the same way
+    the Kokoro voice model is fetched on demand.
+    """
+
+    # Absolute path to an existing venv. Empty means "use the managed one
+    # under <config>/runtimes/<name>" — set this only to point at a checkout.
+    venv_path: str = ""
+    # Python to build the venv with. Empty means the interpreter running Ghost.
+    python: str = ""
+    # Install the venv automatically the first time the feature is used.
+    # False means the user must trigger setup explicitly from Settings.
+    auto_install: bool = True
+
+
+@dataclass(slots=True)
+class StonicConfig:
+    """Features ported from Stonic AI 3.1.21 (see /STONIC_PORT_PLAN.md).
+
+    Every flag defaults to False. Ghost's existing behaviour is unchanged
+    until one is turned on, which is what keeps each phase of the port
+    independently revertable.
+    """
+
+    # --- Phase 1: media and character assets -----------------------------
+    # UI sound effects on interface events (16 recovered .wav files).
+    ui_sounds: bool = False
+    # Stonic's character definitions as additional persona options.
+    characters: bool = False
+
+    # --- Phase 2: computer use (Agent S3 sidecar) ------------------------
+    # Mouse/keyboard/screen control. Off by default: it can act on anything
+    # on the user's desktop, so it is opt-in regardless of phase status.
+    computer_use: bool = False
+    # Draw the action overlay/HUD while the computer-use agent is working.
+    computer_overlay: bool = True
+    computer_runtime: StonicRuntimeConfig = field(default_factory=StonicRuntimeConfig)
+    # Absolute path to tesseract.exe/tesseract. Empty means "discover it":
+    # bundled resource first, then PATH. See STONIC_PORT_PLAN.md phase 2.
+    tesseract_path: str = ""
+    tessdata_path: str = ""
+
+    # --- Phase 3: realtime voice engine ----------------------------------
+    # Selects the Pipecat realtime pipeline instead of Ghost's default
+    # Kokoro + faster-whisper path. The default path is never removed.
+    realtime_voice: bool = False
+    wake_word: bool = False
+    wake_word_name: str = ""
+    voice_runtime: StonicRuntimeConfig = field(default_factory=StonicRuntimeConfig)
+
+    # --- Phase 4: biometric and gesture input ----------------------------
+    facelock: bool = False
+    gestures: bool = False
+
+    # --- Phase 5: ambient awareness and desktop presence -----------------
+    awareness: bool = False
+    desktop_presence: bool = False
+
+    # --- Phase 6: memory merge -------------------------------------------
+    # Stonic's richer memory schema. Highest regression risk in the port:
+    # the learning loop and eval harness both read src/ghost/memory/, so
+    # this stays off until the migration is proven.
+    memory_v2: bool = False
+
+
 @dataclass
 class GhostConfig:
     """Top-level configuration for Ghost."""
@@ -1803,6 +1874,7 @@ class GhostConfig:
     skills: SkillsConfig = field(default_factory=SkillsConfig)
     digest: DigestConfig = field(default_factory=DigestConfig)
     proactive: ProactiveConfig = field(default_factory=ProactiveConfig)
+    stonic: StonicConfig = field(default_factory=StonicConfig)
     mining: Optional["MiningConfig"] = None
 
     @property
@@ -2133,6 +2205,7 @@ def load_config(path: Optional[Path] = None) -> GhostConfig:
             "system_prompt",
             "compression",
             "skills",
+            "stonic",
         )
         for section_name in top_sections:
             if section_name in data:

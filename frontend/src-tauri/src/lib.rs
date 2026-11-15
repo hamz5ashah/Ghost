@@ -2080,6 +2080,59 @@ fn get_phone_access() -> PhoneAccess {
     read_phone_access()
 }
 
+// ---------------------------------------------------------------------------
+// Stonic port feature flags (see /STONIC_PORT_PLAN.md)
+// ---------------------------------------------------------------------------
+
+/// Flags the shell is allowed to read, mirroring `_STONIC_FLAG_NAMES` in
+/// `src/ghost/server/api_routes.py`. Listed explicitly so that adding an
+/// internal field to `StonicConfig` cannot widen this surface by accident.
+const STONIC_FLAG_NAMES: [&str; 11] = [
+    "ui_sounds",
+    "characters",
+    "computer_use",
+    "computer_overlay",
+    "realtime_voice",
+    "wake_word",
+    "facelock",
+    "gestures",
+    "awareness",
+    "desktop_presence",
+    "memory_v2",
+];
+
+/// Read the `[stonic]` flags out of a config.toml string. Pure.
+///
+/// Anything missing, non-boolean or unparseable reads as `false`, so a hand-
+/// edited or truncated config degrades to Ghost's own behaviour rather than
+/// switching a ported subsystem on by accident. `computer_overlay` is the one
+/// flag whose Python default is `true`, but it only applies while
+/// `computer_use` is on, so defaulting it to `false` here is still inert.
+fn stonic_flags_from_config(existing: &str) -> std::collections::BTreeMap<String, bool> {
+    let mut flags: std::collections::BTreeMap<String, bool> = STONIC_FLAG_NAMES
+        .iter()
+        .map(|name| ((*name).to_string(), false))
+        .collect();
+    let Ok(doc) = existing.parse::<toml_edit::DocumentMut>() else {
+        return flags;
+    };
+    let Some(section) = doc.get("stonic") else {
+        return flags;
+    };
+    for name in STONIC_FLAG_NAMES {
+        let on = section.get(name).and_then(|v| v.as_bool()).unwrap_or(false);
+        flags.insert(name.to_string(), on);
+    }
+    flags
+}
+
+#[tauri::command]
+fn stonic_flags() -> std::collections::BTreeMap<String, bool> {
+    let path = ghost_config_toml_path();
+    let text = std::fs::read_to_string(path).unwrap_or_default();
+    stonic_flags_from_config(&text)
+}
+
 /// Turn phone access on/off (or issue a new key) and restart the server so it
 /// takes effect. Returns the new state for the settings screen.
 #[tauri::command]
@@ -3848,6 +3901,7 @@ pub fn run() {
             hide_overlay,
             get_overlay_conversation,
             get_phone_access,
+            stonic_flags,
             set_phone_access,
         ])
         .build(tauri::generate_context!())
@@ -3931,6 +3985,91 @@ mod tests {
             assert!(!plan.launch_ollama);
             assert!(plan.engine_host.is_none());
             assert_eq!(plan.serve_args, vec!["--engine", "cloud", "--model", "deepseek-v4-flash", "--agent", "simple"]);
+        }
+    }
+
+    mod stonic_flags {
+        use super::super::{stonic_flags_from_config, STONIC_FLAG_NAMES};
+
+        #[test]
+        fn empty_config_reports_every_flag_off() {
+            let flags = stonic_flags_from_config("");
+            assert_eq!(flags.len(), STONIC_FLAG_NAMES.len());
+            assert!(flags.values().all(|on| !on));
+        }
+
+        #[test]
+        fn missing_stonic_section_reports_every_flag_off() {
+            let flags = stonic_flags_from_config("[engine]\ndefault = \"ollama\"\n");
+            assert!(flags.values().all(|on| !on));
+        }
+
+        #[test]
+        fn reads_enabled_flags_and_leaves_the_rest_off() {
+            let flags = stonic_flags_from_config(
+                "[stonic]\ncomputer_use = true\nawareness = true\n",
+            );
+            assert_eq!(flags.get("computer_use"), Some(&true));
+            assert_eq!(flags.get("awareness"), Some(&true));
+            assert_eq!(flags.get("memory_v2"), Some(&false));
+            assert_eq!(flags.get("realtime_voice"), Some(&false));
+        }
+
+        #[test]
+        fn non_boolean_values_read_as_off() {
+            let flags = stonic_flags_from_config(
+                "[stonic]\ncomputer_use = \"true\"\nfacelock = 1\ngestures = true\n",
+            );
+            assert_eq!(flags.get("computer_use"), Some(&false));
+            assert_eq!(flags.get("facelock"), Some(&false));
+            assert_eq!(flags.get("gestures"), Some(&true));
+        }
+
+        #[test]
+        fn unparseable_config_reports_every_flag_off() {
+            let flags = stonic_flags_from_config("[stonic\ncomputer_use = tru");
+            assert_eq!(flags.len(), STONIC_FLAG_NAMES.len());
+            assert!(flags.values().all(|on| !on));
+        }
+
+        #[test]
+        fn unknown_keys_do_not_widen_the_flag_set() {
+            let flags = stonic_flags_from_config("[stonic]\nnot_a_flag = true\n");
+            assert_eq!(flags.len(), STONIC_FLAG_NAMES.len());
+            assert!(flags.get("not_a_flag").is_none());
+            assert!(flags.values().all(|on| !on));
+        }
+
+        #[test]
+        fn nested_runtime_table_does_not_disturb_flags() {
+            let flags = stonic_flags_from_config(
+                "[stonic]\nrealtime_voice = true\n\n[stonic.voice_runtime]\nauto_install = false\n",
+            );
+            assert_eq!(flags.get("realtime_voice"), Some(&true));
+            assert!(flags.get("auto_install").is_none());
+        }
+
+        #[test]
+        fn flag_names_match_the_python_surface() {
+            // Keep in step with _STONIC_FLAG_NAMES in api_routes.py.
+            let mut names = STONIC_FLAG_NAMES.to_vec();
+            names.sort_unstable();
+            assert_eq!(
+                names,
+                vec![
+                    "awareness",
+                    "characters",
+                    "computer_overlay",
+                    "computer_use",
+                    "desktop_presence",
+                    "facelock",
+                    "gestures",
+                    "memory_v2",
+                    "realtime_voice",
+                    "ui_sounds",
+                    "wake_word",
+                ]
+            );
         }
     }
 

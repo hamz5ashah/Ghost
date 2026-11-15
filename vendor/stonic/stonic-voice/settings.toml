@@ -1,0 +1,173 @@
+# Stonic Voice (Beta) engine ki apni settings — wo jo user nahi badalta.
+# Ye sab numbers Voice Lab (voice-lab/settings.toml) mein naap kar chune gaye hain;
+# yahan badlo to pehle lab mein naapo.
+#
+# User ki cheezein (chabiyan, dimagh ka model, soch, kirdar) is file mein NAHI:
+# wo app se aati hain (POST /beta/config), kabhi disk par nahi likhi jatin.
+
+[ears]
+# Sunna: awaaz -> text. Google ki Live transcription service.
+model = "gemini-3.5-transcribe-live"
+# Khali = zubaan khud pehchane (mix zubaan ke liye yehi behtar).
+languages = []
+# Wo lafz jo service ghalat sunti hai. Chalte kirdar ka naam khud jur jata hai.
+phrases = ["Stonic"]
+# Google har bheje second ka paisa leta hai, khamoshi samet (28 Oct 2026 naapa).
+# Gate = awaaz sirf tab jaye jab koi bol raha ho (PC par Silero VAD). false = sab bhejo.
+gate = true
+# Turn wale VAD (0.7) se zyada hassaas: shak ho to bhejo — lafz chhootna bura hai.
+gate_confidence = 0.5
+# 0..1 (-110..-10 LUFS). 0.35 ~ -75 LUFS: sirf bilkul khamoshi rokti hai, faisla Silero ka.
+gate_min_volume = 0.35
+gate_start_secs = 0.06
+# Bolna rukne ke baad itni der aur bhejo (jumle ke beech ka saans).
+gate_hangover_secs = 0.8
+# Bolna pakre jane se pehle ki itni awaaz saath (pehla lafz na kate). Naapa (28 Oct):
+# 0.6 s par bohat dheemi sargoshi ka pehla lafz Google 3/3 dafa chhorta tha (VAD
+# waqt par tha — Google ko dobara shuru hone par thora pehle se awaaz chahiye); 1.0 s par 2/2 theek.
+gate_preroll_secs = 1.0
+
+[turn]
+# "User chup ho gaya?" ka faisla.
+# VAD = awaaz hai ya nahi. stop_secs = itni khamoshi ke baad VAD "ruk gaya" kehta hai.
+vad_start_secs = 0.2
+vad_stop_secs = 0.2
+vad_confidence = 0.7
+# Smart Turn = chhota model jo lehje se samajhta hai ke baat poori hui ya banda
+# sirf soch raha hai. Band karo to sirf khamoshi ka timer chalega.
+smart_turn = true
+# Smart Turn "adhoori" kahe to bhi itni khamoshi ke baad turn khatam maan lo.
+smart_turn_max_wait_secs = 3.0
+# Smart Turn "adhoori" kahe magar Google ka likha jumla full stop / sawal ke nishan
+# par khatam ho ("Baat suno.") to itni khamoshi kaafi. Smart Turn English par sikha
+# hai aur chhoti Urdu baat ko aksar adhoori samajhta hai (stonic_voice/turns.py). 0 = band.
+finished_wait_secs = 1.2
+# Sirf tab jab smart_turn = false.
+speech_timeout_secs = 0.6
+
+[voice]
+# Bolna: text -> awaaz. Teen raaste (user Settings mein chunta hai):
+#   Stonic Cloud            hamare gateway se Gemini 3.8 TTS — model wahin tay hota hai
+#   apni key, "Standard"    Gemini Live (neeche live_model)
+#   apni key, "Expressive"  Gemini 3.8 TTS (neeche model), user ki apni AI Studio key se
+#   gemini-3.8-flash-tts       sab se jazbaati aur qudrati (pehli awaaz ~0.75 s)
+#   gemini-3.8-flash-lite-tts  thora tez (~0.6 s) aur sasta, jazbaat thore kam
+model = "gemini-3.8-flash-tts"
+# Key par fi model requests ki hadd hoti hai (naapa hua, 12 Oct 2026, Usman ki
+# key: 10 fi minute aur 100 fi DIN). Hadd lag jaye to line boli nahi jati aur
+# user ko hadd ka saaf paigham dikhta hai. Hadd par chup chaap kisi doosri
+# awaaz par girna nahi (Usman ka faisla, 12 Oct 2026): raasta user chunta hai,
+# jo chuna wohi bolta hai. User ki apni backup key ho to wohi line usi model se
+# us key par jati hai.
+# Apni keys par "Standard" awaaz: Gemini Live se line bulwana. Is par requests
+# ki hadd nahi (muft key par bhi chalta hai), ada upar wale TTS se kam. Har
+# jawab apni taaza session mein bola jata hai — warna Live purani lines ki
+# awaaz har nayi line par dobara ginta hai (tts_gemini.py LiveSpeech).
+live_model = "gemini-3.8-live"
+# Awaazein Stonic app wali hi hain: mard kirdar / aurat kirdar.
+male_voice = "Charon"
+female_voice = "Aoede"
+# Aam awaaz ka andaaz. Khali = awaaz ka apna qudrati andaaz. Jazbaat dimagh khud
+# har line ke saath likhta hai; ye sirf un lines ke liye hai jin par us ne kuch nahi likha.
+style = ""
+# Hindi/Urdu kis likhai mein awaaz ko jaye: "roman" (kya haal hai) ya "devanagari".
+script = "roman"
+# Jawab ka pehla jumla akela jata hai (awaaz foran shuru ho). Baqi jumle tukron
+# mein: har tukra ek hi request — lab mein har jumla ek request tha, magar sirf
+# key par 10 fi minute ki hadd mein wo baat-cheet tor deta tha.
+# Doosra tukra kam az kam itne huroof ka, us ke baad wale is se bare:
+chunk_min_chars = 220
+chunk_next_min_chars = 400
+# Tukra poora na bhi ho to itni der se zyada na roka jaye (dimagh sust ho to).
+chunk_max_hold_secs = 1.0
+
+[brain]
+# Sochne ke tokens bhi isi hadd mein ginte hain, is liye khuli rakhi hai (bill sirf istemal ka).
+max_tokens = 16000
+prompt_caching = true
+
+[agent]
+# Dimagh Claude ho to wo kaam bhi karta hai (stonic_voice/agent.py — Claude Agent
+# SDK): PowerShell, files, aur Stonic ke apne tools. false = Claude bhi sirf
+# baat kare, jaise pehle (koi tool nahi).
+enabled = true
+# Ek jumle ke jawab mein zyada se zyada itne qadam (har tool call ek qadam);
+# hadd par dimagh ruk kar batata hai ke kahan tak pohncha.
+max_steps = 40
+# App ke andar chalne wale tool (yaadash, web search, screenshot…) ka intezar.
+tool_timeout_secs = 90.0
+# SDK ke apne haath. Har hukm chalne se pehle stonic_voice/safety.py se guzarta
+# hai: saaf hukm foran chalta hai (3 Nov 2026 — koi "pehle poochho" nahi); sirf
+# "kabhi nahi" ki chhoti fehrist (disk format, backups mitana, passwords parhna,
+# internet se code chalana…) rukti hai.
+#
+# TaskStop: peeche chalte command ko rokna. Lamba command (install, download)
+# `run_in_background` se peeche chalta hai — dimagh azaad rehta hai aur khatam
+# hone par SDK use khud khabar deta hai.
+tools = ["PowerShell", "Read", "Write", "Edit", "Glob", "Grep", "TaskStop"]
+
+[screen]
+# Dimagh ke screen wale haath (stonic_voice/hands.py, screen.py): wo khud screen
+# dekhta hai aur mouse / keyboard chalata hai. Chalu / band aur nishane ka
+# tareeqa user Settings mein chunta hai (Screen control); yahan sirf numbers.
+#
+# Claude ko jane wali tasveer ka lamba rukh (pixel). Anthropic ki sifarish
+# 1280-1366; 1920 se upar nahi. Bari tasveer = har qadam par zyada tokens.
+max_dim = 1366
+# UI-TARS ko jane wali tasveer: wohi naap jis par asal computer agent chalta hai.
+aim_max_dim = 1920
+jpeg_quality = 85
+# Kaam ke baad itni der (ms), phir tasveer — screen ko badalne ka waqt.
+settle_ms = 600
+# Ek hi qadam ke do kaamon ke beech (click, phir type).
+between_ms = 120
+# User bolna shuru kare to haath thehar jate hain (naya click / tehreer nahi).
+# Wo chup ho to itni der (ms) aur: us ka jumla is dauran dimagh tak pohnchta hai.
+hold_after_ms = 1000
+# UI-TARS: user ki apni OpenRouter key par.
+aim_url = "https://openrouter.ai/api/v1"
+aim_model = "bytedance/ui-tars-1.5-7b"
+aim_timeout_secs = 20.0
+
+[floor]
+# Baat-cheet ka ehsaas (stonic_voice/floor.py) — sirf jab dimagh Claude (agent) ho.
+# Mic khula rehta hai, is liye Stonic sab sunta hai: dost se baat, phone call,
+# khud se baat, YouTube. Har jumle par dimagh khud tay karta hai ke baat us se hai
+# ya nahi — nahi to chup (`<quiet:aside>`). false = har jumle ka jawab, jaise pehle.
+# Ye hamari master chabi hai. Asal on/off user ki "Stay quiet" setting hai (app ki
+# Stonic Voice Settings, default BAND — 24 Oct 2026): app har session ke saath
+# `stay_quiet` bhejti hai. Dono chalu hon tabhi chalta hai.
+enabled = true
+# Stonic ne kuch poocha aur user chup: itne second baad dimagh se poochha jata hai
+# "halka sa pukaroge ya chhor doge?" — faisla dimagh ka.
+nudge_after_secs = 8.0
+# Doosra aur aakhri moqa (pehle ke itne second baad). Us ke baad Stonic intezar karta hai.
+nudge_again_secs = 20.0
+max_nudges = 2
+# Stonic ki baat aisi baat ne kaati jo us se nahi thi (dost se baat): wo khatam ho
+# kar itni khamoshi ho to "baat dobara uthaoge?"
+resume_after_secs = 5.0
+# Aakhri "kisi aur se" wali baat ke itne second baad tak khud ka koi moqa nahi —
+# user shayad abhi bhi kisi se baat kar raha hai (bas saans le raha hai).
+aside_hold_secs = 15.0
+# "Is se pehle ki baatein kisi aur se thin" — dimagh ke note mein itni purani tak.
+aside_memory_secs = 180.0
+
+[session]
+# Connect hote hi Stonic khud ek line bole.
+greeting = true
+# Itni der (second) na user bole na Stonic, to session khud band — bhooli hui
+# khuli session (khula mic, khula connection) raat bhar na chale.
+# 0 = kabhi band na ho (lab jaisa).
+# 2400 = 40 minute (Usman ka faisla, 20 Oct 2026; pehle 600). Jab tak baat chal
+# rahi hai session band nahi hoti: Google ki ~10 min wali line kaan (ears.py)
+# khud badalte rehte hain.
+#
+# Kharche ka pehlu (12 Oct 2026 ko dekha, NAAPA nahi ja saka): engine mic ki
+# awaaz lagatar bhejta hai, khamoshi samet. Google ke pricing safhe par sunne ka
+# input "25 audio tokens per second" / "$0.005/min" hai aur khamoshi ki koi
+# chhoot likhi nahi — yani paid key par khamoshi ka input andazan $0.30 fi
+# ghanta. Text ka kharcha sirf tab jab lafz banein. Magar ye model usage wapas
+# nahi bhejta (teen sessions mein ek bhi usage_metadata nahi aaya), is liye asal
+# tasdeeq sirf Google ke billing dashboard se ho sakti hai. Free key par bill nahi.
+idle_timeout_secs = 2400
