@@ -38,6 +38,9 @@ keyring = { version = "3", features = ["apple-native"] }
 
 [target.'cfg(target_os = "windows")'.dependencies]
 keyring = { version = "3", features = ["windows-native"] }
+# Hand control (Stonic port, Phase 4): cursor moves, clicks and scrolls via
+# SendInput/SetCursorPos. Windows-only, like Stonic's gesture control.
+windows-sys = { version = "0.59", features = ["Win32_Foundation", "Win32_UI_Input_KeyboardAndMouse", "Win32_UI_WindowsAndMessaging"] }
 
 [target.'cfg(target_os = "linux")'.dependencies]
 # Blocking Secret Service backend (no internal async runtime, so it is safe to

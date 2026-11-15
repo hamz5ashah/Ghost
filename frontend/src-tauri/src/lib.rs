@@ -1,4 +1,6 @@
 use std::sync::Arc;
+mod hand_control;
+
 use std::time::Duration;
 use tauri::menu::{MenuBuilder, MenuItemBuilder};
 use tauri::tray::TrayIconBuilder;
@@ -3948,6 +3950,12 @@ pub fn run() {
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
+            hand_control::hand_screen_size,
+            hand_control::hand_mouse_move,
+            hand_control::hand_mouse_button,
+            hand_control::hand_mouse_click,
+            hand_control::hand_scroll,
+            hand_control::hand_release,
             get_setup_status,
             get_api_base,
             start_backend,

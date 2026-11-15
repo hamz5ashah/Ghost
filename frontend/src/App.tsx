@@ -22,6 +22,7 @@ import { offerAnalyticsChoice } from './lib/analytics-invitation';
 import { LEADERBOARD_ENABLED } from './lib/supabase';
 import { useStonicSounds } from './hooks/useStonicSounds';
 import { useWakeWord } from './hooks/useWakeWord';
+import { FaceLockGate } from './components/facelock/FaceLockGate';
 
 export default function App() {
   // The app always opens straight to the main screen. On the desktop, model
@@ -224,6 +225,7 @@ export default function App() {
       {optInModalOpen && (
         <OptInModal onClose={() => setOptInModalOpen(false)} />
       )}
+      <FaceLockGate />
     </>
   );
 }

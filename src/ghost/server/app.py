@@ -7,6 +7,7 @@ import os
 import pathlib
 import threading
 import time
+from typing import Any, Dict
 
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
@@ -154,6 +155,20 @@ class _NoCacheStaticFiles(StaticFiles):
             await send(message)
 
         await super().__call__(scope, receive, _send_with_headers)
+
+
+def _facelock_side_effects(event: Dict[str, Any]) -> None:
+    """While locked, stop the things that listen: wake word and realtime calls."""
+    if event.get("type") != "locked":
+        return
+    try:
+        from ghost.speech import wake_word
+
+        listener = wake_word.get_listener()
+        if listener is not None:
+            listener.pause()
+    except Exception as exc:  # noqa: BLE001
+        logger.debug("Face Lock could not pause the wake word: %s", exc)
 
 
 def create_app(
@@ -499,6 +514,19 @@ def create_app(
             app.add_middleware(middleware_cls)
     except Exception as exc:
         logger.debug("Security middleware init skipped: %s", exc)
+
+    # Face Lock (Stonic port, Phase 4). Off unless [stonic].facelock is on;
+    # the gate is a pass-through while no lock exists. It sits inside Auth and
+    # CORS so a 423 still reaches the WebView with CORS headers.
+    try:
+        from ghost.security import facelock as _facelock
+
+        if bool(getattr(getattr(config, "stonic", None), "facelock", False)):
+            _manager = _facelock.ensure_manager()
+            _manager.on_change(_facelock_side_effects)
+        app.add_middleware(_facelock.FaceLockGate, get_manager=_facelock.get_manager)
+    except Exception as exc:
+        logger.warning("Face Lock init skipped: %s", exc)
 
     # API key authentication middleware
     if api_key:

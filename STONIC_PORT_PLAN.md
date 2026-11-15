@@ -288,12 +288,81 @@ default; read-aloud and dictation always use it.
       workspace this was built in, so it is confirmed by the push build
 - [ ] A live call with real keys on a Windows machine
 
-## Phase 4 — biometric and gesture input
+## Phase 4 — biometric and gesture input — complete
 
-- [ ] `facelock-core.js` + `facelock-manager.js` → `src/ghost/security/facelock.py`
-- [ ] Models to `<config>/models/facelock` (on-demand, like Kokoro)
-- [ ] Blink liveness, PIN fallback, Tauri commands
-- [ ] MediaPipe gesture recognition behind `gestures`
+Both features are off unless `[stonic].facelock` / `[stonic].gestures` is on.
+
+### Done
+
+- [x] `src/ghost/security/facelock.py` — `facelock-core.js` + `facelock-manager.js`
+      ported: cosine matching with Stonic's thresholds (0.5 match, 0.45 probe
+      coherence, 0.3 template coherence, median of 3–8 probes), scrypt PIN
+      (N=16384, r=8, p=1) with the same weak-PIN rules, 5 free attempts then
+      30 s → 1 → 5 → 15 min lockouts, single-use 2-minute manage tickets,
+      corrupt file = no lock. State sealed with **Windows DPAPI** in
+      `<config>/face_lock.dpapi` (Windows-only, as in Stonic)
+- [x] **Lock enforced in the backend.** `FaceLockGate` returns 423 for the
+      desktop UI's (loopback) `/v1` + `/api` calls while locked, except the
+      lock screen's own routes and `/v1/cloud/reload`. Remote clients (phone)
+      use the API key and are unaffected. Sits inside Auth + CORS
+- [x] `SessionWatcher` re-locks on Windows lock (input desktop check) and on
+      sleep (a 2 s poll that wakes 30 s+ late). Locking pauses the wake word
+- [x] `/v1/security/facelock/{status,verify-face,verify-pin,enroll,change-pin,disable,lock}`
+      and `/models` + `/models/download`; templates and PIN hash never returned
+- [x] `src/ghost/security/facelock_models.py` — on-demand download to
+      `<config>/models/facelock` (Kokoro pattern), every file pinned by size +
+      SHA-256 with mirror fallback; re-hashed before first serve. Served
+      read-only from `/facelock-assets/` (fixed allow-list, only while a flag
+      is on)
+- [x] Frontend: camera engine (MediaPipe face mesh + SFace via ONNX Runtime
+      Web), blink liveness detector, unlock and enrollment flows, framing
+      checks — all recovered from Stonic's built renderer (deobfuscated) with
+      its constants unchanged; lock screen (rest of the page `inert`), PIN
+      pad fallback, Settings → Security & input
+- [x] Hand control: Stonic's gesture controller (two fingers move, pinch
+      left/right click, three fingers scroll, fist drag) + Tauri commands
+      (`hand_*`, `SendInput`/`SetCursorPos`) refused unless `gestures` is on;
+      stops on Esc, on lock, and when the hand leaves the frame
+- [x] Tests: +50 Python, +39 frontend, +3 Rust, +1 CSP policy test
+
+### Deviations
+
+- **Pinch clicks once per pinch.** Stonic re-clicked every 400 ms while a
+  pinch was held (a slow pinch became a double-click)
+- **CSP gains `'wasm-unsafe-eval'`** (WebAssembly compilation only; JS eval
+  still refused, scripts still `'self'` only — test-pinned). MediaPipe's
+  320 KB loader script ships with the app for that reason; the ~68 MB of
+  WASM and models stay on-demand, and ORT's default 14 MB `.wasm` that Vite
+  would copy in is dropped from the build
+- Runtimes pinned to the exact builds Stonic shipped:
+  `@mediapipe/tasks-vision@0.10.35` (wasm hash match) and
+  `onnxruntime-web@1.30.0`; `sface.onnx` is byte-identical to OpenCV Zoo's
+  `face_recognition_sface_2021dec.onnx`
+- `protobufjs` (via onnxruntime-web) added to the npm `allowScripts` deny
+  list; its postinstall is CLI tooling only
+
+### Verified
+
+- Headless Chrome under the **exact desktop CSP**: WASM compiles, JS eval
+  blocked, all models load through `/facelock-assets` (hash-checked), the face
+  mesh runs, SFace returns a unit 128-d print, the gesture recognizer runs
+- Real app stack: enroll → lock → `/v1/models` 423 (with CORS headers, auth
+  still first) → face unlock → 200
+- Full suites: no new failures (Python 24 = pre-existing baseline), frontend
+  262/262, Rust 78/78, ruff 25 (unchanged), format check unchanged
+
+### Remaining
+
+- [ ] On Windows: a real enroll + unlock with a webcam, DPAPI round-trip,
+      Windows-lock re-lock, and hand control moving the real cursor — none of
+      these can run in the Linux workspace this was built in
+- [ ] The two MediaPipe `.task` hashes are pinned to Stonic's recovered
+      copies (sizes match Google's published files); Google's model bucket
+      was unreachable from the build workspace, so the first real download
+      confirms the pins
+- [ ] The Windows `SendInput` code was checked against the `windows-sys`
+      0.59 signatures but not compiled for Windows here (the Windows Rust
+      target could not be downloaded); the Windows build confirms it
 
 ## Phase 5 — awareness and desktop presence
 
