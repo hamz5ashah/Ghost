@@ -1467,6 +1467,7 @@ dependencies = [
  "tauri-plugin-updater",
  "tokio",
  "toml_edit 0.25.16+spec-1.1.0",
+ "windows-sys 0.59.0",
 ]
 
 [[package]]

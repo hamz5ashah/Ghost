@@ -1740,6 +1740,204 @@ async def realtime_wake_events(request: Request, after: int = 0):
     return {**listener.describe(), "events": listener.events(after)}
 
 
+# ---------------------------------------------------------------------------
+# Face Lock and gesture models (Stonic port, Phase 4)
+# ---------------------------------------------------------------------------
+#
+# The WebView sees and measures; every decision is made in
+# ghost.security.facelock. Face prints and the PIN hash never leave it.
+
+facelock_router = APIRouter(prefix="/v1/security/facelock", tags=["security"])
+facelock_assets_router = APIRouter(tags=["security"])
+
+
+class FaceVerifyBody(BaseModel):
+    embeddings: List[List[float]] = []
+    purpose: str = "unlock"
+
+
+class PinVerifyBody(BaseModel):
+    pin: str = ""
+    purpose: str = "unlock"
+
+
+class EnrollBody(BaseModel):
+    templates: List[List[float]] = []
+    pin: str = ""
+    ticket: Optional[str] = None
+
+
+class TicketBody(BaseModel):
+    ticket: Optional[str] = None
+    pin: str = ""
+
+
+def _stonic_flag(request: Request, name: str) -> bool:
+    try:
+        config = getattr(request.app.state, "config", None)
+        if config is None:
+            from ghost.core.config import load_config  # noqa: PLC0415
+
+            config = load_config()
+        return bool(getattr(getattr(config, "stonic", None), name, False))
+    except Exception as exc:  # noqa: BLE001 - unreadable config means off
+        logger.warning("Failed to read [stonic].%s: %s", name, exc)
+        return False
+
+
+def _facelock_manager(request: Request):
+    """The manager, or a 403 response when the flag is off."""
+    if not _stonic_flag(request, "facelock"):
+        return None, JSONResponse(
+            status_code=403,
+            content={
+                "ok": False,
+                "reason": "disabled",
+                "message": "Turn on [stonic].facelock to use Face Lock.",
+            },
+        )
+    from ghost.security import facelock  # noqa: PLC0415
+
+    return facelock.ensure_manager(), None
+
+
+_FACELOCK_OFF_STATUS = {
+    "supported": False,
+    "enabled": False,
+    "locked": False,
+    "templateCount": 0,
+    "attemptsLeft": 0,
+    "maxAttempts": 0,
+    "lockoutMs": 0,
+    "pinLength": 6,
+}
+
+
+@facelock_router.get("/status")
+async def facelock_status(request: Request):
+    """Advisory and read-only: never the templates or the PIN hash."""
+    if not _stonic_flag(request, "facelock"):
+        return {**_FACELOCK_OFF_STATUS, "available": False}
+    from ghost.security import facelock  # noqa: PLC0415
+
+    return {**facelock.ensure_manager().status(), "available": True}
+
+
+@facelock_router.post("/verify-face")
+async def facelock_verify_face(request: Request, body: FaceVerifyBody):
+    manager, refused = _facelock_manager(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(manager.verify_face, body.embeddings, body.purpose)
+
+
+@facelock_router.post("/verify-pin")
+async def facelock_verify_pin(request: Request, body: PinVerifyBody):
+    manager, refused = _facelock_manager(request)
+    if refused is not None:
+        return refused
+    # scrypt takes ~50 ms; keep it off the event loop.
+    return await asyncio.to_thread(manager.verify_pin, body.pin, body.purpose)
+
+
+@facelock_router.post("/enroll")
+async def facelock_enroll(request: Request, body: EnrollBody):
+    manager, refused = _facelock_manager(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(
+        manager.enroll, body.templates, body.pin, body.ticket
+    )
+
+
+@facelock_router.post("/change-pin")
+async def facelock_change_pin(request: Request, body: TicketBody):
+    manager, refused = _facelock_manager(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(manager.change_pin, body.pin, body.ticket)
+
+
+@facelock_router.post("/disable")
+async def facelock_disable(request: Request, body: TicketBody):
+    manager, refused = _facelock_manager(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(manager.disable, body.ticket)
+
+
+@facelock_router.post("/lock")
+async def facelock_lock_now(request: Request):
+    manager, refused = _facelock_manager(request)
+    if refused is not None:
+        return refused
+    return {"ok": manager.lock("manual"), "status": manager.status()}
+
+
+_MODEL_BUNDLE_FLAGS = {"facelock": "facelock", "gestures": "gestures"}
+
+
+def _bundle_refusal(request: Request, bundle: str) -> Optional[JSONResponse]:
+    flag = _MODEL_BUNDLE_FLAGS.get(bundle)
+    if flag is None:
+        return JSONResponse(
+            status_code=400, content={"ok": False, "error": "bad_bundle"}
+        )
+    if not _stonic_flag(request, flag):
+        message = f"[stonic].{flag} is off"
+        return JSONResponse(
+            status_code=403,
+            content={"ok": False, "error": "disabled", "message": message},
+        )
+    return None
+
+
+@facelock_router.get("/models")
+async def facelock_models_status(request: Request, bundle: str = "facelock"):
+    if (refused := _bundle_refusal(request, bundle)) is not None:
+        return refused
+    from ghost.security import facelock_models  # noqa: PLC0415
+
+    return facelock_models.download_status(bundle)
+
+
+@facelock_router.post("/models/download")
+async def facelock_models_download(request: Request, bundle: str = "facelock"):
+    if (refused := _bundle_refusal(request, bundle)) is not None:
+        return refused
+    from ghost.security import facelock_models  # noqa: PLC0415
+
+    return facelock_models.start_download(bundle)
+
+
+@facelock_assets_router.get("/facelock-assets/{name}")
+async def facelock_asset(request: Request, name: str):
+    """Serve a downloaded, hash-verified public model/runtime file.
+
+    Outside /v1 (like the UI's own files) because MediaPipe and ONNX Runtime
+    fetch these themselves without Ghost's auth header. Only the fixed list of
+    public files can be named, only while Face Lock or hand control is on, and
+    each file is checked against its pinned SHA-256 before it is first served.
+    """
+    from fastapi.responses import FileResponse  # noqa: PLC0415
+
+    from ghost.security import facelock_models  # noqa: PLC0415
+
+    asset = facelock_models.ASSETS.get(name)
+    if asset is None or not (
+        _stonic_flag(request, "facelock") or _stonic_flag(request, "gestures")
+    ):
+        return JSONResponse(status_code=404, content={"error": "not_found"})
+    path = await asyncio.to_thread(facelock_models.asset_path, name)
+    if path is None:
+        return JSONResponse(status_code=404, content={"error": "not_downloaded"})
+    return FileResponse(
+        path,
+        media_type=asset.media_type,
+        headers={"Cache-Control": "public, max-age=31536000, immutable"},
+    )
+
+
 @optimize_router.get("/runs/{run_id}")
 async def get_optimize_run(run_id: str, request: Request):
     """Get optimization run details."""
@@ -1799,6 +1997,8 @@ def include_all_routes(app) -> None:
     app.include_router(stonic_router)
     app.include_router(computer_router)
     app.include_router(realtime_router)
+    app.include_router(facelock_router)
+    app.include_router(facelock_assets_router)
 
     # Agent Manager routes (if available)
     try:
@@ -1855,4 +2055,6 @@ __all__ = [
     "stonic_router",
     "computer_router",
     "realtime_router",
+    "facelock_router",
+    "facelock_assets_router",
 ]
