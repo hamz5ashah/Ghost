@@ -4,6 +4,9 @@ import { useAppStore } from '../../lib/store';
 import { fetchSttStatus, prepareSttModel } from '../../lib/api';
 import { stripThinkTags } from '../../lib/message-text';
 import { sttModelFor, useVoiceConversation, type ConversationPhase } from '../../hooks/useVoiceConversation';
+import { getStonicFlags } from '../../lib/stonic-flags';
+import { effectiveConversationEngine } from '../../lib/realtime-voice';
+import { RealtimeVoiceMode } from './RealtimeVoiceMode';
 
 const LABELS: Record<'en' | 'ur', Record<ConversationPhase, string>> = {
   en: {
@@ -51,8 +54,8 @@ function useSttReady(model: string) {
   return { state, error };
 }
 
-/** Full-screen hands-free conversation with Ghost. */
-export function VoiceMode({ onClose }: { onClose: () => void }) {
+/** Ghost's default engine: Kokoro speaks, faster-whisper listens. */
+function GhostVoiceMode({ onClose }: { onClose: () => void }) {
   const replyLanguage = useAppStore((s) => s.settings.replyLanguage);
   const streamContent = useAppStore((s) => s.streamState.content);
   const lastReply = useAppStore((s) => {
@@ -138,4 +141,37 @@ export function VoiceMode({ onClose }: { onClose: () => void }) {
       </p>
     </div>
   );
+}
+
+/**
+ * Full-screen hands-free conversation with Ghost.
+ *
+ * Kokoro + faster-whisper is the default and renders straight away. The
+ * realtime engine is used only when the user picked it in Settings → Assistant
+ * and the `realtime_voice` flag is on; if the flag turns out to be off, the
+ * default engine is used instead.
+ */
+export function VoiceMode({ onClose }: { onClose: () => void }) {
+  const chosen = useAppStore((s) => s.settings.conversationEngine);
+  const [engine, setEngine] = useState<'ghost' | 'realtime' | 'pending'>(
+    chosen === 'realtime' ? 'pending' : 'ghost',
+  );
+  useEffect(() => {
+    if (chosen !== 'realtime') { setEngine('ghost'); return; }
+    let live = true;
+    void getStonicFlags().then((flags) => {
+      if (live) setEngine(effectiveConversationEngine(chosen, flags));
+    });
+    return () => { live = false; };
+  }, [chosen]);
+
+  if (engine === 'pending') {
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center" role="dialog" aria-label="Voice mode"
+        style={{ background: 'color-mix(in srgb, var(--color-bg) 94%, transparent)' }}>
+        <Loader2 size={20} className="animate-spin" style={{ color: 'var(--color-text-secondary)' }} />
+      </div>
+    );
+  }
+  return engine === 'realtime' ? <RealtimeVoiceMode onClose={onClose} /> : <GhostVoiceMode onClose={onClose} />;
 }

@@ -311,6 +311,10 @@ select = ["E", "F", "I", "W"]
 # Its Roman Urdu comments record why each workaround exists; they are kept
 # verbatim rather than re-wrapped, so a few run past 88 columns.
 "src/ghost/computer/sidecar/*.py" = ["E501"]
+# Same for the realtime voice engine (phase 3), ported from Stonic's
+# stonic-voice with its Roman Urdu comments kept verbatim.
+"src/ghost/voice_sidecar/*.py" = ["E501"]
+"src/ghost/voice_sidecar/ghost_voice/*.py" = ["E501"]
 
 [dependency-groups]
 dev = [

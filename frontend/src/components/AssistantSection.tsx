@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Sparkles, Volume2, Crown, Briefcase } from 'lucide-react';
 import { useTtsStore } from '../lib/tts';
 import { VoiceEngineSection } from './VoiceEngineSection';
+import { RealtimeVoiceSection } from './RealtimeVoiceSection';
 import { butlerGreeting, butlerStatusLine, type Persona, type ReplyLanguage } from '../lib/assistant-prompt';
 import { useAppStore } from '../lib/store';
 import type { ResponseStyle } from '../lib/assistant-prompt';
@@ -200,6 +201,7 @@ export function AssistantSection() {
     <>
     <PersonaAndVoice />
     <VoiceEngineSection />
+    <RealtimeVoiceSection />
     <div className="rounded-xl p-5" style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)' }}>
       <h3 className="text-sm font-semibold mb-1 flex items-center gap-2" style={{ color: 'var(--color-text)' }}>
         <Sparkles size={15} /> Personalise Ghost

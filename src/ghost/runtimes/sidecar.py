@@ -54,7 +54,8 @@ SPECS: Dict[str, RuntimeSpec] = {
     "voice": RuntimeSpec(
         name="voice",
         requirements="voice-requirements.txt",
-        entry_module="stonic_voice.host",
+        # A script, not a module: src/ghost/voice_sidecar/server.py.
+        entry_module="server",
         pinned_python="3.11",
         description="Realtime voice engine (Pipecat, Silero VAD, smart-turn)",
     ),
