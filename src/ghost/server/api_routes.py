@@ -1378,6 +1378,55 @@ async def list_optimize_runs(request: Request):
         return {"runs": []}
 
 
+# ---------------------------------------------------------------------------
+# Stonic port feature flags
+# ---------------------------------------------------------------------------
+
+stonic_router = APIRouter(prefix="/v1/stonic", tags=["stonic"])
+
+# Flags the UI is allowed to read. Listed explicitly rather than reflected off
+# the dataclass so that adding an internal field to StonicConfig cannot widen
+# the public surface by accident.
+_STONIC_FLAG_NAMES = (
+    "ui_sounds",
+    "characters",
+    "computer_use",
+    "computer_overlay",
+    "realtime_voice",
+    "wake_word",
+    "facelock",
+    "gestures",
+    "awareness",
+    "desktop_presence",
+    "memory_v2",
+)
+
+
+@stonic_router.get("/flags")
+async def stonic_flags(request: Request):
+    """Report which ported Stonic features are enabled.
+
+    Every flag is off unless the user turned it on, so a failure to read the
+    config must report *off* rather than erroring: the UI treats this endpoint
+    as advisory and renders Ghost's own behaviour when it is unavailable.
+    """
+    flags = dict.fromkeys(_STONIC_FLAG_NAMES, False)
+    try:
+        config = getattr(request.app.state, "config", None)
+        if config is None:
+            from ghost.core.config import load_config  # noqa: PLC0415
+
+            config = load_config()
+        stonic = getattr(config, "stonic", None)
+        if stonic is not None:
+            for name in _STONIC_FLAG_NAMES:
+                flags[name] = bool(getattr(stonic, name, False))
+    except Exception as exc:
+        logger.warning("Failed to read Stonic feature flags: %s", exc)
+        return {"flags": dict.fromkeys(_STONIC_FLAG_NAMES, False), "available": False}
+    return {"flags": flags, "available": True}
+
+
 @optimize_router.get("/runs/{run_id}")
 async def get_optimize_run(run_id: str, request: Request):
     """Get optimization run details."""
@@ -1434,6 +1483,7 @@ def include_all_routes(app) -> None:
     app.include_router(speech_router)
     app.include_router(feedback_router)
     app.include_router(optimize_router)
+    app.include_router(stonic_router)
 
     # Agent Manager routes (if available)
     try:
@@ -1487,4 +1537,5 @@ __all__ = [
     "speech_router",
     "feedback_router",
     "optimize_router",
+    "stonic_router",
 ]
