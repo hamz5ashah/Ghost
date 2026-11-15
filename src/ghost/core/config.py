@@ -1811,6 +1811,13 @@ class StonicConfig:
     computer_use: bool = False
     # Draw the action overlay/HUD while the computer-use agent is working.
     computer_overlay: bool = True
+    # Model per role, as "provider" or "provider:model" (openrouter, anthropic,
+    # gemini, deepseek). Empty = pick from the keys saved in the OS keyring.
+    # DeepSeek can plan but not ground. See ghost/computer/protocol.py.
+    computer_planner: str = ""
+    computer_grounding: str = ""
+    # Step budget per task; the sidecar caps it at 200 regardless.
+    computer_max_steps: int = 50
     computer_runtime: StonicRuntimeConfig = field(default_factory=StonicRuntimeConfig)
     # Absolute path to tesseract.exe/tesseract. Empty means "discover it":
     # bundled resource first, then PATH. See STONIC_PORT_PLAN.md phase 2.
