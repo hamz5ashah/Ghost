@@ -21,6 +21,7 @@ import { track, hashId } from './lib/analytics';
 import { offerAnalyticsChoice } from './lib/analytics-invitation';
 import { LEADERBOARD_ENABLED } from './lib/supabase';
 import { useStonicSounds } from './hooks/useStonicSounds';
+import { useWakeWord } from './hooks/useWakeWord';
 
 export default function App() {
   // The app always opens straight to the main screen. On the desktop, model
@@ -52,6 +53,7 @@ export default function App() {
 
   // Stonic UI sounds. No-op unless the `ui_sounds` flag is on.
   useStonicSounds();
+  useWakeWord();
 
   // Read-aloud uses the voice/persona chosen in Settings → Assistant.
   useEffect(() => {

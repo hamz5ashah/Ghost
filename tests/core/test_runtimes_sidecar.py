@@ -99,7 +99,7 @@ class TestPaths:
         absent = RuntimeSpec(
             name="voice",
             requirements="absent-requirements.txt",
-            entry_module="stonic_voice.host",
+            entry_module="server",
             pinned_python="3.11",
             description="missing on purpose",
         )

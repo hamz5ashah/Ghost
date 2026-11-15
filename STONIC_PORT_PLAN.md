@@ -213,18 +213,80 @@ Optional: a `computer_use` tool in `src/ghost/tools/`, with
 `requires_confirmation=True` (as `shell_exec` has), that calls the manager.
 Register it only when the flag is on.
 
-## Phase 3 — realtime voice engine
+## Phase 3 — realtime voice engine (talk-only) — complete
 
-- [ ] `stonic-voice/` → sidecar, registered alongside `kokoro_onnx_tts.py`
-- [ ] **Strip the gateway:** delete `cloud.py`, the `Cloud` config class,
-      `allow_plain_gateway`, `listen_http_options`, `describe_denial`; collapse
-      every `if settings.is_cloud:` branch (6 in `pipeline.py`, plus
-      `agent.py`'s `cloud_env`); reduce `MODES` to `("custom",)`
-- [ ] Keys injected from Ghost's keyring into the sidecar env
-- [ ] Silero VAD + `smart-turn-v3.2` (both ship inside `pipecat-ai`)
-- [ ] Wake word (`wake_word_bg.py`), name from `stonic.wake_word_name`
-- [ ] Engine selector in Settings → Assistant; Kokoro remains default
-- [ ] Gate: the CI Urdu voice round-trip still passes
+Ported as a **second, selectable engine**. Ghost's default voice path
+(Kokoro ONNX speaking, faster-whisper listening) is unchanged and remains the
+default; read-aloud and dictation always use it.
+
+### Done
+
+- [x] `src/ghost/voice_sidecar/` — Stonic's Pipecat engine, **talk-only**:
+      `server.py` + `ghost_voice/` (`ears`, `turns`, `tts_gemini`, `pipeline`,
+      `config`, `providers`, `errors`, `bridge`, `host`). Not a package (no
+      `__init__.py`), run with the `voice` runtime's interpreter
+- [x] **Agent path not ported:** no `claude-agent-sdk`/`claude.exe`, no
+      tools, screen or `/work/*`, `/beta/tool-result`, `/beta/mouse`,
+      `/beta/cue`, `/beta/interrupt` routes (all 404). Runtime venv 706 → 375 MB
+- [x] **Gateway stripped:** `cloud.py` deleted, every `is_cloud` branch
+      collapsed, Cloud/plan/limit error categories removed; `mode` other than
+      `custom` refused by name. Providers: Claude, Gemini, DeepSeek (replaces
+      Groq), OpenRouter
+- [x] Silero VAD + Smart Turn v3 (`GhostTurnStopStrategy`), both verified to
+      load in the real runtime (`warm` event)
+- [x] `src/ghost/speech/realtime.py` — supervisor: spawns the engine,
+      mints a per-launch token, loopback only, waits for `ready`, exits with
+      Ghost (`GHOST_VOICE_PARENT_PID`), drains stdout
+- [x] `/v1/speech/realtime/{status,install,start,stop,hangup,offer}` — all but
+      `status`/`stop` refuse with 403 unless `realtime_voice` is on. `offer`
+      proxies SmallWebRTC (POST + PATCH) so the browser only talks to Ghost
+- [x] **Wake word** — `src/ghost/speech/wake_word.py` +
+      `/v1/speech/realtime/wake/{start,stop,pause,events}`; needs both
+      `realtime_voice` and `wake_word`; name from `stonic.wake_word_name`
+      (default "Ghost"). Paused for the length of a realtime call
+- [x] Settings → Assistant → **Conversation engine** (hidden unless the flag
+      is on): Ghost voice (default) / Realtime, brain, voice mode, runtime
+      install, saved-key presence, wake word toggle. Voice Mode opens the
+      realtime call only when chosen **and** the flag is on
+- [x] Persona "Jarvis" → Stonic's `male_jarvis` delivery profile, so the
+      Phase 1 bracket cues are now audible (realtime engine, Expressive voice)
+- [x] Tests: +42 Python (`test_realtime.py` against a fake engine speaking
+      the real contract; `test_wake_word.py`), +10 frontend
+
+### Deviations
+
+- **Keys go over `/beta/config`, not the sidecar's environment.** The
+  supervisor reads them from Ghost's own environment (filled from the OS
+  keyring by the shell) and strips every `*_API_KEY` from the child's env, so
+  they are never visible in the engine's process table. Only the keys a
+  session needs are sent (Gemini + the chosen brain)
+- **Wake word listens on-device.** Stonic sent every phrase to Google's free
+  speech API (`recognize_google`); Ghost transcribes with its own
+  faster-whisper. Stonic's name matching is kept (first name, ≥3 letters,
+  slack on ≥4), its "anything ending in -nic" rule is dropped (it would wake on
+  "picnic"/"clinic"), and Whisper punctuation is handled
+- Gemini still does the realtime engine's listening and speaking (as in
+  Stonic), so a Gemini key is required whichever brain thinks
+
+### Verified
+
+- Real runtime (Python 3.11, pipecat 1.12.0): engine boots in ~3 s, 17/17
+  HTTP-surface checks, all 4 brains × both voice modes construct, prompt is
+  Ghost-branded and says it is an AI assistant
+- End to end: aiortc client → Ghost's `/v1/speech/realtime/offer` proxy →
+  real engine → **connected**, audio track back; with test keys the engine
+  reached Gemini and Anthropic directly and returned
+  `gemini_key_invalid`/`anthropic_key_invalid` with no key text in any message
+- Default path: Kokoro ONNX spoke the CI Urdu sentence (`hm_omega`, 4.0 s);
+  `uv.lock` untouched; full suites show no new failures (Python 24 failing =
+  pre-existing baseline; frontend 225/225); ruff unchanged at 25
+
+### Remaining
+
+- [ ] Gate: the CI Urdu voice round-trip (Kokoro → Whisper "small") on the
+      Windows job — the Whisper half needs Hugging Face, unreachable from the
+      workspace this was built in, so it is confirmed by the push build
+- [ ] A live call with real keys on a Windows machine
 
 ## Phase 4 — biometric and gesture input
 

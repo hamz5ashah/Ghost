@@ -17,6 +17,7 @@ from fastapi import (
     WebSocket,
     WebSocketDisconnect,
 )
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
 logger = logging.getLogger(__name__)
@@ -1509,6 +1510,236 @@ async def computer_ocr_status(request: Request):
         }
 
 
+# ---------------------------------------------------------------------------
+# Realtime voice engine (Stonic port, Phase 3)
+# ---------------------------------------------------------------------------
+#
+# A second, opt-in voice engine. Ghost's default Kokoro + faster-whisper path
+# is not touched by any of these routes. Every route except /status refuses
+# with 403 unless [stonic].realtime_voice is on.
+
+realtime_router = APIRouter(prefix="/v1/speech/realtime", tags=["speech"])
+
+
+class RealtimeStartBody(BaseModel):
+    # "provider" or "provider:model"; empty picks from the saved keys.
+    brain: str = ""
+    # "tts" (directed Gemini TTS, the bracket performance) or "live".
+    voice_mode: str = "tts"
+    character: Dict[str, Any] = {}
+
+
+def _realtime_settings(request: Request) -> Any:
+    config = getattr(request.app.state, "config", None)
+    if config is None:
+        from ghost.core.config import load_config  # noqa: PLC0415
+
+        config = load_config()
+    return getattr(config, "stonic", None)
+
+
+def _realtime_enabled(request: Request) -> bool:
+    try:
+        return bool(getattr(_realtime_settings(request), "realtime_voice", False))
+    except Exception as exc:  # noqa: BLE001 - unreadable config means off
+        logger.warning("Failed to read realtime_voice flag: %s", exc)
+        return False
+
+
+def _realtime_refusal(exc: Any) -> JSONResponse:
+    return JSONResponse(status_code=exc.status, content=exc.to_dict())
+
+
+def _realtime_guard(request: Request) -> Optional[JSONResponse]:
+    if _realtime_enabled(request):
+        return None
+    return JSONResponse(
+        status_code=403,
+        content={
+            "ok": False,
+            "error": "disabled",
+            "message": "Turn on [stonic].realtime_voice to use the realtime engine.",
+        },
+    )
+
+
+@realtime_router.get("/status")
+async def realtime_status(request: Request):
+    """Flag, runtime install state, engine state and which keys are saved.
+
+    Reports key *presence* only, never values. Advisory: never raises.
+    """
+    from ghost.runtimes import install_status  # noqa: PLC0415
+    from ghost.speech import realtime  # noqa: PLC0415
+
+    keys = realtime.keys_from_env()
+    manager = realtime.get_manager()
+    stonic = None
+    try:
+        stonic = _realtime_settings(request)
+    except Exception:  # noqa: BLE001
+        pass
+    try:
+        runtime = install_status("voice")
+    except Exception as exc:  # noqa: BLE001
+        runtime = {"state": "error", "error": str(exc)[:300]}
+    return {
+        "enabled": _realtime_enabled(request),
+        "wake_word": bool(getattr(stonic, "wake_word", False)),
+        "wake_word_name": str(getattr(stonic, "wake_word_name", "") or "") or "Ghost",
+        "runtime": runtime,
+        "engine": manager.describe(),
+        "keys": {p: p in keys for p in realtime.PROVIDER_ENV},
+    }
+
+
+@realtime_router.post("/install")
+async def realtime_install(request: Request):
+    """Install the voice runtime (about 375 MB) in the background."""
+    if (refused := _realtime_guard(request)) is not None:
+        return refused
+    from ghost.runtimes import start_install  # noqa: PLC0415
+
+    return await asyncio.to_thread(start_install, "voice")
+
+
+@realtime_router.post("/start")
+async def realtime_start(request: Request, body: RealtimeStartBody):
+    """Start the engine (if needed) and push keys from the OS keyring env."""
+    if (refused := _realtime_guard(request)) is not None:
+        return refused
+    from ghost.speech import realtime  # noqa: PLC0415
+
+    try:
+        stonic = _realtime_settings(request)
+        payload = realtime.build_engine_config(
+            brain=body.brain,
+            voice_mode=body.voice_mode,
+            character=body.character,
+            wake_word_name=str(getattr(stonic, "wake_word_name", "") or ""),
+        )
+        missing = realtime.missing_for(payload)
+        if missing:
+            raise realtime.RealtimeError(
+                "key_missing",
+                "Missing keys for: " + ", ".join(missing),
+            )
+        manager = realtime.get_manager()
+        engine = await manager.start()
+        result = await manager.configure(payload)
+    except realtime.RealtimeError as exc:
+        return _realtime_refusal(exc)
+    return {
+        "ok": True,
+        "engine": engine,
+        "brain": payload["brain"],
+        "voice_mode": payload["voice"],
+        "missing": result.get("missing", []),
+    }
+
+
+@realtime_router.post("/stop")
+async def realtime_stop(request: Request):
+    """Stop the engine and make it forget the keys. Allowed even when off."""
+    from ghost.speech import realtime  # noqa: PLC0415
+
+    return await realtime.get_manager().stop()
+
+
+@realtime_router.post("/hangup")
+async def realtime_hangup(request: Request):
+    from ghost.speech import realtime  # noqa: PLC0415
+
+    try:
+        return await realtime.get_manager().hangup()
+    except realtime.RealtimeError as exc:
+        return _realtime_refusal(exc)
+
+
+@realtime_router.api_route("/offer", methods=["POST", "PATCH"])
+async def realtime_offer(request: Request):
+    """Proxy the SmallWebRTC offer / ICE candidates to the engine."""
+    if (refused := _realtime_guard(request)) is not None:
+        return refused
+    from ghost.speech import realtime  # noqa: PLC0415
+
+    try:
+        body = await request.json()
+    except ValueError:
+        return JSONResponse(
+            status_code=400, content={"ok": False, "error": "bad_offer"}
+        )
+    try:
+        status, answer = await realtime.get_manager().offer(request.method, body)
+    except realtime.RealtimeError as exc:
+        return _realtime_refusal(exc)
+    return JSONResponse(status_code=status, content=answer)
+
+
+def _wake_guard(request: Request) -> Optional[JSONResponse]:
+    if (refused := _realtime_guard(request)) is not None:
+        return refused
+    if bool(getattr(_realtime_settings(request), "wake_word", False)):
+        return None
+    return JSONResponse(
+        status_code=403,
+        content={
+            "ok": False,
+            "error": "disabled",
+            "message": "Turn on [stonic].wake_word to use the wake word.",
+        },
+    )
+
+
+@realtime_router.post("/wake/start")
+async def realtime_wake_start(request: Request):
+    """Listen for the assistant's name, transcribing locally with Whisper."""
+    if (refused := _wake_guard(request)) is not None:
+        return refused
+    backend = getattr(request.app.state, "speech_backend", None)
+    if backend is None or not hasattr(backend, "transcribe"):
+        return JSONResponse(
+            status_code=501,
+            content={"ok": False, "error": "no_stt", "message": "Speech not set up"},
+        )
+    from ghost.speech import wake_word  # noqa: PLC0415
+
+    name = str(getattr(_realtime_settings(request), "wake_word_name", "") or "")
+    listener = await asyncio.to_thread(wake_word.ensure_listener, backend, name)
+    listener.resume()
+    return {"ok": True, **listener.describe()}
+
+
+@realtime_router.post("/wake/stop")
+async def realtime_wake_stop(request: Request):
+    from ghost.speech import wake_word  # noqa: PLC0415
+
+    await asyncio.to_thread(wake_word.stop_listener)
+    return {"ok": True, "running": False}
+
+
+@realtime_router.post("/wake/pause")
+async def realtime_wake_pause(request: Request, resume: bool = False):
+    """Pause while a realtime call holds the mic; resume when it ends."""
+    from ghost.speech import wake_word  # noqa: PLC0415
+
+    listener = wake_word.get_listener()
+    if listener is None:
+        return {"ok": True, "running": False}
+    listener.resume() if resume else listener.pause()
+    return {"ok": True, **listener.describe()}
+
+
+@realtime_router.get("/wake/events")
+async def realtime_wake_events(request: Request, after: int = 0):
+    from ghost.speech import wake_word  # noqa: PLC0415
+
+    listener = wake_word.get_listener()
+    if listener is None:
+        return {"running": False, "events": [], "last_seq": after}
+    return {**listener.describe(), "events": listener.events(after)}
+
+
 @optimize_router.get("/runs/{run_id}")
 async def get_optimize_run(run_id: str, request: Request):
     """Get optimization run details."""
@@ -1567,6 +1798,7 @@ def include_all_routes(app) -> None:
     app.include_router(optimize_router)
     app.include_router(stonic_router)
     app.include_router(computer_router)
+    app.include_router(realtime_router)
 
     # Agent Manager routes (if available)
     try:
@@ -1622,4 +1854,5 @@ __all__ = [
     "optimize_router",
     "stonic_router",
     "computer_router",
+    "realtime_router",
 ]
