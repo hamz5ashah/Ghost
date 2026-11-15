@@ -1457,6 +1457,58 @@ async def stonic_characters(request: Request):
         return {"characters": [], "enabled": False}
 
 
+# ---------------------------------------------------------------------------
+# Computer use (Stonic port, Phase 2)
+# ---------------------------------------------------------------------------
+
+computer_router = APIRouter(prefix="/v1/computer", tags=["computer"])
+
+
+def _ocr_status_for(config: Any) -> Dict[str, Any]:
+    """Locate and run Tesseract the way the sidecar will. Never raises."""
+    from ghost.computer import protocol  # noqa: PLC0415
+
+    stonic = getattr(config, "stonic", None)
+    location = protocol.locate_tesseract(
+        explicit=str(getattr(stonic, "tesseract_path", "") or ""),
+        tessdata=str(getattr(stonic, "tessdata_path", "") or ""),
+    )
+    return protocol.probe_tesseract(location).to_dict()
+
+
+@computer_router.get("/ocr/status")
+async def computer_ocr_status(request: Request):
+    """Whether Tesseract OCR is usable for computer use, and why not if not.
+
+    Reported regardless of the `computer_use` flag, so Settings can show the
+    OCR state before the user turns the feature on. The probe actually runs
+    the binary (``--version`` and ``--list-langs``), so "available" means OCR
+    works, not merely that a file exists — the gap Stonic's installer fell into.
+    """
+    try:
+        config = getattr(request.app.state, "config", None)
+        if config is None:
+            from ghost.core.config import load_config  # noqa: PLC0415
+
+            config = load_config()
+        enabled = bool(getattr(getattr(config, "stonic", None), "computer_use", False))
+        status = await asyncio.to_thread(_ocr_status_for, config)
+        return {**status, "computer_use_enabled": enabled}
+    except Exception as exc:
+        logger.warning("OCR status probe failed: %s", exc)
+        return {
+            "available": False,
+            "source": "missing",
+            "path": None,
+            "tessdata": None,
+            "version": "",
+            "languages": [],
+            "has_english": False,
+            "error": f"OCR status could not be determined: {exc}"[:300],
+            "computer_use_enabled": False,
+        }
+
+
 @optimize_router.get("/runs/{run_id}")
 async def get_optimize_run(run_id: str, request: Request):
     """Get optimization run details."""
@@ -1514,6 +1566,7 @@ def include_all_routes(app) -> None:
     app.include_router(feedback_router)
     app.include_router(optimize_router)
     app.include_router(stonic_router)
+    app.include_router(computer_router)
 
     # Agent Manager routes (if available)
     try:
@@ -1568,4 +1621,5 @@ __all__ = [
     "feedback_router",
     "optimize_router",
     "stonic_router",
+    "computer_router",
 ]

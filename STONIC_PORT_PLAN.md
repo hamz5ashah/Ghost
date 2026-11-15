@@ -123,19 +123,95 @@ they need re-recording before any guided tour uses them.
 672 KB voice). The WAVs are lossless; re-encoding to Opus would recover ~8 MB
 if that matters more than keeping the originals byte-exact.
 
-## Phase 2 — computer use (Agent S3) + OCR fix
+## Phase 2 — computer use (Agent S3) + OCR fix — partly complete
 
-- [ ] `stonic-computer/` → `voice`/`computer` sidecar wiring via
-      `src/ghost/runtimes/`
-- [ ] `src/ghost/tools/computer_use.py` exposing it as a Ghost tool
-- [ ] Supervisor with backoff restart (port `computer-manager.js`, 1,031 lines)
-- [ ] Overlay HUD onto the existing `frontend/src-tauri/src/overlay.html` and
-      `toggle_overlay` / `hide_overlay` commands
-- [ ] **OCR bug fix:** bundle `tesseract` + `eng.traineddata`, set
-      `pytesseract.tesseract_cmd` from the resolved resource path, honour
-      `stonic.tesseract_path` / `tessdata_path`
-- [ ] `GET /v1/computer/ocr/status` so Settings can show green/red
-- [ ] Startup probe fails loudly instead of degrading silently
+### Done
+
+- [x] `src/ghost/computer/protocol.py` — pure stdlib, imported by both Ghost
+      and the sidecar. Per-provider engine params for OpenRouter, Claude,
+      Gemini and DeepSeek with direct user keys only; grounding coordinate
+      conventions; Tesseract locate + probe; sidecar env + fingerprint;
+      provider-aware error messages (no gateway, plan or quota text)
+- [x] `src/ghost/computer/hud.py` — the HUD state machine, ported from
+      `computer-overlay.js`
+- [x] `src/ghost/computer/sidecar/` — `runner.py`, `overlay_hud.py`,
+      `agent_cursor.py` (was `stonic_overlay.py`), `esc_guard.py`. Gateway,
+      `ROUTE` and plan handling removed; per-role providers; Gemini grounding
+      in its own `[y, x]` 0–1000 convention; Claude calls made abortable and
+      retried; OCR probed at boot and reported in `ready`
+- [x] **Esc-stop armed by the runner itself**, every task. In Stonic only the
+      HUD process armed it, so with the overlay off Esc stopped nothing
+- [x] **OCR bug fix:** `GET /v1/computer/ocr/status` runs the binary
+      (`--version`, `--list-langs`) so "available" means OCR works; Windows CI
+      stages `tesseract.exe` + DLLs + `eng.traineddata` into
+      `binaries/tesseract/` → installed as `tesseract/`; the staged copy is
+      OCR-tested with `PATH` cut to `System32`; the installed app's
+      `/v1/computer/ocr/status` must report `available` from source
+      `bundled`; Rust forwards the bundled path as `GHOST_TESSERACT`
+- [x] `[stonic]` config: `computer_planner`, `computer_grounding`,
+      `computer_max_steps` (`computer_use` still defaults to **off**)
+- [x] Tests: +127 Python (protocol, HUD, OCR route), +2 Rust
+
+### Deviation from the original plan
+
+The HUD is **not** routed through Ghost's `overlay.html` / `toggle_overlay`.
+That overlay is a macOS-only native chat panel; on Windows both commands are
+no-ops. Stonic's own notes also record that a webview overlay comes out black
+in the agent's screenshots. The HUD stays Stonic's native layered window
+(`overlay_hud.py`), which Windows excludes from capture.
+
+### Remaining — two wiring pieces, to finish locally on Windows
+
+These two pieces are all that's left. Everything they call already exists
+and is tested.
+
+**1. The supervisor process — `src/ghost/computer/manager.py`**
+
+Port of `vendor/stonic/electron/services/computer-manager.js`. It owns one
+resident runner process:
+
+- **Spawn.** `ghost.runtimes.venv_python("computer")` runs
+  `src/ghost/computer/sidecar/runner.py`, with args `-X utf8 -u`. Don't use
+  `-I`: it ignores the `PYTHON*` env the runner relies on. The env comes from
+  `protocol.sidecar_env(protocol.choose(os.environ, stonic.computer_planner,
+  stonic.computer_grounding), protocol.locate_tesseract(...), os.environ)`.
+  Keys come only from `os.environ`, which the Tauri shell fills from the OS
+  keyring and `/v1/cloud/reload` updates.
+- **Start condition.** Start only when `stonic.computer_use` is true and the
+  runtime is installed. Restart when `protocol.fingerprint(...)` changes.
+- **Protocol.** NDJSON on stdin/stdout, documented at the top of `runner.py`.
+  Drain stderr on its own thread, so a full pipe can't hang the child.
+- **Supervision.** Reuse Stonic's timing constants (top of
+  `computer-manager.js`):
+    - load stall 30 s and hard cap 15 min
+    - start timeout 15 s
+    - stop grace 12 s
+    - task watchdog 22 min
+    - restart backoff 3 s × [1, 3, 10, 20, 40], capped at 2 min
+    - give up after 5 failures
+- **Tasks.** One at a time; a second request gets "busy". If the agent is
+  still loading, queue a single pending task.
+- **HUD.** Spawn `overlay_hud.py`, Windows only, behind
+  `stonic.computer_overlay`. Feed it `hud.reduce(...)` states. Hide once
+  `hud.should_hide` is true. Forward its `{"event":"stop"}` to the runner.
+
+**2. The task routes — `/v1/computer/*` on `computer_router` in
+`src/ghost/server/api_routes.py`**
+
+- `GET /v1/computer/status`: manager state, the chosen providers and models,
+  and the last `ocr` from `ready`
+- `POST /v1/computer/tasks` `{task, max_steps?, fast?}`: returns `{id}`, or
+  409 when busy and 503 when disabled or unconfigured. Return
+  `ProviderError.code` and its message as-is
+- `POST /v1/computer/tasks/{id}/stop`
+- `GET /v1/computer/tasks/{id}`: the result once `task_done` arrives
+- `GET /v1/computer/events?since=N`: buffered runner events for the UI
+- Construct the manager in `create_app` only when `stonic.computer_use` is
+  true, and shut it down on app shutdown
+
+Optional: a `computer_use` tool in `src/ghost/tools/`, with
+`requires_confirmation=True` (as `shell_exec` has), that calls the manager.
+Register it only when the flag is on.
 
 ## Phase 3 — realtime voice engine
 

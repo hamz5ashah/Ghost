@@ -307,6 +307,10 @@ select = ["E", "F", "I", "W"]
 # research_loop.py carries long prompt strings too (documented in CLAUDE.md);
 # the ignore was missing here.
 "src/ghost/agents/research_loop.py" = ["E501"]
+# The computer-use sidecar is ported from Stonic (STONIC_PORT_PLAN.md, phase 2).
+# Its Roman Urdu comments record why each workaround exists; they are kept
+# verbatim rather than re-wrapped, so a few run past 88 columns.
+"src/ghost/computer/sidecar/*.py" = ["E501"]
 
 [dependency-groups]
 dev = [

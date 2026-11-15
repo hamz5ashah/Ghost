@@ -380,6 +380,26 @@ fn stonic_asset_in(
     path.is_file().then_some(path)
 }
 
+/// The Tesseract OCR binary under a resource root, if this build bundles it.
+/// Windows CI stages it at `tesseract/` (see build-apps.yml). Pure.
+fn tesseract_in(root: &std::path::Path) -> Option<std::path::PathBuf> {
+    let exe = if cfg!(target_os = "windows") {
+        "tesseract.exe"
+    } else {
+        "tesseract"
+    };
+    let path = root.join("tesseract").join(exe);
+    path.is_file().then_some(path)
+}
+
+/// Bundled Tesseract, forwarded to the backend as `GHOST_TESSERACT` so the
+/// computer-use OCR probe finds the copy that ships with the app before
+/// falling back to PATH.
+fn bundled_tesseract() -> Option<String> {
+    let root = BUNDLED_RESOURCE_DIR.get()?;
+    tesseract_in(root).map(|p| p.to_string_lossy().into_owned())
+}
+
 /// Absolute path to a bundled Stonic media file, or `None` when this build
 /// does not ship it. The frontend passes the result through `convertFileSrc`.
 #[tauri::command]
@@ -1865,6 +1885,10 @@ async fn boot_backend(backend: SharedBackend, status: SharedStatus) {
     // Inject cloud API keys from secure desktop storage.
     for (key, value) in cloud_keys_for_inference(&cfg) {
         cmd.env(&key, &value);
+    }
+    // Bundled Tesseract OCR (Windows builds), for computer use.
+    if let Some(tesseract) = bundled_tesseract() {
+        cmd.env("GHOST_TESSERACT", tesseract);
     }
     let ghost_child = spawn_owned_child(&mut cmd);
 
@@ -4159,6 +4183,23 @@ mod tests {
             );
             assert!(super::super::stonic_asset_in(&root, "video", "absent.mp4").is_none());
             std::fs::remove_dir_all(&root).ok();
+        }
+
+        #[test]
+        fn tesseract_is_found_under_the_resource_root() {
+            let root = std::env::temp_dir().join("ghost-tesseract-test");
+            let dir = root.join("tesseract");
+            std::fs::create_dir_all(&dir).unwrap();
+            let exe = if cfg!(target_os = "windows") { "tesseract.exe" } else { "tesseract" };
+            std::fs::write(dir.join(exe), b"x").unwrap();
+            assert_eq!(super::super::tesseract_in(&root), Some(dir.join(exe)));
+            std::fs::remove_dir_all(&root).ok();
+        }
+
+        #[test]
+        fn missing_tesseract_is_none() {
+            let root = std::env::temp_dir().join("ghost-no-tesseract-here");
+            assert!(super::super::tesseract_in(&root).is_none());
         }
 
         #[test]
