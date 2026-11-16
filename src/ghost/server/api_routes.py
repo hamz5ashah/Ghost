@@ -17,6 +17,7 @@ from fastapi import (
     WebSocket,
     WebSocketDisconnect,
 )
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
 logger = logging.getLogger(__name__)
@@ -1378,6 +1379,1101 @@ async def list_optimize_runs(request: Request):
         return {"runs": []}
 
 
+# ---------------------------------------------------------------------------
+# Stonic port feature flags
+# ---------------------------------------------------------------------------
+
+stonic_router = APIRouter(prefix="/v1/stonic", tags=["stonic"])
+
+# Flags the UI is allowed to read. Listed explicitly rather than reflected off
+# the dataclass so that adding an internal field to StonicConfig cannot widen
+# the public surface by accident.
+_STONIC_FLAG_NAMES = (
+    "ui_sounds",
+    "characters",
+    "computer_use",
+    "computer_overlay",
+    "realtime_voice",
+    "wake_word",
+    "facelock",
+    "gestures",
+    "awareness",
+    "desktop_presence",
+    "memory_v2",
+)
+
+
+@stonic_router.get("/flags")
+async def stonic_flags(request: Request):
+    """Report which ported Stonic features are enabled.
+
+    Every flag is off unless the user turned it on, so a failure to read the
+    config must report *off* rather than erroring: the UI treats this endpoint
+    as advisory and renders Ghost's own behaviour when it is unavailable.
+    """
+    flags = dict.fromkeys(_STONIC_FLAG_NAMES, False)
+    try:
+        config = getattr(request.app.state, "config", None)
+        if config is None:
+            from ghost.core.config import load_config  # noqa: PLC0415
+
+            config = load_config()
+        stonic = getattr(config, "stonic", None)
+        if stonic is not None:
+            for name in _STONIC_FLAG_NAMES:
+                flags[name] = bool(getattr(stonic, name, False))
+    except Exception as exc:
+        logger.warning("Failed to read Stonic feature flags: %s", exc)
+        return {"flags": dict.fromkeys(_STONIC_FLAG_NAMES, False), "available": False}
+    return {"flags": flags, "available": True}
+
+
+@stonic_router.get("/characters")
+async def stonic_characters(request: Request):
+    """List the character delivery profiles available to the voice engine.
+
+    Reports an empty list when the `characters` flag is off, so the UI needs no
+    separate flag check before rendering the picker. Like the flags endpoint,
+    this is advisory and never raises.
+    """
+    try:
+        config = getattr(request.app.state, "config", None)
+        if config is None:
+            from ghost.core.config import load_config  # noqa: PLC0415
+
+            config = load_config()
+        enabled = bool(getattr(getattr(config, "stonic", None), "characters", False))
+        if not enabled:
+            return {"characters": [], "enabled": False}
+
+        from ghost.speech.characters import (  # noqa: PLC0415
+            DEFAULT_CHARACTER,
+            selectable_characters,
+        )
+
+        found = selectable_characters()
+        return {
+            "characters": [c.to_dict() for c in found],
+            "enabled": True,
+            "default": DEFAULT_CHARACTER,
+        }
+    except Exception as exc:
+        logger.warning("Failed to list Stonic characters: %s", exc)
+        return {"characters": [], "enabled": False}
+
+
+# ---------------------------------------------------------------------------
+# Computer use (Stonic port, Phase 2)
+# ---------------------------------------------------------------------------
+
+computer_router = APIRouter(prefix="/v1/computer", tags=["computer"])
+
+
+def _ocr_status_for(config: Any) -> Dict[str, Any]:
+    """Locate and run Tesseract the way the sidecar will. Never raises."""
+    from ghost.computer import protocol  # noqa: PLC0415
+
+    stonic = getattr(config, "stonic", None)
+    location = protocol.locate_tesseract(
+        explicit=str(getattr(stonic, "tesseract_path", "") or ""),
+        tessdata=str(getattr(stonic, "tessdata_path", "") or ""),
+    )
+    return protocol.probe_tesseract(location).to_dict()
+
+
+@computer_router.get("/ocr/status")
+async def computer_ocr_status(request: Request):
+    """Whether Tesseract OCR is usable for computer use, and why not if not.
+
+    Reported regardless of the `computer_use` flag, so Settings can show the
+    OCR state before the user turns the feature on. The probe actually runs
+    the binary (``--version`` and ``--list-langs``), so "available" means OCR
+    works, not merely that a file exists — the gap Stonic's installer fell into.
+    """
+    try:
+        config = getattr(request.app.state, "config", None)
+        if config is None:
+            from ghost.core.config import load_config  # noqa: PLC0415
+
+            config = load_config()
+        enabled = bool(getattr(getattr(config, "stonic", None), "computer_use", False))
+        status = await asyncio.to_thread(_ocr_status_for, config)
+        return {**status, "computer_use_enabled": enabled}
+    except Exception as exc:
+        logger.warning("OCR status probe failed: %s", exc)
+        return {
+            "available": False,
+            "source": "missing",
+            "path": None,
+            "tessdata": None,
+            "version": "",
+            "languages": [],
+            "has_english": False,
+            "error": f"OCR status could not be determined: {exc}"[:300],
+            "computer_use_enabled": False,
+        }
+
+
+# ---------------------------------------------------------------------------
+# Realtime voice engine (Stonic port, Phase 3)
+# ---------------------------------------------------------------------------
+#
+# A second, opt-in voice engine. Ghost's default Kokoro + faster-whisper path
+# is not touched by any of these routes. Every route except /status refuses
+# with 403 unless [stonic].realtime_voice is on.
+
+realtime_router = APIRouter(prefix="/v1/speech/realtime", tags=["speech"])
+
+
+class RealtimeStartBody(BaseModel):
+    # "provider" or "provider:model"; empty picks from the saved keys.
+    brain: str = ""
+    # "tts" (directed Gemini TTS, the bracket performance) or "live".
+    voice_mode: str = "tts"
+    character: Dict[str, Any] = {}
+
+
+def _realtime_settings(request: Request) -> Any:
+    config = getattr(request.app.state, "config", None)
+    if config is None:
+        from ghost.core.config import load_config  # noqa: PLC0415
+
+        config = load_config()
+    return getattr(config, "stonic", None)
+
+
+def _realtime_enabled(request: Request) -> bool:
+    try:
+        return bool(getattr(_realtime_settings(request), "realtime_voice", False))
+    except Exception as exc:  # noqa: BLE001 - unreadable config means off
+        logger.warning("Failed to read realtime_voice flag: %s", exc)
+        return False
+
+
+def _realtime_refusal(exc: Any) -> JSONResponse:
+    return JSONResponse(status_code=exc.status, content=exc.to_dict())
+
+
+def _realtime_guard(request: Request) -> Optional[JSONResponse]:
+    if _realtime_enabled(request):
+        return None
+    return JSONResponse(
+        status_code=403,
+        content={
+            "ok": False,
+            "error": "disabled",
+            "message": "Turn on [stonic].realtime_voice to use the realtime engine.",
+        },
+    )
+
+
+@realtime_router.get("/status")
+async def realtime_status(request: Request):
+    """Flag, runtime install state, engine state and which keys are saved.
+
+    Reports key *presence* only, never values. Advisory: never raises.
+    """
+    from ghost.runtimes import install_status  # noqa: PLC0415
+    from ghost.speech import realtime  # noqa: PLC0415
+
+    keys = realtime.keys_from_env()
+    manager = realtime.get_manager()
+    stonic = None
+    try:
+        stonic = _realtime_settings(request)
+    except Exception:  # noqa: BLE001
+        pass
+    try:
+        runtime = install_status("voice")
+    except Exception as exc:  # noqa: BLE001
+        runtime = {"state": "error", "error": str(exc)[:300]}
+    return {
+        "enabled": _realtime_enabled(request),
+        "wake_word": bool(getattr(stonic, "wake_word", False)),
+        "wake_word_name": str(getattr(stonic, "wake_word_name", "") or "") or "Ghost",
+        "runtime": runtime,
+        "engine": manager.describe(),
+        "keys": {p: p in keys for p in realtime.PROVIDER_ENV},
+    }
+
+
+@realtime_router.post("/install")
+async def realtime_install(request: Request):
+    """Install the voice runtime (about 375 MB) in the background."""
+    if (refused := _realtime_guard(request)) is not None:
+        return refused
+    from ghost.runtimes import start_install  # noqa: PLC0415
+
+    return await asyncio.to_thread(start_install, "voice")
+
+
+@realtime_router.post("/start")
+async def realtime_start(request: Request, body: RealtimeStartBody):
+    """Start the engine (if needed) and push keys from the OS keyring env."""
+    if (refused := _realtime_guard(request)) is not None:
+        return refused
+    from ghost.speech import realtime  # noqa: PLC0415
+
+    try:
+        stonic = _realtime_settings(request)
+        memory = ""
+        if _stonic_flag(request, "memory_v2"):
+            # Phase 6: the voice remembers — its memory card goes to the engine.
+            from ghost.memory.v2 import bridge  # noqa: PLC0415
+
+            char_id = str((body.character or {}).get("id") or "") or None
+            memory = await asyncio.to_thread(bridge.voice_memory_card, char_id)
+        payload = realtime.build_engine_config(
+            brain=body.brain,
+            voice_mode=body.voice_mode,
+            character=body.character,
+            memory=memory,
+            wake_word_name=str(getattr(stonic, "wake_word_name", "") or ""),
+        )
+        missing = realtime.missing_for(payload)
+        if missing:
+            raise realtime.RealtimeError(
+                "key_missing",
+                "Missing keys for: " + ", ".join(missing),
+            )
+        manager = realtime.get_manager()
+        engine = await manager.start()
+        result = await manager.configure(payload)
+    except realtime.RealtimeError as exc:
+        return _realtime_refusal(exc)
+    return {
+        "ok": True,
+        "engine": engine,
+        "brain": payload["brain"],
+        "voice_mode": payload["voice"],
+        "missing": result.get("missing", []),
+    }
+
+
+@realtime_router.post("/stop")
+async def realtime_stop(request: Request):
+    """Stop the engine and make it forget the keys. Allowed even when off."""
+    from ghost.speech import realtime  # noqa: PLC0415
+
+    return await realtime.get_manager().stop()
+
+
+@realtime_router.post("/hangup")
+async def realtime_hangup(request: Request):
+    from ghost.speech import realtime  # noqa: PLC0415
+
+    try:
+        return await realtime.get_manager().hangup()
+    except realtime.RealtimeError as exc:
+        return _realtime_refusal(exc)
+
+
+@realtime_router.api_route("/offer", methods=["POST", "PATCH"])
+async def realtime_offer(request: Request):
+    """Proxy the SmallWebRTC offer / ICE candidates to the engine."""
+    if (refused := _realtime_guard(request)) is not None:
+        return refused
+    from ghost.speech import realtime  # noqa: PLC0415
+
+    try:
+        body = await request.json()
+    except ValueError:
+        return JSONResponse(
+            status_code=400, content={"ok": False, "error": "bad_offer"}
+        )
+    try:
+        status, answer = await realtime.get_manager().offer(request.method, body)
+    except realtime.RealtimeError as exc:
+        return _realtime_refusal(exc)
+    return JSONResponse(status_code=status, content=answer)
+
+
+def _wake_guard(request: Request) -> Optional[JSONResponse]:
+    if (refused := _realtime_guard(request)) is not None:
+        return refused
+    if bool(getattr(_realtime_settings(request), "wake_word", False)):
+        return None
+    return JSONResponse(
+        status_code=403,
+        content={
+            "ok": False,
+            "error": "disabled",
+            "message": "Turn on [stonic].wake_word to use the wake word.",
+        },
+    )
+
+
+@realtime_router.post("/wake/start")
+async def realtime_wake_start(request: Request):
+    """Listen for the assistant's name, transcribing locally with Whisper."""
+    if (refused := _wake_guard(request)) is not None:
+        return refused
+    backend = getattr(request.app.state, "speech_backend", None)
+    if backend is None or not hasattr(backend, "transcribe"):
+        return JSONResponse(
+            status_code=501,
+            content={"ok": False, "error": "no_stt", "message": "Speech not set up"},
+        )
+    from ghost.speech import wake_word  # noqa: PLC0415
+
+    name = str(getattr(_realtime_settings(request), "wake_word_name", "") or "")
+    listener = await asyncio.to_thread(wake_word.ensure_listener, backend, name)
+    listener.resume()
+    return {"ok": True, **listener.describe()}
+
+
+@realtime_router.post("/wake/stop")
+async def realtime_wake_stop(request: Request):
+    from ghost.speech import wake_word  # noqa: PLC0415
+
+    await asyncio.to_thread(wake_word.stop_listener)
+    return {"ok": True, "running": False}
+
+
+@realtime_router.post("/wake/pause")
+async def realtime_wake_pause(request: Request, resume: bool = False):
+    """Pause while a realtime call holds the mic; resume when it ends."""
+    from ghost.speech import wake_word  # noqa: PLC0415
+
+    listener = wake_word.get_listener()
+    if listener is None:
+        return {"ok": True, "running": False}
+    listener.resume() if resume else listener.pause()
+    return {"ok": True, **listener.describe()}
+
+
+@realtime_router.get("/wake/events")
+async def realtime_wake_events(request: Request, after: int = 0):
+    from ghost.speech import wake_word  # noqa: PLC0415
+
+    listener = wake_word.get_listener()
+    if listener is None:
+        return {"running": False, "events": [], "last_seq": after}
+    return {**listener.describe(), "events": listener.events(after)}
+
+
+# ---------------------------------------------------------------------------
+# Face Lock and gesture models (Stonic port, Phase 4)
+# ---------------------------------------------------------------------------
+#
+# The WebView sees and measures; every decision is made in
+# ghost.security.facelock. Face prints and the PIN hash never leave it.
+
+facelock_router = APIRouter(prefix="/v1/security/facelock", tags=["security"])
+facelock_assets_router = APIRouter(tags=["security"])
+
+
+class FaceVerifyBody(BaseModel):
+    embeddings: List[List[float]] = []
+    purpose: str = "unlock"
+
+
+class PinVerifyBody(BaseModel):
+    pin: str = ""
+    purpose: str = "unlock"
+
+
+class EnrollBody(BaseModel):
+    templates: List[List[float]] = []
+    pin: str = ""
+    ticket: Optional[str] = None
+
+
+class TicketBody(BaseModel):
+    ticket: Optional[str] = None
+    pin: str = ""
+
+
+def _stonic_flag(request: Request, name: str) -> bool:
+    try:
+        config = getattr(request.app.state, "config", None)
+        if config is None:
+            from ghost.core.config import load_config  # noqa: PLC0415
+
+            config = load_config()
+        return bool(getattr(getattr(config, "stonic", None), name, False))
+    except Exception as exc:  # noqa: BLE001 - unreadable config means off
+        logger.warning("Failed to read [stonic].%s: %s", name, exc)
+        return False
+
+
+def _facelock_manager(request: Request):
+    """The manager, or a 403 response when the flag is off."""
+    if not _stonic_flag(request, "facelock"):
+        return None, JSONResponse(
+            status_code=403,
+            content={
+                "ok": False,
+                "reason": "disabled",
+                "message": "Turn on [stonic].facelock to use Face Lock.",
+            },
+        )
+    from ghost.security import facelock  # noqa: PLC0415
+
+    return facelock.ensure_manager(), None
+
+
+_FACELOCK_OFF_STATUS = {
+    "supported": False,
+    "enabled": False,
+    "locked": False,
+    "templateCount": 0,
+    "attemptsLeft": 0,
+    "maxAttempts": 0,
+    "lockoutMs": 0,
+    "pinLength": 6,
+}
+
+
+@facelock_router.get("/status")
+async def facelock_status(request: Request):
+    """Advisory and read-only: never the templates or the PIN hash."""
+    if not _stonic_flag(request, "facelock"):
+        return {**_FACELOCK_OFF_STATUS, "available": False}
+    from ghost.security import facelock  # noqa: PLC0415
+
+    return {**facelock.ensure_manager().status(), "available": True}
+
+
+@facelock_router.post("/verify-face")
+async def facelock_verify_face(request: Request, body: FaceVerifyBody):
+    manager, refused = _facelock_manager(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(manager.verify_face, body.embeddings, body.purpose)
+
+
+@facelock_router.post("/verify-pin")
+async def facelock_verify_pin(request: Request, body: PinVerifyBody):
+    manager, refused = _facelock_manager(request)
+    if refused is not None:
+        return refused
+    # scrypt takes ~50 ms; keep it off the event loop.
+    return await asyncio.to_thread(manager.verify_pin, body.pin, body.purpose)
+
+
+@facelock_router.post("/enroll")
+async def facelock_enroll(request: Request, body: EnrollBody):
+    manager, refused = _facelock_manager(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(
+        manager.enroll, body.templates, body.pin, body.ticket
+    )
+
+
+@facelock_router.post("/change-pin")
+async def facelock_change_pin(request: Request, body: TicketBody):
+    manager, refused = _facelock_manager(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(manager.change_pin, body.pin, body.ticket)
+
+
+@facelock_router.post("/disable")
+async def facelock_disable(request: Request, body: TicketBody):
+    manager, refused = _facelock_manager(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(manager.disable, body.ticket)
+
+
+@facelock_router.post("/lock")
+async def facelock_lock_now(request: Request):
+    manager, refused = _facelock_manager(request)
+    if refused is not None:
+        return refused
+    return {"ok": manager.lock("manual"), "status": manager.status()}
+
+
+_MODEL_BUNDLE_FLAGS = {"facelock": "facelock", "gestures": "gestures"}
+
+
+def _bundle_refusal(request: Request, bundle: str) -> Optional[JSONResponse]:
+    flag = _MODEL_BUNDLE_FLAGS.get(bundle)
+    if flag is None:
+        return JSONResponse(
+            status_code=400, content={"ok": False, "error": "bad_bundle"}
+        )
+    if not _stonic_flag(request, flag):
+        message = f"[stonic].{flag} is off"
+        return JSONResponse(
+            status_code=403,
+            content={"ok": False, "error": "disabled", "message": message},
+        )
+    return None
+
+
+@facelock_router.get("/models")
+async def facelock_models_status(request: Request, bundle: str = "facelock"):
+    if (refused := _bundle_refusal(request, bundle)) is not None:
+        return refused
+    from ghost.security import facelock_models  # noqa: PLC0415
+
+    return facelock_models.download_status(bundle)
+
+
+@facelock_router.post("/models/download")
+async def facelock_models_download(request: Request, bundle: str = "facelock"):
+    if (refused := _bundle_refusal(request, bundle)) is not None:
+        return refused
+    from ghost.security import facelock_models  # noqa: PLC0415
+
+    return facelock_models.start_download(bundle)
+
+
+@facelock_assets_router.get("/facelock-assets/{name}")
+async def facelock_asset(request: Request, name: str):
+    """Serve a downloaded, hash-verified public model/runtime file.
+
+    Outside /v1 (like the UI's own files) because MediaPipe and ONNX Runtime
+    fetch these themselves without Ghost's auth header. Only the fixed list of
+    public files can be named, only while Face Lock or hand control is on, and
+    each file is checked against its pinned SHA-256 before it is first served.
+    """
+    from fastapi.responses import FileResponse  # noqa: PLC0415
+
+    from ghost.security import facelock_models  # noqa: PLC0415
+
+    asset = facelock_models.ASSETS.get(name)
+    if asset is None or not (
+        _stonic_flag(request, "facelock") or _stonic_flag(request, "gestures")
+    ):
+        return JSONResponse(status_code=404, content={"error": "not_found"})
+    path = await asyncio.to_thread(facelock_models.asset_path, name)
+    if path is None:
+        return JSONResponse(status_code=404, content={"error": "not_downloaded"})
+    return FileResponse(
+        path,
+        media_type=asset.media_type,
+        headers={"Cache-Control": "public, max-age=31536000, immutable"},
+    )
+
+
+# ---------------------------------------------------------------------------
+# Awareness (Stonic port, Phase 5)
+# ---------------------------------------------------------------------------
+#
+# Off unless [stonic].awareness is on AND the user switches it on in Settings.
+# Signals come from the desktop shell's sensor; nothing here reads the screen.
+
+awareness_router = APIRouter(prefix="/v1/awareness", tags=["awareness"])
+
+
+class AwarenessConfigBody(BaseModel):
+    enabled: Optional[bool] = None
+    character: Optional[Dict[str, Any]] = None
+
+
+class AwarenessOutcomeBody(BaseModel):
+    t: float
+    outcome: str
+    reply: str = ""
+
+
+class AwarenessQuietBody(BaseModel):
+    minutes: float = 60
+
+
+def _awareness(request: Request):
+    if not _stonic_flag(request, "awareness"):
+        return None, JSONResponse(
+            status_code=403,
+            content={
+                "ok": False,
+                "error": "disabled",
+                "message": "Turn on [stonic].awareness to use awareness.",
+            },
+        )
+    from ghost.daemon.awareness import service  # noqa: PLC0415
+
+    return service.ensure_service(request.app.state), None
+
+
+@awareness_router.get("/status")
+async def awareness_status(request: Request):
+    if not _stonic_flag(request, "awareness"):
+        return {"available": False, "enabled": False}
+    svc, _ = _awareness(request)
+    return await asyncio.to_thread(svc.status)
+
+
+@awareness_router.post("/configure")
+async def awareness_configure(request: Request, body: AwarenessConfigBody):
+    svc, refused = _awareness(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(svc.configure, body.enabled, body.character)
+
+
+@awareness_router.post("/signals")
+async def awareness_signals(request: Request):
+    """One sample from the desktop shell's sensor. Write-only: returns nothing."""
+    if not _stonic_flag(request, "awareness"):
+        return JSONResponse(status_code=204, content=None)
+    try:
+        sample = await request.json()
+    except ValueError:
+        return JSONResponse(status_code=400, content={"ok": False})
+    if not isinstance(sample, dict):
+        return JSONResponse(status_code=400, content={"ok": False})
+    svc, _ = _awareness(request)
+    await asyncio.to_thread(svc.ingest, sample)
+    return JSONResponse(status_code=204, content=None)
+
+
+@awareness_router.post("/activity")
+async def awareness_activity(request: Request):
+    svc, refused = _awareness(request)
+    if refused is not None:
+        return refused
+    try:
+        body = await request.json()
+    except ValueError:
+        body = {}
+    svc.activity(body if isinstance(body, dict) else {})
+    return {"ok": True}
+
+
+@awareness_router.post("/outcome")
+async def awareness_outcome(request: Request, body: AwarenessOutcomeBody):
+    svc, refused = _awareness(request)
+    if refused is not None:
+        return refused
+    ok = await asyncio.to_thread(
+        svc.engine.report_outcome, body.t, body.outcome, body.reply
+    )
+    return {"ok": ok}
+
+
+@awareness_router.post("/quiet")
+async def awareness_quiet(request: Request, body: AwarenessQuietBody):
+    svc, refused = _awareness(request)
+    if refused is not None:
+        return refused
+    svc.engine.quiet_for(min(max(body.minutes, 1), 720), "you asked")
+    return {"ok": True, **svc.status()}
+
+
+@awareness_router.post("/think-now")
+async def awareness_think_now(request: Request):
+    svc, refused = _awareness(request)
+    if refused is not None:
+        return refused
+    decision = await asyncio.to_thread(svc.engine.beat_now)
+    return {"ok": decision is not None, "decision": decision}
+
+
+@awareness_router.get("/events")
+async def awareness_events(request: Request, after: int = 0):
+    svc, refused = _awareness(request)
+    if refused is not None:
+        return refused
+    return svc.events(after)
+
+
+@awareness_router.get("/diary")
+async def awareness_diary(request: Request):
+    """What the eyes recorded today, the same text the model reads."""
+    svc, refused = _awareness(request)
+    if refused is not None:
+        return refused
+    snap = await asyncio.to_thread(svc.eyes.snapshot)
+    keep = ("running", "digest", "recentDays", "today", "todayApps", "active")
+    return {k: snap.get(k) for k in keep}
+
+
+@awareness_router.post("/forget")
+async def awareness_forget(request: Request):
+    svc, refused = _awareness(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(svc.forget)
+
+
+# ---------------------------------------------------------------------------
+# Memory v2 (Stonic port, Phase 6) — Memory Core + file memory
+# ---------------------------------------------------------------------------
+
+memory_v2_router = APIRouter(prefix="/v1/memory/v2", tags=["memory-v2"])
+
+
+class MemoryRecallBody(BaseModel):
+    query: str
+    query_en: str = ""
+    mind: str = "voice"
+    character_id: Optional[str] = None
+    k: int = 6
+
+
+class MemoryAskBody(BaseModel):
+    question: str
+    keywords: str = ""
+    character_id: Optional[str] = None
+    recent: List[Dict[str, Any]] = []
+
+
+class MemoryRememberBody(BaseModel):
+    text: str
+    pin: bool = False
+    about: str = ""
+    character_id: Optional[str] = None
+
+
+class MemoryFollowUpBody(BaseModel):
+    what: str
+    when: str = ""
+    done: bool = False
+    character_id: Optional[str] = None
+
+
+class MemoryPatchBody(BaseModel):
+    text: Optional[str] = None
+    text_en: Optional[str] = None
+    type: Optional[str] = None
+    sensitivity: Optional[str] = None
+    triggers: Optional[List[str]] = None
+
+
+class MemoryPinBody(BaseModel):
+    pinned: bool = True
+
+
+class MemoryResolveBody(BaseModel):
+    status: str = "done"
+
+
+class MemoryPauseBody(BaseModel):
+    paused: bool = True
+
+
+class MemoryNotesCommandBody(BaseModel):
+    command: str
+    path: Optional[str] = None
+    file_text: Optional[str] = None
+    old_str: Optional[str] = None
+    new_str: Optional[str] = None
+    insert_line: Optional[int] = None
+    insert_text: Optional[str] = None
+    old_path: Optional[str] = None
+    new_path: Optional[str] = None
+    view_range: Optional[List[int]] = None
+
+
+class MemoryNotesGrepBody(BaseModel):
+    pattern: str
+    path: Optional[str] = None
+    glob: Optional[str] = None
+    output_mode: Optional[str] = None
+    head_limit: Optional[int] = None
+    context: Optional[int] = None
+    case_insensitive: bool = False
+
+
+def _memory_v2(request: Request):
+    """Memory Core, or a 403 response when ``[stonic].memory_v2`` is off."""
+    if not _stonic_flag(request, "memory_v2"):
+        return None, JSONResponse(
+            status_code=403,
+            content={
+                "ok": False,
+                "error": "disabled",
+                "message": "Turn on [stonic].memory_v2 to use memory v2.",
+            },
+        )
+    from ghost.memory.v2 import bridge  # noqa: PLC0415
+
+    core = bridge.get_core()
+    if not core.ensure():
+        return None, JSONResponse(
+            status_code=503, content={"ok": False, "error": core.reason or "off"}
+        )
+    return core, None
+
+
+@memory_v2_router.get("/status")
+async def memory_v2_status(request: Request):
+    if not _stonic_flag(request, "memory_v2"):
+        return {"available": False, "enabled": False}
+    from ghost.memory.v2 import bridge  # noqa: PLC0415
+
+    core = bridge.get_core()
+    status = await asyncio.to_thread(core.status)
+    notes = await asyncio.to_thread(lambda: bridge.get_notes().stats())
+    return {"available": True, **status, "notes": notes}
+
+
+@memory_v2_router.post("/recall")
+async def memory_v2_recall(request: Request, body: MemoryRecallBody):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(
+        core.recall,
+        body.query,
+        query_en=body.query_en,
+        mind=body.mind,
+        character_id=body.character_id,
+        k=body.k,
+    )
+
+
+@memory_v2_router.post("/ask")
+async def memory_v2_ask(request: Request, body: MemoryAskBody):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(
+        core.ask,
+        body.question,
+        keywords=body.keywords,
+        character_id=body.character_id,
+        recent=body.recent,
+    )
+
+
+@memory_v2_router.post("/remember")
+async def memory_v2_remember(request: Request, body: MemoryRememberBody):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(
+        core.remember,
+        body.text,
+        source="user",
+        pin=body.pin,
+        about=body.about,
+        character_id=body.character_id,
+    )
+
+
+@memory_v2_router.post("/follow-up")
+async def memory_v2_follow_up(request: Request, body: MemoryFollowUpBody):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(
+        core.follow_up,
+        body.what,
+        when=body.when,
+        done=body.done,
+        source="user",
+        character_id=body.character_id,
+    )
+
+
+@memory_v2_router.get("/context")
+async def memory_v2_context(
+    request: Request, mind: str = "voice", character_id: Optional[str] = None
+):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(core.context_block, mind, character_id=character_id)
+
+
+@memory_v2_router.get("/memories")
+async def memory_v2_memories(
+    request: Request, status: str = "active,candidate", limit: int = 200
+):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    statuses = [x for x in status.split(",") if x]
+    return await asyncio.to_thread(core.list_memories, status=statuses, limit=limit)
+
+
+@memory_v2_router.get("/memories/{memory_id}")
+async def memory_v2_memory(request: Request, memory_id: int):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(core.memory_detail, memory_id)
+
+
+@memory_v2_router.patch("/memories/{memory_id}")
+async def memory_v2_update(request: Request, memory_id: int, body: MemoryPatchBody):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    patch = {k: v for k, v in body.model_dump().items() if v is not None}
+    return await asyncio.to_thread(core.update_memory, memory_id, patch)
+
+
+@memory_v2_router.post("/memories/{memory_id}/pin")
+async def memory_v2_pin(request: Request, memory_id: int, body: MemoryPinBody):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(core.set_pinned, memory_id, body.pinned)
+
+
+@memory_v2_router.delete("/memories/{memory_id}")
+async def memory_v2_forget(request: Request, memory_id: int, hard: bool = False):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(core.forget_memory, memory_id, hard=hard)
+
+
+@memory_v2_router.get("/intentions")
+async def memory_v2_intentions(request: Request, status: str = "open"):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(core.list_intentions, status=status)
+
+
+@memory_v2_router.post("/intentions/{intention_id}/resolve")
+async def memory_v2_resolve(
+    request: Request, intention_id: int, body: MemoryResolveBody
+):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(core.resolve_intention, intention_id, body.status)
+
+
+@memory_v2_router.post("/pause")
+async def memory_v2_pause(request: Request, body: MemoryPauseBody):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(core.set_paused, body.paused)
+
+
+@memory_v2_router.post("/backup")
+async def memory_v2_backup(request: Request):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(core.backup)
+
+
+@memory_v2_router.get("/export")
+async def memory_v2_export(request: Request):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(core.store.export_all)
+
+
+@memory_v2_router.post("/migrate")
+async def memory_v2_migrate(request: Request):
+    """Forward migration of the v1 facts (runs once; also runs on first use)."""
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    from ghost.memory.store import LocalFactStore  # noqa: PLC0415
+    from ghost.memory.v2 import bridge  # noqa: PLC0415
+
+    return await asyncio.to_thread(
+        bridge.migrate_forward,
+        LocalFactStore(bridge._default_facts_path(), max_facts=100_000),
+        core,
+    )
+
+
+@memory_v2_router.post("/rollback")
+async def memory_v2_rollback(request: Request):
+    """Copy v2-only memories into the v1 facts, so memory_v2 can be switched off
+    without losing anything.
+    Allowed while the flag is off too — that is when a rollback is needed."""
+    from ghost.memory.v2 import bridge  # noqa: PLC0415
+
+    return await asyncio.to_thread(bridge.rollback_to_v1)
+
+
+@memory_v2_router.get("/notes")
+async def memory_v2_notes(request: Request):
+    _, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    from ghost.memory.v2 import bridge  # noqa: PLC0415
+
+    notes = bridge.get_notes()
+    return {
+        "ok": True,
+        "items": await asyncio.to_thread(notes.list),
+        "index": await asyncio.to_thread(notes.prompt_index),
+    }
+
+
+@memory_v2_router.post("/notes/command")
+async def memory_v2_notes_command(request: Request, body: MemoryNotesCommandBody):
+    """Anthropic's memory tool (memory_20250818) over the notes folder."""
+    _, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    from ghost.memory.v2 import bridge  # noqa: PLC0415
+
+    args = {k: v for k, v in body.model_dump().items() if v is not None}
+    return await asyncio.to_thread(bridge.get_notes().command, args)
+
+
+@memory_v2_router.post("/notes/grep")
+async def memory_v2_notes_grep(request: Request, body: MemoryNotesGrepBody):
+    _, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    from ghost.memory.v2 import bridge  # noqa: PLC0415
+
+    args = {k: v for k, v in body.model_dump().items() if v is not None}
+    return await asyncio.to_thread(bridge.get_notes().grep, args)
+
+
+@memory_v2_router.post("/notes/migrate")
+async def memory_v2_notes_migrate(request: Request):
+    _, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    from ghost.memory.v2 import bridge  # noqa: PLC0415
+
+    return await asyncio.to_thread(bridge.migrate_notes)
+
+
+# ---------------------------------------------------------------------------
+# Always-Active Stonic Mode (preset over the individual flags)
+# ---------------------------------------------------------------------------
+
+
+class StonicPresetBody(BaseModel):
+    enabled: bool = True
+
+
+@stonic_router.get("/preset")
+async def stonic_preset_status(request: Request):
+    from ghost.core import stonic_preset  # noqa: PLC0415
+
+    try:
+        return await asyncio.to_thread(stonic_preset.status)
+    except Exception as exc:  # noqa: BLE001 — advisory, like /flags
+        logger.warning("Failed to read the Stonic preset: %s", exc)
+        return {
+            "preset": stonic_preset.PRESET,
+            "active": False,
+            "flags": {},
+            "can_restore": False,
+        }
+
+
+@stonic_router.post("/preset")
+async def stonic_preset_apply(request: Request, body: StonicPresetBody):
+    """Turn Always-Active Stonic Mode on (all seven flags) or off (each restored)."""
+    from ghost.core import stonic_preset  # noqa: PLC0415
+
+    config = getattr(request.app.state, "config", None)
+    result = await asyncio.to_thread(stonic_preset.apply, body.enabled, config=config)
+    if body.enabled:
+        try:
+            from ghost.memory.v2 import bridge  # noqa: PLC0415
+
+            await asyncio.to_thread(bridge.attach, request.app.state)
+        except Exception:  # noqa: BLE001 — memory starts on next launch instead
+            logger.debug("memory v2 did not start after the preset", exc_info=True)
+    return {"ok": True, **result}
+
+
 @optimize_router.get("/runs/{run_id}")
 async def get_optimize_run(run_id: str, request: Request):
     """Get optimization run details."""
@@ -1434,6 +2530,23 @@ def include_all_routes(app) -> None:
     app.include_router(speech_router)
     app.include_router(feedback_router)
     app.include_router(optimize_router)
+    app.include_router(stonic_router)
+    app.include_router(computer_router)
+    app.include_router(realtime_router)
+    app.include_router(facelock_router)
+    app.include_router(facelock_assets_router)
+    app.include_router(awareness_router)
+    app.include_router(memory_v2_router)
+
+    # Memory v2 (Stonic port, phase 6): start Memory Core when the flag is on.
+    @app.on_event("startup")
+    async def _memory_v2_start() -> None:
+        try:
+            from ghost.memory.v2 import bridge  # noqa: PLC0415
+
+            await asyncio.to_thread(bridge.attach, app.state)
+        except Exception:  # noqa: BLE001 — memory never stops the server
+            logger.debug("memory v2 did not start", exc_info=True)
 
     # Agent Manager routes (if available)
     try:
@@ -1474,6 +2587,7 @@ def include_all_routes(app) -> None:
 
 __all__ = [
     "include_all_routes",
+    "memory_v2_router",
     "agents_router",
     "memory_router",
     "traces_router",
@@ -1487,4 +2601,10 @@ __all__ = [
     "speech_router",
     "feedback_router",
     "optimize_router",
+    "stonic_router",
+    "computer_router",
+    "realtime_router",
+    "facelock_router",
+    "facelock_assets_router",
+    "awareness_router",
 ]

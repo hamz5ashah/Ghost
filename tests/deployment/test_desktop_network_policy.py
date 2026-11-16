@@ -37,6 +37,20 @@ def test_desktop_csp_allows_local_synthesized_audio() -> None:
     assert media_sources.isdisjoint({"http:", "https:", "*"})
 
 
+def test_desktop_csp_allows_wasm_but_not_eval_or_remote_scripts() -> None:
+    """Face Lock and hand control compile MediaPipe/ONNX WebAssembly (Phase 4).
+
+    'wasm-unsafe-eval' permits WebAssembly compilation only. JavaScript eval
+    stays refused, and scripts still load from the app's own origin only — the
+    MediaPipe loader ships with the app for exactly that reason.
+    """
+    script_sources = _csp_sources("script-src")
+
+    assert "'wasm-unsafe-eval'" in script_sources
+    assert "'unsafe-eval'" not in script_sources
+    assert script_sources.isdisjoint({"http:", "https:", "*", "blob:", "data:"})
+
+
 def test_macos_webview_allows_user_configured_http_servers() -> None:
     """CSP alone cannot override App Transport Security for public hosts."""
     info = plistlib.loads(MACOS_INFO_PLIST.read_bytes())

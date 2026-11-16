@@ -15,6 +15,7 @@ import type {
   TokenUsage,
 } from '../types';
 import type { ManagedAgent } from './api';
+import type { ConversationEngine, RealtimeBrain, RealtimeVoiceMode } from './realtime-voice';
 import { isEmbedOnlyModel } from './model-capabilities';
 import { serializeToolCallArguments } from './tool-call';
 
@@ -133,6 +134,14 @@ interface Settings {
   replyLanguage: ReplyLanguage;
   kokoroVoice: string;
   elevenVoice: string;
+  /**
+   * Conversation engine for Voice Mode. 'ghost' = Kokoro + faster-whisper
+   * (the default). 'realtime' only takes effect while the Stonic
+   * `realtime_voice` flag is on; see lib/realtime-voice.ts.
+   */
+  conversationEngine: ConversationEngine;
+  realtimeBrain: RealtimeBrain;
+  realtimeVoiceMode: RealtimeVoiceMode;
 }
 
 function loadSettings(): Settings {
@@ -151,14 +160,18 @@ function loadSettings(): Settings {
     responseStyle: 'balanced',
     aboutUser: '',
     customInstructions: '',
-    persona: 'professional',
+    // Ghost's default is the female companion (Stonic port, phase 6).
+    persona: 'companion',
     honorific: 'sir',
     voiceName: '',
     greetOnStartup: false,
     voiceEngine: 'auto',
     replyLanguage: 'auto',
-    kokoroVoice: 'bm_george',
+    kokoroVoice: 'af_heart',
     elevenVoice: 'JBFqnCBsd6RMkjVDRZzb',
+    conversationEngine: 'ghost',
+    realtimeBrain: '',
+    realtimeVoiceMode: 'tts',
   };
   try {
     const raw = localStorage.getItem(SETTINGS_KEY);

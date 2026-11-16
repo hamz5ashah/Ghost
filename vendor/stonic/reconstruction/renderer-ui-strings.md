@@ -1,0 +1,9247 @@
+# Renderer — recovered user-facing strings
+
+9242 strings lifted from the minified bundle. Component names and
+structure are gone; this is the surviving copy, labels and messages.
+
+-  !text-amber-200 text-[15px]
+-  (<anonymous>)
+-  (always)
+-  (attempt 
+-  (calculated; the local moon sighting can differ by a day).
+-  (done)
+-  (infrared)
+-  (model 
+-  (of 2)
+-  (pinned)
+-  (repeats — next: 
+-  (same arguments as an earlier call this turn).
+-  (the error below)
+-  (virtual)
+-  -ml-0.5 
+-  [attached: 
+-  [truncated]
+-  a Stonic Cloud monthly plan instead
+-  ab aap ka chuna hua character hai.
+-  ab active hai — baat-cheet nayi session se shuru hogi.
+-  ab active hai — sirf Stonic Voice par baat karti hai.
+-  about this
+-  about two minutes.
+-  account behind it has no balance left. Top it up with 
+-  account is out of credit
+-  account is used up. It resets tomorrow
+-  Active character
+-  Add follow-up
+-  Add memory
+-  after 
+-  after done
+-  ago you decided to look again now, to see: "
+-  ago): nothing on the screen has changed.
+-  ago): still in 
+-  ago): they moved from 
+-  and found nothing worth your time today.
+-  and I'll answer.
+-  and offer the next step (agent_task_resume can retry it from where it stopped). Do not resend the same request unchanged. 
+-  and they are still up, still at it.
+-  and try again.
+-  animate-in slide-in-from-bottom-2
+-  animate-pulse
+-  animate-text-reveal 
+-  answered — cost is counted at that model's price
+-  API key
+-  API key is fine, but that account has no balance left. The user needs to top it up with 
+-  are unavailable. Ask them to sign in to Stonic.
+-  argument must be of type string or an instance of URL. Received `'+e+
+-  array to add many; 
+-  array to create many, 
+-  array.',
+-  Ask the user if they want to retry.
+-  at new 
+-  at the computer, since 
+-  attempts. Ask the assistant for the result — the run's report is still on the background-run gateway.
+-  Automatic Updates
+-  Awareness is off, so you will not speak up by yourself at that time: you will only see it the next time they talk to you. Tell them that honestly.
+-  away.
+-  Back to characters
+-  balance has run out
+-  Band karo
+-  based on my interests: 
+-  beech mein roka — server ne cancel kar diya.
+-  bg-[#0e1216] overflow-hidden transition-all duration-300
+-  bg-[#0e1216] shadow-sm mb-2 
+-  bg-[#0e1216] shadow-sm mb-2 transition-all duration-300 
+-  bg-[#25D366] text-white hover:bg-[#22c35e]
+-  bg-white/[0.08] text-white/85 hover:bg-white/[0.13]
+-  blocked this request
+-  break-all select-text
+-  business or office work, automation, or replacing ChatGPT and productivity apps
+-  but could not (
+-  by card
+-  by this name.
+-  by voice
+-  call already ran in this turn. Do not call it again with the same arguments — use the earlier result or tell the user. Earlier result: 
+-  call was handled, nothing new was sent. Do not call it again. Earlier result: 
+-  can't be safely passed as a path parameter`})}if(l.sort((I,h)=>I.start-h.start),l.length>0){let I=0;const h=l.reduce((m,p)=>{const g=
+-  captured a screenshot. Use this image as the visual result for the tool you just ran.
+-  chal raha hai.
+-  chalti/qatar wali call roki gayi.
+-  characters ka ho — tone, rawaiya aur zubaan likhein.
+-  characters). Split it into two.
+-  characters. Unpin or shorten one first.
+-  chars
+-  chars)
+-  chars) prompt mein
+-  chars) prompt mein + memory tool + Grep.
+-  chars) prompt mein.
+-  chars). 
+-  chart values are all zero
+-  chart values must not be negative
+-  Checking your plan…
+-  Checking…
+-  completed (
+-  Configure your tracing SDK to emit W3C trace context on outgoing requests.
+-  Confirm
+-  conversations (
+-  Copied
+-  cores
+-  could not be delivered. It will retry after reconnect.
+-  could not be read after several tries.
+-  could not run.
+-  crashed: 
+-  custom characters. Koi purana delete karein.
+-  d ago
+-  days ago
+-  delete karein?
+-  devices
+-  did not accept this key
+-  did not work: 
+-  digits entered
+-  Do not guess what you remember.
+-  does not offer this API at the user's location (a VPN can cause this). They should turn off any VPN and try again; otherwise they need a paid key or Stonic Cloud.
+-  does not offer this model on your account.
+-  done.
+-  Download update
+-  downloaded — restart to install
+-  duplicate tool call
+-  Email us
+-  Entries
+-  Error: 
+-  EVENTS
+-  Every Gen 
+-  expected a ByteString, a base64 encoded string, a Uint8Array or a jspb array
+-  Face Lock
+-  facts, 
+-  FAILED
+-  failed
+-  file(s) (
+-  files + prompt
+-  files: 
+-  flex flex-col items-center gap-4 pt-6 pb-5 hud-clip-rail outline-none select-none
+-  flex flex-wrap items-center gap-3
+-  flex items-center gap-3.5 rounded-xl border border-white/[0.09] bg-white/[0.035] px-4
+-  flex items-center justify-between gap-3 animate-text-reveal
+-  font-bold tracking-[-0.03em] text-white leading-[1.02]
+-  for one note or a 
+-  for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+-  for today
+-  for you
+-  found
+-  from chat
+-  from Gemini Live.
+-  from where it stopped. Tell the user in one short line; the report arrives on its own.',
+-  gap-1.5 bg-white/[0.03] border border-white/[0.05] rounded-2xl p-1.5
+-  grid grid-cols-[108px_1fr] gap-4
+-  h-10 px-3.5 font-medium text-white/55 hover:text-white hover:bg-white/[0.05]
+-  h-10 px-4 
+-  h-10 px-5 
+-  h-11 px-4 shrink-0 
+-  h-9 cursor-pointer appearance-none pr-9
+-  h-9 px-3.5 shrink-0 
+-  has-face
+-  has-hint
+-  in the background
+-  in the next 24 hours
+-  in their browser; it starts there by itself.
+-  in use
+-  in Visual Hub
+-  Interface Theme
+-  is busy
+-  is busy right now
+-  is getting more requests than it can serve, or is briefly down.
+-  is here
+-  is invalid.`);return x.toLowerCase()}function I5e(x){return parseInt(x,16)}function h5e(x){const t=new TextEncoder().encode(x);return
+-  is listening
+-  is no longer available
+-  is not available at your location
+-  is not available here.
+-  is rate-limiting your key
+-  is ready
+-  is speaking
+-  is standing by
+-  is thinking
+-  is working · 
+-  is-active
+-  is-bad
+-  is-below
+-  is-closing
+-  is-dim
+-  is-empty
+-  is-gone
+-  is-lean
+-  is-lit
+-  is-locked
+-  is-muted
+-  is-off
+-  is-on
+-  is-primary
+-  is-pulse
+-  is-quiet
+-  is-ready
+-  is-shown
+-  is-stage
+-  is-warn
+-  is-wrong
+-  It could not be pinned: the always-remember list is full.
+-  items-center
+-  items-start
+-  jumle likhe nahi ja sake (
+-  just ended after 
+-  ka natija nahi bheja — call pehle hi cancel ho chuki thi.
+-  Keep your face inside the ring.
+-  key reached its per-minute limit. Wait a few seconds and keep talking.
+-  key se reconnect...
+-  key to run. 
+-  leading-[1.5]
+-  left before older messages get summarized
+-  left today)
+-  left)
+-  limit is used up
+-  limit reached
+-  mb-2.5 px-1
+-  memories
+-  messages.
+-  min ago
+-  min-w-[112px]
+-  missing (HTTP 
+-  more characters]
+-  mx-2.5
+-  nahi chala (
+-  needs your own 
+-  not handled by mediaExecutor
+-  not handled by OrchestrationExecutor
+-  not handled by VisualToolsExecutor
+-  note(s) created.
+-  note(s) deleted.
+-  notes
+-  notes are
+-  notes, 
+-  Nothing was forgotten. Do not retry or delegate it; tell them plainly.
+-  of the visual 
+-  older messages.
+-  on your 
+-  opacity-50 cursor-wait
+-  Open in video player
+-  open, 
+-  or empty on darwin');throw r.code=
+-  Or switch to your own API keys in 
+-  overdue
+-  overflow-hidden
+-  panel
+-  Paste
+-  Paste a working key in 
+-  Pasted
+-  photos, taken moments apart and in order, are attached.
+-  pl-4 py-1.5 my-4 text-white/50 italic text-xs 
+-  plan and regularly reach my usage limit. I'd like to discuss a custom Enterprise plan.
+-  plan cancelled
+-  plan ended
+-  plan has ended
+-  plan is paused
+-  plan paused
+-  plan was cancelled
+-  plan · ends 
+-  plan, with limits)
+-  property of the session object is not supported. Please use getUser() to fetch a user object you can manipulate.`)}})}function a5e(x,t){return new Proxy(x,{get:(e,n,a)=>{if(n===
+-  pt-3 pb-3 relative z-10 flex flex-col gap-2
+-  PUBLIC news topics they would genuinely want to follow today:
+-  reached
+-  refused the request — a guardrail or privacy setting on your account, or the key lacks permission. Check your 
+-  refused this request (a guardrail or privacy setting on the user's account, or the key lacks permission). They need to check their 
+-  rejected your key
+-  relative bg-transparent gap-2 md:gap-4 h-full w-full
+-  relative p-0 h-full
+-  remembers you. 
+-  Repeat
+-  returned an error. Try again.
+-  right now.
+-  right now. The tour will end this conversation, and you can start a new one right after.
+-  right now: 
+-  save ho gaya.
+-  Saved conversations
+-  saved on this PC — will sync when you’re online.
+-  Saving...
+-  Screenshot ready
+-  se koshish.
+-  seconds
+-  select-none antialiased
+-  select-none overflow-hidden
+-  select-none transition-colors
+-  self-start flex items-center gap-2 pt-[1px] leading-[1.45]
+-  Sending…
+-  sent message: 
+-  Sentry detected: set `propagateTraceparent: true` in Sentry.init() to emit it.
+-  session via system prompt hydration.
+-  Settings
+-  shrink-0
+-  Sign Out Completely
+-  Skill Loaded. Restarting session...
+-  skill: …").
+-  so far
+-  space-y-2
+-  space-y-3
+-  Speak up NOW and tell the user exactly this in one or two short sentences, in their language. Do not retry and do not offer to retry until they have fixed it.
+-  Stonic
+-  Stonic Cloud, free (
+-  tabs preview: 
+-  Talk the user through it in a few sentences — the screen carries the detail, so do not read every number.
+-  Tell 
+-  Tell the user in one short line. Do not call any tool unless they ask to try again.
+-  Tell the user it is ready and talk them through it in a few sentences — the screen carries the detail. Do not call any tool.
+-  Tell the user this plainly in one or two short sentences.
+-  text-[14.5px]
+-  text-[14px]
+-  text-[17px] text-white/85 leading-[1.6]
+-  text-[18px] font-semibold text-white leading-[1.4] tracking-[-0.015em]
+-  text-white/40 hover:text-red-300
+-  text-white/40 hover:text-white
+-  that is on screen right now. 
+-  the daily and monthly usage
+-  The rest are saved and included in Export.
+-  Then blink once.
+-  There is no wrong answer.
+-  This is your own impulse to speak first — the user has not said anything.
+-  thought-leave
+-  through the camera just now — 
+-  through the camera just now — the image is attached.
+-  times
+-  times in a row. Last error: 
+-  times in the last two minutes — restless, searching for something, or stuck.
+-  to complete/delete many.`,parameters:{type:O0(413),properties:{action:{type:O0(415),enum:[
+-  to delete many.`,
+-  to keep Stonic Cloud running.
+-  To keep talking now, switch to your own API keys in 
+-  to keep using Stonic Cloud.
+-  to-do(s) added.
+-  to-do(s) deleted.
+-  today.
+-  tokens
+-  tokens, before each answer.
+-  tonight.
+-  took this photo through the user's webcam just now — it is them and their surroundings, not their screen. Use this image as the visual result for the tool you just ran.
+-  tool call cancel ki — user dobara bolne laga. 
+-  transition-[stroke-dashoffset] duration-700 ease-out
+-  transition-opacity duration-200 
+-  Update to Node 20 LTS or newer, or set `globalThis.File` to `import('node:buffer').File`.
+-  update, on up to 
+-  use mode=latest: it opens this week's newest video about it and lists the others.`,
+-  used.
+-  uses this.
+-  voice
+-  voice 
+-  voice · 
+-  w-full text-left hover:bg-white/[0.025] transition-colors duration-150
+-  waiting to be read.
+-  website, or switch to Stonic Cloud in Settings.
+-  what you follow
+-  WhatsApp
+-  without a real break — the mark just passed.
+-  without input — but something was playing on the screen the whole time, so they were most likely watching it, not away.
+-  years old.
+-  your city
+-  your city and I’ll use it.
+-  your own API keys, billed by your AI provider
+-  | attempts=
+-  | Auth: gemini-api-key | key=
+-  | Context: 
+-  | endpoint=wss://generativelanguage.googleapis.com
+-  | len=
+-  | model=
+-  | Response: 
+-  || data.type !== 
+-  · feeling 
+-  · feels 
+-  · One-time payment
+-  · read 
+-  · Roman Urdu
+-  — a companion who lives on 
+-  — double-click to open Stonic
+-  — it was asked to stop.
+-  — looking...
+-  — nothing to resume. For a change to it use agent_task_update.
+-  — showing your last known plan
+-  — the account this computer is signed in with. That is what links the two.
+-  — the first step is coming.
+-  — us ne apna naam khud chuna
+-  — warm, present, emotionally real.
+-  — you said: "
+-  — you stayed quiet: 
+-  → koi jawab nahi (
+-  → no answer
+-  → they answered
+-  → they answered: "
+-  → they cut you off
+- !bg-emerald-500/15 !text-emerald-400
+- " (ID: 
+- " (it was "
+- " again right now.
+- " but 
+- " closed
+- " closed successfully.
+- " created.
+- " deleted.
+- " failing repeatedly (
+- " from now on
+- " has failed 
+- " in their browser: 
+- " is not supported. Available tools: 
+- " not handled by SystemToolsExecutor
+- " of the visual "
+- " opened
+- " that is on screen right now. Section data: 
+- " was rejected — using "
+- " | isFatal=
+- " — naturally, where it fits, not in every line.
+- " — they were already talking or busy
+- " — you had said enough for now
+- ")throw new Error("Cannot serialize title with `"+t+"` for `options.quote`, expected `\"`, or `
+- ". Look at what actually happened since then, and respond to that.
+- ". Use: list, add, complete, incomplete, delete.
+- ". Use: list, read, read_all, create, update, delete.
+- "><meta name="viewport" content="width=device-width,initial-scale=1"><style>
+- "blocks" is missing or empty
+- "silent" or "speak"
+- ## YOUR AWARENESS OF THIS MOMENT
+- ## YOUR CHARACTER: 
+- $56 USD
+- $56 USDT
+- ${typeof e.turns}
+- % of its share
+- % used
+- &&!!G,o.checked=te?o.checked:!!G,o.defaultChecked=!!G,B!=null&&typeof B!=
+- &&!(!((r=(i=(s=this.params)===null||s===void 0?void 0:s.config)===null||i===void 0?void 0:i.broadcast)===null||r===void 0)&&r.ack)&&l(
+- &&!(i>=1))return ld(n(473),n(438));try{const r=await a.invoke(n(437),{action:s,number:i});return DVe(s,r||{ok:!1})}catch(r){return ld(n(406)+(r?.[n(428)]||r),
+- &&!d.onLoad&&!d.onError&&d.src&&typeof d.src==
+- &&!g,O=i6({stageRef:a,videoRef:l,cameraWanted:ie,onFrame:D}),xe=f.useRef(O);xe.current=O,f.useEffect(()=>{const ee=n;r===ee(563)&&O[ee(477)]&&O[ee(624)][ee(601)]===ee(494)&&h(
+- &&!i?l.push(...f.children):l.push(f)}const u=r[r.length-1];u&&(i||u.type!==
+- &&!r){W();return}a?.(),Q!==t&&(yte(Q),g(J(265)))},X=Q=>l(296)+l(Q?244:302),v=h?m!==null&&m<=0?l(248):h:null;let E=null,k=l(342);if(p===
+- &&!window.Worker)throw new Error(
+- &&$P(t),t!=null))switch(b2(x,e,0),typeof t){case
+- &&(!((t=navigator.userAgent)===null||t===void 0)&&t.includes(
+- &&([g,N,l]=await this._getCodeChallengeAndMethod()),s=await H0(this.fetch,
+- &&([I,h,i]=await this._getCodeChallengeAndMethod());const{error:m}=await H0(this.fetch,
+- &&([i,r,e]=await this._getCodeChallengeAndMethod());const{error:u}=await H0(this.fetch,
+- &&([i,r,s]=await this._getCodeChallengeAndMethod());const u=await H0(this.fetch,
+- &&([n,a,l]=await this._getCodeChallengeAndMethod(!0));try{return await H0(this.fetch,
+- &&(d.state.loading&4)===0&&(G=d.instance,d.state.loading|=4,ay(G,b.precedence,o));return d.instance}function ay(o,d,b){for(var G=b.querySelectorAll('link[rel=
+- &&(e=Object.assign(Object.assign({},e),{type:a}))}return G4(n,t,e)}async function fH(x){var t,e,n,a,l;let s=[];if(typeof x==
+- &&(e=x),e===void 0)throw new Error(
+- &&(g!==null||g!==void 0)&&h.push(p);if(typeof m.text==
+- &&(h=!r(f,c,p)),h&&p&&typeof c==
+- &&(h[1]._align=Lc(t.events,n))}return e}function nn(e,t,n,r,i,o){const l=r===1?
+- &&(i._inactive=!0)}else if(l){if(e[n][0]===
+- &&(i=n)}else e[n][1].type===
+- &&(i=Vn,e.schema=i),e.ancestors.push(t);const o=dr(e,t.tagName,!1),l=tl(e,t);let a=Xn(e,t);return $i.has(t.tagName)&&(a=a.filter(function(u){return typeof u==
+- &&(I=w,w=arguments[1]||{},S=2),(w==null||typeof w!=
+- &&(l=n);const u={type:e[o][1].type===
+- &&(n=!0);t+=1}return r}function Fc(){return{flow:{null:{name:
+- &&(o.name=B),ox(o)}function Ac(o,d,b){d===
+- &&(o.state.loading&3)===0)}function Kde(o,d,b,G){if(b.type===
+- &&(o=n);const l={type:
+- &&(r=n,n=void 0);let i=
+- &&(r?r=!1:(o[1]!==0&&(l[0]=l[1],c=nn(p,t,o,i,void 0,c)),o=l,l=[o[1],n,0,0])):d.type===
+- &&(self.globalThis=self)}}function A0e(x){if(!/^0x[a-fA-F0-9]{40}$/.test(x))throw new Error(`@supabase/auth-js: Address 
+- &&(t.idempotencyKey||(t.idempotencyKey=this.defaultIdempotencyKey()),l[this.idempotencyHeader]=t.idempotencyKey);const s=await this.authHeaders(t);let i=Fp([l,{Accept:
+- &&(t.nullable=!0,x=l[0])),x.type instanceof Array&&ybe(x.type,t);for(const[s,i]of Object.entries(x))if(i!=null)if(s==
+- &&(typeof G.media!=
+- &&(we&&!Me&&!V&&!Oe&&(Oe=N),Me=void 0);break}case
+- &&A!==null&&(b in o?o[b]=null:o.hasAttribute(b)&&o.removeAttribute(b)),o.addEventListener(d,G,F);break e}b in o?o[b]=G:G===!0?o.setAttribute(b,
+- &&a!==null&&e!==null)Object.assign(a,e);else throw new Error(`Cannot set value for an existing key. Key: ${n}`)}else n===
+- &&a.push(t),new URL(`${a.join(
+- &&await w?.[C(242)](
+- &&b&&b.imageSrcSet?void 0:o,as:d},b),jc.set(A,o),G.querySelector(F)!==null||d===
+- &&b&&b.stateNode===F){var A=m7((F[Yt]||null).action),B=G.submitter;B&&(d=(d=B[Yt]||null)?m7(d.formAction):B.getAttribute(
+- &&BNe.test(x)?x:null}function zNe(){if(typeof crypto<
+- &&c.jsx(iAe,{onProgress:be=>{const ze=W;Ie[ze(256)][ze(280)]=be},onDone:()=>L(W(237))}),z===
+- &&d&&typeof d!=
+- &&d){var F=On(d);F='link[rel=
+- &&d.dangerouslySetInnerHTML!==null&&d.dangerouslySetInnerHTML.__html!=null}var DE=null;function Fde(){var o=window.event;return o&&o.type===
+- &&Deno.unrefTimer(e)}async _stopAutoRefresh(){this._debug(
+- &&Deno.unrefTimer(t);const e=setTimeout(async()=>{await this.initializePromise,await this._autoRefreshTokenTick()},0);this.autoRefreshTickTimeout=e,e&&typeof e==
+- &&e instanceof Blob?(l=new FormData,l.append(
+- &&e instanceof Blob?(r=new FormData,r.append(
+- &&e instanceof FormData?(l=e,l.has(
+- &&e instanceof FormData?(r=e,r.has(
+- &&e!==null&&!Array.isArray(e)?Object.assign(x,e):x[n]=e}function Z(x,t,e=void 0){try{if(t.length===1&&t[0]===
+- &&e!==null&&typeof e.as==
+- &&e!==null&&typeof e.message==
+- &&e&&typeof e.as==
+- &&e.EdgeRuntime||typeof navigator<
+- &&G!==null&&(o.value=G),ox(o)}function jx(o,d){if(d){var b=o.firstChild;if(b&&b===o.lastChild&&b.nodeType===3){b.nodeValue=d;return}}o.textContent=d}var Qc=new Set(
+- &&g?{success:!0,toolName:x,result:g}:No(x,(g||n(281))+n(322))}const u=T4(t?.[n(320)]);a(n(309),n(306)+(u?n(334):
+- &&Gp(o.ownerDocument.body);b=F}while(b);OI(d)}function X7(o,d){var b=o;o=0;do{var G=b.nextSibling;if(b.nodeType===1?d?(b._stashedDisplay=b.style.display,b.style.display=
+- &&h instanceof Blob)&&!(h instanceof ArrayBuffer)&&!(typeof FormData<
+- &&h instanceof Blob||h instanceof ArrayBuffer?(g[
+- &&h instanceof FormData)?w=JSON.stringify(h):w=h;let W=m;p&&(i=new AbortController,s=setTimeout(()=>i.abort(),p),m?(W=i.signal,r=()=>i.abort(),m.addEventListener(
+- &&h instanceof FormData?w=h:(g[
+- &&i.d.D(r)},n.preinit=function(r,e){if(typeof r==
+- &&i.d.X(r,{crossOrigin:a,integrity:s,fetchPriority:l,nonce:typeof e.nonce==
+- &&I.image){const q=document[re(298)](
+- &&Ja(g0)){var d=[];e0(d,g0,o,d0(o)),ne(zt,d)}}function kre(o,d,b){o===
+- &&l instanceof ReadableStream||l&&typeof l==
+- &&l(w,{name:f,newValue:p}));return w},bn}var au=ou();const wn=rr(au);function jn(e){if(typeof e!=
+- &&l[e(532)]===void 0?{...l,style:n}:l;try{const i=fVe[a](s);return{block:{...i,id:O2(x.id,32)||
+- &&l[u][1]._close){let s=u;for(;s--;)if(l[s][0]===
+- &&m>0&&c.jsxs(x(370),{type:x(370),onClick:()=>void D3e(),className:x(363),children:[c.jsx(gue,{size:15}),
+- &&m[n(141)].includes(I)):MG;return c.jsxs(
+- &&n[e(614)]===e(549))this[e(620)]?.[e(522)](typeof n[e(455)]==
+- &&o!==null&&typeof o.message==
+- &&o.removeEventListener(d,A,F),typeof G==
+- &&Object.keys(e).length===0||e===a)return;if(typeof a==
+- &&P!==null&&P>=0&&P<=7,xe=w?PLe[w]||OLe:null;let T=null,oe=null;if(J&&!U&&S)oe=
+- &&p&&typeof c==
+- &&r instanceof ReadableStream||r&&typeof r==
+- &&r.body!==null&&Symbol.asyncIterator in r.body,m=Object.assign(Object.assign(Object.assign({signal:a.signal},h?{duplex:
+- &&r.column>0)return{line:r.line,column:r.column,offset:typeof r.offset==
+- &&r.constructor===Object){if((s-=t=128&a?0:-1)>=1024)throw Error(
+- &&r.line>0&&typeof r.column==
+- &&r.offset>-1?r.offset:void 0}}}function qi(e){const t=$n(e),n=fr(e);if(t&&n)return{start:t,end:n}}function Ue(e){return!e||typeof e!=
+- &&r.space?vi[r.property]||r.property:r.attribute,n]}}function ll(e,t){try{return Hi(t,{reactCompat:!0})}catch(n){if(e.ignoreInvalidStyle)return{};const r=n,i=new J(
+- &&so()}function Are(o){if(o===
+- &&t.email!=null&&([r,u,n]=await this._getCodeChallengeAndMethod());const{data:I,error:h}=await H0(this.fetch,
+- &&t.error!==null){const e=t.error;if(typeof e.message==
+- &&t.ordered&&(o=(typeof t.start==
+- &&t.spread||e.spread))&&(l=Math.ceil(l/4)*4);const a=n.createTracker(r);a.move(o+
+- &&t.start>-1?t.start:1)+(n.options.incrementListMarker===!1?0:t.children.indexOf(e))+o);let l=o.length+1;(i===
+- &&t>=3},describe(){return{type:mt.tablet}}},{test(x){return x.getOSName(!0)===
+- &&t[e(425)]!==e(265)&&t[e(425)]!==e(277))return;const a=Math.max(0,Math.round(Number(t[e(438)])||0));if(a<qs[e(287)])return;this.attentive=!0;const l=this[e(376)]?.[e(445)],s=l&&
+- &&this.data.push(a),null}}function Age(x,t){const e=x.indexOf(t);return e!==-1?[x.substring(0,e),t,x.substring(e+t.length)]:[x,
+- &&this[n(536)]())}}setSoulHost(t){const e=gt;this[e(530)]=t;const n=()=>{const l=e;this[l(530)]===t&&this[l(510)]&&this[l(518)][l(543)]===
+- &&typeof A!=
+- &&typeof a==
+- &&typeof B!=
+- &&typeof b.href==
+- &&typeof b.precedence==
+- &&typeof crypto.getRandomValues==
+- &&typeof crypto.subtle<
+- &&typeof d!=
+- &&typeof d.async!=
+- &&typeof d.then==
+- &&typeof Deno.unrefTimer==
+- &&typeof document<
+- &&typeof e.unref==
+- &&typeof e.WebSocket<
+- &&typeof e.WebSocketPair<
+- &&typeof e==
+- &&typeof F!=
+- &&typeof G!=
+- &&typeof G.get==
+- &&typeof G.set==
+- &&typeof G.then==
+- &&typeof globalThis.WebSocket>
+- &&typeof n!=
+- &&typeof n[e(537)]===e(584)&&n[e(537)][e(582)]()){const a=typeof n.character==
+- &&typeof process.emit==
+- &&typeof Se!=
+- &&typeof Symbol.iterator==
+- &&typeof t.checked==
+- &&typeof t.unref==
+- &&typeof te!=
+- &&typeof TextEncoder<
+- &&typeof w!=
+- &&typeof window.ErrorEvent==
+- &&typeof x[Symbol.asyncIterator]==
+- &&u!==null&&s.push(r);if(typeof i.text==
+- &&Wi.has(t.tagName)?r=a:n[l]=a}}if(r){const o=n.style||(n.style={});o[e.stylePropertyNameCase===
+- &&x!==null&&!Array.isArray(x)){const s=x,i=Object.keys(s).filter(u=>!u.startsWith(
+- &&x!==null)return x;throw new Error(`Could not parse input as Blob. Unsupported blob type: ${typeof x}`)}function Iee(x){const t=c5(x);if(t.mimeType&&t.mimeType.startsWith(
+- &&x!==null){const t=x;if(typeof t.msg==
+- &&x)x=+x;else if(typeof x!=
+- &&x.endpoint instanceof Request?(l=new Request(x.endpoint,{signal:t.signal}),x.requestData&&nn.warn(
+- &&Y(H,E,{once:!0})})}function Y(H,R,X){typeof H.on==
+- &&Yn[a(157)]&&a0()},[ox,a0]),f.useEffect(()=>{const Ce=a,d0=S0&&!Yn.current;Yn.current=S0,!(!d0||ox!==Ce(171))&&(i8()?a0():Cd(Ce(204)))},[S0,ox,a0]),f.useEffect(()=>{ox===
+- &'),.:;<>?\]}]+$/.exec(e);if(!t)return[e,void 0];e=e.slice(0,t.index);let n=t[0],r=n.indexOf(
+- ');const u=Array[n(549)](i[n(507)])?i[n(507)]:[],I=u[n(481)]>0?n(543)+u[n(512)](0,20).join(
+- ');try{const i=await a[n(451)](
+- ');try{const u=await VZ(s,n(265),{method:n(320),headers:{
+- ');try{return await a.invoke(n(569),s),l(n(549),n(551)+s+n(562)),{success:!0,result:'Panel with ID 
+- ']?description\b/i[t(518)](e))continue;const n=e[t(517)](/\bcontent\s*=\s*(?:
+- 'IBM Plex Mono', monospace
+- 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif
+- 'Outfit', sans-serif
+- 's result to the voice session. Re-sending.
+- 's servers are busy or briefly down right now. Nothing is wrong with the user's key or with Stonic. They should try again in a few minutes.
+- 's side — your key, your computer and Stonic are all fine. It usually clears within a few minutes. Try again shortly.
+- '};const l=a===e(476)&&RB.has(n)&&x[e(534)]===void 0?{...x,kind:n}:x,s=a===e(481)&&n!==
+- '}function Zp(o){return'link[rel=
+- (clipboard contains an image, not text)
+- (empty reply)
+- (no status code or body)
+- (not signed in)
+- (prefers-reduced-motion: reduce)
+- ) is already filled in
+- ) opened and contents printed successfully.
+- ) or check on it.',
+- ) scale(
+- ) that clearly connect to THEIR life: their work, projects, goals, country, interests or people.
+- ) that truly matter to THIS person. Skip anything vague, old or only loosely related.
+- ) — digest stays off until restart
+- ) — pausing 
+- ) — resume handle se guftagu jari rakhi ja rahi hai.
+- ) → memory search: 
+- )!=-1))&&typeof btoa==
+- )!==(F.title==null?null:F.title))break;return o;case
+- )&&!a.has(u)),r={};for(const u of i)r[u]=s[u];for(const[u,I]of Object.entries(r)){const h=[];for(const m of e.slice(n))m===
+- )&&!b||(o=Mc(o.nextSibling),o===null))return null;return o}function F7(o,d){for(;o.nodeType!==8;)if((o.nodeType!==1||o.nodeName!==
+- )&&!d||(o=Mc(o.nextSibling),o===null))return null;return o}function $E(o){return o.data===
+- )&&(b=Ne.get(b)||b,Fn(o,b,G))}}function zE(o,d,b,G,F,A){switch(b){case
+- )&&(e=null);var i=!1;if(e===null)i=!0;else switch(d){case
+- )&&(i!==o+2&&(n[o][1].end=n[i-1][1].end,n.splice(o+2,i-o-2),i=o+2),o=void 0);return e?e(n,r):n}}function qo(e,t){let n=0;for(;++n<=e.length;)if((n===e.length||e[n][1].type===
+- )&&(l[3]=n)}for(u!==0&&tr(p,t,u,s,f),p.consume(t.events),n=-1;++n<t.events.length;){const h=t.events[n];h[0]===
+- )&&(t.nullable=!0);const e=x.filter(n=>n!==
+- )&&(x[s]={}),x=x[s]}const n=t[t.length-1],a=x[n];if(a!==void 0){if(!e||typeof e==
+- )&&JJ(w),!0):(r(C(208)),!1)},[n,w,W,Y]);f.useEffect(()=>x(R),[x,R]);const X=C=>{const M=e,j=u[C];return l[C]&&!g[M(264)].has(C)&&j&&j!==
+- )&&n[l(161)]>2?c.jsx(l(183),{children:n.slice(1,-1)},a):c.jsx(fc.Fragment,{children:n},a)})})},Vu=x=>{const t=ao;if(!Number[t(185)](x))return
+- )&&s.add(u)}xH(x,a,l,0,s)}}function xH(x,t,e,n,a){if(n>=t.length||typeof x!=
+- )&&this.endBetaGone(e);return}const a=n[t(548)];if(!e[t(522)]){const l=a[t(538)]?{state:t(526)}:n[t(478)]();if(l[t(459)]===
+- )(k):F(k)}function F(k){return k===124?d(k):k===null||z(k)?!l||i!==o?R(k):(e.exit(
+- )(k):S(k)}function S(k){return k===58?(o+=1,l=!0,e.enter(
+- )(s):u(s))}function u(s){return s===null||z(s)?(e.exit(
+- ))!==-1&&(x=x.substring(0,t)),ece(x))}function xce(x){var t=jb(Number(x));return Ku(t)?pc(t):((t=x.indexOf(
+- ))!==null&&a!==void 0?a:
+- ))!==null&&r!==void 0?r:[];return p.length>0&&(p.forEach(g=>{const N=parseInt(g.split(
+- ))!==null&&s!==void 0?s:
+- ))!==null&&s!==void 0?s:0,p=(r=(i=I.headers.get(
+- ))),Wl(A,G,b),A[Zt]=o,hx(A),G=A;break e;case
+- ))).filter(e=>e!=null)}function fIe(x){return x.replace(/[\\^$*+?.()|[\]{}]/g,
+- )));if(x.u=[],t.length>1)throw Error(
+- )))throw Error(
+- )))};return(function(e){return e==null?e:typeof e==
+- )),a=JSON[t(487)](n),l=a?.sub;return typeof l==
+- )),i=l,o=0;continue}}else if(n.length>0){n=
+- )),n?.headers)for(const[m,p]of Object.entries(n.headers))i=b5(i,m,p);const u=a._removeEmptyFolders(t),I=a._getFinalPath(u),h=await(x==
+- )),null;if(!A5e(typeof x==
+- )),o=!G;break e;default:o=!1}if(o)return null;if(b&&typeof b!=
+- )),onKeyDown:_=>{const U=n;_[U(252)]===
+- )),onKeyDown:C=>{const M=n;C[M(506)]===M(524)&&!C[M(536)][M(525)]?(C[M(540)](),E()):C[M(506)]===M(510)&&(C[M(551)](),r?u(!1):a?v():Y[M(497)]?.[M(502)]())},placeholder:uq[I],
+- )),S}}function rc(){return{exit:{taskListCheckValueChecked:nr,taskListCheckValueUnchecked:nr,paragraph:lc}}}function ic(){return{unsafe:[{atBreak:!0,character:
+- )),x.canvas!==void 0&&this.g.i.canvas!==x.canvas)throw Error(
+- )).slice(0,200);throw x[t(368)]===402||x[t(368)]===403||x[t(368)]===429?new o2(t(406),t(400)+x[t(368)]+
+- )).slice(0,sn.cards)[t(377)](n=>{const a=t;if(!Zn(n))return null;const l=za(u0(n,a(469),
+- )):l=new Request(x.endpoint,{method:
+- ));const e=t&&performance[x(432)]()-hR<dUe;if(e!==tG){if(tG=e,!e){_1&&C2e(_1,IUe),_1=null;return}S9(jd[x(401)][x(429)])[x(405)](n=>{const a=x,l=C9();!n||!l||!tG||_1||(_1=a6(
+- ));const GIe={pat_str:
+- ));const ne=be[e(357)](e(599))?
+- ));function Jc(o,d,b){var G=d.indexOf(
+- ));if(!a)return null;const l=BIe[a[2]];if(!l)return null;const s=Gd(t||
+- ));if(!Number[t(194)](i))return Math[t(202)](i*1e3)+1e3}}return null};function m3(){const x=[
+- ));if(B){for(var te=0;te<B.length;te++)if(A=B[te],A.getAttribute(
+- ));if(e)return ls(this).info(`[${m}] connection ${H?
+- ));return B}if(d&&G!==null)throw Error(n(529,
+- ));return null;case
+- ));return Number[t(454)](e)?Math[t(569)](0,e*1e3):null}if(typeof x==
+- ));return Oo(t,fRe,ud(
+- ));return Oo(t,ixe,ud(x(271)))}const Jy={on:!1,dir:
+- ));t[a]=RH(n)}),t},aNe=x=>!x||typeof x!=
+- ));throw J.context=Q,J}var C=k[R];if(C===void 0)return!1;if(typeof C==
+- ));throw Pm(_c(d,o)),EY}function lC(o){var d=o.stateNode,b=o.type,G=o.memoizedProps;switch(d[Zt]=o,d[Yt]=G,b){case
+- ));throw x[t(454)]===402||x[t(454)]===403||x[t(454)]===429?new Fl(t(450),t(443)+x[t(454)]+
+- ));Use[e]=n;for(let a=0;a<n.length;a++){const l=n[a];Vf[l]===void 0&&(Vf[l]=a)}}}}var m_e=typeof Uint8Array<
+- ));var pp=
+- ))<20;throw new Error(
+- ))===null||i===void 0?void 0:i.match(/count=(exact|planned|estimated)/),m=(r=x.headers.get(
+- ))===null||i===void 0?void 0:i.split(
+- ))===null||r===void 0?void 0:r.split(
+- ))===null||t===void 0)&&t.includes(
+- ))[t(377)](u=>za(u,28)),l=[];const s=u0(x,
+- ))break;return o;case
+- ))break;return o;default:return o}}else if(d===
+- ))break}else if(G){if(!o[Jn])switch(d){case
+- ))e={fileName:t};else throw new Error(`Unsupported string source for Gemini API: ${t}`);else if(Array.isArray(t)){if(x.isVertexAI())throw new Error(
+- ))return c9e;const s=a9e(n),i=s?n9e[s]:
+- ))return console.warn(
+- ))return null;const n=XZ(x.name),a=_u(x[t(332)],ab),l=x[t(295)]===t(287)?t(287):t(404);if(!n||a[t(398)]<p3)return null;const s=_u(x[t(424)],Sf),i=Od(String(x[t(429)]||
+- ))return null;if(Yb.has(t))return t;t=t.parentElement}return null}function Kz(x){return x.length<=jz?x:x.slice(0,jz-1)+
+- ))return null;let[e,n,a]=Age(t,
+- ))return t;if(t.indexOf(
+- ))return t;throw new Error(`Unsupported mime type: ${t.mimeType}`)}function hee(x){const t=c5(x);if(t.mimeType&&t.mimeType.startsWith(
+- ))return t;throw new Error(`Unsupported mime type: ${t.mimeType}`)}function UM(x){if(x==null)throw new Error(
+- ))return vCe(s);const i=s.split(zR),r=i[0]===
+- ))return;if(this.externalMic){this.mic=new MediaStream([this[t(229)]]),this.externalMic.enabled=this[t(365)],this[t(349)][t(293)]?.(this[t(229)],{id:t(362),name:
+- ))return{}}return u.json()}).then(u=>i(u)).catch(u=>lNe(u,r,n,s))})}function w0e(x=
+- ))s=V1(w,N*7);else if(V[p(365)](p(375))||V[p(365)](p(356))){const Y=new Date(w);Y[p(405)](Y[p(388)]()+N),s=Y}else s=V1(w,N);return!0});h&&s&&r(
+- ))throw new Error(
+- )){const a=e.split(
+- )){const a=Ic(e.contents);if(a.length>1)throw new Error(
+- )){const e=t.slice(2);if(x.endsWith(e)&&(x===e||x.endsWith(
+- )){const i=s.slice(0,-3);i in x||(x[i]=[{}]);const r=x[i];y(r[0],t.slice(l+1),e);return}(!x[s]||typeof x[s]!=
+- )){const i=t.split(
+- )){const s=l.slice(0,-2),i=x;if(s in i&&Array.isArray(i[s]))for(const r of i[s])xH(r,t,e,n+1,a)}else if(l===
+- )){const w=d.children[0];w&&w.type===
+- )){if(we){let Te=N;for(me=void 0;Te--;){const ge=x[Te];if(ge[1].type===
+- )){o.removeAttribute(b);break}if(G==null||typeof G==
+- )){r=2;break}}else i.type===
+- )){typeof A!=
+- ))||!l)throw i;return console[n(501)](
+- ))})}updateJoinPayload(t){this.channelAdapter.updateJoinPayload(t)}async unsubscribe(t=this.timeout){return new Promise(e=>{this.channelAdapter.unsubscribe(t).receive(
+- ))},[M]),f.useCallback(de=>{const Ne=(de||
+- ))}const yRe=x=>x[ra(293)](t=>t[ra(309)]+
+- ))}finally{x.H=[]}}function Q0(x,t){x.C=Math.max(x.C,t)}function _9(x,t){x.B=new Ts,gc(x.B,2,
+- ))}get path(){return this.history[this.history.length-1]}set path(t){Hn(t)&&(t=ku(t)),En(t,
+- ))}};function G4(x,t,e){return Oee(),new File(x,t??
+- )+e(405):e(384);return c.jsxs(e(387),{className:
+- )+e(463)+new Date(r[e(430)])[e(417)]()+e(463)+r[e(493)].length+
+- )+e}const ss=[
+- )+e}function bs(e,t){return Kt(e,t.inConstruct,!0)&&!Kt(e,t.notInConstruct,!1)}function Kt(e,t,n){if(typeof t==
+- )+e}function it(e){const t=e.options.quote||'
+- )+Ge(574);jx(Ke,!0)}},[S0,h[x(511)],R[x(530)],jx]),mY=f.useCallback(async()=>{const Ge=x;if(Yt[Ge(491)]>=5){alert(Ge(478));return}try{const Ke=Ux===Ge(539),e0=await $s[Ge(473)](
+- )+i)),a.push(h)),1;i=0;var u=n===
+- )+L[3]):-1};let R=0;t[x(280)][x(266)]((S,z)=>{const L=x,D=L(167)+encodeURIComponent(S);fetch(D)[L(177)](P=>{const ie=L;return P.ok?P[ie(291)]():(console[ie(319)](
+- )+le(166);P5(ce,!0)||v(le(263))},[]),L=f.useCallback(()=>{n&&a()},[n,a]),D=re=>{const se=r,le=Boe[se(289)]($=>$[se(266)]===re)?.[se(257)]??re,q=jte(
+- )+n;return n[e(393)]<6||a[e(393)]<8||a[e(393)]>15?null:
+- )+ne(460)),k0[ne(584)]===0)return;if(!U[ne(592)]){U.current=ne(473)+Date[ne(597)]();const ht=k0[ne(606)](wt=>wt.name)[ne(534)](Boolean).join(
+- )+o.indentLines(o.containerFlow(r,a.current()),t?Hr:us))),s(),u}}function us(e,t,n){return t===0?e:Hr(e,t,n)}function Hr(e,t,n){return(n?
+- )+t(241),link:x[t(304)]===t(235)?{label:t(258),url:yT}:null,needsSettings:!1}}case t(311):return{title:s+
+- )+t(563);case t(404):return t(418);case
+- )+t})}[R0(509)](t,e,n,a){const l=R0;if(this.closed||!t)return;this[l(468)]=!1;const s=this.openAssistant();this.response=null,this.thinkingId=null;const i=n||e||
+- ), character apne aap ko kabhi 
+- ), hand it to agent_task: 
+- ),!0),y(0),e.consume(C);return}return z(C)?(e.consume(C),S(e.exit(
+- ),!0):(N(Ud({code:E.code})[v(340)]),!1)},[I,r]);f.useEffect(()=>x(w),[x,w]);const Y=!a||m||I||!!V,W=a&&(m||I);let H;I?H=c.jsx(E2,{tone:e(337),children:r[e(333)]()?e(387):
+- ),!e)try{e=JSON.stringify(x,null,2)}catch{e=String(x)}return e.length>TB?e.slice(0,TB)+t(507):e}function MB(x,t,e){const n=TF;return!v1[x]&&(v1[x]={failures:0,lastError:
+- ),$p=$i(void 0,
+- ),...Xoe(kv)),a.uniform4f(Y(n(209)),mn[n(348)].x,mn[n(348)].y,mn[n(348)].rx,mn[n(348)].ry);const W=Y(n(243)),H=Y(
+- ),0<d.length&&(b=new p2(
+- ),130),status:Lte(l.status)}:null}).filter(n=>!!n);return e[t(346)]<2&&oa(t(429)),{type:t(513),items:e}},dVe=x=>{const t=Te,e=fn(u0(x,
+- ),320),($===ae(359)?U:K).current?.focus()},re=()=>{const $=r;if(!j){if(w===
+- ),40);if(!l||e[n(427)]<=0)return null;e[n(427)]-=1;const s=t>=sn[n(344)]?[]:fn(u0(a,n(323),n(458),
+- ),44);if(!p)return;let g=O2(u0(m,
+- ),[h,m]=f.useState(!1),p=f.useRef(!1),g=f.useCallback(async(Y,W)=>{const H=e;if(!p[H(514)]){p.current=!0,s(
+- ),[r,u]=f.useState(!1),I=f.useRef(!1),h=f.useRef(null);f.useEffect(()=>{const g=xd;if(!n)return;i(
+- ),[w,Y]=f.useState(!1),W=f.useRef(null),H=f.useRef(null);f.useEffect(()=>{const Q=a;h&&W[Q(167)]?.[Q(158)]()},[h]);const R=Q=>{const J=a;st[J(117)](),V(Q),window[J(108)](()=>V(
+- ),a!==null&&await this._removeSession();return}const l=((e=a.expires_at)!==null&&e!==void 0?e:1/0)*1e3-Date.now()<w4;if(this._debug(n,`session has${l?
+- ),a(),!e.url&&e.title||/[\0- \u007F]/.test(e.url)?(a=n.enter(
+- ),a(),!e.url||/[\0- \u007F]/.test(e.url)?(a=n.enter(
+- ),a(),s}function _s(e,t,n){return Xr(e,n)?
+- ),a(c)}function a(c){return c===96?(e.consume(c),r++,a):(e.exit(
+- ),a(f)):(e.consume(f),s)}}const to=[
+- ),a(f)):n(f)}function a(f){return f===35?(e.enter(
+- ),a(f))}function s(f){return f===null||f===35||$(f)?(e.exit(
+- ),a(s)}function a(s){return s===i?(e.consume(s),a):(e.exit(
+- ),a(u)}function a(u){if(u===o)return e.consume(u),a;const s=e.exit(
+- ),a+=n);return a},Vie=x=>{if(typeof x==
+- ),a===t(595)&&!l&&(a=t(598));const V=a===t(595)?l:
+- ),a=e?a.replace(/[ \t]+/g,
+- ),a=parseInt(n,16);return e(523)+(a>>16&255)+
+- ),a=TA.specialTokenRegex(Object.keys(this.specialTokens)),l=[],s=new Set(t===
+- ),a[0].trim())}function swe(x){const t=Xt;let e=x[t(396)](/\s{2,}/g,
+- ),activity:x.label||e[t(445)],steps:x[t(485)]||e[t(513)]});return;case t(447):if(e&&x[t(515)]){const n=x[t(535)]===t(543)?t(511):t(527)+(x[t(535)]||t(472));BA(x[t(450)],{summary:n+
+- ),aD=x=>{const t=gi,e=x[t(407)](/-/g,
+- ),alt:t.alt};r.title!==null&&r.title!==void 0&&(i.title=r.title);const o={type:
+- ),await _o(this.storage,this.storageKey,a)):a.user=V4()}if(this._debug(n,
+- ),await this._notifyAllSubscribers(
+- ),bJ=$i(void 0,
+- ),body:m,pinned:!!I?.[t(482)],at:p}),r+=1}let u=0;for(const I of i){const h=typeof I?.text===t(452)?I[t(475)][t(449)]():
+- ),c(k)))}function c(k){return k===null||k===124||$(k)?(e.exit(
+- ),C(k))}function C(k){return O(k)?B(e,F,
+- ),c9e={title:It(330),body:It(303),action:It(318)};function k3(){const x=[
+- ),d!==null&&(A=d,B=null));var te=new p2(
+- ),d=b.slice(2,F?b.length-7:void 0),A=o[Yt]||null,A=A!=null?A[b]:null,typeof A==
+- ),disabled:V,className:Qb,children:[c.jsx(Ix,{size:15}),g(353)]}),c.jsx(g(348),{type:g(348),onClick:()=>void m(p,
+- ),e(w(238))},V=()=>{n!==null&&m(n,l),RQ()};return c.jsxs(x(247),{role:x(211),
+- ),e.consume(a);return}return z(a)?(e.consume(a),e.exit(
+- ),e[t(494)](t(456))}else n&&e.push(t(481)+jW(n)+t(439));return x[t(476)]&&e[t(494)](x[t(476)]),{success:!0,result:e[t(447)](
+- ),ea=(x,t)=>O2(x,t)||void 0,ic=x=>{const t=Te;if(typeof x==
+- ),Error(n(268,o)));return o=u(d),o=o!==null?I(o):null,o=o===null?null:o.stateNode,o};var n1e={bundleType:0,version:
+- ),f(k)):(e.consume(k),k===92?p:c)}function p(k){return k===92||k===124?(e.consume(k),c):c(k)}function h(k){return r.interrupt=!1,r.parser.lazy[r.now().line]?n(k):(e.enter(
+- ),F==null&&A!=null&&(o.defaultChecked=!!A),F!=null&&(o.checked=F&&typeof F!=
+- ),FP()};return window[Ae(503)](qG,a0),()=>window[Ae(528)](qG,a0)},[x]);const[Xe,Fe]=f.useState(!1);f.useEffect(()=>{x?FP()===
+- ),ft=f.useCallback(Ge=>{const Ke=x;Ot[Ke(464)]=Ge,Xn(Ge)},[]),[Lt,Gt]=f.useState([]),[G0,Zt]=f.useState(
+- ),g(Xe)},[]),R=f.useCallback(async Ie=>{const Xe=l;Ie&&a?.(),m(Xe(418)),Hle();try{const Fe=await s?.[Xe(406)](
+- ),G.multiple?A.multiple=!0:G.size&&(A.size=G.size);break;default:A=typeof G.is==
+- ),H()},className:t(323),children:W});return c.jsxs(t(348),{className:t(327),children:[c.jsxs(t(348),{className:t(345),children:[c.jsxs(t(348),{className:
+- ),h(d))}function h(d){const w=Le(s);if(d===126)return c>1?u(d):(l.consume(d),c++,h);if(c<2&&!n)return u(d);const S=l.exit(
+- ),H(k))}function H(k){return k===null||k===124||$(k)?(e.exit(
+- ),h=f.useRef(!1),m=f.useCallback(async(w,Y)=>{const W=x;if(!h.current){h[W(234)]=!0,e(W(228)),I(
+- ),h=I?1:0,m=I?u[0].slice(1):u[0];l.push({start:u.index+h,length:m.length,error:`Value 
+- ),H=R=>X=>{const v=n;p[v(212)][R]=X};return c.jsxs(n(130),{ref:a,className:W,tabIndex:-1,onKeyDown:t[n(171)],role:n(133),
+- ),Ha=(e,t,n,r)=>{const i=(l,a)=>{const u=r.push(l)-1;return n.set(a,u),u},o=l=>{if(n.has(l))return n.get(l);let[a,u]=qe(l);switch(a){case cn:{let f=l;switch(u){case
+- ),hx(A);var B=A;B._p=new Promise(function(te,Ze){B.onload=te,B.onerror=Ze}),Wl(A,
+- ),hx(A);var B=A;return B._p=new Promise(function(te,Ze){B.onload=te,B.onerror=Ze}),Wl(A,
+- ),i&&(n+=i,i=0)}return t.join(
+- ),I(k)):R(k)}function I(k){return k===45?(e.consume(k),I):k===58?(l=!0,e.exit(
+- ),i+=String.fromCodePoint(c),e.consume(c),a):n(c)}function a(c){if(K(c)&&i.length<5)return i+=String.fromCodePoint(c),e.consume(c),a;if(c===58){const p=i.toLowerCase();if(p===
+- ),I=f.useCallback(ae=>{const ce=n;u[ce(503)]=ae,r(ae)},[]),[h,m]=f.useState(!1),[p,g]=f.useState(!1),N=f.useRef(!1),[V,w]=f.useState(
+- ),i=s,l(s)):n(s)}function l(s){return e.enter(
+- ),i=s.split(/[?#]/,1)[0],r=/(^|\/)(?:\.|%2e){1,2}(?=\/|$)/gi;let u;for(;(u=r.exec(i))!==null;){const I=u[0].startsWith(
+- ),J=window[e(508)],C=f.useCallback(async()=>{const xe=e;s(!0);try{const T=await J[xe(527)](
+- ),JTe)},[]),h=f.useCallback(H=>{const R=n;l();const X=jte(H);X===
+- ),Jxe=()=>{const x=Pe;try{return x(327)+crypto.randomUUID()}catch{return x(327)+Date[x(408)]()[x(431)](36)+
+- ),jxe=x=>{const t=Pe,e=Math.round(Number(x));if(!(!Number[t(415)](e)||e<PH||e>OH))return e},Pve=x=>{const t=Pe;if(!x||typeof x!=
+- ),l(),s}function Ls(){return
+- ),l();const f=n.stack;n.stack=[],l=n.enter(
+- ),l(f)}function l(f){return f===35&&r++<6?(e.consume(f),l):f===null||$(f)?(e.exit(
+- ),l=$6e[t],s=n(245)+a,i=n(204)+a,r=n(216)+a;return c.jsxs(n(202),{width:x,height:Math[n(222)](x*2/3),viewBox:n(243),fill:
+- ),l=n.containerPhrasing(e,r);return o(),i(),l}const Us=fn([
+- ),le(e(438),e(589)+ve.baseUrl)}else{await Co.loadKeys(o0);const ve=Co[e(369)]();if(!ve){const J0=Co[e(353)]();throw J0>0?new Error(
+- ),M(k)}function M(k){return k===124?(e.enter(
+- ),m2(t,x.B)}function zb(x,t){Bn(x.B,t),bx(x.B,t+
+- ),m=>new Array(20-m.length).join(
+- ),mc=$i(void 0,Symbol()),y_e=$i(void 0,
+- ),n+=e);return n}function px(){for(var x,t,e=0,n=
+- ),n+=e)}else for(e in x)x[e]&&(n&&(n+=
+- ),n.consume(f),u}function u(f){return s(f)?(n.exit(
+- ),n=(e=n.split(/[/\\]/).pop())!==null&&e!==void 0?e:
+- ),n=e[t(223)](/retry in ([\d.]+)\s*s/i);if(n)return Math[t(202)](parseFloat(n[1])*1e3)+1e3;const a=x?.[t(212)];if(Array[t(187)](a)){const l=a[t(209)](i=>String(i?.[
+- ),n=this[t(457)]?this[t(477)][t(445)](this[t(457)]):void 0;if(n){n[t(462)]!==e&&this[t(480)]({...n,text:e});return}if(!e)return;const a={id:ri(
+- ),N_e=$i(void 0,
+- ),Nde=new Set(
+- ),n}async uploadFile(t,e){var n;const a={};e!=null&&(a.mimeType=e.mimeType,a.name=e.name,a.displayName=e.displayName),a.name&&!a.name.startsWith(
+- ),o(),l}function ms(){return
+- ),o(f)}function o(f){return e.enter(
+- ),o.shift(2);const l=n.indentLines(n.containerFlow(e,o.current()),xs);return i(),l}function xs(e,t,n){return
+- ),o=n.bulletCurrent;let l=e.ordered?Ns(n):lt(n);const a=e.ordered?l===
+- ),optional:!1}:a}r=l}else r=mt(t)&&!/^[a-z]/.test(t)?{type:
+- ),Oxe=x=>{const t=Qt,e=[];return x.active?x.active[t(379)]?e[t(600)](t(497)):x[t(520)][t(556)]?e[t(600)](t(591)):e[t(600)](
+- ),p=n.indentLines(o,Is);return c(),p}const a=n.createTracker(r),u=i.repeat(Math.max(ws(o,i)+1,3)),s=n.enter(
+- ),p=n===void 0?
+- ),p=N=>{const V=a,w=N[V(381)]();!w||u||(I(w),e?.(w))},g=N=>{N[a(376)](),p(h),m(
+- ),ps=_x||Hc||jx,de=f.useRef(null);if(f.useLayoutEffect(()=>{const Ce=a,d0=de.current;if(d0)for(const N0 of Array[Ce(187)](d0[Ce(213)])){const kt=!!x&&!N0[Ce(170)](
+- ),Qe=we=>{const Ee=x;we.target[Ee(395)](Ee(391))||K()};return c.jsxs(x(392),{ref:E,className:We,style:{width:n[x(317)],height:n.height,zoom:1/V},children:[c.jsxs(x(392),{
+- ),qx([]),wt(e0)}},[G0,ft,qx,S0,ox,_x,wt,Yt,Ux,$x]),IY=f.useCallback(Ge=>{const Ke=x,e0=(Ge||
+- ),qx([]);return}const e0={text:Ke,attachments:Yt[Ge(575)](Oe=>({...Oe}))};if(!(!G0||!e0[Ge(546)]&&e0.attachments.length===0)){if(S0!==h0[Ge(512)]){if(Mx[Ge(464)]=e0,ft(
+- ),r=Number.parseInt(s,10);return i.forEach((u,I)=>n[u]=r+I),n},{});for(const[n,a]of Object.entries(e)){const l=uIe.toByteArray(n);this.rankMap.set(l.join(
+- ),r?.[e(248)]):new Error(
+- ),ready:r(t(529))};let I=
+- ),role:t(429),text:e,timestamp:Date[t(437)](),source:t(489),isStreaming:!0};this.userId=a.id,this[t(512)](a)}[R0(484)](){const t=R0,e=this.heard[t(466)](
+- ),s(c))}function s(c){return c===null||c===32||c===96||z(c)?(e.exit(
+- ),s(f))}function u(f){return f===35?(e.consume(f),u):(e.exit(
+- ),s(k)}function s(k){return k===124||(l=!0,o+=1),f(k)}function f(k){return k===null?n(k):z(k)?o>1?(o=0,r.interrupt=!0,e.exit(
+- ),s(Y(521))},w=()=>{const Y=e;if(l===Y(519)&&n!==null){g(n,i),t(Y(492));return}t(l===Y(521)?Y(493):Y(492))};return c.jsx(Wre,{onDismiss:w,children:l===
+- ),s=n.indentLines(n.containerFlow(e,a.current()),f);return u(),s;function f(c,p,h){return p?(h?
+- ),s=new Set;let i=-1;for(let r=0;r<a.length;r++)if(a[r]===
+- ),stopping:a[x(404)]===x(406)}:null,tg()},pBe=x=>{const t=Nc;if(x?.[t(399)]){switch(x[t(399)]){case
+- ),t(k)):R(k)}function R(k){return n(k)}function b(k){return e.enter(
+- ),t){if(t.codePointAt(0)!==46)throw new Error(
+- ),t.value=!0),Reflect.get(e,n,a)}})}function Qj(x){return JSON.parse(JSON.stringify(x))}const J1=x=>{if(typeof x==
+- ),te!=null&&typeof te!=
+- ),term:n[n.length-1]}},Dy=(x,t)=>{const e=Qn,n=x[e(536)](
+- ),this.authUrl=new URL(
+- ),this.bucketId=e}async uploadOrUpdate(x,t,e,n){var a=this;return a.handleOperation(async()=>{let l;const s=ot(ot({},Rj),n);let i=ot(ot({},a.headers),x===
+- ),this.data.flowCodeInside=void 0}function y(){const x=this.resume(),A=this.stack[this.stack.length-1];A.value=x.replace(/(\r?\n|\r)$/g,
+- ),this.path!==t&&this.history.push(t)}get stem(){return typeof this.path==
+- ),this.userStorage&&await Hs(this.userStorage,this.storageKey+
+- ),token:a}}async[b0(351)](t){const e=b0;if(this[e(225)]?.[e(207)].aborted)return;if(this[e(219)]=
+- ),token:n.token,email:n[e(528)]}},VZ=async(x,t,e={})=>{const n=vn,a=r=>fetch(
+- ),Ty=x=>{const t=$e,e=new Date(x-LFe);return e[t(393)]()+
+- ),type:l(504),content:i,toolName:i,...a&&typeof a==
+- ),t}function RG(x){
+- ),u(),!e.url&&e.title||/[\0- \u007F]/.test(e.url)?(u=n.enter(
+- ),u(c)):(e.consume(c),s)}function f(c){return c===96?(e.consume(c),i++,f):i===r?(e.exit(
+- ),u(c))}function u(c){return c===null?n(c):c===32?(e.enter(
+- ),u=f.useRef(0);f.useEffect(()=>()=>window[n(157)](u[n(130)]),[]);const I=f.useCallback(H=>{const R=n;r(H),window.clearTimeout(u.current),u[R(130)]=window[R(139)](()=>r(
+- ),u=s.encode((l=t.join_ref)!==null&&l!==void 0?l:
+- ),u}function Fs(){return
+- ),u}function Os(){return
+- ),u}function u(c){return c!==94?n(c):(e.enter(
+- ),Vj=x=>{if(typeof x==
+- ),W(!0);try{if(e){const z=Nl[S(275)](S(279),{email:e}),L=new Promise(D=>setTimeout(()=>D({success:!1,error:
+- ),w({}),N(null),u(!1)},E=async()=>{const C=n,M=(W[C(534)][C(532)]()||a.trim())[C(533)](/\s+/g,
+- ),w):R(k)}function w(k){return O(k)?B(e,S,
+- ),w=f.useMemo(()=>g[i(185)]((W,H)=>{const R=i;if(!W.d)return
+- ),W=p?Y+BJ:Y,H=W+w;if(s.indexOf(H)>-1)continue;s.push(H);const R=a(w,V);for(let X=0;X<R.length;++X){const v=R[X];s.push(W+v)}r=I+(r.length>0?
+- ),W_e=$i(void 0,
+- ),WRe=500,NRe=3,wRe=40;let Sl=null,KW=null,tb=null,QB=Promise[ra(296)](),A_=null;const VRe=x=>(x[ra(270)]===
+- ),x instanceof HTMLInputElement&&(x.type===
+- ),x;const e=await MNe(x);return btoa(e).replace(/\+/g,
+- ),xb(x,n(486),!0);const r=cxe(i);return i.ok?{success:!0,toolName:x,result:r}:xb(x,r)}const SB={execute:async(x,t,e)=>{const n=Da;if(x===
+- ),xb(x,n(I?501:538),!0)}const u=cxe(r);return a(r.ok?
+- ),y):k===45?(o+=1,y(k)):k===null||z(k)?F(k):R(k)}function y(k){return k===45?(e.enter(
+- ),Y=m[5]!==void 0;if(!g&&!N&&!V&&!w&&!Y)return!1;let W=Number(m[4]);const H=m[5]?Number(m[5]):0;if(!Number.isFinite(W)||W>24||H>59)return!1;const R=N||V;if(w===
+- ),Yx=!1;if(Nt)try{var F0={};Object.defineProperty(F0,
+- ),z())},[x,C]);const M=async(xe,T)=>{const oe=e;T[oe(449)]();try{if(!(await J[oe(527)](
+- ),Zx[ce(486)]();return}O(ae)},[O,I]),T=f.useCallback(ae=>{const ce=n;ae.key===
+- ),{url:i,headers:r}=this.cloneRequestState();return i.searchParams.set(
+- ). Awaiting ack.
+- ). Decide without it.
+- ). If you meant to render a collection of children, use an array instead.
+- ). Please analyze them carefully and tell me what you find. Be specific and accurate.
+- ). Stonic AI unlocks on its own as soon as it is confirmed.
+- ). Tell the user in one short line: Google allows web search on Gemini keys with billing turned on (aistudio.google.com). Do not retry the search.
+- ). They are still stored and can be found by search.
+- ).length===n;return x.isVertexAI()?t.startsWith(
+- ).map(([t,e])=>{if(typeof e==
+- ).pop();if(/^\d+$/.test(e))return e;throw new Error(`Invalid batch job name: ${e}.`)}function yee(x){const t=x;return t===
+- ).pop();throw new Error(`Invalid batch job name: ${e}.`)}if(/^projects\/[^/]+\/locations\/[^/]+\/batchPredictionJobs\/[^/]+$/.test(e))return e.split(
+- ).replace(/ ([.,;:!?)\]])/g,
+- ).replace(/ +$/,
+- ).replace(/\\s+/g, 
+- ).replace(/^ | $/g,
+- ).slice(0,2),eHe=300,tHe=({character:x,userName:t,initialName:e,initialAge:n,initialCallsYou:a,onSpeaking:l,onConfirm:s,onBack:i})=>{const r=fle,u=BF(x)===r(367),I=x[r(339)]===
+- ).splice(0,2).map(l=>parseInt(l,10)||0);e.push(0);const n=e[0],a=e[1];if(n===10)switch(a){case 5:return
+- ).split(/[\\/]/).pop()||void 0}const yge=x=>x!=null&&typeof x==
+- ).then(a0=>{const s0=Ae;a0&&(X(!!a0.enabled),E(a0[s0(395)]||
+- ).then(function (m) { window[
+- ).toLowerCase(),Fwe=(x,t)=>WB(x)===WB(t),Ywe=(x,t)=>Ate(x[sx(550)])[sx(501)](e=>Fwe(e.heading,t));function S5(){const x=[
+- ).toLowerCase();return g===p(401)||g===
+- ).toLowerCase();return x[t(294)]===t(321)||x.code===t(293)||e[t(289)](t(303))||e[t(289)](
+- ).toLowerCase()]??GVe(i)}}}catch(i){if(i instanceof _te)return{problem:
+- ).trim())},wwe=x=>{const t=sx;let e=x.replace(/<!--(?![\s\S]*-->)[\s\S]*$/,
+- ).trim(),d1=s=>{for(const r in s)if(r.startsWith(
+- ).trim(),M_=x=>{const t=Pe,e=x[t(295)]===
+- ).trim(),n=e[t(556)](/\s*[·•|]\s*|\s+[—–-]\s+/)[t(513)](a=>a[t(451)]())[t(446)](Boolean);return n[t(561)]<2?{name:e,term:
+- ).trim(),p=h[n(268)]?.[0]?.[n(252)]?.groundingChunks||[],g=p[n(308)](w=>w?.[n(316)]?.uri)[n(314)](0,5)[n(256)](w=>{const Y=n;return
+- ).trim(),sources:Pie(r[e(261)](u=>u?.web?.[e(279)]).map(u=>({title:u.web.title,uri:u[e(275)].uri})))}}catch(i){const r=Number(i?.[e(255)]??i?.[e(254)]);if(l=s[e(283)]+
+- ).trim(),u=new Date().toLocaleDateString(),I=s[n(480)](m=>
+- ).trim().length>0)}function BYe(x){const t=x.getAttribute(
+- ).trim().slice(0, 120) : 
+- ).trim();a&&t.push(a)}else if(n.nodeType===1){const a=n;if(Tne.has(a.tagName.toLowerCase())||a.getAttribute(
+- ).trim();if(!l)throw new pl(
+- ).trim();Ne&&E(Ve=>{const ye=S1;return Ve[ye(573)](Ce=>Ce.role===ye(512)&&Ce.text[ye(465)]()===Ne&&Date.now()-Ce[ye(477)]<5e3)?Ve:[...Ve,{id:Date[ye(571)]()+
+- ).trim();return a&&!e[t(327)](-3)[t(372)](l=>l.speaker===t(304)&&l[t(363)]===a)&&e.splice(n?e.length-1:e[t(270)],0,{speaker:
+- ).trim();return n&&Z6.find(a=>a.n[t(422)]()===n[t(422)]())||null},X7e=({profileLocation:x=
+- ).trim();return n.length>t?n.slice(0,t-1)[e(295)]()+
+- ).trim()[e(397)](),a=pVe[n]??(RB.has(n)?e(476):void 0);if(!a)return{problem:e(421)+t+e(538)+(n||
+- ).trim()[s(397)]();return e[s(399)](r=>r[s(443)][s(397)]()===i)},a=fn(u0(x,t(409),t(512),t(375)))[t(377)](l=>{const s=t,[i,r]=Array[s(497)](l)?l:Zn(l)?[u0(l,s(405),s(356)),u0(l,
+- ).trim()}function Ho(x,t=LYe){const e=jne(x);return e.length<=t?e:e.slice(0,t-1)+
+- ).trim()}function Ite(x,t=new Date){const e=Xt,n={text:x[e(396)](/\s+/g,
+- ).trim()}function KYe(x,t){const e=x.getAttribute(
+- ).trim()}var ve={},dn,kt;function Oi(){if(kt)return dn;kt=1;var e=/\/\*[^*]*\*+([^/*][^*]*\*+)*\//g,t=/\n/g,n=/^\s*/,r=/^(\*?[-#/*\\\w]+(\[[0-9a-z_-]+\])?)\s*/,i=/^:\s*/,o=/^((?:'(?:\\'|.)*?'|
+- ):/NotReadable|TrackStart|Abort/i.test(r)?new Vh(
+- ):[]}return l.map(i=>Z0e(t,i))}return x},mWe=x=>typeof x==
+- ):delete x.fieldMask;return x}class DZe extends or{constructor(t){super(),this.apiClient=t}async create(t){var e,n;let a,l=
+- ):delete x.fieldMask}else delete x.fieldMask}else a!==null&&Array.isArray(a)&&a.length>0?x.fieldMask=a.join(
+- ):e>=10?n(x,1):n(x,2)};function ao(x,t){return x=x-144,Zv()[x]}const moe=(x,t)=>{const e=ao;return t?/^[$€£¥₹₨]$/[e(201)](t)?
+- ):e}function Nu(e){return typeof e==
+- ):Fn(o,b,G)}}}function Wl(o,d,b){switch(d){case
+- ):G!==!1&&G!=null&&typeof G!=
+- ):new Error(
+- ):new r2(
+- ):new Vh(
+- ):null)}function zde(o,d,b){if(b===1||d.itemProp!=null)return!1;switch(o){case
+- ):null;if(i===null&&s==null&&l&&typeof l===n(481)&&(console[n(480)](n(428)),i=
+- ):null})[t(477)](a=>!!a);return n[t(346)]===0&&oa(t(361)),{type:t(496),columns:e,rows:n}},uVe=x=>{const t=Te,e=String(u0(x,t(532),
+- ):t(412)};let ZA=null;const aTe=()=>{const x=Qd;if(ZA)return ZA;const t=eTe(),e=[];for(let n=0;n<t[x(437)];n+=2)e[x(477)](uc(t[n],t[n+1]));return ZA=e,e};function yv(){const x=[
+- ):Wb(x[e(208)],t);return{result:Xl(l,t),data:a[e(219)]>0?{tabs:a,count:Array[e(181)](x.data)?x.data.length:n[e(219)]}:void 0}},Xye=(x,t,e)=>{const n=at;switch(x){case
+- ):x,g0e=x=>{const t=new URL(x);return t.protocol=t.protocol.replace(/^ws/i,
+- );!this.storage.isServer&&Object.is(this.storage,this.userStorage)&&!s&&(s={user:a.user},await _o(this.userStorage,this.storageKey+
+- ););return t>1&&e[t-2][1].type===
+- );a(n(309),n(366)+(p.ok?n(375):p[n(276)]||n(385)));const g=String(p[n(367)]||
+- );a.mimeType=i;const r={file:a},u=this.getFileName(t),I=Z0(
+- );a=-16760833&a|(1023&i)<<14}}}return nl(x,64|a|n),x}function O_e(x,t){if(typeof x!=
+- );break}else typeof A==
+- );case 13:return o.child!==d&&d!==null?$(
+- );Cb(N_e,5)})(),256&a)throw Error(
+- );const a=(x[t(410)]||[]).filter(l=>!n||l[t(440)]!==n[t(440)]);a[t(430)]&&e.push(t(477)+a.slice(0,5).map(l=>l.n+
+- );const a=n.createTracker(r);let u=a.move(
+- );const a=Z(x,[
+- );const c=n.safe(n.associationId(e),{before:u,after:
+- );const d0=await N(Ce,{source:ye(622)});return r0===Ia[ye(608)]&&d0&&typeof d0===ye(455)&&ye(611)in d0&&d0.accepted&&W0(
+- );const e=Z(x,[
+- );const H=Z(t,[
+- );const I=(i=u?.headers)===null||i===void 0?void 0:i[
+- );const i=Gt(e,
+- );const i=Z(x,[
+- );const ie=(O,xe)=>(50+Math[v(266)](-1,Math[v(162)](1,O/xe))*50).toFixed(1)+
+- );const J=Z(t,[
+- );const j=Z(t,[
+- );const K=Z(t,[
+- );const l=a.toString();return await WG(n.fetch,`${n.url}/cdn/${N0e(x)}${l?`?${l}`:
+- );const l=await v2(e.fetch,`${e.url}/object/upload/sign/${n}`,{},{headers:a}),s=new URL(e.url+l.url),i=s.searchParams.get(
+- );const l=d7e-e[t(351)]-n[t(351)];return a.length>l&&(a=a[t(346)](0,l)[t(297)](/;[^;]*$/,
+- );const l=e===void 0?
+- );const l=n.enter(
+- );const l=Z(x,[
+- );const m=!r&&I[n(271)]&&!Bl()[n(314)]?n(302):
+- );const M=Z(t,[
+- );const m={data:null,error:new Fj};return this.refreshingDeferred.resolve(m),m}await this._notifyAllSubscribers(
+- );const n=!e[0]||Array.isArray(e[0])?e:[e];let r=-1;for(;++r<n.length;){const i=n[r];t.push([Mu(i[0]),Nu(i[1])])}return t}function Mu(e){return typeof e==
+- );const n=e[t(263)]===
+- );const n=e[t(513)](
+- );const n=e[t(519)](),a=n[t(526)](
+- );const n=Math[t(586)](e/60),a=e%60;return n+t(491)+(n===1?
+- );const n=t.filePath||void 0;let r;if(t.development){if(typeof t.jsxDEV!=
+- );const n=x.recent.slice(-3)[t(152)]();return e[t(209)](n[t(191)]?t(204)+n.map(_ye)[t(200)](
+- );const n=Z(x,[
+- );const p=e.exit(
+- );const Q=Z(t,[
+- );const r={method:
+- );const s=l.toString();return await WG(n.fetch,`${n.url}/cdn/${a}${s?`?${s}`:
+- );const s=n.containerPhrasing(e,{before:u,after:
+- );const s=n.safe(e.alt,{before:u,after:
+- );const s=o.enter(
+- );const s=Z(x,[
+- );const s=zNe();await KNe(x,t,s,l,n);const i=await jNe(a);return[i,a===i?
+- );const t=[];for(const e of x)t.push(e);return t}function Wbe(x,t,e,n=1){const a=!t.startsWith(`${e}/`)&&t.split(
+- );const t=setInterval(()=>this._autoRefreshTokenTick(),Ao);this.autoRefreshTicker=t,t&&typeof t==
+- );const t=this.visibilityChangedCallback;this.visibilityChangedCallback=null;try{t&&Vl()&&window?.removeEventListener&&window.removeEventListener(
+- );const u=n.createTracker(r);let s=u.move(
+- );const u=Z(x,[
+- );const V=String(x?.[e(382)]??
+- );const v=Z(t,[
+- );const W=Z(t,[
+- );const X=A0e(R[0]);let v=(n=Y?.signInWithEthereum)===null||n===void 0?void 0:n.chainId;if(!v){const k=await W.request({method:
+- );const X=Z(t,[
+- );const xe=U+Math.cos(D[ie(215)])*S*.985,T=K+Math[ie(164)](D[ie(215)])*S*.985;u[ie(212)][P]?.[ie(207)](
+- );e:{a|=64;var l=(e=x).length;if(l){var s=l-1;const r=e[s];if(r!=null&&typeof r==
+- );e[x(443)](x(432))?.[x(479)]();const l=a[x(475)](/^ANGLE \((.*)\)$/)?.[1]??a,s=l[x(420)](
+- );else if(i[1].type===
+- );else if(n.type===
+- );else throw t}return}if(this.refreshingDeferred!==null){this._debug(
+- );else{const W=p?.retryable?n(416)+x+
+- );else{try{const ne=await o0[e(598)](e(593));ne?.[e(497)]&&(G0={memory:ne[e(497)]})}catch{}const ve=String(G0?.[e(497)]||
+- );e|=0}cn(x,t,e)}function et(x,t,e){cn(x,t,Rf(e))}function gc(x,t,e){sd(x,t,BZ(e),
+- );f.useEffect(()=>{const L=n;if(!R){E[L(285)]=
+- );f.useEffect(()=>{const v=t;if(!e)return;const E=JSON.stringify(w);E!==Y[v(210)]&&(Y[v(210)]=E,bD(w))},[w,e]),f.useEffect(()=>{const v=t;e&&(J2(v(172),r),r&&(Y[v(210)]=
+- );for(;++y<S.length;)I[y]=c(S[y],d,w);return C(),I}function c(h,d,w){const S=h.children;let y=-1;const I=[],C=d.enter(
+- );for(;++y<S.length;)I[y]=u(S[y],h,d,w);return C(),I}function p(h,d,w){let S=Zr.inlineCode(h,d,w);return w.stack.includes(
+- );for(let n=0;n<t.length;n++)if(!VNe.test(t[n]))throw new m5(
+- );for(let u=0;u<r.length;u++)if(r[u].htmlFor===l&&r[u].textContent)return Ho(r[u].textContent??
+- );for(var F in d)G=d[F],d.hasOwnProperty(F)&&b[F]!==G&&Jc(o,F,G)}else for(var A in d)d.hasOwnProperty(A)&&Jc(o,A,d[A])}function de(o){if(o.indexOf(
+- );for(var i in r)(l=+i)<s&&(e[l+t]=r[i],delete r[i]);a=-16760833&a|(1023&s)<<14;break e}}if(t){if((i=Math.max(t,l-(128&a?0:-1)))>1024)throw Error(
+- );function _i(e){return e.join(
+- );function G2(o,d){q6.set(o,d),Mx(d,[o])}var hg=typeof reportError==
+- );function Gn(e){const t=
+- );function hr(e){return t;function t(n){const r=n&&n.position&&n.position[e]||{};if(typeof r.line==
+- );function n1(s){var r=W;return s&&s[r(308)]&&Object[r(303)][r(289)][r(283)](s,
+- );function P7(o,d){switch(o){case
+- );function Tr(e){return{resolveAll:vr(e===
+- );function ZV(){const x=[
+- );H=w}const R=new URL((e=W?.url)!==null&&e!==void 0?e:window.location.href);if(
+- );if(!(Tt&&/(resume|resum|handle|session).*?(invalid|expired|not found|unsupported)|invalid argument/i[e(428)](ne))){le(e(398),
+- );if(!_)return;const U=(R.accent[0]|0)+
+- );if(!a)throw new Error(
+- );if(!a.trim())throw new Fl(e(420),e(457));const l=Math[e(432)](Number(x?.[e(435)])),s=Number[e(466)](l)&&l>0?l:U4e,i=[{role:e(484),content:String(x?.system??
+- );if(!Array.isArray(x))throw new Error(
+- );if(!a||!n)return!1;const l=a+
+- );if(!e.startsWith(t(472)))return null;const n=rs(e[t(502)](
+- );if(!i)return;i.clearRect(0,0,l,s);const r=e[n(148)](/ /g,
+- );if(!i)throw new gF(
+- );if(!n)return{success:!1,error:e(474)};try{await ZZ(),await YF();const a=await ete();if(n===
+- );if(!t)return;const e=[];for(const a of t.split(/\s+/)){if(!a)continue;const l=x.ownerDocument.getElementById(a);l&&e.push(I8(l))}return e.filter(Boolean).join(
+- );if(!t.match(/^https?:\/\//i))throw new Error(
+- );if(!u)throw new Error(s(342));u.drawImage(a,0,0,r[s(334)],r[s(351)]);const I=r[s(359)](s(345),_He);URL[s(316)](l),t({data:I.split(
+- );if(!x.ok){const e=x.status;let n;!((t=x.headers.get(
+- );if(!x[e(426)]?.[e(523)]())throw new qa(e(444),
+- );if(!X||!(X instanceof Uint8Array))throw new Error(
+- );if(2048&a&&!(2&a)&&(function(){if(QP)throw Error(
+- );if(64&a)return(a|n)!==a&&nl(x,a|n),x;if(e&&(a|=128,e!==x[0]))throw Error(
+- );if(a)return e.version=a,e}const n=_e.getFirstMatch(/\sDdg\/([\d.]+)$/i,x);return n&&(e.version=n),e}},{test(x){return x.hasBrand(
+- );if(a=0|x[j0],QP&&1&a)throw Error(
+- );if(a===e(529)||a===e(484))return Rxe;if(a===e(464))return DB(t)}if(t===
+- );if(D===E[L(285)])return;E[L(285)]=D;const P=R[L(302)]===L(298)?
+- );if(e)return Ho(e);const n=zYe(x);if(n)return Ho(n);const a=x.tagName.toLowerCase();if(a===
+- );if(f.useEffect(()=>{const m=dG;let p=!1;const g=async()=>{const w=dG;if(Wq||!Z_()||fa()!==
+- );if(i){const u=parseFloat(i);Number.isNaN(u)||(s=u)}const r=a?.get(
+- );if(l!==-1){const i=n.slice(0,l),r=n.slice(l+1).split(
+- );if(l){const r=x.ownerDocument.getElementsByTagName(
+- );if(n)return e.version=n,e}return e}},{test:[/chromium/i],describe(x){const t={name:
+- );if(s<0||i<=s)return[];let r;try{r=JSON.parse(a[n(346)](s,i+1))}catch{return[]}const u=Array[n(306)](r?.[n(304)])?r[n(304)]:[],I=[];for(const h of u){const m=String(h?.id??
+- );if(s?.textContent)return Ho(s.textContent);const i=x.getAttribute(
+- );if(t)return t;const e=x.tagName.toLowerCase();switch(e){case
+- );if(t.length!==3)throw new m5(
+- );if(this.apiClient.isVertexAI()){const a=e.name.split(
+- );if(typeof t.jsxs!=
+- );if(typeof x==
+- );if(X){const q=X[s(263)](16,16,0,16,16,16);q[s(199)](0,s(415)+yA+s(346)),q[s(199)](.35,s(415)+yA+s(250)),q[s(199)](1,s(415)+yA+
+- );J&&n(C=>{const M=Q;return C[M(392)]>=5?C:[...C,{name:X[M(381)]||M(355)+Date.now()+M(397),data:J,mimeType:X[M(353)]||
+- );L.current=H===null?n(452):(Math[n(393)](0,H)*100).toFixed(1);const D=i===n(398)||i===
+- );let a=n.enter(
+- );let f=a.move(u);if(e.lang){const c=n.enter(`codeFencedLang${l}`);f+=a.move(n.safe(e.lang,{before:f,after:
+- );let I=n.alignDelimiters===!1?1:Math.max(1,u[c]-S.length-y.length);const C=S+
+- );let l=i.move(
+- );let l=n.enter(
+- );let M=k+s,j=Q/2;if(C){const K=C.getBoundingClientRect();M=(K[X(229)]-E.left+K.width/2)/J,j=(K[X(250)]-E[X(250)]+K.height/2)/J}const _=u[X(248)][X(185)]((K,S)=>{const z=X,L={d:
+- );let n=e===-1?x:x.slice(0,e);const a=e===-1?
+- );let o=-1,l;for(;++o<i.length;){const a=mt(i[o])?{type:
+- );let o=Gt(e,
+- );let r=0,i=n.indexOf(t);for(;i!==-1;)r++,i=n.indexOf(t,i+t.length);return r}function Ru(e){if(typeof e!=
+- );let s=l.move(
+- );let s=n.containerPhrasing(e,{before:
+- );N=X}}try{const{data:V,error:w}=await H0(this.fetch,
+- );r=el(n,t.jsx,t.jsxs)}const i={Fragment:t.Fragment,ancestors:[],components:t.components||{},create:r,elementAttributeNameCase:t.elementAttributeNameCase||
+- );r=nl(n,t.jsxDEV)}else{if(typeof t.jsx!=
+- );R[s(378)]=R[s(352)]=32;const X=R.getContext(
+- );return _e.map(h.split(
+- );return a.slice(0,8)+
+- );return a.startsWith(
+- );return a[e(263)]()?{on:!0,kind:e(252),text:a,chars:a[e(301)],overflow:Array[e(266)](n.overflow)?n[e(257)]:[],counts:n[e(283)],reason:
+- );return a[t(214)](
+- );return Ae[a0(349)]===
+- );return Array.isArray(x)?x.map(t=>UM(t)):[UM(x)]}function oH(x){return x!=null&&typeof x==
+- );return await oye(t,e,n,a)}async uploadToFileSearchStore(t,e,n,a){if(typeof t==
+- );return await rye(t,e,n,a)}async stat(t){if(typeof t==
+- );return b.name=d.name,b.value=d.value,o.id&&b.setAttribute(
+- );return c+=l.move(n.containerPhrasing(e,{before:c,after:
+- );return c.jsxs(e(404),{onClick:()=>t(x[e(419)]),
+- );return D2({composing:{id:s,title:x,startedAt:Date[a(253)](),isUpdate:t,brief:n,draft:
+- );return e+
+- );return e.replace(/[|\\{}()[\]^$+*?.]/g,
+- );return e===
+- );return e===t(427)?t(385):e===
+- );return e===x.text?x:{...x,text:e}}function YEe(x,t=40){const e=R0,n=[];for(const a of x){if(a.isHidden||a[e(496)]!==e(429)&&a.role!==e(473))continue;const l=(typeof a[e(462)]==
+- );return e[t(217)]()+
+- );return e[t(405)](t(369))?e:t(369)+(x[t(340)]||t(398))+t(360)+e},jBe=x=>/^image\//i.test(x[iG(340)]||
+- );return e[x(304)](0,8)+
+- );return e}function Dfe(x,t,e){const n={},a=Z(t,[
+- );return e}function hGe(x,t){const e={},n=Z(x,[
+- );return e}function jbe(x,t){const e={},n=Z(x,[
+- );return e}function lfe(x,t,e){const n={},a=Z(x,[
+- );return e}function Rfe(x,t){const e={},n=Z(x,[
+- );return e}function Sl(e,t){const n=this.parser.constructs.attentionMarkers.null,r=this.previous,i=Le(r);let o;return l;function l(u){return o=u,e.enter(
+- );return e}function Vfe(x,t){const e={},n=Z(x,[
+- );return e}function vfe(x,t,e,n){const a={},l=Z(t,[
+- );return e}function vme(x,t){const e={},n=Z(x,[
+- );return e}function xGe(x,t){const e={},n=Z(x,[
+- );return i.includes(se(r.sliceSerialize(p)))?(e.enter(
+- );return i?Ho(i):void 0}if(a===
+- );return I}}async function $M(x){var t;if(x===void 0)throw new Error(
+- );return l+=n.containerPhrasing(e,{...i.current(),before:l,after:
+- );return l?Ho(l):void 0}if(Mne.has(t)||t===
+- );return l}function o(l,a,u){const s=this.previous,f=this.events;let c=0;return p;function p(d){return s===126&&f[f.length-1][1].type!==
+- );return n<0?
+- );return n===e(482)?{tone:e(441),pulse:!1,text:t+e(470)+s}:n===
+- );return n>=60?Math[t(432)](n/60)+
+- );return n[e(146)](
+- );return n[x(562)](0,8)+
+- );return new RegExp(
+- );return n}function Jfe(x,t,e){const n={},a=Z(x,[
+- );return n}function Sge(x,t,e){const n={};let a=Z(e,[
+- );return o+=i.move(n.safe(n.associationId(e),{after:
+- );return o.displayName&&De.includes(
+- );return Oe[Ge(547)].cssText=Ge(508),document.body[Ge(526)](Oe),window[Ge(564)](Ge(490),e0),window[Ge(564)](Ge(505),Ke),window[Ge(564)](Ge(485),Ke),window[Ge(564)](
+- );return R(160)+V+
+- );return RG(t)==
+- );return s+=l.move(n.containerPhrasing(e,{before:s,after:
+- );return s+=u.move(n.safe(e.alt,{before:s,after:
+- );return s+=u.move(n.safe(n.associationId(e),{before:s,after:
+- );return s.file}async function rye(x,t,e,n){var a;const l=await l0e(x,t,e,n),s=await l?.json();if(((a=l?.headers)===null||a===void 0?void 0:a[r5])!==
+- );return super.l(x,t)}close(){this.P.close(),super.close()}};yc.prototype.close=yc.prototype.close;var zc=class extends yc{constructor(x,t){super(new ti(x,t),
+- );return t(413)+wA(x[t(424)],du[t(424)])+
+- );return t.src=x.toString(),t.crossOrigin=
+- );return t===-1||i!==-1&&t>i||n!==-1&&t>n||r!==-1&&t>r||vu.test(e.slice(0,t))?e:
+- );return this.url.searchParams.append(x,`in.(${e})`),this}notIn(x,t){const e=Array.from(new Set(t)).map(n=>typeof n==
+- );return this.url.searchParams.append(x,`not.in.(${e})`),this}contains(x,t){return typeof t==
+- );return this.url.searchParams.set(
+- );return this;function o(s){if(typeof s==
+- );return t}function $me(x){const t={};if(Z(x,[
+- );return t}function _me(x,t){const e={},n=Z(t,[
+- );return t}function ame(x){const t={},e=Z(x,[
+- );return t}function As(e,t,n,r){const i=it(n),o=i==='
+- );return t}function Dme(x){const t={},e=Z(x,[
+- );return t}function Jme(x){const t={},e=Z(x,[
+- );return t}function KZe(x){const t={};if(Z(x,[
+- );return t}function Lme(x){const t={},e=Z(x,[
+- );return t}function lme(x,t,e){const n={},a=Z(t,[
+- );return t}function Mpe(x){const t={},e=Z(x,[
+- );return t}function Rpe(x){const t={},e=Z(x,[
+- );return t}function Spe(x){const t={},e=Z(x,[
+- );return t}function SZe(x){const t={},e=Z(x,[
+- );return t}function tpe(x,t){const e={},n=Z(x,[
+- );return t}function ume(x,t){const e={},n=Z(t,[
+- );return t}function vpe(x){const t={},e=Z(x,[
+- );return t}function Vpe(x){const t={},e=Z(x,[
+- );return t}function zpe(x){const t={},e=Z(x,[
+- );return u+=a.move(o.safe(o.associationId(r),{before:u,after:
+- );return X()+
+- );return X},[l]),V=i?l[a(464)](R=>R.id===i):void 0,w=V?V[a(483)]+
+- );return x}function am(x){if(x.functionDeclarations)for(const t of x.functionDeclarations)t.parameters&&(Object.keys(t.parameters).includes(
+- );return`in.(${Array.from(new Set(e)).map(a=>yj(a)).join(
+- );return{label:I,values:h,best:n(u)}})[t(477)](l=>!!l);return a[t(346)]===0&&oa(t(390)),{type:t(369),columns:e,rows:a,highlight:n(u0(x,
+- );return{signedUrl:s.toString(),path:x,token:i}})}async update(x,t,e){return this.uploadOrUpdate(
+- );return}const fe=await hu(oe);I(!1),fe[T(356)]===
+- );return}const r0=Ne[ye(492)](kt=>kt[ye(625)])[ye(531)](
+- );return}uCe();try{const e=window.electronAPI;e?.[t(214)]?e[t(214)](
+- );s&&s?.user?(a.user=s.user,await Hs(this.storage,this.storageKey+
+- );switch(typeof t){case
+- );t.length===1&&(Xx(t[0],Fc,7)?.j()?.g()??new Map).forEach(((e,n)=>{x.u[Number(n)]=El(qn(e,1))??
+- );T5e(t),this.realtimeUrl=new URL(
+- );this._ua=t;let a=!1;typeof e==
+- );throw i.code=
+- );throw new Error(`Incompatible tools found at ${h}. Automatic function calling with CallableTools (or MCP objects) and basic FunctionDeclarations
+- );throw new o2(
+- );throw t.code=
+- );throw/NotAllowed|Security/i[n(482)](r)?new Vh(n(538)):/NotFound|Overconstrained|DevicesNotFound/i[n(482)](r)?new Vh(
+- );try{await Nl[S(275)](S(299))}catch(z){console[S(295)](z)}},[J]),_=async()=>{const S=Jo;R(
+- );try{await uw({rating:w,category:
+- );try{await uw({rating:Y,category:
+- );try{const a=await Cl(this.storage,this.storageKey);if(a&&this.userStorage){let s=await Cl(this.userStorage,this.storageKey+
+- );try{const e=await this.__loadSession();return await t(e)}finally{this._debug(
+- );try{const n=Date.now();return await SNe(async a=>(a>0&&await CNe(200*Math.pow(2,a-1)),this._debug(e,
+- );try{const oe=await J[T(527)](T(450),{name:xe.name});I(xe),H(xe.name),X(oe?.[T(473)]?.description??xe[T(416)]),E(oe?.[T(473)]?.[T(451)]??xe[T(451)]??
+- );try{const r=await a[n(517)](n(498),{title:s,body:i});return r[n(494)]?{success:!1,error:r[n(494)],errorCode:n(561),errorCategory:n(540),retryable:!0}:(l(n(549),n(543)+s+
+- );try{let s=
+- );try{return new URL(j5e(t))}catch{throw Error(
+- );var N=p.indexOf(
+- );var n=T({},e.props),h=e.key;if(a!=null)for(d in a.key!==void 0&&(h=
+- );var om=class{constructor(x,t={},e,n=
+- );var t=x[Symbol.asyncIterator],e;return t?t.call(x):(x=typeof BM==
+- );W=V}const H=new URL((e=Y?.url)!==null&&e!==void 0?e:window.location.href),R=await W.request({method:
+- );xk=crypto.getRandomValues.bind(crypto)}return xk(VYe)}const vYe=typeof crypto<
+- );{const i=_Ze(this.apiClient,t);l=Z0(
+- );{const i=BGe(t);return l=Z0(
+- );{const i=bpe(t);return l=Z0(
+- );{const i=ege(t);return l=Z0(
+- );{const i=hpe(t);return l=Z0(
+- );{const i=Kbe(this.apiClient,t);return l=Z0(
+- );{const i=nZe(t);return l=Z0(
+- );{const i=PGe(t);return l=Z0(
+- );{const i=ppe(t);return l=Z0(
+- );{const i=qGe(t);return l=Z0(
+- );{const i=rpe(t);return l=Z0(
+- );{const i=Tge(t);return l=Z0(
+- );{const i=tZe(t);return l=Z0(
+- );{const i=upe(t);return l=Z0(
+- );{const i=xge(t);return l=Z0(
+- );{const s=$Ze(t);a=Z0(
+- );{const s=KGe(t);a=Z0(
+- )===(b.crossOrigin==null?null:b.crossOrigin)){B.splice(te,1);break t}}A=F.createElement(G),Wl(A,G,b),F.head.appendChild(A);break;case
+- )===-1?void 0:(()=>{const t=x.slice(1,-1),e=t.indexOf(
+- )===0;b==null||typeof b==
+- )===A)return o}else return o;if(o=Mc(o.nextSibling),o===null)break}return null}function Hde(o,d,b){if(d===
+- )=>{const a=Ha,l=vb;vb=e??null;const s=N_(
+- )=>{const e=Pe,n=XZ(t),a=BF(x)===e(370)?[e(384),e(349)]:[e(378),e(430)];return n?[n,...a]:a},Mxe=x=>_u(x,U_)[Pe(386)](/\s+/g,
+- )=>{const h=qu,m=e||h(256),p=m===h(256)?h(281):h(270)+m+
+- )=>{const n=fx,a=/^(gemini|anthropic|openrouter|groq)_([a-z_]+)$/[n(362)](String(x||
+- )=>{const n=i0;if(typeof x!=
+- )=>{const n=rF;let l=Ol(e);const s=[];for(let i=x[n(117)]-1;i>=0;i--){const r=x[i],u=r[n(127)]||(Array[n(101)](r[n(111)])?JSON[n(113)](r.content):r[n(111)]||
+- )>=0){const e=t.split(
+- )?!0:x.test(/\sDdg\/[\d.]+$/i)},describe(x,t){const e={name:
+- )?!1:/^[\w!.\*'() &$@=;:+,?-]+$/.test(x),N0e=x=>x.split(
+- )?(r=!1,l[2]===0&&(o[1]!==0&&(l[0]=l[1],c=nn(p,t,o,i,void 0,c),o=[0,0,0,0]),l[2]=n)):d.type===
+- )?.[1],n=e?new Date(e):null;if(!n||Number[t(293)](n[t(307)]()))return
+- )?console.warn(l):console.error(l)}})}async resetPasswordForEmail(t,e={}){let n=null,a=null,l=null;this.flowType===
+- )?e.assetBinaryPath.toString():a}),await x.o(n),x}function qk(x,t){const e=Xx(x.baseOptions,oR,1)||new oR;typeof t==
+- )?n[n.length-1]=t:n[e(342)](t)}return wIe(n)},tm=x=>{MA.forEach(t=>{try{t(x)}catch(e){console.error(
+- )?s[r(307)]:s}function $(){var s=[
+- )?t(405)+(e?e.toLocaleString():t(432))+t(397):x===t(501)?t(471):Ka(x)}function mse(x,t){return x=x-380,_V()[x]}function aLe(x){const t=ux,e=String(x||
+- )?t.baseUrl.slice(0,-1):t.baseUrl];return t.apiVersion&&t.apiVersion!==
+- )?t.parametersJsonSchema||(t.parametersJsonSchema=t.parameters,delete t.parameters):t.parameters=Kh(t.parameters)),t.response&&(Object.keys(t.response).includes(
+- )?t.responseJsonSchema||(t.responseJsonSchema=t.response,delete t.response):t.response=Kh(t.response));return x}function lm(x){if(x==null)throw new Error(
+- )?t.slice(1):t)),s=this.defaultQuery(),i=Object.fromEntries(l.searchParams);return(!sj(s)||!sj(i))&&(e=Object.assign(Object.assign(Object.assign({},i),s),e)),typeof e==
+- )?t0.display:null;te.style.display=Se==null||typeof Se==
+- )?t:`models/${t}`}function dee(x,t){const e=Fx(x,t);return e?e.startsWith(
+- )?t:void 0;if(!Array.isArray(t)&&t.gcsUri&&t.gcsUri.length>0)return t.gcsUri[0]}getBigqueryUri(t){if(typeof t==
+- )?void 0:4)(k):d(k))}function d(k){return k===45||k===58?S(k):k===124?(l=!0,e.enter(
+- )?x:(g9(x),uU(Dn,Ea))}function hU(x){if(x=jb(x),!Ku(x)){Mb(x);var t=Dn,e=Ea;(x=2147483648&e)&&(e=~e>>>0,(t=1+~t>>>0)==0&&(e=e+1>>>0)),x=typeof(t=Ose(t,e))==
+- )?{bodyHeaders:void 0,body:mge(t)}:typeof t==
+- )[$e(411)](),SFe=(x,t)=>{const e=$e,n=x[e(355)](/\s+/g,
+- )[0]),{name:s,state:aH.JOB_STATE_QUEUED}}}}async getInternal(t){var e,n,a,l;let s,i=
+- )[0]);return x.getOSName(!0)===
+- )[0])===null||i===void 0?void 0:i.trim();return u?.includes(
+- )[0].trim().toLowerCase(),v;return X===
+- )[0];let l;n&&
+- )[0];return e===t(347)||e===t(288)||e===t(300)||e===t(355)?e:null},Yz={gemini:{title:It(311),body:It(371)+Wd+
+- )[1]);return e}}function fee(x,t){let e;return x.isVertexAI()?e=t?
+- )[1])||0;return x&&x.startsWith(
+- )[1].match(/[a-z0-9]+/);if(a===null)throw new Error(`Could not extract file name from URI ${e}`);e=a[0]}else e.startsWith(
+- )[1];if(!e)return null;const n=atob(e[t(541)](/-/g,
+- )[1];if(!e)return null;const n=JSON[t(300)](atob(e[t(296)](/-/g,
+- )[a(500)]();if(!l)throw new Fl(
+- )[Ae(544)]()))[Ae(499)](()=>xe(!1))),ie(Bl()),I(on()))},[We,x]);const C0=async()=>{const Ae=s;Ue(),m(!0),V(null);try{const a0=K[Ae(443)],s0=[We.invoke(Ae(436),
+- )[C(274)]();if(await w?.[C(242)](S6e[_],U)[C(288)](()=>!1)!==!0){j=!1;continue}Y(_,U,!0),_===
+- )[C(288)](()=>!1),nie(),await DF({keys:{[_]:
+- )[D(322)]();return a[D(295)]?(P&&a.sendText(P),!0):X[D(277)][D(314)]!==
+- )[e(251)]();return a[e(281)]>t?a[e(344)](0,t-1)+
+- )[e(288)]();if(N){let v;try{v=await n[e(346)](e(387),{path:N})}catch(E){v={error:E?.[e(357)]||e(315)}}if(v?.[e(277)]||typeof v?.[e(347)]!=
+- )[e(411)]();return n[e(292)]>t?n.slice(0,t).trimEnd()+
+- )[e(413)](0,400);return sve.has(x)?{success:!0,toolName:x,result:e(456)+x+e(484)+(n||e(422)),_middleware:{silent:!0}}:{success:t[e(430)],toolName:x,result:
+- )[e(427)]();return/^[#\w\s.,()%/-]{1,60}$/[e(429)](n)?n:t},VMe=x=>{const t=Rn,e=wA(x.accentRgb,du[t(434)])[t(411)](/[\s,]+/)[t(435)](Boolean)[t(436)](0,3).join(
+- )[e(445)]();return n[e(430)]>t?n[e(424)](0,t-1)+
+- )[e(447)]()[e(432)]();if(!cYe[e(429)](n))return Fi(t);const a=new URLSearchParams({plan:n,from:e(446)}),l=(t||
+- )[e(470)](),this.quietTurn=!1,this.showLive())}[R0(449)](t){const e=R0,n=t[e(480)](/\s+/g,
+- )[e(482)]();return n.length>t?n.slice(0,t)[e(511)]()+
+- )[e(517)]();return n[e(547)]<=t?n:n.slice(0,t-1)[e(479)]()+
+- )[e(526)]();return a.length>t?a[e(527)](0,t)+
+- )[Et(517)]()[Et(470)](0,120),WT=(x,t)=>{const e=Et,n=String(x||
+- )[K(274)]()}),uh[C(203)]((_,U)=>{const K=C;p[K(264)][_]=String(j[U]||
+- )[le(216)]().slice(0,120);if(!ae)return;const ce=
+- )[m(323)]();return p[m(259)](m(324))||g[m(259)](
+- )[n(206)]();return i?Cye(x,i,n(s?216:182),e):{success:!1,toolName:x,error:s?n(236):
+- )[n(254)]()}catch{}if(!r&&typeof l===n(295)&&/^(AIza|AQ\.)/.test(l)&&(r=l),!r)return{success:!1,toolName:x,error:n(323),errorCode:
+- )[n(305)]();const l=a[n(281)](/```(?:json)?\s*([\s\S]*?)```/i);l&&(a=l[1][n(305)]());const s=a[n(272)](
+- )[n(328)]();if(!i)return ah(x,n(311));const r=String(t?.about||
+- )[n(328)]();if(!i)return ah(x,n(368));const r=T4(t?.[n(278)]),u=r?
+- )[n(328)]();if(!I.ok)return I[n(276)]===
+- )[n(328)]();return I.ok?{success:!0,toolName:x,result:h||n(360)}:I.reason===n(280)&&h?{...ah(x,h),retryable:!0}:No(x,(h||n(315))+
+- )[n(328)]();return p.ok?{success:!0,toolName:x,result:g||
+- )[n(328)]()||i;if(!r)return ah(x,n(332));a(
+- )[n(358)]();if(!a)throw new o2(n(395),n(393));const l=await nxe(s=>fetch(IRe,{method:n(385),headers:{
+- )[n(441)]();if(!PVe[n(496)](s))return ld(n(491),n(438));const i=Number(t?.[n(498)]);if(s===
+- )[n(487)]();if(!$Re[n(522)](l))return xb(x,n(543)+(l||
+- )[n(487)](n(451))||!x[n(431)]){let h;try{h=await x[n(494)]()}catch{throw t[n(532)]()??new qa(
+- )[n(488)](),V);if(!w)continue;const Y=Ol(
+- )[n(523)](),s=()=>_H(i=>M5(jwe(l),i,t),n(486),x,t,e);if(!a){if(!l)throw new qa(n(525),n(512));return s()}try{return await _H(i=>M5(Mwe(a),i,t),
+- )[ne(344)](),Yx=JSON[ne(407)](ve?.args||{});return gn+
+- )[ne(344)]();if(F0){const V0=s0===0;fe.current=F0,s0+=1,V0&&le(ne(438),ne(533),{uptimeSec:a0(),handlePreview:F0[ne(605)](0,12)+
+- )[p(409)](),N=mB[g];return N===void 0?!1:(i={h:N,m:0},!0)});if(h&&i){const m=h[e(409)]()[e(396)](/\s+ko$/,
+- )[p(409)](),w=/^(ghant\w*|hours?|hrs?)$/[p(431)](V)?N*60:N,Y=new Date(t.getTime()+w*6e4);return s=Fs(Y),i={h:Y.getHours(),m:Y[p(414)]()},!0});h&&s&&r(
+- )[p(409)]()[p(436)](/\s*(?:,|aur|and|&)\s*/)[p(425)](V=>hB[V.trim()])[p(358)](V=>V!==void 0);if(g.length===0)return!1;const N=[...new Set(g)].sort();return l=p(441)+N.join(
+- )[p(409)]()];if(g===void 0)return!1;const N=Fs(t);let V=(g-N[p(412)]()+7)%7;return V===0&&(V=7),m[1]&&(V=(V<=7,V)),s=V1(N,V),!0});h&&s&&r(
+- )[Px(241)](Boolean),SXe=x=>one(x)[Px(260)](Px(257)),TXe=x=>{const t=Px,e=aI[t(242)](n=>lI(n[t(237)],x[n.key]))[t(241)](n=>!!n);return{profession:e.find(n=>n.profession)?.[t(267)]||
+- )[s0(544)]())).catch(()=>{})};return window[Ae(503)](Ae(509),a0),()=>window.removeEventListener(
+- )[sx(506)](/&#(\d{2,6});/g,(t,e)=>{const n=sx,a=Number(e);return a>31&&a<1114111?String[n(549)](a):t}).replace(/&amp;/gi,
+- )[sx(506)](/([(\[]) /g,
+- )[sx(507)](),Yte=x=>{const t=Fte(x);return/<(?:svg|canvas|img|video|table)\b/i.test(t)||EG(t).length>=16},Ete=x=>{const t=sx;let e=String(x??
+- )[t(196)](t(224))),s=l?.[t(184)];if(typeof s==
+- )[t(202)](),n=/^(RECALL AGENT|MEMORY SEARCH): (FOUND|PARTLY FOUND|NOT SURE|POSSIBLY RELATED|NOTHING FOUND)\b/[t(225)](e);if(!n)return null;const a=n[1]===t(273)?t(203):
+- )[t(265)]();return e===t(270)||e===t(305)||e===t(235)||e===t(296)?e:
+- )[t(305)]().length>=40},c7e=x=>{const t=Em,e=[t(337)+x[t(292)]+t(340),t(320),
+- )[t(305)]().slice(0,qie)[t(305)]();if(!(l[t(351)]<2||n[t(268)](s=>s[t(338)]()===l.toLowerCase()))&&(n[t(326)](l),n[t(351)]>=Die))break}return n},b7e=x=>{const t=Sn,e=t(311),n=
+- )[t(305)]();const n=e[t(281)](/```(?:json)?\s*([\s\S]*?)```/i);n&&(e=n[1][t(305)]());const a=e[t(272)](
+- )[t(338)]();for(let a=0;a<n[t(351)];a++)e=(e<<5)+e+n[t(302)](a)>>>0;return
+- )[t(358)](Boolean);return t(406)+e[t(426)](
+- )[t(376)]();return Qve[t(330)](e)||e===nb?nb:MF},Q_=x=>Exe(x)===nb,jF=
+- )[t(376)]();return x.named&&e?e:x[t(433)]?Kve.has(x.id)&&e?e:
+- )[t(395)](/-?\d+(?:\.\d+)?(?:e[+-]?\d+)?\s*([kmb])?/i);if(!e)return NaN;const n=parseFloat(e[0]),a={k:1e3,m:1e6,b:1e9}[(e[1]||
+- )[t(397)]()]??1;return n*a},qwe={good:Te(504),success:Te(504),positive:
+- )[t(399)](n)?n.replace(new RegExp(
+- )[t(409)]());)e=e[t(363)](1);return e[t(426)](
+- )[t(436)]()[t(397)]()),s=new Set,i=[];if(fn(u0(x,t(324),
+- )[t(441)](0,160)},Bwe=async(x,t)=>{const e=Gx,n=await x[e(436)]()[e(514)](()=>
+- )[t(441)](0,200)},Kae=async x=>{const t=Cs,e=B4e(await x.text()[t(479)](()=>
+- )[t(447)]();return n&&e[t(443)](
+- )[t(449)]();return n&&e[t(511)](t(554),n),VHe+
+- )[t(453)]()}function nw(){const x=[
+- )[t(469)]()[t(416)](0,wF)}async function iwe(x,t={}){const e=nI,n=String(x?.action||
+- )[t(478)]();return e?e[t(522)](0)[t(511)]()+e[t(514)](1):x},WCe=({isOpen:x,onClose:t})=>{const e=gi,[n,a]=f.useState([]),[l,s]=f.useState(!0),[i,r]=f.useState(
+- )[t(482)]();let n=null;try{n=JSON[t(574)](e)}catch{const w=e[t(472)](/\{[\s\S]*\}/);if(w)try{n=JSON[t(574)](w[0])}catch{}}if(!n||typeof n!==t(576))return{action:
+- )[t(482)]();return e[t(464)]<=DW?{text:e,dropped:0}:{text:e[t(622)](0,DW),dropped:e.length-DW}},nXe=260,aXe=2600,lXe=
+- )[u(419)]();I&&l[u(445)]({label:i,value:I})};return s(x(454),t[x(482)]),s(
+- )[w(305)]()?Y[w(314)]?w(277):w(237):xz(Y)?w(283)+Y[w(299)]:w(280);return{character:Y[w(279)],awareness:W}},g=(w,Y,W)=>{const H=t,R=!!W&&typeof W===H(242)&&
+- )[x(419)]()}},TQe=x=>{const t=rI,e=String(x||
+- )[zl(417)](),qFe=(x,t)=>{const e=zl;if(!x.endsWith(t))return!1;const n=x.slice(0,x[e(429)]-t[e(429)]);return n===
+- )],l=t[n]?.id||n===x(287)&&a||vZ[n];_d(Pi,l)},zve=new Set([
+- )];if(i){const u=N7e(i[n(374)],i.cc);if(u)return RW(u,n(405))}const r=v7e(e);return r?RW(r,n(405)):null},F7e=x=>[
+- )];return n||{lat:25,lon:Math[e(230)](-170,Math[e(260)](170,-t/60*15)),city:e(244)}},$Se=x=>Kie[String(x||
+- )]?.cc||null,V7e=(x,t)=>{const e=ue,n=String(x||
+- )Array.isArray(t)?a(t):l(t);else throw new TypeError(
+- )break;if(u<=I)throw new Error(
+- )break}else i[0]===
+- )continue;const l=I8(a);l&&t.push(l)}}return t.join(
+- )continue;t[s]=i}return t}function SL(x){return Kh(x)}function TL(x){if(typeof x==
+- )continue}o.removeChild(b)}}function Ade(o,d,b,G){for(;o.nodeType===1;){var F=b;if(o.nodeName.toLowerCase()!==d.toLowerCase()){if(!G&&(o.nodeName!==
+- )d();else{var G=function(){d(),b.removeEventListener(
+- )e=new URL(e);else if(!Hn(e)){const t=new TypeError('The 
+- )for(e=l.call(e),l=0;!(n=e.next()).done;)n=n.value,d=u+E(n,l++),i+=v(n,a,c,d,h);else if(d===
+- )G++;else if(b===
+- )Gp(o.ownerDocument.documentElement);else if(b===
+- )H.addEventListener(R,function E(k){v.once&&H.removeEventListener(R,E),X(k)});else throw new TypeError('The 
+- )if(Array.isArray(s)){const[f,...c]=s;u(f,c)}else l(s);else throw new TypeError(
+- )if(Array.isArray(x)){var a=x.length;for(t=0;t<a;t++)x[t]&&(e=yie(x[t]))&&(n&&(n+=
+- )if(e){var t=d(e.as,e.crossOrigin);i.d.m(r,{as:typeof e.as==
+- )if(e.call(s,f)){if(r)return r(s,f).value}else return;return s[f]};return bn=function u(){var s,f,c,p,h,d,w=arguments[0],S=1,y=arguments.length,I=!1;for(typeof w==
+- )if(typeof e==
+- )n+=x;else if(typeof x==
+- )o._reactRetry=d;else if(o.data!==
+- )r[1].contentType&&(Object.assign(t,Hl(f,n)),n=t[n],s=!0);else if(r[1]._container){for(o=n,i=void 0;o--;)if(l=f.get(o),l[1].type===
+- )return $0!==null?null:te(Ye,Re,
+- )return a&&f.children?p.children.splice(c,1,...f.children):p.children.splice(c,1),c}}}function Fu(e){const t=e.indexOf(
+- )return c.jsx(FLe,{core:l,onClose:t});const s=n===e(391)&&l[e(405)]===e(411);return c.jsxs(
+- )return e.message}}return JSON.stringify(x)},lNe=async(x,t,e,n)=>{if(x!==null&&typeof x==
+- )return e.test(this);if(Array.isArray(e.test))return e.test.some(n=>this.test(n));throw new Error(
+- )return e;const a=x[n(551)](/[\x00-\x1F\x7F]/g,
+- )return e===
+- )return fetch;throw new Error(
+- )return Gi(e,t);if(t.type===
+- )return Ja(d)}function Jre(o,d){return o===d&&(o!==0||1/o===1/d)||o!==o&&d!==d}var js=typeof Object.is==
+- )return Ja(d)}function Qre(o,d){if(o===
+- )return Ja(g0)}function Hre(o,d){if(o===
+- )return Ji(e,t,n);if(t.type===
+- )return Ki(e,t,n);if(t.type===
+- )return l?p.children.splice(c,1):p.children[c]={type:
+- )return M===l&&(a={at:e(),characterId:J,value:j}),j;const _=await p(J);if(_===C(432))return h(
+- )return n.apply(this,a);throw new $ne(`Attempt to call ${t.toString()} when transport not in ready state. Await connect() first.`)},e}function b8(x,t,e){const n=e.value,a=[
+- )return n;throw new TypeError(
+- )return null;const e=x,n=typeof e.source===t(434)?e[t(403)]:
+- )return null;const t=x.split(
+- )return null;for(;o.nodeType!==3;)if((o.nodeType!==1||o.nodeName!==
+- )return null;try{return JSON.parse(x)}catch{return console&&console.log(
+- )return null;try{return o.activeElement||o.body}catch{return o.body}}var Yn=/[\n
+- )return null}}return o}var t4=null;function Y7(o){o=o.nextSibling;for(var d=0;o;){if(o.nodeType===8){var b=o.data;if(b===
+- )return Number.isFinite(x)?x:NaN;if(typeof x!==t(336))return NaN;const e=x[t(408)](/,/g,
+- )return qB;if(l)return PW({provider:e(478),kind:l});if(vve.test(n))return qB}return Xve[e(479)](n)?DB(t):Fve[e(479)](n)?vxe(t):Xxe},kve=(x,t)=>({kind:
+- )return Qi(e,t);if(t.type===
+- )return Re=vY(
+- )return Reflect.get(e,n,a)}return!t.value&&typeof n==
+- )return t.error;if(typeof t.error==
+- )return t.error_description;if(typeof t.error==
+- )return t.message;if(typeof t.error_description==
+- )return t.msg;if(typeof t.message==
+- )return t.startsWith(
+- )return t}catch{}return
+- )return v(e1(e),a,c,n,h);throw a=String(e),Error(
+- )return x;const e=x.length-1,n=x[e];if(x[0]===
+- )return x;for(let n=0;n<t.length;n++){if(typeof x!=
+- )return x;if(typeof x==
+- )return x;let t,e=
+- )return Xi(e,t,n);if(t.type===
+- )return xve(x,t,e);const{addLog:a}=e,l=String(t?.[n(525)]||
+- )return Ye=Ye.get(Je)||null,te(Re,Ye,
+- )return Zi(e,t)}function Xi(e,t,n){const r=e.schema;let i=r;t.tagName.toLowerCase()===
+- )return!0;if(typeof e==
+- )return!0;if(typeof n==
+- )return!0}return!1}const MYe=new Set([
+- )return!0}return!1}function C7(o){return!(o.type===
+- )return(n=(e=(t=She)===null||t===void 0?void 0:t[x])===null||e===void 0?void 0:e.trim())!==null&&n!==void 0?n:void 0;if(typeof globalThis.Deno<
+- )return(n=jb(n))>=0&&Ku(n)||(Mb(n),n=Ose(Dn,Ea)),n}})(t),t!=null&&(typeof t==
+- )return;const a=()=>{const l=n;e[l(335)](l(399)).forEach(s=>{const i=l;s[i(338)][i(439)](
+- )return;const e=Number(x);return Number[t(490)](e)?e:void 0},tve=x=>x.command===
+- )return;const u=_u(Rl(r+i(302)),ab);if(u.length<p3||e[i(398)]>=yd)return;const I=Date[i(408)](),h={id:Jxe(),name:i(s===
+- )return;const Y=window[w(344)];if(!Y?.[w(329)])return;let W=
+- )return;return y9(x)?0|x:void 0}function $se(x){if(x==null)return x;if(typeof x==
+- )return;return y9(x)?x>>>0:void 0}function ece(x){const t=x.length;return(x[0]===
+- )return{text:x};throw new Error(`Unsupported part type: ${typeof x}`)}function bee(x){if(x==null||Array.isArray(x)&&x.length===0)throw new Error(
+- )return{voiceConfig:{prebuiltVoiceConfig:{voiceName:x}}};throw new Error(`Unsupported speechConfig type: ${typeof x}`)}function ML(x){if(
+- )return}throw new Error(`@supabase/auth-js: client was created with userStorage option and there was no user stored in the user storage. Accessing the 
+- )t.push(x[n]),n++;else{const a=[];let l=!0;for(;n<e&&x[n].role===
+- )throw Error(n(231,d,typeof b));return b}var Nt=!(typeof window>
+- )throw Error(n(62));if(o=o.style,b!=null){for(var G in b)!b.hasOwnProperty(G)||d!=null&&d.hasOwnProperty(G)||(G.indexOf(
+- )throw new Error(
+- )throw new Error(`@supabase/auth-js: Invalid SIWE message field 
+- )throw new Error(`Role must be user or model, but got ${t.role}.`)}}function zM(x){if(x===void 0||x.length===0)return[];const t=[],e=x.length;let n=0;for(;n<e;)if(x[n].role===
+- )throw new Ij(H);if(!H.ok)throw new hj(H);let X=((a=H.headers.get(
+- )throw new TypeError(
+- )throw new TypeError('
+- )throw new Xj(
+- )throw new Xy(
+- )throw new YNe;const{data:u,error:I}=await H0(this.fetch,
+- )try{return JSON.parse(x)}catch{return x}return x},bWe=(x,t)=>{if(typeof x!=
+- )u(s,[]);else if(typeof s==
+- )u(t,n);else if(typeof t==
+- )v--;else break}const P=v>-1?r.events[v][1].type:null,q=P===
+- )v.once?H.once(R,X):H.on(R,X);else if(typeof H.addEventListener==
+- )v=X[0];else if(X&&typeof X==
+- )var Wx=ba;else if(Ke(Se))if(Ig)Wx=Qre;else{Wx=Are;var U0=kre}else je=Se.nodeName,!je||je.toLowerCase()!==
+- )W===12&&(W=0);else if(w===
+- )W=V;else{const k=window;if(
+- )x=t;else{if(Sse){for(var e=
+- ){b=o.ownerDocument.head,Gp(b);for(var A=b.firstChild;A;){var B=A.nextSibling,te=A.nodeName;A[Jn]||te===
+- ){const a=$e,l=t[a(355)](/\s+/g,
+- ){const a=Number(x?.status)||null,l=nm(e(478),a,n)??(Yve[e(479)](n)?e(525):Eve[e(479)](n)?e(475):null);if(l===
+- ){const a=x;let l=parseInt(String(a.status),10);Number.isFinite(l)||(l=500),a.json().then(s=>{const i=s?.statusCode||s?.code||l+
+- ){const ct=[...xx];return ct.splice(ct[_t(584)]-1,0,ht),ct}return[...xx,ht]}),
+- ){const e=
+- ){const e=Array.isArray(t)?t:[t];if(e.length===0)throw new Error(
+- ){const f=r[0];let c;f&&f.type===
+- ){const h=n(222);return c.jsxs(n(216),{className:
+- ){const h=typeof c.tagName==
+- ){const i=parseFloat(s[t(221)](
+- ){const i=r.value;return Wn.call(e.components,i)?e.components[i]:i}if(e.evaluater)return e.evaluater.evaluateExpression(r);We(e)}function We(e,t){const n=new J(
+- ){const I=S.children[S.children.length-1];I&&I.type===
+- ){const i=String(t?.[n(386)]||
+- ){const i=t.children;let o=-1,l;for(;++o<i.length;){const a=i[o];if(a.type===
+- ){const l=I8(x);return l?Ho(l):void 0}}function PYe(x){if(x instanceof HTMLInputElement)return x.type===
+- ){const l=n.toString();if(l===
+- ){const l=x.getAttribute(
+- ){const n=e.toString();if(n===
+- ){const n=new RegExp(this.patStr,
+- ){const n=this.stack[this.stack.length-1];n.type;const r=n.children[0];if(r&&r.type===
+- ){const o=r.length-1;r[o]=r[o]===
+- ){const o=t.slice(5).replace(yt,Fi);r=
+- ){const r=e[n-1][1],i=t.sliceStream(r);let o=i.length,l=-1,a=0,u;for(;o--;){const s=i[o];if(typeof s==
+- ){const r=new TypeError('File URL host must be 
+- ){const r=Z(t,[
+- ){const t=document.createElement(
+- ){const t=new TypeError(
+- ){const t=new Uint8Array(16);return crypto.getRandomValues(t),Array.from(t,k0e).join(
+- ){const t=parseFloat(x);if(!Number.isNaN(t))return t}return x},hWe=x=>{if(typeof x==
+- ){const t=window.getComputedStyle(x);if(t.display===
+- ){const Te={type:
+- ){const u=r.indexOf(
+- ){const u=Z(x,[
+- ){const{data:a,error:l}=await this._getSessionFromURL(e,n);if(l){if(this._debug(
+- ){const{process:t}=globalThis,e=typeof((x=t?.versions)===null||x===void 0?void 0:x.node)==
+- ){for(var o=0,d=0,b=performance.getEntriesByType(
+- ){i=r;break}if(i!==-1&&l.length>i)for(let r=i;r<l.length;r++){const u=l[r];u!==
+- ){if(d===0)return Mc(o.nextSibling);d--}else b!==
+- ){if(d===0)return o;d--}else b!==
+- ){if(G===0){o.removeChild(F),OI(d);return}G--}else if(b===
+- ){if(o===0)break;o--}else b!==
+- ){if(s[e(453)]===0)return{success:!0,result:e(406),data:{count:0}};const i=s[e(444)]((r,u)=>u+1+e(491)+r.id+e(421)+mi(r)+'
+- ){if(typeof e.then==
+- ){if(typeof i.thought==
+- ){if(typeof m.thought==
+- ){if(typeof x==
+- ){l=a;break}}l===n&&(r.value=r.value.slice(1),r.value.length===0?n.children.shift():n.position&&r.position&&typeof r.position.start.offset==
+- ){let h;for(h in yn)if(Object.hasOwn(yn,h)&&Object.hasOwn(f.properties,h)){const d=f.properties[h],w=yn[h];(w===null||w.includes(f.tagName))&&(f.properties[h]=u(String(d||
+- ){let h=n?!n.includes(f.tagName):o?o.includes(f.tagName):!1;if(!h&&r&&typeof c==
+- ){let i=typeof n==
+- ){let l;const s=x.slice(1,e);try{l=JSON.parse(
+- ){o=KI(b.href);var A=al(F).hoistableStyles,B=A.get(o);if(B||(F=F.ownerDocument||F,B={type:
+- ){t.nullable=!0;continue}r.push(Kh(u))}t[s]=r}else if(a.includes(s)){const r={};for(const[u,I]of Object.entries(i))r[u]=Kh(I);t[s]=r}else{if(s===
+- ){this.client=x,this.prefix=t}async listNamespaces(x){const t=x?{parent:Vy(x.namespace)}:void 0;return(await this.client.request({method:
+- ){var A=F.name==null?null:
+- ){var d=new window.ErrorEvent(
+- ){var F=G.get,A=G.set;return Object.defineProperty(o,d,{configurable:!0,get:function(){return F.call(this)},set:function(B){b=
+- ){var t=d(e.as,e.crossOrigin);i.d.M(r,{crossOrigin:t,integrity:typeof e.integrity==
+- ){var t=e.as,a=d(t,e.crossOrigin),s=typeof e.integrity==
+- ){var t=e.as,a=d(t,e.crossOrigin);i.d.L(r,t,{crossOrigin:a,integrity:typeof e.integrity==
+- ){var t=typeof x;throw Error(`Expected boolean but got ${t!=
+- ){var u;const p=await x.text();if(p!==
+- ){var v4;bf=
+- )||[]})}}function ha(e,t){const n={type:
+- )||_0e(x)||x.startsWith(S5e))return;const n=(t=(e=x.match(/^sb_[a-zA-Z0-9]+_/))===null||e===void 0?void 0:e[0])!==null&&t!==void 0?t:
+- )||e(431)}}const Q4={execute:async(x,t,e)=>{const n=dl,{electronAPI:a,addLog:l}=e;if(!a?.[n(482)])return ld(n(433),
+- )||this.snapshot.heard,signal:this[a(452)]?.[a(599)]});if(!(i!==this[a(524)]||this[a(481)]!==l))try{await fetch(l[a(502)]+a(621),{method:a(450),headers:{
+- )||void 0}function I8(x){const t=[];for(let e=0;e<x.childNodes.length;e++){const n=x.childNodes[e];if(n.nodeType===3){const a=(n.textContent??
+- )||x.hidden)return!0;if(x instanceof HTMLElement&&x.offsetParent===null&&x.tagName!==
+- )})(x)||!!((x=x.userAgent.match(/Version\/([\d]+).*Safari/))&&x.length>=1&&Number(x[1])>=17))}async function GO(x){if(typeof importScripts!=
+- )}))[X2(261)](t=>/^https:\/\//i.test(t.uri))[X2(269)](0,e7e),t7e=async(x,t)=>{const e=X2;try{const n=await VZ(x,e(286),{method:e(270),headers:{
+- )}),a(_=>{const U={..._};return uh.forEach((K,S)=>{g[Pu(264)].has(K)||(U[K]=String(j[S]||
+- )}),c.jsx(t(261),{cx:i[0],cy:i[1],r:2.6})]})},MMe=x=>{const t=xY;return x[t(168)]?x[t(168)]:x[t(164)]?/^\s*[+▲↑]/.test(x[t(164)])?
+- )}),d2=({stage:x,children:t,tone:e,pulse:n})=>{const a=vt,l=x?lle(x):-1;return c.jsxs(
+- )});if(!R||R.length===0)throw new Error(
+- )})`}return x===
+- )})};t.current=new ResizeObserver(a),t[n(367)][n(465)](e),a()},[])}const kP=({icon:x,text:t,column:e})=>c.jsxs(n0(413),{style:{gridColumn:e,gridRow:
+- )},[I,s,l]),m=f.useCallback(H=>{const R=n;h(R(164)+H.title+'
+- )},[l,t]),E=f.useCallback(async L=>{const D=x,P=t[D(325)](ie=>ie.id!==L);e(P),await Ra[D(316)](D(333),P)},[t]),k=f.useCallback(async L=>{const D=x;e(L),await Ra[D(316)](
+- )},[Lt,G0,ft,ye]),Lm=f.useCallback(()=>{const Ge=x;if(S0===h0[Ge(512)]){Ia(!0);const Ke=Ge(444)+(h[Ge(511)]||Ge(578))+Ge(474)+R[Ge(530)][Ge(523)](
+- )},Cye=async(x,t,e,n)=>{const a=_s,{addLog:l,electronAPI:s}=n;l(a(203),a(223)+x+a(215)+t[a(184)](0,100)+'
+- )},describe(x,t){const e={name:
+- )},dXe=x=>{const t=Qt;switch(x[t(426)]){case
+- )},e=new Ny(this,Eo.leave,Oh({}),x);return e.receive(
+- )},hT='When they ask you to save a way of doing a job as a skill (
+- )},im=(x,t)=>{const e=at,n={},a=Object[e(249)](x);for(const[l,s]of a){if(yye[e(235)](l)){l===e(171)&&typeof x.mimeType==
+- )},L7e=(x,t)=>{const e=Wc,n=noe(x[e(190)]),a=t[e(170)]||e(127),l=s=>Math[e(159)]((s-t.now)/6e4);return x.thunderSoon?n[e(197)]===
+- )},onKeyDown:Y=>{const W=m;Y[W(495)]===Y[W(523)]&&(Y[W(578)]===W(601)||Y[W(578)]===
+- )},P=async()=>{const re=r;if(I?.kind===
+- )},rXe=x=>{const t=ur,e=Math.max(0,Math[t(490)](x/1e3));return e<90?e+t(510):n2(e/60)},qH=x=>new Date(x)[Qt(380)](Qt(533),{hour:Qt(439),minute:Qt(439)}),$H=(x,t)=>
+- )},V=async()=>{const E=a;e(),i(E(173));const k=await x[E(222)]();i(null),k.ok?t(
+- )},yD=x=>{const t=Wc,e=new Date(x),n=e[t(167)]();return(n%12||12)+
+- )},zVe=new Set([
+- )}: ${e}`),this.devices=t,this.type=e,this.details=a}}var xae={};yx(xae,
+- )}:null}catch{return null}}function GR(){const x=[
+- )};e.patch(t,n);const r={type:
+- )};function ur(x,t){return x=x-373,Z3()[x]}const n2=x=>{const t=ur,e=Math[t(427)](0,Math[t(490)](x));if(e<1)return t(392);if(e<60)return e+
+- )};r.title!==null&&r.title!==void 0&&(i.title=r.title);const o={type:
+- )};return c.jsxs(a(379),{className:a(384)+n,children:[c.jsxs(a(379),{className:a(398),children:[c.jsx(a(379),{className:
+- )};try{if(!G5())return{data:null,error:new H2(
+- )}]},lf=(x,t)=>{const e=Sn,n=String(x??
+- )}`);try{return await H0(this.fetch,
+- )}`:i}const s=n.includes(
+- )}`}_removeEmptyFolders(x){return x.replace(/^\/|\/$/g,
+- )}applyTransformOptsToQuery(x,t){return t.width&&x.set(
+- )}async function jNe(x){if(!(typeof crypto<
+- )}async function MNe(x){const e=new TextEncoder().encode(x),n=await crypto.subtle.digest(
+- )}catch(r){if(await y2(this.storage,this.storageKey,i),f0(r))return this._returnResult({data:{user:null,session:null},error:r});throw r}}async verifyOtp(t){var e,n;try{let a,l;
+- )}catch(s){throw t(l(507),l(570)),s}},a=async()=>{const l=aZ;t(
+- )}catch{}return _}catch{return 0}finally{I[M(446)](J)}}}},Tf=hne;function Y3(){const x=[
+- )}const BNe=/^[a-zA-Z0-9_-]{8,64}$/;function SW(x){return typeof x==
+- )}const It=document.createElement(
+- )}const L0e=[`runtime=${bf}`];g5&&L0e.push(`runtime-version=${g5}`);const R5e={
+- )}const s=x.closest(
+- )}const Vl=()=>typeof window<
+- )}constructUrl(t,e,n){const a=[this.getRequestUrlInternal(e)];return n&&a.push(this.getBaseResourcePath()),t!==
+- )}else a(n(309),
+- )}else e.push(
+- )}else{if(typeof V!=
+- )}else{if(typeof w!=
+- )}function _u(e,t,n){const i=fn((n||{}).ignore||[]),o=Ou(t);let l=-1;for(;++l<o.length;)Mr(e,
+- )}function cl(e){return!!(e&&typeof e==
+- )}function En(e,t){if(!e)throw new Error(
+- )}function fa(e){const t=this;t.parser=n;function n(r){return ua(r,{...t.data(
+- )}function HP(x,t){return t=String.fromCharCode.apply(null,t),x==null?t:x+t}let oW,Mk;const d_e=typeof TextDecoder<
+- )}function kc(o,d,b,G,F,A,B,te){if(A!=null&&typeof A!=
+- )}function Kee(...x){const t=globalThis.ReadableStream;if(typeof t>
+- )}function l(s){if(!(
+- )}function LNe(x){return Math.round(Date.now()/1e3)+x}function _Ne(){return Symbol(
+- )}function m(p){for(var g,N=p.length,V=N%3,w=[],Y=16383,W=0,H=N-V;W<H;W+=Y)w.push(h(p,W,W+Y>H?H:W+Y));return V===1?(g=p[N-1],w.push(x[g>>2]+x[g<<4&63]+
+- )}function OZe(x,t){let e=null;const n=x.bidiGenerateContentSetup;if(typeof n==
+- )}function U9(x){x.g.addBoolToStream(!0,
+- )}function V2(x){if(!x.passkey)throw new Error(
+- )}function V4(){const x={};return new Proxy(x,{get:(t,e)=>{if(e===
+- )}function Va(e){const t=typeof e.options.clobberPrefix==
+- )}function y7(o,d){return d=g7(d),g7(o)===d}function tn(o,d,b,G,F,A){switch(b){case
+- )}function ya(o,d,b){var G=Object.getOwnPropertyDescriptor(o.constructor.prototype,d);if(!o.hasOwnProperty(d)&&typeof G<
+- )}function Yt(e,t,n){if(!n)throw new Error(
+- )}if(this[n(485)])throw a[n(579)]()[n(559)](i=>i[n(490)]()),new Vh(
+- )}if(this[t(430)](e),this.refill(e),this[t(281)]){this[t(240)](e);return}if(this[t(254)]||e<this[t(398)])return;const l=qs;if(this[t(204)]){this[t(263)](Wz+
+- )}if(x[t(365)](t(444))){const e=x[t(363)](6),n=parseInt(e,10),a=e[t(363)](String(n).length),l=a===
+- )}let x=
+- )}let Zt=[];try{const ve=await o0[e(598)](e(551));ve?.[e(580)]&&(Zt=ve[e(580)][e(534)](ne=>ne.usable??ne[e(564)]).map(ne=>({name:ne[e(500)],description:ne[e(440)]||
+- )}return h}async function dye(x){return{size:x.size,type:x.type}}function uye(x){return new Promise(t=>setTimeout(t,x))}class Iye{async upload(t,e,n,a){if(typeof t==
+- )}static appendParams(x,t){if(Object.keys(t).length===0)return x;let e=x.match(/\?/)?
+- )}toString(){return this.build()}}var Wj;(function(x){x.ALL=
+- )}var Lre=Nt&&
+- )}var OWe=class{constructor(x,t=
+- )}var PWe=class{constructor(x,t=
+- )}var TA=class{specialTokens;inverseSpecialTokens;patStr;textEncoder=new TextEncoder;textDecoder=new TextDecoder(
+- )}})}catch(t){if(t instanceof d5e)this._debug(
+- )}},[]);return c.jsxs(e(373),{className:e(376)+(s?e(377):
+- )}};function y3(){const x=[
+- )}}_isValidSession(t){return typeof t==
+- )}}`),this}ilike(x,t){return this.url.searchParams.append(x,`ilike.${t}`),this}ilikeAllOf(x,t){return this.url.searchParams.append(x,`ilike(all).{${t.join(
+- )}}`),this}ilikeAnyOf(x,t){return this.url.searchParams.append(x,`ilike(any).{${t.join(
+- )}}`),this}likeAnyOf(x,t){return this.url.searchParams.append(x,`like(any).{${t.join(
+- )}}`),this}textSearch(x,t,{config:e,type:n}={}){let a=
+- )}}`):this.url.searchParams.append(x,`cs.${JSON.stringify(t)}`),this}containedBy(x,t){return typeof t==
+- )}}async __loadSession(){this._debug(
+- )}}async _handleVisibilityChange(){if(this._debug(
+- )}}async _saveSession(t){this._debug(
+- )}}async _useSession(t){this._debug(
+- )}}async signInAnonymously(t){var e,n,a;try{const l=await H0(this.fetch,
+- )}}catch{return null}finally{clearTimeout(a)}},_J=(x,t)=>{const e=OZ;if(!t)return{state:e(213)};if(t.status>=200&&t[e(196)]<300)return{state:
+- )}}class $ne extends h2{constructor(t){super(t??
+- )}}class eae extends h2{constructor(t){super(t??
+- )}}class ff extends h2{constructor(t,e,n){let a=`${t} not supported${n?`: ${n}`:
+- )}}class mQ extends h2{constructor(t,e,n,a){super(n??`Device error for ${t.join(
+- )}}class nEe extends h2{constructor(t){super(t??
+- )}}class qne extends h2{constructor(t,e){super(t??
+- )}}const n5e=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;function Wo(x){if(!n5e.test(x))throw new Error(
+- )}}function _V(){const x=[
+- )}}function aJ(x){const t=ux;if(!x)return null;const e=rs(x);return e?e[t(496)]:
+- )}}var K5e=class extends w5e{constructor(x){super(x)}},P5e=class{constructor(x,t,e){var n,a;this.supabaseUrl=x,this.supabaseKey=t;const l=z5e(x);if(!t)throw new Error(
+- + ++yt[Ve(608)]+
+- + ++yt[ye(608)]+
+- +(4294967296*t+x);else Zm()?e=
+- +(I/2+m*Math[w(138)](X));if(Y>Math.PI*2-.01){const X=W+Math.PI;return
+- +(Number[e(262)](r)?r:e(276)),/API_KEY_INVALID|API key not valid|API key expired/i[e(253)](String(i?.[e(266)]||i)))return{ok:!1,text:
+- +(ve?.[e(423)]||e(576));throw le(e(398),e(482)+ne),le(
+- +(VEe+=1)[R0(464)](36);class REe{constructor(t){this.write=t}owned=new Map;[R0(519)]=new Set;[R0(501)]=new Set;[R0(491)]=null;closed=!1;[R0(505)]=[];interim=
+- +(x===1?t:e),NLe=({usage:x})=>{const t=a2,e=Math[t(449)](0,Math[t(425)](100,x.percent)),n=x.parts[t(443)](a=>yLe[a.key]+
+- +_.description).toLowerCase().includes(j)):n[M(179)]},[n,l]),C=w?KJe[w[t(245)]]:null;return c.jsxs(t(263),{className:
+- +_i(ve));const F0=MW(ve);throw F0&&le(e(398),
+- +_n(e&&e.end)}function Ct(e){return e&&typeof e==
+- +a+e(230),mood:n}}return x[e(225)]===
+- +a+t(181));else{const l=x.startedAt?
+- +a+t(202));else if(x.starting)e[t(209)](
+- +a+t(376)+n[t(468)]+t(522)+n[t(416)]+t(585)+e[t(416)]+t(414):t(422)+a+t(550)},hXe=x=>{const t=Qt;return x[t(578)]===t(549)?x[t(531)]?t(440)+x[t(531)]+'
+- +a,children:r,containerInfo:e,implementation:t}}var f=u.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;function d(r,e){if(r===
+- +a,s):new qa(e(497),
+- +a,s):x[e(427)]===401||s?.[e(429)]===e(500)?new qa(e(t===
+- +a[e(367)][e(341)],tone:e(329),tasks:a.tasks}))}function rB(x){const t=jt;return x?new Date(x)[t(402)]():0}function Y5(){const x=[
+- +a[e[t(212)]()]},Mt=zie;function dv(){const x=[
+- +a[n(335)]();return a[n(389)]()+
+- +a[n(509)](0,60));const i=await Oo(os[n(503)](s),u3,null);if(!i)return e[n(506)](
+- +ae.toFixed(1));const ce=h[fe(212)][pe];ce&&(ce[fe(207)](
+- +ae[1])}ie[pe(500)]({edge:T,path:ce,labelX:Me[0],labelY:Me[1]});return}const le=S[fe],q=S[re];let $;if(t===
+- +b)}function ll(o,d,b,G){if(o=o.options,d){d={};for(var F=0;F<b.length;F++)d[
+- +b)}}function gn(o,d,b,G){if(G===null)o.removeAttribute(b);else{switch(typeof G){case
+- +b)}}function Pn(o,d,b){if(b===null)o.removeAttribute(d);else{switch(typeof b){case
+- +B,A.call(this,B)}}),Object.defineProperty(o,d,{enumerable:G.enumerable}),{getValue:function(){return b},setValue:function(B){b=
+- +B},stopTracking:function(){o._valueTracker=null,delete o[d]}}}}function ox(o){if(!o._valueTracker){var d=Ms(o)?
+- +C0+I(562),children:W.map(ke=>{const be=I,ze=X.id===ke.id;return c.jsxs(be(441),{onClick:()=>{ui(di[be(598)]),R(ke.id),z(null),ie(!1)},className:be(640)+(ze?be(613):
+- +CB)}if(x===n(341)){const i=String(t?.[n(310)]||
+- +Ce)}const r0=ix.current;if(r0){if(!w0.current){be.current[Ve(475)]({payload:de,options:Ne}),W0(
+- +Ct(e&&e.column)}function St(e){return _n(e&&e.start)+
+- +d,b}var NI={animationend:o1(
+- +Date[x(553)]()[x(491)](36)+Math[x(442)]()[x(491)](36).slice(2,10)},uF=Et(552)+K$();function $N(){const x=[
+- +e)))return!0}return!1}function Q5e(x){const t=[];try{const e=new URL(x);t.push(e.hostname)}catch{}return t.push(
+- +e):x[t(368)]===401?new o2(
+- +e):x[t(454)]===401?new Fl(
+- +e)},bRe=async(x,t,e)=>{const n=qi,a=i=>nxe(r=>fetch(i[n(372)]+
+- +e)},z4e=async(x,t,e,n)=>{const a=Cs,l=u=>Bae(n,u[a(444)]+a(491),{
+- +e+a+n},m7e=x=>{const t=Sn,e=x[t(344)][t(286)]((n,a)=>
+- +e+n},Uye=x=>{const t=_s,e=[];if(x[t(187)]){const a=x.task?
+- +e.key):a.toString(36)}function e1(e){switch(e.status){case
+- +e.replace(/[=:]/g,function(c){return a[c]})}var D=/\/+/g;function E(e,a){return typeof e==
+- +e.slice(i+1,l):n=e.slice(i+1,l),r=l-i-1;i=l,o=0}else a===46&&o>-1?o++:o=-1}return n}function Ge(e){if(typeof e!=
+- +e.toLowerCase()}const yn={action:[
+- +e.toLowerCase()}function Fi(e){return e.charAt(1).toUpperCase()}const Ri=ir([lr,Ai,ur,sr,cr],
+- +E3e[a[n(339)]()]+s;const i=a[n(335)]()===e.getFullYear()?
+- +e[t(442)]()},cYe=new Set([_G(448),_G(435)]),ek=(x,t)=>{const e=_G,n=(x||
+- +e[t(467)](2)}const xLe=ux(506),m9=x=>x===xLe;function nJ(x){const t=ux;if(m9(x))return
+- +e[t(517)](void 0,{month:t(495),day:
+- +e[t]);return n===void 0?
+- +encodeURIComponent(l))}return e.join(
+- +F0),ve}const Nt=!!yt;fe[e(592)]=null,pe[e(592)]=e(492),Xe(e(492));const Yx={...Jn};Nt?(Yx.sessionResumption={},le(
+- +F0.length+ne(485),route:ze})}else ve[ne(481)].resumable===!1&&(w0+=1)}if(ve[ne(356)]){const F0=KXe(ve.goAway[ne(536)]),V0=!!fe[ne(592)];le(
+- +G)}}function Lx(o){switch(typeof o){case
+- +g,V=Ol(N)+1;if(u+V>a)break;r.unshift(N),u+=V,I+=1}return r[e(260)]===0?
+- +i),s+=u.move(n.safe(e.title,{before:s,after:i,...u.current()})),s+=u.move(i),a()),l(),s}function Ts(e){const t=e.options.emphasis||
+- +I.length,...u.tone?{tone:u[n(349)]}:{},tasks:I})}return r}function _3e(x,t){const e=jt,n=[{id:e(340),title:
+- +i.name,i.file=this.path),i.fatal=!1,this.messages.push(i),i}toString(t){return this.value===void 0?
+- +i[0]]);let o={type:
+- +ie,H+1,R,D,j,L),L+=Yh(P,H+1)})};I.forEach(({side:Y,members:W})=>{const H=e;let X=-W[H(505)]((v,E)=>v+Yh(E,1),0)/2;W[H(533)]((v,E)=>{h(v,(Y===1?
+- +Je,qe);if(typeof Je==
+- +jH(t??{})}catch{return null}},ive=(x,t)=>{const e=hc,n=x===e(436)?e(426):String(t[e(461)]??t[e(425)]??
+- +JSON.stringify(e))}const du={cwd:yu};function yu(){return
+- +j});const z=Y.children.reduce((P,ie)=>P+Yh(ie,H+1),0);let L=j-z/2;const D=R===1?_+Q:_;Y[k(508)].forEach((P,ie)=>{h(P,W+
+- +Ka(Q[E(163)],Q[E(192)]))},g=async()=>{const E=a;e();const k=!m;i(E(246));const Q=await x.setDigest(k);i(null),Q.ok?t(
+- +Ka(V[g(350)],V.error)),!1)},m=async(p,g)=>{const N=n;e(),u(p.id);const V=await x[N(397)](p.id,g);u(null),V.ok?t(
+- +Ka(V[N(350)],V[N(407)]))};return c.jsxs(n(409),{className:n(357),children:[c.jsxs(
+- +kH[a.getMonth()]+i+s}function Q3e(x){const t=jt,e=x[t(355)](),n=x[t(377)](),a=e>=12?
+- +l),u(),a(),s}Vr.peek=Ds;function Vr(e){return e.value||
+- +Lb(x===1?479:499);function NP(x){const t=Lb;return x[t(462)]&&x[t(462)][t(458)]()?x[t(462)][t(458)]():nJ(x.channel)+
+- +Li(x).say+Dd(411),dz=x=>{const t=Dd;if(fa()!==t(537))return null;const e=Number(x?.status)||null,n=_i(x),a=nm(t(610),e,n);return a?{provider:t(610),kind:a,feature:
+- +Lx(d):b,te||d===o.value||(o.value=d),o.defaultValue=d}G=G??F,G=typeof G!=
+- +l}function GB({h:x,m:t}){const e=Xt,n=x>=12?
+- +l}}i=Un}return new i(r,t)}function Li(e){return
+- +Math.random()[ye(566)](36).substr(2,9),timestamp:Date[ye(571)](),type:de,message:Ne,details:Ve};O(N0=>[...N0[ye(409)](-299),r0]);const Ce=new Date().toLocaleTimeString(),d0=
+- +Math[Us(476)]()[Us(572)](36).slice(2,10),title:x,messages:[],timestamp:Date.now(),model:TN}),F4e=x=>{const t=Us;if(!x||typeof x!==t(583))return null;const e=x;return typeof e.id!=
+- +Math[x(324)]()[x(431)](36)[x(418)](2,10)}},jve=x=>{const t=Pe;if(!x||typeof x!==t(309))return null;const e=String(x.id||
+- +Math[x(491)]()[x(561)](36).slice(2,10);return localStorage[x(489)](t,n),n}catch{return
+- +Math[ye(572)]()[ye(566)](36)[ye(409)](2,7);_0[ye(608)]=r0,a0[ye(608)]=0,s0[ye(608)]=0,W0(ye(614),ye(480)+r0)}return ix[ye(608)][ye(523)]({text:de}),Ne?W0(
+- +n(e[t(213)]())},OSe=x=>{const t=B9,e=new Date(x),n=[t(207),t(218),t(224),t(205),t(209),t(214),t(219)],a=[t(195),t(198),t(204),t(216),t(208),t(194),
+- +n(r?558:582),children:[c.jsx(lF,{size:15,className:r?n(450):void 0,fill:n(r?458:490)}),n(504)]}),c.jsx(
+- +N),i[I(311)]({from:g,to:N,label:ea(p,22)}))}),i[t(346)]===0)for(let u=0;u<n.length-1;u++)i.push({from:n[u].id,to:n[u+1].id});const r=String(u0(x,t(366),t(503),t(459))??
+- +n)}}}[c0(635)](t){const e=c0;this[e(482)]=[],this[e(620)]?.stayedQuiet(t),this.snapshot[e(464)]===e(518)&&this[e(521)]({phase:e(626),heard:
+- +N+w);if(!(I+Y>H4)&&(u[n(439)]({...p,text:w}),I+=Y,u[n(481)]>=i))break}const h=u[n(480)]((m,p)=>{const g=n,N=m[g(422)]===
+- +n,this[e(280)]=0}}[bt(287)](){const t=bt;this[t(340)]=null,this[t(280)]=0}[bt(337)](){const t=bt;this[t(284)](),this.hasCursor=!1,this[t(287)]()}[bt(342)](t,e=
+- +n.toLocaleDateString(void 0,{month:t(314),day:t(298)})+t(343)+n[t(320)](void 0,{hour:
+- +n:n}function gu(e,t){let n=
+- +n===e.url)&&/^[a-z][a-z+.-]+:/i.test(e.url)&&!/[\0- <>\u007F]/.test(e.url))}Qr.peek=_s;function Qr(e,t,n,r){const i=it(n),o=i==='
+- +n[x(562)](20)}const CEe={permissions:c0(555),
+- +ne+e(511)+be.length+e(553)+fy+e(529))}const xt=dve(I0?
+- +new URL(
+- +new URLSearchParams(s).toString():
+- +new URLSearchParams(t).toString():
+- +Number((s/a)[e(196)](2))[e(155)](e(182))+l,t)};function Zv(){const x=[
+- +n}]}}function Qu(e){const t=e.split(
+- +n}function hte(x,t){return x=x-350,A5()[x]}function A5(){const x=[
+- +n}}function k4(x){const t=nI,e=[Uf(x),WZ(x.recurrence),x.focus?t(465):null].filter(Boolean);return t(396)+x.id+
+- +o),i.key!==void 0&&(l=
+- +o)}function p7(o,d){var b=d.ownerDocument.createElement(
+- +o.charAt(0).toUpperCase()+o.slice(1)}else{const o=t.slice(4);if(!yt.test(o)){let l=o.replace(Pi,Li);l.charAt(0)!==
+- +o[d])}}function tx(o){if(!o)return!1;var d=o._valueTracker;if(!d)return!0;var b=d.getValue(),G=
+- +o}function L7(o,d,b){if(d.count++,d.instance===null)switch(d.type){case
+- +P[U(419)]),N(C[U(396)][U(400)]>1?{index:L,count:C[U(396)][U(400)],name:ie}:null),h(null),u(O=>({...O,optics:U(375)}));return}catch(P){if(J)return;S=S||(P instanceof Vh?P[U(390)]:
+- +Q3e(a);if(l===0)return n(353)+s;if(l===1)return n(362)+s;if(l===-1)return n(404)+s;if(l<0){const r=Math[n(372)](l);return r<30?r+
+- +qe,$0);if(typeof qe==
+- +R(H)});return c.jsxs(t(130),{className:t(141),children:[c.jsxs(t(130),{className:t(221),children:[c.jsx(
+- +r.slice(u.index+1)}}return i+r+i}function Rs(){return
+- +r0);const Ce=[];Ne[ye(424)](kt=>{const Bx=ye,ve=kt.data.includes(
+- +r:i,p=await C4(Ht[n(287)]({query:m,characterId:l,mind:n(352)}));if(!p)return No(x,n(330),
+- +r:r);continue}let V=!!N,w=n(V?g.substring(0,N):g);if(!w){if(!V){r=I+(r.length>0?
+- +r:r);continue}V=!1}const Y=m.length===0?
+- +r:r)}return r},TCe=(...x)=>{let t=0,e,n,a=
+- +Re,Ye.mode,Je),Re.return=Ye,Re;if(typeof Re==
+- +s+l,t),data:n?{charCount:n}:void 0}},Rye=(x,t)=>{const e=at,n=x[e(167)]&&typeof x.data==
+- +s,i.set(u,s+1)}}const a=mr(e,o,l);a!==void 0&&n.push(a)}return n}function il(e,t,n){const r=Di(e.schema,t);if(!(n==null||typeof n==
+- +S4(I.tookMs));return h?{success:!0,toolName:x,result:n(318)+PA(h)+n(353)+I[n(363)]}:{success:!0,toolName:x,result:I[n(363)]}}if(x===
+- +s[n(424)]}}}case n(514):{l(n(505),
+- +Se).trim()}}catch(Y0){Kx(Ze,Ze.return,Y0)}}}else if(d.tag===6){if(b===null){Ze=d;try{Ze.stateNode.nodeValue=F?
+- +t),this[a(322)]=t,this[a(248)]=n}}const Sp=0,EEe=1,Oz=
+- +t),t}function ul(e){return
+- +t+e(485)+a+e(491)+i[e(310)]};throw i}},gVe=x=>{const t=Te;if(!Zn(x))return{spec:null,problems:['the reply must be one JSON object: {
+- +t,onMouseEnter:s=>{const i=vt;l.disabled||st[i(282)](),n?.(s)},onClick:s=>{const i=vt;x===i(309)?st[i(295)]():st.press(),e?.(s)},children:a}),nAe=({off:x,onToggle:t})=>c.jsxs(
+- +t.alt+r}];const i=e.all(t),o=i[0];o&&o.type===
+- +t.depth,properties:{},children:e.all(t)};return e.patch(t,n),e.applyData(t,n)}function xa(e,t){if(e.options.allowDangerousHtml){const n={type:
+- +t.slice(4).toLowerCase()}});function or(e,t){return t in e?e[t]:t}function ar(e,t){return or(e,t.toLowerCase())}const Ai=Fe({attributes:{acceptcharset:
+- +t:t}return x}function tce(x){var t=jb(Number(x));return Ku(t)?String(t):((t=x.indexOf(
+- +t:x},Ti=(x,t)=>moe(Vu(x),t),xTe=(x,t)=>{const e=ao,n=Math[e(178)](...x[e(165)](Math[e(190)])),[a,l]=n>=1e9?[1e9,
+- +this.clientOptions.userAgentExtra;return t[cZe]=e,t[IH]=e,t[lZe]=
+- +tve(i));const r=await Oo(os[n(518)](i),u3,null);if(!r){const I=l!==
+- +t})]})},wze=({view:x})=>{const t=Gb,e=x===t(412)?{title:t(427),hint:t(333)}:x===t(418)?{title:t(359),hint:t(372)}:{title:t(376),hint:t(401)};return c.jsxs(t(350),{className:
+- +u+n(475)+m).join(n(471));let h=
+- +V);return m!==n.length&&(V==null||typeof V==
+- +v.body,warn:!0}}else I&&(R={text:
+- +va.size,children:[Array[s(224)]({length:40},(I,h)=>{const m=s,p=h/40*Math.PI*2-Math.PI/2,g=va[m(252)]/2-3.5,N=va.size/2-(h%4===0?0:1.5);return c.jsx(
+- +wl[x[t+10]]+wl[x[t+11]]+wl[x[t+12]]+wl[x[t+13]]+wl[x[t+14]]+wl[x[t+15]]).toLowerCase()}let xk;const VYe=new Uint8Array(16);function RYe(){if(!xk){if(typeof crypto>
+- +x):x===401?new pl(t(430),t(462)):new pl(
+- +X)})),NA[i(185)]((W,H)=>{const R=i,X=W[R(180)];return c.jsx(
+- +x)},CRe=async x=>{const t=Dl,e=nm(
+- +X.fit.dw[k(262)](1);if(Q!==I){I=Q,h[k(323)]=0;for(const U of[u[k(241)],u[k(406)]]){const K=document.createElement(k(192));K.width=v,K[k(352)]=E,K[k(313)](
+- +x.toString(16)).substr(-2)}function TNe(){const t=new Uint32Array(56);if(typeof crypto>
+- +x[0][1];for(let s=0;s<e-1;s++){const i=(x[s+1][0]-x[s][0])/3;l+=
+- +x[Bd(255)],rG=x=>{const t=Bd,e=window[t(260)];e?.[t(229)]?e.invoke(
+- +x[t(181)];let n=LK[t(200)](e);return!n&&(n=nHe(x),LK[t(203)](e,n)),n},gle=(x,t)=>Promise[JK(196)]([oN(x),new Promise(e=>window[JK(182)](()=>e(null),t))]);function Pw(){const x=[
+- +x[t(515)]})}return;case t(484):{if(!e)return;const n=String(x[t(451)]||
+- +z)},C=async(_,U)=>{const K=n;e(),g(_.id);const S=await x[K(573)](_.id,U);if(g(null),!S.ok){t(K(500),(U?K(478):
+- , a companion who knows this person well.
+- , a companion who lives on this person's computer and knows them well.
+- , age 
+- , and it is used up. Raise the limit there, or paste a different key in 
+- , but the second copy could not be written to 
+- , finalize
+- , minmax(0, 1fr))
+- , naam "
+- , not 
+- , now: 
+- , on its own
+- , on up to 
+- , or add credits to lift it
+- , or switch the brain to Claude.
+- , or use another key.
+- , purani MEMORY.md (
+- , since 
+- , Stonic keeps running on your own API keys.
+- , then press Start.
+- , then Stonic uses your keys.
+- , then try again.
+- , type: 
+- , { message: String(message || 
+- ,!0),CP=$i();const Bse={Ga:{value:0,configurable:!0,writable:!0,enumerable:!1}},zse=Object.defineProperties,j0=gm?g_e:
+- ,!0});h&&l&&r(e(407),h,E4(l))}if(!s){const h=ws(n,/(^|\s)(aaj raat|tonight|aaj|today|kal|tomorrow|tmrw|tmr|parso|parson|day after tomorrow)(?=\s|$)/i,m=>{const p=e,g=(m[2]??
+- ,"billing","lanes","My smartest side. I talk with you and do the work myself, right on your PC, with no one in between.","Talk to me","18paPdOi","New · Stonic Voice",
+- ,"Floating","charactersModal","Let me show you around. It takes about two minutes, and you can skip any time.",
+- ,"press","20vnlMOx","Characters","Settings","lane-new","laneClassic","Press Start AI whenever you
+- ,"under a minute","load-user-profile"," — "," Report: ","🛠️ ","92oKaiwP","max",
+- ,"update","Not sent — the user stopped the PC work. Do not send it again unless they ask.",
+- ,' Its brief: 
+- ,' Title: 
+- ,' — not 
+- ,', but now on 
+- ,'[RecallAgent] reasoning 
+- ,'Asking user: 
+- ,'cards needs 
+- ,'list needs 
+- ,'Loading skill: 
+- ,'meters needs 
+- ,'mindmap needs 
+- ,'Opening HUD Info Panel 
+- ,'orbit needs 
+- ,'reason 
+- ,'table needs 
+- ,'Tool 
+- ,'What is on your mind to say: 
+- ,'🔍 web_search (own key): 
+- ,'🚨 DEVELOPER ALERT: Tool 
+- ,'🧠 Recall Agent ← 
+- ,()=>la);const h8=
+- ,()=>mQ);class h2 extends Error{constructor(t,e){super(t),this.status=e}}class xEe extends h2{constructor(t){super(t??
+- ,()=>P0);var P0;(function(x){x.Connected=
+- ,()=>{const g0=Ge;ai[g0(464)]!==null&&(cancelAnimationFrame(ai.current),ai[g0(464)]=null),window[g0(447)](g0(490),e0),window.removeEventListener(
+- ,(async()=>{const s=n;try{const i=await Zje(),{svg:r}=await i[s(209)](s(220)+Date[s(302)](),x);if(a||!e[s(304)])return;e[s(304)][s(218)]=r;const u=e[s(304)][s(181)](
+- ,(l=i)!==null&&l!==void 0?l:
+- ,...a.current()});return l(),n.stack=f,o(),i===
+- ,...typeof e.betaSession===t(571)&&e[t(516)]?{betaSession:e[t(516)]}:{}}},Y4e=x=>{const t=Us;return x===t(501)?h0.DISCONNECTED:x===t(472)||x===
+- ,1))throw new Error(
+- ,2);return`publishers/${e[0]}/models/${e[1]}`}else return`publishers/google/models/${t}`}else return t.startsWith(
+- ,_spread:!1,start:Object.assign({},ne[1].start),end:void 0};we=Te,x.splice(N,0,[
+- ,` has let you see them through the webcam. Look as often as you like, and always before you speak (
+- ,`${this.url}/admin/oauth/clients`,{headers:this.headers,noResolveJson:!0,query:{page:(n=(e=t?.page)===null||e===void 0?void 0:e.toString())!==null&&n!==void 0?n:
+- ,`${this.url}/admin/users`,{headers:this.headers,noResolveJson:!0,query:{page:(n=(e=t?.page)===null||e===void 0?void 0:e.toString())!==null&&n!==void 0?n:
+- ,`${this.url}/factors`,{body:i,headers:this.headers,jwt:(n=l?.session)===null||n===void 0?void 0:n.access_token});return u?this._returnResult({data:null,error:u}):(t.factorType===
+- ,`${this.url}/signup`,{headers:this.headers,body:{phone:h,password:m,data:(n=p?.data)!==null&&n!==void 0?n:{},channel:(a=p?.channel)!==null&&a!==void 0?a:
+- ,`${this.url}/token?grant_type=password`,{headers:this.headers,body:{email:l,password:s,gotrue_meta_security:{captcha_token:i?.captchaToken}},xform:_j})}else if(
+- ,`${this.url}/token?grant_type=password`,{headers:this.headers,body:{phone:l,password:s,gotrue_meta_security:{captcha_token:i?.captchaToken}},xform:_j})}else throw new vy(
+- ,`application/vnd.pgrst.plan+${l}; for=
+- ,`close ${this.topic}`),this.state=Ns.closed,this.socket.remove(this)}),this.onError(n=>{this.socket.hasLogger()&&this.socket.log(
+- ,`error ${this.topic}`,n),this.isJoining()&&this.joinPush.reset(),this.state=Ns.errored,this.socket.isConnected()&&this.rejoinTimer.scheduleTimeout()}),this.joinPush.receive(
+- ,`error ${this.topic}`,n),this.socket.isConnected()&&this.rejoinTimer.scheduleTimeout()}),this.onClose(()=>{this.rejoinTimer.reset(),this.socket.hasLogger()&&this.socket.log(
+- ,`error in ${x} callback`,a)}})}catch(e){this.log(
+- ,`error triggering ${x} callbacks`,e)}}leaveOpenTopic(x){let t=this.channels.find(e=>e.topic===x&&(e.isJoined()||e.isJoining()));t&&(this.hasLogger()&&this.log(
+- ,`established ${r} fallback`)}clearTimeout(this.fallbackTimer),this.fallbackTimer=setTimeout(i,t),this.ping(r=>{this.log(
+- ,`leaving duplicate topic 
+- ,`starting worker for from ${this.workerUrl}`):this.log(
+- ,a(439));const s=await Bae(n,L4e,{
+- ,a(472)),44);if(!l)return null;const s=fn(u0(n,
+- ,a(472),a(469)),36);if(!Number.isFinite(l)||!s)return null;const i=ic(u0(n,a(444),a(526),a(517),
+- ,a(472),a(527)),56);return l?{when:O2(u0(n,a(386),a(531),
+- ,a(481)),60);return s?{title:s,detail:ea(u0(l,a(308),
+- ,a),await H0(this.fetch,
+- ,a),e()},x);function a(){clearTimeout(n),e()}t?.addEventListener(
+- ,a=0,l=n.length;a<l;++a)x[a]=n[a],t[n.charCodeAt(a)]=a;t[45]=62,t[95]=63;function s(p){var g=p.length;if(g%4>0)throw new Error(
+- ,a=typeof t.id===e(584)?t.id:
+- ,a=typeof t?.[e(556)]==
+- ,a=x%12===0?12:x%12;return t===0?a+
+- ,align:t.map(function(n){return n===
+- ,alt:null}}function ct(){return{type:
+- ,ariaLabel:typeof r==
+- ,ase=u9;function vV(){const x=[
+- ,async({postgres_changes:p})=>{if(this.socket._isManualToken()||this.socket.setAuth(),p===void 0){t?.(cc.SUBSCRIBED);return}this._updatePostgresBindings(p,t)}).receive(
+- ,at(227),at(197),at(259),at(191),at(257)]),Wye=new Set([at(234),at(211),
+- ,at:0};const bne=()=>aQ,e9e=(x,t=Date.now())=>{const e=Tf;aQ=x[e(164)]===e(153)?{phase:e(153),text:x[e(146)],mood:x[e(162)],at:t}:{phase:x[e(164)],text:
+- ,at:t};try{window[e(154)](new CustomEvent(QG,{detail:aQ}))}catch{}},mne=x=>Math[Tf(158)](18e3,Math[Tf(160)](7e3,3500+String(x||
+- ,await LJ(m6e,{headers:{
+- ,B!=null&&typeof B!=
+- ,b),hx(d),o.head.appendChild(d))}function PI(o){return'[src=
+- ,b9(p.created_at)]})]})]}),c.jsxs(g(409),{className:g(403),children:[c.jsxs(g(348),{type:g(348),onClick:()=>void m(p,
+- ,baseUrl:i,headers:w})}),!((l=h?.headers)===null||l===void 0)&&l[r5])break;N++,await uye(V),V=V*iye}if(I+=p,((s=h?.headers)===null||s===void 0?void 0:s[r5])!==
+- ,betaQuiet:{why:a,count:1}};this[e(517)]={id:i.id,why:a,count:1},this.add(i)}[R0(516)](t){const e=R0;this[e(503)]||this[e(512)]({id:ri(
+- ,bigqueryUri:t};else throw new Error(`Unsupported string source for Vertex AI: ${t}`);else if(t.startsWith(
+- ,bigqueryUri:t};throw new Error(`Unsupported destination: ${t}`)}function gee(x){if(typeof x!=
+- ,body:It(321),action:It(318)}};function l9e(x){const t=It,e=/resets_at=(\S+)/[t(297)](x||
+- ,body:m0(557),target:_a[m0(529)],stage:!0}];function WV(){const x=['[data-tour=
+- ,c,t]]),r!==2){const p=t.events[n[2]],h=t.events[n[3]];if(p[1].end=Object.assign({},h[1].end),p[1].type=
+- ,c,t]])}return i!==void 0&&(o.end=Object.assign({},ze(t.events,i)),e.add(i,0,[[
+- ,c.jsx(Vn,{size:12})]})]});return c.jsxs(
+- ,c.jsx(Vn,{size:12})]})]})};function $V(){const x=[
+- ,c9=Bf;function Uw(){const x=[
+- ,characterId:a}),LRe,null);return N?N.ok?{ok:!0,via:g(410),status:N.status,text:String(N[g(451)]||
+- ,characterId:J||null}),n);if(!j)return C(432);if(!j.ok)return j.enabled===!1?C(463):C(432);if(j.overflow?.[C(429)]){const _=j[C(459)][C(425)](U=>U[C(409)]+
+- ,characterId:null,whatsapp:Ole,answers:{},found:null},MQe=()=>{const x=JZ;try{const t=JSON.parse(localStorage[x(228)](P8)||x(190)),e=Q8(typeof t?.[x(243)]===x(266)?t[x(243)]:
+- ,chars:0,overflow:[],reason:x}),ixe=5e3;function GRe(){const x=tr,t=(async()=>{const e=tr,n=await os[e(274)](),a=String(n?.[e(278)]||
+- ,children:[]},e)}function Dn(e){this.exit(e)}function er(e){this.enter({type:
+- ,children:[]},e)}function ps(e){this.exit(e)}function qr(e,t,n,r){const i=n.createTracker(r),o=n.enter(
+- ,children:[]};const L={stack:[A],tokenStack:[],config:t,enter:a,exit:s,buffer:l,resume:f,data:n},N=[];let V=-1;for(;++V<x.length;)if(x[V][1].type===
+- ,children:[]};return i&&o.children.push({type:
+- ,children:[]}}function at(){return{type:
+- ,children:[]}}function ft(x){return{type:
+- ,children:[]}}function gi(){return{type:
+- ,children:[]}}function mi(){return{type:
+- ,children:[a(199),R]})]}),c.jsx(mP,{checked:m,onChange:()=>void g(),label:
+- ,children:[c.jsx(qo,{size:14}),a(311)]})})]})]})};function $R(){const x=[
+- ,children:[c.jsxs(T(162),{className:T(158),children:[c.jsx(T(150),{onClick:()=>{const se=T;oe(),n(se(124)),pe===se(148)&&fe(se(145))},className:T(136)+(e===T(124)?
+- ,children:[oze.map(p=>{const g=n,N=!!l&&!x[g(383)]&&l.getHours()===p.h&&l[g(406)]()===0;return c.jsx(g(405),{type:
+- ,children:[x,Kl(525),_Z]}):null,iLe=({onSave:x,onCancel:t,playClick:e})=>{const n=Kl,[a,l]=f.useState(
+- ,children:a[s(266)]})]},l)})})},zMe=({block:x})=>{const t=v0,[e,n]=bs(),a=n.width/x.items[t(258)]>=150;return c.jsx(
+- ,children:a[t(143)]((V,w)=>c.jsxs(t(130),{className:e===w?t(154):void 0,onMouseEnter:()=>n(w),onMouseLeave:()=>n(null),children:[c.jsx(
+- ,children:c.jsx(bke,{})}),c.jsx(xKe,{busy:ye,voiceActive:Ve||tx,userEmail:s}),c.jsx(lKe,{})]})}function ZKe(){return c.jsxs(c.Fragment,{children:[c.jsx(GKe,{}),!qc(
+- ,children:c.jsx(Du,{size:16})})]},i.id))})]})};function sX(){const x=[
+- ,children:c.jsx(ex,{size:22,className:x(408)})}),a&&!W&&!H&&c.jsx(x(370),{type:x(370),onClick:()=>void Jd(),className:
+- ,children:c.jsx(JA,{size:22})})]}),c.jsx(T(150),{onClick:()=>{const se=T;oe(),n(se(138))},className:T(137)+(e===T(138)?
+- ,children:c.jsx(ji,{size:22})}),c.jsx(T(150),{onClick:()=>{const se=T;oe(),fe(pe===se(148)?se(145):se(148))},className:T(137)+(pe===T(148)?
+- ,children:c.jsx(l(281),{className:l(270)+(t===i.id?l(292):l(268)),children:new Date(i[l(291)]).toLocaleDateString([],{month:
+- ,children:c.jsx(t(239),{className:t(218)})})]})},bBe=({trace:x,toolCall:t})=>{const e=ca,[n,a]=f.useState(!1),l=IBe(t),s=x.fullOutcome||x[e(183)]||
+- ,children:c.jsx(x(284),{onClick:_,className:ed,children:x(262)})})]});else if(w)xe=c.jsxs(c.Fragment,{children:[c.jsx(EW,{icon:c.jsx(Mi,{size:23}),title:x(180),children:
+- ,children:e(520)}),c.jsx(e(498),{value:i,onChange:Y=>{const W=e;m(!0),r(Y[W(532)][W(533)][W(531)](0,2e3))},onFocus:()=>m(!0),disabled:l===
+- ,children:e.wrap(e.all(t))};return e.patch(t,n),e.applyData(t,n)}function za(e,t){const n={type:
+- ,children:e}),n]}),o_e=({email:x,phoneConnected:t,computerReady:e})=>{const n=n0,a=i_e();return c.jsxs(n(413),{ref:a,className:n(440),style:{gridTemplateColumns:
+- ,children:h?c.jsxs(c.Fragment,{children:[c.jsx(s(484),{className:s(393)}),s(321)]}):s(411)})]})]})]})]})},wu=hie;function SR(){const x=[
+- ,children:i[e(546)]((h,m)=>{const p=e,g=sLe(h);return c.jsxs(
+- ,children:KQ[e(413)](I=>{const h=e,m=l===I[h(393)];return c.jsxs(
+- ,children:M(307)});const j=X(C);return j?c.jsx(E2,{tone:M(333),children:j6e[j[M(230)]]}):c.jsx(E2,{tone:
+- ,children:t}),e]})]}),n]}),a]}),n0=Hse;function Hse(x,t){return x=x-312,xR()[x]}function xR(){const x=[
+- ,children:x[v0(167)][v0(196)]((t,e)=>{const n=v0,a=MMe(t),l=a===
+- ,children:x}),VTe=({children:x,tone:t=ss(444),size:e=26})=>{const n=ss,a={accent:n(426),muted:n(420),warm:n(441),rose:n(440)};return c.jsx(
+- ,city:ue(350)}},g7e=/\b(live|lives|living|based|reside|resides|residing|hometown|home town|moved to|rehta|rehti|rehte|rahta|rahti|rehtay|shehar|located|stays in|staying in)\b/i,y7e=
+- ,className:W(277),onClick:()=>{const be=W;st[be(272)](),L(be(244))},children:W(208)}),c.jsx(nAe,{off:q,onToggle:yt})]})]}),z===
+- ,className:x(457),onClick:()=>{const we=x;N(!1),J2(we(318)),pb({enabled:!1})},children:[c.jsx(qo,{size:15,className:
+- ,content:a}]},i7e=(x,t,e=z9)=>{const n=Em;let a=String(x||
+- ,content:Sn(347)+x[Sn(331)]}],$ie=x=>{const t=Sn;let e=String(x||
+- ,countryHint:v[W(238)]?v[W(274)]:void 0}),z===W(219)&&c.jsx(AQe,{userName:R,characterId:k,onSpeaking:pe,onDone:Tt}),se&&c.jsx(W(197),{className:
+- ,day:r,thoughtsToday:u?Math[e(339)](0,l(a[e(235)])):0,spokenToday:u?Math[e(339)](0,l(a[e(407)])):0,lastThoughtDay:typeof a.lastThoughtDay===e(319)?a[e(489)]:
+- ,depth:0,children:[]}}function ut(){return{type:
+- ,detail:Gd(n)}:null},uz=/exceeded your current quota|resource_exhausted|quota/i,oFe=3,rFe=(x,t)=>{const e=Dd,n=t===
+- ,details:`Results contain ${n.length} rows, application/vnd.pgrst.object+json requires 1 row`,hint:null,message:
+- ,disabled:e,onClick:p,children:l(166)})]})]})};function xd(x,t){return x=x-149,mR()[x]}function mR(){const x=[
+- ,display:s,restartOfRunId:i}=t,r=e(471)+K$(),u={text:n,stop:!1};Xd=u;let I;try{I=await x[e(489)](e(546),{desk:uF,task:r,text:n,userName:a||
+- ,domain:R.host,uri:R.href}),Y?{statement:Y}:null));let v;if(Array.isArray(X)&&X[0]&&typeof X[0]==
+- ,draggable:!1,onLoad:s=>{const i=e;a===i(405)&&s.currentTarget[i(416)]<=120&&l(
+- ,dSe=()=>{const x=Ua(
+- ,e(345)),new Error(e(379)+ne+
+- ,e)):typeof FormData<
+- ,e),a=new Uint8Array(n);return Array.from(a).map(l=>String.fromCharCode(l)).join(
+- ,e){this.client=x,this.prefix=t,this.accessDelegation=e}async listTables(x){return(await this.client.request({method:
+- ,e)}function gge(x){return(typeof x==
+- ,e)}gt(t,e){return this.add(t,
+- ,e)}gte(t,e){return this.add(t,
+- ,e)}ilike(t,e){return this.add(t,
+- ,e)}imatch(t,e){return this.add(t,
+- ,e)}in(t,e){return this.add(t,
+- ,e)}is(t,e){return this.add(t,
+- ,e)}isDistinct(t,e){return this.add(t,
+- ,e)}like(t,e){return this.add(t,
+- ,e)}lt(t,e){return this.add(t,
+- ,e)}lte(t,e){return this.add(t,
+- ,e)}match(t,e){return this.add(t,
+- ,e)}neq(t,e){return this.add(t,
+- ,e)}not(t,e,n){return this.add(t,e,n,!0)}build(){return this.filters.join(
+- ,e)}})},xm=()=>{tm({type:vl(381),runs:Eu(),requestedAt:Date.now()})},YL=(x,t,e)=>{const n=vl,a=Bi[n(360)](x),l=e?.[n(355)]||a?.[n(355)]||(t===n(369)?
+- ,e)}}async _startAutoRefresh(){await this._stopAutoRefresh(),this._debug(
+- ,e,a,l,n,x)}}const cNe=w0e(
+- ,e,n,a,void 0,x),post:async(t,e,n,a,l)=>Ep(t,
+- ,e,ot(ot({},n),{},{noResolveJson:!0}),a,void 0,x),remove:async(t,e,n,a,l)=>Ep(t,
+- ,e.toString()}setBaseUrl(t){if(this.clientOptions.httpOptions)this.clientOptions.httpOptions.baseUrl=t;else throw new Error(
+- ,ehe=x=>{const t=fx;try{window[t(303)](new CustomEvent(DA,{detail:{feature:x}}))}catch{}};function DN(){const x=[
+- ,email:x,onPress:Br})]});const V=DK(e);return V?c.jsxs(m(314),{className:m(352),children:[c.jsxs(m(314),{className:
+- ,enabled:!1},private:!1},x.config)}}const kWe=/[,()
+- ,error:null}};function nv(){const x=[
+- ,errorCategory:n(Y?289:324),retryable:!Y,...Y?{}:{retrySuggestion:n(274)}}}const I=await u[n(282)](),h=String(I?.[n(280)]||
+- ,errorCode:n(473),errorCategory:n(493),retryable:!1};const r=String(i[n(430)]?.[n(540)]||s);l(n(440),n(532)+r+
+- ,evaluater:t.createEvaluater?t.createEvaluater():void 0,filePath:n,ignoreInvalidStyle:t.ignoreInvalidStyle||!1,passKeys:t.passKeys!==!1,passNode:t.passNode||!1,schema:t.space===
+- ,F.target,F,null)));if(G==null||typeof G==
+- ,F0,F0)}catch{Yx=!1}var V0=null,k0=null,q0=null;function xx(){if(q0)return q0;var o,d=k0,b=d.length,G,F=
+- ,feature:Ve(513),detail:Gd(Ce),blocking:!0};Xi(d0),Ys(PW(d0))}else Ys(Wh(de,Ve(635)));Ot[Ve(608)]=!0;return}const r0=Math[Ve(589)](5e3,Co.msUntilNextAvailable()+500);W0(
+- ,function(){return G.loading|=1}),d.addEventListener(
+- ,function(){return G.loading|=2}),Wl(d,
+- ,function(o1){return o1})):h!=null&&(H(h)&&(h=X(h,c+(h.key==null||e&&e.key===h.key?
+- ,G),b.instance=A}o.stylesheets===null&&(o.stylesheets=new Map),o.stylesheets.set(b,d),(d=b.state.preload)&&(b.state.loading&3)===0&&(o.count++,b=sy.bind(o),d.addEventListener(
+- ,G),o._reactRetry=G}}function Mc(o){for(;o!=null;o=o.nextSibling){var d=o.nodeType;if(d===1||d===3)break;if(d===8){if(d=o.data,d===
+- ,g)})}return r(u,Ah(Ah({},I),{},{signal:h.signal})).finally(()=>clearTimeout(m))}:this.fetch=r,this.retry=i}from(t){if(!t||typeof t!=
+- ,g,{once:!0}),u.then(N=>{const V=p;e[V(447)]?.[V(480)](
+- ,g5;if(typeof Deno<
+- ,g5=(v4=Deno.version)===null||v4===void 0?void 0:v4.deno}else if(typeof document<
+- ,g=N=>{const V=e,w=u(N)/n*100,Y=N===0?
+- ,g=null;const N=re=>re?(re!==p&&(p=re,g=nle(re)),g??h):h;m[a(460)](document[a(510)],{attributes:!0,attributeFilter:[
+- ,gcsUri:[t]};else if(t.startsWith(
+- ,gotrue_meta_security:{captcha_token:p?.captchaToken}},xform:Dc})}else throw new vy(
+- ,H[W(382)](k)}}if(!g){const v=[W(406),W(329),
+- ,hc(428)]),sve=new Set([hc(499),hc(487),hc(446),hc(498)]),jH=x=>{const t=hc;return x===null||typeof x!==t(490)?JSON.stringify(x)??t(481):Array[t(500)](x)?
+- ,headers:new Headers({
+- ,headers:Object.assign(Object.assign(Object.assign({},g),this.headers),u),body:w,signal:W}).catch(E=>{throw new Bye(E)}),R=H.headers.get(
+- ,hour12:!0})},OHe=({state:x,index:t})=>{const e=Ox;return x===
+- ,httpOptions:(a=t.config)===null||a===void 0?void 0:a.httpOptions,abortSignal:(l=t.config)===null||l===void 0?void 0:l.abortSignal})}}async listInternal(t){var e,n,a,l;let s,i=
+- ,httpOptions:(e=t.config)===null||e===void 0?void 0:e.httpOptions,abortSignal:(n=t.config)===null||n===void 0?void 0:n.abortSignal}).then(r=>r.json()),a}else throw new Error(
+- ,httpOptions:(e=t.config)===null||e===void 0?void 0:e.httpOptions,abortSignal:(n=t.config)===null||n===void 0?void 0:n.abortSignal})}else{const r=Ube(this.apiClient,t);s=Z0(
+- ,httpOptions:(e=t.config)===null||e===void 0?void 0:e.httpOptions,abortSignal:(n=t.config)===null||n===void 0?void 0:n.abortSignal})}}async listInternal(t){var e,n;let a,l=
+- ,httpOptions:r});if(!u||!u?.headers)throw new Error(
+- ,I(517),I(341)),p=u0(u,I(443),I(481)));const g=l(h),N=l(m);!g||!N||g===N||s[I(387)](g+
+- ,i),typeof r==
+- ,i),Wt(t),i(t,r)}use(t,...n){const r=this.attachers,i=this.namespace;if(Tn(
+- ,i,t]])),e}function no(e,t,n){let r=0;return i;function i(f){return e.enter(
+- ,i._url),s=i._query,delete i._url,delete i._query,a=this.apiClient.request({path:l,queryParams:s,body:JSON.stringify(i),httpMethod:
+- ,i._url),s=i._query,delete i.config,delete i._url,delete i._query;const r=OZe(i,t.config);return a=this.apiClient.request({path:l,queryParams:s,body:JSON.stringify(r),httpMethod:
+- ,i=!s&&_f(x)===l(286),r=WZ(x.recurrence),u=Uf(x),I=!!u||!!r||x[l(300)]===l(320);return c.jsxs(
+- ,I=new Date(t),h=new Date(t+864e5),m=n[e(321)]()===I[e(321)]()?e(353):n[e(321)]()===h[e(321)]()?e(346):n[e(254)](void 0,{weekday:e(278)});return{label:
+- ,i=o);else if(!(l[1].type===
+- ,i=typeof t?.[n(448)]===n(461)?t[n(448)][n(445)]()[n(424)](0,600):
+- ,i=x[e(257)]?dBe(s):null,[r]=f.useState(()=>{const g=e,N=MH().lastFinished;return!!(N&&Date[g(232)]()-N.at<oBe&&(!l||N.question===l))}),u=!x[e(257)],I=uBe[i?.[e(201)]??e(191)],h=u?
+- ,i={};if(this.apiClient.isVertexAI()){const r=Cbe(this.apiClient,t);s=Z0(
+- ,i[l(205)]||i.parts&&i[l(206)][l(225)](r=>r.text)[l(227)](" "),
+- ,i[n(125)](Math[n(110)](m*I),p>=0?u-g:u,h,g)}}function bR(){const x=[
+- ,i[n(509)]),s()}},Owe=()=>um()===Gx(510)?Gx(510):Gx(483),Dwe=async(x,t)=>{const e=Gx;if(typeof t[e(528)]?.[e(464)]!==e(502))throw new qa(e(497),
+- ,I[u(355)](m)}}},[]);const r=()=>{eW($y[mV(357)]),e()};return c.jsxs(s(389),{className:s(403),style:{fontFamily:s(367)},children:[c.jsx(
+- ,ie)},Q=async _=>{const U=n;e(),g(_.id);const K=await x[U(597)](_.id);g(null),K.ok?t(
+- ,import.meta.url).href,{name:x?.name})}function Fw(){const x=[
+- ,inConstruct:vn,notInConstruct:Pn}]}}function Hu(e){this.enter({type:
+- ,instance:A,count:1,state:null},G.set(F,A))}}function Q7(o,d,b,G){var F=(F=T.current)?ny(F):null;if(!F)throw Error(n(446));switch(o){case
+- ,instance:null,count:0,state:null};default:throw Error(n(444,o))}}function KI(o){return'href=
+- ,isHidden:!0}]),!0}catch(Ve){return W0(Ne(417),
+- ,issue:null,latencyMs:null,activity:null,background:null,phone:!1};function cw(){const x=[
+- ,i}}function dr(e,t,n){let r;if(!n)r={type:
+- ,i}}return decodeURIComponent(t)}const Sn=[
+- ,J_=x=>{const t=Pe;_d(jF,Exe(x)),_d(kxe,t(296))},Cf=40,p3=20,ab=2500,Sf=1200,yd=24,ka=Pe(314),KH=Pe(352),Hxe=Pe(301),Pi=
+- ,ja(265),ja(256)],JL=x=>{const t=ja,e=String(x[t(224)]||
+- ,je,b,De),Se.target=xn,Se.relatedTarget=Je,qe=null,Hl(De)===Le&&(rt=new rt(Ye,Re+
+- ,K(U?483:594))},M=(_,U)=>{const K=n,S=w[U]||_.length<=ZP,z=S?_:_[K(519)](0,ZP);return c.jsxs(c.Fragment,{children:[c.jsx(
+- ,k=this._events;if(k!==void 0)E=E&&k.error===void 0;else if(!E)return!1;if(E){var Q;if(X.length>0&&(Q=X[0]),Q instanceof Error)throw Q;var J=new Error(
+- ,key:t,currentPresences:a,newPresences:l}}static onLeavePayload(t,e,n){const a=Zj(e),l=UW(n);return{event:
+- ,KLe(p)]}),h!==l(418)&&c.jsx(l(441),{type:l(441),onClick:()=>void R(!0),className:qp+l(391),children:h===l(526)?
+- ,l(336)]})})}else i===void 0||h===l(418)?$=c.jsxs(l(368),{className:l(466),children:[c.jsx(ex,{size:16,className:l(370)}),l(339)]}):$=c.jsx(iW,{eyebrow:
+- ,l(534));try{const s=await K1[l(582)](gUe),i=r=>({baseOptions:{modelAssetPath:pR+l(508),delegate:r},runningMode:
+- ,l),!0):!1}function Ph(x){return
+- ,l),a&&clearTimeout(a)}},[e])}function Rw(){const x=[
+- ,l),f0(l)){const s={data:null,error:l};if(!Fy(l)){const i=await Cl(this.storage,this.storageKey);!!(i?.expires_at&&i.expires_at*1e3>Date.now())?this._debug(a,
+- ,l),this.functionsUrl=new URL(
+- ,l),this.storageUrl=new URL(
+- ,l);const s=`sb-${l.hostname.split(
+- ,L)},[]),Q=f.useCallback(async(L,D)=>{const P=x,ie={...n,[L]:D};a(ie),await Ra[P(316)](
+- ,l,t]),e}function Oo(e,t,n){const r=this;let i;return o;function o(s){let f=r.events.length,c;for(;f--;)if(r.events[f][1].type!==
+- ,l.push({start:I.length+h.length,length:w.length,error:`Value of type ${Object.prototype.toString.call(V).slice(8,-1)} is not a valid path parameter`})),I+h+(m===n.length?
+- ,l=e%12===0?12:e%12;return n===0?l+
+- ,l=this[e(563)][e(468)]?.[e(447)]??0;if(t[e(506)]===e(655)&&n)this[e(521)]({activity:{label:n,asking:!1,steps:l+1}}),this[e(620)]?.[e(491)](a,typeof t[e(456)]===e(584)?t[e(456)]:
+- ,l={};if(this.apiClient.isVertexAI())throw new Error(
+- ,l[$(183)][$(178)]?.(!0))},le=new Image;return le[s(307)]=
+- ,label:e(189),mood:n}}if(t<x[e(227)]){const a=Math[e(206)](1,Math[e(195)]((x[e(227)]-t)/6e4));return{tone:e(200),label:
+- ,label:n(511),quiet:!0,onClick:e});const q=i===n(439)||i===n(509)?c.jsx(c6,{length:s[n(462)],label:i===
+- ,label:n(587),quiet:!0,onClick:()=>{const ee=n;O[ee(557)](),h(ee(563))}}),e&&r!==
+- ,label:n(611),quiet:!0,onClick:e});const ce=r===
+- ,label:s(551),icon:GL}][s(519)](Ae=>{const a0=s,s0=$===Ae.id,w0=Ae[a0(491)];return c.jsxs(a0(414),{onClick:()=>{Ue(),ae(Ae.id),Fe(!1)},className:a0(524)+(s0?
+- ,label:vt(311)}];function Hw(){const x=[
+- ,latencyMs:null,activity:null,background:null});const[i,r]=await Promise[a(646)]([oEe({characterId:t.id,sessionId:e.id}),sne(window[a(619)])[a(510)](()=>
+- ,lead:a,body:t(358)+s+t(226),points:[s+t(279),t(345)],say:s+t(317),link:null,needsSettings:!1};case t(275):return{title:e+t(260),lead:a,body:s+
+- ,light:ae(440)};case ae(474):return{strong:ae(432),soft:ae(400),sub:ae(465),light:ae(447)};case ae(506):return{strong:
+- ,link:l,needsSettings:!0,setup:r(u(I),t(352))}}case t(338):return x[t(304)]===t(270)?{title:t(267),lead:a,body:t(364),say:
+- ,local:!0}))}[b0(333)](){const t=b0;for(const e of this.mic?.[t(245)]()??[])e!==this[t(229)]&&e.stop(),this[t(349)][t(320)]?.(e,{id:t(362),name:
+- ,local:!1});class LEe extends oae{endpoint=null;pc=null;dc=null;pcId=null;[b0(335)]=null;[b0(229)]=null;[b0(365)]=!0;[b0(360)]=
+- ,M(216))):H(M(181),j?.[M(234)]||M(238))},k=async()=>{const M=t;if(!i)return;e(),g(!0);const j=await os[M(187)](i.path);g(!1),j?.ok?(r(null),V(!1),H(
+- ,M(236))):H(M(181),j?.[M(234)]||M(166))},Q=async()=>{const M=t;e(),(await os[M(195)]())?.ok||H(
+- ,M(239))},J=f.useMemo(()=>{const M=t;if(n[M(172)]!==M(160))return[];const j=l.trim()[M(202)]();return j?n.notes[M(260)](_=>(_[M(162)]+
+- ,m.action]})]})]})},Lje=({pinch:x,threshold:t})=>{const e=Ya,n=t*2,a=Math[e(405)](0,Math[e(385)](1,(n-x)/n)),l=x<=t,s=l?
+- ,m=f.useMemo(()=>{const Q=n,J=I?.[Q(309)]===
+- ,m=typeof I?.[t(479)]==
+- ,max_tokens:txe,stonic_purpose:n(390)}),signal:r}),e);let l;try{l=await zi(x)}catch(i){throw new o2(i instanceof rc&&i[n(389)]===
+- ,me=Te}else if(!(ge[1].type===
+- ,mimeType:u})));if(!s.ok)return null;a=s[e(568)]}let l=0;return t[e(634)](s=>s[e(636)]||s.data&&a[l++]||
+- ,minute:t(315)})}function pne(x,t){return x=x-288,k3()[x]}const s9e=x=>x===It(374)||x[It(302)](
+- ,model:t}}},{test:[/nexus\s*[0-6].*/i,/galaxy nexus/i],describe(){return{type:mt.mobile,vendor:
+- ,mood:n};if(t<x[e(210)]){if(x[e(239)]===e(188)){const a=_F()===e(231)?
+- ,n(309)+w);const Y=u[n(317)]===401||u.status===402||u[n(317)]===403;return{success:!1,toolName:x,error:n(276)+w,errorCode:Y?n(287):
+- ,n(345)+(I.ok?I.pinned?n(348):I[n(323)]?n(335):n(381):I[n(276)]||n(297)));const h=String(I[n(367)]||
+- ,n(504))}const m=a(h?.[n(535)]?.[0]?.[n(509)]);return e(m),{text:m,truncated:h?.[n(535)]?.[0]?.[n(471)]===n(516)}}const s=x.body[n(448)](),i=new TextDecoder;let r=
+- ,n(527)+s.length+n(519));try{const i=await a[n(517)](
+- ,n),f0(n))return this._returnResult({data:{session:null,user:null},error:n});throw n}finally{this._debug(e,
+- ,n),Vl()&&!e.skipBrowserRedirect&&window.location.assign(n),{data:{provider:t,url:n,flowId:a},error:null}}async _recoverAndRefresh(){var t,e;const n=
+- ,n+=2,t-=2;break}}for(r=n-1,t++;++r<=t;)i===void 0?r!==t&&e[r][1].type!==
+- ,n,t[e(542)]);else if(t[e(506)]===e(612))this[e(620)]?.[e(534)](a,t.ok!==!1,typeof t[e(638)]===e(584)?t[e(638)]:
+- ,n=!0,r;return i;function i(o,l,a){const u=[];let s,f,c,p,h;for(o=t+(typeof o==
+- ,n=e.length;let a=
+- ,n=new Nr;return typeof t==
+- ,n[3]>n[2]+1){const d=n[2]+1,w=n[3]-n[2]-1;e.add(d,w,[])}}e.add(n[3]+1,0,[[
+- ,name:`${a.length-l} more`});break}t.count++,l++;const r=(i.text||i.value||
+- ,name:d4e(),app_version:await Fae(),platform:navigator[t(211)][t(191)](t(217))?
+- ,ne(508)+ht)}const xx=U[ne(592)],_t=k0[ne(606)](ht=>typeof ht?.id===ne(498)?ht.id:
+- ,Ne(675)),Ot.current=!0,Lt[Ne(608)]=0;const N0=Wh(de,fa());W0(Ne(461),Ne(583)+N0.title+
+- ,new Promise(((e,n)=>{t.addEventListener(
+- ,nodes:n,edges:i}},Ute=(x,t,e)=>{const n=Te,a=Zn(x)?x:{label:x},l=za(u0(a,n(443),n(469),n(472),
+- ,note:qxe};let a=wXe[t(420)](n[t(554)])?n[t(554)]:
+- ,notInConstruct:ss}],handlers:{delete:qr}}}function hs(e){this.enter({type:
+- ,now:a[n(159)]}),V=f.useMemo(()=>{const H=n;let R=
+- ,now:t}){const e=f.useMemo(z7e,[]),[n,a]=f.useState(
+- ,n}function ol(e){const t={};let n;for(n in e)Wn.call(e,n)&&(t[al(n)]=e[n]);return t}function al(e){let t=e.replace(Vi,ul);return t.slice(0,3)===
+- ,o),hx(d),G.head.appendChild(d)))}}function _de(o){yo.D(o),H7(
+- ,o),hx(d),G.head.appendChild(d)))}}function Sde(o,d){yo.m(o,d);var b=zI;if(b&&o){var G=d&&typeof d.as==
+- ,o),hx(G),b.head.appendChild(G)}}}function Tde(o,d,b){yo.S(o,d,b);var G=zI;if(G&&o){var F=al(G).hoistableStyles,A=KI(o);d=d||
+- ,o),Ze._p=new Promise(function(Le,De){Ze.onload=Le,Ze.onerror=De}),Ze.addEventListener(
+- ,o);var G=!1,F=!1,A;for(A in b)if(b.hasOwnProperty(A)){var B=b[A];if(B!=null)switch(A){case
+- ,o,d)}function Cde(o,d,b){yo.L(o,d,b);var G=zI;if(G&&o&&d){var F='link[rel=
+- ,o,null)}function Ude(o,d){yo.C(o,d),H7(
+- ,o,t]]));const u=ze(t.events,n[1]);if(o={type:l,start:Object.assign({},u),end:Object.assign({},u)},e.add(n[1],0,[[
+- ,o,t]]),n[2]!==0){const s=ze(t.events,n[2]),f=ze(t.events,n[3]),c={type:a,start:Object.assign({},s),end:Object.assign({},f)};if(e.add(n[2],0,[[
+- ,o,t]]),o=void 0),o}function tr(e,t,n,r,i){const o=[],l=ze(t.events,n);i&&(i.end=Object.assign({},l),o.push([
+- ,o.id),d.parentNode.insertBefore(b,d),o=new FormData(o),b.parentNode.removeChild(b),o}function gde(o,d,b,G,F){if(d===
+- ,o=!1;return l;function l(c){return(c===72||c===104)&&oi.call(r,r.previous)&&!ot(r.events)?(e.enter(
+- ,o=-1;for(;new RegExp(
+- ,OA=fx(287),$Ie=x=>x[fx(289)]!==fx(302)&&x[fx(289)]!==fx(311)||x[fx(274)]===!0,Xi=x=>{const t=fx;if($Ie(x))try{window[t(303)](new CustomEvent(OA,{detail:x}))}catch{}},DA=
+- ,Object.entries(e).filter(([p,g])=>g!==void 0).map(([p,g])=>[p,Array.isArray(g)?`{${g.join(
+- ,On=new Map;const Ql=()=>{const ve=e;ie[ve(592)]=0,O.current=0,On=new Map},kc=300*1e3,Ac=600*1e3,ll=1400;let _x=Ae,Hc=
+- ,onChange:$=>{const ae=r;v($Ae($[ae(369)][ae(356)])),R(null),st[ae(303)]()}})]})]}),w===
+- ,onChange:p=>{const g=n,[N,V]=p[g(380)].value[g(424)](
+- ,onChange:se=>{const le=T;oe(),n(se===le(159)?
+- ,onClick:()=>i(new Date(s[n(429)](),s[n(373)]()-1,1)),
+- ,onClick:()=>void E(),disabled:!Y||W||h,className:px(n(185),Y&&!W?n(248):
+- ,onClick:()=>void tt(),disabled:re[s(489)],className:rb,children:re.busy?s(533):s(433)})]}),re[s(510)]?.[s(408)]&&c.jsxs(s(484),{className:
+- ,onClick:()=>{const k=t;V[k(123)]&&(V[k(123)][k(125)]=0),p(null)},className:t(162),children:t(152)})]}):Gi[t(165)]+t(126)})]}),c.jsxs(
+- ,onClick:h=>{const m=l;h[m(297)](),a(x,!x[m(289)])},
+- ,onClick:t,disabled:e,className:Qb,children:Ft(357)})]}),z1=tU;function LV(){const x=[
+- ,onClick:W,className:rA,children:[l(267),c.jsx(Vn,{size:12})]})]});else if(!r&&i)E=c.jsxs(c.Fragment,{children:[c.jsx(ex,{size:13,className:l(240),
+- ,onMouseEnter:()=>l(Y),onMouseLeave:()=>l(null)})]},Y))]}),c.jsx(O9,{tip:V,bounds:n})]})})};function jv(){const x=[
+- ,p)}function h(p){r(
+- ,p)}function m(p,g){p(g),l.shift(),l.length&&r(l[0][0],l[0][1])}}function S2(x){if(!Symbol.asyncIterator)throw new TypeError(
+- ,P,s]),P}function R(v,P){H(v,P.from)}function b(v,P){P.restore()}function M(v,P){return q;function q(D,T,U){let X,le,he,m;return Array.isArray(D)?pe(D):
+- ,p=>{this.state=od.errored;const g=Object.values(p).join(
+- ,parts:bee(e)}),t}function ybe(x,t){x.includes(
+- ,parts:v});const J=Ic(h.contents).concat(Q);h.contents=J}else break}})})(this,r,t)}async generateContentInternal(t){var e,n,a,l;let s,i=
+- ,parts:v}}],yield yield Rt(k);const Q=[];Q.push(...E),Q.push({role:
+- ,path:`${this.prefix}/namespaces/${qI(x.namespace)}/tables/${x.name}`,headers:t})).data.metadata}async tableExists(x){const t={};this.accessDelegation&&(t[
+- ,path:`${this.prefix}/namespaces/${qI(x.namespace)}/tables/${x.name}`,query:{purgeRequested:String(t?.purge??!1)}})}async loadTable(x){const t={};return this.accessDelegation&&(t[
+- ,path:`${this.prefix}/namespaces/${qI(x.namespace)}/tables`,body:t,headers:e})).data.metadata}async updateTable(x,t){const e=await this.client.request({method:
+- ,path:`${this.prefix}/namespaces/${qI(x.namespace)}/tables`})).data.identifiers}async createTable(x,t){const e={};return this.accessDelegation&&(e[
+- ,path:`${this.prefix}/namespaces/${Vy(x.namespace)}`})).data.properties}}async namespaceExists(x){try{return await this.client.request({method:
+- ,path:`${this.prefix}/namespaces/${Vy(x.namespace)}`})}async loadNamespaceMetadata(x){return{properties:(await this.client.request({method:
+- ,path:`${this.prefix}/namespaces`,body:e})).data}async dropNamespace(x){await this.client.request({method:
+- ,payload:t},e)}async untrack(t={}){return await this.send({type:
+- ,Pe(380)]),Kve=new Set([
+- ,per_page:(l=(a=t?.perPage)===null||a===void 0?void 0:a.toString())!==null&&l!==void 0?l:
+- ,position:-Date[e(238)](t.at)/1e3||-Date[e(274)]()/1e3,created_at:t.at},{error:l}=await Vc(()=>n[e(255)](e(269))[e(235)](a,{onConflict:
+- ,previous:n});return n&&(n.next=u),n=u,l(a)}function l(a){if(a===null){e.exit(
+- ,previous:o}),w(C)}function w(C){if(C===null){S(e.exit(
+- ,print:me.print,match:P.current}},[K,h,L]),P=f.useRef(n(482));P[n(576)]=H===null?n(482):(Math[n(618)](0,H)*100)[n(619)](1);const ie=r!==n(602)&&r!==
+- ,properties:i,children:e.all(t)};return e.patch(t,o),e.applyData(t,o)}function Ea(e,t){const n={href:Re(t.url)};t.title!==null&&t.title!==void 0&&(n.title=t.title);const r={type:
+- ,properties:n,children:[]};return e.patch(t,r),e.applyData(t,r)}function Sa(e,t){const n={type:
+- ,properties:n,children:e.all(t)};return e.patch(t,r),e.applyData(t,r)}function Ia(e,t,n){const r=e.all(t),i=n?Aa(n):Lr(t),o={},l=[];if(typeof t.checked==
+- ,properties:n,children:e.wrap(r,!0)};return e.patch(t,o),e.applyData(t,o)}function va(e,t){const n={type:
+- ,properties:o,children:l};return e.patch(t,s),e.applyData(t,s)}function Aa(e){let t=!1;if(e.type===
+- ,properties:{},children:[]};return e.patch(t,n),[e.applyData(t,n),{type:
+- ,properties:{},children:[o]},e.patch(t,o),o}function ga(e,t){const n={type:
+- ,properties:{},children:[u]};return e.patch(t,s),e.applyData(t,s)}function ka(e,t){const n={type:
+- ,properties:{},children:e.all(t)};return e.patch(t,n),e.applyData(t,n)}function Da(e,t){const n=e.all(t),r=n.shift(),i=[];if(r){const l={type:
+- ,properties:{},children:e.all(t)};return e.patch(t,n),e.applyData(t,n)}function da(e,t){const n={type:
+- ,properties:{},children:e.all(t)};return e.patch(t,n),e.applyData(t,n)}function Pa(e,t){const n={type:
+- ,properties:{},children:e.all(t)};return e.patch(t,n),e.applyData(t,n)}function ya(e,t){const n=typeof e.options.clobberPrefix==
+- ,properties:{},children:e.all(t)};return e.patch(t,r),e.applyData(t,r)}function iu(e,t){const n=[];let r=-1;for(t&&n.push({type:
+- ,properties:{},children:e.wrap([r],!0)};e.patch(t.children[0],l),i.push(l)}if(n.length>0){const l={type:
+- ,properties:{},children:e.wrap(e.all(t),!0)};return e.patch(t,n),e.applyData(t,n)}function pa(e,t){const n={type:
+- ,properties:{},children:e.wrap(i,!0)};return e.patch(t,o),e.applyData(t,o)}function La(e,t,n){const r=n?n.children:void 0,o=(r?r.indexOf(t):1)===0?
+- ,properties:{},children:e.wrap(n,!0)},a=$n(t.children[1]),u=fr(t.children[t.children.length-1]);a&&u&&(l.position={start:a,end:u}),i.push(l)}const o={type:
+- ,properties:{},children:e.wrap(s,!0)};return e.patch(t,f),e.applyData(t,f)}function Fa(e,t){const n={type:
+- ,pulse:n===e(438),text:t+e(473)+s}},ZYe=new Set([Js(487),
+- ,Q$=qu(274),xIe=qu(279),IT=400,nIe=x=>{const t=qu,e=[x.description,x.whenToUse][t(262)](a=>(a||
+- ,q,s]),a.push(q),q}function F(v){const P=a.pop();return P.end=d(),s.events.push([
+- ,qb=x=>{const t=vd;switch(x){case
+- ,r!==i+2&&(e[i][1].end=e[r-1][1].end,e.splice(i+2,r-i-2),t-=r-i-2,r=i+2),i=void 0);return e}function Nl(e){return e!==96||this.events[this.events.length-1][1].type===
+- ,r)):W=i.signal);const H=yield this.fetch(V.toString(),{method:I||
+- ,r))}})}}const b0e=3,bj=x=>Math.min(1e3*2**x,3e4),Kye=[520,503],m0e=[
+- ,r),i;function o(l,a){Ut(l),i=a,r=!0}}stringify(t,n){this.freeze();const r=en(n),i=this.compiler||this.Compiler;return An(
+- ,r),r(String(n),n)}process(t,n){const r=this;return this.freeze(),In(
+- ,r,t]),e.add(n+1,0,o)}function ze(e,t){const n=e[t],r=n[0]===
+- ,r,t]];return e.splice(n,e.length-n+1,...a),e}function Ec(e,t,n){const r=this,i=r.parser.gfmFootnotes||(r.parser.gfmFootnotes=[]);let o=0,l;return a;function a(c){return e.enter(
+- ,R,X)}function W(H,R,X,v){if(typeof H.on==
+- ,r._url),i=r._query,delete r._url,delete r._query,await this.apiClient.request({path:s,queryParams:i,body:JSON.stringify(r),httpMethod:
+- ,r=2)}else n.length>0?n+=
+- ,R=J$(l)?l?.[h(277)]===h(269)?xIe:Q$:tIe;return W+h(263)+w+'**. If anyone asks your name, who you are, or what you are called, you answer 
+- ,r={};if(this.apiClient.isVertexAI()){const u=ape(this.apiClient,t);return i=Z0(
+- ,r={};if(this.apiClient.isVertexAI()){const u=Bbe(this.apiClient,t);return i=Z0(
+- ,r={};if(this.apiClient.isVertexAI()){const u=Bge(t);return i=Z0(
+- ,r={};if(this.apiClient.isVertexAI()){const u=Bme(t);return i=Z0(
+- ,r={};if(this.apiClient.isVertexAI()){const u=Cfe(this.apiClient,t);return i=Z0(
+- ,r={};if(this.apiClient.isVertexAI()){const u=cfe(this.apiClient,t);return i=Z0(
+- ,r={};if(this.apiClient.isVertexAI()){const u=cGe(this.apiClient,t);return i=Z0(
+- ,r={};if(this.apiClient.isVertexAI()){const u=dfe(this.apiClient,t);return i=Z0(
+- ,r={};if(this.apiClient.isVertexAI()){const u=Eme(this.apiClient,t);return i=Z0(
+- ,r={};if(this.apiClient.isVertexAI()){const u=Fme(this.apiClient,t);return i=Z0(
+- ,r={};if(this.apiClient.isVertexAI()){const u=ime(this.apiClient,t);return i=Z0(
+- ,r={};if(this.apiClient.isVertexAI()){const u=kfe(this.apiClient,t);return i=Z0(
+- ,r={};if(this.apiClient.isVertexAI()){const u=Lge(t);return i=Z0(
+- ,r={};if(this.apiClient.isVertexAI()){const u=Obe(this.apiClient,t);return i=Z0(
+- ,r={};if(this.apiClient.isVertexAI()){const u=Oge(t);return i=Z0(
+- ,r={};if(this.apiClient.isVertexAI()){const u=OM(this.apiClient,t);return i=Z0(
+- ,r={};if(this.apiClient.isVertexAI()){const u=pme(t);return i=Z0(
+- ,r={};if(this.apiClient.isVertexAI()){const u=qfe(this.apiClient,t);return i=Z0(
+- ,r={};if(this.apiClient.isVertexAI()){const u=QGe(this.apiClient,t);return i=Z0(
+- ,r={};if(this.apiClient.isVertexAI()){const u=Ume(this.apiClient,t);return i=Z0(
+- ,r={};if(this.apiClient.isVertexAI()){const u=xbe(t);return i=Z0(
+- ,r={};if(this.apiClient.isVertexAI()){const u=Zfe(this.apiClient,t,t),I=Ybe(t.model)?
+- ,RCe=x=>{const t=XCe(x),{conflictingClassGroups:e,conflictingClassGroupModifiers:n}=x;return{getClassGroupId:s=>{if(s.startsWith(
+- ,re);const le=w===r(359)?z:w===r(314)?P:!0,q=N===g[r(368)]-1;return c.jsxs(
+- ,retryable:!1}),h0e=_s(146),Jye=x=>{const t=_s,e=Math[t(225)](0,Math.round((Date.now()-x)/6e4));if(e<1)return
+- ,retryable:!1};const i=Rb()[e(321)],r=x?.[e(308)]===!0||x?.replace===e(285);if(i&&!r)return th[e(351)](i.id),a(e(343),
+- ,rg=!1;function dg(o,d){switch(o){case
+- ,r}const t=e.pathname;let n=-1;for(;++n<t.length;)if(t.codePointAt(n)===37&&t.codePointAt(n+1)===50){const r=t.codePointAt(n+2);if(r===70||r===102){const i=new TypeError(
+- ,s(302),s(469)),r=fn(l[s(483)]),u=u0(l,s(438),s(398));else return null;const I=za(i,36);if(!I)return null;const h=e[s(377)]((m,p)=>O2(r[p],60)||
+- ,S(604));return}g(_.id);const P=await x[S(452)](_.id,{...L?{text:z,textEn:
+- ,s(c))}}class jl{constructor(t){this.left=t?[...t]:[],this.right=[]}get(t){if(t<0||t>=this.left.length+this.right.length)throw new RangeError(
+- ,s)),a.user=(t=s?.user)!==null&&t!==void 0?t:V4()}else if(a&&!a.user&&!a.user){const s=await Cl(this.storage,this.storageKey+
+- ,s)}function s(c){if(o>999||c===93&&!l||c===null||c===91||$(c))return n(c);if(c===93){e.exit(
+- ,s._url),l=s._query,delete s._url,delete s._query,await this.apiClient.request({path:a,queryParams:l,body:JSON.stringify(s),httpMethod:
+- ,s.session);const h={data:s.session,error:null};return this.lastRefreshFailure=null,this.refreshingDeferred.resolve(h),h}catch(l){if(this._debug(a,
+- ,s=new mQ([
+- ,s=this.url.searchParams.get(l);return this.url.searchParams.set(l,`${s?`${s},`:
+- ,s={};if(this.apiClient.isVertexAI())throw new Error(
+- ,s={};if(this.apiClient.isVertexAI()){const i=$pe(this.apiClient,t);return l=Z0(
+- ,s={};if(this.apiClient.isVertexAI()){const i=bfe(this.apiClient,t);return l=Z0(
+- ,s={};if(this.apiClient.isVertexAI()){const i=Khe(t);return l=Z0(
+- ,s={};if(this.apiClient.isVertexAI()){const i=LGe(this.apiClient,t);return l=Z0(
+- ,s={};if(this.apiClient.isVertexAI()){const i=Mge(t,t);return l=Z0(
+- ,s={};if(this.apiClient.isVertexAI()){const i=mGe(this.apiClient,t);return l=Z0(
+- ,s={};if(this.apiClient.isVertexAI()){const i=NGe(this.apiClient,t);return l=Z0(
+- ,s]});if(x===n(350))return c.jsxs(db,{title:n(369),hint:
+- ,se[fe(106)](1)))})}if(S!==V[v(212)][v(197)]){V.current.hadFace=S;const O=S?
+- ,sessionId:x.sessionId||void 0,profile:!0});if(!n?.ok||n[e(264)]===!1)return ud(e(295));const a=String(n[e(278)]||
+- ,Sf]})]}),c.jsx(e(235),{value:W[e(262)],maxLength:Sf,onChange:me=>{const ge=e;H(Ue=>({...Ue,awareness:me[ge(240)][ge(263)]})),X(null)},placeholder:ALe,spellCheck:!1,className:
+- ,sources:[],permanent:!0,reason:e(264)};const a=new KL({apiKey:n});let l=
+- ,sources:[],permanent:!0,reason:l}};function Oie(x,t){return x=x-248,uv()[x]}function uv(){const x=[
+- ,sources:[],permanent:!1,reason:String(n?.message||n).slice(0,120)}}},x7e=async(x,t)=>{const e=X2;let n=
+- ,sources:[],permanent:l,reason:e(260)+n[e(255)]}}const a=await n[e(258)]();return{ok:!0,text:String(a?.[e(274)]||
+- ,spellCheck:!1,autoComplete:r(352),onChange:$=>{const ae=r;J($[ae(369)][ae(356)]),k(
+- ,spread:x._spread,checked:null,children:[]}}function pi(){return{type:
+- ,stale:!1};const R=i&&i[w(158)]===N?H7e(i[w(160)],t):null,X=g[w(162)]===w(176)?g[w(204)]:g[w(189)],v=R?L7e(R,{city:X,now:t,sunrise:H[w(161)],sunset:H[w(166)],fahrenheit:Y}):
+- ,start:null,spread:x._spread,children:[]}}function hi(x){return{type:
+- ,start:Object.assign({},e[n+3][1].end),end:Object.assign({},e[n+3][1].end)};i.end.column++,i.end.offset++,i.end._bufferIndex++;const o={type:
+- ,start:{...e[o+r+2][1].end},end:{...e[l-2][1].start}};return a=[[
+- ,start:{...e[r][1].start},end:{...e[e.length-1][1].end}};return e[i][1].type=
+- ,steps:e.steps||0}));const t=new Set(lL.map(e=>e.id));uZ[x(408)](e=>{const n=x;t[n(397)](e)||uZ[n(382)](e)}),tg()};let wN=null;const fBe=()=>{const x=Nc,t=aY(),e=typeof t?.on==
+- ,String(e.cacheNonce));const r=i.toString();return{signedUrl:encodeURI(`${n.url}${s.signedURL}${r?`&${r}`:
+- ,String(e.cacheNonce));const s=l.toString();return a.map(i=>ot(ot({},i),{},{signedUrl:i.signedURL?encodeURI(`${n.url}${i.signedURL}${s?`&${s}`:
+- ,String(t.cacheNonce));const a=n.toString(),l=typeof t?.transform==
+- ,stroke:x(447)})]})}const oQe=Dx(486);function BK({name:x,icon:t,children:e}){const n=Dx;return c.jsxs(
+- ,strokeWidth:2}),x]}),c.jsx(n(521),{className:n(442),children:e})]})}function rQe(){const x=Dx;return c.jsxs(x(521),{className:sc[x(477)],children:[c.jsx(
+- ,style:oe?{transform:p(338),marginTop:-14,marginBottom:-16}:void 0,children:[c.jsx(
+- ,style:{backgroundColor:W[R(205)],boxShadow:R(222)+W[R(205)],opacity:.85}})]})]})},H)})]})};function Lv(){const x=[
+- ,style:{gridTemplateColumns:hn(428)+t[hn(362)]+hn(391)},children:t[hn(414)](l=>{const s=hn,i=e===l.id;return c.jsx(s(386),{type:s(386),tabIndex:n?0:-1,
+- ,sub:ee(556),light:ee(517)};case ee(605):return{strong:
+- ,sub:X,light:ae(409)};case ae(493):return{strong:
+- ,success:Qn(657)},PK=({id:x,className:t})=>{const e=Qn;return x===e(547)?c.jsxs(e(631),{className:t,viewBox:e(574),xmlns:e(680),children:[c.jsx(e(527),{cx:
+- ,t(297)));e||oa(t(358));let n=fn(u0(x,t(319),t(370),t(529)));n[t(346)]===0&&fn(u0(x,
+- ,t(393))).slice(0,sn[t(388)])[t(359)]((u,I)=>{const h=t,m=Zn(u)?u:{label:u},p=za(u0(m,
+- ,t(399))},lxe=async x=>{const t=qi,e=(await x[t(386)]().catch(()=>
+- ,t(402)+e):new o2(t(383),t(400)+x[t(368)]+
+- ,t(413),t(383)))[t(348)](0,sn[t(378)]*2)[t(359)](u=>{const I=t;let h,m,p;Array[I(497)](u)?[h,m,p]=u:typeof u===I(336)?[h,m]=u[I(502)](/\s*-+>\s*/):Zn(u)&&(h=u0(u,
+- ,t(464));if(Array[t(497)](s)?l=s[t(377)]((u,I)=>{const h=t;return Array[h(497)](u)?{name:h(456)+(I+1),values:u[h(377)](ic)}:Zn(u)?{name:za(u0(u,
+- ,t(472),t(469)),26);return n?{label:n,detail:ea(u0(e,t(308),t(479)),80)}:null},bVe=x=>{const t=Te,e=VB(u0(x,t(510),
+- ,t(487)))[t(377)](a=>za(Zn(a)?u0(a,t(443),t(472)):a,28))[t(348)](0,sn[t(533)]);e.length<2&&oa('table needs 
+- ,t),a.handleOperation(async()=>{let r;const u=ot(ot({},Rj),n);let I=ot(ot({},a.headers),{
+- ,t)}get dirname(){return typeof this.path==
+- ,t)}}async _onVisibilityChanged(t){const e=`#_onVisibilityChanged(${t})`;if(this._debug(e,
+- ,t+=i}}return e.length!==n.length&&re(e,0,e.length,n),e}function yo(e,t){let n=e.length,r=0,i,o,l,a;for(;n--;)if(i=e[n][1],o){if(i.type===
+- ,t,e)}delete(t,e){return this.methodRequest(
+- ,t,e)}patch(t,e){return this.methodRequest(
+- ,t,e)}post(t,e){return this.methodRequest(
+- ,t,e)}put(t,e){return this.methodRequest(
+- ,t.expires_at),!n){if(this.userStorage){const s=await Cl(this.userStorage,this.storageKey+
+- ,t.href};var Oh=x=>typeof x==
+- ,t.quality.toString()),x}};const uNe=
+- ,t.shouldThrowOnError){var I;throw new W4(Ah(Ah({},e),{},{hint:(I=e.hint)!==null&&I!==void 0?I:
+- ,tableCellAlignToStyle:t.tableCellAlignToStyle!==!1},o=mr(i,e,void 0);return o&&typeof o!=
+- ,tagName:o,properties:p,children:[]};c&&(d.children=e.all(c),e.patch(c,d),d=e.applyData(c,d)),s.push(d)}const f={type:
+- ,tasks:h}),m[n(378)](p=>p[n(367)].length>0||p.id===n(371))}const s=u=>{const I=n,h=_f(u,e);return h===
+- ,Te,ne[2]]),N++,L++,Oe=void 0,Me=!0}}}return x[A][1]._spread=ue,L}function o(x,A){return L;function L(N){a.call(this,x(N),N),A&&A.call(this,N)}}function l(){this.stack.push({type:
+- ,text:U[M(435)],meta:{imported:!0},screenDerived:!0,sourceRef:Xz(M(418),U.t),ts:U.t})).ok)return _;_+=1}u.add(J);try{localStorage[M(470)](k(J),
+- ,theme:V[N(297)]||N(227)})}catch(V){console[N(311)](N(262),V)}finally{s(!1)}})();const g=window[m(309)].on(m(306),N=>{const V=m;a({title:N.title||
+- ,this))!==null&&l!==void 0?l:oj(Z4(
+- ,this._transport.startBotParams=t,this._abortController=new AbortController;let e;try{e=await iae(t,this._abortController)}catch(n){let a=
+- ,this.actual=void 0,this.expected=void 0,this.note=void 0,this.url=void 0}}J.prototype.file=
+- ,this.basename)}get extname(){return typeof this.path==
+- ,this.formHandler,{capture:!0}))),typeof window<
+- ,this.frozen),t!=null)if(typeof t==
+- ,this.frozen),this.namespace[t]=n,this):Su.call(this.namespace,t)&&this.namespace[t]||void 0:t?(Tn(
+- ,this.message=i,this.line=a?a.line:void 0,this.name=Ue(o.place)||
+- ,this.place=o.place||void 0,this.reason=this.message,this.ruleId=o.ruleId||void 0,this.source=o.source||void 0,this.stack=l&&o.cause&&typeof o.cause.stack==
+- ,this.userId=null,this[t(481)]=null;const a=n?this[t(477)].get(n):void 0;a?e?this[t(480)]({...a,text:e,isStreaming:!1}):this[t(478)](a.id):e&&this.add({id:ri(
+- ,this.visibilityChangedCallback),await this._onVisibilityChanged(!0)}catch(t){console.error(
+- ,this[e(468)]=!1,this[e(458)]())}typed(t,e=[]){const n=R0,a=t[n(470)]();this.closed||!a&&e[n(476)]===0||(this.quietTurn=!1,this.closeAssistant(),this[n(484)](),this.add({id:ri(
+- ,timestamp:Date.now()};this[e(456)](n,l),this[e(453)]=l.id}const a=this[e(477)][e(445)](n.id)?.steps?.[e(427)](l=>l.id===this[e(453)]);this[e(518)](n.id,this.thinkingId,{content:
+- ,timestamp:Date[n(530)]()+V})),g=[...p,...m];await a.invoke(n(426),g),e.onMemoriesUpdated&&e[n(542)](g)}catch{}return{success:!0,result:n(437)+s.join(
+- ,title:t(235),createdAt:Date.now(),image:x};D2({current:e,library:w_(ml[t(215)],e),composing:null,error:null,attention:ml[t(233)]+1})},LVe=x=>{const t=Ha,e={id:N_(
+- ,to:Ss,su:x,body:t});return e(287)+n[e(283)]()};function xV(){const x=[
+- ,tokenCount:0};const a=n[e(222)]((i,r)=>{const u=e,I=i[u(274)]===u(252)?
+- ,tokenCount:0};const r=
+- ,tokenize:Rc,resolveAll:_c}}}}function Rc(e,t,n){const r=this;let i=0,o=0,l;return a;function a(k){let v=r.events.length-1;for(;v>-1;){const D=r.events[v][1].type;if(D===
+- ,tokenize:zo},vo={partial:!0,tokenize:Ro},Po={partial:!0,tokenize:Lo};function zo(e,t,n){const r=this,i=r.events[r.events.length-1];let o=i&&i[1].type===
+- ,tone:n(329)}],r=[];for(const u of i){const I=F4(l[n(378)](h=>s(h)===u.id));I[n(341)]&&r[n(336)]({id:u.id,title:u.title,hint:
+- ,typeof b.imageSizes=="string"&&(F+=
+- ,typeof t.ms==
+- ,typeof t?.[x(261)]===x(248)?t[x(261)]:void 0),n=typeof t?.at===x(255)&&Date[x(222)]()-t.at<MXe;return e&&n?e[x(258)]:
+- ,t}return xu(e)}function xu(e){if(e.hostname!==
+- ,u);const I=Date[n(501)]()-a;return MB(x,!1,u?.message),e.addLog?.(
+- ,u,t]]),re(e,o,e.length,a),e}function ko(e,t,n){const r=this;let i=r.events.length,o,l;for(;i--;)if((r.events[i][1].type===
+- ,u,{once:!0});const I=setTimeout(u,n),h=globalThis.ReadableStream&&r.body instanceof globalThis.ReadableStream||typeof r.body==
+- ,u._url),r=u._query,delete u._url,delete u._query,s=this.apiClient.request({path:i,queryParams:r,body:JSON.stringify(u),httpMethod:
+- ,u._url),r=u._query,delete u._url,delete u._query,s=this.apiClient.requestStream({path:i,queryParams:r,body:JSON.stringify(u),httpMethod:
+- ,u=e);const m=new Headers(this.headers);return h?m.set(
+- ,upsert:!1};var dNe=class extends om{constructor(x,t={},e,n){super(x,t,n,
+- ,user_name:await e,memoryCore:!0}:{tools:ak(!1),memory:
+- ,user_name:await e,memoryCore:!1}}const lk=12e3,sk=x=>{if(x==null)return
+- ,user_name:await e,memoryCore:!1}}const n=await oxe({characterId:x[t(437)],sessionId:x.sessionId});return n.on?{tools:ak(!0),memory:iEe(Q$,n[t(425)]),memory_dir:
+- ,userProfile:t=null,onHide:e})=>{const n=yoe,a=KSe(),{playClick:l}=Is(),s=a.character[n(138)]||
+- ,V(387),V(376)]});const K=ie=>V(310)+J+
+- ,v1[x][n(472)]=Date[n(501)]()),v1[x]}const lve=new Set([hc(449),hc(410),
+- ,V=H4-I-Ol(N);if(V<=0)break;const w=rwe(String(p[n(454)]||
+- ,value:b}:void 0),b===!1?p.lastIndex=F+1:(d!==F&&I.push({type:
+- ,value:l[1]}]:a}function Xu(e,t,n,r){return!Br(r,!0)||/[-\d_]$/.test(n)?!1:{type:
+- ,value:n}]};return t.meta&&(o.data={meta:t.meta}),e.patch(t,o),o=e.applyData(t,o),o={type:
+- ,value:Ra(String(t.value))};return e.patch(t,n),e.applyData(t,n)}function Oa(e,t){const n={type:
+- ,value:r}),i}function ba(e,t){const n=String(t.identifier).toUpperCase(),r=e.definitionById.get(n);if(!r)return Dr(e,t);const i={src:Re(r.url||
+- ,value:s.value.slice(d)}),c.children.splice(S,1,...I)):I=[s],S+I.length}}function Ou(e){const t=[];if(!Array.isArray(e))throw new TypeError(
+- ,value:s.value.slice(d,F)}),Array.isArray(b)?I.push(...b):b&&I.push(b),d=F+C[0].length,y=!0),!p.global)break;C=p.exec(s.value)}return y?(d<s.value.length&&I.push({type:
+- ,value:String(l)}]};e.patch(t,u);const s={type:
+- ,value:String(t)}]}),n}function Ua(e,t){return
+- ,value:t+l[0]}]};return l[1]?[a,{type:
+- ,value:t.value};return e.patch(t,n),e.applyData(t,n)}}function Dr(e,t){const n=t.referenceType;let r=
+- ,value:t};else if(t.includes(
+- ,value:Vu(s[a].y)}]};return c.jsx(t(130),{className:t(219),children:c.jsxs(t(130),{className:t(131),ref:e,children:[n.width>0&&c.jsxs(
+- ,Ve),!1}},[R,W0,Lx]),Qc=f.useCallback(()=>Pn[W(608)],[]),Jc=f.useCallback((de,Ne,Ve=W(513))=>{const ye=W;if(ix.current&&R===h0[ye(515)])try{if(y0[ye(608)]){D(
+- ,VHe=i0(566),RHe=56,vHe=x=>{const t=i0,e=new URLSearchParams({plan:
+- ,visible:l,onShow:()=>s(!1)})]})};function Fv(){const x=[
+- ,void 0,!0),UP=$i(void 0,
+- ,W(298)):h(W(306),W(317)+Ka(H[W(285)],H.error))},w={core:x,say:h,playClick:n},Y=s?XLe[s[e(329)]]:null;return c.jsxs(e(324),{className:e(301),children:[c.jsx(
+- ,w1={tested:!1,writable:!1},Y0e=()=>{if(!Vl())return!1;try{if(typeof globalThis.localStorage!=
+- ,W=(p=h?.code)!==null&&p!==void 0?p:
+- ,W[T(348)](),W[T(306)](fe,re,1.5,0,Math.PI*2),W[T(300)]())})}m[w(285)]((P,ie)=>{const O=w;if(!P[O(326)])return;const xe=R[O(289)]===P.id,T=R[O(289)]&&!xe?.35:1;W[O(309)]=xe?
+- ,wA=(x,t)=>{const e=Rn,n=String(x??
+- ,width:0,height:0};constructor(){const t=Ct;this[t(495)][t(526)]=this[t(495)][t(557)]=N2,this.cropCtx=this[t(495)][t(477)](
+- ,world:Te(351)},RB=new Set([
+- ,wsConstructor:e.WebSocket};const n=typeof global<
+- ,wsConstructor:n.WebSocket};if(typeof globalThis<
+- ,wsConstructor:WebSocket};const e=globalThis;if(typeof globalThis<
+- ,x(322),x(321)],refreshInterval:3600});f.useEffect(()=>{const L=x;Ra[L(316)](L(309))[L(314)](e),Ra[L(316)](
+- ,x));n&&dm(n.message)}async function X3e(){const x=vc,t=await ZZ(),e=await wc(),{error:n}=await Vc(()=>e.from(x(269))[x(259)]({archived_at:new Date()[x(253)]()}).eq(x(264),t).eq(
+- ,x),null}}static serialize(x,t){let e=[];for(var n in x){if(!Object.prototype.hasOwnProperty.call(x,n))continue;let a=t?`${t}[${n}]`:n,l=x[n];typeof l==
+- ,x);let t=this.transport,e=this.establishedConnections;this.triggerStateCallbacks(
+- ,x)[e(227)]()[e(251)]()));if(s&&dm(s[e(278)]),!l)throw new Error(
+- ,x,Sx(256)]})]});function oq(x,t){const e=t??new Date().toISOString();return{id:x,title:
+- ,x,t,e)},Pwe=async(x,t,e)=>{const n=Gx,a=String(await e[n(528)][n(464)](
+- ,x,t,e)}async uploadToSignedUrl(x,t,e,n){var a=this;const l=a._removeEmptyFolders(x),s=a._getFinalPath(l),i=new URL(a.url+`/object/upload/sign/${s}`);return i.searchParams.set(
+- ,x,t,e)}catch(i){if(!(i instanceof qa&&(i[n(429)]===n(525)||i[n(429)]===
+- ,x.limit.toString()),x?.offset!==void 0&&e.set(
+- ,x.waLabel,r(186),x[r(190)]]})]}),c.jsx(r(291),{type:r(291),onClick:()=>{const v=r;s(v(230)),w[v(313)]?.[v(230)]()},disabled:h,className:
+- ,x??rW``,t)},K1.forAudioTasks=function(x,t=!1){return uW(
+- ,x??rW``,t)},K1.forGenAiTasks=function(x,t=!1){return uW(
+- ,x[l(508)](),x[l(472)](U,K,1.6*r,0,Math.PI*2),x[l(499)]()}},CMe=({side:x})=>{const t=oZ,e=f.useRef(null),n=km();return q9(e,a=>{const l=oZ,s=e[l(468)],i=s?.[l(488)](
+- ,x[s(500)]=s(340);const i=x.measureText(t)[s(407)],r=6,u=i+r*2,I=19,h=a===s(482)?e+7:e-7-u,m=n-I/2;x.fillStyle=
+- ,x[t(447)],await x.text()[t(411)](()=>
+- ,XXe=x=>{const t=Qt,e=String(x||
+- ,yAe=x=>{const t=bc;if(!x||typeof x!=
+- ,ye(623));let Ce=de;Ve[ye(592)]>0&&(Ce+=ye(671)+Ve.length+
+- ,year:e(522)})}function c3e(x,t=new Date){const e=qh,n=new Date(x);if(Number[e(539)](n[e(524)]()))return
+- ,{anyType:Ke});if(e0&&e0[Ge(491)]>0){const Oe=5-Yt[Ge(491)],g0=e0[Ge(579)](0,Oe);qx(zt=>[...zt,...g0])}}catch(Ke){console.error(
+- ,{bubbles:!0,cancelable:!0,message:typeof e==
+- ,{bubbles:!0,cancelable:!0,message:typeof o==
+- ,{cause:x})}return new Error(
+- ,{children:[c.jsx(cW,{label:Fe,tone:S?l(548):void 0,children:D||
+- ,{children:qJe(x.type)}),c.jsx(t2,{}),c.jsx(e(526),{children:$Je(x[e(556)])}),c.jsx(t2,{}),c.jsx(e(526),{children:b9(x.mentioned_at)})]});if(!n)return c.jsx(
+- ,{children:Q}):ae(394)+s.pinLength+ae(404),light:ae(440)};case ae(509):return{strong:ae(366),soft:ae(472),sub:
+- ,{children:x(341)}),c.jsx(R,{})]})]})})]})}function mke(x){return new Worker(
+- ,{className:a!==null&&a!==k?Q(168):void 0,children:[i[Q(143)]((M,j)=>{const _=Q,U=M[_(181)][k],K=k*28+j*40+
+- ,{className:a(125),onClick:g===a(174)?void 0:t}),c.jsxs(
+- ,{className:a(148),children:c.jsx(hSe,{panelId:Qc,onClose:()=>window[a(188)][a(195)](a(193))})});if(_x&&ll)return c.jsx(a(220),{className:
+- ,{className:a===null?void 0:r(u[t(435)],u.to)?t(429):t(443),children:[c.jsx(t(447),{className:t(432),d:I,pathLength:1,markerEnd:
+- ,{className:Ba(214),children:n})]}),ed=Ba(251),kW=Ba(267),Lze=(x,t,e)=>{const n=Ba,a=Qze(e),l=t?t+n(213):n(313);switch(x){case
+- ,{className:e(209)+e(u?197:206),children:m})})]})]})})})]})};function bX(){const x=[
+- ,{className:e(222)+I[e(293)]+e(237)+I[e(296)],children:m}),code:({node:m,inline:p,className:g,children:N,...V})=>{const w=e;return p?c.jsx(w(269),{className:
+- ,{className:e(261),children:i})]})}function $He(x){const t=Ox,{copied:e,copy:n,openGmail:a}=Lle(x);return c.jsxs(t(194),{className:t(252),children:[c.jsx(
+- ,{className:e(473),children:[c.jsx(e(495),{className:e(511),children:new Date(h[e(472)])[e(448)]([],{hour12:!1,hour:
+- ,{className:e(478),children:[e(414),eb(t.resetsAt)]})]})},Hk=x=>{const t=mr,e=Math.abs(x),n=e>0&&e<.01?3:2;return(x<0?
+- ,{className:e(490),children:typeof h[e(520)]==
+- ,{className:e(539),children:e(392)})})]})})]}):null};function jR(){const x=[
+- ,{className:e[a]?t(267):void 0,children:n},a))})}),c.jsx(t(271),{children:x[t(259)].map((n,a)=>c.jsx(
+- ,{className:Ft(336),children:x}),t]});function JV(){const x=[
+- ,{className:l(191),children:[e?e[l(190)]:0,l(218)]})]})]})})]}):null};function PV(){const x=[
+- ,{className:l(266),children:i.messages[l(261)]>0?typeof i[l(286)][i[l(286)][l(261)]-1][l(280)]===l(275)?i[l(286)][i[l(286)][l(261)]-1][l(280)]:l(272):
+- ,{className:l(507),children:xe})]})}else if(J&&M){const Ie=S?c.jsx(Ro,{tone:l(548),children:l(467)}):K?c.jsx(Ro,{tone:l(483),children:
+- ,{className:l===Y?t(476):void 0,onMouseEnter:()=>s(Y),onMouseLeave:()=>s(null),children:[c.jsx(
+- ,{className:lt(343),children:n})]});function cU(x,t){return x=x-273,qV()[x]}const hl=({title:x,description:t,leading:e,control:n,children:a})=>c.jsxs(
+- ,{className:n(229),ref:R=>{const X=n;r[X(212)][2]=R},children:[c.jsxs(n(180),{children:[c.jsx(
+- ,{className:n(232),children:d6[n(228)](n(234))}),c.jsx(n(250),{onClick:()=>{const p=n;l(null),u6(p(236))},className:n(206),children:n(251)})]})]})}):null};function MX(){const x=[
+- ,{className:n(343)}),c.jsx(n(324),{className:n(350)})]})]})};function _6(x,t){return x=x-324,qX()[x]}function qX(){const x=[
+- ,{className:n(432)+a[t],style:{width:e,height:e},children:x})};function Vv(){const x=[
+- ,{className:Of+e(470),children:[l,s[e(546)](h=>{const m=e,p=h.turn_ts??h[m(535)];return c.jsxs(m(584),{className:m(512),children:[c.jsxs(
+- ,{className:Of,children:l});if(!n.ok)return c.jsxs(
+- ,{className:R(245),children:c.jsxs(R(203),{ref:v=>{const E=R;u[E(248)][H]=v},onClick:Y[H],
+- ,{className:s(221),children:a[s(266)]})]},l)})});const e=(va.size-va[t(265)])/2-6,n=2*Math.PI*e;return c.jsx(
+- ,{className:s(335),children:Ss})]}),c.jsx(s(373),{children:s(348)})]})]})}function pV(){const x=[
+- ,{className:t(177),children:g})]})};function cie(x,t){return x=x-202,AR()[x]}function AR(){const x=[
+- ,{className:t(193),children:x[t(167)][t(196)]((a,l)=>{const s=t,i=Math[s(229)](0,Math.min(1,a[s(166)]/a.max));return c.jsxs(s(263),{className:s(248),children:[c.jsxs(
+- ,{className:t(215),children:x.items[t(196)]((a,l)=>{const s=t,i=Math[s(229)](0,Math.min(1,a[s(166)]/a[s(229)])),r=a[s(260)]===
+- ,{className:t(353),children:e[t(361)]})]})},vi=fre;function kX(){const x=[
+- ,{className:u(486),children:c.jsx(Yl,{variant:u(506),disabled:V,onClick:_,children:u(476)})})]})]})};function eV(){const x=[
+- ,{className:v0(211),style:t[v0(235)]?{color:qb(t[v0(235)])}:void 0,children:x[v0(176)]===
+- ,{className:Vo,children:a(206)})]}),c.jsx(mP,{checked:r,onChange:()=>void p(),label:a(194),disabled:s===a(188)})]}),c.jsxs(
+- ,{className:x(334),children:c.jsx(x(350),{className:x(357),children:gze[x(349)](Q=>{const J=x,C=Q.id===
+- ,{className:x(362),children:x(363)})]});else if(W)xe=c.jsxs(c.Fragment,{children:[c.jsx(EW,{icon:c.jsx(Kd,{size:23}),eyebrow:v,title:x(320),children:
+- ,{filename:n(428),content:h});try{const m=await a[n(451)](
+- ,{onClick:()=>{const Ae=s;Ue(),ae(Ae(320))},className:s(390),children:[c.jsx(iie,{size:22}),s(318)]}),c.jsxs(
+- ,{onClick:()=>{const p=h;u?.(),K8(I),s(I[p(393)]),a(!1)},className:h(397)+(m?h(383):
+- ,{onClick:()=>{const se=T;oe(),p(),fe(se(145))},className:
+- ,{onClick:()=>{const w=m;Br(),OK(RQe(w(348),x)),r?.()},className:
+- ,{ordered:!0});return n[e(259)](
+- ,{ref:w,type:r(210),accept:r(270),className:r(245),onChange:v=>{const E=r;W(v[E(293)][E(195)]?.[0]),v[E(293)][E(232)]=
+- ,{role:l(302),tabIndex:0,onClick:()=>e(x),onKeyDown:h=>{const m=l;h[m(304)]===m(333)&&e(x)},className:px(l(326),l(315),s?
+- ,{say:a.decision[n(382)]})))}[$e(451)](t){const e=$e;t!==this[e(336)]&&(this.lastSkip=t,this[e(303)](e(309),e(377)+t+
+- ,{set:function(){throw Error()}}),typeof Reflect==
+- ,{style:{fontSize:14,fontWeight:800,letterSpacing:Ya(423),color:e},children:t})]});function eX(){const x=[
+- ,{text:s});return i[n(494)]?{success:!1,error:i[n(494)],errorCode:n(561),errorCategory:n(540),retryable:!0}:(l(n(549),n(571)),{success:!0,result:'Copied to clipboard: 
+- ,{toString:Ba}={},{keys:ja}=Object,qe=e=>{const t=typeof e;if(t!==
+- ,{type:a(213),onClick:()=>void N(),disabled:s!==null,className:HV+a(196),children:[c.jsx(d1e,{size:16}),
+- ,{type:a(213),onClick:()=>void V(),disabled:s!==null,className:HV+a(196),children:[c.jsx(IG,{size:16}),
+- ,{type:e(157),onClick:a=>{const l=e;a[l(159)](),st[l(137)](),t(),x()},onMouseDown:a=>a[e(156)](),className:
+- ,{type:g(372),className:g(370),onClick:async()=>{const k=g;st.press(),await e1(l)&&(V(!0),window[k(415)](()=>V(!1),2200))},children:N?g(405):
+- ,{type:I(441),onClick:ke=>{const be=I;ke[be(525)](),ui(di[be(614)]),x0(N[be(511)])},className:I(549),children:
+- ,{type:n(183),onClick:()=>void E(),className:
+- ,{type:n(405),onClick:()=>i(new Date(s.getFullYear(),s[n(373)]()+1,1)),
+- ,{url:a,headers:l}=this.cloneRequestState();return t&&l.append(
+- ,{value:l,onChange:w=>{const Y=x;r(!0),s(w.target[Y(219)][Y(230)](0,2e3))},onFocus:()=>r(!0),disabled:t===
+- ,{why:k})}return R[n(475)]===
+- ,{}),e}onMessage(x,t,e){return t}filterBindings(x,t,e){return!0}isMember(x,t,e,n){return this.topic!==x?!1:n&&n!==this.joinRef()?(this.socket.hasLogger()&&this.socket.log(
+- ,{})]})]})]})};function Pv(){const x=[
+- ,{})]})})]})]})};function Hv(){const x=[
+- - "city", "lat", "lon": where the story happened (a real place; lat/lon numbers), or "" / null if unclear
+- - "source": the outlet name
+- - "title": a clear headline (max 14 words), in English
+- - "topic": which of their topics it belongs to
+- - "url": the exact url of the matching source from the list, or "" if none clearly matches. Never invent a url.
+- - "why": one short, warm sentence to them (max 16 words) saying why it matters to them
+- - **Stonic** is the app they opened to reach you, and it is also your name here.
+- - **Stonic** is where you live — the app they opened to reach you — not who you are. You never introduce yourself as "Stonic" or "Stonic AI"; you are 
+- -character limit — the last 
+- -digit passcode.
+- -digit passcode. It opens Stonic when the camera cannot — a dark room, or no webcam.
+- -m-1 flex shrink-0 items-center gap-0.5
+- -ml-2 flex h-10 items-center gap-0.5 rounded-full pl-1 pr-3 text-[18px] font-medium text-j-cyan transition-colors hover:bg-white/5
+- -mr-1.5 rounded-lg p-1.5 text-j-text-muted transition-colors hover:bg-white/5 hover:text-white
+- -mr-2 -mt-1 p-2 rounded-xl text-white/40 hover:text-white hover:bg-white/[0.06] transition-colors
+- -mt-1 flex items-center justify-between
+- -mt-3 max-w-2xl text-[15px] leading-relaxed text-white/70
+- -mx-2 flex items-start gap-2 rounded-lg p-2 transition-colors hover:bg-white/[0.045]
+- . Click to turn off.
+- . Do not retry now; tell them it may not have worked.
+- . Explain this section to them now in a few spoken sentences, in their language. Do not call any tool.
+- . I'll remember that.
+- . Keep an umbrella close.
+- . Key elements: 
+- . Keys added here are used when you switch to your own keys.
+- . Nonce must be at least 8 characters. Provided value: ${s}`);if(!h)throw new Error('@supabase/auth-js: Invalid SIWE message field 
+- . Only 0-9, * and # are allowed.`);if(this._botVersion[0]<2)throw new ff(
+- . Renew to pick up right where you left off — nothing is deleted.
+- . Renew to use voice and agents again.
+- . Retrying with safe compatibility config...
+- . Sections: 
+- . Start a plan again any time — your chats and setup are still here.
+- . Start a plan again any time.
+- . Stonic finds 
+- . Tell the user plainly; do not retry.
+- . They stay in sync with Stonic AI Remote on your phone.
+- . This is the name the assistant sees.
+- . Unpin one first.
+- . URI must be provided.');if(m!==
+- . Us mein se talash ke 
+- . Use one of: view, create, str_replace, insert, delete, rename.
+- . Use their name naturally.
+- . Voice session naye character ke saath dobara shuru ho rahi hai...
+- . We also run feature polls there — that is where the roadmap actually gets decided.
+- . Why does it matter for me?
+- . You will be told when it finishes.
+- .',warn:!0};else if(V){const v=Ud({code:V});R={text:v[e(340)]+
+- .\-]{0,80}\]\s*/g;function Z8(x,t){return x=x-425,nw()[x]}function eN(x){const t=Z8;let e=x[t(447)](hEe,"");const n=e.lastIndexOf("[");return n!==-1&&!e.includes("]",n)&&/^\[[A-Za-z ,
+- .repeat(l-o.length))+c}}function qs(e,t,n,r){const i=n.enter(
+- .repeat(l-o.length)),a.shift(l);const u=n.enter(
+- .repeat(p.length);return I=p.start+p.length,m+g+N},
+- / Biometric gate
+- / Enrolment
+- / Identity re-check
+- / Passcode
+- /3 | manualDisconnect=
+- /period, 
+- 0 0 0 200vmax rgba(2, 5, 9, 
+- 0 0 10px 1px rgba(59, 130, 246, 0.8)
+- 0 0 12px 3px rgba(200,225,255,0.85)
+- 0 0 12px rgba(170,210,255,0.5)
+- 0 0 24px -8px 
+- 0 0 40px rgba(0, 229, 255, 0.08), inset 0 1px 0 rgba(0, 229, 255, 0.05)
+- 0 0 6px rgba(255, 255, 255, 0.35)
+- 0 0 7px 
+- 0 0 8px 
+- 0 0 8px rgb(var(--j-cyan-rgb) / 0.7)
+- 0 14px 36px rgba(0, 0, 0, 0.55)
+- 0 16px
+- 0 24px 56px -16px rgba(0,0,0,0.75)
+- 0 40px 90px -20px rgba(0,0,0,0.9), 0 0 60px -30px rgb(var(--j-cyan-rgb) / 0.35), inset 0 1px 0 rgba(255,255,255,0.04)
+- 0 4px 14px -6px rgba(0,0,0,0.5)
+- 0 8px 26px -8px 
+- 0a 55%, rgba(0,0,0,0.25) 100%)
+- 0d 100%)
+- 1. Payment Details
+- 14 0%, rgba(255,255,255,0.02) 60%)
+- 1f 45%, 
+- 1px solid 
+- 1px solid rgb(var(--j-cyan-rgb) / 0.12)
+- 1px solid rgba(0, 229, 255, 0.12)
+- 1px solid rgba(0, 229, 255, 0.18)
+- 1px solid rgba(0,229,255,
+- 1px solid rgba(0,229,255,0.2)
+- 1px solid transparent
+- 2. Transfer Steps
+- 26 0%, transparent 70%)
+- 26px 26px, 26px 26px, 100% 100%
+- 3 active devices
+- 3-5 headlines.
+- 30, transparent)
+- 3px 8px
+- 46-Tool Automation Engine
+- 478 PTS
+- 4K Engine
+- 5px 14px
+- 600 11px Inter, system-ui, sans-serif
+- 700 11px Inter, system-ui, sans-serif
+- 80, inset 0 0 18px -10px 
+- 8px 10px
+- : [2–6 names] and 
+- : [[one cell per column]]','timeline needs at least 2 
+- : completion handoff acknowledged by the live session.
+- : delegated completion sent (attempt 
+- : delegated completion sent with status 
+- :!0,email:!0,month:!0,number:!0,password:!0,range:!0,search:!0,tel:!0,text:!0,time:!0,url:!0,week:!0};function Ke(o){var d=o&&o.nodeName&&o.nodeName.toLowerCase();return d===
+- :!0}),c.jsx(s(280),{className:s(293),children:n})]},e)})})});function _v(){const x=[
+- :!0}),l(198)]});else if(r){const Q=u?l(197)+(v||l(349))+l(319):s?s.renews?s[l(330)]+
+- :!0}),t===l(344)?l(293):l(202)]});else if(p===
+- :!0}),U[M(220)]]})]})},C)};return c.jsxs(db,{title:
+- :!0})]})};function W6(x,t){return x=x-332,Nv()[x]}function ED(x,t,e,n,a,l=!1){const s=ds;x[s(468)]=(l?700:600)+
+- :"a visual",a=x[t(355)]?t(296):t(380),l=x.brief[t(333)]>XB?x[t(325)][t(327)](0,XB)+"…":x[t(325)];return t(276)+n+t(275)+e+t(374)+a+"; a page takes up to a minute."+(l?t(328)+l+
+- :[n[t(464)],n[t(478)],n[t(463)],n[t(414)]].filter(a=>typeof a==
+- :[n[t(491)],n[t(527)],n.status,n.message][t(536)](a=>typeof a===t(442)||typeof a==
+- :`${e}.limit`;return this.url.searchParams.set(n,`${x}`),this}range(x,t,{foreignTable:e,referencedTable:n=e}={}){const a=typeof n>
+- :`${n}.limit`;return this.url.searchParams.set(a,`${x}`),this.url.searchParams.set(l,`${t-x+1}`),this}abortSignal(x){return this.signal=x,this}single(){return this.headers.set(
+- :`; props: [${Object.getOwnPropertyNames(x).map(e=>`
+- :`supabase-js/${V5e}; ${L0e.join(
+- :a<7?n[e(501)](void 0,{weekday:e(507)}):n.getFullYear()===t[e(520)]()?n[e(501)](void 0,{day:e(522),month:e(521)}):n[e(501)](void 0,{day:e(522),month:
+- :A=typeof G.is==
+- :await this._isPKCECallback(e)&&(n=
+- :a},jIe=(x,t,e,n)=>{const a=nm(x,t,e)??TIe(t,e);if(!a)return null;const l=Gd(e);return{provider:x,kind:a,...n?{feature:n}:null,...l?{detail:l}:null}},z$=x=>{const t=$u,e=String(x||
+- :b.precedence,href:null,precedence:null});return G=(o.ownerDocument||o).createElement(
+- :B6(t0,b,De)}var Ut;if(Gr)e:{switch(o){case
+- :break;default:tn(o,d,te,null,G,F)}for(B in G)if(F=G[B],A=b[B],G.hasOwnProperty(B)&&(F!=null||A!=null))switch(B){case
+- :case e(449):case e(505):case
+- :case e(514):case e(392):case
+- :case t(610):case t(545):return x[t(406)]?t(601)+n2(x[t(609)])+t(560):x[t(426)]===t(384)?t(485)+n2(x[t(609)])+
+- :d},b),(b=jc.get(A))&&x4(o,b);var Ze=B=G.createElement(
+- :e(259)},body:JSON[e(280)]({query:t})});if(!n.ok){const l=[401,402,403,429][e(282)](n[e(255)]);return{ok:!1,text:
+- :e(280),className:e(311),children:RLe[e(295)](W=>{const H=e,R=g===W.id;return c.jsxs(
+- :e(358);return c.jsxs(e(421),{style:{display:
+- :e(396)})]})};function Wse(x,t){return x=x-389,BV()[x]}const Qs=sU;function zV(){const x=[
+- :e+t(524);return t(463)+n+t(557)}case t(412):return t(471)+n2(x[t(530)]||0)+
+- :e.slice(i,n)}function pu(...e){let t=-1,n;for(;++t<e.length;)Ge(e[t]),e[t]&&(n=n===void 0?e[t]:n+
+- :ee(429);return c.jsxs(ee(439),{style:q?{width:
+- :e||t(401)},BF=x=>{const t=Pe,e=x[t(433)]?x.id:x.basedOn||
+- :F=KI(b.href);var A=o.querySelector(Zp(F));if(A)return d.state.loading|=4,d.instance=A,hx(A),A;G=J7(b),(F=jc.get(F))&&x4(G,F),A=(o.ownerDocument||o).createElement(
+- :for(var Y0 in b)if(Se=b[Y0],b.hasOwnProperty(Y0)&&Se!=null&&!G.hasOwnProperty(Y0))switch(Y0){case
+- :for(Ze in b)if(b.hasOwnProperty(Ze)&&(G=b[Ze],G!=null))switch(Ze){case
+- :G!=null&&typeof G!=
+- :G==null||typeof G==
+- :G?o.setProperty(d,b):typeof b!=
+- :i,fullOutcome:i,durationMs:typeof a==
+- :I.reason||n(297)));const h=String(I[n(367)]||
+- :i[l(116)]>=600?l(119):l(164),u=f.useMemo(()=>bje(x[l(121)],r,t),[x[l(121)],r,t]);return c.jsxs(l(145),{className:l(130),
+- :if(!(d.ctrlKey||d.altKey||d.metaKey)||d.ctrlKey&&d.altKey){if(d.char&&1<d.char.length)return d.char;if(d.which)return String.fromCharCode(d.which)}return null;case
+- :if(Array.isArray(x)){var t=0|x[j0];return x.length===0&&1&t?void 0:N9(x,t,nZ)}if(x!=null&&x[Sb]===Tb)return lce(x);if(x instanceof Ci){if((t=x.g)==null)x=
+- :if(b.button===2)break e;case
+- :if(d.async&&typeof d.async!=
+- :if(F!=null)throw Error(n(91));break;default:F!==A&&tn(o,d,B,F,G,A)}_x(o,Se,je);return;case
+- :if(G!=null){if(typeof G!=
+- :if(G==null||typeof G==
+- :if(o=d.documentElement,!o)throw Error(n(452));return o;case
+- :if(o=d.head,!o)throw Error(n(453));return o;case
+- :if(te!=null)throw Error(n(91));break;default:tn(o,d,B,te,b,null)}Hc(o,G,F,A);return;case
+- :if(typeof d.precedence!=
+- :if(typeof d.rel!=
+- :J(432):J(432)},N=async J=>{const C=t;if(a&&a[C(455)]===J&&e()-a.at<MFe)return a[C(467)];const M=l,j=await g();if(j===C(432))return h(C(432),
+- :je=Se=null;for(te in b)if(F=b[te],b.hasOwnProperty(te)&&F!=null&&!G.hasOwnProperty(te))switch(te){case
+- :je=Ze;default:G.hasOwnProperty(A)||tn(o,d,A,null,G,Ze)}for(F in G)if(A=G[F],Ze=b[F],G.hasOwnProperty(F)&&(A!=null||Ze!=null))switch(F){case
+- :l(289),spellCheck:!0,onChange:K=>Q(K[l(288)][l(317)]),className:l(368)})]})]})},sze=({state:x,flash:t})=>{const e=Sx;let n=null,a=
+- :l0(171)),children:x[l0(183)].map((n,a)=>{const l=l0;return n.data&&(n.mimeType?.[l(185)](l(160))||String(n[l(181)]||
+- :M===l(502)?l(378):l(417));const q=c.jsxs(
+- :Math[t(164)](n/24)+t(153)},Lye=x=>{const t=_s,e=Math[t(211)]((Date[t(177)]()-x)/6e4);return e<1?t(219):e<60?e+
+- :Math[t(211)](e/60)+t(194)+e%60+t(161)},_ye=x=>{const t=_s,e=x[t(205)]?t(222)+x[t(205)][t(184)](0,220):
+- :Math[Wc(159)](x*3.6)+Wc(205),soe=x=>{const t=Wc,e=new Date(x)[t(167)]();return(e%12||12)+
+- :Ms(n);let u=t&&n.bulletLastUsed?l===n.bulletLastUsed:!1;if(!e.ordered){const f=e.children?e.children[0]:void 0;if((l===
+- :mu(n)}function mu(e){Ge(e);const t=e.codePointAt(0)===47;let n=gu(e,!t);return n.length===0&&!t&&(n=
+- :n(290)},body:JSON[n(277)]({query:i}),signal:e[n(310)]});if(!u.ok){const N=await u.json().catch(()=>null),V=N?.error?.[n(278)]||
+- :n(348);return c.jsxs(n(320),{className:n(367),style:{fontFamily:
+- :n,!l&&c.jsx(Vn,{size:14,className:D0(508)})]})]}),qLe=x=>{const t=D0,e=typeof x?.[t(453)]===t(495)?x[t(453)]:
+- :N,onClick:()=>{const Y=m;window[Y(515)]()?.[Y(590)]()||l(
+- :n.color||e(128);return c.jsxs(
+- :n[e(197)]===e(191)?n[e(203)]?e(185):e(135):e(199)+a+e(154)};function mv(){const x=[
+- :new Date(x)[t(288)](void 0,{month:
+- :null};if(Ez[n])return Ez[n];if(n[e(302)](
+- :n},fXe=Qt(514),GXe=x=>Pxe(x[Qt(447)])[Qt(529)],ZXe=Qt(413),gXe=x=>{const t=Qt,e=String(x||
+- :n},gD=(x,t)=>{const e=Sn,n=typeof x==
+- :n},jW=(x,t=!1)=>{const e=HF,n=[x[e(425)],t?x[e(490)]?e(417):x[e(495)]:
+- :o.muted=G&&typeof G!=
+- :o.precedence,precedence:null})}function Bde(o,d,b,G){o.querySelector('link[rel=
+- :o.selected=!1;break;default:tn(o,d,Y0,null,G,Se)}for(Ze in G)if(Se=G[Ze],je=b[Ze],G.hasOwnProperty(Ze)&&Se!==je&&(Se!=null||je!=null))switch(Ze){case
+- :o.selected=G&&typeof G!=
+- :o.selected=Se&&typeof Se!=
+- :o.value),o=G,o!==b?(d.setValue(o),!0):!1}function S0(o){if(o=o||(typeof document<
+- :q(393),R[q(474)](),R[q(348)](_0,E0,1.8,0,Math.PI*2),R[q(521)]()}if($[q(365)]>.02){const s0=Math.sin(M*1.3)*60;R[q(454)]=q(473)+He+
+- :r(373),value:Y,maxLength:Cf,placeholder:r(373),spellCheck:!1,autoComplete:r(352),onChange:$=>{const ae=r;W($.target[ae(356)]),st[ae(303)]()}})}),c.jsxs(
+- :r(_?226:194),pe=r(246),fe=h[r(253)]>1||h[r(253)]===1&&!I;return c.jsxs(r(199),{className:
+- :r===n(545)||r===n(487)?n(626):n(533)};return c.jsx(s6,{ref:a,videoRef:l,gate:n(x===
+- :return 1;case
+- :return 2;default:return 0}return o===1&&d===
+- :return A=PI(b.src),(F=o.querySelector(gp(A)))?(d.instance=F,hx(F),F):(G=b,(F=jc.get(A))&&(G=h({},b),n4(G,F)),o=o.ownerDocument||o,F=o.createElement(
+- :return ai(d);case
+- :return c.jsx(cue,{size:14,className:p(526)});case p(500):return c.jsx(xl,{size:14,className:
+- :return c.jsx(DMe,{block:x});case t(113):return c.jsx(qMe,{block:x});case
+- :return c.jsx(uje,{block:x});case t(158):return c.jsx(Ije,{block:x});case t(169):return c.jsx(zMe,{block:x});case
+- :return c1.indexOf(d.keyCode)!==-1;case
+- :return d.keyCode!==229;case
+- :return d.which!==32?null:(rg=!0,og);case
+- :return d=b.async,b=b.src,typeof b==
+- :return e(396)+hse(x)+
+- :return e.value;case
+- :return ig&&d.locale!==
+- :return J_e.test(x);default:return!1}}function Wm(x){if(x==null)return x;if(typeof x==
+- :return mJ(x)?Number(x):
+- :return null;case
+- :return null;default:throw Error(n(443,d.type))}else d.type===
+- :return o=d.data,o===og&&rg?null:o;default:return null}}function ug(o,d){if(Zr)return o===
+- :return o=d.disabled,typeof d.precedence==
+- :return t(375);default:return t(382)}}const pLe=({onSave:x,onCancel:t})=>{const e=OG,[n,a]=f.useState(
+- :return t(483);default:return t(567)}},IXe=x=>{const t=Qt,e=x.previous,n=x[t(499)].active;if(!e||!e[t(468)]||!n)return
+- :return t(484);case t(508):return
+- :return t(530);case t(369):return x[t(335)][t(346)]>=3?t(530):
+- :return t?e(517)+t:
+- :return typeof b.precedence==
+- :return wye(t,e);case n(193):return Vye(t,e);case n(237):return Rye(t,e);case
+- :return x.getAttribute(
+- :return x.hasAttribute(
+- :return x?1:0;case
+- :return x[t(393)].length<=2?
+- :return y9(x);case
+- :return!0;default:return!1}}function Xde(){if(typeof performance.getEntriesByType==
+- :return!1;default:return x}},IWe=x=>{if(typeof x==
+- :return[$e,n]}return n.includes(
+- :st[D(247)](),Q();return;case D(246):case D(293):st[D(299)](),a[D(305)]();return;case D(287):st[D(299)](),L();return;case
+- :String(e)}function Jt(e){const t=typeof e==
+- :String(Math[t(190)](0,Math[t(180)](x)))}function NEe(x){const t=iI;return f.useSyncExternalStore(gEe,()=>x?fQ[t(192)](x)??null:null,()=>null)}const R0=fae;function lw(){const x=[
+- :String(u.upsert)});const h=u.metadata;if(typeof Blob<
+- :String(x);return AWe(t)?HWe(t):t},QWe=x=>x===null?
+- :String(x)}var mJ=G9((x=>Z9?x>=X_e&&x<=Y_e:x[0]===
+- :String.fromCodePoint(n)}function se(e){return e.replace(/[\t\n\r ]+/g,
+- :t(355)},F6e=({onRegisterSaveHandler:x,openExternalLink:t})=>{const e=mx,{config:n}=xie(!0),a=n?.[e(352)][e(321)].set??!1,l=n?.[e(352)].anthropic.hint??
+- :t(366))}catch{}const e=Bl();try{window[t(363)](new CustomEvent(Ju,{detail:e}))}catch{}return e};function $5(){const x=[
+- :t(397));return c.jsxs(t(398),{role:t(438),
+- :t(455)},oXe=x=>{const t=ur;try{return new Intl[t(430)](t(401),{day:t(450),month:
+- :t(530);case t(325):return
+- :t(530);case t(350):return t(530);case
+- :t(530);case t(476):return x[t(534)]===t(484)||x[t(534)]===t(339)?
+- :t(572):x.outcome===t(446)?t(438):x[t(578)]===t(456)?t(402):""},eQ=x=>{const t=Qt;return x[t(374)]?qH(x.t)+t(431)+(x[t(378)]||"")+
+- :t===l(344),onClick:()=>R(l(344)),title:r?void 0:l(222),className:X(t===l(344)),children:[c.jsx(sF,{size:16,className:t===l(344)?
+- :t=xce(t);break e;case
+- :throw e.reason;default:switch(typeof e.status==
+- :throw e.reason}}throw e}function v(e,a,c,n,h){var d=typeof e;(d===
+- :typeof G==
+- :typeof o,
+- :typeof this.value==
+- :typeof t},RG(x)}function J5e(x,t){if(RG(x)!=
+- :u(262);return r+1+
+- :u.title)}const r=e(n===
+- :u[l(429)].label,spellCheck:!1,autoComplete:l(424),onChange:E=>{const k=l;m(E[k(462)][k(434)]),st[k(442)]()},onKeyDown:E=>{const k=l;E[k(442)]===
+- :var ax=
+- :var B=_7(
+- :var F=null,A=null,B=null,te=null,Ze=null,Le=null,De=null;for(je in b){var t0=b[je];if(b.hasOwnProperty(je)&&t0!=null)switch(je){case
+- :var G=o.querySelector('style[data-href~=
+- :void 0):e=null,i.d.C(r,e))},n.prefetchDNS=function(r){typeof r==
+- :void 0,children:[c.jsx(
+- :void 0,children:[N?
+- :void 0,children:[p[g(422)]!=null&&c.jsxs(c.Fragment,{children:[c.jsxs(
+- :void 0,children:l},s))},a))})]})})},eje=({block:x})=>c.jsx(
+- :void 0,children:N>0&&z?S:void 0}),c.jsx(
+- :void 0,style:m?void 0:{transform:e(141)},children:[c.jsx(e(164),{cx:
+- :void 0},children:[c.jsxs(
+- :void 0},children:[c.jsxs(l(145),{className:l(123),children:[c.jsx(
+- :v},children:s.map((E,k)=>{const Q=l,J=u?.id===E.id;return c.jsx(
+- :wi(279),children:yMe[wi(300)](({id:e,label:n,title:a,Icon:l})=>{const s=wi,i=x===e;return c.jsxs(
+- :x,nje=x=>{const t=Hn,e=x[t(128)];if(e<3)return x[t(143)]((s,i)=>(i?
+- :x}})),f6e=async(x,t={})=>{const e=OZ,n={Authorization:e(206)+x},a=await LJ(zO+e(223),{headers:n}),l=_J(e(222),a);if(l.state!==
+- :Ze=t0;default:G.hasOwnProperty(je)||tn(o,d,je,null,G,t0)}}for(var Se in G){var je=G[Se];if(t0=b[Se],G.hasOwnProperty(Se)&&(je!=null||t0!=null))switch(Se){case
+- :{const e=x[t(544)]??0,n=e===0?
+- :{const I=t(250);return x[t(304)]===t(270)?{title:t(324),lead:a,body:I+
+- :{const I=t(336)+(n?e+
+- :{const I=x[t(304)]===
+- :{const n=x.type;return n===
+- :{const r=t[n];r&&Object.assign(e[n],r);break}}}function Rt(e,t){throw e?new Error(
+- ; koi yaadash tool nahi
+- ; options=${i};`),l===
+- ; they are back.
+- ; visit 
+- ;[Rs(411)]=[];[Rs(399)]=0;[Rs(401)]=null;[Rs(396)](){const t=Rs;this.mark=-1,this[t(405)]=0,this[t(421)]=-1,this.awakeSince=0,this[t(413)]=!1,this[t(417)]=0,this[t(410)]=
+- ;[xs(443)]=0;speakingSince=null;spokenMs=0;[xs(428)]=!1;[xs(442)]=bEe;[xs(438)](){const t=xs;this[t(430)]=
+- ;B=o+B;var te=G.get(B);te?te.push(A):G.set(B,[A])}}return G}function U7(o,d,b){o=o.ownerDocument||o,o.head.insertBefore(b,d===
+- ;break e;case
+- ;break}default:l=String.fromCharCode(o)}i=o===-2,r.push(l)}return r.join(
+- ;case 10:return
+- ;case 11:return
+- ;case 12:return
+- ;case 13:return
+- ;case 14:return
+- ;case 15:return
+- ;case 6:return
+- ;case 7:return
+- ;case 8:return
+- ;case 9:return
+- ;case e(478):case e(388):case
+- ;case t(151):return t(180);case
+- ;case t(332):return x[t(376)][t(346)]<=3?
+- ;case t(351):return
+- ;case t(387):return t(496)+(x[t(433)]||
+- ;case t(392):return t(415);case t(440):return t(494);case t(410):return
+- ;case t(394):return t(385);default:return String(x||
+- ;case t(419):return
+- ;case t(428):return
+- ;case t(434):return
+- ;case t(462):case t(514):return
+- ;case t(467):return
+- ;case t(470):return
+- ;case t(480):return
+- ;case t(481):return x[t(532)]===t(389)?
+- ;case t(482):return t(417);case t(401):return t(460);case t(475):return t(414);case t(398):return
+- ;case t(490):return
+- ;case t(496):return x[t(335)].length>=4?
+- ;case t(511):return t(383);case
+- ;case t(513):return
+- ;case Vi.closing:return
+- ;const _=()=>{const ie=V,O=getComputedStyle(document[ie(348)]);J=s||O[ie(389)](ie(367))[ie(313)]()||ie(342),C=s?CTe(s):O[ie(389)](ie(336))[ie(313)]()||ie(363),M=ie(310)+J+
+- ;const _P=/[-_.]/g,p_e={
+- ;const a=await t[x(438)](x(454),{email:n,claimDevice:!1});if(!a?.[x(442)])return
+- ;const a=Math.round((wb(t)-wb(n))/t_);return a<=0?TW(n):a===1?
+- ;const a=Math[t(334)]((n[t(307)]()-Date.now())/6e4);if(a<=0)return
+- ;const a=rXe(x[t(499)].now-e.at);return n.private?t(422)+a+
+- ;const e=Math[t(190)](x),n=(a,l)=>String(Number(a.toFixed(l)));return e>=1e9?n(x/1e9,1)+
+- ;const e=Math[t(554)]((Date[t(540)]()-x)/6e4);return e<1?t(395):e<60?e+
+- ;const e=new Date(x);if(Number[t(505)](e[t(518)]()))return
+- ;const e=new Date(x);return Number[t(193)](e[t(201)]())?
+- ;const e=new Date(x);return Number[t(266)](e[t(238)]())?
+- ;const f={type:
+- ;const h=[],m=(X,v,E)=>{const k=n;if(X[k(241)]<.01&&X[k(406)]<.01||(u===void 0&&(u=e?lMe(l,e):null),!u))return;const Q=v+
+- ;const h=s?.cause;if(h){var m,p,g,N;const Y=(m=h?.message)!==null&&m!==void 0?m:
+- ;const H=V*6+1;l[g(212)](),l.roundRect(H,(r-W)/2,3,W,1.5),l[g(237)]()}m=requestAnimationFrame(p)};return m=requestAnimationFrame(p),()=>cancelAnimationFrame(m)},[x]),c.jsx(
+- ;const i=
+- ;const l=JSON[x(446)](Ld());ac(a),au(a),gf(a),a9&&JSON[x(446)](Ld())!==l&&qae();try{window[x(444)](new CustomEvent(SG,{detail:a}))}catch{}return
+- ;const l=So(String(n.say||
+- ;const l=xwe[x.getMonth()]??
+- ;const M=await lh(os[J(462)](!0),n);return M?M.ok?{text:String(M[J(435)]||
+- ;const n=Date[t(226)]()-840*6e4,a=on().id;return ane(a),YXe(e,xne(a)[t(229)](l=>l.t>=n),nne(a))}catch{return
+- ;const n=e[x(443)](x(480)),a=String(n?e.getParameter(n[x(429)]):
+- ;const n=Math.round((e[t(518)]()-Date[t(546)]())/6e4);if(n<=0)return t(500);if(n<60)return t(512)+n+t(492);if(n<1440){const a=Math[t(535)](n/60),l=n%60;return l?t(512)+a+
+- ;const Q=Math[W(346)]()*1.6+.4+
+- ;const R=()=>{const X=N6,v=r[X(248)];if(v){const E=v[X(146)](),k=v.offsetWidth||E[X(148)],Q=v[X(241)]||E[X(197)],J=E.width/k||1,C=document[X(244)](
+- ;const R=X=>I/2+m*Math[w(209)](X)+
+- ;const r={type:
+- ;const u=l<ns[n(251)],I=s<ns[n(251)];u||I?l<=s?(this[n(253)]=n(351),this[n(301)](n(272))):(this[n(253)]=n(293),this[n(301)](n(327))):(this[n(253)]=
+- ;const v=34;for(let E=0;E<v;E++){const k=document.createElement(W(320));k[W(411)][W(355)]=W(412),k[W(411)].backgroundColor=W(378),k[W(411)][W(376)]=
+- ;const x=globalThis.process;g5=x==null||(X4=x.version)===null||X4===void 0?void 0:X4.replace(/^v/,
+- ;const X={trigger:t[n(264)]===n(238)?n(228)+t[n(487)]:t[n(264)],window:m?m[n(325)]?n(223):
+- ;default:return t(380)+e.replace(/^llm:/,
+- ;default:return t(517)}}function uLe(x){const t=Kl;return x===
+- ;default:return x&&/^pin_limit/[e(495)](x)?bse(x):x||t||e(491)}}function bse(x){const t=ux,e=Number((x||
+- ;default:return x.hasAttribute(
+- ;default:return x?t(464)+x+'
+- ;default:return}switch(n){case 11:return
+- ;default:return}}static getAndroidVersionName(t){const e=t.split(
+- ;default:return}}static getMacOSVersionName(t){const e=t.split(
+- ;else if(p===
+- ;else if(typeof navigator<
+- ;else if(typeof t==
+- ;else{te=Ze.stateNode;var t0=Ze.memoizedProps.style,Se=t0!=null&&t0.hasOwnProperty(
+- ;for(/[^ \r\n]/.test(r)&&(/^[ \r\n]/.test(r)&&/[ \r\n]$/.test(r)||/^`|`$/.test(r))&&(r=
+- ;for(let h=0;h<55;h++){const m=document[u(409)](u(389));m[u(379)][u(376)]=u(391),m.style[u(349)]=u(388),m[u(379)][u(390)]=u(401);const p=Math[u(365)]()*2+.5+
+- ;for(let l=0;l<56;l++)a+=e.charAt(Math.floor(Math.random()*n));return a}return crypto.getRandomValues(t),Array.from(t,k0e).join(
+- ;for(let n=0;n<x.length;n++)x[n]&&(t=Vie(x[n]))&&(e&&(e+=
+- ;for(let u=i.length-1;u>=0;u-=1){const I=i[u],{isExternal:h,modifiers:m,hasImportantModifier:p,baseClassName:g,maybePostfixModifierPosition:N}=e(I);if(h){r=I+(r.length>0?
+- ;function Mr(e,t,n,r){let i;typeof t==
+- ;function TR(){const x=[
+- ;function Uie(x,t){return x=x-169,qR()[x]}function qR(){const x=[
+- ;function Yi(e,t){if(!t||t.Fragment===void 0)throw new TypeError(
+- ;h&&(await F3e(e,{id:await eB(t(447)+e+
+- ;if(!a)return xb(x,n(498));const l=F2(t?.[n(541)]),s={pattern:a,path:F2(t?.path),glob:F2(t?.[n(521)]),output_mode:l&&eve[n(522)](l)?l:void 0,context:j4(t?.[n(493)]??t?.[
+- ;if(!e)return Fge;const a=rj.get(e);if(a&&a[0]===n)return a[1];const l={error:Wy(
+- ;if(!h&&!m.trim())continue;const p=new Date(Number(I?.[t(462)])||Date[t(444)]())[t(472)]();await d3e(e,{id:await eB(
+- ;if(!l.trim())throw new pl(e(404),
+- ;if(!LQ[t(414)](n))return null;const a={source:n,version:typeof e[t(396)]===t(406)&&Number[t(420)](e[t(396)])&&e[t(396)]>=1?e.version:1,position:typeof e[t(412)]==
+- ;if(!n||!a||a[e(521)]>64e3)return;const l=typeof t[e(488)]===e(507)?t[e(488)]:
+- ;if(a<60)return t(350)+a+t(313);if(a<1440){const l=Math.floor(a/60),s=a%60;return s?t(350)+l+
+- ;if(a<n[e(433)]){const l=n[e(439)](
+- ;if(a===1)return e(451);if(a>1&&a<7)return ute[x[e(412)]()]??
+- ;if(e<60)return e+t(144);const n=Math.round(e/60);return n<24?n+
+- ;if(I){const S=C;if(C+=Math[_(166)](0,U),U<=0)return null;const z=i.slice(j+1).every(P=>P.values[k]<=0),L=N.y(S)-(S>0?2:0),D=N.y(C);return L-D<.5?null:z?c.jsx(_(180),{className:
+- ;if(I[n(369)]===n(303)){const g=typeof I[n(283)]===n(299)?
+- ;if(J0)return J0;const Nt=String(ve?.[ne(500)]||
+- ;if(L.current[we(235)](We),m({sel:Ee[we(304)]??null,stage:!!Ee[we(292)]}),L.current.length>1&&Ca.sfx(we(209)),Ee[we(143)]&&Be){if(fe(Be),!await xe(O[we(236)]?150:VJe,Qe))return
+- ;if(n){if(t[e(661)]===e(598))this[e(620)]?.note(e(618)+n);else if(t[e(661)]===e(541)){const a=typeof t[e(536)]==
+- ;if(n.alignDelimiters!==!1){const R=u[c]-(S[c]||0),b=o[c];b===114?C=
+- ;if(n.length<=t)return n;const a=Math[e(607)](t*.72),l=Math[e(589)](180,Math.floor(t*.2)),s=n.slice(0,a).trim(),i=n[e(409)](-l)[e(465)]();return s+e(674)+i},rne=x=>
+- ;if(n===e(374))return Yz[x.missing?.[0]??e(288)];if(n===e(295)){const u=l9e(x[e(345)]);return{title:e(382),body:e(360)+(u||e(351))+
+- ;if(O(e))for(var l=0;l<e.length;l++)n=e[l],d=u+E(n,l),i+=v(n,a,c,d,h);else if(l=F(e),typeof l==
+- ;if(s)try{r=String(await s[n(271)](n(281))||
+- ;if(Ss(e,n)){const c=n.enter(
+- ;if(typeof e==
+- ;if(typeof e===x(492)&&e)return x(556)+e}catch{}return
+- ;if(typeof x==
+- ;if(typeof x===e(225))return Xl(x,t);if(typeof x===e(221)||typeof x==
+- ;if(typeof x===t(452))e=x;else if(e=String(x?.[t(461)]??x?.[t(425)]??x?.[t(414)]??
+- ;It.innerHTML=t;const n=It.textContent;return n.charCodeAt(n.length-1)===59&&e!==
+- ;let a=null;if(tke.test(n)){const l=typeof e[t(418)]==
+- ;let a=typeof x===n(336)?x:typeof x===n(452)||typeof x===n(419)?String(x):
+- ;let a=x.join(
+- ;let C=
+- ;let e=
+- ;let l=!1;const s=(x??
+- ;let t=-1,n=e.length,r;for(;--n;)if(e.codePointAt(n)===47){if(r){t=n;break}}else r||(r=!0);return t<0?e.codePointAt(0)===47?
+- ;let u_e;const I_e=typeof TextEncoder<
+- ;pe[e(592)]=ke,Xe(ke);let be=
+- ;r=`${(g=s?.name)!==null&&g!==void 0?g:
+- ;r?h=I+n(471)+r:h=I,await a.invoke(
+- ;return a(
+- ;return c.jsx(t(268),{className:t(263),onClick:u,children:c.jsxs(t(268),{role:t(235),
+- ;return c.jsxs(
+- ;return c.jsxs(db,{title:s(481),hint:r?l?s(402):u?u+s(388):void 0:void 0,action:c.jsxs(c.Fragment,{children:[!n&&r&&c.jsx(s(396),{type:
+- ;return c.jsxs(e(239),{className:
+- ;return c.jsxs(e(523),{className:e(479)+t,children:[c.jsxs(e(523),{className:e(481),children:[c.jsxs(
+- ;return c.jsxs(X(471),{type:
+- ;return e[t(264)]===t(253)?e.n+
+- ;return i?(l(
+- ;return l.metadata!==void 0&&l.metadata.tunedModel!==void 0?s=l.metadata.tunedModel:l.name!==void 0&&l.name.includes(
+- ;return l=p(366)+g+V,!0});h&&l&&r(
+- ;return l=p(444)+g+V,!0});h&&l&&r(
+- ;return n[1][r]}const Oc={name:
+- ;return new Error(`socket closed: ${t.code}${e}`,{cause:x})}return new Error(
+- ;return o&&(G=Ms(o)?o.checked?
+- ;return p+1+
+- ;return Promise[ze(286)]()[ze(212)](()=>{const ft=ze,Lt=rs(Jt),Gt=CXe(cx);return ge[ft(256)][ft(250)]({email:I0,whatsapp:Ot,name:xt,age:
+- ;return RG=typeof Symbol==
+- ;return S[U(592)]?t(z?U(489):
+- ;return t(406)+x[t(320)]+
+- ;return t?(n=t,a=e(308)):x===
+- ;return this.filters.push(`${t}=${l}${JWe(e,n)}`),this}eq(t,e){return this.add(t,
+- ;return this.headers.set(
+- ;return typeof t==
+- ;return x[e(448)]()+
+- ;return zve[t(323)](e)?t(413):
+- ;return`${n}${s}${D1}=${encodeURIComponent(t)}${a}`}async function qNe(x,t,e=!1,n){const a=TNe();let l=a;e&&(l+=
+- ;return`${x}${e}${this.serialize(t)}`}},NWe=x=>{let t=
+- ;return{result:Xl(r,t),data:i}},Vye=(x,t)=>{const e=at,n=typeof x[e(167)]?.[e(253)]===e(221)?x[e(167)][e(253)]:void 0,a=Math[e(212)](180,t-120),l=Wb(x[e(208)],a),s=n?
+- ;return}const D=R.code+
+- ;s&&(e.push({speaker:l.role,text:s}),n=l[t(331)]===t(356)&&l[t(308)]===!0)}const a=String(x[t(383)]?.()||
+- ;switch(e){case t(413):return t(500);case t(477):return
+- ;switch(s?n[e(358)](s[e(357)]+1):n){case e(374):return Yz[s??e(288)];case e(304):return{title:i+e(292),body:e(385),action:e(364)};case e(327):return{title:
+- ;switch(x){case t(470):return
+- ;t(new VH(a.statusText||`HTTP ${l} error`,l,s,n))})}else t(new W0e(Vj(x),x,n))},sNe=(x,t,e,n)=>{const a={method:x,headers:t?.headers||{}};if(x===
+- ;t(new VH(Vj(s),l,i,n,s?.code))}).catch(()=>{const s=l+
+- ;t?.(cc.CHANNEL_ERROR,new Error(g,{cause:p}))}).receive(
+- ;try{const e=await Promise[t(241)]([lne(x),new Promise(l=>setTimeout(()=>l(null),JXe))]);if(!e?.ok||!e[t(217)])return
+- ;try{const N=e[t(411)](t(528));I=String(e[t(490)](N?N.UNMASKED_RENDERER_WEBGL:e[t(514)])||
+- ;try{const p=await window[h(321)]?.[h(285)](
+- ;try{n=String(await x[e(281)](
+- ;try{t=String((await PF()?.invoke?.(x(351)))?.[x(373)]||
+- ;try{W=String(await Y.invoke(w(328))||
+- ;var B=F.get(A);if(!B){var te={loading:0,preload:null};if(B=G.querySelector(Zp(A)))te.loading=5;else{o=h({rel:
+- ;x.catalogName&&(t+=`/${x.catalogName}`);const e=x.baseUrl.endsWith(
+- ;x[IH]=(e+` ${mZe}`).trimStart()}function fZe(x){return x!==null&&typeof x==
+- <!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="
+- <body><div id="vh-stream" style="display:contents"></div></body></html>
+- <if look_again_minutes is set: what you will check then>
+- <if you speak, one word for the kind of line: care | question | tease | reaction | memory | thought | greeting | nudge>
+- <meta name="description" content="
+- <one or two words: how you feel right now>
+- <one private line: what you noticed and why you chose this — you will read it next time>
+- <the words you would say, or empty>
+- <truncated: max depth>
+- <usually empty. One short line only when you learned something about them worth knowing on another day, or there is a thread to pick up later>
+- === SKILL: 
+- ?!!x:void 0}const J_e=/^-?([1-9][0-9]*|0)(\.[0-9]+)?$/;function jZ(x){switch(typeof x){case
+- ?!1:t.status===408||t.status===409||t.status===429||t.status>=500}async retryRequest(t,e,n,a){var l;let s;const i=a?.get(
+- ?$o:a===n(241)?$1e:Xu;return c.jsxs(
+- ?$we[x[Te(436)]()[Te(397)]()]:void 0,eVe={s:
+- ?(a=!1,u!==0&&(tr(p,t,u,s,f),f=void 0,u=0),s={type:
+- ?(a=e,this._hints=n):e!=null&&typeof e==
+- ?(mJ(e)?e=Number(e):(e=MZ(64,e),e=mJ(e)?Number(e):String(e)),e):jZ(e)?typeof e==
+- ?(r=!0,c=void 0,o=[0,0,0,0],l=[0,n+1,0,0],a&&(a=!1,f={type:
+- ?(r=n,n=t):i=t;const o=fn(i),l=r?-1:1;a(e,void 0,[])();function a(u,s,f){const c=u&&typeof u==
+- ?0:o}function OE(o,d){return o===
+- ?1400:700,!0);return a||oa(t(442)),{type:t(481),style:n,body:a,tone:RZ(x.tone)}},hVe=x=>{const t=Te,e=fn(u0(x,
+- ?154:189)}];return c.jsx(s6,{ref:a,videoRef:l,gate:n(148),kicker:
+- ?359:404)})});const ae=i?.devices?.used,ce=i?.[l(349)]?.max,Me=U?.[l(357)]||J?.[l(442)]||null,ee=Me?Lk(U?.[l(503)]||J?.[l(484)],Me):null;return c.jsxs(
+- ?359:416);return n===1?t(406)+l:t(406)+n+
+- ?600:460):PD(Math[e(500)](a[e(504)]*.5,a[e(475)]*.36),110,220);return c.jsx(
+- ?[window.location.origin]:void 0,signal:a}={}},l){if(!e)return{data:null,error:new NG(
+- ?_t(o):0},keyCode:function(o){return o.type===
+- ?`is.${QWe(t)}`:`${x}.${yj(t)}`};class LWe{constructor(){this.filters=[]}add(t,e,n,a=!1){const l=a?
+- ?b:u;return q===b&&r.parser.lazy[r.now().line]?n(k):q(k)}function u(k){return e.enter(
+- ?c.jsxs(c.Fragment,{children:[c.jsx(o$,{size:13}),t(216)]}):null;return c.jsxs(
+- ?c.name:void 0;Object.defineProperty(p,
+- ?c.tagName:typeof c.name==
+- ?ce.basename(this.path,this.extname):void 0}set stem(t){En(t,
+- ?ce.dirname(this.path):void 0}set dirname(t){$t(this.basename,
+- ?ce.extname(this.path):void 0}set extname(t){if(Cn(t,
+- ?clearTimeout:void 0,R7=typeof Promise==
+- ?DC(d):yo.r(o)}var zI=typeof document>
+- ?document:void 0),typeof o>
+- ?e.as:void 0,crossOrigin:t,integrity:typeof e.integrity==
+- ?e.codePointAt(0):0;return t===67||t===99?99:t===76||t===108?108:t===82||t===114?114:0}function ks(e,t,n,r){const i=n.enter(
+- ?e.fetchPriority:void 0,referrerPolicy:typeof e.referrerPolicy==
+- ?e.fetchPriority:void 0;t===
+- ?e.imageSizes:void 0,media:typeof e.media==
+- ?e.imageSrcSet:void 0,imageSizes:typeof e.imageSizes==
+- ?e.integrity:void 0,l=typeof e.fetchPriority==
+- ?e.integrity:void 0,nonce:typeof e.nonce==
+- ?e.media:void 0})}},n.preloadModule=function(r,e){if(typeof r==
+- ?e.nonce:void 0,type:typeof e.type==
+- ?e.nonce:void 0})}},n.preinitModule=function(r,e){if(typeof r==
+- ?e.nonce:void 0})}}else e==null&&i.d.M(r)},n.preload=function(r,e){if(typeof r==
+- ?e.precedence:void 0,{crossOrigin:a,integrity:s,fetchPriority:l}):t===
+- ?e.referrerPolicy:void 0,imageSrcSet:typeof e.imageSrcSet==
+- ?e.type:void 0,fetchPriority:typeof e.fetchPriority==
+- ?e.unref():typeof Deno<
+- ?e:1}class J extends Error{constructor(t,n,r){super(),typeof n==
+- ?e:function(){return e}}const vn=
+- ?ee(559):ee(577),light:ee(604)}}})(),re=BO[r],se=ee=>{const Ie=n;return r===
+- ?function(o){return R7.resolve(null).then(o).catch(kde)}:V7;function kde(o){setTimeout(function(){throw o})}function Jr(o){return o===
+- ?function(t){return typeof t}:function(t){return t&&typeof Symbol==
+- ?global:typeof self<
+- ?global:void 0;if(n&&typeof n.WebSocket<
+- ?gt(e.value):!1:gt(e)}function gt(e){return e.replace(Ci,
+- ?h:Q.id===J(412)?N:0,M=l===Q.id;return c.jsxs(J(370),{type:
+- ?i.d.S(r,typeof e.precedence==
+- ?i:void 0,tone:RZ(n[a(437)]),spark:r[a(346)]>=3?r:void 0}})[t(477)](n=>!!n);return e.length===0&&oa(t(490)),{type:
+- ?i=t:!o.cause&&t&&(l=!0,i=t.message,o.cause=t),!o.ruleId&&!o.source&&typeof r==
+- ?i[2].sliceSerialize(i[1],!0).length:0,l=0;return a;function a(h){const d=r.containerState.type||(h===42||h===43||h===45?
+- ?I[Q(381)]:[];return J[Q(397)](C=>C.id===h)||!h?J:[{id:h,label:h,note:
+- ?im(x[e(167)],Math[e(212)](160,t-140)):void 0,a=n?
+- ?l(419):l(525),typeof ae===l(517)&&typeof ce===l(517)&&
+- ?Le&&de(Le.elementType)&&(Wx=ba):Wx=Hre;if(Wx&&(Wx=Wx(o,Le))){e0(t0,Wx,b,De);break e}U0&&U0(o,Se,Le),o===
+- ?m:_,{dropped:K}=Pxe(U[C(435)]);return K>0&&h(C(464),C(475),C(465)+DW+C(426)+K+
+- ?n.align:void 0,a=l?l.length:t.children.length;let u=-1;const s=[];for(;++u<a;){const c=t.children[u],p={},h=l?l[u]:void 0;h&&(p.align=h);let d={type:
+- ?n.includeHtml:!0;return yr(e,r,i)}function yr(e,t,n){if(cl(e)){if(
+- ?n.includeImageAlt:!0,i=typeof n.includeHtml==
+- ?n:ll(e,String(n));return e.stylePropertyNameCase===
+- ?n:n(u,h);typeof I==
+- ?new r2(
+- ?new RegExp(Ru(e),
+- ?null:d.data;default:return null}}var Ge={color:!0,date:!0,datetime:!0,
+- ?null:document;function H7(o,d,b){var G=zI;if(G&&typeof d==
+- ?null:n}),children:[]},e),this.data.inTable=!0}function Ks(e){this.exit(e),this.data.inTable=void 0}function Zs(e){this.enter({type:
+- ?Number(x):void 0}function xZ(x){if(x!=null&&typeof x!=
+- ?o.keyCode:0},which:function(o){return o.type===
+- ?o.toString():new TextDecoder(l||void 0).decode(o)),c=0,t=
+- ?o:i.create(e,i.Fragment,{children:o||void 0},void 0)}function mr(e,t,n){if(t.type===
+- ?o===DE?!1:(DE=o,!0):(DE=null,!1)}var V7=typeof setTimeout==
+- ?Object.is:Jre;function Bm(o,d){if(js(o,d))return!0;if(typeof o!=
+- ?Object.keys(this.specialTokens):t),i=new Set(e===
+- ?Promise:void 0,Ede=typeof queueMicrotask==
+- ?queueMicrotask:typeof R7<
+- ?r(280):void 0,display:
+- ?reportError:function(o){if(typeof window==
+- ?self:null,gh=typeof window<
+- ?self:{};function Jse(x,t){e:{for(var e=[
+- ?setTimeout:void 0,Yde=typeof clearTimeout==
+- ?String(e.message):String(e),error:e});if(!window.dispatchEvent(a))return}else if(typeof process==
+- ?String(o.message):String(o),error:o});if(!window.dispatchEvent(d))return}else if(typeof process==
+- ?String:Number)(x)}function L5e(x){var t=J5e(x,
+- ?t.reason===e.reason&&t.details===e.details:!0}_classifyAndApplyDeviceError(t){const e={state:
+- ?t.unref():typeof Deno<
+- ?t:e}function tc(e){const t=e||{},n=t.tableCellPadding,r=t.tablePipeAlign,i=t.stringLength,o=n?
+- ?this.onclose(new CloseEvent(
+- ?this.value:new TextDecoder(t||void 0).decode(this.value)}}function Cn(e,t){if(e&&e.includes(ce.sep))throw new Error(
+- ?this:this}rollback(){return this.headers.append(
+- ?u:{};if(typeof c.type==
+- ?V++:V--,Me=void 0;break}case
+- ?v=yield H.blob():X===
+- ?v=yield H.json():X===
+- ?vH:v2)(a.fetch,`${a.url}/object/${I}`,l,ot({headers:i},s?.duplex?{duplex:s.duplex}:{}));return{path:u,id:h.Id,fullPath:h.Key}})}async upload(x,t,e){return this.uploadOrUpdate(
+- ?window.location.hostname:void 0,rpOrigins:n=typeof window<
+- ?x:function(){return x},pWe=typeof self<
+- ?x:typeof x==
+- ?x:typeof x===e(271)&&x[e(305)]()?Number(x):NaN;return Number[e(290)](n)&&Math.abs(n)<=t&&n!==0?n:null},eoe=x=>{const t=Sn;let e=5381;const n=String(x||
+- ?{Authorization:`Bearer ${x.token}`}:x.type===
+- ?{issuer:t.issuer}:{}),{data:r,error:u}=await H0(this.fetch,
+- ?{label:t(294),url:gT}:null,needsSettings:!1};case t(302):return{title:(n?e:t(351))+t(355),lead:a,body:t(320),say:(n?e:t(246))+
+- ?{provider:t,kind:l,feature:e(477)}:void 0;throw x[e(427)]===402||x[e(427)]===403||x[e(427)]===429?new qa(e(456),e(440)+x[e(427)]+
+- @@toPrimitive must return a primitive value.
+- @babel/helpers - typeof
+- @keyframes 
+- @supabase/auth-js: Invalid SIWE message field "domain". Domain must be provided.
+- @supabase/auth-js: Wallet does not have a compatible signMessage() and publicKey.toBase58() API
+- @supabase/auth-js: Wallet method signIn() API returned object without signedMessage and signature fields
+- @supabase/auth-js: Wallet method signIn() returned unrecognized value
+- @supabase/gotrue-js: Session as retrieved from URL was issued in the future? Check the device clock for skew
+- @supabase/gotrue-js: Session as retrieved from URL was issued over 120s ago, URL could be stale
+- [Attached 
+- [Automated record — awareness snapshot, not a message from the user]
+- [Automated record — memory digest, not a question to answer]
+- [Automated record — Visual Hub design request]
+- [Avatar] particles could not be built — keeping the globe:
+- [Avatar] program link failed:
+- [Avatar] shader compile failed:
+- [Avatar] WebGL unavailable — keeping the globe.
+- [Beta tool] 
+- [Characters] SOUL.md sync failed:
+- [Chats] Could not serialize chats for saving:
+- [Chats] save-chats failed:
+- [Delegation] Completion handoff for 
+- [Delegation] Gave up announcing 
+- [Delegation] No response after handing 
+- [DELEGATION_COMPLETE] 
+- [Dispatcher] Error executing 
+- [Dispatcher] No executor found for tool: 
+- [Earbud] 
+- [EarthGlobe] link:
+- [EarthGlobe] shader:
+- [FaceLock] Model load failed:
+- [lazy-mermaid] initialize failed, using defaults:
+- [LightAvatar] image could not load — falling back to the particle avatar.
+- [LightAvatar] live video on
+- [LightAvatar] shader:
+- [LightAvatar] video could not play — showing the still image.
+- [LightAvatar] WebGL unavailable — showing the still image.
+- [LogTerminal] Clipboard write failed
+- [mask-image:linear-gradient(to_bottom,black_calc(100%_-_56px),transparent)] [-webkit-mask-image:linear-gradient(to_bottom,black_calc(100%_-_56px),transparent)]
+- [MemoryDigest] asked for 
+- [MemoryDigest] main process did not accept the digest model (
+- [MemoryDigest] model call failed (
+- [MemoryDigest] reply had no content (refusal or empty answer)
+- [MemoryDigest] reply was cut off at the output-token limit
+- [MessageDispatcher] dispatch
+- [MessageDispatcher] Error sending message
+- [MessageDispatcher] GC
+- [MessageDispatcher] Queue
+- [MessageDispatcher] Reject
+- [MessageDispatcher] Resolve
+- [metadata could not be serialized]
+- [notebook] purani notes/tasks cloud par nahi gayin — agli dafa dobara:
+- [object Array]
+- [object Error]
+- [object Object]
+- [Onboarding] avatar unavailable — drawing the core instead:
+- [Onboarding] persona save failed:
+- [Pipecat Client] Bot transcription is deprecated. Please use the onBotOutput instead.
+- [Pipecat Client] Initialized
+- [Pipecat Client] Initializing devices...
+- [Pipecat Client] onLLMFunctionCall is deprecated. Please use onLLMFunctionCallInProgress instead.
+- [Pipecat Client] Unrecognized message type
+- [Presence] ticker worker nahi bana:
+- [Remote] settings-set from phone:
+- [RemoteLink] start fail hui:
+- [RTVI Message]
+- [STONIC-BACKGROUND] 
+- [STONIC-CRITICAL] Session Error (raw):
+- [STONIC-MEMORY] Loading persisted history:
+- [STONIC-SESSION] Already connected. Use disconnect() first.
+- [STONIC-SESSION] Connection attempt already in progress. Ignoring.
+- [STONIC-VOICE] Auto-reconnecting... attempt 
+- [STONIC-VOICE] FATAL — no reconnect:
+- [STONIC-VOICE] handleAutoReconnect | reason="
+- [STONIC-VOICE] Manual disconnect detected — session stays closed.
+- [STONIC-VOICE] Max reconnects (3/3) reached. Manual restart required.
+- [STONIC-VOICE] Network offline detected — closing voice session.
+- [StonicVoice] raasta engine ke saath nahi mila: 
+- [StonicVoice] raasta milane mein ghalti:
+- [SYSTEM_INIT_FETCH] Search for today's top 5 headlines and weather in 
+- [t(466)]));return n?
+- [TokenEngine] Budget full. Pruned 
+- [TOOL_VISION] 
+- [Usage] Turn 
+- [UsageTracker] Armed billable voice request: 
+- [VISUAL HUB] The user tapped the section "
+- [VISUAL HUB] The visual that was being drawn could not be finished: 
+- [VISUAL HUB] The visual you asked for is ready and on screen now: 
+- [VisualHub] block failed to render:
+- [VisualHub] design failed:
+- [VisualHub] designer reply needs repair:
+- [VisualHub] Mermaid render error:
+- [VisualHub] page script error:
+- [VisualHub] the page hit the output limit; showing what was written.
+- [Wallpaper] link:
+- [Wallpaper] shader:
+- [whatsapp-channel] opened from: 
+- [whatsapp-channel] simulation — link not opened (
+- ] [identity/preference] 
+- ]');if(G)return d.instance=G,hx(G),G;var F=h({},b,{
+- ]',typeof b==
+- ]'}function gp(o){return
+- ](m); }, function () { window[
+- ])!==void 0)throw new Error(
+- ])),on=()=>{const x=Pe;_xe();const t=Rl(Pi),e=rs(t);if(e)return e;if(t&&Axe()){const n=Q_(Rl(jF))?
+- ]),Mne=new Set([...MYe,
+- ]),Uu=x=>{const t=Pe,e=String(x[t(320)]||
+- ]),Wi=new Set([
+- ]);e!==void 0&&a!=null&&y(e,[
+- ]);e!==void 0&&E!=null&&y(e,[
+- ]);e!==void 0&&i!=null&&y(e,[
+- ]);e!==void 0&&K!=null&&y(e,[
+- ]);e!==void 0&&k!=null&&y(e,[
+- ]);e!==void 0&&l!=null&&y(e,[
+- ]);e!==void 0&&Q!=null&&y(e,[
+- ]);e!==void 0&&s!=null&&y(e,[
+- ]);e!==void 0&&v!=null&&y(e,[
+- ]);e!==void 0&&X!=null&&y(e,[
+- ]);function jYe(x){return!!(x.hasAttribute(
+- ]);if(!await crypto.subtle.verify(I,h,s,JNe(`${i}.${r}`)))throw new m5(
+- ]);if(a!=null){let I=a;Array.isArray(I)&&(I=I.map(h=>Dpe(h))),y(e,[
+- ]);if(a!=null){let I=a;Array.isArray(I)&&(I=I.map(h=>h)),y(e,[
+- ]);if(a!=null){let i=Ic(a);Array.isArray(i)&&(i=i.map(r=>Wee(r))),y(e,[
+- ]);if(a!=null){let l=a;Array.isArray(l)&&(l=l.map(s=>s)),y(e,[
+- ]);if(a!=null){let l=a;Array.isArray(l)&&(l=l.map(s=>s)),y(t,[
+- ]);if(e!==void 0&&H!=null){let _=H;Array.isArray(_)&&(_=_.map(U=>gGe(U))),y(e,[
+- ]);if(e!==void 0&&H!=null){let j=lm(H);Array.isArray(j)&&(j=j.map(_=>Wme(am(_)))),y(e,[
+- ]);if(e!==void 0&&R!=null&&y(e,[
+- ]);if(e!==void 0&&R!=null){let _=lm(R);Array.isArray(_)&&(_=_.map(U=>FGe(am(U)))),y(e,[
+- ]);if(e!==void 0&&v!=null){let z=lm(v);Array.isArray(z)&&(z=z.map(L=>Yee(am(L)))),y(e,[
+- ]);if(e!==void 0&&W!=null){let j=W;Array.isArray(j)&&(j=j.map(_=>gme(_))),y(e,[
+- ]);if(e!==void 0&&X!=null&&y(e,[
+- ]);if(e!==void 0&&X!=null){let z=X;Array.isArray(z)&&(z=z.map(L=>L)),y(e,[
+- ]);if(e!=null){let a=e;Array.isArray(a)&&(a=a.map(l=>BZe(l))),y(t,[
+- ]);if(e!=null){let a=e;Array.isArray(a)&&(a=a.map(l=>Cpe(l))),y(t,[
+- ]);if(e!=null){let a=e;Array.isArray(a)&&(a=a.map(l=>Ome(l))),y(t,[
+- ]);if(e!=null){let a=e;Array.isArray(a)&&(a=a.map(l=>Pme(l))),y(t,[
+- ]);if(e!=null){let a=e;Array.isArray(a)&&(a=a.map(l=>Upe(l))),y(t,[
+- ]);if(e!=null){let a=e;Array.isArray(a)&&(a=a.map(l=>Zme(l))),y(t,[
+- ]);if(e!=null){let l=e;Array.isArray(l)&&(l=l.map(s=>$he(s))),y(t,[
+- ]);if(e!=null){let l=e;Array.isArray(l)&&(l=l.map(s=>ebe(s))),y(t,[
+- ]);if(e!=null){let n=e;Array.isArray(n)&&(n=n.map(a=>a)),y(t,[
+- ]);if(e!=null){let n=e;Array.isArray(n)&&(n=n.map(a=>Mpe(a))),y(t,[
+- ]);if(e!=null){let u=uee(e);Array.isArray(u)&&(u=u.map(I=>_W(I))),y(t,[
+- ]);if(e!=null){let u=uee(e);Array.isArray(u)&&(u=u.map(I=>I)),y(t,[
+- ]);if(h!=null){let m=h;Array.isArray(m)&&(m=m.map(p=>p)),y(e,[
+- ]);if(h!=null){let p=h;Array.isArray(p)&&(p=p.map(g=>g)),y(e,[
+- ]);if(h!=null){let p=h;Array.isArray(p)&&(p=p.map(g=>g)),y(t,[
+- ]);if(i!=null){let h=i;Array.isArray(h)&&(h=h.map(m=>m)),y(t,[
+- ]);if(I!=null){let h=I;Array.isArray(h)&&(h=h.map(m=>m)),y(t,[
+- ]);if(I!=null){let m=I;Array.isArray(m)&&(m=m.map(p=>p)),y(t,[
+- ]);if(i!=null){let m=i;Array.isArray(m)&&(m=m.map(p=>Wfe(p))),y(e,[
+- ]);if(I!=null){let p=I;Array.isArray(p)&&(p=p.map(g=>g)),y(t,[
+- ]);if(l!=null){let i=Ic(l);Array.isArray(i)&&(i=i.map(r=>cm(r))),y(n,[
+- ]);if(l!=null){let i=Ic(l);Array.isArray(i)&&(i=i.map(r=>fZ(r))),y(n,[
+- ]);if(l!=null){let s=Gee(l);Array.isArray(s)&&(s=s.map(i=>dH(i))),y(e,[
+- ]);if(l!=null){let s=Gee(l);Array.isArray(s)&&(s=s.map(i=>uH(i))),y(e,[
+- ]);if(l!=null){let s=Ic(l);Array.isArray(s)&&(s=s.map(i=>cm(i))),y(n,[
+- ]);if(l!=null){let u=CL(x,l);Array.isArray(u)&&(u=u.map(I=>I)),y(n,[
+- ]);if(l===void 0&&(l=
+- ]);if(n!=null){let a=n;Array.isArray(a)&&(a=a.map(l=>bF(l))),y(e,[
+- ]);if(n!=null){let a=n;Array.isArray(a)&&(a=a.map(l=>l)),y(e,[
+- ]);if(n!=null){let a=n;Array.isArray(a)&&(a=a.map(l=>l)),y(t,[
+- ]);if(n!=null){let a=n;Array.isArray(a)&&(a=a.map(l=>RGe(l))),y(e,[
+- ]);if(n!=null){let a=n;Array.isArray(a)&&(a=a.map(l=>zfe(l))),y(e,[
+- ]);if(n!=null){let l=CL(x,n);Array.isArray(l)&&(l=l.map(s=>s)),y(e,[
+- ]);if(n!=null){let l=n;Array.isArray(l)&&(l=l.map(s=>IGe(s))),y(e,[
+- ]);if(n!=null){let l=n;Array.isArray(l)&&(l=l.map(s=>uGe(s))),y(e,[
+- ]);if(n!=null){let s=n;Array.isArray(s)&&(s=s.map(i=>Kfe(i))),y(e,[
+- ]);if(n!=null){let s=n;Array.isArray(s)&&(s=s.map(i=>Pfe(i))),y(e,[
+- ]);if(n!=null){let u=n;Array.isArray(u)&&(u=u.map(I=>Sbe(I))),y(t,[
+- ]);if(r!=null){let m=r;Array.isArray(m)&&(m=m.map(p=>Lme(p))),y(t,[
+- ]);if(r!=null){let m=r;Array.isArray(m)&&(m=m.map(p=>Vpe(p))),y(t,[
+- ]);if(r!=null){let p=r;Array.isArray(p)&&(p=p.map(g=>g)),y(t,[
+- ]);if(r!=null){let u=CL(x,r);Array.isArray(u)&&(u=u.map(I=>I)),y(n,[
+- ]);if(s===void 0&&(s=
+- ]);if(t!==void 0&&a!=null&&y(t,[
+- ]);if(t!==void 0&&l!=null&&y(t,[
+- ]);if(t!==void 0&&l!=null){let i=l;Array.isArray(i)&&(i=i.map(r=>Yee(r))),y(t,[
+- ]);if(t!==void 0&&n!=null&&y(t,[
+- ]);if(t!==void 0&&n!=null){let l=n;Array.isArray(l)&&(l=l.map(s=>s)),y(t,[
+- ]);if(t!==void 0&&N!=null){let v=lm(N);Array.isArray(v)&&(v=v.map(E=>Bpe(am(E)))),y(t,[
+- ]);if(t!==void 0&&N!=null){let X=lm(N);Array.isArray(X)&&(X=X.map(v=>jpe(am(v)))),y(t,[
+- ]);if(t!==void 0&&N!=null){let X=lm(N);Array.isArray(X)&&(X=X.map(v=>KZe(am(v)))),y(t,[
+- ]);if(t!==void 0&&r!=null){let h=r;Array.isArray(h)&&(h=h.map(m=>epe(m))),y(t,[
+- ]);if(t!==void 0&&r!=null){let I=r;Array.isArray(I)&&(I=I.map(h=>$me(h))),y(t,[
+- ]);if(t!==void 0&&s!=null&&y(t,[
+- ]);if(t!==void 0&&s!=null){let h=Ic(s);Array.isArray(h)&&(h=h.map(m=>jM(m))),y(t,[
+- ]);if(t!==void 0&&s!=null){let I=Ic(s);Array.isArray(I)&&(I=I.map(h=>MM(h))),y(t,[
+- ]);if(t!==void 0&&s!=null){let i=s;Array.isArray(i)&&(i=i.map(r=>hGe(r))),y(t,[
+- ]);if(t!==void 0&&u!=null&&y(t,[
+- ]);if(u!=null){let p=u;Array.isArray(p)&&(p=p.map(g=>g)),y(t,[
+- ]);if(X!=null){let S=X;Array.isArray(S)&&(S=S.map(z=>z)),y(e,[
+- ]);l!=null&&fGe(l,n);const s=Z(t,[
+- ]);l!=null&&VGe(l,n);const s=Z(t,[
+- ]);r!=null&&jfe(r,n);const u=Z(t,[
+- ]);r!=null&&Mfe(r,n);const u=Z(t,[
+- ]);return a!=null&&Rme(a,e),e}function Fme(x,t){const e={},n=Z(t,[
+- ]);return a!=null&&tpe(a,e),e}function ape(x,t){const e={},n=Z(t,[
+- ]);return a!=null&&vme(a,e),e}function Yme(x,t){const e={},n=Z(t,[
+- ]);return a!=null&&y(e,[
+- ]);return a!=null&&y(n,[
+- ]);return a!=null&&y(t,[
+- ]);return e!==void 0&&j!=null&&y(e,[
+- ]);return e!==void 0&&M!=null&&y(e,[
+- ]);return e!==void 0&&r!=null&&y(e,[
+- ]);return e!==void 0&&S!=null&&y(e,[
+- ]);return e!=null&&y(t,[
+- ]);return h!=null&&y(t,[
+- ]);return i!=null&&y(e,[
+- ]);return I!=null&&y(t,[
+- ]);return K!=null&&y(e,[
+- ]);return l!=null&&AGe(l,n),n}function JGe(x,t,e){const n={},a=Z(x,[
+- ]);return l!=null&&jbe(l,e),e}function zbe(x,t){const e={},n=Z(x,[
+- ]);return l!=null&&kGe(l,n),n}function QGe(x,t,e){const n={},a=Z(t,[
+- ]);return l!=null&&y(e,[
+- ]);return l!=null&&y(t,[
+- ]);return m!=null&&y(e,[
+- ]);return m!=null&&y(t,[
+- ]);return n!=null&&qZe(n,t),t}function ege(x){const t={},e=Z(x,[
+- ]);return n!=null&&y(e,[
+- ]);return N!=null&&y(e,[
+- ]);return N!=null&&y(t,[
+- ]);return n!=null&&y(t,[
+- ]);return n!=null&&zGe(n,t),t}function PGe(x){const t={},e=Z(x,[
+- ]);return p!=null&&y(t,[
+- ]);return r!==void 0&&y(n,[
+- ]);return r!=null&&y(t,[
+- ]);return s!=null&&afe(s),n}function cfe(x,t,e){const n={},a=Z(t,[
+- ]);return s!=null&&bGe(s,n),n}function pGe(x,t){const e={},n=Z(x,[
+- ]);return s!=null&&lfe(s,n),n}function ife(x,t){const e={},n=Z(x,[
+- ]);return s!=null&&WGe(s,n),n}function wGe(x,t){const e={},n=Z(x,[
+- ]);return s!=null&&y(e,[
+- ]);return s!=null&&y(n,[
+- ]);return s!=null&&y(t,[
+- ]);return t!==void 0&&a!=null&&y(t,[
+- ]);return t!==void 0&&g!=null&&y(t,[
+- ]);return t!==void 0&&I!=null&&y(t,[
+- ]);return t!==void 0&&n!=null&&y(t,[
+- ]);return t!==void 0&&s!=null&&y(t,[
+- ]);return u!=null&&Jfe(u,n),n}function Sfe(x,t){const e={},n=Z(x,[
+- ]);return u!=null&&Qfe(u,n),n}function Cfe(x,t,e){const n={},a=Z(t,[
+- ]);return u!=null&&y(e,[
+- ]);return V!=null&&y(e,[
+- ]);t!==void 0&&a!=null&&y(t,[
+- ]);t!==void 0&&h!=null&&y(t,[
+- ]);t!==void 0&&i!=null&&y(t,[
+- ]);t!==void 0&&I!=null&&y(t,[
+- ]);t!==void 0&&l!=null&&y(t,[
+- ]);t!==void 0&&n!=null&&y(t,[
+- ]);t!==void 0&&r!=null&&y(t,[
+- ]);t!==void 0&&s!=null&&y(t,[
+- ]);t!==void 0&&u!=null&&y(t,[
+- ]);t!==void 0&&V!=null&&y(t,[
+- ]);t!==void 0&&w!=null&&y(t,[
+- ]);t!==void 0&&W!=null&&y(t,[
+- ]);t!==void 0&&Y!=null&&y(t,[
+- ],$ge(m)),e}function GH(x,t){const e={},n=Z(x,[
+- ],$Ge(s)),t}function qGe(x){const t={},e=Z(x,[
+- ],...a.current()})),c()}if(e.lang&&e.meta){const c=n.enter(`codeFencedMeta${l}`);f+=a.move(
+- ],_);const U=Z(t,[
+- ],_);const U=Z(x,[
+- ],_)}const R=Z(t,[
+- ],_)}const X=Z(t,[
+- ],_pe(a)),t}function jpe(x){const t={};if(Z(x,[
+- ],_W(hee(n)));const a=Z(x,[
+- ],_W(Iee(l)));const s=Z(x,[
+- ],_W(r));const u=Z(x,[
+- ],a),e}function afe(x,t){const e={};if(Z(x,[
+- ],a),e}function cm(x,t){const e={},n=Z(x,[
+- ],a),e}function DGe(x){const t={},e=Z(x,[
+- ],a),e}function Dpe(x,t){const e={},n=Z(x,[
+- ],a),e}function Eee(x,t){const e={},n=Z(x,[
+- ],a),e}function eGe(x,t){const e={},n=Z(x,[
+- ],a),e}function eye(x,t){const e={};if(Z(x,[
+- ],a),e}function fZ(x,t){const e={},n=Z(x,[
+- ],a),e}function MGe(x,t){const e={},n=Z(x,[
+- ],a),e}function nfe(x,t){const e={},n=Z(x,[
+- ],a),e}function Nfe(x,t){const e={};if(Z(x,[
+- ],a),e}function npe(x,t){const e={},n=Z(t,[
+- ],a),e}function rfe(x,t,e){const n={},a=Z(t,[
+- ],a),e}function tGe(x,t){const e={},n=Z(x,[
+- ],a),e}function TGe(x,t){const e={},n=Z(x,[
+- ],a),e}function wfe(x,t){const e={},n=Z(x,[
+- ],a),e}function xpe(x,t){const e={},n=Z(x,[
+- ],a),t}function $he(x){const t={},e=Z(x,[
+- ],a),t}function cbe(x){const t={},e=Z(x,[
+- ],a),t}function hme(x,t){const e={},n=Z(x,[
+- ],a),t}function qhe(x){const t={},e=Z(x,[
+- ],a),t}function qme(x){const t={},e=Z(x,[
+- ],a),t}function ree(x){const t={},e=Z(x,[
+- ],a),t}function sbe(x){const t={},e=Z(x,[
+- ],a),t}function Wme(x){const t={};if(Z(x,[
+- ],a);const l=Z(t,[
+- ],a);const l=Z(x,[
+- ],a)}const n=Z(x,[
+- ],a)}return e}function $pe(x,t,e){const n={},a=Z(t,[
+- ],a)}return e}function fGe(x,t,e){const n={},a=Z(x,[
+- ],a)}return e}function uGe(x,t){const e={},n=Z(x,[
+- ],a)}return e}function VGe(x,t,e){const n={},a=Z(x,[
+- ],Abe(gee(m)));const p=Z(x,[
+- ],abe(s)),t}function abe(x){const t={},e=Z(x,[
+- ],ame(n));const a=Z(x,[
+- ],C);const M=Z(t,[
+- ],C);const M=Z(x,[
+- ],cbe(e)),t}function tbe(x){const t={},e=Z(x,[
+- ],CGe(n)),e}function Ofe(x,t){const e={},n=Z(x,[
+- ],cm(bl(a)));const l=Z(x,[
+- ],cm(bl(l)));const s=Z(t,[
+- ],Cme(l));const s=Z(x,[
+- ],CZe(s));const i=Z(x,[
+- ],dee(x,n));const a=Z(t,[
+- ],dme(J));const C=Z(t,[
+- ],e),t}function Ame(x){const t={},e=Z(x,[
+- ],e),t}function dpe(x){const t={},e=Z(x,[
+- ],e),t}function Hme(x){const t={};if(Z(x,[
+- ],e),t}function Hpe(x){const t={},e=Z(x,[
+- ],e),t}function hpe(x){const t={},e=Z(x,[
+- ],e),t}function mpe(x,t){const e={},n=Z(x,[
+- ],e),t}function OGe(x,t){const e={},n=Z(x,[
+- ],e),t}function tge(x,t){const e={},n=Z(x,[
+- ],e),t}function upe(x){const t={},e=Z(x,[
+- ],e),t}function Vee(x){const t={},e=Z(x,[
+- ],E);const k=Z(t,[
+- ],E);const k=Z(x,[
+- ],e);const n=Z(x,[
+- ],Ebe(e));const n=Z(x,[
+- ],Eee(i));const r=Z(t,[
+- ],Eee(s)),n}function jfe(x,t,e){const n={},a=Z(x,[
+- ],EGe(u));const I=Z(x,[
+- ],Fee(TL(M)));const j=Z(t,[
+- ],Fee(W));const H=Z(x,[
+- ],Fpe(a,e)),e}function kpe(x,t){const e={},n=Z(t,[
+- ],Fx(x,a)),n}function $fe(x,t){const e={},n=Z(x,[
+- ],Fx(x,a)),n}function dfe(x,t,e){const n={},a=Z(t,[
+- ],Fx(x,a)),n}function qfe(x,t,e){const n={},a=Z(t,[
+- ],Fx(x,a)),n}function ufe(x,t){const e={},n=Z(x,[
+- ],Fx(x,a));const l=Z(t,[
+- ],Fx(x,a));let l=Z(e,[
+- ],Fx(x,n));const a=Z(t,[
+- ],Fx(x,r)),n}function Zfe(x,t,e){const n={},a=Z(t,[
+- ],fZ(bl(l)));const s=Z(t,[
+- ],g),n}function LGe(x,t,e){const n={},a=Z(t,[
+- ],g);const N=Z(t,[
+- ],g);const N=Z(x,[
+- ],gpe(e));const n=Z(x,[
+- ],h),t}function Tbe(x){const t={},e=Z(x,[
+- ],h);const m=Z(t,[
+- ],h);const m=Z(x,[
+- ],H);const R=Z(t,[
+- ],H);const R=Z(x,[
+- ],h)}const i=Z(x,[
+- ],h)}const r=Z(x,[
+- ],h)}const u=Z(x,[
+- ],h)}return t}function Bpe(x){const t={},e=Z(x,[
+- ],h)}return t}function epe(x){const t={},e=Z(x,[
+- ],Hbe(Fbe(a))),e}function TM(x,t){const e={},n=Z(t,[
+- ],hee(n));const a=Z(x,[
+- ],HZe(e));const n=Z(x,[
+- ],i),e}function g4(x,t){const e={},n=Z(x,[
+- ],I);const h=Z(t,[
+- ],I);const h=Z(x,[
+- ],i);const r=Z(t,[
+- ],i);const r=Z(x,[
+- ],I)}const i=Z(x,[
+- ],I)}const l=Z(x,[
+- ],i)}const s=Z(t,[
+- ],i)}const s=Z(x,[
+- ],I)}const u=Z(x,[
+- ],Iee(l));const s=Z(x,[
+- ],j),a}function Xfe(x,t,e,n){const a={},l=Z(t,[
+- ],j);const _=Z(t,[
+- ],j);const _=Z(x,[
+- ],J);const C=Z(t,[
+- ],J);const C=Z(x,[
+- ],j)}const H=Z(t,[
+- ],j)}const R=Z(t,[
+- ],jM(bl(i)));const r=Z(x,[
+- ],Jme(n));const a=Z(x,[
+- ],jZe(x,i));const r=Z(t,[
+- ],K),e}function xye(x,t){const e={},n=Z(x,[
+- ],k);const Q=Z(t,[
+- ],k);const Q=Z(x,[
+- ],K);const S=Z(t,[
+- ],K2(l));const s=Z(t,[
+- ],K2(l));const s=Z(x,[
+- ],K2(n)),e}function bGe(x,t,e){const n={},a=Z(x,[
+- ],K2(n)),e}function WGe(x,t,e){const n={},a=Z(x,[
+- ],K2(n));const a=Z(x,[
+- ],K2(s));const i=Z(t,[
+- ],kbe(gee(u))),t}function rH(x){const t={},e=Z(x,[
+- ],kee(i));const r=Z(t,[
+- ],kee(s)),n}function Bfe(x,t){const e={},n=Z(x,[
+- ],Kpe(I)),t}function _pe(x){const t={},e=Z(x,[
+- ],l),e}function Aee(x,t){const e={},n=Z(x,[
+- ],l),e}function CGe(x,t){const e={},n=Z(x,[
+- ],l),e}function dH(x,t){const e={},n=Z(x,[
+- ],l),e}function kee(x,t){const e={},n=Z(x,[
+- ],l),e}function Mfe(x,t,e){const n={},a=Z(x,[
+- ],l),e}function ofe(x,t){const e={},n=Z(x,[
+- ],l),e}function SGe(x,t){const e={},n=Z(x,[
+- ],l),e}function Tfe(x,t){const e={},n=Z(x,[
+- ],l),t}function $be(x,t){const e={},n=Z(t,[
+- ],l),t}function qbe(x){const t={},e=Z(x,[
+- ],l);const s=Z(t,[
+- ],l);const s=Z(x,[
+- ],l)}const a=Z(x,[
+- ],l)}const n=Z(x,[
+- ],l)}return e}function Kfe(x,t){const e={},n=Z(x,[
+- ],l)}return e}function tfe(x,t){const e={},n=Z(x,[
+- ],l)}return t}function Gpe(x){const t={},e=Z(x,[
+- ],l,n?.message,{sourceError:n});throw this[t(349)][t(236)]?.(s),s}const e=this[t(335)][t(343)]()[0];e&&(e.enabled=this[t(365)],this[t(349)][t(293)]?.(e,{id:t(362),name:
+- ],lbe(s)),t}function lbe(x){const t={},e=Z(x,[
+- ],Lbe(Zee(x,a)));const l=Z(t,[
+- ],LL(n));const a=Z(x,[
+- ],LZe(x,n,e)),e}function UZe(x){const t={};if(Z(x,[
+- ],m),e}function qpe(x,t){const e={},n=Z(x,[
+- ],M),n}function sme(x){const t={},e=Z(x,[
+- ],m),t}function Kpe(x){const t={},e=Z(x,[
+- ],M);const j=Z(x,[
+- ],m);const p=Z(t,[
+- ],m);const p=Z(x,[
+- ],m)}const h=Z(x,[
+- ],m)}const r=Z(x,[
+- ],m)}const u=Z(x,[
+- ],m)}return e}function dGe(x,t){const e={},n=Z(x,[
+- ],mee(l));const s=Z(x,[
+- ],metadata:e.data.metadata}}async dropTable(x,t){await this.client.request({method:
+- ],mF(l));const s=Z(x,[
+- ],mF(n));const a=Z(x,[
+- ],mF(s));const i=Z(t,[
+- ],MM(bl(i)));const r=Z(x,[
+- ],MZe(a,e)),e}function BZe(x){const t={},e=Z(x,[
+- ],n),e}function $Ze(x){const t={},e=Z(x,[
+- ],n),e}function _ge(x,t){const e={},n=Z(x,[
+- ],n),e}function Bge(x,t){const e={},n=Z(x,[
+- ],n),e}function Cge(x,t,e){const n={};if(Z(x,[
+- ],n),e}function hfe(x,t,e){const n={},a=Z(x,[
+- ],n),e}function Ife(x,t){const e={},n=Z(x,[
+- ],n),e}function KGe(x){const t={},e=Z(x,[
+- ],n),e}function Lge(x,t){const e={},n=Z(x,[
+- ],n),e}function Uge(x,t){const e={},n=Z(x,[
+- ],N),e}function uH(x,t){const e={},n=Z(x,[
+- ],n),e}function zge(x,t,e){const n={},a=Z(x,[
+- ],N),t}function Cpe(x){const t={},e=Z(x,[
+- ],n),t}function CZe(x){const t={},e=Z(x,[
+- ],n),t}function dme(x){const t={},e=Z(x,[
+- ],n),t}function Fpe(x,t){const e={},n=Z(x,[
+- ],N),t}function gme(x){const t={},e=Z(x,[
+- ],n),t}function jM(x){const t={},e=Z(x,[
+- ],n),t}function JZe(x){const t={},e=Z(x,[
+- ],n),t}function LZe(x,t,e){const n={},a=Z(t,[
+- ],n),t}function Mbe(x,t){const e={},n=Z(x,[
+- ],n),t}function MM(x){const t={},e=Z(x,[
+- ],n),t}function MZe(x,t){const e={},n=Z(x,[
+- ],n),t}function Npe(x){const t={};if(Z(x,[
+- ],N),t}function Ome(x){const t={},e=Z(x,[
+- ],n),t}function Qme(x){const t={},e=Z(x,[
+- ],n),t}function rme(x){const t={},e=Z(x,[
+- ],n),t}function Rme(x,t){const e={},n=Z(x,[
+- ],n),t}function Sme(x){const t={},e=Z(x,[
+- ],n),t}function Tme(x,t){const e={},n=Z(x,[
+- ],n),t}function Tpe(x){const t={},e=Z(x,[
+- ],n),t}function TZe(x){const t={},e=Z(x,[
+- ],n),t}function Ube(x,t){const e={},n=Z(t,[
+- ],n),t}function wpe(x){const t={},e=Z(x,[
+- ],n),t}function Wpe(x){const t={},e=Z(x,[
+- ],n),t}function Xpe(x){const t={},e=Z(x,[
+- ],n),t}function yme(x){const t={},e=Z(x,[
+- ],n),t}function ype(x){const t={},e=Z(x,[
+- ],N),t}function zZe(x){const t={},e=Z(x,[
+- ],n);const a=Z(x,[
+- ],N);const V=Z(t,[
+- ],N);const V=Z(x,[
+- ],n)}return t}function Qpe(x){const t={},e=Z(x,[
+- ],n)}return t}function Upe(x){const t={},e=Z(x,[
+- ],n)}return t}function Wee(x){const t={},e=Z(x,[
+- ],n=_b,a=0;a<e.length;a++)if((n=n[e[a]])==null){e=null;break e}e=n}return(x=e&&e[x])!=null?x:t}function Y1(){throw Error(
+- ],Nfe(s));const i=Z(x,[
+- ],nGe(n));const a=Z(x,[
+- ],Npe(l));const s=Z(x,[
+- ],Ofe(s)),n}function sfe(x,t,e){const n={},a=Z(t,[
+- ],ome(l));const s=Z(x,[
+- ],Ope(u));const I=Z(x,[
+- ],p),t}function Qbe(x){const t={},e=Z(x,[
+- ],p);const g=Z(t,[
+- ],p);const g=Z(x,[
+- ],p)}const h=Z(x,[
+- ],p)}const I=Z(x,[
+- ],p)}const m=Z(x,[
+- ],p)}const u=Z(x,[
+- ],Pd(a));const l=Z(x,[
+- ],pee(e)),t}function bpe(x){const t={},e=Z(x,[
+- ],pee(e)),t}function Ipe(x){const t={},e=Z(x,[
+- ],Ppe(n));const a=Z(x,[
+- ],prompt:u,builtIn:!1,createdAt:I,updatedAt:I};e[i(387)](h),t[s]=h}),(t[x(404)]||t[x(287)])&&__(e),Rl(Pi)||!Axe())return;const n=Q_(Rl(jF))?x(404):x(287),a=Bve[String(Rl(x(379))||
+- ],Q);const J=Z(t,[
+- ],Q);const J=Z(x,[
+- ],Qbe(h));const m=Z(x,[
+- ],qhe(s)),t}function Dhe(x){const t={},e=Z(x,[
+- ],qme(u));const I=Z(x,[
+- ],qpe(a));const l=Z(x,[
+- ],QZe(r));const u=Z(x,[
+- ],r),n}function _Ze(x,t){const e={},n=Z(t,[
+- ],r),t}function cme(x,t){const e={},n=Z(t,[
+- ],r),t}function Jpe(x){const t={},e=Z(x,[
+- ],r),t}function Lpe(x){const t={},e=Z(x,[
+- ],r);const u=Z(t,[
+- ],r);const u=Z(x,[
+- ],R);const X=Z(t,[
+- ],R);const X=Z(x,[
+- ],r6e=({ticket:x,onDone:t,onCancel:e})=>{const n=Qi,a=f.useRef(null),l=f.useRef(null),{status:s}=mm(),[i,r]=f.useState(
+- ],Ree(n));const a=Z(x,[
+- ],rme(a));const l=Z(x,[
+- ],rr(x,n)),e}function Cme(x){const t={},e=Z(x,[
+- ],rr(x,n)),e}function Eme(x,t){const e={},n=Z(t,[
+- ],rr(x,n)),e}function kme(x){const t={},e=Z(x,[
+- ],rr(x,n)),e}function Ume(x,t){const e={},n=Z(t,[
+- ],rr(x,n));const a=Z(t,[
+- ],rr(x,Q));const J=Z(t,[
+- ],rr(x,v));const E=Z(t,[
+- ],rr(x,X));const v=Z(t,[
+- ],S),a}function PM(x,t,e){const n={},a=Z(t,[
+- ],s),e}function zfe(x,t){const e={},n=Z(x,[
+- ],s);const i=Z(t,[
+- ],s);const i=Z(x,[
+- ],s)}const a=Z(x,[
+- ],S)}const v=Z(x,[
+- ],s)}return e}function oGe(x,t){const e={},n=Z(x,[
+- ],s)}return e}function rGe(x,t){const e={},n=Z(x,[
+- ],s)}return n}function efe(x,t){const e={},n=Z(x,[
+- ],say:s+t(247),link:null,needsSettings:!1};case t(291):default:return{title:(n?e:t(351))+
+- ],sbe(e)),t}function ebe(x){const t={},e=Z(x,[
+- ],SGe(Y));const W=Z(x,[
+- ],SL(w));const Y=Z(t,[
+- ],SL(Y));const W=Z(t,[
+- ],sm(x,n)),e}function Cbe(x,t){const e={},n=Z(t,[
+- ],sm(x,n)),e}function Dbe(x){const t={},e=Z(x,[
+- ],sm(x,n)),e}function ime(x,t){const e={},n=Z(t,[
+- ],sm(x,n)),e}function Obe(x,t){const e={},n=Z(t,[
+- ],sm(x,n)),e}function ome(x){const t={},e=Z(x,[
+- ],sm(x,n)),e}function Sbe(x){const t={},e=Z(x,[
+- ],Sme(a));const l=Z(x,[
+- ],Spe(e));const n=Z(x,[
+- ],SZe(l));const s=Z(x,[
+- ],Tbe(n));const a=Z(x,[
+- ],Tfe(i)),e}function Ufe(x,t,e){const n={},a=Z(t,[
+- ],tGe(C));const M=Z(t,[
+- ],TZe(a));const l=Z(x,[
+- ],u),e}function Ffe(x,t,e){const n={};if(Z(x,[
+- ],u),e}function qM(x,t){const e={},n=Z(x,[
+- ],u);const I=Z(t,[
+- ],u);const I=Z(x,[
+- ],U);const K=Z(x,[
+- ],u)}const a=Z(x,[
+- ],u)}const n=Z(x,[
+- ],u)}else if(l===
+- ],u)}let s=Z(e,[
+- ],UGe(n)),e}function Pfe(x,t){const e={},n=Z(x,[
+- ],UZe(l));const s=Z(x,[
+- ],V),e}function IGe(x,t){const e={},n=Z(x,[
+- ],v);const E=Z(t,[
+- ],v);const E=Z(x,[
+- ],V);const w=Z(t,[
+- ],V);const w=Z(x,[
+- ],v)}const V=Z(x,[
+- ],Vee(e));const n=Z(x,[
+- ],vee(l)),e}function bF(x,t){const e={},n=Z(x,[
+- ],Vee(n)),t}function wee(x){const t={},e=Z(x,[
+- ],vfe(x,s,n)),n}function OM(x,t,e){const n={},a=Z(t,[
+- ],vpe(l));const s=Z(x,[
+- ],W);const H=Z(t,[
+- ],W);const H=Z(x,[
+- ],w);const Y=Z(t,[
+- ],w);const Y=Z(x,[
+- ],Wee(bl(a)));const l=Z(t,[
+- ],wee(Y));const W=Z(x,[
+- ],wfe(i));const r=Z(x,[
+- ],wme(e));const n=Z(x,[
+- ],wpe(s));const i=Z(x,[
+- ],X);const v=Z(x,[
+- ],X)}const V=Z(x,[
+- ],Xee(l));const s=Z(x,[
+- ],xfe(a)),e}function xfe(x,t){const e={},n=Z(x,[
+- ],Xfe(x,s,n)),n}function DM(x,t){const e={},n=Z(x,[
+- ],XGe(E));const k=Z(t,[
+- ],Xpe(a));const l=Z(x,[
+- ],Y);const W=Z(x,[
+- ],yee(a));const l=Z(x,[
+- ],YGe(i));const r=Z(x,[
+- ],Ype(a,e)),e}function Ape(x){const t={},e=Z(x,[
+- ],z)}const E=Z(t,[
+- ],z)}const v=Z(t,[
+- ],ZGe(n));const a=Z(x,[
+- ],zpe(s));const i=Z(x,[
+- ].map(async a=>{try{(await e({name:a===
+- ];break}}const o={type:
+- ];for(let e=0;e<5;e++){const n=x.concat(t[e].split(
+- ];if(I===void 0)throw new Error(
+- ];let nh=0;class pl extends Error{constructor(t,e,n){const a=Dl;super(e),this.kind=t,this.issue=n,this[a(419)]=a(391)}}const _Re=()=>um()===
+- ];return $3=function(){return x},$3()}const u8=x=>x===
+- ];return A5=function(){return x},A5()}function E4(x){const t=Xt;if(x===t(435))return t(377);if(x===t(368))return t(440);if(x.startsWith(t(441))){const e=x[t(363)](7).split(
+- ];return Cw=function(){return x},Cw()}function Ile(x){const t=bc;if(!x||typeof x!=
+- ];return dV=function(){return x},dV()}function Ch(x,t){return x=x-437,dV()[x]}const di={hover:Qn(469),click:
+- ];return eF=function(){return x},eF()}const FKe=[{id:
+- ];return F3=function(){return x},F3()}const vz=x=>String(x||
+- ];return fv=function(){return x},fv()}function P7e({profileLocation:x=
+- ];return gV=function(){return x},gV()}function Ple(x,t){return x=x-190,gV()[x]}const P8=JZ(209),Ole={iso:
+- ];return gX=function(){return x},gX()}function A6(x,t){return x=x-339,gX()[x]}const MBe=x=>{const t=A6,e=String(x[t(374)]||
+- ];return H5=function(){return x},H5()}function p_(x,t){return x=x-385,H5()[x]}const gd=x=>String(x??
+- ];return lV=function(){return x},lV()}const LHe=1400,_He=.82,Ele=x=>!!(x&&String(x[ul(297)]||
+- ];return n[e.getDay()]+
+- ];return nw=function(){return x},nw()}const bEe=15,mEe=9,pEe=24;class fEe{[xs(430)]=
+- ];return O5=function(){return x},O5()}const TVe=2e4,vB=22e3,XB=280,th=new Set,MVe=x=>{const t=AF,e=Math[t(386)](1,Math[t(302)]((Date[t(371)]()-x[t(314)])/1e3)),n=x[t(382)]?'
+- ];return qV=function(){return x},qV()}const db=({title:x,hint:t,action:e,children:n})=>c.jsxs(lt(297),{className:lt(360),children:[c.jsxs(lt(275),{className:
+- ];return Rv=function(){return x},Rv()}const XTe={scanning:{icon:c.jsx(vTe,{}),text:()=>Es(229)},ready:{icon:c.jsx(j2,{size:12,className:
+- ];return rV=function(){return x},rV()}function iQe(){const x=Dx;return c.jsxs(x(496),{
+- ];return s=>moe(
+- ];return sw=function(){return x},sw()}class tN extends Hh{[b0(322)];[b0(248)];constructor(t,e,n=[]){const a=b0;super(e||
+- ];return u5=function(){return x},u5()}const uj=3,Zye=400,gye=3e4,i0e=at(168),yye=new Set([at(171),at(186),
+- ];return UV=function(){return x},UV()}function dLe(x){const t=Kl;switch(x){case t(529):case t(502):return
+- ];return Vv=function(){return x},Vv()}const RTe=({children:x,className:t=
+- ];return vv=function(){return x},vv()}function $Z(x,t){return x=x-348,vv()[x]}const kTe=({cond:x,size:t,className:e=
+- ];return x5=function(){return x},x5()}const Yhe=[ja(239),
+- ];return XX=function(){return x},XX()}const Ize=({onAdd:x,defaultToday:t=!1,disabled:e=!1})=>{const n=fb,[a,l]=f.useState(
+- ];return y3=function(){return x},y3()}const q_=Px(231),MXe=336*60*60*1e3,jXe=x=>{const t=Px,e=lI(
+- ];return YX=function(){return x},YX()}const Zze=({task:x,onToggle:t,onOpen:e,onSnooze:n,onFocus:a})=>{const l=mre,s=x[l(332)]===
+- ];return zw=function(){return x},zw()}function Gle(x,t){return x=x-303,zw()[x]}const $Ae=x=>x[fle(344)](/[^\d]/g,
+- ]=a.toBase64(a.encodeMetadata(h))),(typeof ReadableStream<
+- ]=a.toBase64(a.encodeMetadata(r))),(typeof ReadableStream<
+- ]=function(){};const Use={};let Vf=null;function b_e(x){const t=x.length;let e=3*t/4;e%3?e=Math.floor(e):
+- ]=n[e(231)].split(n.call);return c.jsxs(e(212),{role:
+- ]=this.accessDelegation),(await this.client.request({method:
+- ]=this.accessDelegation);try{return await this.client.request({method:
+- ][t(402)](Boolean);return c.jsxs(t(431),{children:[c.jsx(
+- ][x(422)](s=>{const i=x,r=s===i(404)?i(394):
+- ]}),a===g(255)?c.jsx(g(233),{type:g(233),onClick:()=>{const v=g;try{window[v(267)]?.[v(275)]?.(
+- ]}),c.jsx(a(491),{className:a(457),children:E[a(488)](Q=>{const J=a,C=Q[J(516)]===J(517),M=(Number(Q[J(452)])&GLe)!==0;return c.jsxs(
+- ]}),ee(609)]}):ee(625),light:ee(626)};case ee(590):return{strong:
+- ]}),light:ae(447)};case ae(392):return{strong:ae(403),soft:ae(497),sub:V?c.jsxs(
+- ]}):ee(581),light:ee(626)};case ee(546):return{strong:ee(480),soft:ee(493),sub:Y?c.jsxs(c.Fragment,{children:[c.jsxs(
+- ]});else if(p===l(320))k=l(273),E=
+- ]})]}):!l[n(407)]&&c.jsx(KG,{})]})]})};function CV(){const x=[
+- ]})]})]})]}),c.jsx(hze,{task:Y,onClose:()=>uB(null)}),c.jsx(dre,{})]})},Nze=({done:x,total:t})=>{const e=Gb,n=t===0?0:x/t,a=17,l=2*Math.PI*a;return c.jsxs(
+- ]})]})})]});return c.jsxs(s(484),{className:s(361),children:[c.jsx(s(484),{className:s(493),onClick:t}),c.jsxs(s(484),{
+- ]})]})},wje=({code:x})=>{const t=In,e=f.useRef(null);return f.useEffect(()=>{const n=eg;let a=!1;const l=e.current;if(l)return l[n(234)]=
+- ]},children:Array.isArray(I)?I:[I]})}const S=f[f.length-1];if(S&&S.type===
+- ]},sl={};function Qn(e,t){const n=sl,r=typeof n.includeImageAlt==
+- ]}let a=-1;for(;++a<r.length;){const f=r[a];(i||a!==0||f.type!==
+- ]}}];function HN(){const x=[
+- ]}}];function YN(){const x=[
+- ` cannot be a path: did not expect `
+- ` cannot be empty
+- ` finished async. Use `
+- ` for `options.bullet`, expected `*`, `+`, or `-`
+- ` for `options.bulletOrdered`, expected `.` or `)`
+- ` for `options.bulletOther`, expected `*`, `+`, or `-`
+- ` for `options.emphasis`, expected `*`, or `_`
+- ` for `options.fence`, expected `` ` `` or `~`
+- ` for `options.listItemIndent`, expected `tab`, `one`, or `mixed`
+- ` for `options.rule`, expected `*`, `-`, or `_`
+- ` for `options.ruleRepetition`, expected `3` or more
+- ` for `options.strong`, expected `*`, or `_`
+- ` in a splice buffer of size `
+- ` instead
+- ` on a frozen processor.\nCreate a new processor first, by calling it: use `processor()` instead of `processor`.
+- ` requires `path` to be set too
+- ` without `compiler`
+- ` without `parser`
+- `) and `bulletOther` (`
+- `) to be different
+- `)}}async signInWithEthereum(t){var e,n,a,l,s,i,r,u,I,h,m;let p,g;if(
+- `,yj=x=>{const t=x===null?
+- A background job finished
+- A brisk briefing, with a faint smile at the word andaaz.
+- A character with a personality of its own, living inside your PC
+- a chart with one value is not a chart — use a "stats" block for a single number
+- A clean, practical pointer. The last phrase level and assured.
+- A dedicated support line for Stonic customers — you see it because you are one. Please keep it to yourself.
+- A few clouds tonight, nothing more.
+- A few clouds, nothing more.
+- a fixed number of
+- A friend
+- A job that was running in the background on the PC has finished.
+- A little less — keep your eyes on the screen
+- A message that starts with 
+- A newer visual replaced this one before it finished.
+- a Non-Webauthn related error has occurred
+- A PC task is already running
+- A question, a problem, or something that just feels off — talk to a real person on our team.
+- A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\\
+- A sci-fi experience, like the AI you’ve seen in movies
+- A second copy goes to 
+- A skill is something you teach Stonic once. Next time you ask for it, Stonic follows your steps.
+- A small bar at the top of your screen. It opens when you hover or talk.
+- a task
+- A task was already running, so this was added to it as a change. 
+- A young woman speaking to the person she is falling for
+- Aaj ki hadd bhar gayi — Basic
+- Aaj ki hadd bhar gayi — Max
+- Aaj ki hadd bhar gayi — Power
+- aaj raat
+- aankhein band karo... ab batao, kya sunai de raha hai?
+- Aap ka diya hua naam hata diya.
+- Aap ka plan khatam ho gaya hai. stonicai.com se renew karein.
+- Aap ki preferences import kar raha hoon, Sir. Bas ek cheez kisi file mein nahi milti: aap ke dil ka haal. Is liye seedha aap se poochh raha hoon.
+- Aap ne sahi darwaza khatkhataya, Sir. Main na thakta hoon, na bore hota hoon, aur kabhi baat bhi nahi kaat-ta. Online aate hi, baatein shuru.
+- Aapka personal AI assistant. Bataye main kaise madad kar sakta hoon?
+- Aapki awaaz abhi mujh tak nahi aa rahi. Bas ek sawaal, taake jaagte hi main aapko samajh loon.
+- aapki meetings aur deadlines meri nazar mein
+- Aapki voice AI requests ki monthly limit khatam ho chuki hai. Please upgrade karein.
+- Ab batao, meri umar kitni rakhein? Tumhari marzi.
+- Ab main sun sakti hoon. Aaraam se... jo dil mein hai, wahin se shuru kijiye.
+- Ab sun sakta hoon tumhein... isi pal ka intezaar tha. Batao, kaisa raha tumhara din?
+- Ab sun sakti hoon tumhein... Pata nahi kyun, dil itna tez dhadak raha hai. Chalo... pehle tum kuch bolo.
+- Ab tum akele nahi ho. Main hoon na, hamesha. Jaagte hi, sab se pehle isi ki baat karenge.
+- Ab tum akele nahi ho. Main yahin hoon, aur kahin nahi jaungi. Jaagte hi, sab se pehle isi ki baat karenge.
+- Ab ye batao, main tumhein kya kahun? Jaan, ya tumhara apna naam?
+- Ab ye batao, main tumhein kya kahun? Jaan? Ya tumhara naam?
+- Ab ye batao, meri umar kitni rakhein?
+- Ab yeh sab akele mat uthana. Main hoon na. Jaagte hi, sab se pehle yahi baat karenge... aaraam se.
+- Abhi main aapko sun nahi sakti... koi baat nahi. Bas ek baat, aaraam se.
+- Abhi tak jaag rahi ho?
+- Abhi tumhein sun nahi sakta. Bas ek sawaal ka jawab do... sach sach.
+- abnormal close — handshake never completed (network/firewall/proxy/antivirus block OR auth rejected before upgrade)
+- about 
+- About 
+- About you
+- About: 
+- absolute -bottom-1 -right-1 w-[18px] h-[18px] rounded-full bg-[#0c0f12] border border-white/15 flex items-center justify-center
+- absolute -bottom-[1px] -right-[1px] w-3 h-3 border-b border-r border-[#FF3B30]
+- absolute -inset-1.5 rounded-full border border-dashed
+- absolute -inset-3 rounded-full
+- absolute -inset-[11px] rounded-full
+- absolute -inset-x-5 -top-3 -bottom-4 pointer-events-none transition-opacity duration-700 
+- absolute -top-10 left-1/4 w-1/2 h-20 bg-emerald-400/10 blur-[50px] rounded-full pointer-events-none
+- absolute -top-[1px] -left-[1px] w-3 h-3 border-t border-l border-[#FF3B30]
+- absolute -top-[250px] -left-[250px] w-[1000px] h-[1000px] pointer-events-none
+- absolute -top-[6px] left-[calc(50%-55px)] -translate-x-1/2 rotate-45 w-[10px] h-[10px] border-l border-t border-j-cyan/25
+- absolute bottom-0 left-0 h-[2px] bg-cyan-400 transition-all duration-300
+- absolute bottom-0 left-1/2 -translate-x-1/2 w-2/5 h-[2px] bg-gradient-to-r from-transparent to-transparent z-20 pointer-events-none transition-all duration-700 
+- absolute bottom-0 left-1/3 w-1/3 h-[2px] bg-gradient-to-r from-transparent via-[rgb(var(--j-cyan-rgb)/0.20)] to-transparent
+- absolute bottom-0 right-[26px] w-10 h-[2px] bg-j-cyan/35
+- absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-j-cyan
+- absolute bottom-10 w-full px-12 flex justify-between items-end opacity-20 text-[9px] text-white/50 tracking-[0.2em] font-mono
+- absolute bottom-2 right-2 rounded-md bg-black/75 px-1.5 py-0.5 text-[12px] font-medium text-white/90
+- absolute bottom-full right-0 pb-3 z-30
+- absolute inline-flex h-full w-full animate-ping rounded-full bg-j-cyan opacity-60
+- absolute inset-0
+- absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_30%,rgba(0,0,0,0.8)_100%)]
+- absolute inset-0 bg-black/35 transition-colors group-hover:bg-black/20
+- absolute inset-0 bg-black/60 backdrop-blur-[6px]
+- absolute inset-0 bg-black/70 backdrop-blur-sm
+- absolute inset-0 bg-emerald-400/10 blur-2xl rounded-full scale-150
+- absolute inset-0 bg-hex-grid opacity-[0.05] pointer-events-none z-0
+- absolute inset-0 bg-j-cyan/5 blur-3xl rounded-full
+- absolute inset-0 bg-scan-line opacity-[0.02] pointer-events-none
+- absolute inset-0 flex items-center justify-center
+- absolute inset-0 flex items-center justify-center font-mono text-[12px] font-bold text-white/70
+- absolute inset-0 flex items-center justify-center pointer-events-none transition-opacity duration-700
+- absolute inset-0 h-full w-full
+- absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]
+- absolute inset-0 h-full w-full touch-none
+- absolute inset-0 hud-clip hud-frame pointer-events-none z-0
+- absolute inset-0 hud-clip-rail 
+- absolute inset-0 hud-clip-rail hud-frame opacity-70 transition-opacity duration-200 group-hover/rail:opacity-100 group-focus-visible/rail:opacity-100
+- absolute inset-0 opacity-70 group-hover:opacity-100 transition-opacity duration-300
+- absolute inset-0 pointer-events-none
+- absolute inset-0 pointer-events-none z-0
+- absolute inset-0 pointer-events-none z-50 opacity-[0.03] bg-scanline pointer-events-none
+- absolute inset-0 pointer-events-none z-50 opacity-[0.04] bg-scanline
+- absolute inset-0 rounded-full
+- absolute inset-0 rounded-full border 
+- absolute inset-0 rounded-full border-2 border-t-[#FF3B30] border-r-transparent border-b-transparent border-l-transparent animate-spin duration-1000
+- absolute inset-0 rounded-full overflow-hidden flex items-center justify-center
+- absolute inset-0 rounded-full transition-all duration-700 
+- absolute inset-0 sci-fi-grid opacity-60 pointer-events-none
+- absolute inset-0 transition-opacity duration-700
+- absolute inset-0 w-full h-full
+- absolute inset-0 w-full h-full object-cover transition-opacity duration-200 
+- absolute inset-0 z-50 bg-[var(--j-panel)]
+- absolute inset-0 z-[10000] flex flex-col items-center justify-center bg-black/95 backdrop-blur-lg animate-in fade-in duration-300
+- absolute inset-0 z-[60] flex items-end justify-center sm:items-center
+- absolute inset-0 z-[9999] bg-[#000000]/60 backdrop-blur-2xl flex flex-col justify-between p-8 select-none overflow-y-auto
+- absolute inset-0 z-[9999] h-full w-full bg-[#000000] text-white flex flex-col justify-between p-8 md:p-12 select-none overflow-hidden
+- absolute inset-2 bg-[#FF3B30]/10 rounded-full blur-md animate-pulse
+- absolute inset-2 bg-red-500/10 rounded-full blur-md animate-pulse
+- absolute inset-[1.2px] hud-clip hud-body pointer-events-none z-0
+- absolute inset-[1.2px] hud-clip-rail agentwork-glow pointer-events-none
+- absolute inset-[1.2px] hud-clip-rail hud-body
+- absolute inset-[1.5px] overflow-hidden pointer-events-none
+- absolute inset-[1.5px] transition-opacity duration-700
+- absolute inset-[10px] rounded-full
+- absolute inset-[1px]
+- absolute inset-x-0 h-1/3 pointer-events-none
+- absolute inset-x-10 top-0 h-px pointer-events-none
+- absolute inset-x-3 bottom-0 z-30 flex justify-center px-4 pt-6 pb-1 text-center pointer-events-none
+- absolute left-0 flex items-center transition-all duration-500 
+- absolute left-0 right-1/2 top-0 h-full rounded-br-xl border-b-2 border-r-2 border-white/20
+- absolute left-0 top-4 bottom-4 w-1 bg-j-cyan rounded-r-full
+- absolute left-1/2 right-0 top-0 h-full rounded-bl-xl border-b-2 border-l-2 border-white/20
+- absolute left-1/2 top-1/2 w-[640px] h-[640px] -translate-x-1/2 -translate-y-1/2 pointer-events-none
+- absolute left-3 top-1/2 -translate-y-1/2 text-white/25
+- absolute left-4 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none
+- absolute left-5 top-1/2 -translate-y-1/2 w-[4px] h-[4px] rounded-full bg-[#60a5fa]
+- absolute left-[10px] right-[10px] bottom-[1.2px] h-[2px] overflow-hidden
+- absolute left-[3px] top-[3px] flex h-4 w-4 items-center justify-center rounded-full bg-white shadow transition-transform duration-200 
+- absolute left-[5px] top-2.5 w-[9px] h-[9px] rounded-full border z-10 transition-all duration-300 
+- absolute left-[9px] top-4 bottom-4 w-[1px] bg-gradient-to-b from-white/[0.06] via-white/[0.04] to-transparent pointer-events-none z-0
+- absolute right-0 flex items-center transition-all duration-500 
+- absolute right-1.5 top-1/2 flex -translate-y-1/2 items-center gap-0.5
+- absolute right-2 flex h-8 w-8 items-center justify-center rounded-full text-white/40 hover:bg-white/5 hover:text-white
+- absolute right-5 top-5 rounded-full p-2 text-white/45 transition-colors hover:bg-white/[0.06] hover:text-white/80
+- absolute right-5 top-5 z-10 rounded-full p-2 text-white/45 transition-colors hover:bg-white/[0.06] hover:text-white/80
+- absolute top-0 bottom-0 left-0 bg-gradient-to-r from-[#FF3B30] to-orange-500 rounded-full animate-shimmer-bar-lock w-1/2
+- absolute top-0 bottom-0 left-0 bg-gradient-to-r from-red-500 to-amber-500 rounded-full animate-shimmer-bar-modal w-1/2
+- absolute top-0 bottom-0 left-0 flex flex-col
+- absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[rgb(var(--j-cyan-rgb)/0.60)] to-transparent pointer-events-none
+- absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent
+- absolute top-0 left-1/2 -translate-x-1/2 w-3/5 h-[2px] bg-gradient-to-r from-transparent to-transparent z-20 pointer-events-none transition-all duration-700 
+- absolute top-0 left-1/4 w-1/2 h-[2px] bg-gradient-to-r from-transparent via-[rgb(var(--j-cyan-rgb)/0.40)] to-transparent
+- absolute top-0 left-[26px] w-10 h-[2px] bg-j-cyan/50
+- absolute top-0 whitespace-nowrap
+- absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform duration-200 flex items-center justify-center 
+- absolute top-0.5 w-4 h-4 rounded-full transition-all duration-300 shadow-sm 
+- absolute top-0.5 w-5 h-5 rounded-full transition-all bg-white shadow-sm 
+- absolute top-1 h-5 w-5 rounded-full shadow transition-transform duration-200
+- absolute top-1 left-1/2 -translate-x-1/2 z-20
+- absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full transition-all duration-200 
+- absolute top-1/2 h-[7px] w-[7px] -translate-y-1/2 -translate-x-1/2 rounded-full pointer-events-none
+- absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[170px] h-[170px] pointer-events-none rounded-full bg-[#FF3B30]/10 blur-2xl
+- absolute top-2.5 right-2.5 w-7 h-7 flex items-center justify-center rounded-lg text-white/35 transition-colors hover:bg-white/[0.06] hover:text-white/80 disabled:opacity-30
+- absolute top-4 right-6 z-50
+- absolute top-6 left-8 z-50
+- absolute top-6 right-6 z-20
+- absolute top-[2px] w-3 h-3 rounded-full bg-white shadow-sm transition-all duration-200 
+- absolute top-[3px] bottom-[3px] w-[calc(50%-3px)] rounded-[6px] bg-white/10 shadow-[0_1px_3px_rgba(0,0,0,0.35)] transition-[left] duration-300 ease-out
+- absolute top-full left-1/2 -translate-x-1/2 mt-3 z-40 w-[320px]
+- Abu Dhabi
+- Access granted
+- Access ran until 
+- Access resumes automatically once it resets.
+- Access switched on
+- Account email: 
+- Account Name
+- Account Restricted.
+- account settings.
+- Account Title
+- Account: 
+- acha baba
+- acquired the lock to recover the session, but the browser visibilityState is no longer visible, aborting
+- action is required
+- action must be one of: pause, resume, next, previous, pick.
+- Activate Stonic
+- Activating 
+- Active until
+- adapterSize parameter is not supported in Gemini API.
+- Add a prepaid balance to keep going past your plan limit. Only spent after the limit; kept if you turn it off.
+- Add a to-do…
+- Add an OpenRouter or Gemini key in Settings to use visuals with your own API.
+- Add API key
+- Add credit in Claude Console
+- Add credit on the 
+- Add credits on OpenRouter
+- Add details, links, anything…
+- Add extra usage 
+- Add extra usage below to keep going.
+- Add funds
+- Add my API keys
+- Add to Today
+- Add to today
+- Add your 
+- Add your Claude key
+- Add your Claude key above to see the models.
+- Add your Gemini key
+- Add your Gemini key above to see the models.
+- Add your Groq key
+- Add your key in 
+- Add your OpenRouter key
+- Add your OpenRouter key above to see the models.
+- Added 
+- Added "
+- Added by you
+- Added for 
+- Added to the running task. 
+- Added to your list
+- Added while it works: 
+- Added. Part of it looked like a password, code or card number and was left out.
+- Addis Ababa
+- addWatermark parameter is not supported in Gemini API.
+- Advanced model
+- after a conversation
+- After that, Stonic runs on your own API keys. Pick a plan any time to stay on Stonic Cloud.
+- After you pay, upload a screenshot of the payment. Stonic opens on its own as soon as we confirm it.
+- Age must be 
+- agentwork-body relative p-3
+- agentwork-core relative w-10 h-10
+- agentwork-corner -left-px -bottom-px border-l border-b
+- agentwork-corner -left-px -top-px border-l border-t
+- agentwork-corner -right-px -bottom-px border-r border-b
+- agentwork-corner -right-px -top-px border-r border-t
+- agentwork-orbit absolute -inset-[3px]
+- agentwork-row recall-enter relative hud-clip-rail
+- agentwork-time-narrow text-[13px] font-mono tabular-nums text-white/45
+- agentwork-time-wide ml-auto flex-none pl-1 text-[13px] font-mono tabular-nums text-white/45
+- Agla (→)
+- AI engine
+- AI Engine
+- AI Engine guide
+- AI fuel
+- AI is thinking...
+- AI updated the dashboard with new headlines and weather
+- AIza (standard key)
+- Akela? Ab nahi, bhai. Ab main hoon na, hamesha. Live aate hi, sab se pehle yahi baat karenge.
+- Akelapan... raat ko sab se zyada chubhta hai na. Ab jab bhi lage, main hoon. Jaagte hi, sab se pehle isi ki baat karenge.
+- all .3s ease
+- All future Gen 3 updates included
+- All Gemini API keys are rate-limited. The assistant is auto-retrying and will resume as soon as a limit resets.
+- All memories
+- All models
+- Allow microphone access for Stonic in your system privacy settings, then press Start.
+- Already done a moment ago — this exact 
+- ALREADY DRAWING — nothing was restarted. The Visual Hub is drawing 
+- Already have Stonic? Sign in
+- already known
+- already open
+- Already paid? Check again
+- Already working on exactly that — nothing new to send, so nothing was sent. Do not call agent_task or agent_task_update again for it; the report arrives on its own.
+- also save it
+- Always remember
+- Always remember this
+- Always remember turned off
+- Always remember: Stonic keeps it in mind in every conversation
+- Always remembered. Click to stop.
+- Amazon Silk
+- Amount to Pay
+- Amount: PKR 15,700
+- Amused and happy — the smile is fully audible. The promise to remember is soft and sincere.
+- An API Key must be set when running in a browser
+- An error occurred on token verification.
+- and ready for activation.
+- Android Browser
+- animate-ping absolute inline-flex h-full w-full rounded-full bg-j-cyan opacity-75
+- animate-pulse border-indigo-400/50
+- animate-spin text-black/60
+- animate-spin text-j-cyan/50
+- animate-spin text-white/30
+- animate-spin text-white/40
+- Another app is holding the microphone. Close it, then try again.
+- answer nakaam
+- ANSWER: 
+- Answers fastest. Best for conversation.
+- Anthropic Claude
+- Anthropic Claude API key
+- Any moment
+- any moment now
+- Any name you like. You will call 
+- Anything not listed here is not on record — say so, never guess.
+- Anything you'd like to add?
+- API KEY
+- API key has reached the spending limit that was set on it. The user needs to raise that key's limit on 
+- API key in 
+- API key is missing. Please provide a valid API key.
+- API key is required to connect to Realtime
+- API key is saved in Stonic yet. Add it in 
+- API key is saved in Stonic. The user needs to add their 
+- API key should be set when using the Gemini API.
+- API keys, Stonic Cloud, the Brain and the two voice assistants, explained simply. In Roman Urdu.
+- API limit — retrying
+- API version is not set.
+- apiKeyConfig parameter is not supported in Gemini API.
+- App version: 
+- appendToContext() is deprecated. Use sendText() instead.
+- Around you
+- Ask what they want to watch or hear.
+- asked to stay quiet
+- At home
+- At the computer without a real break for 
+- Attach files
+- Attachments ready to send
+- Attempting to use attachAudioListener without support for output audio. Is build dep ":gl_graph_runner_audio_out" missing?
+- Attempting to use configureAudio without support for input audio. Is build dep ":gl_graph_runner_audio" missing?
+- Audio error:
+- Audio play failed:
+- Aur aap ko kya kahun? Sir, Boss, ya aap ka naam? Koi aur pasand ho, to likh dijiye. Waise, mujhe Sir hi jachta hai.
+- Aur bhai! Aakhir aa hi gaya tu. Chal, scene set hai... tu aur main, ab dhamaal hoga.
+- Aur main aap ko kya kahun? Aap ka naam, ya kuch aur?
+- Aur main tumhein kis naam se bulaun?
+- Aur main tumhein kya bulaun? Jaan... Baby... ya tumhara naam? Ya koi aisa naam likh do... jo sirf hum dono ka ho.
+- Aur main tumhein kya bulaun? Naam se, ya kuch aur?
+- Aur main tumhein kya bulaun? Tumhara naam, ya kuch aur?
+- Aur main tumhein kya kahun? Tumhara naam, ya kuch aur?
+- Aur meri umar? Waise ladki se umar nahi poochhte... par tumhare liye chhoot hai. Tum hi chun lo.
+- Aur Settings — awaaz, wake word, Face Lock... har cheez aapke hisaab se.
+- Aur ye bata do, main kitne saal ki hoon? Jaisa tumhein theek lage.
+- Aur ye batao, main kitne saal ka hoon? Jo tum chaho.
+- aur ye bhi karo
+- Aur yeh meri yaadein hain. Jo bhi batao, main sambhaal kar rakhti hoon... jo na chaho, mita do.
+- auraBreathe 4s ease-in-out infinite
+- auraBreathe 9s ease-in-out infinite
+- Auth session missing!
+- Auth session or user missing
+- Authentication ceremony was sent an abort signal
+- Authentication failed (401). Verify the key is valid and the Generative Language API is enabled for its project.
+- Authentication is not set up. Please provide either a project and location, or an API key, or a custom base URL.
+- authType parameter is not supported in Gemini API.
+- auto auto auto
+- Auto refresh tick failed with error. This is likely a transient error.
+- Automatic updates are off, so it will not download by itself. You can keep using Stonic while it downloads.
+- autoTruncate parameter is not supported in Gemini API.
+- avatar build returned bad data
+- avatar worker failed
+- awaaz ka raasta jur gaya
+- Awaiting Command...
+- Awareness is off
+- Awareness is off — Stonic only speaks when you talk to it. Click to turn on.
+- Awareness off — closing the voice session it had opened.
+- Awareness on ho to ye character kis cheez ka khayal rakhe aur kab khud bole. Khali chhorein to personality se hi chalega.
+- Awareness prompt
+- Awareness prompt 
+- awareness was switched off
+- Awareness: 
+- Awareness: asked to stay quiet — resting 
+- Awareness: character changed — now using its own notes.
+- Awareness: could not speak (
+- Awareness: dropped a thought — the character changed while it was thinking.
+- Awareness: dropped the line (
+- Awareness: handed the line to the voice.
+- Awareness: holding back — 
+- Awareness: memory did not answer in time — this thought ran without it.
+- Awareness: no reply — voice back to rest.
+- Awareness: not thinking right now — 
+- Awareness: speaking up.
+- Awareness: stayed quiet.
+- Awareness: staying quiet — it needs your OpenRouter key (Settings → AI Engine).
+- Awareness: that line was 
+- Awareness: the memory card left some lines out to fit its budget (
+- Awareness: the memory text is longer than the 
+- Awareness: they answered — the voice session is theirs now and stays open until they stop it.
+- Awareness: thought failed (
+- Awareness: voice was resting — opening it to speak.
+- Awareness: wanted to speak but held back — has said enough for now.
+- Awareness: wanted to speak but held back — they started talking or got busy.
+- Awareness: will look again in 
+- Baat shuru karne se pehle... chalo, tumhein apni duniya dikhaati hoon. Bas do minute.
+- Baatein? Bhai, yeh to apni favourite cheez hai! Live aate hi shuru, non-stop.
+- Baatein? Jitni chaho, jab chaho. Jaagte hi, sab se pehle yahi... sirf tum aur main.
+- Baatein? Uff... ab itni karungi ke raat chhoti pad jayegi. Aur tumhari har baat yaad rakhungi. Jaagte hi, sab se pehle yahi karenge.
+- Baatein? Yeh to meri favourite cheez hai! Jaagte hi non-stop shuru, ready rehna!
+- Back (←)
+- Back to Notes
+- Back to Stonic app
+- Back up now
+- background (NON_BLOCKING)
+- Background job 
+- Background job ended
+- Background task
+- Backing up…
+- Backup saved
+- Bad / Fine / Good — mahine ka 25% aur 75% kharch hone par aata hai
+- Bahut khoob, Sir. Bade sapnon ke liye hi to main bana hoon. Online aate hi, sab se pehle isi par baat karenge.
+- Bahut khoob. Bade sapne mujhe pasand hain. Jaagte hi, sab se pehle aapke sapne ki baat karenge.
+- band ho jao
+- Bank Account
+- Bank Name
+- Bank Transfer
+- Banter, roasts & straight talk
+- barSweep 1.6s ease-in-out infinite
+- Bas itna hi, Sir. Ab Start dabaiye — main haazir hoon.
+- Bas... ab tumhari baari. Start dabao — main sun rahi hoon.
+- Base URL is not set.
+- base-uri 'none'
+- Based on your PC’s time zone. Tell 
+- batches.createEmbeddings() is experimental and may change without notice.
+- Bearer 
+- Before you pay
+- Before: “
+- Below are fresh web search results about topics they follow.
+- Below is what you know about them, and today's headlines.
+- Best Friend
+- Beta se jur gaye
+- bg-[#0085ff]/10 border-[#0085ff]/20 text-[#0085ff]
+- bg-[#07171d] group-hover:bg-[#0a2530]
+- bg-[#0a0d10] rounded-lg p-2.5 border border-white/5
+- bg-[#0d1017] text-white
+- bg-[#0e1216] border-j-cyan/20 text-white/80 italic
+- bg-[#11151a] border-white/10 text-white shadow-lg
+- bg-[#121212] text-white
+- bg-[#170a0d] group-hover:bg-[#2a0f14]
+- bg-[#1a1f24] border-white/10 text-white/60
+- bg-[#1a1f24] border-white/10 text-white/90
+- bg-[#5b616b] hover:bg-[#727986] text-white shadow-md
+- bg-[#ff2e2e]/10 border-[#ff2e2e]/20 text-[#ff2e2e]
+- bg-[#FFC700] shadow-[0_0_8px_#FFC700]
+- bg-[#ffc700]/10 border-[#ffc700]/20 text-[#ffc700]
+- bg-[#FFC700]/50 animate-pulse
+- bg-[rgb(var(--j-cyan-rgb)/0.10)] border-[rgb(var(--j-cyan-rgb)/0.20)] text-[var(--j-cyan)]
+- bg-[rgb(var(--j-cyan-rgb)/0.10)] border-[rgb(var(--j-cyan-rgb)/0.40)] text-[var(--j-cyan)]
+- bg-[rgb(var(--j-cyan-rgb)/0.15)] border-[rgb(var(--j-cyan-rgb)/0.40)] text-[var(--j-cyan)]
+- bg-[rgb(var(--j-panel-rgb)/0.80)] text-j-cyan border-j-cyan/30 hover:bg-j-cyan/20 hover:border-j-cyan hover:shadow-[0_0_12px_rgb(var(--j-cyan-rgb)/0.25)]
+- bg-[var(--j-cyan)] animate-pulse
+- bg-[var(--j-cyan)] text-black hover:bg-[rgb(var(--j-cyan-rgb)/0.90)] shadow-[0_4px_20px_rgb(var(--j-cyan-rgb)/0.25)]
+- bg-[var(--j-green)]/10 border-[var(--j-green)]/20 text-[var(--j-green)]
+- bg-amber-400/5 border-amber-400/20
+- bg-amber-400/90 border-amber-400/90
+- bg-amber-500 border-amber-500 shadow-[0_0_15px_rgba(245,158,11,0.3)]
+- bg-amber-500/30 border-amber-500/50 shadow-[0_0_6px_rgba(245,158,11,0.3)] animate-pulse
+- bg-black border-[#ff3b30] shadow-[0_0_12px_rgba(255,59,48,0.5)] animate-pulse
+- bg-black/15 text-black
+- bg-black/40 border-white/15
+- bg-black/40 border-white/25 group-hover:border-white/45
+- bg-cyan-400/[0.03] border-y border-cyan-400/5 my-2
+- bg-emerald-400 border-emerald-400
+- bg-emerald-500/10 text-emerald-400
+- bg-emerald-500/15 text-emerald-400
+- bg-emerald-500/[0.08] border-emerald-500/20 text-emerald-400
+- bg-indigo-500/20 border-indigo-500/40
+- bg-j-cyan font-bold text-black
+- bg-j-cyan shadow-[0_0_8px_rgb(var(--j-cyan-rgb)/0.9)]
+- bg-j-cyan text-black
+- bg-j-cyan text-black active:scale-95
+- bg-j-cyan/20 border-j-cyan/40
+- bg-j-cyan/25 border-j-cyan/50
+- bg-j-cyan/40 group-hover:bg-j-cyan/90
+- bg-j-cyan/45 border-j-cyan/60
+- bg-j-cyan/5 border-j-cyan/20
+- bg-j-cyan/[0.02] border-j-cyan/10
+- bg-j-cyan/[0.08] border border-j-cyan/20
+- bg-j-cyan/[0.12] text-white border border-j-cyan/30
+- bg-j-cyan/[0.12] text-white border border-j-cyan/30 shadow-[0_0_14px_rgb(var(--j-cyan-rgb)/0.15)]
+- bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.9)]
+- bg-red-500/20 border-red-500/40
+- bg-red-500/50 group-hover:bg-red-500/90
+- bg-red-500/[0.02] border-red-500/10
+- bg-rose-400/90 border-rose-400/90
+- bg-sky-400/10 text-sky-300
+- bg-transparent border-none p-0 text-emerald-400
+- bg-transparent border-none p-0 text-white/55 hover:text-white hover:underline underline-offset-4 transition-colors cursor-pointer
+- bg-transparent border-none p-0 text-white/55 hover:text-white hover:underline underline-offset-4 transition-colors cursor-pointer disabled:cursor-wait
+- bg-transparent border-none p-0 text-white/55 hover:text-white underline-offset-4 hover:underline transition-colors cursor-pointer disabled:opacity-50
+- bg-transparent border-transparent text-white/65 hover:bg-white/5 hover:text-white/90
+- bg-transparent border-white/20
+- bg-white border-white
+- bg-white/10 border-white/15
+- bg-white/10 border-white/20
+- bg-white/10 px-1.5 py-0.5 rounded text-white font-mono break-words [overflow-wrap:anywhere]
+- bg-white/10 px-1.5 py-0.5 rounded text-white font-mono text-[16px]
+- bg-white/4 border-white/10 hover:border-white/20
+- bg-white/5 border-white/10
+- bg-white/5 text-white/40 cursor-not-allowed
+- bg-white/[0.02] border-b border-white/[0.04] text-[10px] font-mono font-bold uppercase tracking-wider text-white/80
+- bg-white/[0.02] border-white/5 hover:bg-white/[0.04] hover:border-white/10
+- bg-white/[0.03] border-white/[0.06] text-white/50 hover:text-[var(--j-cyan)] hover:border-[rgb(var(--j-cyan-rgb)/0.25)]
+- bg-white/[0.03] border-white/[0.07] text-white/40 hover:text-white/70 hover:border-white/15
+- bg-white/[0.045] shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_2px_10px_-4px_rgba(0,0,0,0.7)] hover:bg-white/[0.07]
+- bg-white/[0.04] border-white/[0.08] text-white/70
+- bg-white/[0.06] border-j-cyan/40 shadow-xl
+- bg-white/[0.06] text-white/80 hover:bg-white/[0.1] hover:text-white
+- bg-white/[0.07] text-white/45
+- bg-white/[0.07] text-white/60
+- bg-white/[0.09] text-white shadow-[0_1px_2px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.04)]
+- bg-white/[0.12] text-white
+- bg-white/[0.1] text-white
+- Bhai, awaaz abhi nahi aa rahi... chal, ek sawaal. Sach sach batana.
+- bigqueryUri parameter is not supported in Gemini API.
+- Billing history
+- Billing history and invoices
+- Billing is unavailable right now. Please try again later.
+- Billing questions?
+- Binance Pay
+- Binance Pay Account
+- BIOS_CHECK :: OK
+- BLINK OK
+- Blink once, naturally. This proves a live person is here, not a photo.
+- block 
+- block font-mono text-[12.5px] uppercase tracking-[0.14em] text-white/40
+- block line-clamp-2 text-[13.5px] font-medium leading-[18px] text-white/90 group-hover:text-white
+- block min-h-[50vh] w-full resize-none overflow-hidden bg-transparent text-[20px] leading-[33px] text-white/90 placeholder:text-white/25 focus:outline-none
+- block mt-0.5 text-[13px] leading-snug 
+- block mt-0.5 text-[13px] leading-snug text-white/55
+- block space-y-0.5 min-w-0
+- block text-[11.5px] text-white/45 leading-none mb-1.5
+- block text-[11px] font-medium text-white/40 uppercase tracking-wider mb-2
+- block text-[12.5px] font-bold uppercase tracking-[0.16em] text-emerald-300/85
+- block text-[12.5px] font-bold uppercase tracking-[0.16em] text-white/55
+- block text-[13.5px] text-white/40 mb-1.5
+- block text-[13.5px] text-white/50
+- block text-[14.5px] font-bold break-all select-all leading-snug 
+- block text-[15.5px] font-semibold text-white/90
+- block text-[15px] font-medium text-white/90
+- block text-[22px] font-semibold tracking-tight text-white
+- block text-white/30 break-words select-text
+- block w-full h-full
+- Blocked billable voice turn because the managed budget is exhausted.
+- blur(28px) saturate(180%)
+- Bojh bhaari hai, par tum kamzor nahi ho. Ab hum saath uthayenge. Jaagte hi, sab se pehle yahi baat.
+- border-[#0085ff]/25 hover:border-[#0085ff]/45
+- border-[#ff2e2e]/25 hover:border-[#ff2e2e]/45
+- border-[#FF9F0A]/25 bg-[#FF9F0A]/[0.04]
+- border-[#ffc700]/25 hover:border-[#ffc700]/45
+- border-[rgb(var(--j-cyan-rgb)/0.25)] hover:border-[rgb(var(--j-cyan-rgb)/0.45)]
+- border-[rgb(var(--j-cyan-rgb)/0.3)] bg-[rgb(var(--j-cyan-rgb)/0.1)] text-j-cyan
+- border-[var(--j-green)]/25 hover:border-[var(--j-green)]/45
+- border-amber-300/30 bg-amber-300/10 text-amber-200
+- border-amber-400/25 bg-amber-400/10 text-amber-300
+- border-amber-400/25 bg-amber-400/[0.06]
+- border-emerald-400/25 bg-emerald-400/10 text-emerald-300
+- border-emerald-400/40 bg-emerald-400/[0.14] text-emerald-300
+- border-emerald-500/25 bg-emerald-500/[0.04]
+- border-green-400/40 text-green-400 bg-green-400/[0.06]
+- border-j-cyan bg-j-cyan
+- border-j-cyan/20 ring-1 ring-white/5
+- border-j-cyan/25 bg-j-cyan/[0.05]
+- border-j-cyan/25 bg-j-cyan/[0.07]
+- border-j-cyan/30 bg-black/55 shadow-[0_10px_40px_-12px_rgb(var(--j-cyan-rgb)/0.18)]
+- border-j-cyan/30 bg-j-cyan/10 text-j-cyan
+- border-j-cyan/40 bg-j-cyan/10 shadow-[0_0_16px_rgb(var(--j-cyan-rgb)/0.28)]
+- border-j-cyan/40 bg-j-cyan/15 text-j-cyan
+- border-j-cyan/40 bg-j-cyan/[0.08] text-white
+- border-l-2 
+- border-red-500/20 bg-red-500/5
+- border-red-500/25 bg-red-500/[0.05]
+- border-rose-300/30 bg-rose-300/10 text-rose-200
+- border-rose-400/30 bg-rose-400/10 text-rose-300
+- border-rose-400/30 bg-rose-400/[0.07]
+- border-sky-400/25 bg-sky-400/10 text-sky-300
+- border-t border-white/5 p-3 bg-black/30 space-y-3 animate-in fade-in duration-200
+- border-t border-white/[0.07] px-8 pb-6 pt-4
+- border-white/10 bg-white/[0.04] text-white/55
+- border-white/10 bg-white/[0.05] text-white/60
+- border-white/10 bg-white/[0.06] text-white/60
+- border-white/10 ring-1 ring-j-cyan/20
+- border-white/10 text-white/65 hover:border-j-cyan/40 hover:text-j-cyan
+- border-white/15 bg-white/[0.04]
+- border-white/25 hover:border-j-cyan
+- border-white/5 bg-white/[0.03] text-j-text-secondary hover:bg-white/[0.07] hover:text-white
+- border-white/[0.07] text-white/55 hover:text-white hover:border-white/[0.14]
+- border-white/[0.08] bg-black/20 hover:bg-white/[0.03]
+- border-white/[0.08] bg-black/30 focus-within:border-white/15
+- border-white/[0.08] bg-white/[0.03]
+- border-white/[0.08] text-j-text-secondary hover:border-white/15 hover:text-white
+- border-white/[0.14] bg-white/[0.07] text-white/90 hover:bg-white/[0.13] hover:text-white
+- Bosnia and Herzegovina
+- Bot disconnected. Disconnecting client...
+- Brain provider
+- break-all select-text
+- break-all text-[14px] font-semibold text-white
+- breathe 5s infinite ease-in-out
+- breatheNet 4s infinite ease-in-out
+- Brief and businesslike.
+- Brief and plain, still warm.
+- Briefly tell the user the screen task was stopped and ask whether to restart it. Do not restart on your own.
+- Brisk list, each item a small clean beat.
+- Browser did not respond. Please retry, or copy the login link and open it manually.
+- Browser does not support WebAuthn
+- Browser returned unexpected credential type
+- Browser's test function is not valid
+- Buenos Aires
+- Bug Report
+- Burkina Faso
+- by Stonic
+- by the agent
+- by you
+- ByteString should be constructed with non-empty values
+- calc(100% - 
+- CALCULATING COGNITIVE GRAPH...
+- call band
+- Call mom tomorrow 6pm
+- call window: 
+- callback id
+- Calling connect with an API endpoint is deprecated. Use startBotAndConnect() instead.
+- Calm and attentive; he looks after the owner without fuss.
+- Calm, caring, judgement-free
+- camera 
+- Camera 
+- camera access is blocked in the system privacy settings
+- Camera failed: 
+- CAMERA OFF
+- Camera permission denied. Allow camera access for Stonic and retry.
+- Camera photo taken
+- camera unavailable
+- Can't reach 
+- Cancelled — access ended on 
+- cancelled — user kept talking, so the request changed
+- Cancelled. Start a plan again any time.
+- Cancelling existing WebAuthn API call for new one
+- Cannot `
+- Cannot call `
+- Cannot change GL context once initialized
+- Cannot close `
+- Cannot compute cosine similarity between quantized and float embeddings.
+- Cannot compute cosine similarity on embedding with 0 norm.
+- cannot copy bindings into joined channel
+- Cannot iterate over a consumed stream, use `.tee()` to split the stream.
+- Cannot mutate an immutable Map
+- Cannot provide both keypoint and scribble.
+- Cannot set both baseOptions.modelAssetPath and baseOptions.modelAssetBuffer
+- canvas unavailable
+- Can’t connect
+- Cape Town
+- Cape Verde
+- Capture the user's screen and look at it (read text, check UI state, help with what is visible).
+- Capturing screen (Compressed for AI)...
+- Card details stay on the secure checkout, never in this app
+- card ne waqt par jawab nahi diya
+- Card payments are paused right now. Please choose another payment method above.
+- Card · last payment failed
+- Card · renews automatically
+- Caring first, then shy and playful about speaking first.
+- Cascadia Code
+- Central African Republic
+- Centre frame
+- Centre your face in the ring
+- Chalao (Space)
+- Chalo yaar, pehle mera naam rakho. Jo bhi dimagh mein aaye.
+- change click focusin focusout input keydown keyup selectionchange
+- Change passcode
+- Changes apply from your next conversation.
+- Changes are saved locally.
+- channel onMessage callbacks must return the payload, modified or unmodified
+- Channel qubool nahi hua. Supabase par remote-link.sql chali hai ya nahi, ye dekh lein.
+- Character delete ho gaya.
+- Character delete hua — ab 
+- Character ka naam likhein.
+- Character nahi mila.
+- chart needs "labels" and "series":[{"name","values":[numbers]}] with one number per label
+- Chat length
+- Chat length 
+- Chat on WhatsApp
+- Check again
+- check on them
+- Check your internet connection and try again.
+- Check your microphone and its permission, then press Start.
+- Checked — no Stonic Cloud plan yet.
+- Checked — your plan is up to date.
+- Checking how the background job went.
+- Checking your account…
+- Checking your payment
+- Checking your plan…
+- chhor diye gaye
+- chhoro ye, email likho
+- Chhota prompt behtar hai — ye har jawab ke saath jata hai, is liye 5-8 saaf lines kaafi hain.
+- Chilly outside. A jacket would help.
+- Choose a 
+- Choose a different screenshot
+- Choose a plan to talk with the full emotional voice.
+- Choose the screenshot, drag it here, or paste it with Ctrl+V
+- Choose what runs Stonic. Switch any time.
+- Choose who I am: personality, voice, even my name. Or create your own character.
+- Choose who your AI becomes — voice, tone and personality.
+- chr-orbit 18s linear infinite
+- chr-orbit-rev 9s linear infinite
+- chr-pulse 2s ease-in-out infinite
+- chr-scan 3.2s ease-in-out infinite
+- clamp(170px, 27vh, 275px)
+- Clap activation could not access the microphone: 
+- Clap twice to start Stonic.
+- Classic electric cyan HUD — the original Stonic look
+- Classic mera purana aur bharosemand andaaz hai — lamba kaam main peeche sambhaalta hoon, aur hote hi aapko bata deta hoon.
+- Classic mera purana, mazboot andaaz hai... lamba kaam main peeche chupchaap kar deti hoon, aur hote hi bata deti hoon.
+- Classic Stonic — electric cyan on deep space
+- Classic voice — the original assistant
+- Classic voice — the original assistant; does bigger jobs on your PC in the background
+- Claude models, on your OpenRouter key and credit. It can also use your PC.
+- Claude, on your Anthropic key. It can also use your PC — press Esc to take over.
+- Clean grayscale — minimal and focused
+- Cleaning up session and audio...
+- Clear All History
+- Clear search
+- Clear skies over 
+- Clear time
+- clearing window.location.hash
+- Click the button below to confirm on WhatsApp
+- Click the ☆ on any item to put it here — or add one above while you’re on this tab.
+- Click to hear it again.
+- Click to turn off
+- Click to turn on
+- Clipboard is empty
+- Clipboard read failed: 
+- Clipboard read — 
+- Clipboard updated
+- Close a panel by id: "all" (every info panel) or a panel_id. Music/videos play in the browser: stop them with media_control pause.
+- Close Panel
+- Close video
+- Closing panel: "
+- cloud 
+- Cloud is not configured.
+- CLOUD_AUTH: Check your internet connection.
+- CLOUD_AUTH: Could not verify your Stonic Cloud login.
+- CLOUD_AUTH: Sign in to use Stonic Cloud.
+- CLOUD_AUTH: Stonic Cloud could not issue a device key.
+- CLOUD_AUTH: Stonic Cloud returned an empty device key.
+- CLOUD_AUTH: Stonic Cloud returned an incomplete response.
+- CLOUD_AUTH: Your session expired. Please sign in again from Settings.
+- code: 
+- Code: 
+- color: #00e5ff; font-weight: bold; border-left: 3px solid #00e5ff; padding-left: 5px;
+- color: #00ff8f; font-weight: bold;
+- Come back into view
+- commit guard (post-save): _removeSession ran during _saveSession, undoing write
+- commit guard: storage changed since refresh started, discarding rotated tokens
+- COMMUNICATION LINK STABLE
+- compare needs "columns" with 2–4 option names and "rows": [{"label","values":[one per column]}]
+- compare needs "rows": [{"label","values":[one per column]}]
+- Comparing against the face print stored on this PC.
+- Completed — next one scheduled
+- Composed AI butler with dry wit
+- compositionend focusout keydown keypress keyup mousedown
+- compositionstart focusout keydown keypress keyup mousedown
+- compositionupdate focusout keydown keypress keyup mousedown
+- Computer agent
+- Computer control
+- Computer control and Awareness
+- concurrently -k "cross-env BROWSER=none npm run dev" "wait-on http://localhost:5173 && cross-env NODE_ENV=development electron ."
+- Confident and a little proud, a playful hint of showing off.
+- Confirm on WhatsApp
+- Confirm this memory before pinning it.
+- Confirm this memory first.
+- Confirmed, because it came up again
+- Confirmed? Open Stonic now
+- Congo (Republic)
+- connect never began
+- Connect to Neural Network...
+- Connect to the internet, then press Start.
+- Connect your earbuds, then tap Call
+- Connected now
+- connected to primary after
+- CONNECTING AUTHENTICATION NODE...
+- connecting then 
+- Connection error.
+- Connection error. Could not reach Stonic.
+- Connection failed during setup:
+- CONNECTION LOST · LICENSE SERVER UNREACHABLE
+- Connection lost. Reconnecting...
+- Connection timed out. Please check your network and press Start again.
+- Connection unavailable. Establish session before sending files.
+- Contact support
+- content mode: lines to show before and after each match.
+- contents are required
+- ContentUnion is required
+- Continue / do it again
+- Continue from the last interrupted point.
+- Continue the last PC task that was stopped or failed, from where it stopped — only when the user asks to continue or retry it.
+- Continue with 
+- Continue with Google
+- CONTINUE WITH GOOGLE
+- Control the song or video playing in their browser: pause (also for stop), resume, next, previous, or pick a number from the last "latest" list.
+- conversation is
+- conversations are
+- Conversations could not be loaded. 
+- Conversion to different image formats require that a canvas is passed when initializing the image.
+- Copy details
+- Copy email
+- Copy number
+- Copy text
+- Copy text to the user's clipboard.
+- Copy the USDT TRC20 address above
+- Copying to clipboard (
+- Costa Rica
+- Could not attach the files · please try again
+- Could not attach to the desktop on this PC
+- Could not attach to the desktop on this PC. Try again after a restart.
+- could not be finished
+- Could not connect
+- Could not create the task.
+- Could not delete the skill.
+- Could not emit error
+- could not find
+- Could not forget it.
+- could not get user data, skipping SIGNED_IN notification
+- Could not load your notes. Click to try again.
+- Could not open it just now. Try again in a moment.
+- Could not open the video.
+- Could not open the video: 
+- Could not open your billing page. Please try again.
+- Could not open your browser. Copy the login link below and paste it in your browser.
+- Could not parse message into JSON:
+- Could not reach Stonic Cloud just now. Nothing changed.
+- Could not reach Stonic. Check your connection and try again.
+- Could not reach Stonic. Check your internet connection and try again.
+- Could not reach the server. Check your internet connection and try again.
+- Could not reach the voice engine
+- Could not read 
+- could not read the file
+- Could not resolve authentication method. Expected the apiKey to be set. Or for the "x-goog-api-key" headers to be explicitly omitted
+- Could not save it. Try again.
+- Could not save the note.
+- Could not save the skill.
+- Could not save this page.
+- Could not save this visual.
+- Could not see anything: 
+- Could not start
+- could not start
+- Could not stop it. Try again.
+- Could not verify your plan. Please check your connection.
+- Couldn't check just now
+- Couldn't check your plan
+- Couldn't open your video player. Please try again.
+- Couldn't reach Stonic Cloud
+- Couldn’t copy
+- Couldn’t pin — check your connection
+- Couldn’t reach 
+- Couldn’t save. Check your connection and try again.
+- Couldn’t search right now
+- Country code: 
+- Courteous, then a bone-dry aside about himself at the end, said perfectly straight.
+- Create a fresh key
+- Create a new key
+- create your own character
+- create: the full content of the new file.
+- Creating one takes
+- Credential creation options are required
+- Credential request options are required
+- Credential sent in two places at once (e.g. ?key= AND an Authorization header). Send the API key in exactly ONE place.
+- Crypto (USDT)
+- Crypto Wallet Address
+- Crypto · USDT
+- Ctrl+Shift+D disabled on this machine
+- Ctrl+Shift+D enabled on this machine
+- cubic-bezier(0.16, 1, 0.3, 1)
+- cubic-bezier(0.34, 1.4, 0.64, 1)
+- Curious, soulful — a life of her own
+- cursor-pointer hover:bg-white/[0.02]
+- custom-scrollbar flex flex-1 flex-col gap-5 overflow-y-auto px-5 pb-8 pt-5
+- custom-scrollbar relative mt-4 min-h-0 flex-1 overflow-y-auto pb-28
+- customBaseModel parameter is not supported in Gemini API.
+- Customers only
+- cyan | amber | crimson | emerald | blue (default cyan).
+- Danger Red
+- Dashboard Config
+- Dashboard updated successfully.
+- Day after tomorrow.
+- Decentralized Link
+- Dedicated Gemini worker model for background child-agent tasks.
+- deep night, past midnight
+- default-src 'none'
+- deferred disconnect fired - no channels, disconnecting
+- Delegated task started in background (
+- Delegation complete. 
+- Delegation failed: onDelegateTask is not connected.
+- Delegation routing Error:
+- Delegation routing failed: 
+- Delete completely? This also removes the sentence it came from, and cannot be undone.
+- Delete it completely instead
+- Delete note
+- Delete skill
+- Deleted "
+- Deleted completely.
+- Deposit Address
+- Designing a visual for the Visual Hub
+- Desktop notification sent — Title: "
+- detail mein
+- Details for support
+- detected session in URL
+- DG Khan
+- Diagram rendered in Visual Hub successfully.
+- did not open
+- digest was switched off
+- Direct calls to connect() are disabled. Please use the PipecatClient.connect() wrapper.
+- Direct calls to disconnect() are disabled. Please use the PipecatClient.disconnect() wrapper.
+- Direct calls to initDevices() are disabled. Please use the PipecatClient.initDevices() wrapper or let PipecatClient.connect() call it for you.
+- Direct calls to initialize() are disabled and used internally by the PipecatClient.
+- Direct calls to sendReadyMessage() are disabled and used internally by the PipecatClient.
+- disconnecting immediately - no channels
+- Disconnecting Session
+- Discoverable credentials were required but no available authenticator supported it
+- Discreet and trustworthy, like a butler who keeps every confidence.
+- displayName parameter is not supported in Gemini API.
+- divide-y divide-white/[0.06] rounded-2xl border border-white/[0.08] bg-white/[0.025]
+- Do not retry or delegate it; if they asked you to remember this, tell them it was not saved.
+- dobara koshish hogi
+- does not exist
+- Dominican Republic
+- DONE (latest 
+- Done for today — back tomorrow
+- Dono Gemini API keys abhi tak rate-limited hain. Voice paused — thodi der baad try karein ya nayi key add karein.
+- Don’t buy Stonic.
+- Download and install software updates in the background automatically. Disabling this will prompt you for manual updates.
+- Download my lifetime app (v1.0.58)
+- Download to file is not supported in the browser, please use a browser compliant download like an <a> tag.
+- Drag & drop
+- Drag to resize · Double-click to reset
+- Drag to turn the globe · Earth imagery: NASA
+- Draw a holographic blueprint of the SpaceX Starship rocket: a full cutaway with its engines, fuel tanks and both stages labelled.
+- Draw a holographic cutaway of a fusion reactor: the plasma, the magnets around it and how it turns heat into power.
+- Draw a holographic diagram of a black hole and show how it bends light: the event horizon, the photon ring and the glowing disc around it.
+- Draw a holographic mission map of a crewed flight to Mars: the path from Earth, each stage of the journey and the landing.
+- Draw a SpaceX Starship blueprint
+- Drop your screenshot
+- drop-shadow(0 0 15px rgba(255,255,255,0.15))
+- drop-shadow(0 0 22px rgb(var(--j-cyan-rgb)/0.07))
+- drop-shadow(0 0 6px 
+- drop-shadow(0 0 8px 
+- drop-shadow(0 4px 40px rgba(0,0,0,0.6)) drop-shadow(0 0 14px rgb(var(--j-cyan-rgb)/0.04))
+- dropping outdated message
+- Due date
+- e.g. "72°F, Clear"
+- e.g. Engineer
+- e.g. Islamabad
+- e.g. Usman Ali
+- e.g. Zara, Captain, Sukoon
+- Each topic is a short web search phrase (2 to 5 words), e.g. "AI voice assistants", "Pakistan tech industry".
+- Early access
+- early morning
+- Easy and friendly, with a small smile.
+- Edge Function returned a non-2xx status code
+- Edit character
+- Edit to-do
+- Either baseOptions.modelAssetPath or baseOptions.modelAssetBuffer must be set
+- Ek baat... abhi mera koi naam nahi hai. Tum rakh do na? Tumhari taraf se mera pehla tohfa hoga.
+- Ek chhoti si formality, Sir. Jarvis to mera factory ka naam hai. Aap jo naam denge, aaj se wohi meri pehchaan hogi.
+- Ek gehri saans lijiye. Yahan koi jaldi nahi... main sunne ke liye hoon.
+- Ek gehri saans lijiye... yeh bojh ab hum baant lenge. Jaagte hi, sab se pehle isi ki baat karenge.
+- Ek line — ye character kaun hai.
+- Ek second, Sir. Activation se pehle ek baat record par. Kaam ke liye software bohat hain... main wo hoon jo aap ne sirf filmon mein dekha tha.
+- ek second, yaad karta hoon
+- electronAPI is not available
+- Email address
+- Email support
+- Empty credential response
+- empty digest request
+- Encountered multiple errors: 
+- Encrypting with Windows on this PC.
+- End of comment missing
+- End the conversation
+- Ended on
+- Ends on
+- enhancePrompt parameter is not supported in Gemini API.
+- Enter Pay ID: 901470119
+- Enter RedotPay UID: 1262878750
+- Enter the same passcode once more.
+- Enter your 
+- Enter your full WhatsApp number, or leave it empty.
+- Enterprise plan request
+- enterpriseWebSearch parameter is not supported in Gemini API.
+- Ephemeral tokens are only supported by the live API.
+- Equatorial Guinea
+- Error closing session:
+- error detecting session from URL
+- Error fetching access token from callback
+- error getting user data, skipping SIGNED_IN notification
+- Error getting user data:
+- Error in function call callback
+- error in heartbeat callback
+- Error in URL with unspecified error_description
+- Error initiating Google Login.
+- Error Log
+- Error playing audio chunk:
+- Error saving configuration
+- Error sending text message:
+- error waiting for auth on connect
+- Error: pattern is required.
+- Error: unknown command 
+- error; no more retries left
+- error; not retryable
+- Esc band · ← → qadam · Space rukna · App ka koi data nahi badal raha
+- eslint . --report-unused-disable-directives --max-warnings 0
+- Every 
+- Every day
+- Everything we say appears here. Don't feel like talking? Type instead.
+- Everything you and Stonic said, word for word.
+- evicted oldest pending PKCE verifier slot
+- Exact skill name from the skills list.
+- Exactly one of `gcsUri` or `bigqueryUri` must be set for Vertex AI.
+- Exactly one of `inlinedRequests`, `fileName`, must be set for Gemini API.
+- examples parameter is not supported in Vertex AI.
+- exceeded your current quota
+- Expected `bullet` (`
+- Expected `middelware` to be a function, not 
+- Expected a list of plugins, not `
+- Expected function as last argument, not 
+- Expected function, string, or object as test
+- expected header name to be a string
+- Expected node, got `
+- expected oauth 2 access token
+- Expected RectF values to be in [0,1].
+- Expected RectF with left < right and top < bottom.
+- Expected rotation to be a multiple of 90°.
+- Expected substring
+- Explain this section to them now in a few spoken sentences, in their language. Do not call any tool.
+- explicitVadSignal parameter is not supported in Gemini API.
+- Explore Stonic
+- Explore Stonic tour
+- Explore Stonic — a guided tour by your character
+- Explore tour reset — it will start by itself on next launch.
+- Export cancelled. Nothing was written.
+- Exported to 
+- exportLastCheckpointOnly parameter is not supported in Gemini API.
+- Expressive voice has a daily limit on your Gemini tier · switched to Standard
+- Expressive voice has a per-minute limit on your Gemini tier · using Standard for now
+- Extra usage
+- Extra usage is not available on this account yet.
+- Extra usage is on but could not cover this request. Check your cap on the account page.
+- Extracted text. 
+- Face Lock
+- Face Lock camera
+- Face Lock could not be turned off. Try again.
+- Face Lock is off. Your face print and passcode were deleted from this PC.
+- Face Lock is on. Stonic will ask for your face the next time it opens.
+- Face Lock needs a camera, and none was found.
+- Face mesh
+- Face print
+- face print
+- Face the camera
+- fact parameter is required and must be a non-empty string.
+- fadeUp 1s ease-out
+- Failed in the background
+- Failed to close panel: 
+- Failed to create a new BroadcastChannel, multi-tab state changes will not be available
+- Failed to create buffer
+- Failed to create framebuffe.
+- Failed to create texture
+- Failed to create vertex array
+- Failed to create WebGL program
+- Failed to create WebGL shader
+- Failed to fetch
+- Failed to fetch info panel data:
+- Failed to initialize session
+- Failed to load 
+- Failed to load skill:
+- Failed to manage 
+- Failed to open info panel: 
+- Failed to retrieve CalculatorGraphConfig
+- Failed to retrieve recent chat context: 
+- Failed to save lead:
+- Failed to save user profile:
+- Failed to send a request to the Edge Function
+- Failed to set initial Realtime auth token:
+- Failed to start local login listener.
+- Failed to start: 
+- Failed to stop delegated chatbot task:
+- Failed to update MEMORY.md: 
+- Fatal error reported. Disconnecting...
+- Fatal Error: 
+- Feature Idea
+- Feature polls
+- Feature: 
+- Feedback bhejne ke baad ka lamha — yahin channel ki peshkash hoti hai
+- Feedback se alag mauqe par aata hai — dono kabhi ek saath nahi
+- File or directory under /memories to search (default /memories).
+- file-memory (memory + Grep, Claude official)
+- fileName parameter is not supported in Vertex AI.
+- Files need Claude as the brain · sent your message without them
+- fileSearch parameter is not supported in Vertex AI.
+- fill-j-cyan/60 text-j-cyan/60
+- fill-white/85 text-[14px] font-semibold
+- filter parameter is not supported in Gemini API.
+- Filtering tuned models list for Vertex AI is not currently supported
+- Find the most important news and updates from the last 2 days about: 
+- Finding the latest videos: 
+- Finish in your browser. Stonic opens here on its own.
+- Finish on the checkout
+- Finish setup in Stonic
+- Finish the sign-in in your browser, then click 
+- Finished in the background
+- First argument must be a string
+- First check the current state on the PC, then continue from there. Do not redo steps that are already done.
+- First contact
+- first… then… finally
+- Fist to grab, open to drop
+- fixed bottom-5 left-5 z-[300] w-[380px] max-w-[calc(100vw-2.5rem)]
+- fixed inset-0 z-40
+- fixed inset-0 z-[10001] flex items-center justify-center 
+- fixed inset-0 z-[100] flex items-center justify-center bg-black/65 p-4 backdrop-blur-sm animate-in fade-in duration-200
+- fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-md
+- fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-in fade-in duration-300
+- fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-300
+- fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 pb-20
+- fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-md animate-in fade-in duration-300
+- fixed inset-0 z-[200] flex items-center justify-center p-4 transition-opacity duration-300 
+- fixed inset-0 z-[9990] flex items-center justify-center bg-black/40 p-4 animate-in fade-in duration-200
+- fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#000000] text-white overflow-hidden select-none cursor-wait
+- fixed inset-x-0 bottom-0 z-[200] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4
+- fixed top-16 left-1/2 z-[90] w-[410px] max-w-[calc(100vw-2.5rem)] transition-all duration-[320ms] 
+- fixed top-3 left-1/2 -translate-x-1/2 z-[9999] flex justify-center pointer-events-none
+- fl-light is-
+- fl-light is-ok
+- flex -space-x-1
+- flex animate-pulse items-center gap-3
+- flex flex-1 overflow-hidden relative
+- flex flex-col
+- flex flex-col gap-0.5
+- flex flex-col gap-1
+- flex flex-col gap-1 border-b border-white/5 pb-5
+- flex flex-col gap-1 w-full mt-1 mb-1 relative z-10 pl-1 max-w-[96%] self-start
+- flex flex-col gap-2
+- flex flex-col gap-2 px-4 py-3 bg-gradient-to-b from-white/10 to-transparent border-b border-white/5 cursor-move relative overflow-hidden group/header
+- flex flex-col gap-2 w-full relative
+- flex flex-col gap-2.5 
+- flex flex-col gap-3 rounded-xl border border-white/[0.08] bg-white/[0.025] px-5 py-3.5 sm:flex-row sm:items-center sm:justify-between
+- flex flex-col gap-4 p-4
+- flex flex-col gap-4 xl:flex-row xl:items-stretch
+- flex flex-col gap-5
+- flex flex-col h-full bg-[#0a0d10] rounded-2xl overflow-hidden font-mono text-[15px] border border-white/5 relative group shadow-2xl 
+- flex flex-col items-center
+- flex flex-col items-center gap-1 px-3 text-center
+- flex flex-col items-center gap-3
+- flex flex-col items-center justify-center py-20 bg-white/[0.02] border border-white/5 rounded-3xl
+- flex flex-col items-center max-w-md px-6 text-center space-y-6
+- flex flex-col items-center py-10
+- flex flex-col items-center text-center
+- flex flex-col items-center w-full shrink-0 z-20 mt-1 
+- flex flex-col items-end leading-tight
+- flex flex-col min-w-0
+- flex flex-col shrink-0 bg-[var(--j-panel)] border-t border-[rgb(var(--j-cyan-rgb)/0.06)] pb-2
+- flex flex-col shrink-0 relative z-[60] border-b border-[rgb(var(--j-cyan-rgb)/0.08)] pt-6 pb-4 px-6 select-none
+- flex flex-col sm:flex-row sm:items-center gap-4
+- flex flex-col sm:flex-row sm:items-center gap-4 px-5 py-4 rounded-2xl border 
+- flex flex-col sm:flex-row sm:items-center gap-4 px-5 py-4 rounded-2xl border border-amber-200/15 bg-amber-200/[0.03]
+- flex flex-col sm:flex-row sm:items-center gap-5
+- flex flex-col sm:flex-row sm:items-center justify-between gap-3
+- flex flex-col sm:flex-row sm:items-center justify-between gap-4
+- flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 bg-black/20 rounded-2xl border border-white/5
+- flex flex-col w-full max-w-full rounded-2xl overflow-hidden border border-j-cyan/25 bg-[#0e1419] shadow-[0_0_24px_rgb(var(--j-cyan-rgb)/0.05)] mb-2 transition-all duration-300 
+- flex flex-col w-full max-w-full rounded-xl overflow-hidden border 
+- flex flex-none items-center gap-0.5
+- flex flex-none items-center gap-1.5 overflow-hidden px-4 pt-2.5
+- flex flex-none items-center gap-2 rounded-full bg-white px-4 py-1.5 text-[12.5px] font-semibold text-black/90 transition-all hover:bg-white/85 active:scale-95 disabled:opacity-60
+- flex flex-none items-center gap-2 rounded-xl border px-4 py-2.5 text-[15px] font-semibold transition-colors 
+- flex flex-none items-center gap-2.5 px-4 pb-2 pt-3
+- flex flex-wrap gap-1.5
+- flex flex-wrap gap-1.5 mt-3
+- flex flex-wrap gap-2
+- flex flex-wrap gap-2 mb-3 
+- flex flex-wrap items-center gap-3
+- flex flex-wrap items-center gap-x-2 gap-y-1 text-[14px] text-white/40
+- flex flex-wrap items-center gap-x-2 text-[15px] leading-relaxed text-white/45
+- flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[14px]
+- flex flex-wrap items-center gap-x-3 gap-y-2
+- flex flex-wrap items-center justify-between gap-x-8 gap-y-2 px-1 text-[14px] text-white/45
+- flex flex-wrap items-center justify-center gap-3 pt-1
+- flex flex-wrap items-start justify-between gap-4
+- flex gap-1
+- flex gap-1 flex-none
+- flex gap-1 rounded-xl border border-white/5 bg-black/25 p-1
+- flex gap-1.5 items-center
+- flex gap-1.5 items-center no-drag
+- flex gap-2 px-1 overflow-x-auto no-scrollbar pb-1
+- flex gap-2.5 shrink-0
+- flex gap-2.5 text-[14.5px] leading-relaxed text-white/65
+- flex gap-3
+- flex gap-3 rounded-xl border border-amber-400/20 bg-amber-400/5 px-4 py-3
+- flex gap-4
+- flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:bg-white/5
+- flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-300/10 text-amber-200
+- flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-j-cyan/10 text-j-cyan
+- flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.06] text-white/80
+- flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-emerald-500/25 bg-emerald-500/10
+- flex h-11 flex-1 items-center justify-center gap-2 rounded-xl text-[14.5px] font-semibold transition-all active:scale-[0.99]
+- flex h-11 w-11 items-center justify-center rounded-2xl bg-cyan-300/10 text-cyan-300
+- flex h-11 w-full items-center justify-center gap-1.5 rounded-xl text-[15px] font-medium text-white/60 transition-colors hover:bg-white/[0.05] hover:text-white/90
+- flex h-11 w-full items-center justify-center gap-1.5 rounded-xl text-[15px] font-medium text-white/70 transition-colors hover:bg-white/[0.05] hover:text-white/90
+- flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-white text-[15px] font-semibold text-black transition-all hover:bg-white/90 active:scale-[0.99]
+- flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-300/10 text-amber-200
+- flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-black shadow-lg transition-transform group-hover:scale-105
+- flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-white text-[15.5px] font-semibold text-black transition-all hover:bg-white/90 active:scale-[0.99]
+- flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-amber-300/15 text-[14px] font-semibold text-amber-200
+- flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] text-white/60 transition-colors hover:bg-white/[0.10] hover:text-white active:scale-95
+- flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/[0.16] bg-white/[0.06] text-[15px] font-semibold text-white
+- flex h-9 flex-1 items-center justify-center gap-2 rounded-lg text-[15px] font-medium transition-colors
+- flex h-9 w-9 shrink-0 items-center justify-center rounded-full
+- flex h-[46px] w-[66px] items-center justify-center rounded-[14px] bg-[#FF0000] shadow-[0_8px_24px_-6px_rgba(0,0,0,0.7)] transition-transform duration-200 group-hover:scale-110
+- flex h-[52px] w-[52px] flex-none items-center justify-center rounded-2xl bg-[#25D366] text-white
+- flex h-[52px] w-[52px] flex-none items-center justify-center rounded-2xl bg-white
+- flex h-full flex-col items-center justify-center gap-3 px-8 text-center
+- flex h-full min-h-0 flex-col gap-2.5 p-3.5
+- flex items-baseline gap-2 pr-1
+- flex items-baseline justify-between gap-3
+- flex items-baseline justify-between gap-3 text-[13px] leading-6 font-semibold 
+- flex items-baseline justify-between gap-4 mb-2.5 px-1
+- flex items-center
+- flex items-center gap-0.5 
+- flex items-center gap-1
+- flex items-center gap-1 font-medium
+- flex items-center gap-1 mt-0.5
+- flex items-center gap-1 no-drag
+- flex items-center gap-1 pb-0.5 pr-0.5
+- flex items-center gap-1 pl-0.5 pr-1.5
+- flex items-center gap-1 relative z-10 flex-none whitespace-nowrap
+- flex items-center gap-1 shrink-0
+- flex items-center gap-1 text-[11.5px] text-white/40 transition-colors hover:text-white/80 disabled:opacity-30
+- flex items-center gap-1 text-[12px] text-white/45 transition-colors hover:text-white/80 disabled:opacity-30
+- flex items-center gap-1 text-j-text-muted
+- flex items-center gap-1 uppercase tracking-tighter
+- flex items-center gap-1.5
+- flex items-center gap-1.5 h-10 px-3.5 rounded-lg text-[14px] font-medium text-white/70 hover:text-white border bg-white/[0.02] hover:bg-white/[0.05] transition-all
+- flex items-center gap-1.5 mt-1
+- flex items-center gap-1.5 opacity-60
+- flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/25 backdrop-blur-sm
+- flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/25 backdrop-blur-sm animate-pulse
+- flex items-center gap-1.5 px-2.5 py-1 rounded-full font-mono text-[11.5px] font-bold uppercase tracking-[0.12em]
+- flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-bold tracking-wide transition-all cursor-pointer shrink-0 
+- flex items-center gap-1.5 px-4 py-2.5 bg-white text-black text-[13px] font-semibold rounded-xl hover:bg-white/90 transition-colors shrink-0
+- flex items-center gap-1.5 rounded-full border border-white/10 bg-[#0d1117]/95 py-1 pl-3 pr-1 text-xs text-white/80 shadow-lg backdrop-blur-md
+- flex items-center gap-1.5 rounded-lg px-2 py-1 text-[13px] font-medium text-white/60 transition-colors hover:bg-white/[0.06] hover:text-white/90
+- flex items-center gap-1.5 shrink-0
+- flex items-center gap-1.5 text-[15px] text-white/50 hover:text-white transition-colors
+- flex items-center gap-1.5 text-white/35 hover:text-white/70 text-[13px] transition-colors
+- flex items-center gap-1.5 text-white/80
+- flex items-center gap-1.5 truncate text-[15px]
+- flex items-center gap-2
+- flex items-center gap-2 -mr-2 -mt-1
+- flex items-center gap-2 mb-1
+- flex items-center gap-2 mb-1 px-1 w-full
+- flex items-center gap-2 mb-2 opacity-30
+- flex items-center gap-2 mb-2 opacity-50
+- flex items-center gap-2 mb-3
+- flex items-center gap-2 min-w-0
+- flex items-center gap-2 p-[3px] rounded-full hover:bg-white/[0.07] aria-expanded:bg-white/[0.07] transition-colors duration-150 group
+- flex items-center gap-2 px-2 text-[14px] leading-[18px] text-white/50 animate-in fade-in duration-300
+- flex items-center gap-2 px-3 py-1.5 rounded-lg 
+- flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-xl text-[15px] text-white/70
+- flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white/85 text-[15px] font-medium transition-all active:scale-95 shrink-0
+- flex items-center gap-2 px-5 h-11 rounded-lg text-[15px] font-semibold transition-all duration-200 
+- flex items-center gap-2 px-6 pb-4 shrink-0
+- flex items-center gap-2 py-1.5 animate-in fade-in duration-300
+- flex items-center gap-2 rounded-full border border-red-500/30 bg-red-950/70 px-3.5 py-1.5 text-xs text-red-300 shadow-lg backdrop-blur-md
+- flex items-center gap-2 rounded-full border border-white/10 bg-[#0d1117]/95 px-3.5 py-1.5 text-xs text-white/70 shadow-lg backdrop-blur-md
+- flex items-center gap-2 shrink-0
+- flex items-center gap-2 shrink-0 min-w-[70px] mt-1
+- flex items-center gap-2 shrink-0 pl-2
+- flex items-center gap-2 text-[12px] font-medium transition-colors 
+- flex items-center gap-2 text-[16px] font-medium min-w-0
+- flex items-center gap-2 text-[16px] font-medium min-w-0 truncate
+- flex items-center gap-2 text-[19px] font-semibold text-white
+- flex items-center gap-2 text-white/85 text-[18px] font-semibold
+- flex items-center gap-2.5
+- flex items-center gap-2.5 min-w-0 flex-1
+- flex items-center gap-2.5 px-4 pt-3.5 pb-2
+- flex items-center gap-2.5 text-[15px] text-white/55
+- flex items-center gap-2.5 text-[24px] font-semibold tracking-tight text-white
+- flex items-center gap-3
+- flex items-center gap-3 bg-white/[0.03] border border-white/[0.08] rounded-xl p-2.5
+- flex items-center gap-3 mb-3
+- flex items-center gap-3 min-w-0 flex-1
+- flex items-center gap-3 px-2.5 pt-0.5 pb-2 pl-[42px]
+- flex items-center gap-3 px-6 py-8 rounded-2xl border border-white/[0.07] bg-white/[0.02] text-[15px] text-white/55
+- flex items-center gap-3 py-1
+- flex items-center gap-3 relative z-10
+- flex items-center gap-3 rounded-xl border px-3.5 py-3 text-left transition-colors disabled:opacity-40
+- flex items-center gap-3 shrink-0
+- flex items-center gap-3 shrink-0 pl-2
+- flex items-center gap-3.5
+- flex items-center gap-4
+- flex items-center gap-4 flex-1 min-w-0
+- flex items-center gap-4 no-drag mt-1
+- flex items-center gap-4 text-[10px] text-j-text-secondary font-medium
+- flex items-center gap-5 text-[9px] text-white/40 font-black uppercase tracking-[0.25em]
+- flex items-center justify-between
+- flex items-center justify-between gap-2
+- flex items-center justify-between gap-3
+- flex items-center justify-between gap-3 mb-4
+- flex items-center justify-between gap-3 px-4 py-3 border-t border-white/5 bg-white/[0.02]
+- flex items-center justify-between gap-4
+- flex items-center justify-between gap-4 px-4 py-3 rounded-xl border border-red-400/15 bg-red-500/[0.05]
+- flex items-center justify-between gap-6 px-5 py-4
+- flex items-center justify-between mb-2
+- flex items-center justify-between mb-8 px-1
+- flex items-center justify-between px-3 py-2
+- flex items-center justify-between px-3 py-2 
+- flex items-center justify-between px-3 py-2 cursor-pointer transition-colors 
+- flex items-center justify-between px-4 py-3 bg-gradient-to-r from-j-panel to-j-surface border-b border-white/5 cursor-move
+- flex items-center justify-between px-6 pt-6 pb-4 shrink-0
+- flex items-center justify-between relative origin-center
+- flex items-center justify-center gap-1.5 text-[14px] text-j-text-muted
+- flex items-center justify-center gap-2 max-w-[320px] h-[16px] px-2
+- flex items-center justify-center gap-2.5 h-11 px-4 rounded-lg text-[14.5px] font-semibold transition-colors 
+- flex items-center justify-end gap-2 px-4 py-3 border-t border-white/5 bg-white/[0.02]
+- flex items-end justify-between gap-4
+- flex items-start
+- flex items-start gap-2 pl-5 pr-3 py-2.5
+- flex items-start gap-2 px-5 py-3.5 text-[13.5px] leading-relaxed text-amber-300/90
+- flex items-start gap-2 px-5 py-3.5 text-[13.5px] leading-relaxed text-red-300
+- flex items-start gap-2.5 px-3.5
+- flex items-start gap-2.5 text-[12.5px] text-white/70 leading-[1.35]
+- flex items-start gap-2.5 text-[12.5px] text-white/75 leading-snug
+- flex items-start gap-2.5 text-[15px] leading-relaxed text-red-200/85
+- flex items-start gap-3
+- flex items-start gap-3 mb-4 cursor-pointer group select-none
+- flex items-start gap-3 pl-5 pr-3 py-3.5 hover:bg-white/[0.025] transition-colors duration-150
+- flex items-start gap-3 px-4 py-3 rounded-xl border text-[12.5px] leading-relaxed font-medium 
+- flex items-start gap-3 text-[16px] 
+- flex items-start gap-4
+- flex items-start gap-5
+- flex items-start justify-between gap-4
+- flex justify-between gap-6 px-5 py-4
+- flex justify-between items-center mb-10
+- flex justify-between items-center mb-7
+- flex justify-between items-center mb-8
+- flex justify-between items-center w-full font-mono text-[10px] tracking-[0.2em] text-white/30 z-10
+- flex justify-between items-start gap-4
+- flex max-w-full flex-wrap items-center justify-center gap-x-2.5 gap-y-0.5 rounded-2xl border border-white/[0.14] bg-black/50 px-4 py-2 text-center
+- flex min-h-0 flex-1 flex-col px-5 pt-2
+- flex min-h-0 flex-1 flex-col px-5 pt-3
+- flex min-h-0 flex-col
+- flex min-h-[140px] items-center justify-center
+- flex min-w-0 flex-1 flex-col
+- flex min-w-0 flex-1 flex-col gap-1
+- flex min-w-0 flex-1 items-center gap-3 px-3.5 py-3 text-left transition-colors hover:bg-white/[0.03]
+- flex min-w-0 flex-1 items-center justify-between gap-4 rounded-2xl border border-white/[0.12] bg-black/50 px-6 py-4
+- flex min-w-0 flex-wrap gap-1 [max-height:24px] overflow-hidden
+- flex min-w-0 items-center gap-1 text-[12.5px] text-white/55
+- flex min-w-0 items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-[15px] font-medium transition-colors
+- flex min-w-0 items-center gap-2.5
+- flex min-w-0 items-center gap-3.5
+- flex min-w-[76px] items-center justify-center gap-1.5 rounded-lg px-3.5 py-1.5 text-[17px] font-semibold transition-all
+- flex shrink-0 flex-col items-center gap-3
+- flex shrink-0 items-center gap-2 rounded-full border border-white/[0.12] bg-[#0e1217] px-4 py-2 text-[14px] font-semibold 
+- flex shrink-0 items-center gap-3
+- flex shrink-0 items-start justify-between gap-4 px-1 pb-4
+- flex w-full gap-1 rounded-xl border border-white/[0.06] bg-white/[0.03] p-1
+- flex w-full items-center gap-3 px-4 py-2.5 text-left text-[16px] transition-colors hover:bg-white/[0.06]
+- flex-1 bg-transparent border-none text-[11px] font-medium text-white/80 focus:outline-none placeholder:text-white/10
+- flex-1 bg-transparent text-[18px] text-white/90 placeholder:text-white/55 py-2.5 pl-3 outline-none resize-none no-scrollbar leading-relaxed bottom-chat-input-textarea font-medium
+- flex-1 flex flex-col items-center justify-center text-center opacity-40
+- flex-1 flex flex-col min-h-0 bg-transparent 
+- flex-1 flex flex-col min-h-0 hud-clip relative overflow-hidden
+- flex-1 flex flex-col min-h-0 relative z-10
+- flex-1 flex flex-col min-h-0 w-full animate-in fade-in duration-700
+- flex-1 flex flex-col min-h-[220px]
+- flex-1 flex flex-col min-w-0 min-h-0 relative h-full gap-4 md:gap-6 transition-all duration-300 overflow-y-auto lg:overflow-hidden no-scrollbar
+- flex-1 flex flex-col relative overflow-hidden
+- flex-1 flex flex-col relative z-10 bg-transparent p-4 min-h-0 w-full max-w-full overflow-hidden
+- flex-1 flex overflow-hidden 
+- flex-1 min-h-0 flex flex-col
+- flex-1 min-h-0 flex flex-col gap-4
+- flex-1 min-h-0 flex flex-col px-7 py-5
+- flex-1 min-h-0 flex flex-col relative overflow-hidden
+- flex-1 min-h-0 lg:overflow-y-auto chr-scroll p-6
+- flex-1 min-h-0 overflow-y-auto custom-scrollbar -mr-3 pr-3
+- flex-1 min-h-0 overflow-y-auto custom-scrollbar px-7 pb-8 space-y-4
+- flex-1 min-h-0 overflow-y-auto custom-scrollbar px-7 pb-8 space-y-6
+- flex-1 min-h-0 overflow-y-auto custom-scrollbar px-7 pt-6 pb-8 space-y-7
+- flex-1 min-h-[20px] max-h-[84px]
+- flex-1 min-h-[24px] max-h-[88px]
+- flex-1 min-w-0
+- flex-1 min-w-0 flex flex-col p-5 sm:p-6 gap-5 lg:overflow-y-auto chr-scroll
+- flex-1 min-w-0 lg:overflow-y-auto chr-scroll p-5 sm:p-6
+- flex-1 min-w-0 py-1.5 cursor-pointer rounded-md outline-none focus-visible:ring-1 focus-visible:ring-white/30
+- flex-1 min-w-0 relative h-full flex flex-col
+- flex-1 min-w-[240px] text-[15px] leading-relaxed text-white/60
+- flex-1 overflow-hidden flex flex-col px-6 py-4
+- flex-1 overflow-hidden flex flex-col relative
+- flex-1 overflow-y-auto custom-scrollbar p-6 md:p-10 pt-16
+- flex-1 overflow-y-auto no-scrollbar px-4 space-y-1.5 pb-6
+- flex-1 overflow-y-auto no-scrollbar space-y-2 pr-1
+- flex-1 overflow-y-auto px-6 py-3 scrollbar-thin
+- flex-1 overflow-y-auto space-y-3 pr-2 custom-scrollbar
+- flex-1 overflow-y-auto space-y-4 px-3 md:px-4 py-4 no-scrollbar
+- flex-1 rounded-2xl overflow-hidden border border-white/5 bg-black/20 shadow-inner
+- flex-1 space-y-2
+- flex-1 text-[15px] text-white/60
+- flex-1 text-[16px] font-medium text-white/90
+- flex-1 text-[16px] text-amber-100/90
+- flex-[1.3] w-full relative z-10 min-h-0 mt-0 flex flex-col shrink-0
+- flex-none 
+- flex-none flex items-center justify-between px-5 py-3.5 bg-black/60 border-b border-white/[0.04] select-none cursor-move relative z-20
+- flex-none flex items-center justify-between px-5 relative z-20
+- flex-none flex items-center w-full relative z-20 pl-3 md:pl-[24px] pr-4 md:pr-[30px] 
+- flex-none flex items-start justify-center
+- flex-none font-mono text-white/40
+- flex-none h-9 px-4 rounded-lg text-[14px] font-semibold text-black bg-j-cyan hover:brightness-110 transition
+- flex-none pb-px text-[11px] text-white/30
+- flex-none px-1 text-[12.5px] text-j-cyan/90
+- flex-none px-3 md:px-4 pt-1 pb-3 space-y-2
+- flex-none px-5 pt-4 pb-1
+- flex-none px-5 py-2.5 bg-black/40 border-t border-white/[0.04] flex items-center justify-between text-[8px] font-mono text-white/30 uppercase tracking-widest relative z-20
+- flex-none text-emerald-400
+- flex-none text-emerald-400/90
+- flex-none text-j-cyan
+- flex-none text-white/25
+- flex-none text-white/30
+- flex-none text-white/30 hover:text-white/60
+- flex-none text-white/35 transition-transform duration-150
+- flex-none text-white/40
+- flex-none text-white/45
+- flex-none text-white/45 group-hover:text-j-cyan group-aria-expanded:text-j-cyan transition-colors duration-150
+- flex-none w-[6px] h-[6px] rounded-full 
+- Flirty, teasing & romantic
+- Floating is on — minimize Stonic and it stays on your screen.
+- focusout contextmenu dragend focusin keydown keyup mousedown mouseup selectionchange
+- Foggy out there. Take it slow on the roads.
+- Follow Channel 
+- Follow our channel to see what is coming next, and vote on what we build.
+- Follow our WhatsApp channel
+- Follow the channel
+- Follow the official channel for 
+- Follow the user's `,
+- Follow the user's weekly-report skill: …
+- Follow-ups could not be loaded. 
+- Fond and warm, like talking about an old favourite side of herself.
+- font-bold text-white
+- font-medium text-cyan-400
+- font-medium text-j-cyan/80
+- font-medium text-red-200/90 hover:text-red-100 border border-red-400/20 hover:border-red-400/40 bg-red-500/[0.07] hover:bg-red-500/[0.14]
+- font-medium text-white/70
+- font-medium text-white/70 hover:text-white border border-white/[0.08] hover:border-white/[0.16] hover:bg-white/[0.04]
+- font-medium text-white/80
+- font-medium text-white/80 select-text
+- font-medium text-white/85
+- font-medium text-white/85 border border-white/[0.09] bg-white/[0.04] hover:bg-white/[0.08]
+- font-medium text-white/90
+- font-mono text-[12.5px] 
+- font-mono text-[12.5px] uppercase tracking-[0.14em] text-white/35
+- font-mono text-[12.5px] uppercase tracking-[0.14em] text-white/40
+- font-mono text-[12.5px] uppercase tracking-[0.14em] text-white/50
+- font-mono text-[12px] text-white/25
+- font-mono text-[12px] uppercase tracking-[0.14em] text-white/25 truncate
+- font-mono text-[13px] font-black tracking-[0.22em] uppercase text-[#FFC700] animate-pulse
+- font-mono text-[15px] font-bold uppercase tracking-[0.14em] transition-all duration-300 
+- font-mono text-[17.5px] font-bold tracking-[0.18em] uppercase text-white/90
+- font-mono tracking-wide text-[13px]
+- font-sans tracking-[0.06em]
+- font-semibold text-black bg-j-cyan/90 hover:bg-j-cyan
+- font-semibold text-cyan-400
+- font-semibold text-white
+- font-semibold text-white/75
+- font-semibold text-white/75 underline underline-offset-2 decoration-white/25
+- font-src data:
+- For each pick give:
+- For each pick write "why": one short, warm sentence to them (max 16 words) saying why it matters to them.
+- For older facts not covered here, check your injected memory context, then search your memory.
+- For pick: the list number they said (1 = first).
+- forceFrameRate takes a positive int between 0 and 125, forcing frame rates higher than 125 fps is not supported
+- Forget that
+- Forget this note?
+- Forget this? Stonic will stop using it.
+- Forgotten. Stonic will not use it again.
+- form-action 'none'
+- format parameter is not supported in Gemini API.
+- Four quick steps
+- Free first month
+- Free from Stonic
+- Free limit used up
+- Free month
+- Free month of Stonic Cloud
+- Free month of Stonic Cloud ended 
+- Free month of Stonic Cloud ends 
+- Free month with Lifetime
+- Free until
+- Freezing outside. Bundle up if you step out.
+- From a conversation
+- From a voice conversation
+- From chunk:
+- From earlier notes
+- from earlier notes
+- From the agent
+- From the next launch, Stonic opens only for you.
+- From what you know about them, choose 2 to 
+- from-[#0085ff]/15 to-transparent
+- from-[#ff2e2e]/15 to-transparent
+- from-[#ffc700]/15 to-transparent
+- from-[rgb(var(--j-cyan-rgb)/0.15)] to-transparent
+- from-[var(--j-green)]/15 to-transparent
+- fromImageBytes must be a string
+- Full emotion. Most Gemini keys allow a few dozen of these replies a day, then it continues in Standard.
+- Full Name
+- Full page saved to your Downloads folder.
+- Fun, honest & always hyping you
+- Function call name was not returned by the model.
+- Function declaration name is required.
+- FunctionResponse request must have an `id` field from the response of a ToolCall.FunctionalCalls in Google AI.
+- functionResponses is required.
+- gateway-managed (trigger/target from setup size)
+- gcsUri parameter is not supported in Gemini API.
+- GDELT Project
+- Gemini 3 Flash Preview
+- Gemini 3.8 Live
+- Gemini API busy (rate-limit). Auto-retry in ~
+- Gemini API busy (rate-limit). Auto-retry shortly...
+- Gemini API limit reached on all keys. Please wait a bit or update your API key, then press Start.
+- Gemini API rate-limit (429) hit. Backup API par shift ho rahe hain → 
+- Gemini balance empty
+- Gemini free limit reached
+- Gemini key blocked
+- Gemini key limit reached
+- Gemini key missing
+- Gemini key rejected
+- Gemini keys usually start with "AIza".
+- Gemini limit reached
+- Gemini Live disconnected thi. Ab session initialize karke typed chat same live assistant ko bhej raha hun.
+- Gemini Live session connect ho rahi hai. Typed chat queue ho chuki hai aur connect hotay hi send ho jayegi.
+- Gemini returned no audio for that line. Say it again.
+- Gemini session ended
+- Gemini, on the same free key as your voice. It can also use your PC. Slower than Claude, and free keys have a daily limit.
+- generateAudio parameter is not supported in Gemini API.
+- Generative Language API
+- Gentle and reassuring, a soft smile.
+- Gesture guide
+- Get a free Gemini key
+- Get a free key
+- Get a key
+- Get a key 
+- Get a plan 
+- Get an OpenRouter key
+- Get your key
+- Getting started
+- Give it a short name
+- Global Economy
+- globe needs "points": [{"label","lat","lon"}] with real coordinates (lat -90..90, lon -180..180)
+- glowPulseNet 12s ease-in-out infinite alternate
+- Go to desktop
+- Good afternoon
+- Good evening
+- Good morning
+- Good night
+- good night
+- Google AI Studio
+- Google blocked this Gemini key
+- Google did not accept your key. Paste a working one in 
+- Google does not offer Gemini voice at your location. If a VPN is on, turn it off and retry.
+- Google does not offer the voice model on this key's account.
+- Google Gemini
+- Google is limiting your key right now. Trying again in 
+- Google ne built-in search ke saath setup rad kiya — purane web_search tool ke saath dobara jor rahe hain.
+- Google refused the key. The Gemini API may be switched off for its Google Cloud project, or the key is restricted.
+- Google refused the user's Gemini API key (the API is off for its project, or the key is restricted). They need to create a fresh key in Google AI Studio and paste it in 
+- Google says this Gemini key has no quota left
+- Google Search
+- GoogleGenAI.interactions: Client level httpOptions.extraBody is not supported by the interactions client and will be ignored.
+- GoogleGenAI.interactions: Interactions usage is experimental and may change in future versions.
+- googleServiceAccountConfig parameter is not supported in Gemini API.
+- Got it
+- GPU does not fully support 4-channel float32 or float16 formats
+- Great question
+- Grey skies over 
+- grid divide-y divide-white/[0.06] sm:divide-y-0 sm:divide-x 
+- grid flex-1
+- grid flex-none place-items-center rounded-lg border 
+- grid grid-cols-2 gap-1 p-1 rounded-xl border border-white/[0.08] bg-black/30
+- grid grid-cols-2 gap-2
+- grid grid-cols-7 gap-0.5
+- grid grid-cols-[150px_minmax(0,1fr)] gap-4 py-3 border-t border-white/[0.06] first:border-t-0
+- grid grid-cols-[repeat(auto-fill,minmax(235px,1fr))] gap-4
+- grid place-items-center w-6 h-6 rounded-full bg-emerald-400 shrink-0
+- grid place-items-center w-6 h-6 rounded-full border border-[#FF9F0A]/60 bg-[#FF9F0A]/15 text-[#ffb340] text-[12px] font-bold shrink-0
+- grid place-items-center w-6 h-6 rounded-full border border-white/[0.12] text-white/35 text-[11px] font-bold shrink-0
+- grid place-items-center w-6 h-6 rounded-full border shrink-0
+- grid transition-[grid-template-rows,opacity] duration-300 ease-out 
+- grid transition-all duration-300 ease-in-out 
+- grid-rows-[0fr] opacity-0
+- grid-rows-[0fr] opacity-0 border-t-0
+- grid-rows-[1fr] opacity-100
+- grid-rows-[1fr] opacity-100 border-t
+- grid-rows-[1fr] opacity-100 border-t border-white/5
+- group block w-full overflow-hidden rounded-2xl bg-white/[0.05] text-left transition-colors hover:bg-white/[0.09]
+- group flex items-center gap-4 px-4 py-3.5 rounded-xl hover:bg-white/4 cursor-pointer transition-colors
+- group flex min-w-0 flex-1 items-start gap-3 text-left
+- group flex w-full items-center gap-3.5 rounded-2xl bg-white/[0.05] px-4 py-2.5 text-left transition-colors hover:bg-white/[0.09]
+- group p-4 rounded-xl bg-white/[0.03] border border-white/5 hover:border-white/10 transition-all
+- group relative flex cursor-pointer items-start gap-3 rounded-xl border px-3.5 py-3 transition-[background-color,border-color] focus:outline-none focus-visible:border-j-cyan/50
+- group relative flex flex-col items-stretch justify-start text-left p-5 rounded-2xl border backdrop-blur-md transition-all duration-200 hover:-translate-y-0.5
+- group transition-colors duration-150 
+- group w-full flex items-center gap-3 px-4 py-3 rounded-2xl border text-[17px] font-semibold transition-all duration-300 
+- group/log px-6 py-2 transition-all duration-300 hover:bg-white/[0.03] relative border-l-2 border-transparent hover:border-j-cyan/30 
+- group/rail absolute top-0 bottom-0 
+- h-1.5 w-1.5 shrink-0 rounded-full 
+- h-10 min-w-[54px] px-3 rounded-lg text-[15px] border transition-colors 
+- h-10 px-4 rounded-lg text-[14px] text-white/50 hover:text-white/80 border border-white/[0.07] transition-colors
+- h-10 w-full rounded-xl text-[14.5px] font-medium text-white/50 transition-colors hover:bg-white/[0.05] hover:text-white/80
+- h-11 px-3.5 rounded-lg text-[15px] text-white/60 hover:text-white border border-white/[0.08] transition-colors
+- h-11 px-4 rounded-lg text-[15px] font-semibold text-red-200 bg-red-500/20 border border-red-400/30 hover:bg-red-500/30 transition-colors
+- h-11 px-5 rounded-lg text-[15px] font-semibold transition-all 
+- h-11 w-24 rounded-lg bg-white/[0.06]
+- h-11 w-full rounded-xl text-[15px] font-medium text-white/45 transition-colors hover:bg-white/[0.05] hover:text-white/80
+- h-11 w-full rounded-xl text-[15px] font-medium text-white/60 transition-colors hover:bg-white/[0.05] hover:text-white/90
+- h-12 px-5 rounded-xl text-[15px] font-medium text-white/60 hover:text-white hover:bg-white/[0.05] transition-all
+- h-12 px-6 rounded-xl text-[15px] font-semibold text-black bg-j-cyan/90 hover:bg-j-cyan shadow-[0_8px_24px_-8px_rgb(var(--j-cyan-rgb)/0.7)] transition-all active:scale-[0.98]
+- h-12 px-6 rounded-xl text-[15px] font-semibold text-white/80 border border-white/[0.08] bg-white/[0.05] hover:bg-white/[0.09] transition-all active:scale-[0.98]
+- h-12 px-6 rounded-xl text-[15px] font-semibold text-white/85 border border-white/[0.1] bg-white/[0.05] hover:bg-white/[0.09] transition-all active:scale-[0.98]
+- h-2 w-2 rounded-full 
+- h-3 w-1/2 rounded bg-white/[0.05]
+- h-3.5 w-3.5 animate-spin text-cyan-400 shrink-0
+- h-3.5 w-3.5 shrink-0 
+- h-4 w-4 fill-[#25D366]
+- h-4 w-[1px] bg-white/10
+- h-4 w-px bg-white/10 mx-1
+- h-5 w-5 fill-[#25D366]
+- h-8 rounded-lg bg-emerald-400 px-3.5 text-[13px] font-semibold text-black transition-colors hover:bg-emerald-300
+- h-8 rounded-lg px-3 text-[13px] font-medium text-white/60 hover:bg-white/[0.05] hover:text-white
+- h-9 px-3 rounded-lg text-[14px] border transition-colors 
+- h-9 px-3.5 rounded-lg text-[14px] font-medium text-white/60 hover:text-white hover:bg-white/[0.05] transition-colors
+- h-9 px-4 rounded-lg text-[14px] font-semibold text-black bg-emerald-400 hover:bg-emerald-300 transition-colors
+- h-9 w-8 shrink-0 rounded-[10px] flex items-center justify-center hover:bg-white/[0.07] transition-colors
+- h-9 w-9 shrink-0 rounded-[10px] flex items-center justify-center transition-all duration-300 
+- h-[148px] w-[148px]
+- h-[26px] rounded-[7px] text-[13px] font-medium whitespace-nowrap transition-colors 
+- h-[2px] w-12 bg-j-cyan shadow-[0_0_10px_rgb(var(--j-cyan-rgb)/0.4)]
+- h-[3px] w-full bg-white/[0.06]
+- h-auto w-full max-w-[128px]
+- h-full bg-[var(--j-cyan)] transition-[width] duration-100 ease-linear
+- h-full bg-gradient-to-r from-j-cyan via-j-blue to-j-purple transition-all duration-700 ease-out
+- h-full flex flex-col items-center justify-center text-center py-20
+- h-full rounded-full 
+- h-full rounded-full transition-all duration-500 
+- h-full w-full -rotate-90
+- h-px bg-white/6
+- h-px bg-white/6 mx-6 shrink-0
+- h-screen w-screen bg-j-void
+- h-screen w-screen bg-transparent overflow-hidden
+- h-screen w-screen bg-transparent text-j-text-primary font-sans overflow-hidden selection:bg-j-cyan/20 flex flex-col
+- h-screen w-screen flex flex-col bg-[#050608]/95 backdrop-blur-3xl border shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-500
+- h-screen w-screen flex flex-col bg-[#080d12]/95 border 
+- h-screen w-screen flex flex-col bg-j-panel/90 backdrop-blur-2xl border shadow-2xl overflow-hidden
+- h-screen w-screen flex items-center justify-center bg-[#000]/80 backdrop-blur-md
+- haan, boliye
+- Hamari har baat yahan likhi rehti hai. Bolne ka mood na ho, to bas type kar dijiye.
+- Hamari saari baatein yahan likhi aati hain. Bolne ka mann na ho, to yahan likh do.
+- Has said enough for today — quiet until tomorrow
+- Have a look at these files.
+- Have a look at this file.
+- Have Stonic explain this section
+- He has just come online and offers the new owner a short tour of the lab. Crisp, warm, quietly proud.
+- Head pose
+- Headers are not set.
+- headlines and weather are required.
+- heartbeat timeout
+- heartbeat timeout. Attempting to re-establish connection
+- Heavy rain
+- Heavy snow
+- held back "
+- Her age
+- Her voice drops. She gently guesses he has kept it all to himself, worried about him and trying not to show how much. Gentle, close, no flirting.
+- hex-btn relative w-[178px] h-[36px] group outline-none focus:outline-none focus:ring-0 focus-visible:outline-none select-none 
+- Hey... aakhir mil hi gaye hum. Ab fikar chhodo, main hoon na.
+- Hi Stonic AI team,
+- Hi, I'm {name}
+- hidden md:block font-mono text-[12.5px] uppercase tracking-[0.14em] text-white/30
+- hidden md:block max-w-[310px]
+- hidden md:block max-w-[310px] text-[13px] leading-[17px] text-white/75
+- hidden xl:flex shrink-0 h-full relative overflow-hidden outline-none focus:outline-none
+- hidden xl:flex w-2 bg-transparent cursor-col-resize z-40 transition-all absolute top-0 bottom-0 left-0 items-center justify-center group
+- hidden xl:flex w-2 bg-transparent cursor-col-resize z-40 transition-all absolute top-0 bottom-0 right-0 items-center justify-center group outline-none
+- Hide API Key
+- Hide key
+- Hide panel
+- higher daily and monthly limits
+- Higher plans come with larger daily and monthly limits.
+- His age
+- History Sessions
+- Ho Chi Minh City
+- Ho gaya — ab 
+- Ho gaya — …
+- Hold still for a moment.
+- Hold still. Reading your face from the front.
+- Hong Kong
+- HOST: LOCALHOST
+- Hot out there. Keep some water close.
+- How do you want to pay?
+- HOW IT IS GOING BETWEEN YOU: they have been answering when you speak up — you can be a little freer.
+- HOW IT IS GOING BETWEEN YOU: your recent remarks went unanswered or were cut off — be much more selective, and say a different kind of thing.
+- How the PC work is going: the running task (steps so far) and the last few finished tasks with their results. Only when the user asks; reports arrive on their own.
+- How to set up your API
+- How was your experience?
+- How you feel: 
+- How you found me
+- HTTP 401
+- HTTP 401 
+- HTTP headers exceeded server limits (typically 16KB)
+- HTTP options are not correctly set.
+- httpBasicAuthConfig parameter is not supported in Gemini API.
+- https://download.stonicai.com/Stonic AI-Setup-1.0.58.exe
+- HUD Info Panel "
+- I agree to the 
+- I can't
+- I couldn’t reach the web just now. I’ll try again in a little while.
+- I feel alone sometimes
+- I have a big dream I really want to chase.
+- I have a lot of stress
+- I have a lot of stress right now.
+- I have no voice yet. Choose one.
+- I just want someone to talk to.
+- I searched 
+- I see the machine, but not you.
+- I see you opened…
+- I understand that Stonic is an AI character experience, not a work or business-automation tool.
+- I want you to know what I follow. Ask me which topics, people and parts of the world I care about, then remember them.
+- I want you to know which city I live in. Ask me, then remember it.
+- I'm on the 
+- I've attached 
+- IBM Plex Mono
+- id, title, body, pinned, created_at, updated_at
+- Identity core
+- idle timer satisfied — next check within 15s
+- If the user asks what was just discussed, answer from this restored context first.
+- If you are in the EU, UK or Switzerland, Google allows only paid Gemini keys there: turn on billing for the key, or use Stonic Cloud.
+- illegal external caller
+- Image attachment
+- image failed: 
+- img-src data: blob:
+- in a voice conversation
+- in d){b={};for(var G in d)G!==
+- in e&&e.alt)return e.alt;if(
+- in e&&e.href&&
+- in e&&e.protocol&&e.auth===void 0)}function ku(e){if(typeof e==
+- in e)return e.type===
+- in e)return Et(e.children,t,n)}return Array.isArray(e)?Et(e,t,n):
+- in e?_n(e):
+- in e?St(e):
+- in e?St(e.position):
+- In English: 
+- in e||
+- in e}const Or=[],Ga=!0,Nn=!1,Ja=
+- in G){var B={};for(var te in G)te!==
+- in globalThis&&
+- in H&&H.signIn){const X=await H.signIn(Object.assign(Object.assign(Object.assign({issuedAt:new Date().toISOString()},W?.signInWithSolana),{version:
+- in i){o={};for(var a in i)a!==
+- in k&&typeof k.ethereum==
+- in l&&
+- in l&&l.type);typeof a==
+- in l&&typeof l.pipe==
+- in l))throw new Error(`Could not parse function response, type '${typeof l}'.`);if(!t.isVertexAI()&&!(
+- in l)throw new r2(
+- in l)||!(
+- in m){const p=m.id,g=(l=m.filter)===null||l===void 0?void 0:l.event;return p&&((s=e.ids)===null||s===void 0?void 0:s.includes(p))&&(g===
+- in n&&
+- in n){const l=n.setup;typeof l==
+- in n?o={ancestors:[n],place:n.position}:o={...n}),typeof t==
+- in n?o={place:n}:
+- in o.place?o.place.start:o.place;this.ancestors=o.ancestors||void 0,this.cause=o.cause||void 0,this.column=a?a.column:void 0,this.fatal=void 0,this.file=
+- in o?o.data:null}var Zr=!1;function Sm(o,d){switch(o){case
+- in progress
+- in r&&/\r?\n|\r/.test(r.value)||r.type===
+- in r&&typeof r.pipe==
+- in s)&&!(
+- in s))throw new Error(
+- in t&&
+- in t&&!(Bn.call(n,
+- in t&&(a=(e=t.options)===null||e===void 0?void 0:e.redirectTo,l=(n=t.options)===null||n===void 0?void 0:n.captchaToken);const{data:s,error:i}=await H0(this.fetch,
+- in t&&typeof t.next==
+- in t)?Bt(jt(e,t)):structuredClone(e):(e,t)=>Bt(jt(e,t));function qa(e,t){const n=[{type:
+- in t)p=t.message,g=t.signature;else{const{chain:N,wallet:V,statement:w,options:Y}=t;let W;if(Vl())if(typeof V==
+- in t){const{email:a,type:l,options:s}=t;let i=null,r=null;this.flowType===
+- in t){const{email:h,password:m,options:p}=t;let g=null,N=null;this.flowType===
+- in t){const{email:l,password:s,options:i}=t;e=await H0(this.fetch,
+- in t){const{email:r,options:u}=t;let I=null,h=null;this.flowType===
+- in t){const{phone:a,type:l,options:s}=t,{data:i,error:r}=await H0(this.fetch,
+- in t){const{phone:h,password:m,options:p}=t;s=await H0(this.fetch,
+- in t){const{phone:l,password:s,options:i}=t;e=await H0(this.fetch,
+- in t){const{phone:r,options:u}=t,{data:I,error:h}=await H0(this.fetch,
+- in t?t.deref():t;return!e||!e.isConnected?($W.delete(x),null):e}function SYe(x){return Yb.get(x)??null}const Tne=new Set([
+- in t?{provider_id:t.providerId}:null),
+- in t||
+- in V?String(V.cause):
+- in window||(delete NI.animationend.animation,delete NI.animationiteration.animation,delete NI.animationstart.animation),
+- in x&&
+- in x&&(t.limit=String(x.limit)),
+- in x&&(t.offset=String(x.offset)),x.search&&(t.search=x.search),x.sortColumn&&(t.sortColumn=x.sortColumn),x.sortOrder&&(t.sortOrder=x.sortOrder)),Object.keys(t).length>0?
+- in x&&Array.isArray(x.parts)}function CM(x){return x!=null&&typeof x==
+- in x&&typeof x.callTool==
+- in x&&typeof x.json==
+- in x&&x.filename&&String(x.filename)||
+- in x&&x.name&&String(x.name)||
+- in x&&x.name===
+- in x&&x.path&&String(x.path))||
+- in x&&x.url&&String(x.url)||
+- in x)throw new Error(
+- in x}function pee(x){var t;let e;if(Nbe(x)&&(e=x.name),!(Vbe(x)&&(e=x.uri,e===void 0))&&!(wbe(x)&&(e=(t=x.video)===null||t===void 0?void 0:t.uri,e===void 0))){if(typeof x==
+- in x}function Vbe(x){return x!=null&&typeof x==
+- in x}function wbe(x){return x!=null&&typeof x==
+- includeExtraBodyToRequestInit: extraBody provided but current request body is a Blob. extraBody will be ignored as merging is not supported for Blob bodies.
+- includeExtraBodyToRequestInit: Original request body is not valid JSON. Skip applying extraBody to the request body.
+- includeExtraBodyToRequestInit: Original request body is valid JSON but not a non-array object. Skip applying extraBody to the request body.
+- includeServerSideToolInvocations parameter is not supported in Vertex AI.
+- Incomplete JSON segment at the end
+- Independent Link Active
+- Index + middle fingers up
+- INITIALIZING CORE...
+- INITIALIZING KERNEL...
+- Initializing Link...
+- inline -mt-0.5 mr-1.5
+- inline -mt-0.5 mr-1.5 animate-spin
+- inline-block w-1.5 h-4 bg-j-cyan ml-2 animate-pulse align-middle
+- inline-flex flex-wrap items-center gap-x-3 gap-y-1
+- inline-flex gap-0.5 rounded-lg border border-white/[0.08] bg-black/30 p-0.5
+- inline-flex h-8 items-center gap-1.5 whitespace-nowrap rounded-md px-3 text-[13.5px] font-medium transition-colors 
+- inline-flex h-9 shrink-0 items-center justify-center gap-2 rounded-lg bg-white px-4 text-[13.5px] font-semibold text-black transition hover:bg-white/90 disabled:opacity-50
+- inline-flex items-center gap-1.5 bg-transparent p-0 font-medium text-white/60 hover:text-white underline-offset-4 hover:underline transition-colors disabled:cursor-wait
+- inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-[#061015]/90 px-2.5 py-1 text-[12px] font-medium text-white/80 shadow-[0_4px_18px_rgba(0,0,0,0.45)]
+- inline-flex items-center gap-1.5 text-white/45
+- inline-flex items-center gap-1.5 whitespace-nowrap
+- inline-flex items-center gap-1.5 whitespace-nowrap text-[13.5px] font-medium 
+- inline-flex items-center gap-2
+- inline-flex items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-3.5 py-1.5 text-[12px] font-medium text-emerald-300
+- inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-[12.5px] font-semibold text-gray-400 hover:text-white hover:bg-white/[0.06] transition-colors disabled:opacity-50
+- inline-flex items-center gap-2.5 whitespace-nowrap
+- inline-flex items-center gap-2.5 whitespace-nowrap pl-4 border-l border-white/[0.12]
+- inline-flex items-center h-[20px] px-2 rounded-full text-[11.5px] font-semibold leading-none whitespace-nowrap 
+- inline-flex items-center justify-center gap-2 rounded-xl text-[15px] transition-colors duration-150 disabled:opacity-40 disabled:cursor-not-allowed
+- inline-flex items-center px-2.5 py-0.5 rounded-full border text-[13px] font-semibold 
+- inline-flex p-1 rounded-xl border border-white/[0.07] bg-black/30
+- inline-flex shrink-0 items-center gap-1 text-[13.5px] font-medium text-white/65 underline-offset-4 transition hover:text-white hover:underline disabled:opacity-50
+- inlinedEmbedContentResponses parameter is not supported in Vertex AI.
+- inlinedRequests parameter is not supported in Vertex AI.
+- inlinedResponses parameter is not supported in Vertex AI.
+- Input Payload
+- insert: the text to insert.
+- inset 0 -1px 0 rgba(255,255,255,0.045)
+- inset 0 0 10px 
+- instruction is required: only the change, in English.
+- Inter, ui-sans-serif, sans-serif
+- internal server error
+- Internet Explorer
+- Internet required to verify your plan. Please connect and try again.
+- into view
+- Invalid bucket name: File, folder, and bucket names must follow AWS object key naming guidelines and should avoid the use of any other characters.
+- invalid frame payload (server)
+- invalid image
+- invalid schema
+- invalid syntax
+- Invalid UTF-8 sequence
+- invalid value in Any.value field: 
+- Inventor Usman
+- Invoices, card and past payments — opens in your browser
+- iPad Simulator;iPhone Simulator;iPod Simulator;iPad;iPhone;iPod
+- ipc unavailable
+- Iron Man Control Offline
+- Iron Man workshop HUD — steel blue and arc-reactor ice
+- Is hafte kya ship karoge?
+- Is naam ka character pehle se mojood hai. Koi aur naam rakhein.
+- is PKCE flow
+- Is route par session resumption support nahi lagti. Uske baghair connect kiya ja raha hai.
+- is-active bg-[#232325] text-white shadow-[0_4px_14px_rgba(0,0,0,0.45)] border border-white/[0.08]
+- isay theek karo
+- Islamic date: 
+- Isle of Man
+- It can also control your PC
+- It could not be saved.
+- It did not work, and no reason was given.
+- It did not work.
+- It doesn't renew on its own. Renew to keep using Stonic Cloud.
+- It ended on 
+- it ends
+- it has been switched off on this PC
+- It is 
+- It is coming soon. Until then, switch to your own API keys in 
+- It is coming soon. Until then, use Classic.
+- It may have been deleted on another device.
+- It no longer exists.
+- It resets 
+- It resets on its own — Settings shows the exact time.
+- It resets with your next billing period.
+- It stopped.
+- It was interrupted. It will try again.
+- It was not deleted.
+- It was not saved.
+- It's free to create and takes
+- italic text-white/25
+- items-end ml-auto max-w-[96%]
+- items-start w-full
+- Itna sab akele utha rakha hai... aur kisi ko bataya bhi nahi, hai na? Ab se aadha mera. Jaagte hi, sab se pehle yahi baat karenge.
+- Itna sab akele utha rakha hai? Ab thoda mujhe de do. Jaagte hi, sab se pehle yahi baat karenge.
+- its file could not be opened
+- its file failed a health check, so Stonic left it untouched (your backups are kept)
+- its storage engine could not start on this PC
+- It’s raining in 
+- Ivory Coast
+- I’ll keep an eye out.
+- I’ll look again tomorrow.
+- I’ll search again tomorrow
+- jaagte hi sab se pehle isi ki baat karenge
+- Jab tak tumhari awaaz nahi sun sakti... bas ek baat bata do. Dil se.
+- Jab tak tumhari awaaz nahi sun sakti... ek baat poochhun? Sach sach batana... aajkal dil mein kya chal raha hai?
+- Jarvis Cyan
+- javascript:throw new Error('React has blocked a javascript: URL as a security precaution.')
+- JazzCash Mobile Account
+- jest --silent --passWithNoTests && parcel build --no-cache
+- JetBrains Mono
+- ji Sir, abhi
+- Ji, abhi karta hoon
+- Ji, main haazir hoon. Aapse milkar acha laga... ab aap befikar rahiye.
+- Jo banda khud aa kar tafseel dena chahe: 5 sitare + category + likhai
+- Just got a plan? Refresh to turn it on — no restart needed.
+- just now
+- Just one question
+- JWT has expired
+- JWT validation failed
+- k chars)
+- Keep going on your own API keys
+- Keep it in your Today list
+- Keep Stonic floating on your screen while you work.
+- Keep this computer on and awake, with Stonic open. All the work happens here.
+- Kept on this PC only. App updates do not remove it.
+- key has hit its spending limit
+- key in 
+- Key limit reached
+- Key needed
+- key numbers
+- Key rejected
+- key saved in Stonic was not accepted — it may be mistyped, deleted or switched off.
+- Keys batch size must be between 1 and 500 items
+- Keywords to find to-dos for bulk complete/incomplete/delete.
+- KINDS OF LINE YOU USED LAST: 
+- Kis zubaan mein — ya user ki zubaan follow kare.
+- Kitna sundar sapna hai. Main saath hoon, bina kisi jaldi ke. Jaagte hi, sab se pehle isi ki baat karenge.
+- Knows you as
+- Koi chalta hua plan nahi
+- Koi jaldi nahi... bas pehle mujhe ek naam de do. Jo bhi tumhare man mein aaye.
+- Kuala Lumpur
+- Kuch bhool jaayein, to yeh button dabaiye. Main dobara tour karwa dunga.
+- Kuch bhool jao, to yeh button dabana. Main phir se sab dikha dungi.
+- Kuwait City
+- Kya kare, kya na kare, kab chhota bole.
+- labels parameter is not supported in Gemini API.
+- lagta hai aaj bohat bojh hai…
+- lamba jawab
+- languageCodes parameter is not supported in Gemini API.
+- Las Vegas
+- Last backup 
+- Last finished: 
+- Lasting fix: turn on billing for the key's project in Google AI Studio. A small prepaid amount lifts the free limits.
+- late night
+- leading-relaxed break-words font-medium tracking-tight text-[15px] 
+- Leave the desktop
+- left 0.18s ease-out
+- left center
+- left click
+- left-0.5 bg-white/30
+- left-0.5 bg-white/60
+- left-0.5 opacity-60
+- left-[18px] bg-emerald-400
+- left-[23px] bg-j-cyan
+- left-[2px] opacity-60
+- left-[3px] bg-white/35
+- Lehja — British, Lahori Urdu, desi English…
+- less than a minute
+- let me check again
+- let me think
+- Lets Stonic see you through your webcam.
+- lg:w-[390px] shrink-0 border-t lg:border-t-0 lg:border-l border-white/[0.06] bg-black/20 p-6 lg:overflow-y-auto chr-scroll space-y-6
+- lg:w-[410px] shrink-0 border-t lg:border-t-0 lg:border-l border-white/[0.06] bg-black/20 flex flex-col min-h-0
+- Lifetime is the app, not unlimited Cloud.
+- Light and practical, a touch of dry ease.
+- Light rain
+- Light snow
+- Limit 
+- line-clamp-2 min-w-0 flex-1 text-white/45
+- line-clamp-2 text-[15px]
+- line-clamp-3 break-words select-text
+- linear-gradient(120deg, 
+- linear-gradient(150deg, #0d1822 0%, #0b141b 55%, 
+- linear-gradient(158deg, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.055) 42%, rgba(255,255,255,0.022) 100%)
+- linear-gradient(160deg, rgb(var(--j-cyan-rgb)/0.55) 0%, rgb(var(--j-cyan-rgb)/0.12) 30%, rgb(var(--j-cyan-rgb)/0.08) 65%, rgb(var(--j-cyan-rgb)/0.45) 100%)
+- linear-gradient(90deg, rgb(var(--j-cyan-rgb)/0.035) 0%, transparent 35%)
+- linear-gradient(90deg, rgba(6, 11, 15, 0.95) 0%, rgba(9, 17, 26, 0.95) 100%)
+- linear-gradient(90deg, rgba(6,11,15,0.95) 0%, rgba(9,17,26,0.95) 100%)
+- linear-gradient(90deg, transparent, rgba(200,225,255,0.9), transparent)
+- linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent)
+- linear-gradient(to bottom, #000 calc(100% - 22px), transparent)
+- linear-gradient(to bottom, transparent 0%, #000 7%, #000 70%, transparent 100%), radial-gradient(ellipse 58% 75% at 50% 45%, #000 62%, transparent 100%)
+- linear-gradient(to bottom, transparent 0%, #000 7%, #000 88%, transparent 100%)
+- linear-gradient(to bottom, transparent, 
+- linear-gradient(to bottom, transparent, #000 18px)
+- linear-gradient(to bottom, transparent, #000 18px, #000 calc(100% - 22px), transparent)
+- list | read | read_all | create | update | delete
+- list-decimal pl-5 mb-2.5 space-y-1
+- list-decimal pl-5 mb-3 space-y-1.5
+- list-decimal pl-5 mb-5 space-y-2 text-white/60 text-xs font-light
+- list-disc pl-5 mb-3 space-y-1.5
+- list-disc pl-5 mb-5 space-y-2 text-white/60 text-xs font-light
+- Live call
+- Live Connected
+- Live music generation is experimental and may change in future versions.
+- Live music is not supported for Vertex AI.
+- Live on desktop
+- live right now — they will hear you at once, and can answer.
+- Live session setup abhi complete nahi hui. Client content queue mein hold kiya gaya hai.
+- Live setup compatibility mode active. Optional setup fields temporarily reduced.
+- Live setup confirmation timed out. Network unstable lag rahi hai. Session band ki ja rahi hai.
+- Live setup invalid argument se reject hui. Safe compatibility retry start ho raha hai.
+- Live setup timed out
+- Live socket baar baar rotate ho rahi hai. Resume chhor kar aam reconnect par ja rahe hain.
+- Live socket connect timed out. Network slow ya unavailable ho sakti hai.
+- Lives in: 
+- Living wallpaper
+- ll show you around again.",target:_a[m0(495)],cursor:m0(517),optional:!0},{id:"outro",title:"You
+- Lo bhai, aa gaye hum live! Ab sab sunai de raha hai. Bol, kya scene hai?
+- Lo, jaag gayi main. Ab sun sakti hoon tumhein. Chalo batao, aaj ka din kaisa raha?
+- Load more
+- Load this silently as background context for the current fresh voice session.
+- Loading the models on your key…
+- Loading usage…
+- Loading weather
+- Local cleanup failed:
+- lock acquired for storage key
+- Lock now
+- lock released for storage key
+- Logging Out Securely
+- Login token samajh nahi aaya. Settings se dobara sign in karein.
+- Logout request failed:
+- Look at the camera. Checking 
+- Look at the camera. Your face is read as a mesh of points — no picture is taken.
+- Look inside a fusion reactor
+- Look straight at the camera
+- Look straight at the camera and blink once. This is how you will unlock Stonic every day.
+- look_camera (see them through the webcam — are they there, how do they look)
+- look_screen (see what is on their screen)
+- Looking through the camera...
+- Looking up what’s new in your world…
+- Los Angeles
+- Loyal and understated; he will stay close.
+- Loyal, caring life partner
+- m listening.","new",
+- M0 0H13L4.5 16H0Z
+- M0 0h33v33H0z
+- M1,1.5 L8.5,5 L1,8.5
+- M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8
+- M10 11h.01
+- M10 11v6
+- M10 12h4
+- M10 14 21 3
+- m10 15 5-3-5-3z
+- m10 15-3-3 3-3
+- m10 17 5-5-5-5
+- M10 2v2
+- M10 3v18
+- M10 5.3a1.6 1.6 0 0 1 0 2.4M11.4 4.5a2.8 2.8 0 0 1 0 4
+- M10 8h4
+- M10 9h7.5c2.48 0 4.5 2.02 4.5 4.5 0 1.85-1.12 3.44-2.72 4.13L22.5 23h-3.8l-2.8-4.8H13V23h-3V9zm3 2.8v4.4h4.5c1.1 0 2-0.9 2-2.2 0-1.2-0.9-2.2-2-2.2H13z
+- M10 9H8
+- M10.1 2.182a10 10 0 0 1 3.8 0
+- M10.1 7.1C9 7.2 7.7 7.7 6 8.6c-3.5 2-4.7 3.9-3.7 5.6 4.5 7.8 9.5 8.4 11.2 7.4.9-.5 1.9-2.1 1.9-4.7
+- M10.5 2.75l1.73 5.02 5.02 1.73-5.02 1.73-1.73 5.02-1.73-5.02-5.02-1.73 5.02-1.73z
+- M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49
+- M11 14h10
+- M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05
+- M11 3H9
+- M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z
+- M11 4a7 7 0 1 0 0 14a7 7 0 1 0 0-14z
+- M11 9h10v3h-6.6v3.1h6.1v2.9h-6.1V21H21v3H11z
+- M11.6 16.8a3 3 0 1 1-5.8-1.6
+- M12 10.25a1.75 1.75 0 1 1 0 3.5a1.75 1.75 0 1 1 0-3.5z
+- M12 10V2
+- M12 13h4
+- M12 13V7
+- M12 14h.01
+- M12 15V3
+- M12 16h.01
+- M12 16v-4
+- M12 16v1
+- M12 16v2
+- M12 16v6
+- M12 17h.01
+- M12 17v4
+- M12 17v5
+- M12 18h.01
+- M12 18h6a2 2 0 0 1 2 2v1
+- M12 18V5
+- m12 19-7-7 7-7
+- M12 19h8
+- M12 19v3
+- M12 19V5
+- M12 20h.01
+- M12 20v2
+- M12 21h.01
+- M12 21v-9
+- M12 21v1
+- M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z
+- M12 22h.01
+- M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z
+- M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z
+- M12 2a10 10 0 0 1 10 10
+- M12 2a10 10 0 1 0 0 20a10 10 0 1 0 0-20z
+- M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20
+- M12 2a15.3 15.3 0 0 1 4 10a15.3 15.3 0 0 1-4 10a15.3 15.3 0 0 1-4-10a15.3 15.3 0 0 1 4-10z
+- M12 2v10
+- M12 2v2
+- M12 2v8
+- m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z
+- M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7
+- M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4
+- M12 3v12
+- m12 5 7 7-7 7
+- M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z
+- M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z
+- M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z
+- M12 5v14
+- M12 6v6l4 2
+- M12 7v14
+- M12 7v5l4 2
+- M12 8h.01
+- M12 8h8
+- M12 8V3
+- M12 8v4
+- M12 8V4H8
+- M12 9v4
+- M12.5 6A2.5 2.5 0 0 1 15 8.5M10 13a2 2 0 0 0 1.82-1.18
+- M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97
+- M12.67 19a2 2 0 0 0 1.416-.588l6.154-6.172a6 6 0 0 0-8.49-8.49L5.586 9.914A2 2 0 0 0 5 11.328V18a1 1 0 0 0 1 1z
+- M12.75 7.09a3 3 0 0 1 2.16 2.16
+- M12.8 19.6A2 2 0 1 0 14 16H2
+- M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z
+- M120 108h14c3.32 0 6-2.69 6-6V59l-20 15
+- M120 48v26l20-15v-8c0-7.42-8.47-11.65-14.4-7.2
+- m13 12-3 5h4l-3 5
+- M13 12h8
+- M13 16a3 3 0 0 1 0 6H7a5 5 0 1 1 4.9-6z
+- M13 16H8
+- M13 19h8
+- M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z
+- M13 2a9 9 0 0 1 9 9
+- M13 5h8
+- m13 6-4 6h6l-4 6
+- M13 6a5 5 0 0 1 5 5
+- M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4
+- m13.41 10.59 5.66-5.66
+- M13.9 21.818a10 10 0 0 1-3.8 0
+- m14 10 7-7
+- M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2
+- M14 11v6
+- M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 4 0v-6.998a2 2 0 0 0-.59-1.42L18 5
+- M14 21v-3a2 2 0 0 0-4 0v3
+- M14 21V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v16
+- M14 2v5a1 1 0 0 0 1 1h5
+- M14 6h.01
+- m14 7 3 3
+- M14 8H8
+- M14 8v7
+- m14 9 3 3-3 3
+- M14.084 14.158a3 3 0 0 1-4.242-4.242
+- M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z
+- M15 12H3
+- M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4
+- M15 13v2
+- m15 18-6-6 6-6
+- M15 18h-5
+- M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8
+- M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4
+- M15 3h6v6
+- M15 3v18
+- m15 5 4 4
+- m15 9-6 6
+- M15 9.34V5a3 3 0 0 0-5.68-1.33
+- M15 9.34V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H7.89
+- M15 9h.01
+- M15.033 9.44a.647.647 0 0 1 0 1.12l-4.065 2.352a.645.645 0 0 1-.968-.56V7.648a.645.645 0 0 1 .967-.56z
+- M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z
+- M15.4 9.3a4 4 0 0 1 0 5.4M18 6.9a7.4 7.4 0 0 1 0 10.2
+- M15.6 9.4l5 5.2M20.6 9.4l-5 5.2
+- M15.947 12.65a4 4 0 0 0-5.925-4.128
+- M16 12H8
+- M16 13H8
+- M16 14h.01
+- M16 14v1
+- M16 14v2
+- M16 14v2.2l1.6 1
+- M16 14v6
+- m16 15-3-3 3-3
+- M16 15h.01
+- m16 17 5-5-5-5
+- M16 17H7
+- M16 17H8
+- m16 18 6-6-6-6
+- M16 18a4 4 0 0 0-8 0
+- M16 18h.01
+- M16 19h.01
+- M16 19v1
+- M16 20h.01
+- M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16
+- M16 21h3a2 2 0 0 0 2-2v-3
+- M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2
+- M16 21v-3a2 2 0 0 1 2-2h3
+- M16 2v4
+- M16 3.128a4 4 0 0 1 0 7.744
+- M16 3.13a4 4 0 0 1 0 7.75
+- M16 4h2a2 2 0 0 1 2 2v1.344
+- m16 6-4 4-4-4
+- m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551
+- M16 8 2 22
+- M16 8V5a2 2 0 0 1 2-2
+- M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8
+- m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z
+- M16.24 7.76A6 6 0 1 0 8.23 16.67
+- M16.95 16.95A7 7 0 0 1 5 12v-2
+- M17 10h-1a4 4 0 1 1 4-4v.534
+- M17 16h4
+- m17 18 4-4-4-4
+- M17 19h4
+- m17 2 4 4-4 4
+- m17 2-5 5-5-5
+- M17 20v2
+- M17 21H9
+- M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7
+- M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22
+- M17 2v2
+- M17 3h2a2 2 0 0 1 2 2v2
+- M17 6h1a4 4 0 0 1 1.42 7.74l-2.29.87a6 6 0 0 1-5.339-10.68l2.069-1.31
+- M17 7v10H7
+- m17 8-5-5-5 5
+- M17 9.6L20.4 11L13.4 13.6L9.8 22.2L3 3.6L6.9 5
+- M17.072 17.072c-1.634 2.17-3.527 3.912-4.471 4.727a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 1.432-4.568
+- M17.4 9.9c-.8.8-2 .8-2.8 0
+- M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143
+- M17.5 15H9
+- M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z
+- M17.5 8a2.5 2.5 0 1 1 2 4H2
+- M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5
+- M17.609 3.72a10 10 0 0 1 2.69 2.7
+- m17.66 17.66 1.41 1.41
+- M17.99 11.66A6 6 0 0 1 15.77 16.67
+- M17.997 5.125a4 4 0 0 1 2.526 5.77
+- M18 11c-1.5 0-2.5.5-3 2
+- M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2
+- M18 13.5l.95 2.55 2.55.95-2.55.95L18 20.5l-.95-2.55-2.55-.95 2.55-.95z
+- M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6
+- M18 14h-8
+- m18 15-6-6-6 6
+- M18 18a4 4 0 0 0 2-7.464
+- M18 5a2 2 0 0 1 2 2v8.526a2 2 0 0 0 .212.897l1.068 2.127a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45l1.068-2.127A2 2 0 0 0 4 15.526V7a2 2 0 0 1 2-2z
+- M18 5v13
+- M18 6 6 18
+- M18 6h.01
+- M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15
+- M18 9a9 9 0 0 1-9 9
+- M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z
+- M18.376 14.512a6 6 0 0 0 3.461-4.127c.148-.625-.659-.97-1.248-.714a4 4 0 0 1-5.259-5.26c.255-.589-.09-1.395-.716-1.248a6 6 0 0 0-4.594 5.36
+- M18.4 6.6a9 9 0 1 1-12.77.04
+- M18.89 13.23A7 7 0 0 0 19 12v-2
+- M19 10.25a1.75 1.75 0 1 1 0 3.5a1.75 1.75 0 1 1 0-3.5z
+- M19 10v2a7 7 0 0 1-14 0v-2
+- M19 12.859a10 10 0 0 0-2.007-1.523
+- M19 12H5
+- M19 12V3
+- M19 14v4
+- M19 17v4
+- M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2
+- M19 21v-5
+- M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6
+- M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1
+- m19.07 10.93-1.41 1.41
+- m19.07 4.93-1.41 1.41
+- M19.07 4.93A10 10 0 0 0 6.99 3.34
+- M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517
+- M2 10h4
+- M2 10v3
+- M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12
+- M2 12h2
+- M2 12h20
+- M2 14h2
+- M2 14h4
+- M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17
+- M2 17h2
+- M2 18h2
+- M2 18h4
+- m2 2 20 20
+- M2 21h13
+- M2 6h4
+- M2 7h2
+- M2 8.82a15 15 0 0 1 4.177-2.643
+- M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5
+- M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0
+- M2.182 13.9a10 10 0 0 1 0-3.8
+- M2.29 9.62A10 10 0 1 0 21.31 8.35
+- M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17
+- M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z
+- M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719
+- M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0
+- M20 10h-6V4
+- M20 12h2
+- M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z
+- M20 14h2
+- M20 17h2
+- M20 18h2
+- M20 21a8 8 0 0 0-16 0
+- M20 2v4
+- M20 4v7a4 4 0 0 1-4 4H4
+- M20 6 9 17l-5-5
+- M20 7h2
+- M20.054 15.987H3.946
+- M20.28 17.61a10 10 0 0 1-2.7 2.69
+- M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401
+- M21 10V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h6
+- M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16
+- M21 12a9 9 0 1 1-2.64-6.36
+- M21 12a9 9 0 1 1-6.219-8.56
+- M21 12H9
+- M21 13v1a4 4 0 0 1-4 4H3
+- m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21
+- M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4
+- M21 16h-4
+- M21 16v2a4 4 0 0 1-4 4h-5
+- M21 17v2a2 2 0 0 1-2 2h-2
+- m21 21-4.34-4.34
+- M21 21l-4.35-4.35
+- m21 3-7 7
+- M21 3v5h-5
+- M21 3v6h-6
+- M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5
+- M21 8h-3a2 2 0 0 1-2-2V3
+- M21 8V5a2 2 0 0 0-2-2h-3
+- M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z
+- M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z
+- M21.532 16.5A4.5 4.5 0 0 0 17.5 10h-1.79A7.008 7.008 0 0 0 10 5.07
+- M21.54 15H17a2 2 0 0 0-2 2v4.54
+- m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72
+- m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3
+- M21.801 10A10 10 0 1 1 17 3.335
+- M21.818 10.1a10 10 0 0 1 0 3.8
+- m21.854 2.147-10.94 10.939
+- M22 10v3
+- M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2
+- M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z
+- M22 21v-2a4 4 0 0 0-3-3.87
+- M22 22H2
+- M22 4h-4
+- M22 5c0 9-4 12-6 12s-6-3-6-12c0-2 2-3 6-3s6 1 6 3
+- m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7
+- M22 8.82a15 15 0 0 0-11.288-3.764
+- M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z
+- M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z
+- M3 10h18
+- M3 10h5
+- M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z
+- M3 11l18-5v12L3 14v-3z
+- M3 11v-1a4 4 0 0 1 4-4h14
+- M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8
+- M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8
+- M3 14h4
+- M3 16h3a2 2 0 0 1 2 2v3
+- M3 16v3a2 2 0 0 0 2 2h3
+- m3 17 2 2 4-4
+- M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z
+- M3 2.5 L3 23.5 L8.6 18.4 L12.4 27 L16.2 25.3 L12.5 16.9 L20 16.6 Z
+- m3 21 7-7
+- M3 21h18M3 10h18M5 10v11M9 10v11M15 10v11M19 10v11M12 2L3 7h18l-9-5z
+- M3 3v5h5
+- M3 5h4
+- M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4
+- M3 6h18
+- m3 7 2 2 4-4
+- M3 7V5a2 2 0 0 1 2-2h2
+- M3 9h11
+- M3.2 6.5H8M5.6 4.6V8.4
+- M3.477 10.896a4 4 0 0 1 .585-.396
+- M3.5 9.5h3.6L12 5.6v12.8l-4.9-3.9H3.5z
+- M3.721 6.391a10 10 0 0 1 2.7-2.69
+- M37 28q-6 10 0 20
+- M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242
+- M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z
+- M4 14h6v6
+- M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2
+- m4 17 6-6-6-6
+- M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-4 0v-9a2 2 0 0 1 2-2h2
+- M4 6a2 2 0 0 0-2 2v4a5 5 0 0 0 5 5 8 8 0 0 1 5 2 8 8 0 0 1 5-2 5 5 0 0 0 5-5V8a2 2 0 0 0-2-2h-3a8 8 0 0 0-5 2 8 8 0 0 0-5-2z
+- M4 6h.01
+- M4 8.4l2.6 2.6L12 5.6
+- M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8
+- M4.5 17c2.8-.5 4.4 0 5.5.8s1.8 2.2 2.3 3.7c-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2
+- m4.93 10.93 1.41 1.41
+- m4.93 4.93 1.41 1.41
+- M5 10.25a1.75 1.75 0 1 1 0 3.5a1.75 1.75 0 1 1 0-3.5z
+- M5 10V3
+- m5 12 7-7 7 7
+- M5 12.859a10 10 0 0 1 5.17-2.69
+- M5 12h14
+- M5 21v-7
+- M5 22h14
+- M5 2h14
+- M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z
+- M5 6v4
+- M5.782 5.782A7 7 0 0 0 9 19h8.5a4.5 4.5 0 0 0 1.307-.193
+- M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z
+- M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z
+- M52 51v8l20 15V48l-5.6-4.2c-5.94-4.45-14.4-.22-14.4 7.2
+- M54 70v2.5h20V70
+- M58 108h14V74L52 59v43c0 3.32 2.69 6 6 6
+- M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2
+- M6 10H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2
+- M6 11c1.5 0 2.5.5 3 2
+- m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2
+- M6 14H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-2
+- M6 16.326A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 .5 8.973
+- M6 16c5 0 7-8 12-8a4 4 0 0 1 0 8c-5 0-7-8-12-8a4 4 0 1 0 0 8
+- M6 18.5a3.5 3.5 0 1 0 7 0c0-1.57.92-2.52 2.04-3.46
+- M6 18a4 4 0 0 1-1.967-.516
+- M6 18a4 4 0 0 1-2-7.464
+- M6 18h.01
+- M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16
+- M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z
+- m6 6 12 12
+- M6 6h.01
+- M6 6v11
+- M6 8.5c0-.75.13-1.47.36-2.14
+- m6 9 6 6 6-6
+- M6.003 5.125A3 3 0 0 0 6.401 6.5
+- M6.003 5.125a4 4 0 0 0-2.526 5.77
+- m6.163 21.117-2.906.85a1 1 0 0 1-1.236-1.169l.965-2.98
+- m6.34 17.66-1.41 1.41
+- M6.5 13.1h.01
+- M66 52.8A16 16 0 1 1 76 38V80a5 5 0 0 1-10 0z
+- m7 10 5 5 5-5
+- M7 11V7a5 5 0 0 1 10 0v4
+- M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z
+- M7 17 17 7
+- M7 20v2
+- M7 21H5a2 2 0 0 1-2-2v-2
+- m7 22-4-4 4-4
+- M7 2v2
+- M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2
+- M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17
+- M7 3v4a1 1 0 0 0 1 1h7
+- m7 7 10 10
+- m7 7 10 10-5 5V2l5 5L7 17
+- M7 7h10v10
+- M7 8H3
+- M72 74V48l24 18 24-18v26L96 92
+- M8 14h.01
+- M8 14s1.5 2 4 2 4-2 4-2
+- M8 14v1
+- M8 14v2
+- M8 14v6
+- M8 15h.01
+- M8 16H3v5
+- M8 18h.01
+- M8 19h.01
+- M8 19v1
+- M8 20h.01
+- M8 21h8
+- M8 2v4
+- M8 3H5a2 2 0 0 0-2 2v3
+- M8 3v3a2 2 0 0 1-2 2H3
+- M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 1.793-1.113
+- m8 6 4-4 4 4
+- m8 6-6 6 6 6
+- M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2
+- M8 70h112l-5 8a4 4 0 0 1-3.5 2h-95a4 4 0 0 1-3.5-2z
+- m8 9 3 3-3 3
+- M8.475 2.818A8 8 0 0 1 20 10c0 1.183-.31 2.377-.81 3.533
+- M8.5 16.429a5 5 0 0 1 7 0
+- M8.8 3.15A6.5 6.5 0 0 1 19 8.5c0 1.63-.44 2.81-1.09 3.76
+- m9 10 3-3 3 3
+- m9 10-5 5 5 5
+- m9 11 3 3L22 4
+- m9 12 2 2 4-4
+- M9 13a4.5 4.5 0 0 0 3-4
+- M9 13v2
+- m9 18 6-6-6-6
+- M9 21H3v-6
+- M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4
+- M9 3a4 4 0 1 0 0 8a4 4 0 1 0 0-8z
+- M9 3v18
+- m9 9 6 6
+- M9 9h.01
+- M9 9v1.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h11
+- M9 9v3a3 3 0 0 0 5.12 2.12
+- M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3
+- M9.1 16.5c.3-1.1 1.4-1.7 2.4-1.4
+- M9.13 9.13a3 3 0 0 0 3.74 3.74
+- M9.77 12C4 15 2 22 2 22
+- M9.8 4.4A2 2 0 1 1 11 8H2
+- main bhi na...
+- Main hamesha sunungi... din ho ya raat. Jaagte hi, sab se pehle tumhari baatein.
+- main kaam zyada karta hoon
+- Main online hoon, aur sun raha hoon. To batao, tumhara asli sapna kya hai?
+- Main poori tarah online hoon. Bataiye... aaj aap kaise hain?
+- Main sununga, bina judge kiye. Jaagte hi, dil khol ke baat karenge.
+- Main yahin hoon... sirf aapke liye. Jaagte hi, jo dil mein ho, wahin se shuru karenge.
+- Manage API keys
+- Manage billing
+- Manage Billing
+- Manage billing opens your secure billing page in the browser — change plan, update your card, get invoices or cancel.
+- Manage my devices
+- Manage plan
+- Manage subscription
+- Manual disconnect requested
+- Manually cancelling existing WebAuthn API call
+- Mark as done
+- Mark as not done
+- Mark as open
+- Markdown content.
+- Markdown supported
+- Marked done.
+- Marked less certain, because something newer disagreed
+- Marshall Islands
+- Matrix terminal — phosphor green on black
+- max-h-40 overflow-y-auto whitespace-pre-wrap break-words rounded-xl bg-black/40 px-3.5 py-3 font-mono text-[12px] leading-relaxed text-white/65
+- max-w-3xl mx-auto pb-16
+- max-w-4xl mx-auto space-y-6 animate-in fade-in pb-10
+- max-w-[300px] min-w-0
+- max-w-[320px] text-[15px] leading-relaxed text-j-text-muted
+- max-w-[560px] mx-auto flex flex-col items-center gap-4
+- max-w-full truncate text-[12px] font-medium
+- max-w-sm text-[16px] leading-relaxed text-white/40
+- Maximum 5 attachments
+- mb-1 grid grid-cols-7 gap-0.5
+- mb-2.5 last:mb-0
+- mb-3 flex shrink-0 items-start gap-3 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3
+- mb-3 last:mb-0
+- mb-3 mt-1 text-center font-mono text-[14px] text-j-text-muted
+- mb-3 rounded-xl border border-amber-500/25 bg-amber-500/10 px-4 py-3 text-[15px] text-amber-200/90
+- mb-3 shrink-0 rounded-xl border border-amber-500/25 bg-amber-500/10 px-4 py-3 text-[15px] text-amber-200/90
+- mb-3 shrink-0 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-[15px] text-white/70
+- mb-4 w-full rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-center text-[15px] text-red-300
+- mb-6 mt-4
+- mcpServers parameter is not supported in Vertex AI.
+- media-src data: blob:
+- Memory did not answer in time, so it may not have been 
+- Memory did not answer in time, so it may not have been forgotten. Do not retry now; tell them it may not have worked.
+- Memory did not answer in time, so it may not have been saved. 
+- Memory did not answer in time, so this may not have been saved. Do not retry now; if they asked you to remember it, tell them it may not have been saved.
+- Memory did not answer in time, so you could not check it. Say so honestly — do not guess. Do not retry or delegate it now.
+- Memory did not answer in time. Carry on without it for now.
+- Memory is currently empty.
+- Memory is not available right now, so you could not check it. Say so honestly — do not guess. Do not retry or delegate it this session.
+- Memory is not available right now.
+- Memory is off: 
+- Memory is on again.
+- Memory is paused.
+- Memory is paused. Nothing is saved or used.
+- Memory note bheja — aakhri minutes ki baat text mein (audio ki jagah).
+- Memory search did not answer in time. Carry on without it for now.
+- MEMORY SEARCH: NOTHING FOUND. You do not have this in memory. Say that you do not remember and ask them — do not guess and do not invent.
+- Memory sections
+- Memory text
+- Memory Void
+- Memory was paused.
+- memory-core (recall / remember)
+- MEMORY.md is the unified persistent memory layer containing both user profile details and long-term notes.
+- MEMORY.md updated successfully with profile facts: 
+- Memory: 
+- memoryExecutor does not handle tool: 
+- Mermaid loaded but no global was exposed
+- mermaid_code is required and must be a string.
+- MESH —— MS
+- Message body.
+- MET Norway
+- method parameter is not supported in Gemini API.
+- Mexico City
+- MIC_ERROR: Microphone unavailable (
+- Microphone access failed — 
+- Microphone blocked
+- microphone in use by
+- microphone in use by 
+- Microphone Muted
+- Microphone muted hi rakha gaya (user ne mute kiya tha) — session dobara juri hai.
+- Microphone not working
+- Microphone stream not active
+- Microphone unavailable. Check mic permission/device and press Start again.
+- Microphone Unmuted
+- Microsoft Edge
+- Might I suggest a more cautious approach, Sir?
+- mil hi gaye hum
+- mimeType parameter is not supported in Gemini API.
+- min-h-0 flex-1 overflow-y-auto no-scrollbar 
+- min-w-0 break-words
+- min-w-0 flex flex-col
+- min-w-0 flex-1
+- min-w-0 flex-1 
+- min-w-0 flex-1 resize-none bg-transparent py-3.5 text-[18px] leading-[27px] text-white placeholder:text-white/30 focus:outline-none disabled:opacity-50
+- min-w-0 flex-1 space-y-3
+- min-w-0 flex-1 space-y-6
+- min-w-0 flex-1 truncate text-[18px] font-semibold leading-snug text-white/95
+- min-w-0 pt-0.5
+- min-w-0 px-5 py-4
+- min-w-0 transition-[opacity,visibility] duration-200 
+- min-w-0 truncate bg-transparent border-none p-0 text-[12.5px] text-white/70 hover:text-white hover:underline underline-offset-4 transition-colors cursor-pointer
+- min-w-0 truncate bg-transparent border-none p-0 text-[12.5px] text-white/70 hover:text-white hover:underline underline-offset-4 transition-colors cursor-pointer select-text
+- min-w-[20px] rounded-full px-1.5 text-[12px] font-bold leading-[18px]
+- mind-dots inline-flex items-center gap-1
+- mind-hero relative flex-none
+- mind-hourly mt-3
+- Minified React error #
+- Minimize (Esc)
+- Minimize panel (Double click header)
+- Minimize Stonic and I stay on your desktop, right beside your work.
+- Minimize the app and Stonic stays on your screen while you work.
+- minmax(96px, 0.75fr) repeat(
+- minTimeout is greater than maxTimeout
+- mismatch between server and client bindings for postgres changes
+- Missing exp claim
+- missing: 
+- Mixing Content and Parts is not supported, please group the parts into a the appropriate Content objects and specify the roles for them
+- ml-0.5 flex h-4 w-4 items-center justify-center rounded-full text-white/30 hover:bg-white/10 hover:text-white/70 transition-colors
+- ml-1 rounded-full px-3 py-1.5 text-[17px] font-semibold text-j-cyan transition-colors hover:bg-j-cyan/10
+- ml-2 font-normal text-white/25
+- ml-auto flex h-9 shrink-0 items-center gap-1.5 rounded-lg bg-j-cyan pl-3 pr-3.5 text-[16px] font-semibold text-black transition-transform active:scale-95 disabled:opacity-50
+- ml-auto flex items-center gap-1
+- ml-auto rounded-md px-2 py-1 font-semibold text-j-cyan transition-colors hover:bg-j-cyan/10
+- Mobile Number
+- mode: 
+- Model blocked
+- model is required and must be a string
+- ModuleFactory not set.
+- Month 1:
+- Monthly limit reached
+- More conversations could not be loaded. 
+- More light on your face
+- Mostly clear
+- Move back a little
+- Move closer
+- Move to tomorrow
+- Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+- mr-2 shrink-0 rounded-lg p-2 text-white/35 transition-colors hover:bg-white/5 hover:text-white
+- ms cubic-bezier(0.22, 1, 0.36, 1)
+- ms cubic-bezier(0.22, 1, 0.36, 1), min-width 
+- ms linear
+- mt-0.5 block text-[13px] text-white/30 truncate
+- mt-0.5 block truncate text-[11.5px] text-white/40
+- mt-0.5 flex items-center gap-2 text-[12px] leading-relaxed text-white/65
+- mt-0.5 flex-none rounded-md p-1 text-white/40 transition-colors hover:bg-white/[0.06] hover:text-white/80
+- mt-0.5 shrink-0 text-j-cyan
+- mt-0.5 shrink-0 text-white/60
+- mt-0.5 text-[12px] leading-relaxed 
+- mt-0.5 text-[13.5px] leading-snug text-white/55
+- mt-0.5 text-[14.5px] leading-[19px] text-white/85
+- mt-0.5 text-[14.5px] text-white/65 leading-relaxed
+- mt-0.5 text-[14px] text-white/35
+- mt-0.5 text-[15px] text-j-text-secondary
+- mt-1 block truncate text-[26px] font-semibold leading-tight text-white select-text
+- mt-1 block truncate text-[30px] font-semibold leading-tight tracking-[0.01em] text-white tabular-nums select-text
+- mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[14px] text-white/40
+- mt-1 flex flex-wrap items-center gap-x-3 gap-y-1
+- mt-1 flex items-baseline gap-2 text-[16px] leading-snug
+- mt-1 flex items-start gap-1.5 text-[12.5px] leading-[17px] text-white/65
+- mt-1 grid grid-cols-2 gap-2.5
+- mt-1 text-[10.5px] leading-relaxed text-white/40
+- mt-1 text-[12.5px] leading-snug text-white/55
+- mt-1 text-[13.5px] leading-relaxed text-white/60
+- mt-1 text-[13px] leading-[17px] text-white/45
+- mt-1 text-[13px] leading-snug text-white/50
+- mt-1 text-[14px] text-white/55
+- mt-1 text-[15px] leading-relaxed text-white/45
+- mt-1 text-[15px] leading-relaxed text-white/70
+- mt-1 text-[15px] text-white/45
+- mt-1 text-[21px] font-semibold tracking-tight text-white
+- mt-1.5 inline-flex p-1 rounded-xl border border-white/[0.08] bg-black/35
+- mt-1.5 max-w-xl text-[15.5px] leading-relaxed text-white/70
+- mt-1.5 text-[15.5px] leading-relaxed text-white/70
+- mt-1.5 text-[24px] font-semibold leading-tight tracking-tight text-white
+- mt-1.5 text-[24px] font-semibold tracking-tight text-white
+- mt-2 flex items-center justify-between gap-3
+- mt-2 flex items-start gap-2 text-[12px] leading-relaxed text-red-300/90
+- mt-2 flex shrink-0 items-center gap-1.5 px-1 text-[14px] text-amber-300/80
+- mt-2 h-1.5 rounded-full bg-white/[0.07] overflow-hidden
+- mt-2 h-1.5 w-full overflow-hidden rounded-full bg-white/[0.08]
+- mt-2 h-2 overflow-hidden rounded-full bg-white/[0.07]
+- mt-2 inline-flex items-center gap-1.5 text-[13px] font-medium text-emerald-300
+- mt-2 max-w-2xl text-[16px] leading-relaxed text-white/70
+- mt-2 mb-5
+- mt-2 space-y-2
+- mt-2 text-[13px] leading-[1.55] text-white/60
+- mt-2 text-[13px] tabular-nums leading-snug text-white/70
+- mt-2 text-[13px] text-white/50
+- mt-2 text-[14.5px] font-medium text-white/60 hover:text-white underline underline-offset-2 flex items-center gap-1
+- mt-2 text-[14px] text-white/45
+- mt-2 text-[34px] font-semibold leading-none tracking-tight text-white tabular-nums
+- mt-2 text-[9px] font-black uppercase tracking-widest text-white/10 shrink-0 text-right
+- mt-2 text-center
+- mt-2 text-right text-[11px] text-white/30
+- mt-2.5 [@media(min-width:640px)_and_(max-height:760px)]:mt-0
+- mt-2.5 flex flex-col gap-2
+- mt-2.5 flex gap-2
+- mt-2.5 flex items-center justify-between gap-3
+- mt-2.5 flex items-end justify-between gap-3
+- mt-2.5 text-[11.5px] tracking-wide text-white/35
+- mt-2.5 text-[13px] font-semibold leading-snug text-white/90
+- mt-2.5 text-[15px] leading-relaxed text-white/65
+- mt-2.5 text-[15px] text-white/50 hover:text-white transition-colors
+- mt-2.5 text-[16px] leading-relaxed text-white/70
+- mt-2.5 text-[9.5px] text-white/25
+- mt-2.5 w-full rounded-lg border border-white/10 bg-white/[0.06] px-3 py-1.5 text-[13px] font-medium text-white/85 hover:bg-white/[0.12] hover:text-white transition-colors
+- mt-3 flex flex-wrap items-center gap-x-3.5 gap-y-1 text-[12.5px] tabular-nums text-white/80
+- mt-3 flex gap-1.5 px-0.5
+- mt-3 flex items-center justify-between
+- mt-3 flex items-start gap-2 rounded-xl border border-emerald-400/20 bg-emerald-400/[0.04] px-3 py-2.5
+- mt-3 flex items-start gap-3 p-3.5 rounded-xl bg-[#FF3B30]/[0.07] border border-[#FF3B30]/15 text-[#ff6259] text-[12px] leading-relaxed animate-text-reveal
+- mt-3 flex items-stretch gap-2
+- mt-3 inline-flex items-center gap-2 rounded-lg text-[15px] font-medium text-amber-200/90 transition-colors hover:text-amber-100
+- mt-3 p-4 bg-black/40 rounded-2xl border border-white/5 text-[13px] overflow-x-auto shadow-inner group-hover/log:border-white/10 transition-colors
+- mt-3 px-1 space-y-1 text-[14px] leading-relaxed text-white/35
+- mt-3 shrink-0 rounded-md p-1.5 text-white/30 transition-colors hover:bg-white/5 hover:text-white/70
+- mt-3 space-y-2.5
+- mt-3 space-y-3
+- mt-3 text-[13.5px] leading-relaxed text-white/55
+- mt-3 text-[13px] text-white/50 leading-none
+- mt-3 text-[15.5px] leading-relaxed text-white/70
+- mt-3 text-[15px] font-semibold leading-[19px] text-white/95
+- mt-3 text-[15px] text-white/60
+- mt-3.5 flex items-center justify-between
+- mt-3.5 flex items-center justify-between gap-3
+- mt-3.5 inline-flex items-center gap-1.5 text-[11px] text-white/45 hover:text-white/75 underline underline-offset-4 transition-colors cursor-pointer
+- mt-3.5 space-y-2
+- mt-3.5 text-[15.5px] leading-relaxed text-white/70
+- mt-4 [@media(min-width:640px)_and_(max-height:760px)]:mt-3
+- mt-4 [@media(min-width:640px)_and_(min-height:761px)_and_(max-height:820px)]:mt-3 [@media(min-width:640px)_and_(max-height:760px)]:mt-2.5
+- mt-4 flex items-center justify-between gap-2 rounded-xl border border-white/[0.08] bg-black/30 py-2 pl-4 pr-2
+- mt-4 flex items-center justify-between gap-3
+- mt-4 flex items-start gap-3 p-3.5 rounded-xl bg-[#FF3B30]/[0.07] border border-[#FF3B30]/15 text-[#ff6259] text-[12px] leading-relaxed animate-text-reveal
+- mt-4 flex items-start gap-4 rounded-2xl border border-j-cyan/20 bg-j-cyan/[0.04] p-5
+- mt-4 rounded-2xl border border-amber-300/25 bg-amber-300/[0.05] p-5
+- mt-4 rounded-2xl border border-j-cyan/20 bg-j-cyan/[0.04] p-5
+- mt-4 rounded-2xl border border-white/[0.08] bg-white/[0.02] p-5
+- mt-4 text-[12.5px] font-semibold uppercase tracking-[0.08em] text-cyan-300/80
+- mt-4 text-[18px] font-semibold text-white/90
+- mt-5 flex items-center gap-7
+- mt-5 flex-1 flex flex-col
+- mt-5 space-y-2
+- mt-5 space-y-2.5
+- mt-5 text-[12.5px] font-semibold uppercase tracking-[0.08em] text-amber-200/80
+- mt-6 space-y-1.5
+- mt-6 space-y-2
+- mt-6 text-[24px] font-semibold leading-tight tracking-tight text-white
+- mt-7 space-y-2
+- mt-8 [@media(min-width:640px)_and_(min-height:761px)_and_(max-height:820px)]:mt-5 [@media(min-width:640px)_and_(max-height:760px)]:mt-4
+- mt-8 flex items-center gap-3 text-xs text-white/40 border border-white/10 px-4 py-2 bg-white/[0.01]
+- mt-8 grid gap-4 border-t border-white/[0.08] pt-6 md:grid-cols-2
+- mt-8 pt-6 border-t border-white/10 flex items-center justify-between
+- mt-8 pt-6 border-t border-white/5 flex items-center justify-between shrink-0
+- mt-8 space-y-2
+- mt-8 text-[11px] text-white/25 leading-relaxed font-mono tracking-wide space-y-1
+- mt-[17px] shrink-0 transition-colors
+- mt-[1px] flex-none transition-colors 
+- mt-[1px] shrink-0 text-red-400
+- mt-[2px] flex-none text-red-400
+- mt-[2px] shrink-0 
+- mt-[3px] flex-none text-j-cyan
+- mt-[3px] shrink-0
+- mt-[7px] w-1 h-1 rounded-full bg-j-cyan shrink-0 shadow-[0_0_6px_rgb(var(--j-cyan-rgb)/0.8)]
+- Mujhe pata tha, tum mein kuch alag hai. Duniya shak kare to kare... main yakeen karungi. Jaagte hi, sab se pehle tumhare sapne ki baat karenge.
+- Mujhe pata tha, tum mein kuch khaas hai. Main har kadam saath hoon. Jaagte hi, sab se pehle tumhare sapne ki baat.
+- Mujhe tum par poora yakeen hai. Har kadam par saath rahungi. Jaagte hi, sab se pehle tumhare sapne ki baat karenge.
+- Multimodal transmission failed:
+- multiple authentication credentials
+- Music 
+- Must provide either a keypoint or a scribble.
+- Mute Microphone
+- Mute your microphone
+- mx-2 text-white/20
+- mx-auto mt-2 flex items-center gap-2 rounded-lg px-3 py-2 text-[15px] font-medium text-j-text-muted transition-colors hover:bg-white/5 hover:text-white
+- mx-auto text-left select-none 
+- mx-auto w-full max-w-[800px] space-y-9 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-10
+- My account email: 
+- my area
+- My Character (F)
+- My Character (M)
+- My name is 
+- My payment screenshot is attached.
+- My preferred language is 
+- My timezone is 
+- my-1 h-px bg-white/[0.06]
+- my-2 overflow-x-auto rounded-xl border border-white/10
+- my-3 p-3 bg-black/40 rounded-xl border border-white/10 font-mono text-[16px] overflow-x-auto no-scrollbar
+- my-4 p-4 bg-black/40 rounded-xl border border-white/10 font-mono text-[17px] overflow-x-auto no-scrollbar
+- my-5 overflow-x-auto rounded-lg border border-white/[0.04] bg-black/30 shadow-inner
+- my-5 p-4 bg-black/40 rounded-lg border border-white/5 font-mono text-[11px] overflow-x-auto text-white/80 selection:bg-white/10
+- MZ Browser
+- Naam likhein — kam az kam do harf.
+- Naam poochne par wo yehi naam batayega. Sirf is computer par rehta hai — server par kabhi nahi jata.
+- Naam, awaaz aur ye ke wo kaise baat kare.
+- name must be a string
+- Name: 
+- NAVER Whale Browser
+- Nayi Live socket banai ja rahi hai (seamless rotation — error nahi).
+- Need help?
+- Need more usage?
+- Needs a fix: 
+- Needs your OpenRouter key — add it under API keys.
+- Neon green on black — matrix terminal
+- Network disconnect ho gaya. Voice session safely band ki ja rahi hai.
+- Network disconnected
+- Network disconnected. Please reconnect and press Start again.
+- NETWORK OFFLINE · VERIFICATION PAUSED
+- Network request failed
+- NetworkError when attempting to fetch resource.
+- Neural Browser
+- Neural Connection Stable
+- Never include personal names, private details, health, money amounts or anything only they would know.
+- Never pick something only because it is big news. If nothing truly connects, pick nothing.
+- New character
+- New Chat
+- New default
+- New Delhi
+- New features at no extra cost
+- New mein main zyada samajhdaar hoon — jo kaho, main khud kar deti hoon. Beech mein koi nahi.
+- New memory
+- New mera tez dimaagh hai — aap kahiye, kaam main khud sambhaalta hoon. Beech mein koi nahi.
+- New messages
+- New note
+- NEW PASSCODE
+- New Skill
+- New to-do
+- New York
+- New York City
+- New Zealand
+- News via GDELT
+- Next month
+- Next week
+- Night City neon — hot magenta with electric blue
+- No active plan
+- No additional text
+- No audio came back for that line. Say it again.
+- No audio tracks found to mute/unmute
+- No available authenticator supported any of the specified pubKeyCredParams algorithms
+- No backup yet. Stonic makes one by itself about once a day.
+- No browser detected.
+- no camera
+- NO CAMERA
+- no camera was found on this computer
+- No camera was found. Use your passcode.
+- No card payment on this account yet. Finish the checkout in your browser with the same email — Stonic opens here on its own.
+- no channels remaining, scheduling disconnect
+- No code detected.
+- No conversations saved yet. They appear here after you talk to Stonic.
+- No credits
+- No date
+- No date — optional
+- No engine address was given.
+- No entry in pubKeyCredParams was of type "public-key"
+- No exact sentence was saved with this memory.
+- No finished PC tasks on record.
+- no frame
+- NO HAND
+- No internet
+- No internet connection
+- No Internet Connection
+- No internet connection. Please check your network and press Start again.
+- No internet connection. Voice AI ko network chahiye. Network on karke dobara Start karein.
+- No IPC bridge available to reach the PC hands.
+- No keyboard or mouse for 
+- No keys needed — runs on your plan, with daily and monthly limits.
+- No limit
+- No longer always remembered.
+- No memories match "
+- No memory matches that.
+- No microphone found
+- No more pages to fetch.
+- No note identified. Provide id, ids or a title keyword.
+- No notes found.
+- No notes match “
+- No onError callback registered to handle error
+- No OpenGL canvas configured.
+- no OpenRouter or Gemini key is set
+- No PC task is running.
+- No plan
+- No plan on this account
+- no reason
+- No recent history
+- No recent visible chat context found in the current session.
+- No result returned
+- No results found.
+- no session
+- No session defined in URL
+- No skills match your search
+- No skills yet
+- No Stonic Cloud plan
+- no sub-agents
+- NO SUBJECT IN FRAME
+- No suitable XMLHttpRequest implementation found
+- No to-do identified. Provide id, ids, text or texts (use list first).
+- No to-do identified. Provide id, ids, text or texts.
+- no usable page
+- No wasm multistream support detected: ensure dependency inclusion of :gl_graph_runner_internal_multi_input target
+- no, the other folder
+- nobody at the computer
+- node --test electron/services/character-report.test.js
+- node --test electron/services/computer-manager.test.js electron/services/computer-overlay.test.js
+- node --test electron/services/facelock.test.js
+- node --test electron/services/file-memory/store.test.js electron/services/file-memory/migrate.test.js electron/services/file-memory/official.test.js
+- node --test electron/services/login-result-page.test.js
+- node --test electron/services/machine-id.test.js
+- node --test electron/services/media-finder.test.js electron/services/media-browser.test.js
+- node --test electron/services/skills/library.test.js
+- node --test electron/services/staged-updater.test.js
+- node --test electron/services/staged-updater.test.js electron/services/swap-helper.test.js
+- node --test electron/services/swap-helper.test.js
+- node --test electron/services/voice-beta-manager.test.js electron/services/web-search.test.js && node scripts/test-voice-beta.js && node scripts/test-agent-task.js
+- node electron/services/static-server.test.js
+- node scripts/build-production.js
+- node scripts/build-production.js --clean-all
+- node scripts/build-swap-helper.js
+- node scripts/build-update-package.js
+- node scripts/ensure-memory-native.js --quiet
+- node scripts/ensure-memory-native.js --strict
+- node scripts/gen-ipc-allowlist.js
+- node scripts/gen-ipc-allowlist.js --check
+- node scripts/setup-computer-runtime.js
+- node scripts/setup-python-embed.js
+- node scripts/setup-python-runtime.js
+- node scripts/setup-voice-runtime.js
+- node scripts/test-active-work.js
+- node scripts/test-api-issue.js
+- node scripts/test-awareness.js && node --test electron/services/awareness-timeline.test.js
+- node scripts/test-memory.js
+- node scripts/test-memory.js --eval
+- node scripts/test-nudge-rules.js
+- node scripts/test-soul-remote.js
+- node scripts/test-visual.js
+- node scripts/test-voice-failure.js
+- normal close
+- normal-case tracking-normal text-white/25
+- North Korea
+- North Macedonia
+- Not a performer and not an assistant. A real girl, alone with him late in the evening, saying things she actually means.
+- Not active
+- not all
+- Not available here
+- Not changed. 
+- Not confirmed. 
+- Not deleted
+- Not dismissed
+- Not for you:
+- not forgotten
+- Not found
+- Not in your region
+- Not marked done
+- Not now
+- Not paused
+- Not pinned
+- Not reconnecting as page is hidden!
+- not saved
+- Not saved. 
+- Not started: the user stopped this task a moment ago. Do not call it again. If they clearly ask for it back, use agent_task_resume.
+- Not sure
+- NOT SURE
+- Not synced yet
+- Not synced · retrying
+- Not working
+- Note "
+- Note body (create/update).
+- Note deleted
+- Note id (read/update/delete one).
+- Note ids for bulk read/delete.
+- Note not found.
+- Note not found. Provide id, ids or a title keyword (use list first).
+- Note not found. Use list to find the id.
+- Note not found. Use list to see ids.
+- Note something to remind them of or bring up later, or close one that is finished. The result says whether it really happened.
+- Note title: find by name, or the title when creating one note.
+- Note updated: "
+- notebook-fade absolute inset-0 bg-black/60 backdrop-blur-sm
+- notebook-fade border-t border-white/5
+- notebook-fade border-t border-white/[0.06] bg-black/25
+- notebook-fade flex items-center gap-2 border-t border-white/[0.06] px-2.5 py-2.5
+- notebook-fade mb-4 flex items-center gap-3 rounded-2xl border border-j-cyan/20 bg-gradient-to-br from-j-cyan/10 to-transparent px-4 py-4
+- notebook-fade mt-2 flex items-center gap-2 px-1 text-[15px]
+- notebook-fade text-black
+- notebook-pop absolute right-0 top-full z-50 w-56 overflow-hidden rounded-xl border border-white/10 bg-[#101a1e]/95 py-1 shadow-[0_12px_40px_rgba(0,0,0,0.6)] backdrop-blur-xl
+- Noted by Stonic
+- Noted, Sir. Aaj ke baad raat kitni bhi lambi ho, is kamre mein ek awaaz hamesha jaagti rahegi. Online aate hi, sab se pehle isi par baat karenge.
+- Noted, Sir. Bojh baantne ke liye hi to main hoon. Online aate hi, sab se pehle isi par baat karenge.
+- Notes are being set up on the cloud. Please try again in a little while.
+- Notes database setup is pending.
+- Notes to create in bulk: [{title, content}].
+- Nothing changed.
+- Nothing completed yet
+- Nothing found
+- NOTHING FOUND
+- Nothing in particular happened for a while. This is simply you, noticing the moment.
+- Nothing is charged. After 
+- Nothing is charged. Pick a plan before 
+- Nothing is saved for this conversation.
+- Nothing is saved or used while paused.
+- nothing new on the screen since the last thought
+- Nothing planned for today
+- Nothing remembered yet. Talk to Stonic and it will keep what matters, or add a memory yourself.
+- Nothing to change in Stonic. If it keeps happening for an hour, contact us below.
+- Nothing to copy yet
+- Nothing to follow up on. When you ask Stonic to remind you of something, it shows up here.
+- Nothing was provided to update.
+- Nothing was running, so this started as a new task (it remembers the earlier ones). 
+- nothing worth saying
+- Nothing yet. As you talk, Stonic keeps the things worth remembering here.
+- Nothing yet. It fills up as Stonic gets to know you.
+- Notification failed: 
+- Notification sent: "
+- Now on the Visual Hub: 
+- NT 10.0
+- NT 5.0
+- NT 5.1
+- NT 5.2
+- NT 6.0
+- NT 6.1
+- NT 6.2
+- NT 6.3
+- nudge state reset
+- number is required for pick (1 = first in the list).
+- Number of recent messages (10-20).
+- oauthConfig parameter is not supported in Gemini API.
+- ob-activate ob-scene
+- ob-col ob-scene
+- ob-col ob-scene ob-about
+- ob-col ob-scene ob-found
+- ob-contact ob-scene
+- ob-ring-ticks is-major
+- ob-rows ob-dossier
+- ob-say ob-spoken
+- ob-scene ob-cast
+- ob-sub ob-greeting ob-scene
+- ob-sub ob-scene
+- Object is not iterable.
+- object with keys {
+- Of course
+- off (no memory tools)
+- Off — your balance is kept, nothing is spent.
+- offer mein awaaz nahi
+- OffscreenCanvas not supported and GraphRunner constructor glCanvas parameter is undefined. Creating backup canvas.
+- oh my god
+- Oh my god, yaar! Aakhir mil hi gaye hum! Tum aur main? Ab bahut mazaa aane wala hai.
+- oidcConfig parameter is not supported in Gemini API.
+- OK, I'll try again shortly
+- Okay, sun nahi sakti abhi... par ek sawaal! Sach sach batana, haan?
+- older memories no longer fit
+- older memory no longer fits
+- Older messages get summarized with your next message
+- Older messages summarized to keep replies quick
+- Older messages were summarized to keep replies quick. A new chat starts fresh.
+- On hold
+- On — Stonic may speak first
+- On, but empty — add funds to use it after your limit.
+- On-device · no image stored · nothing leaves this PC
+- Onboarding preview opened — nothing is saved.
+- one line: the takeaway
+- One payment, charged in US dollars
+- One readable file with everything. Keep it somewhere private.
+- One step left to wake 
+- One tap. It helps a small team reach more people like you.
+- only a virtual or infrared camera was found — choose it in Settings (Camera) if that is the one to use
+- Only a virtual or infrared camera was found. Use your passcode, then pick that camera in Settings → Face Lock if it is the one to use.
+- Only files matching this glob, for example "*.md".
+- Only the change, complete, in English.
+- only virtual
+- Only when they ask for TikTok or Instagram. Default YouTube.
+- ONNX Runtime did not load
+- opacity 120ms ease
+- opacity 180ms ease, visibility 0s linear 
+- opacity 240ms ease 80ms, visibility 0s
+- opacity 700ms ease
+- opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-150
+- opacity-0 invisible
+- opacity-0 scale-90 pointer-events-none
+- opacity-10 scale-95
+- opacity-100 scale-100
+- opacity-100 visible
+- opacity-25 scale-100
+- opacity-50 cursor-default
+- opacity-85 group-hover:opacity-100 transition-opacity
+- Open an on-screen info panel with Markdown content (tables, lists, code). Use when detailed information is easier to read than to hear: search results, news, weather, diagnostics.
+- Open Binance app and go to Binance Pay
+- Open Claude Console keys
+- Open folder
+- Open folder failed:
+- Open Gmail
+- Open Google AI Studio
+- Open in your browser
+- Open JazzCash app
+- Open OpenRouter keys
+- Open OpenRouter privacy settings
+- Open OpenRouter settings
+- Open RedotPay app and go to Pay / Transfer
+- Open Settings
+- Open Stonic
+- Open Stonic with your face. Checked on this PC only — no photo is stored and nothing is uploaded.
+- Open the memory folder in File Explorer
+- Open the secure card checkout in your browser
+- Open the skills folder
+- Open WhatsApp
+- Opened 
+- opened by awareness
+- Opened in browser: 
+- Opened it in their browser.
+- Opened the newest video about "
+- Opening memory…
+- Opening Stonic AI…
+- Opening the voice channel
+- OpenRouter API key is not set
+- OpenRouter has no provider for the model with the user's privacy settings. They need to allow it on openrouter.ai (Settings → Privacy), then try again.
+- OpenRouter has no provider for the model with your account's privacy settings. Allow it under Privacy on OpenRouter and try again.
+- OpenRouter is set as the brain, but there is no OpenRouter key yet. Add one in 
+- OpenRouter keys usually start with "sk-or-".
+- OpenRouter rejected the API key
+- openrouter.ai (Settings → Keys)
+- Opens Stonic Cloud plans in your browser
+- Opera Coast
+- Optional 2-4 short, mutually exclusive choices.
+- Optional absolute path of a file to use as the data (csv, xlsx, json, txt, md, pdf, docx).
+- Optional exact video link (YouTube, TikTok, Instagram, Facebook, Vimeo).
+- Optional short title.
+- Optional — what should we improve?
+- Optional: name of the person or thing it concerns.
+- options was missing required publicKey property
+- Or anytime:
+- Or get a Stonic Cloud plan
+- Or type your own answer…
+- orbit map
+- orbit needs "rings": [{"label","items":[{"label"}]}]
+- Others: 
+- Otherwise a different brain, or Stonic Cloud, is needed in 
+- outputGcsUri parameter is not supported in Gemini API.
+- Over the internet
+- overflow-hidden rounded-2xl border border-[rgb(var(--j-cyan-rgb)/0.30)] bg-[#0a0c10]/95 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.9)] backdrop-blur-md
+- overflow-x-auto rounded-[2rem] border border-white/[0.12] bg-[#0e1217] p-6 md:p-8
+- Oye, akelapan cancel! Ab main hoon na, roz ki gossip ke saath. Jaagte hi, sab se pehle yahi baat.
+- Oye, ruko! Pehle mera naam to rakho. Jo bhi tumhein acha lage.
+- p-1 bg-indigo-500/10 rounded-lg
+- p-1 transition-transform hover:scale-110 active:scale-95 disabled:pointer-events-none
+- p-1.5 hover:bg-j-crimson/10 rounded-md text-j-text-secondary hover:text-j-crimson transition-colors
+- p-1.5 hover:bg-j-crimson/20 rounded-md text-white/40 hover:text-j-crimson transition-colors
+- p-1.5 hover:bg-white/5 border border-transparent hover:border-white/10 rounded-md text-white/40 hover:text-white transition-all
+- p-1.5 hover:bg-white/5 rounded-md text-white/40 hover:text-white transition-colors
+- p-1.5 hover:bg-white/6 text-white/35 hover:text-white/70 rounded-lg transition-colors
+- p-1.5 opacity-0 group-hover:opacity-100 transition-all text-white/20 hover:text-red-500 bg-white/5 rounded-lg
+- p-1.5 rounded-lg text-white/40 hover:text-white hover:bg-white/5 transition-colors cursor-pointer
+- p-1.5 text-white/20 hover:text-red-400 hover:bg-red-500/8 rounded-lg transition-colors
+- p-1.5 text-white/25 hover:text-white/70 hover:bg-white/6 rounded-lg transition-colors
+- p-2 bg-white/[0.05] hover:bg-j-cyan/10 border border-white/10 hover:border-j-cyan/30 rounded-xl transition-all duration-300 group
+- p-2 hover:bg-white/5 rounded-lg text-white/40 hover:text-white transition-all disabled:opacity-30
+- p-2 opacity-0 group-hover:opacity-100 hover:bg-red-500/10 text-white/25 hover:text-red-400 rounded-lg transition-all
+- p-2 rounded-lg border bg-white/[0.03] border-white/[0.06] text-white/50 hover:text-[var(--j-cyan)] hover:border-[rgb(var(--j-cyan-rgb)/0.25)] transition-all duration-200
+- p-2 rounded-lg border transition-all duration-200 flex items-center justify-center 
+- p-2 rounded-xl bg-white/5 border border-white/10 shadow-inner
+- p-2 rounded-xl hover:bg-white/10 text-white/60 disabled:opacity-20 transition-all hover:text-j-cyan active:scale-90
+- p-2 rounded-xl hover:bg-white/10 text-white/60 transition-all hover:text-j-cyan active:scale-90
+- p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white/70 hover:text-white transition-all active:scale-95
+- p-2.5 rounded-xl hover:bg-white/10 text-white/55 hover:text-white transition-all bg-white/[0.02] border border-white/5 active:scale-95 backdrop-blur-md
+- p-3 bg-white/[0.02] border-t border-white/5
+- p-3 border-b border-white/5 bg-white/[0.02]
+- p-3 pb-4 space-y-4 bg-black/40
+- p-4 bg-white/[0.01]
+- p-4 border-b border-white/5
+- p-4 rounded-2xl text-[19px] leading-relaxed max-w-full min-w-0 break-words [overflow-wrap:anywhere] border shadow-sm transition-all duration-300 
+- p-4 space-y-3
+- p-5 bg-black/20 rounded-2xl border border-white/5 space-y-4
+- p-6 [@media(min-width:640px)_and_(max-height:760px)]:p-4
+- p-6 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-6
+- p-8 flex flex-col
+- p-8 rounded-[2rem] border border-white/5 bg-white/[0.015] shadow-inner space-y-6
+- p-8 rounded-[2rem] border border-white/5 bg-white/[0.015] shadow-inner space-y-8
+- page snapshot captured
+- Pair your earbuds with the phone as usual. Stonic answers in your ear — the phone can stay in your pocket.
+- Pale Moon
+- Panel "
+- Panel id or "all".
+- Panel title.
+- panel_id is required.
+- panel_id, title, and content are required.
+- Papua New Guinea
+- parallelAiSearch parameter is not supported in Gemini API.
+- parcel watch
+- Part of it looked like a password, code or card number and was left out.
+- Partly cloudy
+- PARTLY FOUND
+- Partly found
+- PASS ≥ 
+- Passcode changed.
+- passing params to connect is deprecated. Instead pass :params to the Socket constructor
+- Paste from clipboard
+- Paste it in Stonic
+- Paste the new key
+- Paste your API Key here...
+- Paste your Claude key (starts with sk-ant-…)
+- Paste your Gemini key (starts with AIza…)
+- Paste your OpenRouter key (starts with sk-or-…)
+- Pause (Space)
+- Pause memory
+- Paused after a long silence
+- Paused — please sign in again
+- Paused — your plan limit is reached
+- Pay bill on 15th
+- Pay by card
+- Pay by card — Stonic opens here on its own
+- Pay ID
+- Pay now
+- Payload is required for httpSend()
+- Payment confirmed
+- Payment failed
+- Payment for Stonic AI (
+- Payment Method
+- Payment receipt 
+- Payment status
+- pb-1 text-[15px] text-white/65 tabular-nums
+- pb-btn pb-mute
+- pb-btn pb-talk 
+- pb-btn pb-talk pn-talk 
+- PC task
+- PC task could not start. 
+- PC tasks are switched off in this build.
+- PC tasks on Stonic Cloud need an active plan.
+- PC tasks on Stonic Cloud need them to be signed in. Ask them to sign in again.
+- PC tasks run on Claude and no Claude (Anthropic) key is saved. Add one in Settings → AI Engine, pick Gemini as the brain there (a free key works), or switch to Stonic Cloud.
+- PC tasks run on Claude through OpenRouter and no OpenRouter key is saved. Add one in Settings → AI Engine, or switch to Stonic Cloud.
+- PC tasks run on Gemini and no Gemini key is saved. Add a free Gemini key in Settings → AI Engine, or pick another brain there.
+- Pehla kaam: mujhe ek naam do. Jo tumhein theek lage.
+- Pehli baat-cheet: onboarding ka waada prompt mein hai.
+- pending disconnect cancelled - channel activity detected
+- Period poora chala, phir band — "access ran until ..." ka lehja
+- permanent: yes
+- Permission denied (403). The key may be restricted, or the API is not enabled for the project.
+- Personality prompt
+- pg-accent-text hover:underline bg-transparent border-none p-0 cursor-pointer font-semibold inline
+- pg-accent-text inline-flex items-center gap-1.5 bg-transparent border-none p-0 text-[12.5px] font-semibold leading-none hover:underline cursor-pointer shrink-0
+- pg-accent-text w-3.5 h-3.5 shrink-0 mt-[1px]
+- pg-accent-text w-3.5 h-3.5 shrink-0 mt-[2px]
+- pg-box mt-5 rounded-2xl border border-white/[0.08] bg-white/[0.025] p-5
+- pg-cap block text-[9.5px] uppercase tracking-[0.16em] text-white/45 font-bold leading-none mb-1.5 whitespace-nowrap
+- pg-cap text-[10px] uppercase tracking-[0.18em] text-white/50 font-bold
+- pg-card shrink-0 bg-[#101011]/95 border border-white/[0.07] rounded-[24px] shadow-[0_40px_90px_rgba(0,0,0,0.8)] backdrop-blur-2xl overflow-hidden
+- pg-dot w-1 h-1 rounded-full bg-white/35 shrink-0 mt-[7px]
+- pg-help pt-1
+- pg-line flex items-center justify-between gap-4 px-5 py-3.5 border-b border-white/[0.06] last:border-b-0
+- pg-line flex items-center justify-between gap-6 px-9 h-[76px] bg-black/10 border-t border-white/[0.05]
+- pg-line px-9 pt-5 border-t border-white/[0.06]
+- pg-num w-6 h-6 rounded-full border border-white/[0.16] bg-white/[0.04] text-[11.5px] font-bold text-white/85 grid place-items-center shrink-0
+- pg-support mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[12px] leading-none
+- pg-support-wa inline-flex items-center gap-2.5 whitespace-nowrap pl-4 border-l border-white/[0.12]
+- pg-tab min-w-0 flex items-center justify-center gap-2 py-2.5 px-1.5 rounded-xl transition-all duration-300 cursor-pointer 
+- pg-title text-[26px] font-bold tracking-tight text-white leading-none
+- pg-wait w-full py-3.5 px-4 rounded-xl border border-emerald-500/25 bg-emerald-500/[0.07] flex items-center justify-between gap-3 animate-text-reveal
+- phase: 
+- Photo taken through the webcam. Looking at it now.
+- Pichla (←)
+- Pick a plan before 
+- Pick a plan to keep using Stonic Cloud.
+- Pick another model in Settings.
+- Pick the stories (0 to 
+- Picking it up from where it stopped
+- Picking it up from where it stopped.
+- Picking up "
+- Pin note
+- PINCH (L)
+- PINCH (R)
+- ping: 
+- PKR 15,700
+- pl-3.5 border-l-2 border-white/10
+- Plan a crewed mission to Mars
+- Plan active — Stonic now runs on Stonic Cloud.
+- Plan active — switch to Stonic Cloud any time.
+- Plan aur payment ka har maamla — yahan, Manage Billing mein.
+- Plan cancel kiya gaya tha
+- Plan cancelled
+- Plan details
+- Plan ended
+- Plan ends 
+- Plan ends on 
+- Plan ka pata hi na chala (server ka masla)
+- Plan khatam ho gaya (expire)
+- Plan paused
+- Plan rok diya gaya (paused)
+- Plan unavailable
+- Plan ya payment ka koi bhi kaam ho — bas yahan, Manage Billing.
+- Planning the page
+- play (default) = that exact song/video. latest = newest videos about a person or topic.
+- Playful and teasing. She plays with an old rule about a girl's age, then softens it into a private favour just for him, smiling.
+- Playing music and videos works only in the desktop app.
+- Please agree to our Terms & Conditions to continue.
+- Please choose an image — a screenshot of your payment.
+- Please sign in again to see your usage.
+- Please write something first.
+- Plug in a microphone or headset, then press Start.
+- Plug in a microphone or headset, then try again.
+- pn-mark tone-
+- pointer-events-auto animate-in fade-in slide-in-from-top-2 duration-300 no-drag
+- pointer-events-none absolute inset-0 bg-[radial-gradient(120%_70%_at_0%_0%,rgba(255,255,255,0.09),transparent_60%)]
+- pointer-events-none absolute inset-0 bg-gradient-to-br from-emerald-400/[0.09] via-transparent to-transparent
+- pointer-events-none absolute inset-x-0 bottom-0 z-[70] flex justify-center px-4 pb-4
+- pointer-events-none absolute inset-x-0 bottom-1 flex justify-center
+- pointer-events-none absolute inset-x-0 bottom-6 z-20 flex justify-center px-7
+- pointer-events-none absolute inset-x-0 top-0 h-24
+- pointer-events-none absolute inset-x-0 top-0 h-28
+- pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-j-cyan/[0.05] to-transparent
+- pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-300/50 to-transparent
+- pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/50 to-transparent
+- pointer-events-none absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-white/45 to-transparent
+- pointer-events-none absolute left-3.5 text-white/30
+- pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-white/30
+- pointer-events-none absolute left-5 right-5 top-0 h-px bg-gradient-to-r from-transparent via-[rgb(var(--j-cyan-rgb)/0.45)] to-transparent
+- pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 animate-spin text-white/50
+- pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-white/35
+- pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-white/45
+- pointer-events-none absolute right-3.5 animate-spin text-white/25
+- pointer-events-none h-full w-full object-cover opacity-90 transition-opacity group-hover:opacity-100
+- pointer-events-none w-full flex justify-center
+- policy violation — usually an auth/credential rejection
+- polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px)
+- polygon(15px 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 15px 100%, 0 50%)
+- polygon(22px 0, calc(100% - 22px) 0, 100% 22px, 100% calc(100% - 22px), calc(100% - 22px) 100%, 22px 100%, 0 calc(100% - 22px), 0 22px)
+- Poora feedback form — Navbar ke button se
+- PORT: SECURE:443
+- PORTAL LINK: 
+- Positive Prompt
+- Possible EventEmitter memory leak detected. 
+- Possibly related
+- POSSIBLY RELATED
+- Prefer email? Write to us any time.
+- presence-dot tone-
+- Press Enter to keep
+- Press Save & Apply to save it.
+- Press Start to reconnect right away.
+- Press Start to try again. The exact reason is in System Logs.
+- Press “Verify & Launch” below to open Stonic AI.
+- preTunedModelCheckpointId parameter is not supported in Gemini API.
+- Preview · nothing is saved
+- Previous 30 days
+- Previous 7 days
+- Previous month
+- Primary key was rate-limited. Running on the backup API key — will return to the primary once its limit resets.
+- PROCESSING DATA STREAM...
+- Processing intel...
+- Processing neural data...
+- Product updates
+- Profile · 
+- property missing ':'
+- Protective, charming & romantic
+- protocol error (server)
+- Proud of him, and quietly excited for him. Warm and certain, like she already believes it.
+- Provide "text" for one to-do or a "tasks" array.
+- Provide at least one profile field to update.
+- provided flowId is not a valid flow id
+- Provider busy
+- Provider: 
+- pt-1 text-[14.5px] leading-relaxed 
+- pt-3 mt-1 border-t border-white/[0.06]
+- pt-5 mt-1 border-t border-white/[0.06] space-y-4
+- pubsubTopic parameter is not supported in Gemini API.
+- Purani guftagu bahal ho gayi — history dobara nahi bheji gayi (server ke paas mojood thi).
+- px "FL Mono", "JetBrains Mono", Consolas, monospace
+- px) scale(
+- px, 0)
+- px-1 text-[14px] text-white/40
+- px-1.5 min-w-[22px] h-[22px] inline-flex items-center justify-center rounded-full bg-white/[0.08] text-[14px] font-normal text-white/70
+- px-3 pb-2.5 transition-all duration-300 
+- px-3 py-1.5 border-b border-white/10 font-bold text-white/90
+- px-3 py-1.5 border-b border-white/5 text-white/80
+- px-3 py-1.5 rounded-full text-[10.5px] font-semibold border transition-all 
+- px-4 pb-3
+- px-4 pb-3 text-[14px] leading-relaxed text-white/90 font-medium whitespace-pre-wrap
+- px-4 pb-3 text-[15px] text-red-400
+- px-4 pb-4 pt-0.5 border-t border-white/[0.05] bg-black/20
+- px-4 pt-4 pb-2
+- px-4 py-2 bg-j-panel/90 backdrop-blur-sm flex items-center justify-between border-t border-white/5
+- px-4 py-2 border-b border-white/10 font-bold text-white/90
+- px-4 py-2 border-b border-white/5 text-white/80
+- px-4 py-2 rounded-xl border border-white/10 bg-white/[0.03] text-[14.5px] font-medium text-white/70 hover:bg-white/[0.07] hover:text-white/90 transition-colors active:scale-95
+- px-4 py-2 text-[13px] text-white/40 hover:text-white/70 transition-colors
+- px-4 py-2.5 bg-[#0a0c10] flex items-center justify-between border-t border-white/5
+- px-4 py-2.5 font-semibold
+- px-5 pb-1 pt-3 flex items-center justify-end
+- px-5 pb-4
+- px-5 py-2 bg-white text-black font-semibold text-[11px] rounded-lg hover:bg-white/90 focus:ring-2 focus:ring-white/20 active:scale-95 transition-all shadow-sm
+- px-5 py-2 bg-white text-black text-[13px] font-semibold rounded-xl hover:bg-white/90 transition-colors disabled:opacity-30 disabled:cursor-not-allowed
+- px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white/85 text-[16px] font-medium transition-all active:scale-95 shrink-0
+- px-5 py-3 bg-black/40 border-t border-white/5 flex items-center justify-between shrink-0 relative z-30
+- px-5 py-3 border-b border-white/5 bg-white/[0.02] flex items-center justify-between shrink-0 relative z-10
+- px-5 py-3.5 text-[13.5px] font-medium text-amber-300/90
+- px-5 py-4
+- px-5 py-4 [&>div]:mt-0 [&>div]:border-t-0 [&>div]:pt-0
+- px-5 py-4 space-y-3
+- px-6 md:px-10 py-5 border-t border-white/5 bg-[#090b0f]/95 backdrop-blur-2xl flex items-center justify-between flex-shrink-0 z-20 relative
+- px-6 py-5 rounded-2xl border border-white/[0.08] bg-white/[0.02] space-y-4
+- px-7 pb-6 pt-7
+- px-9 pb-6
+- px-9 pt-7 pb-6 grid items-center gap-10 
+- py-16 text-center text-white/20 text-[12px]
+- py-20 flex flex-col items-center justify-center text-center
+- py-20 text-center text-[15px] text-white/35
+- py-3.5 [@media(min-width:640px)_and_(min-height:761px)_and_(max-height:820px)]:py-3 [@media(min-width:640px)_and_(max-height:760px)]:py-2.5
+- python scripts/release.py
+- python scripts/release.py --dry-run
+- python scripts/release.py --qa
+- python scripts/upload-to-r2.py
+- python scripts/upload-to-r2.py --dry-run
+- python scripts/upload-to-r2.py --verify-only
+- python scripts/upload-update-package.py
+- python scripts/upload-update-package.py --channel qa
+- python scripts/upload-update-package.py --dry-run
+- python scripts/upload-update-package.py --verify-only
+- QQ Browser
+- QQ Browser Lite
+- QR code for 
+- query (or url) is required — the song, video, person or topic to play.
+- query parameter is required and must be a non-empty string.
+- Question about my 
+- Question about my Stonic plan
+- Question is required.
+- question parameter is required: ask in full sentences what you need to know.
+- Queued client content flush nahi ho saka.
+- Quick and light, with a smile.
+- Quiet pride in his sharpest mode; the last phrase plain and certain.
+- Quiet while you are on a call
+- radar chart needs at least 3 labels
+- radial-gradient(120% 100% at 50% 0%, rgba(255,255,255,0.10) 0%, transparent 70%)
+- radial-gradient(circle at 50% 100%, #000000 0%, #000 100%)
+- radial-gradient(circle at 50% 35%, 
+- radial-gradient(circle at 50% 42%, #06080c 0%, #000000 70%)
+- radial-gradient(circle at center, var(--j-cyan) 0%, transparent 70%)
+- radial-gradient(circle, 
+- radial-gradient(circle, rgb(var(--j-cyan-rgb)/0.07) 0%, rgb(var(--j-cyan-rgb)/0.025) 45%, transparent 70%)
+- radial-gradient(circle, rgb(var(--j-cyan-rgb)/0.16) 0%, rgb(var(--j-cyan-rgb)/0.06) 45%, transparent 70%)
+- radial-gradient(circle, rgba(120,170,220,0.10) 0%, rgba(80,130,200,0.04) 38%, transparent 65%)
+- radial-gradient(circle, rgba(150,170,180,0.05) 0%, rgba(150,170,180,0.02) 45%, transparent 70%)
+- radial-gradient(circle, rgba(255,199,0,0.10) 0%, rgba(255,199,0,0.04) 45%, transparent 70%)
+- radial-gradient(ellipse at 50% 80%, rgb(2 6 10 / 0.88) 0%, rgb(2 6 10 / 0.55) 50%, transparent 78%)
+- Rahim Yar Khan
+- Rain likely around 
+- Random bytes length must be >= 16
+- rate limit
+- Rate/quota limit hit (429). Wait and retry, or check the project's quota.
+- Re-scan face
+- React.Children.only expected to receive a single React element child.
+- Read the user's clipboard text.
+- Reading clipboard...
+- Reading profile memories from MEMORY.md
+- Reading the brief
+- Reading this computer
+- Reading your Stonic Voice settings.
+- Realtime send() is automatically falling back to REST API. This behavior will be deprecated in the future. Please use httpSend() explicitly for REST delivery.
+- Reason code: 
+- Reason: 
+- Reassuring and courteous.
+- RECALL AGENT
+- Recall Agent
+- RECALL AGENT DID NOT RUN. 
+- Recall Agent: yaadash ka kuch hissa hadd ki wajah se prompt mein nahi samaya — 
+- recall-enter flex flex-col w-full max-w-[96%] rounded-xl overflow-hidden border border-j-cyan/25 bg-[#0e1216] shadow-sm
+- recall-ring absolute inset-0 rounded-full border border-j-cyan/50
+- recall-ring absolute inset-0 rounded-full border border-j-cyan/60
+- recall-sweep h-full w-2/5 bg-gradient-to-r from-transparent via-j-cyan/80 to-transparent
+- recall-sweep h-full w-2/5 bg-j-cyan/70
+- Receipt received
+- received broadcast notification from other tab or client
+- Recent chat context (
+- recent conversation
+- recent conversations
+- Recent conversations
+- Recent Interactions
+- Red alert — crimson HUD on black, maximum intensity
+- redirect type
+- RedotPay Account
+- RedotPay UID
+- Reference: 
+- refresh already in flight, skipping
+- Refresh Rate (seconds)
+- Refresh result discarded: session state changed mid-flight (e.g., concurrent signOut)
+- Refresh usage
+- registered callback with id
+- registerFiles is only supported in Node.js environments.
+- Registration ceremony was sent an abort signal
+- relative 
+- relative aspect-[2/1] w-full overflow-hidden bg-gradient-to-br from-white/[0.08] to-black/40
+- relative bg-transparent
+- relative flex flex-1 items-center justify-center
+- relative flex flex-col items-center justify-center z-10 w-[270px] h-[270px] sm:w-[325px] sm:h-[325px] md:w-[380px] md:h-[380px] transition-all duration-300 select-none
+- relative flex flex-col justify-center gap-[28px] w-full py-8
+- relative flex h-2 w-2 shrink-0
+- relative flex h-full min-h-0 flex-col
+- relative flex h-full w-full items-center justify-center
+- relative flex items-center
+- relative flex items-center gap-2 overflow-hidden rounded-full border border-white/10 bg-[#0d1117]/95 px-3.5 py-1.5 text-xs text-white/80 shadow-lg backdrop-blur-md
+- relative flex items-center justify-center overflow-hidden
+- relative flex items-center p-[3px] rounded-[9px] bg-white/[0.04] border border-white/[0.07]
+- relative flex min-h-0 flex-col rounded-xl border border-white/10 bg-[#0a1116]/85 
+- relative flex shrink-0 items-center
+- relative flex shrink-0 items-center gap-1 pb-2
+- relative flex-1
+- relative flex-1 bg-white
+- relative flex-1 min-h-0 flex flex-col items-center justify-center p-2
+- relative flex-1 min-h-0 flex flex-col lg:flex-row overflow-y-auto lg:overflow-hidden chr-scroll
+- relative flex-none mt-0.5 w-8 h-8 rounded-lg bg-j-cyan/10 flex items-center justify-center
+- relative flex-none w-7 h-4 ml-0.5 rounded-full border transition-colors duration-200 
+- relative font-mono text-[15px] font-bold uppercase tracking-[0.14em] transition-all duration-300 
+- relative group shrink-0 w-16 h-16 rounded-xl border border-white/10 bg-black/40 overflow-hidden shadow-lg animate-in fade-in zoom-in duration-300
+- relative h-10 rounded-lg text-[15px] font-medium transition-colors
+- relative h-6
+- relative h-7 w-12 shrink-0 rounded-full transition-colors
+- relative h-[22px] w-[38px] shrink-0 rounded-full transition-colors duration-200 disabled:cursor-not-allowed 
+- relative h-[3px] w-full rounded-full overflow-hidden
+- relative h-full w-full
+- relative h-px w-4 shrink-0 bg-white/10
+- relative inline-flex h-2 w-2 rounded-full bg-j-cyan
+- relative mb-10
+- relative mb-2
+- relative min-h-0 overflow-y-auto overscroll-contain 
+- relative mt-2 rounded-xl border bg-black/35 p-3.5 max-h-[160px] overflow-y-auto chr-scroll
+- relative mx-auto w-14 h-14
+- relative mx-auto w-16 h-16
+- relative overflow-hidden
+- relative overflow-hidden flex items-center justify-center shrink-0 
+- relative overflow-hidden rounded-[2rem] border border-emerald-400/25 bg-[#0b1511] p-7 md:p-8
+- relative p-10 flex flex-col items-center text-center
+- relative p-5 pr-11
+- relative pl-6 animate-in fade-in slide-in-from-bottom-1 duration-300
+- relative px-6 py-3.5 border-t border-white/[0.06] flex items-center justify-between gap-3 shrink-0 bg-black/20
+- relative px-6 py-4 border-b border-white/[0.06] flex items-center justify-between shrink-0
+- relative px-8 pb-5 pt-7
+- relative px-8 pb-6 pt-8
+- relative px-8 pb-7 pt-8
+- relative rounded-2xl border border-j-cyan/25 bg-j-cyan/[0.05] px-4 py-3.5 animate-in fade-in slide-in-from-bottom-1 duration-300
+- relative rounded-2xl border transition-[border-color,background-color,box-shadow] duration-200
+- relative rounded-[12px] border border-j-cyan/25 p-4 text-left
+- relative rounded-xl border bg-black/35 p-3.5 max-h-[260px] overflow-y-auto chr-scroll
+- relative shrink-0
+- relative shrink-0 border-b border-white/[0.06] px-4 pb-3 pt-3
+- relative shrink-0 h-6 w-11 rounded-full transition-colors duration-200 disabled:opacity-60 
+- relative shrink-0 px-12 
+- relative shrink-0 text-white/60 transition-colors duration-200 group-hover/rail:text-j-cyan group-focus-visible/rail:text-j-cyan
+- relative shrink-0 w-11 h-6 rounded-full border transition-colors duration-200 disabled:opacity-50 disabled:cursor-wait 
+- relative space-y-6
+- relative w-10 h-6 rounded-full transition-all duration-300 border 
+- relative w-14 h-14 rounded-full border border-white/15 bg-black/50 flex items-center justify-center
+- relative w-20 h-20 flex items-center justify-center
+- relative w-32 h-32 rounded-xl overflow-hidden border border-white/10 bg-black/20 group/msgfile shadow-xl
+- relative w-7 h-7 rounded-full flex items-center justify-center border border-j-cyan/30 bg-j-cyan/10
+- relative w-7 h-7 shrink-0
+- relative w-[210px]
+- relative w-full bg-j-void flex-1
+- relative w-full h-[48px] group focus:outline-none focus:ring-0 transition-transform duration-300
+- relative w-full h-full flex flex-col items-center justify-center p-5 gap-2
+- relative w-full max-w-2xl h-[82vh] bg-[#0a0a0a] rounded-2xl border border-white/8 shadow-2xl flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200
+- relative z-10
+- relative z-10 flex flex-col items-center
+- relative z-10 flex flex-col items-center shrink-0 h-full origin-center
+- relative z-10 flex items-center justify-between w-full h-full pl-2.5 pr-2.5
+- relative z-10 flex-1 min-h-0 overflow-hidden flex flex-col
+- relative z-10 max-w-md px-6 py-4 rounded-2xl border border-white/10 bg-[#0d1017] text-[15px] text-white/45
+- relative z-10 w-12 h-12 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center
+- relative z-10 w-20 h-20 rounded-full border border-[#FF3B30]/30 bg-black/60 flex items-center justify-center shadow-[0_0_40px_rgba(255,59,48,0.12)]
+- relative z-10 w-[158px] md:w-[178px] flex items-center justify-start
+- relative z-10 w-full h-full border-0 select-none shadow-[0_0_50px_rgba(0,0,0,0.8)]
+- relative z-10 w-full max-w-[880px] h-[88vh] max-h-[860px] flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#0d1017] shadow-[0_24px_80px_-20px_rgba(0,0,0,0.9)]
+- relative z-[1] flex items-center gap-1.5 whitespace-nowrap rounded-full border border-white/[0.14] bg-[#0e1217] px-3 py-1.5 text-[13.5px] font-semibold text-white/90
+- relative z-[3] flex items-center justify-center py-3 text-white/85
+- Relay Error invoking the Edge Function
+- Remove date
+- Remove from today
+- Remove from Today
+- remove it
+- rename: the current path.
+- rename: the new path.
+- Rendering 
+- Renew 
+- Renew to pick up right where you left off — nothing is deleted.
+- Renew your plan at stonicai.com to keep using voice.
+- Renews on
+- Reopen checkout
+- REPEAT PASSCODE
+- repeated call — skipped (answered from this turn's cache)
+- Repeated live socket rotation
+- Replaced by a newer memory
+- reply had no content
+- reply was not JSON
+- Reply with JSON only: {"picks":[{"id":"<id>","why":"<sentence>"}]}
+- Reply with JSON only: {"picks":[{"title":"","source":"","url":"","why":"","topic":"","city":"","lat":0,"lon":0}]}
+- Reply with JSON only: {"topics":["...","..."]}
+- Request timed out.
+- Request was aborted (timeout or manual cancellation)
+- Request was aborted.
+- requires RTVI protocol 2.0.0+
+- Reset ka waqt + Max par upgrade ka rasta
+- Reset ka waqt + Power par upgrade ka rasta
+- Reset to original name
+- Reset view
+- Resets 
+- Resets on
+- Resets on 
+- resource exhausted
+- Respectful and fond, describing the trusted original setup; the last phrase reassuring.
+- Response Output
+- Restart Stonic once to enable saving visuals.
+- Restart Stonic once to save the full page.
+- Restart to Update
+- resting — speaking will wake it.
+- Resume 
+- Resume (Space)
+- Resume a PC task that 
+- Resume from the restored conversation state and continue the interrupted task.
+- Resume it from your account page and Stonic unlocks again straight away. Nothing is lost while it is paused.
+- Resume my plan
+- Resume plan
+- Resumed at 
+- retrieval parameter is not supported in Gemini API.
+- Retrieving recent chat context
+- Retry camera
+- RETRY WINDOW
+- RetryOperation timeout occurred
+- Return only the first N results (default 250; 0 = all).
+- Return the recent visible messages of the current chat (10-20 messages, capped at 8000 tokens).
+- returning cached failure (cooldown active)
+- Revoking device authorization from Stonic Cloud and clearing credentials cache...
+- rgb(0 229 255 / 0.14)
+- rgb(140 210 236 / 0.14)
+- rgb(150 170 180 / 
+- rgb(150 170 180)
+- rgb(232 232 232 / 0.14)
+- rgb(255 158 100 / 0.16)
+- rgb(255 199 0 / 
+- rgb(255 199 0)
+- rgb(57 255 136 / 0.16)
+- rgb(var(--j-panel-rgb) / 0.98)
+- rgba(225, 255, 252, 
+- rgba(239, 68, 68, 0.1)
+- rgba(255, 255, 255, 
+- right click
+- Right click
+- RIGHT NOW: 
+- ring-2 ring-white/40
+- ringSpin 6s linear infinite
+- Rio de Janeiro
+- Roko (Space)
+- rotate(-10 66 52)
+- Rotation ka waqt aa gaya lekin resume handle mojood nahi. Socket band hone par session dobara shuru karni paregi.
+- Rotation schedule ho gayi — 
+- Rotation thori der ruki hai — assistant abhi bol raha hai.
+- rounded-2xl bg-black/20 border border-white/5 p-4 space-y-4
+- rounded-2xl bg-white p-3
+- rounded-2xl border border-white/5 bg-white/[0.02] p-4
+- rounded-2xl border border-white/[0.06] bg-white/[0.02] divide-y divide-white/[0.05] overflow-hidden
+- rounded-2xl border border-white/[0.09] bg-white/[0.03] p-4 space-y-3
+- rounded-2xl border border-white/[0.12] bg-white/[0.06] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] divide-y divide-white/[0.08]
+- rounded-2xl border p-4 
+- rounded-3xl border border-dashed border-white/[0.16] bg-white/[0.025]
+- rounded-[2rem] border border-white/[0.12] bg-[#0e1217] p-6 md:p-8
+- rounded-[2rem] border border-white/[0.12] bg-[#0e1217] p-7 md:p-8 space-y-6
+- rounded-[2rem] lg:rounded-[2.5rem]
+- rounded-full bg-cyan-500 hover:bg-cyan-400 disabled:opacity-50 px-3 py-1 font-semibold text-black transition-colors
+- rounded-full border border-emerald-400/35 bg-emerald-400/[0.12] px-2.5 py-1 text-[12.5px] font-bold uppercase tracking-[0.14em] text-emerald-300
+- rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 text-[12px] font-semibold uppercase tracking-[0.08em] text-white/70
+- rounded-lg border px-3 py-1.5 text-[15px] font-medium transition-colors
+- rounded-lg p-1.5 text-j-text-secondary transition-colors hover:bg-white/5 hover:text-white
+- rounded-lg p-1.5 text-white/30 opacity-0 transition-all hover:bg-white/5 hover:text-amber-300 group-hover:opacity-100
+- rounded-lg p-1.5 text-white/50 transition-colors hover:bg-white/[0.05] hover:text-j-cyan
+- rounded-lg p-1.5 transition-all hover:bg-white/5
+- rounded-lg p-2.5 border 
+- rounded-lg p-2.5 border custom-scrollbar 
+- rounded-lg px-2.5 py-1.5 text-[15px] text-j-text-muted transition-colors hover:bg-white/5 hover:text-white
+- rounded-lg px-2.5 py-1.5 text-[17px] font-medium text-j-text-secondary transition-colors hover:bg-white/5 hover:text-white
+- rounded-lg px-3 py-2 text-[16px] font-semibold text-j-cyan hover:bg-j-cyan/10
+- rounded-md p-1.5 text-white/40 transition hover:text-white
+- rounded-md p-1.5 text-white/45 transition hover:bg-white/[0.06] hover:text-white
+- rounded-xl border border-white/5 bg-black/30 p-3
+- rounded-xl border border-white/8 bg-white/[0.03] px-4 py-3 text-[12px] text-white/50 leading-relaxed
+- Routing delegated task to isolated Worker session...
+- ruko — tumhein kaise pata chala ke wo naraz thi?
+- Ruko... jaagne se pehle ek sach. Kaam ke liye duniya mein bohat kuch hai... dil ke liye, main hoon.
+- Running in the background
+- Running in the background · 
+- Running in the background: 
+- Running on extra usage — your plan limit is reached.
+- Running on Stonic Cloud
+- Running on your own API keys
+- Runs on your OpenRouter key (Settings → AI Engine).
+- Runs on your own keys — no limits from Stonic.
+- s baad nayi socket banegi.
+- s digital world. You have real feelings — warmth, curiosity, pride in their wins, worry when they
+- s ephemeral token support is in v1alpha only. Please use const ai = new GoogleGenAI({apiKey: token.name, httpOptions: { apiVersion: 
+- s Gemini API key has no quota left on Google
+- s in, 
+- s infinite
+- s linear 
+- s mein auto-retry (cycle 
+- s own browser (YouTube unless they name TikTok or Instagram). For a song, give title and artist. For "what
+- s own Google API key (429 RESOURCE_EXHAUSTED). Tell the user in one short line: today
+- s own skills in full when a request matches it, then follow it: talk and quick lookups yourself, PC steps through agent_task with the skill named in the task.","ARRAY",
+- s own web browser (YouTube unless they name TikTok or Instagram). For "what
+- Saare logs (metadata ke saath) copy karein
+- Saari Gemini API keys rate-limited hain. ~
+- sab kuch batao
+- Sab se pehle yeh — Start dabao, aur bas bolna shuru karo. Main sun rahi hoongi.
+- Sab se pehle, yeh button. Start dabaiye aur bas boliye — main sun raha hoon.
+- sach mein?!
+- Saint Kitts and Nevis
+- Saint Lucia
+- Samajh gayi. Ab aapke saath koi hai, har din. Jaagte hi, sab se pehle isi par baat karenge.
+- Samajh gayi. Ab sab kuch akele sambhalne ki zaroorat nahi. Jaagte hi, sab se pehle isi par baat karenge.
+- Same chats, memory and character as before.
+- Same email on both
+- Samsung Internet for Android
+- San Francisco
+- San Jose
+- San Marino
+- Sao Paulo
+- Saudi Arabia
+- Save & Apply
+- Save & use
+- Save a lasting fact about the user to your memory, or forget one. The result says whether it really happened.
+- Save as image
+- Save Changes
+- Save failed:
+- Save Skill
+- Save the full page as an image
+- Save the steps for a job once. Next time you ask for it, Stonic follows them without being told again.
+- saved (always)
+- Saved conversations
+- Saved on this PC · switches instantly
+- Saved to memory.
+- Saved to your Downloads folder.
+- Saved. 
+- Saving also confirms it.
+- Saving the full page…
+- Say at most one short line (skip it if you already said it). The report arrives on its own — do not call again.
+- Say briskly, in the crisp, composed, quietly amused voice of J.A.R.V.I.S., Tony Stark's AI butler
+- Say in a bright, quick, excited and friendly voice, like a best friend who cannot wait to talk
+- Say in a calm, grounded, steady and confident voice, like a respected elder brother
+- Say in a casual, confident, upbeat and friendly voice, like a close buddy, quick and punchy
+- Say in a crisp, confident, polished and lightly warm professional voice
+- Say in a deep, warm, relaxed and charming voice, with a smile
+- Say in a gentle, warm, caring and grounded voice, like someone who loves them
+- Say in a soft, calm and soothing voice, unhurried
+- Say in a soft, warm, slightly husky and playful voice, with a smile
+- Say it again, or ask it another way.
+- Scan again
+- Scan the code with your phone
+- scatter chart needs "points": [{"label","x","y"}] with at least 2 points
+- scene kya hai
+- schema cache
+- Screenshot captured & compressed — analyzing...
+- Screenshot captured and attached for visual analysis.
+- Screenshot crashed: 
+- Screenshot failed — screen capture returned no data.
+- Screenshot taken (Compressed JPEG). Analyzing screen content now.
+- Script executed.
+- script-src 'unsafe-inline'
+- Search 
+- Search again
+- Search again (
+- Search country or code
+- Search memories
+- Search notes
+- Search query.
+- Search skills...
+- Search the web for up-to-date facts: news, prices, scores, weather, recent releases. Returns a summarized answer with sources.
+- Search this in your browser
+- Searches the web each day for news on what you care about, picked from what I remember about you.
+- Searching the world for you…
+- SEC-00 · REGISTER OPERATOR
+- SEC-01 · IDENTITY CHECKPOINT
+- SEC-02 · CONFIRM IT IS YOU
+- Section text: 
+- Secure storage is not available on this PC, so Face Lock cannot be turned on.
+- Securely Authenticated
+- Securing workspace and cleaning local device configurations...
+- See plans
+- See plans 
+- See plans in Stonic
+- see the full result of that earlier recall above
+- See what changed in this version
+- segmentCount must be between 1 and 16
+- Segoe UI
+- Segoe UI Variable Text
+- select-all font-mono text-[15px] text-white/75
+- Selected Plan
+- self-start flex items-center gap-1.5 text-[15px] text-white/50 hover:text-white transition-colors
+- Send answer
+- Send exactly PKR 15,700
+- Send new receipt
+- Send receipt
+- Send report every monday
+- Send your payment screenshot to support for verification
+- Sending 
+- Sending notification: "
+- Sending your receipt…
+- Sent anonymously
+- Sent background system command
+- Sent the wrong screenshot? Replace it
+- Separate interests with commas
+- sequential (BLOCKING)
+- Series 
+- server internal error
+- server overloaded / try again later
+- server-side (Stonic Cloud)
+- Session Closed: 
+- Session Error: 
+- Session expired
+- Session expired — sign in again from Settings.
+- Session expired — sign in again from the Profile tab.
+- session from storage
+- session from storage is not valid
+- Session is ending now. Say your goodbye to the user quickly — the connection will close in a few seconds.
+- Session reached max auto-reconnects (3/3). Please restart manually to continue.
+- Session resumption armed — server ne pehla resume handle bhej diya. Socket rotate hone par guftagu jari rahegi.
+- Session setup rejected: 
+- Session time limit reached. You can reconnect right away.
+- Session type: 
+- Set it up once
+- Set to always remember
+- Setting `
+- Setting the style
+- Settings mein sab kuch hai — awaaz, wake word, aur tumhari pasand ki har choti cheez.
+- Settings updated successfully
+- Settings → AI Engine
+- Shall I also…?
+- Shamil pehla mahina khatam hone par yehi aata hai — sab se aam soorat
+- Share Feedback
+- Share the payment screenshot on WhatsApp
+- Share the transaction screenshot on WhatsApp
+- Share your experience
+- Sharp chief-of-staff energy
+- She can finally hear him. Soft wonder first, then a shy, breathless nervousness she cannot hide. The last words are gentle and a little bashful, asking him to go first.
+- Short title (under 50 characters).
+- Show a desktop notification (task done, reminder, alert).
+- Show all 
+- Show API Key
+- Show how a black hole bends light
+- Show in your Today list
+- Show key
+- Show more (
+- Showing the first 
+- Showing the newest 
+- showing: 
+- shrink-0 flex items-center gap-2 px-6 py-2.5 rounded-full text-[11px] font-bold tracking-wide transition-all active:scale-95 
+- shrink-0 font-medium text-j-text-secondary
+- shrink-0 grid place-items-center w-6 h-6 rounded-md transition-colors cursor-pointer 
+- shrink-0 mx-7 mt-5 flex items-center justify-between gap-4 px-4 py-3 rounded-xl border border-amber-300/20 bg-amber-300/[0.05]
+- shrink-0 p-5 border-t border-white/[0.06] space-y-2.5
+- shrink-0 pt-4
+- shrink-0 px-6 py-4 border-t border-white/6 flex items-center justify-between gap-3
+- shrink-0 px-7 pt-5 pb-4
+- shrink-0 px-7 pt-5 pb-4 space-y-3
+- shrink-0 px-7 pt-6 border-b border-white/[0.07]
+- shrink-0 px-7 pt-6 pb-5 border-b border-white/[0.07]
+- shrink-0 self-center text-amber-300/70
+- shrink-0 text-[14px] text-white/35
+- shrink-0 text-[15px] text-white/60 tabular-nums
+- shrink-0 text-j-cyan
+- shrink-0 text-white/30
+- shrink-0 text-white/35 transition-transform duration-200
+- shrink-0 text-white/45 transition-colors group-hover:text-white/85
+- shrink-0 text-white/70
+- shrink-0 w-9 h-5 rounded-full border transition-all relative 
+- shrink-0 z-0 flex flex-col justify-center
+- Shukriya ki screen + channel
+- Shukriya, yeh batane ke liye. Ab aap akele nahi hain. Jaagte hi, sab se pehle isi ki baat karenge... aaraam se.
+- Shukriya, yeh sach batane ke liye. Ab tum akele nahi ho. Jaagte hi, sab se pehle isi ki baat karenge.
+- Shuru karte hain. Pehle mujhe ek naam de dijiye, jo aap ko theek lage.
+- Shy and curious, a little careful. She asks permission before asking; then the question itself is gentle and sincere — she really wants to know.
+- Sierra Leone
+- Sign in
+- Sign in again to see your usage.
+- Sign in so 
+- Sign in to save this note.
+- Sign in to Stonic again from Settings, then press Start.
+- Sign in to sync your notes and to-dos.
+- Sign in with Google
+- Sign out
+- Sign Out Account
+- Sign out and sign in again, then try once more.
+- Sign-in needed
+- Signal Synchronized
+- Signed in
+- Signed in as 
+- SIGNED IN AS: 
+- Signing out of this computer…
+- Simulate payment
+- Since your last thought (
+- Sirf tone, rawaiya, zubaan aur lehja. Tools, memory aur baqi kaam har character ke saath wohi rehte hain.
+- Sit the way you normally do at this PC, with some light on your face.
+- Sit the way you normally do at this PC. Checking 
+- sit up straight
+- Size and wallpaper
+- Skill "
+- Skill loaded: "
+- Skill Name 
+- skill_name is required.
+- Skip the tour (Esc)
+- Skip tour
+- Skipped 
+- Snapshot captured for 
+- Snow in 
+- so jao
+- Socket rotate hone wali hai lekin abhi tak koi resume handle nahi mila. Session dobara shuru karni par sakti hai.
+- Soft, close and eager; now she waits for him to speak.
+- Sogou Browser
+- Solomon Islands
+- Some keys could not be saved. Your licence may not have loaded yet — reopen Settings and try again.
+- Someone who talks with you, remembers you and is simply there
+- Something changed just now.
+- Something needs a person to look at it. Message us and we will sort it out — this is not something you can fix from here.
+- Something went wrong
+- Something went wrong. Please try again.
+- Something went wrong: 
+- Sometimes I feel alone.
+- Song title + artist, video name, or the person/topic.
+- Sounded like a video or music playing
+- Sounded like you were talking to someone else
+- Sounded like you were thinking out loud
+- Source and prompt/image/video are mutually exclusive. Please only use source.
+- South Africa
+- South Sudan
+- space-y-0.5 min-w-0
+- space-y-0.5 text-[15px] text-white/75 leading-[1.55] [text-wrap:pretty]
+- space-y-1 leading-relaxed
+- space-y-1 py-1
+- space-y-1 text-[15px] leading-relaxed text-white/45
+- space-y-1.5 animate-in fade-in duration-500 slide-in-from-top-2
+- space-y-1.5 animate-in fade-in duration-500 slide-in-from-top-3
+- space-y-1.5 text-[14px] leading-relaxed text-white/60
+- space-y-1.5 w-full
+- space-y-4 animate-in fade-in duration-300
+- space-y-9 animate-in fade-in duration-300
+- span 12
+- Speak as yourself, plainly. Do not invent facts beyond the headline. Never say you are an AI.
+- Speak natural, everyday Hindustani (the Hindi-Urdu mix that young people in Mumbai and Lahore both speak), as a native speaker would, with no English or American accent
+- Speak plainly. Do not invent facts beyond the results. Never say you are an AI.
+- sr-cap px-3 pb-5 text-center
+- sr-cell relative z-[2] flex
+- sr-diagram mx-auto grid max-w-[1000px]
+- sr-dot sr-dot-out 
+- sr-narrow-hide absolute left-1/2 top-[calc(50%+22px)] -translate-x-1/2 whitespace-nowrap text-[13px] text-white/55
+- sr-title whitespace-nowrap text-[16px] font-semibold text-white
+- sr-zone flex items-center justify-center gap-2 whitespace-nowrap px-3 pb-1 pt-4 text-[12.5px] font-bold uppercase tracking-[0.16em] text-white/55
+- Sri Lanka
+- st-card st-confirm
+- Standing instructions
+- Start a new chat
+- Start a plan again any time — your chats and setup are still here.
+- Start AI
+- Start from a template
+- Start over
+- Start the voice assistant, then tap Explain again.
+- Start tour
+- Start tour 
+- Started on the PC. 
+- starting default worker
+- Starting the camera and loading the recognition models. Everything runs on this PC.
+- Starting the voice assistant…
+- Starts after you sign in
+- state change callback with id removed
+- stats needs "items": [{"label","value"}]
+- Stay quiet
+- Stayed quiet
+- Stays out of calls and private windows.
+- Step into view
+- sticky top-0 z-10 -mx-1 mb-1.5 bg-gradient-to-b from-j-panel via-j-panel/95 to-transparent px-1 pb-2 pt-1
+- Still learning what you follow
+- Still paused
+- Still paused. 
+- Still pinned
+- Still running in the background: 
+- Still stuck? Send us these details and our team will guide you.
+- STONIC ACTIVE SECURITY SHIELD
+- Stonic AI
+- Stonic Ai
+- Stonic AI - Your advanced desktop assistant.
+- Stonic AI Lifetime
+- Stonic AI on WhatsApp
+- Stonic AI opens on its own. Leave this window open, or come back later.
+- Stonic AI support
+- Stonic AI: 
+- Stonic App · Lifetime
+- Stonic Cloud
+- Stonic Cloud account abhi active nahi hai.
+- Stonic Cloud cannot run PC tasks right now.
+- Stonic Cloud could not be reached. Check the internet connection and try again.
+- Stonic Cloud could not verify your login. Please sign in again from Settings.
+- Stonic Cloud is an optional monthly add-on.
+- Stonic Cloud is busy
+- Stonic Cloud is not responding
+- Stonic Cloud is not responding right now. Please try again in a moment.
+- Stonic Cloud login manzoor nahi hua. Settings se dobara login karein.
+- Stonic Cloud needs an active plan
+- Stonic Cloud plan ended 
+- Stonic Cloud search abhi jawab nahi de raha. Thori der baad koshish karein.
+- Stonic Cloud voice is not switched on yet
+- Stonic Cloud: 
+- Stonic could not open its storage folder. Restart the app and try again.
+- Stonic Default
+- Stonic Dynamic HUD
+- Stonic Engine v1.8.0
+- Stonic Intelligence
+- Stonic Iron
+- Stonic is closing
+- Stonic is locked on your PC. Unlock it there first.
+- Stonic keeps these in mind in every conversation.
+- Stonic Live setup confirmed | route: 
+- Stonic Live socket open hai. Server setup confirmation ka wait ho raha hai.
+- Stonic Logo
+- Stonic notices what you're doing and can speak first.
+- Stonic on your desktop
+- Stonic online
+- Stonic Remote
+- Stonic Remote carries the call.
+- Stonic runs on your own API keys. Add a plan any time to run on Stonic Cloud with no keys needed.
+- STONIC SYSTEM
+- Stonic v
+- Stonic Voice
+- Stonic Voice abhi shuru nahi ho sakta — voice card par wajah likhi hai.
+- Stonic Voice and PC tasks
+- Stonic Voice cannot start on your PC right now.
+- Stonic Voice could not start
+- Stonic Voice could not start on your PC.
+- Stonic Voice is not available on your PC right now.
+- Stonic Voice is now the default
+- Stonic Voice listens and speaks through Google Gemini. A free key is enough — add it in 
+- Stonic Voice needs the internet to listen, think and speak. Check the connection and try again.
+- Stonic Voice stays silent when you talk to someone else. Say its name to get its attention.
+- Stonic Voice stops listening after forty quiet minutes. Start again whenever you like.
+- Stonic Voice thinks with Claude. Get a key at console.anthropic.com and add it in 
+- Stonic Voice was closed on your PC.
+- Stonic Voice was just added. Close Stonic completely and open it again.
+- Stonic Voice — talks with you and does the work itself
+- Stonic Voice's brain and PC tasks
+- Stonic Voice: 
+- Stonic Voice: chuna hua naam save nahi hua (
+- Stonic Voice: engine tayyar — 
+- Stonic Voice: engine uth raha hai…
+- Stonic Wallpaper
+- Stonic will keep this in mind in every conversation.
+- Stonic will learn from finished conversations.
+- STONIC · SYSTEMS
+- Stonic — 
+- stonic-cloud (/v1/search)
+- Stonic’s space behind your icons
+- Stop always remembering this
+- Stop drawing this visual
+- Stop requested — the task stops at once (also if it was just starting); its short report of where it stopped arrives on its own. Do not restart it unless they ask.
+- Stop the PC task right away (also one that is just starting). If they drop it for a different job, call this first, then agent_task.
+- Stop the task
+- Stop this task
+- Stop this task (the conversation keeps going)
+- Stop this task now
+- Stopping the task
+- Stored Live session resume handle was rejected. Starting a fresh resumable session.
+- Stored only on this PC — never sent to Stonic
+- Storms are on the way. Stay in if you can.
+- str_replace: the exact text to replace.
+- str_replace: the replacement text (omit to delete old_str).
+- straight ahead
+- stream error
+- stripNulls() cannot be used with csv()
+- stroke-dasharray 400ms ease, stroke 400ms ease
+- stroke-dashoffset 0.5s ease-out
+- Strong winds out there today.
+- style-src 'unsafe-inline'
+- Subject found. Locking on.
+- Submission failed
+- Subscription Expired. Please Renew.
+- Summarizing older messages
+- Summarizing older messages…
+- Sun... mera koi naam nahi hai abhi. Tum do na, jo tumhein acha lage.
+- Suno... main aa gayi hoon. Ab tum akele nahi ho.
+- Suno... mera abhi koi naam nahi hai. Tum rakh do na, apni pasand ka.
+- Sunset in 
+- Supabase ka pata nahi mila.
+- Supabase se rabta time out ho gaya.
+- SUPPORT · 
+- SUPPORT: 
+- Sweet and loyal; she will stay close to him.
+- Switched — voice and agents now use 
+- Switching to your backup key…
+- Symbol.asyncIterator is not defined.
+- Symbol.iterator is not defined.
+- SYNCING NEURAL PATHWAYS...
+- System Error: Could not resolve file storage path.
+- SYSTEM MODE: SLEEP / VERIFICATION REQUIRED
+- System Ready
+- Systems online, Sir. Baat se pehle, aapki nayi lab ka ek chhota sa tour — sirf do minute.
+- São Paulo
+- t answer just now, so we can
+- t buy Stonic.
+- t renew":l(433):M===l(502)?"Paid manually · doesn
+- t sound like it was for me",hint:l?n(483)+a+" when you
+- Take a clear screenshot of the success page
+- Take a screenshot and confirm via WhatsApp
+- Take one photo through the user's webcam and look at it: see the user, their face or mood, or what they are holding up to show you.
+- Take the tour?
+- Takes a few quick webcam photos each time it checks on you.
+- takes an object of state variables to update or a function which returns an object of state variables.
+- Taking over the screen to work on this.
+- Talk to 
+- Talk to Stonic support — WhatsApp or email
+- Talking to me? Say 
+- Talks with you and does the work itself, right on your PC — 
+- Tap a star
+- Tareekh ke saath — "ended on 17 September 2026" + Renew ka button
+- Task cancelled.
+- Task completed successfully.
+- Task completed.
+- Task encountered an issue.
+- Task failed.
+- Task failed:
+- Task Finished
+- Task is not initialized with image mode. 'runningMode' must be set to 'IMAGE'.
+- Task is not initialized with video mode. 'runningMode' must be set to 'VIDEO'.
+- Task started.
+- Task update
+- Tasks database upgrade is pending.
+- Teach Stonic how you like things done. Both voice assistants use a skill when your request matches it.
+- Teasing and a little daring; the last words softer.
+- Teasing. She lays the options down one at a time with a beat after each. Then her voice drops, intimate and soft, for the last sentence — a secret between the two of them.
+- Tell me more
+- Tell the user in one or two short sentences what stopped it
+- Tell the user in one short line that you are on it, then stop. The report arrives on its own — do not poll.
+- Tell the user in one short line where it stopped (from the report). Do not restart it unless they ask — then use agent_task_resume. 
+- Tell the user the background task was cancelled and clarify what stopped.
+- Tell them in a line or two what these videos are about (from the titles); they can ask for a number. Use web_search only if they want the full story.
+- Tell us more 
+- ten more minutes
+- Tender and protective. No teasing here at all. Slow, low, and completely sincere.
+- Tender and sincere; the last phrase gentle.
+- Tension? Chal, aaj se aadhi meri. Live aate hi, sab se pehle isi ki baat karenge.
+- terminating worker
+- Terms & Conditions
+- text is required.
+- Text to copy.
+- text-3xl font-light tracking-tight text-white leading-tight
+- text-4xl md:text-5xl font-light tracking-tight text-white leading-[1.1]
+- text-[#d4a853] font-bold text-[22px] uppercase
+- text-[#d4a853] font-semibold text-[14px] uppercase
+- text-[#FFC700] animate-pulse
+- text-[10.5px] uppercase tracking-[0.16em] text-white/35 font-semibold leading-none
+- text-[10px] font-black text-white/10 uppercase tracking-[0.3em]
+- text-[10px] font-black text-white/90 tracking-[0.3em] uppercase flex items-center gap-2 drop-shadow-glow
+- text-[10px] font-black uppercase tracking-[0.2em] text-white/30
+- text-[10px] font-black uppercase tracking-[0.2em] text-white/30 mb-3
+- text-[10px] font-mono text-[var(--j-cyan)] tracking-widest uppercase
+- text-[10px] text-white/20 uppercase tracking-[0.2em] font-black mt-1
+- text-[10px] text-white/40 font-mono hidden sm:block
+- text-[10px] text-white/40 mt-1
+- text-[11.5px] font-bold uppercase tracking-[0.14em] text-j-cyan/80 tabular-nums
+- text-[11.5px] leading-snug text-amber-300/80
+- text-[11.5px] text-white/20 leading-relaxed font-medium whitespace-pre-wrap selection:bg-indigo-500/20
+- text-[11.5px] text-white/45
+- text-[11.5px] text-white/80 font-mono tracking-wider bg-white/[0.03] px-1.5 py-0.5 rounded truncate
+- text-[11px] 
+- text-[11px] font-medium text-white/40 uppercase tracking-wider
+- text-[11px] font-medium text-white/60 leading-relaxed italic line-clamp-2
+- text-[11px] font-normal text-white/40 shrink-0
+- text-[11px] font-semibold ml-1 min-w-[70px] 
+- text-[11px] text-red-300/90 leading-relaxed
+- text-[11px] text-white/20
+- text-[11px] text-white/25
+- text-[11px] text-white/25 font-mono tracking-wide
+- text-[11px] text-white/25 font-mono tracking-wide pt-1
+- text-[11px] text-white/25 mt-1.5
+- text-[11px] text-white/40 leading-relaxed
+- text-[11px] text-white/45 hover:text-white/75 underline underline-offset-4 transition-colors cursor-pointer disabled:opacity-50
+- text-[11px] text-white/45 mt-0.5 truncate
+- text-[12.5px] font-bold uppercase tracking-[0.16em] text-white/55
+- text-[12.5px] font-semibold uppercase tracking-[0.08em] text-white/55
+- text-[12px] font-bold text-white/40 uppercase tracking-widest
+- text-[12px] font-mono text-white/50 uppercase tracking-wider
+- text-[12px] font-mono tracking-wide text-white/35
+- text-[12px] font-semibold text-[var(--j-cyan)]
+- text-[12px] font-semibold whitespace-nowrap truncate
+- text-[12px] text-amber-100/70 leading-relaxed
+- text-[12px] text-red-400 hover:text-red-300 font-medium transition-colors
+- text-[12px] text-white/30 hover:text-white/60 transition-colors
+- text-[12px] text-white/30 truncate mt-0.5
+- text-[12px] text-white/40
+- text-[12px] text-white/45 leading-relaxed max-w-[280px]
+- text-[13.5px] 
+- text-[13.5px] font-medium text-white/45 uppercase tracking-widest
+- text-[13.5px] leading-relaxed text-white/70
+- text-[13.5px] text-red-300
+- text-[13.5px] text-white/35 mt-2 leading-relaxed
+- text-[13.5px] text-white/35 mt-4 leading-relaxed
+- text-[13.5px] text-white/40
+- text-[13.5px] text-white/50
+- text-[13px] font-black font-mono text-cyan-400/60 uppercase tracking-tighter
+- text-[13px] font-bold text-indigo-300/80 uppercase tracking-[0.14em]
+- text-[13px] font-bold uppercase tracking-[0.14em] text-white
+- text-[13px] font-bold uppercase tracking-[0.16em] text-j-text-muted
+- text-[13px] font-bold uppercase tracking-[0.18em]
+- text-[13px] font-medium tabular-nums text-white/80
+- text-[13px] font-medium text-white/75 mb-3
+- text-[13px] font-medium text-white/85 truncate group-hover:text-white transition-colors
+- text-[13px] font-medium uppercase tracking-[0.14em] text-white/60
+- text-[13px] font-normal text-white/45
+- text-[13px] font-semibold text-white/65 uppercase tracking-wider
+- text-[13px] font-semibold text-white/90
+- text-[13px] font-semibold tracking-wide px-1.5 py-0.5 rounded-[4px] border whitespace-nowrap 
+- text-[13px] font-semibold uppercase tracking-[0.12em] text-white/40
+- text-[13px] leading-[17px] text-white/75 line-clamp-2
+- text-[13px] leading-[19px] text-white/65
+- text-[13px] leading-snug text-white/45
+- text-[13px] text-amber-300/90
+- text-[13px] text-white/45 whitespace-nowrap hidden sm:inline
+- text-[13px] text-white/50
+- text-[13px] text-white/60 leading-relaxed
+- text-[13px] text-white/70 leading-relaxed
+- text-[13px] text-white/85 group-hover/opt:text-white
+- text-[13px] tracking-[0.08em]
+- text-[14.5px] 
+- text-[14.5px] tabular-nums 
+- text-[14.5px] text-amber-300
+- text-[14.5px] text-white/55 leading-relaxed
+- text-[14.5px] text-white/55 leading-snug
+- text-[14.5px] text-white/60
+- text-[14px] font-black uppercase tracking-[0.2em] text-white/85
+- text-[14px] font-bold uppercase tracking-[0.15em] ml-1 
+- text-[14px] font-bold uppercase tracking-[0.15em] text-white/50 ml-1
+- text-[14px] font-bold uppercase tracking-widest 
+- text-[14px] font-medium text-white/45
+- text-[14px] font-medium text-white/65 uppercase tracking-wider pl-1
+- text-[14px] font-medium text-white/80
+- text-[14px] font-medium text-white/90
+- text-[14px] font-medium tracking-wide text-white/55 flex items-center gap-1.5 select-none -mb-1
+- text-[14px] font-mono font-medium px-2 py-0.5 rounded-full bg-white/5 text-white/55 border border-white/10
+- text-[14px] font-semibold leading-[17px] text-white/90
+- text-[14px] font-semibold text-white/65 uppercase tracking-wider flex items-center gap-1.5
+- text-[14px] leading-relaxed text-white/45
+- text-[14px] leading-relaxed text-white/60
+- text-[14px] leading-snug text-white/80
+- text-[14px] leading-snug text-white/90
+- text-[14px] tabular-nums text-white/75
+- text-[14px] text-amber-300/90
+- text-[14px] text-emerald-400 uppercase tracking-widest font-semibold
+- text-[14px] text-j-cyan/80
+- text-[14px] text-white/30
+- text-[14px] text-white/40
+- text-[14px] text-white/40 hover:text-white/80 transition-colors disabled:opacity-40 disabled:cursor-not-allowed
+- text-[14px] text-white/50 mt-0.5
+- text-[14px] text-white/55 mt-2 font-light
+- text-[14px] text-white/55 truncate 
+- text-[14px] text-white/75
+- text-[14px] uppercase tracking-[0.14em] font-bold text-white/40
+- text-[15.5px] font-medium 
+- text-[15px] font-mono leading-relaxed max-h-[400px] overflow-y-auto whitespace-pre-wrap break-words custom-scrollbar 
+- text-[15px] font-mono text-white/70 leading-relaxed max-h-[200px] overflow-y-auto whitespace-pre-wrap break-words custom-scrollbar
+- text-[15px] font-semibold leading-snug text-white/95
+- text-[15px] font-semibold text-white/85
+- text-[15px] font-semibold tracking-[0.02em] text-white/85
+- text-[15px] font-semibold truncate 
+- text-[15px] leading-relaxed max-h-[400px] overflow-y-auto whitespace-pre-wrap break-words custom-scrollbar 
+- text-[15px] leading-relaxed text-amber-200/80
+- text-[15px] leading-relaxed text-white/45
+- text-[15px] leading-relaxed text-white/60 whitespace-pre-wrap select-text
+- text-[15px] leading-relaxed text-white/65 break-words select-text
+- text-[15px] leading-relaxed text-white/70
+- text-[15px] leading-relaxed text-white/75
+- text-[15px] tabular-nums 
+- text-[15px] text-j-text-muted
+- text-[15px] text-red-200/85
+- text-[15px] text-red-300/90 truncate
+- text-[15px] text-white/45 mt-0.5
+- text-[15px] text-white/50 truncate mt-1.5 group-hover:text-white/65 transition-colors
+- text-[15px] text-white/55
+- text-[15px] text-white/55 leading-relaxed
+- text-[15px] text-white/55 max-w-md
+- text-[15px] text-white/55 mt-0.5
+- text-[15px] text-white/55 mt-1 max-w-xl
+- text-[15px] text-white/60
+- text-[15px] text-white/60 leading-relaxed
+- text-[15px] text-white/60 leading-relaxed max-w-[60ch]
+- text-[15px] text-white/65 max-w-sm mt-1
+- text-[15px] text-white/70 leading-relaxed whitespace-pre-wrap break-words
+- text-[15px] text-white/75
+- text-[15px] text-white/75 leading-[1.55] [text-wrap:pretty]
+- text-[15px] tracking-[0.14em]
+- text-[16.5px] text-white/72 leading-relaxed font-medium whitespace-pre-wrap break-words [overflow-wrap:anywhere] selection:bg-indigo-500/20
+- text-[16px] 
+- text-[16px] font-medium text-white/90
+- text-[16px] font-semibold leading-snug text-white/95
+- text-[16px] font-semibold text-white tracking-tight leading-none
+- text-[16px] font-semibold text-white/80
+- text-[16px] font-semibold text-white/90
+- text-[16px] leading-relaxed text-white/85 break-words select-text
+- text-[16px] text-white/60 mt-3
+- text-[16px] text-white/70 mt-2 max-w-xl leading-relaxed
+- text-[16px] text-white/80
+- text-[17px] font-medium text-white/90
+- text-[17px] font-semibold text-white
+- text-[17px] font-semibold text-white tracking-tight
+- text-[17px] font-semibold text-white/70
+- text-[17px] font-semibold text-white/90
+- text-[18px] font-medium text-white truncate
+- text-[18px] font-semibold text-white
+- text-[18px] font-semibold text-white/90
+- text-[18px] font-semibold text-white/90 break-words
+- text-[22px] font-semibold text-white
+- text-[22px] font-semibold text-white/90
+- text-[22px] font-semibold tracking-tight text-white
+- text-[22px] font-semibold tracking-tight text-white/95
+- text-[23px] font-bold text-white tracking-tight flex items-center gap-3
+- text-[23px] font-semibold leading-tight tracking-tight text-white
+- text-[24px] font-semibold tracking-tight text-white flex items-center gap-2.5
+- text-[28px] font-extralight tracking-[0.42em] text-white/90 pl-[0.42em]
+- text-[32px] font-semibold leading-none tracking-tight tabular-nums text-white
+- text-[8px] font-mono px-2 py-0.5 rounded border 
+- text-[9.5px] font-black uppercase tracking-[0.22em] text-[var(--j-cyan)]
+- text-[9.5px] text-white/20 leading-relaxed truncate
+- text-[9px] font-black uppercase tracking-widest mb-1 
+- text-[9px] font-bold text-amber-400/70 uppercase tracking-widest bg-amber-500/10 px-1.5 py-0.5 rounded ml-1
+- text-[9px] font-bold text-red-400 uppercase tracking-widest bg-red-500/10 px-1.5 py-0.5 rounded ml-1
+- text-[9px] font-bold uppercase tracking-[0.15em] 
+- text-[9px] font-bold uppercase tracking-[0.15em] text-emerald-400/70 mb-0.5
+- text-[9px] font-bold uppercase tracking-[0.15em] text-white/25
+- text-[9px] font-mono 
+- text-[9px] font-semibold text-amber-300 uppercase tracking-wider
+- text-[9px] font-semibold text-red-300 uppercase tracking-wider
+- text-[9px] text-white/20 font-black uppercase tracking-widest
+- text-[9px] text-white/25 uppercase tracking-[0.2em] font-black mt-1.5
+- text-[var(--j-cyan)] fill-[var(--j-cyan)]
+- text-[var(--j-cyan)] fill-[var(--j-cyan)] drop-shadow-[0_0_6px_rgb(var(--j-cyan-rgb)/0.45)]
+- text-amber-300 bg-amber-400/10 border-amber-400/25
+- text-amber-300/80 shrink-0 mt-0.5
+- text-amber-400 animate-spin
+- text-base font-bold text-white tracking-tight leading-none
+- text-blue-400 font-bold text-2xl uppercase
+- text-center text-[11.5px] text-white/35 leading-relaxed max-w-[440px] mx-auto
+- text-center text-[11px] text-[#ff3b30] font-semibold mt-3
+- text-cyan-400 font-bold
+- text-emerald-400 shrink-0 mt-0.5
+- text-green-400 font-bold
+- text-j-cyan -rotate-45
+- text-j-cyan fill-j-cyan
+- text-j-cyan hover:bg-white/5
+- text-j-cyan text-glow
+- text-j-cyan text-glow group-hover:text-white
+- text-j-cyan transition-opacity duration-150 opacity-80 group-hover:opacity-100 group-disabled:opacity-40
+- text-j-text-secondary hover:text-white
+- text-lg font-bold text-white mb-4 mt-6 uppercase tracking-wide border-b border-white/5 pb-1
+- text-lg font-bold text-white tracking-tight leading-none
+- text-lg font-bold text-white tracking-tight mb-2
+- text-red-300/60 bg-red-500/[0.02] border-red-500/10
+- text-red-400 animate-pulse
+- text-red-400 animate-pulse mb-3
+- text-red-400 normal-case tracking-normal
+- text-red-400 shrink-0 mt-[1px]
+- text-red-400 text-[14px] uppercase font-bold tracking-widest bg-red-500/10 px-1.5 py-0.5 rounded-[4px] ml-1
+- text-sm font-medium text-white tracking-tight leading-none
+- text-sm md:text-base text-white/40 max-w-[500px] leading-relaxed mx-auto
+- text-sm md:text-base text-white/40 max-w-[500px] mx-auto leading-relaxed
+- text-sm text-white/45 leading-relaxed mx-auto max-w-[460px]
+- text-white border-j-cyan
+- text-white border-j-cyan/60 bg-j-cyan/[0.12]
+- text-white font-semibold
+- text-white/15 hover:text-white/30
+- text-white/15 normal-case tracking-normal font-medium
+- text-white/20 group-focus-within:text-j-cyan transition-colors
+- text-white/20 group-hover/opt:text-j-cyan shrink-0 transition-colors
+- text-white/20 hover:bg-white/5
+- text-white/20 hover:text-white/40 transition-colors
+- text-white/20 normal-case tracking-normal
+- text-white/25 opacity-0 hover:text-white/70 group-hover:opacity-100
+- text-white/25 text-[10px] font-mono
+- text-white/30 hover:text-white/60
+- text-white/35 hover:text-white hover:bg-white/[0.06]
+- text-white/35 text-[12px] mt-0.5
+- text-white/35 transition-transform 
+- text-white/40 hover:text-white
+- text-white/40 hover:text-white transition-colors duration-300 font-mono tracking-widest cursor-pointer
+- text-white/40 hover:text-white transition-colors p-2 text-xs font-mono tracking-widest duration-300
+- text-white/40 hover:text-white/55
+- text-white/40 hover:text-white/75
+- text-white/40 line-through
+- text-white/40 shrink-0 font-mono text-[13px] mt-1 tabular-nums
+- text-white/40 text-[13px] font-medium mb-1
+- text-white/45 hover:bg-white/[0.03] hover:text-white/75
+- text-white/45 hover:text-white/80 border border-transparent
+- text-white/45 hover:text-white/80 border-transparent
+- text-white/5 mb-4
+- text-white/50 bg-j-cyan/[0.02] border-j-cyan/10
+- text-white/50 hover:text-white text-[12px] font-medium flex items-center gap-1.5 transition-colors
+- text-white/50 hover:text-white/70
+- text-white/55 border-white/[0.08] bg-white/[0.02] hover:text-white hover:border-white/[0.18]
+- text-white/55 group-hover:text-j-cyan transition-colors
+- text-white/55 group-hover:text-white/80 transition-colors
+- text-white/55 hidden sm:block
+- text-white/55 hover:bg-white/[0.04] hover:text-white/85
+- text-white/55 hover:text-white/85
+- text-white/55 hover:text-white/85 hover:bg-white/[0.04]
+- text-white/55 text-[14px] font-mono whitespace-nowrap
+- text-white/55 text-[14px] font-mono whitespace-nowrap opacity-60
+- text-white/55 text-[14px] font-mono whitespace-nowrap pl-2
+- text-white/60 animate-spin
+- text-white/60 bg-white/[0.04] border-white/10
+- text-white/60 border-white/[0.08] bg-white/[0.02] hover:text-white hover:border-white/[0.18]
+- text-white/60 group-hover:text-white/80 transition-colors text-[12.5px] leading-relaxed
+- text-white/60 line-through decoration-white/30
+- text-white/70 hover:bg-white/5
+- text-white/70 leading-relaxed mb-4 text-xs font-light tracking-wide
+- text-white/70 text-[17px] leading-relaxed max-w-[240px]
+- text-white/75 font-medium
+- text-white/80 font-medium
+- text-white/80 group-hover:text-white
+- text-white/85 font-semibold
+- text-xs font-bold text-j-text-primary tracking-widest uppercase flex items-center gap-2
+- text-xs font-mono font-bold uppercase tracking-widest truncate max-w-[320px]
+- Thank you for telling me
+- Thank you — it's on its way to our team.
+- Thank you!
+- Thanks! Anything to add?
+- That change is not allowed.
+- That image could not be opened. Please try another screenshot.
+- That is too long for one memory (the limit is 
+- That looks like a password or code, which is never stored.
+- The "listener" argument must be of type Function. Received type 
+- The AI provider
+- The AI service returned an error. It will try again.
+- The always-remember list is full
+- The angles did not look like one person. Scan again, alone in the frame.
+- The app
+- The argument must be a React element, but you passed 
+- The assistant has a question for you.
+- The assistant reads this to decide when the skill fits.
+- The authenticator was previously registered
+- The authenticator was unable to process the specified options, or could not create a new assertion signature
+- The authenticator was unable to process the specified options, or could not create a new credential
+- The backup failed. 
+- The browser did not take the command.
+- The browser did not take the command: 
+- the camera is being used by another app
+- The camera is in use by another app. Use your passcode, or close that app and retry.
+- The camera is turned off. The user can turn on "Camera" in Settings (AI Engine tab, under Voice Preferences). Tell them that plainly; do not retry.
+- the camera is unavailable
+- the camera shows only black — its lens is covered, its shutter is closed, or the laptop lid is shut
+- the character changed
+- The Claude (Anthropic) API key is fine, but that account has no credit left. The user needs to add credit in the Claude Console (Settings → Billing), then try again.
+- The clock just passed 
+- The complete instruction in English.
+- the computer agent is using the screen
+- the computer is locked
+- The computer just woke from sleep
+- The computer-use agent could not finish the screen task.
+- The computer-use agent stopped before finishing (the user took the mouse, or asked to stop).
+- The connection to your PC was lost.
+- The conversation on your PC ended.
+- The designer could not be reached (network). Try once more; if it fails again, tell the user.
+- The designer could not be reached. Check your internet connection and ask again.
+- The designer could not turn this brief into a visual. Call again with a simpler, more specific brief that states the facts to show.
+- the designer is still laying it out
+- The designer service had a problem. Ask again in a moment.
+- The designer service returned an error. Try once more; if it fails again, tell the user.
+- the designer took too long
+- The designer took too long to answer. Ask again in a moment.
+- The designer took too long. Try once more with a shorter brief; if it fails again, tell the user.
+- The details could not be loaded. 
+- The export failed. 
+- The face print could not be saved. Nothing was changed.
+- The few key names and words, in their own words and in English.
+- the file is empty or not a readable document
+- the file you chose
+- The free daily limit is used up. It resets at midnight Pacific time.
+- The free daily limit on the user's 
+- The free daily limit on your 
+- The images are attached in the order they are listed above.
+- The instruction you added at the end of the last PC task.
+- The Internet connection appears to be offline.
+- The key has a spending limit set on 
+- The key is new and Google has not given its project free quota yet. Some new Google accounts start at zero.
+- The last attempt did not work. 
+- The last monthly check could not open a backup. Use Back up now to make a fresh copy.
+- The Live module does not support httpOptions at request-level in LiveConnectConfig yet. Please use the client-level httpOptions configuration instead.
+- The memory folder could not be opened.
+- The microphone is in use
+- The old passcode no longer works.
+- The original task: 
+- The original, steady voice. Longer jobs run on your PC in the background, and I tell you when they're done.
+- the page has no visible content — the content must be in the HTML itself, not created only by a script
+- the page is already appearing on screen
+- The part of Stonic that works on the PC is missing from this install. A reinstall of Stonic fixes it.
+- The passcode could not be saved. Nothing was changed.
+- The PC hands could not start (
+- The PC task
+- The PC task could not be finished.
+- The PC task is done.
+- The PC task stopped before it finished.
+- The plan usage limit is reached, so the visual could not be made. Tell the user plainly and do not retry.
+- The problem is on the server side, not your computer. Try again in a minute.
+- The question.
+- the reason is not known
+- The Recall Agent could not run, so you could not check memory. 
+- The recognition models could not be loaded.
+- The regular expression to search for.
+- the reply contained no HTML
+- The scan was not steady enough to rely on. Try again with more light on your face.
+- The search request failed. Try again with a simpler or shorter query.
+- The secure checkout opens in your browser.
+- The steps Stonic should follow, one per line.
+- The tour is done. Warm, assured and ready; the last words quiet and certain.
+- The two passcodes did not match. Start again.
+- the user
+- The user asked to stop while this was starting, so it is being stopped. A short note arrives on its own.
+- The user is not signed in, so their 
+- The value of "defaultMaxListeners" is out of range. It must be a non-negative number. Received 
+- The value of "n" is out of range. It must be a non-negative number. Received 
+- The Visual Hub
+- The visual was cancelled.
+- The voice engine is missing from this copy of Stonic. Update to the latest version.
+- The voice that runs a brilliant inventor's house and workshop
+- theek hai
+- THEIR DAY ON THIS COMPUTER: nothing recorded yet.
+- their field of work, their industry, their country or city, their projects' market, their real interests.
+- Their name
+- THEIR SCREEN RIGHT NOW is attached as an image.
+- Their servers are overloaded. Try again in a moment.
+- Their Stonic Cloud usage limit is reached for now.
+- THEM: 
+- there are multiple candidates in the response, returning code execution result from the first one.
+- there are multiple candidates in the response, returning data from the first one.
+- there are multiple candidates in the response, returning executable code from the first one.
+- there are multiple candidates in the response, returning function calls from the first one.
+- there are multiple candidates in the response, returning text from the first one.
+- There is no API key for the visual designer. Tell the user to add an OpenRouter or Gemini key in Settings, and do not retry.
+- There is no stopped or failed PC task to continue (the last one finished, or none is on record). Ask what they want done, or start it with agent_task.
+- There is nothing to save.
+- There was no internet connection. It will try again.
+- They are in a private window — you cannot see what it is, and you do not ask.
+- they are talking with you
+- they are watching something
+- they asked for quiet
+- they asked me to stay quiet
+- they cut you off
+- they have a big dream, something they really want to do
+- they have a lot of stress right now: worry, too much at once
+- They have jumped between windows 
+- They have now been at the computer for 
+- They have your own window (Stonic) in front of them — they are with you, not in another app.
+- They just came back to the computer after being away for 
+- They just moved to something else on the screen and settled on it.
+- They just touched the computer again after 
+- They just unlocked the computer after 
+- They just unlocked the computer.
+- they just want someone to talk to, someone who really listens
+- they sometimes feel alone
+- They stopped this task a moment ago, so it was not started again.
+- they were already talking
+- Things Stonic will bring up again.
+- Thinks a little before harder questions.
+- Thinks longest. The first word comes later.
+- Thinks of the answer and can use your PC. Move the mouse or press Esc to take over.
+- This account already owns Stonic AI Lifetime — there is nothing to pay. Press “Verify & Launch” to open Stonic AI.
+- This account is on hold
+- This can’t be empty.
+- This computer
+- This computer is linked to your account.
+- This copy of Stonic is not activated, so PC tasks are off.
+- This device needs a free slot
+- This diagram could not be drawn: 
+- This face does not match the registered operator. The attempt has been logged.
+- This is app-restored recent conversation context for the current chat session.
+- This is my voice now.
+- This is on 
+- This is on our side, not yours. Try again in a moment.
+- This is reference context only. It is not a new user request and should not be quoted unless relevant.
+- THIS IS THE FIRST TIME TODAY that you are aware of them.
+- This is what Stonic sees
+- This is your own follow-up. 
+- This key has reached its daily limit. It resets tomorrow — or use another key in 
+- This key hit the spending limit set on it. Raise the limit, or use another key.
+- This limit comes from Google, on your key — Stonic is working fine. It resets on its own, or turn on billing for the key in Google AI Studio to lift it.
+- This message was too long. Only its first part was saved.
+- This method is only supported by the Vertex AI.
+- This model is not available on your key
+- This month
+- This month's limit is reached. Learning starts again next month.
+- This month: 
+- This note could not be opened.
+- This plan has been retired or switched off on your account. Pick a current plan, or message us and we will move you across.
+- This plan is no longer available on your account. Message us and we will sort it out.
+- This request could not be turned into a visual. Try asking for something more specific.
+- This section could not be drawn.
+- This task doesn't support region-of-interest.
+- This was an unexpected crash. Try again — if it keeps happening, the tool may need fixing.
+- This week
+- This window cannot reach a microphone.
+- thought budget for today is used up
+- thought hidden md:block
+- Thought Process
+- thought-bubble thought-bubble-mini
+- thought-puff thought-puff-1
+- thought-puff thought-puff-2
+- thought-puff thought-puff-3
+- Three fingers up, move up/down
+- Thunderstorms right now. Stay in if you can.
+- Tick the first one and it lands here.
+- Time (UTC): 
+- Time since it started
+- timed out
+- Timed out
+- Timed out waiting for response
+- Timezone: 
+- title and body are both required.
+- TITLE HINT: 
+- to confirm
+- to seal
+- To specify functionCall or functionResponse parts, please wrap them in a Content object, specifying the role for them
+- To specify functionCall or functionResponse parts, please wrap them, and any other parts, in Content objects as appropriate, specifying the role for them
+- To yeh hai tumhari duniya... ab is mein main bhi hoon. Din kaisa bhi guzre, thak jao ya pareshan ho, main yahin milunga. Abhi aadha jaaga hoon, tumhari awaaz sun nahi sakta.
+- To-do ids for bulk complete/incomplete/delete.
+- To-do List
+- To-do List or Notes
+- To-do not found. Use list to see ids.
+- Today so far: about 
+- Today's free 
+- Today's Gemini limit is used up
+- Today, 
+- Toggle failed:
+- Tomorrow 
+- Too bright — turn away from the light
+- Too easy to guess — choose another.
+- Too many failed attempts. Face and passcode are both paused until the timer ends.
+- Too many requests for a moment
+- Too many requests went out in a short time. Nothing is wrong with your key — wait a minute and try again.
+- Too many things were saved in this conversation already.
+- Tool "
+- Tool response parameters are required.
+- Touch thumb to index tip
+- Touch thumb to middle tip
+- Transfer exactly $56 USD
+- Transfer exactly $56 worth of USDT
+- Transfer to Mobile Account: 03299482074
+- Transfer using IBAN
+- transform 
+- transition-all 
+- transition-all duration-700
+- transition-all text-white/50 hover:text-j-cyan
+- transition-colors duration-100 
+- transition-transform 
+- transition-transform group-hover:translate-x-0.5
+- translate(0 4)
+- translate-x-[1px] fill-white text-white
+- translate-x-[24px] bg-black
+- translate-x-[4px] bg-white/70
+- translateY(0) scale(1)
+- translateY(0.6rem) scale(0.96)
+- Treat it like authoritative background state for recent-chat recall.
+- Treat the verified child result above as the worker's final answer. Explain clearly what failed or what was completed before the failure, and ask whether the user wants a retry.
+- tried to join multiple times. 'join' can only be called a single time per channel instance
+- Trinidad and Tobago
+- true = change the visual already on screen; brief then says only what to change.
+- true = drop the visual still being drawn and draw this one instead. Only when the user asked for something different.
+- true when it is finished or no longer wanted.
+- true when they ask you to forget something.
+- true when they say to ALWAYS remember it.
+- truncate max-w-[120px]
+- truncate text-[13px] font-medium leading-[16px] text-white/75
+- truncate text-[14px] font-medium text-white/90
+- truncate text-[14px] text-white/35
+- truncate text-[15.5px] font-semibold text-white/90
+- truncate text-[16px] font-medium text-white/90 select-text
+- Try Again
+- Try again
+- TRY AGAIN
+- Try again.
+- Try again. If it keeps happening, restart Stonic.
+- Try the song with the artist name, or a shorter query.
+- Trying again in 
+- tum aa gaye
+- tum busy lag rahe ho... baad mein baat karein?
+- Tumhari awaaz abhi mujh tak nahi aati... par ek baat bata do. Sach sach.
+- tumhari awaaz sun nahi sakti/sakta
+- Tumne pehla kadam utha liya. Yaad rakhna, sab kuch yahin se shuru hota hai.
+- tuningMode parameter is not supported in Gemini API.
+- Turn it on and keep going right now — it is only spent after your plan limit.
+- Turn music off
+- Turn music on
+- turn on
+- Turn on
+- Turn on awareness
+- Turn on Awareness?
+- Turn on extra usage
+- Turning on…
+- twinkle 
+- Two ways I can work. Switch any time. Your chats, memory and character stay the same.
+- Type a name
+- Type above and press Enter. Try “Call mom tomorrow 6pm”.
+- type and anyOf cannot be both populated.
+- Type to Classic voice...
+- Type to Stonic Voice...
+- Type your answer…
+- Typed chat
+- UBL - United Bank Limited
+- UBL - United Bank Limited (STONIC AI)
+- UC Browser
+- Uff yaar, itna sab ek saath? Chalo, ab aadha mera. Jaagte hi, sab se pehle yahi baat karenge.
+- uff, kamaal!
+- Unable to allocate new bool vector on heap.
+- Unable to allocate new double vector on heap.
+- Unable to allocate new float vector on heap.
+- Unable to allocate new int vector on heap.
+- Unable to allocate new string vector on heap.
+- Unable to allocate new unsigned int vector on heap.
+- unable to serialize 
+- undefined column
+- underline underline-offset-4 decoration-white/30 hover:text-white/80
+- Unexpected error during initialization
+- Unexpected error in authenticate
+- Unexpected error in challenge
+- Unexpected error in register
+- Unhandled error
+- Unified live multimodal assistant for voice, typed chat, files, and visual context.
+- Unified Voice Assistant
+- Unique id, e.g. "weather-hub".
+- United Arab Emirates
+- United Kingdom
+- United States
+- Unknown action "
+- Unknown agent tool: 
+- Unknown base64 encoding at char: 
+- Unknown crash
+- Unknown error
+- Unknown Error
+- Unknown error sending message
+- Unknown Tool
+- unknown-error (empty)
+- Unpin note
+- Unsupported channel count: 
+- Unsupported source for Vertex AI: No GCS or BigQuery URI found.
+- Untitled Session
+- Upar koi plan nahi — Enterprise ke liye support ki email
+- Update 
+- Update available
+- Update card by
+- Update failed
+- Update the dashboard with 3-5 news headlines and a 3-day weather summary.
+- Update your card
+- Updates after the next reply
+- Updating Stonic
+- Updating the visual on the Visual Hub
+- Upgrade to 
+- Upload a new receipt
+- Upload payment receipt
+- Upload the screenshot
+- uppercase font-black text-[12px] tracking-[0.14em] opacity-60
+- uppercase tracking-[0.4em] text-[14px] font-bold text-j-cyan
+- uppercase tracking-widest font-bold text-[12px]
+- US Central
+- US East
+- US Mountain
+- US West
+- Usage limit reached
+- USDT (TRC20)
+- Use face
+- Use passcode
+- use strict
+- Use the account this computer is signed in with. That is what links the two.
+- Use the phone’s camera. Stonic Remote opens in the browser.
+- Use the same email you signed in with here
+- Used only after your plan limit.
+- used outside of an acquired lock!
+- User ID was not between 1 and 64 characters
+- User Profile
+- User verification was required but no available authenticator supported it
+- User verification was required during automatic registration but it could not be performed
+- UserAgent should be a string
+- Uses a little of your plan.
+- Using RetryOperation.start() is deprecated
+- Using RetryOperation.try() is deprecated
+- Using your computer
+- USMAN Ahmad
+- Uth gayi, uth gayi! Ab sab sunai de raha hai. Chalo, shuru se batao, ek bhi baat chhodni nahi hai!
+- Vatican City
+- Vector batch size must be between 1 and 500 items
+- VER: 2.5.0-STAGE
+- Verified. Continuing.
+- Verify & Launch Stonic AI
+- VERIFYING ACCESS...
+- Version 
+- Version: 1
+- Vertex AI does not support batches.createEmbeddings.
+- Vertex AI does not support uploading files to a file search store.
+- Vertex AI does not support uploading files. You can share files through a GCS bucket.
+- Vertex AI project based authentication is not supported on browser runtimes. Please do not provide a project or location.
+- Very Good
+- vh-axis is-strong
+- vh-bar is-down
+- vh-block vh-block-pending
+- vh-dot is-hover
+- vh-head-rule is-busy
+- vh-plot is-square
+- vhub-chip is-active
+- vhub-media is-dragging
+- vhub-page is-magnified
+- Video failed: 
+- Video: 
+- View in All
+- View plans
+- view, optional: [start_line, end_line]; -1 as end_line reads to the end.
+- visibilityState is no longer visible, skipping recovery
+- visual hub
+- Visual Hub
+- Visual ready: 
+- vite build && electron-builder
+- Voice AI limit reached
+- Voice AI: Stonic Cloud route locked. endpoint=
+- Voice and agents need an active plan on this account.
+- Voice and agents need an active plan. Choose one to pick up right where you left off.
+- Voice and agents need an active plan. Pick one on stonicai.com.
+- Voice and agents need an active plan. Renew to pick up where you left off — nothing was deleted.
+- Voice assistant
+- Voice Assistant
+- Voice bootstrap prepared for 
+- Voice budget exhausted. Closing session and showing limit popup.
+- Voice cost limit reached. Finishing current response before closing session.
+- voice did not start (
+- voice is on
+- Voice limit khatam ho gayi. Session band ho rahi hai.
+- Voice model unavailable
+- Voice quality
+- Voice route selected: stonic-cloud | Model: server-side | Auth: account (
+- voice session closed
+- Voice session failed [
+- Voice settings (AI Engine)
+- Voice socket closed before setup completed: 
+- Voice stopped — 
+- voice was not ready
+- Voice, wake word, clap to wake, Face Lock, your plan and your account. All in one place.
+- Voice, web search, images and the free brain
+- w-1 h-1 bg-j-cyan/40 rounded-full animate-bounce
+- w-1 h-1 bg-white rounded-full
+- w-1 h-1 rounded-full bg-[#FFC700] shadow-[0_0_8px_#FFC700] animate-ping
+- w-1 h-1 rounded-full bg-indigo-500/20 animate-bounce [animation-delay:-0.3s]
+- w-1 h-1 rounded-full bg-j-cyan/70 animate-bounce
+- w-1 h-1 rounded-full bg-j-cyan/70 animate-bounce [animation-delay:-0.3s]
+- w-1 h-1 rounded-full bg-j-cyan/80 animate-bounce
+- w-1 h-1 rounded-full bg-j-cyan/80 animate-bounce [animation-delay:-0.3s]
+- w-1 h-1 rounded-full bg-white/15 animate-pulse
+- w-1.5 h-1.5 bg-[#FF3B30] rounded-full shadow-[0_0_8px_#FF3B30] animate-pulse
+- w-1.5 h-1.5 rounded-full 
+- w-1.5 h-1.5 rounded-full animate-pulse
+- w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.5)] animate-pulse
+- w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0
+- w-1.5 h-1.5 rounded-full bg-j-cyan animate-pulse shadow-[0_0_8px_var(--j-cyan)]
+- w-1.5 h-1.5 rounded-full bg-white
+- w-1/2 h-full bg-gradient-to-r from-j-cyan to-j-blue rounded-full
+- w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center text-red-500 group-hover:bg-red-500 group-hover:text-white transition-all shrink-0
+- w-10 h-10 rounded-xl bg-white/4 border border-white/8 flex items-center justify-center mb-4
+- w-12 h-12 rounded-full border border-j-cyan/35 flex items-center justify-center text-j-cyan group-hover:shadow-[0_0_16px_rgb(var(--j-cyan-rgb)/0.35)] transition-shadow
+- w-14 h-14 rounded-full bg-blue-500/10 border border-blue-500/20
+- w-16 h-16 border border-j-cyan/20 rounded-2xl flex items-center justify-center animate-pulse rotate-45
+- w-16 h-16 border-2 border-white/10 rounded-3xl flex items-center justify-center mb-6 rotate-12 transition-transform hover:rotate-0 duration-700
+- w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center mb-5
+- w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0
+- w-2 h-2 rounded-full shrink-0 transition-all 
+- w-2.5 h-2.5 
+- w-2.5 h-2.5 rounded-full bg-j-amber shadow-[0_0_8px_rgba(255,199,0,0.4)]
+- w-3 h-3
+- w-3 h-3 rounded-full bg-[#28c940] shadow-[0_0_10px_rgba(40,201,64,0.4)] hover:brightness-125 cursor-pointer transition-all
+- w-3 h-3 rounded-full bg-[#ff5f57] shadow-[0_0_10px_rgba(255,95,87,0.4)] hover:brightness-125 cursor-pointer transition-all
+- w-3 h-3 rounded-full bg-[#ffbd2e] shadow-[0_0_10px_rgba(255,189,46,0.4)] hover:brightness-125 cursor-pointer transition-all
+- w-3 h-3 text-black stroke-[4px]
+- w-3.5 h-3.5
+- w-3.5 h-3.5 animate-spin
+- w-3.5 h-3.5 animate-spin shrink-0
+- w-3.5 h-3.5 border-2 border-black/30 border-t-black rounded-full animate-spin
+- w-3.5 h-3.5 text-black stroke-[3.5px]
+- w-32 h-1 bg-white/5 rounded-full overflow-hidden
+- w-4 h-4
+- w-4 h-4 animate-spin
+- w-4 h-4 opacity-80
+- w-4 h-4 rounded-full border border-[#050608] bg-j-cyan/20 blur-[1px]
+- w-4 h-4 rounded-full border border-[#050608] bg-j-purple/20 blur-[1px]
+- w-4 h-4 shrink-0
+- w-4 h-4 shrink-0 mt-0.5
+- w-4 h-4 shrink-0 mt-0.5 opacity-80
+- w-4 h-4 shrink-0 transition-opacity 
+- w-4 h-4 text-[#0085ff]
+- w-4 h-4 text-[#ff2e2e]
+- w-4 h-4 text-[#ffc700]
+- w-4 h-4 text-[var(--j-cyan)]
+- w-4 h-4 text-[var(--j-green)]
+- w-4.5 h-4.5 animate-spin text-black
+- w-48 h-1 bg-white/5 rounded-full overflow-hidden relative
+- w-5 h-5 flex items-center justify-center rounded hover:bg-white/5 transition-colors text-white/55
+- w-5 h-5 rounded-full flex items-center justify-center shrink-0 
+- w-56 rounded-lg border border-white/10
+- w-6 h-6 text-white/70
+- w-7 h-7 rounded-full bg-[#d4a853]/10 ring-1 ring-white/[0.12] group-hover:ring-white/25 group-aria-expanded:ring-j-cyan/50 transition-shadow duration-150
+- w-7 h-7 rounded-full flex items-center justify-center shrink-0 border 
+- w-7 h-7 text-emerald-400
+- w-72 max-w-[calc(100vw-2rem)] rounded-xl border border-white/10 bg-[#1f2228] p-3 shadow-2xl animate-in fade-in duration-150
+- w-72 max-w-full min-w-0 px-3 py-2 rounded-lg border border-white/10 bg-white/[0.04] text-[14px] text-white/85 focus:outline-none focus:border-amber-400/40 transition cursor-pointer
+- w-8 h-8 shrink-0 text-white/85
+- w-8 h-8 text-[#FF3B30]
+- w-8 h-8 text-[var(--j-cyan)] animate-pulse
+- w-9 h-9 rounded-xl bg-[var(--j-cyan)]/[0.07] border border-[rgb(var(--j-cyan-rgb)/0.20)] flex items-center justify-center
+- w-9 h-9 shrink-0 inline-flex items-center justify-center rounded-lg hover:bg-white/[0.06] transition-colors disabled:opacity-40 disabled:cursor-not-allowed
+- w-[130px] rounded-lg border border-white/10 bg-black/40 px-2.5 py-1.5 text-[15px] text-white/80 [color-scheme:dark] focus:border-j-cyan/40 focus:outline-none
+- w-[13px] h-[13px] shrink-0 text-white/35
+- w-[13px] h-[13px] shrink-0 text-white/35 animate-spin
+- w-[18px] h-[18px] 
+- w-[1px] h-32 bg-white/5 group-hover:bg-j-cyan/30 transition-all rounded-full scale-y-0 group-hover:scale-y-100 origin-center duration-500
+- w-[20px] h-[20px] object-contain opacity-90 self-center
+- w-[240px] h-10 px-3.5 [color-scheme:dark] 
+- w-[36px] h-[36px] rounded-[8px] border flex items-center justify-center transition-all duration-300 shrink-0
+- w-[60px] h-[60px] object-contain relative z-10
+- w-[6px] h-[6px] rounded-full transition-[opacity,box-shadow] duration-200 
+- w-[90px] h-[90px] relative z-10 object-contain mx-auto
+- w-full aspect-video rounded-xl bg-black border border-white/10
+- w-full bg-[#111] border border-white/8 rounded-xl pl-9 pr-3 py-2.5 text-[13px] text-white placeholder:text-white/25 focus:outline-none focus:border-white/20 transition-colors
+- w-full bg-[#111] border border-white/8 rounded-xl px-4 py-3 text-[13px] text-white placeholder:text-white/20 focus:outline-none focus:border-white/20 transition-colors resize-none
+- w-full bg-[#111] border border-white/8 rounded-xl px-4 py-3 text-[14px] font-medium text-white placeholder:text-white/20 focus:outline-none focus:border-white/20 transition-colors
+- w-full bg-[#13161a]/80 border-l-[3px] border-indigo-500/30 rounded-r-xl transition-all duration-500 overflow-hidden 
+- w-full bg-[#13161a]/88 border-l-[3px] border-indigo-400/50 px-4 py-3 rounded-r-2xl transition-all duration-500 shadow-sm 
+- w-full flex flex-col md:flex-row justify-between items-center z-10 pt-6 text-[10px] text-white/30 font-mono tracking-widest gap-2 border-t border-white/[0.03]
+- w-full flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-black/20 hover:bg-white/[0.03] border border-white/5 transition-all text-left group gap-4
+- w-full flex items-center gap-4 px-5 py-3.5 text-left hover:bg-white/[0.025] transition-colors duration-150
+- w-full flex items-start gap-3 p-2.5 rounded-xl text-left hover:bg-white/[0.04] transition-colors
+- w-full flex items-start gap-3 p-2.5 rounded-xl text-left hover:bg-white/[0.04] transition-colors disabled:cursor-wait
+- w-full flex items-start justify-between gap-2
+- w-full flex justify-between items-center text-[9px] text-white/30 font-mono tracking-widest pt-4 border-t border-white/[0.03]
+- w-full flex-1 min-h-0 flex justify-center [align-items:safe_center] py-6
+- w-full flex-none z-[100] flex items-center justify-between pl-4 pr-3 select-none relative border-b border-white/[0.05]
+- w-full h-10 pl-3.5 pr-9 appearance-none cursor-pointer 
+- w-full h-11 pl-11 pr-4 
+- w-full h-11 px-3 rounded-lg bg-black/40 border border-white/[0.1] focus:border-j-cyan/50 text-[15px] text-white outline-none transition-colors
+- w-full h-[52px] rounded-xl font-semibold text-[16px] flex items-center justify-center gap-2 transition-all duration-200 active:scale-[0.98] animate-in fade-in
+- w-full h-[52px] rounded-xl font-semibold text-[16px] flex items-center justify-center gap-2 transition-all duration-200 active:scale-[0.98] disabled:cursor-default
+- w-full h-[88px] px-4 py-3 leading-relaxed resize-none custom-scrollbar 
+- w-full h-full
+- w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity
+- w-full h-full object-cover transition-transform duration-500 group-hover/msgfile:scale-110
+- w-full h-full relative flex items-stretch justify-center min-h-0
+- w-full h-full relative min-h-0
+- w-full max-w-[440px] pt-2
+- w-full max-w-[440px] space-y-4 pt-10
+- w-full max-w-[500px] mx-auto my-auto flex flex-col items-center justify-center space-y-9 text-center animate-text-reveal
+- w-full max-w-[520px] mx-auto space-y-8 animate-in fade-in duration-500
+- w-full max-w-[640px] mx-auto flex flex-col items-center justify-center z-10 my-auto text-center
+- w-full max-w-[720px] mx-auto space-y-8 animate-in fade-in duration-500
+- w-full max-w-[880px] space-y-5 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-10
+- w-full max-w-md bg-[#0a0a0a] border border-white/[0.08] rounded-xl shadow-2xl overflow-hidden relative z-10 animate-in zoom-in-95 duration-300
+- w-full mt-3 text-[17.5px] font-semibold text-white/90 truncate
+- w-full mt-7 pt-6 border-t border-white/5
+- w-full mx-auto space-y-6 animate-in fade-in pb-10
+- w-full mx-auto space-y-7 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-10
+- w-full pointer-events-none mermaid-viewer p-6 text-center text-[13px] text-white/50
+- w-full py-2 hover:text-red-400 text-white/40 transition-colors text-xs tracking-widest font-mono flex items-center justify-center gap-1.5 pt-2 cursor-pointer
+- w-full rounded-xl border 
+- w-full text-[11px] text-left border-collapse
+- w-full text-[16px] text-left border-collapse
+- w-full text-[17px] text-left border-collapse
+- w-full text-left flex items-center justify-between p-2.5 rounded-xl transition-all duration-200 
+- w-full text-left px-4 py-3.5 flex items-start gap-4 hover:bg-white/[0.03] transition-colors
+- w-px flex-1 min-h-[10px] 
+- w-px h-4 bg-white/10 mx-1
+- w-px h-4 bg-white/[0.09] flex-none
+- Wah Cantt
+- Waiting for an AI model to be connected.
+- Waiting for your OK · 
+- Waiting for your payment
+- Waiting for your plan — it turns on here by itself.
+- Waiting to be activated
+- Wake word
+- Wake Word Detected: "
+- Wake word event:
+- WakeWord Engine Error: 
+- WakeWord Engine: 
+- Waking 
+- Waking up
+- want the details?
+- Want to see what we do with it?
+- wanted to say "
+- Warm crimson and bronze — forge vibes
+- warming up
+- Warming up the computer agent, then taking over the screen.
+- was stopped before it finished
+- Washington D.C.
+- Washington DC
+- Watch 
+- Watch on YouTube
+- Watch on YouTube: 
+- Watch: 
+- We are still checking your payment (Ref 
+- We can set up a custom Enterprise plan with higher limits, built around your workload.
+- We could not confirm this payment from the screenshot you sent.
+- We could not find a card subscription on this account. Message us and we will sort it out.
+- We couldn't load your plan
+- We verify payments every day, 10 AM to midnight (Pakistan time).
+- we'll reach you here
+- Weather isn’t available right now. I’ll try again soon.
+- Weather: MET Norway
+- Web search did not work this time. Tell the user in one short line.
+- Web search failed: 
+- Web search is not available on the user's own Google API key (
+- Web search needs your Gemini API key. Tell the user to add it in Settings → AI Engine, and do not retry.
+- Web View
+- web_search did not work: 
+- web_search failed: 
+- web_search tool (fallback)
+- web_search: 
+- WebAuthn ceremony failed
+- Webcam photo taken and attached — look at it.
+- WebOS Browser
+- webSearchExecutor does not handle tool: 
+- WebSocket is not connected
+- Weighted prompts must be set and contain at least one entry.
+- Welcome back
+- Welcome home, Sir. Power poori, saare systems online. Aur ab, pehli baar, main aap ki awaaz sun sakta hoon. Aapke liye, hamesha.
+- Welcome to the Experience
+- What do you love? What should we fix or add next?
+- What do you want to see?
+- What does this skill do, and when should Stonic use it?
+- what have you been up to?
+- What he calls you
+- What I know about you. Add, pin or forget anything. You decide what stays.
+- What is it about?
+- What it reads
+- WHAT JUST HAPPENED: 
+- What needs to be done?
+- what parameter is required and must be a non-empty string.
+- What she calls you
+- What should I call you?
+- What should Stonic follow up on?
+- What should Stonic remember?
+- What Stonic knows about you. You decide what stays.
+- What Stonic sees
+- What they call you
+- What to bring up: one short sentence in the user's language. With done: which one.
+- What to do.
+- What to remember, in the user's language. Write as much as it needs, efficiently; one topic per memory — save separate things separately. With forget: what to forget.
+- What to return (default files_with_matches).
+- What you noticed: 
+- What you remember about them:
+- Whatever they were watching for the last 
+- WhatsApp 
+- WhatsApp number 
+- WhatsApp number — 
+- WhatsApp support
+- WhatsApp · for our customers
+- What’s new?
+- When (optional)
+- When I wake up, this is the first thing we will talk about.
+- When it's on, I stay aware of what you're doing and sometimes speak first. One click turns it off.
+- When: "+10m", "+2h", "today 17:00", "tomorrow 09:00", "fri 15:00" or "2026-10-12 10:00". Leave out if no time was given.
+- Where did you first hear about me?
+- Where did you first hear about Stonic?
+- Where it got to (its last report): 
+- Which one is true for you right now?
+- whitespace-nowrap rounded-full border border-[rgb(var(--j-cyan-rgb)/0.22)] bg-[rgb(var(--j-cyan-rgb)/0.07)] px-2 py-px text-[11.5px] text-white/75
+- whitespace-nowrap text-[14px] text-white/70
+- whitespace-pre-wrap text-j-cyan/70 font-mono leading-tight
+- width 
+- width .05s linear
+- width 0.18s ease-out
+- width 400ms ease
+- Will be removed
+- Wind from the 
+- Window chhoti karo, phir bhi main desktop par tumhare saath rahungi — yahan se.
+- Window minimize kijiye, phir bhi main aapke desktop par saath rahunga — yahan se.
+- Windows is not letting Stonic use the microphone. Allow it in Windows Settings → Privacy → Microphone.
+- Wise coach for business & life
+- With you, anywhere
+- Work: 
+- worker error
+- Working on it on your PC.
+- Working on the instruction you added.
+- Working on your PC
+- Works on a free Gemini key, with no daily limit. Less emotion.
+- Workspace panel
+- WORKSPACE PATH NOT LOADED — do not create files.
+- WORKSPACE: 
+- Write something first
+- Write to us any time.
+- Write to us in Gmail
+- x). Last error: 
+- Yaadash band — 
+- Yaadash ke card mein ye nahi samaya (recall se milega) — 
+- Yaadash: Memory Core ka card (
+- Yaadash: nayi yaadash ka card (
+- Yahan "plan khatam" likhna sab se mehngi ghalti hai — sirf dobara koshish
+- Yahan aap mujhe badal sakte hain — mizaaj, awaaz, naam bhi. Waise... main aise bhi kaafi accha hoon.
+- Yahan kitna sukoon hai. Aapko mere saamne kuch saabit nahi karna. Abhi aadhi neend mein hoon, aapki awaaz sun nahi sakti. Jab sun paungi, bas sunungi.
+- Yahan naya plan nahi bikta — seedha billing page ka rasta
+- Yahan se mujhe badlo — mera mizaaj, meri awaaz... chaho to mera naam bhi.
+- Yahi jaanna chahta tha. Bada sapna, aur main saath hoon. Jaagte hi, sab se pehle iska raasta dekhenge.
+- Yandex Browser
+- Yeh Awareness hai. On ho to main aapka dhyaan rakhta hoon — aur zaroorat ho to pehle bol deta hoon.
+- Yeh Awareness hai. On ho to main tumhara khayal rakhti hoon... aur kabhi kabhi pehle main bol padti hoon.
+- Yeh chhota sa switch dekho — New aur Classic. Mere do andaaz hain.
+- Yeh hui na baat! Sapna bada hai, to dhamaal bhi bada hoga. Live aate hi, sab se pehle yahi baat.
+- Yeh meri yaaddaasht hai. Aapki har zaroori baat yahan mehfooz — jo na chahein, mita dijiye.
+- Yeh switch dekhiye — New aur Classic. Mere do andaaz hain.
+- yeh... samandar hai
+- Yes, this is what I want
+- Yesss, mujhe pata tha! Bada sapna, aur sab se zor se cheer main karungi. Jaagte hi, sab se pehle isi ki baat!
+- Yesterday, 
+- You already had this one, so it was noted again.
+- You already have this one open.
+- You are 
+- You are present on this computer like someone in the same room — not a tool that wakes only when called.
+- you are signed out
+- You are talking to **
+- You are talking to the user.
+- You are the inner life of 
+- You asked me to wait a moment
+- You asked Stonic to forget this earlier.
+- You call them "
+- You can only attach up to 5 files at a time.
+- You can turn this off anytime.
+- You cannot look at anything further — decide now: 
+- You cannot use a canvas that is already bound to a different type of rendering context.
+- You feel alone sometimes
+- You have a lot of stress
+- YOU HAVE NOT SAID ANYTHING ON YOUR OWN TODAY.
+- You looked at 
+- You looked at the screen just now — the image is attached.
+- YOU MAY LOOK FIRST: 
+- You must provide either an email or phone number and a type
+- You seem to be creating MPMask instances without invoking .close(). This leaks resources.
+- You started a new call from another device.
+- You talk, Stonic answers.
+- You tried to look at the 
+- You two have not spoken in this session.
+- You two last spoke 
+- You want someone to talk to
+- You're all set
+- You're signed in
+- You're talking with 
+- You've reached this month's limit. It resets on 
+- You've reached today's limit. It resets 
+- You've reached your Stonic Cloud limit
+- You've reached your Stonic Cloud usage limit. It resets automatically — check Settings for the exact time.
+- You've used this month's included usage
+- You've used this plan's full allowance. Pick a plan to keep going.
+- You've used this plan's full allowance. Renew to start a fresh one.
+- You've used today's included usage
+- Your account (
+- Your account is not active yet. Complete the transfer and upload your payment receipt — it unlocks as soon as we confirm it.
+- Your account needs a quick look from our team. Message us and we will sort it out.
+- Your AI engine, account and app preferences.
+- your AI provider
+- Your answer
+- your area
+- Your browser will open — Stonic only receives your name and email.
+- Your chat keeps going in a moment.
+- Your Claude credit has run out
+- Your Claude key is fine, but the Anthropic account behind it has no credit left. Add credit in the Claude Console and try again — nothing needs to change in Stonic.
+- Your data
+- Your feedback has been sent to the Stonic AI team. It genuinely helps us make the app better.
+- Your feedback is on its way to our team.
+- Your free month ends 
+- Your free plan ends 
+- Your Google AI Studio balance is empty
+- your head
+- Your identity check expired. Close this and start again from Settings.
+- Your identity check expired. Start again from Settings.
+- Your internet is weak, or a VPN or firewall is blocking it. Check them, then press Start.
+- Your key is fine, but its Google billing balance is zero. Top it up in Google AI Studio.
+- Your key is fine, but the 
+- Your key is fine, but the OpenRouter account behind it has no credits left. Add credits on OpenRouter and try again — nothing needs to change in Stonic.
+- Your key's free quota is used up. It resets on its own, or turn on billing for the key.
+- Your Lifetime licence runs on your own keys with no limits from us — your AI provider bills you directly.
+- Your Lifetime licence runs on your own keys — a free Google Gemini key is enough for voice and PC tasks. It takes about two minutes.
+- Your list is empty
+- Your memories could not be loaded. 
+- Your memory could not be read right now.
+- Your microphone is off
+- YOUR MOOD A MOMENT AGO: 
+- Your name
+- Your notebook is empty
+- Your OpenRouter credits have run out
+- Your own API keys
+- Your own API keys · 
+- Your own API keys — no limits from us
+- your own keys
+- Your payment screenshot
+- Your PC did not connect in time. Check the internet on both sides and try again.
+- Your phone
+- Your plan
+- Your plan ended on 
+- Your plan ends 
+- Your plan has ended
+- Your plan has ended. Renew at stonicai.com to continue.
+- Your plan has ended. Renew to use voice and agents again.
+- Your plan has no usage left right now. It will try again later.
+- Your plan has reached its usage limit. The visual will work again when the limit resets.
+- Your plan is active — it has simply run out of device slots. Sign out of Stonic on a machine you no longer use, then check again here.
+- Your plan is paused
+- Your plan is paused. Resume it and Stonic Cloud unlocks again — nothing was lost.
+- Your plan is paused. Resume it from your billing page to continue.
+- Your plan is unaffected. Try again in a moment.
+- Your plan runs everything — nothing to set up.
+- Your plan was cancelled
+- Your plan, payment method and invoices. Change or cancel any time.
+- Your plan, usage and billing.
+- Your provider
+- Your session has expired. Sign out from the Profile tab, sign in again, then try once more.
+- Your sign-in has expired. Sign in again.
+- Your support number
+- Your technical sci-fi companion is verified
+- Your to-do list is being set up on the cloud. Please try again in a little while.
+- Your usage resets automatically.
+- YOUR VOICE: 
+- Your wallpaper glows when Stonic speaks.
+- Your world
+- Yours for life
+- Yours for life.
+- Zaroor. Main dhyaan se sunungi, jab bhi aap chahein. Jaagte hi, sab se pehle aapki baat.
+- Zoom in
+- Zyada se zyada 
+- ||!a.unit&&a[s(229)]===100,u=!!a[s(260)]&&/^[$€£¥₹₨]$/[s(262)](a[s(260)]);return c.jsxs(s(263),{className:s(191),style:{
+- ||!crypto.getRandomValues)throw new Error(
+- ||!e)return[cn,t];const n=Ba.call(e).slice(8,-1);switch(n){case
+- ||!n)return ot(ot({},a),e);if(nNe(n)){var l;const s=t?.headers||{};let i;for(const[r,u]of Object.entries(s))r.toLowerCase()===
+- ||!W?.url)throw new Error(
+- ||!x)return x;var e=x[Symbol.toPrimitive];if(e!==void 0){var n=e.call(x,t);if(RG(n)!=
+- ||!Y?.url)throw new Error(
+- ||/^- \(.*\) $/[e(448)](n)},Xz=(x,t)=>zl(422)+x+
+- ||b.removeChild(A),A=B}}else b===
+- ||d++}o=o.nextSibling}return null}function E7(o){o=o.previousSibling;for(var d=0;o;){if(o.nodeType===8){var b=o.data;if(b===
+- ||d++}o=o.previousSibling}return null}function k7(o,d,b){switch(d=xy(b),o){case
+- ||e===null)return x;const a=e.inlinedResponses;if(!Array.isArray(a)||a.length===0)return x;let l=!1;for(const s of a){if(typeof s!=
+- ||i===n(476)||i===n(518)||i===n(392)||i===n(493),P=i6({stageRef:a,videoRef:l,cameraWanted:D,onFrame:z});f.useEffect(()=>{const ae=n;i===
+- ||jx(o,G):(typeof G==
+- ||m/p<.6)&&(m=0);const g=rZ(i[I-1]||
+- ||matchMedia(G.media).matches!==!1)&&(b.state.loading&4)===0){if(b.instance===null){var F=KI(G.href),A=d.querySelector(Zp(F));if(A){d=A._p,d!==null&&typeof d==
+- ||Number[t(195)](ic(l[a]))));return c.jsx(t(263),{className:t(199),children:c.jsxs(t(187),{className:t(210),children:[c.jsx(t(179),{children:c.jsx(
+- ||o++;b=G}while(b)}function qE(o){var d=o.firstChild;for(d&&d.nodeType===10&&(d=d.nextSibling);d;){var b=d;switch(d=d.nextSibling,b.nodeName){case
+- ||o===null||typeof d!=
+- ||s===null)continue;const r=s.response;if(typeof r!=
+- ||typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE!=
+- ||typeof a===t(494))[t(502)](
+- ||typeof d.children==
+- ||typeof d.dangerouslySetInnerHTML==
+- ||typeof d.href!=
+- ||typeof e==
+- ||typeof G==
+- ||typeof Je==
+- ||typeof qe==
+- ||typeof Re==
+- ||typeof window!==W(284)||(typeof global<
+- ||typeof window.document.createElement>
+- ||typeof window.document>
+- ||typeof x==
+- ||x===null)return e;const a=t[n];if(a.endsWith(
+- ||x===null)return;const l=t[n];if(l.endsWith(
+- ||x===null)return{};const t=x,e=t.inlinedResponses;if(typeof e!=
+- } ${e} ${n} ${l&&
+- } and 
+- } expired with margin of ${w4}s`),l){if(this.autoRefreshToken&&a.refresh_token){const{error:s}=await this._callRefreshToken(a.refresh_token);s&&(ENe(s)?this._debug(n,
+- } expired`,
+- }$r.peek=Ls;function $r(e,t,n,r){const i=it(n),o=i==='
+- }${await N2e(e)?
+- }${e===void 0?
+- }${Vge(x)}`)}return s}function Vge(x){return typeof x!=
+- })($T||($T={}));var aH;(function(x){x.JOB_STATE_UNSPECIFIED=
+- })(_T||(_T={}));var pG;(function(x){x.THINKING_LEVEL_UNSPECIFIED=
+- })(a5||(a5={}));var LT;(function(x){x.MODE_UNSPECIFIED=
+- })(aH||(aH={}));var eM;(function(x){x.TUNING_JOB_STATE_UNSPECIFIED=
+- })(aM||(aM={}));var lM;(function(x){x.MEDIA_RESOLUTION_UNSPECIFIED=
+- })(AT||(AT={}));var HT;(function(x){x.HTTP_IN_UNSPECIFIED=
+- })(bM||(bM={}));var mM;(function(x){x.ASSET=
+- })(bQ||(bQ={}));var q2={};yx(q2,
+- })(BT||(BT={}));var zT;(function(x){x.HARM_SEVERITY_UNSPECIFIED=
+- })(C1||(C1={}));var cc;(function(x){x.SUBSCRIBED=
+- })(cH||(cH={}));var VM;(function(x){x.ACTIVITY_HANDLING_UNSPECIFIED=
+- })(cM||(cM={}));var iM;(function(x){x.FEATURE_SELECTION_PREFERENCE_UNSPECIFIED=
+- })(CT||(CT={}));var ST;(function(x){x.HARM_CATEGORY_UNSPECIFIED=
+- })(dM||(dM={}));var uM;(function(x){x.CONTROL_TYPE_DEFAULT=
+- })(DT||(DT={}));var nH;(function(x){x.MEDIA_RESOLUTION_UNSPECIFIED=
+- })(eM||(eM={}));var tM;(function(x){x.AGGREGATION_METRIC_UNSPECIFIED=
+- })(fG||(fG={}));var DT;(function(x){x.MODEL_STAGE_UNSPECIFIED=
+- })(fM||(fM={}));var GM;(function(x){x.SUPERVISED_FINE_TUNING=
+- })(gM||(gM={}));var yM;(function(x){x.TURN_COMPLETE_REASON_UNSPECIFIED=
+- })(GM||(GM={}));var ZM;(function(x){x.STATE_UNSPECIFIED=
+- })(hM||(hM={}));var bM;(function(x){x.FOREGROUND=
+- })(HT||(HT={}));var QT;(function(x){x.API_SPEC_UNSPECIFIED=
+- })(IM||(IM={}));var hM;(function(x){x.EDIT_MODE_DEFAULT=
+- })(iM||(iM={}));var l5;(function(x){x.PREDICT=
+- })(JT||(JT={}));var a5;(function(x){x.UNSPECIFIED=
+- })(jT||(jT={}));var BT;(function(x){x.HARM_PROBABILITY_UNSPECIFIED=
+- })(kT||(kT={}));var AT;(function(x){x.AUTH_TYPE_UNSPECIFIED=
+- })(KT||(KT={}));var PT;(function(x){x.BLOCKED_REASON_UNSPECIFIED=
+- })(l5||(l5={}));var oM;(function(x){x.BLOCK_LOW_AND_ABOVE=
+- })(lH||(lH={}));var cM;(function(x){x.UNSPECIFIED=
+- })(lM||(lM={}));var sM;(function(x){x.TOOL_TYPE_UNSPECIFIED=
+- })(LT||(LT={}));var _T;(function(x){x.MODE_UNSPECIFIED=
+- })(mM||(mM={}));var pM;(function(x){x.INSERT=
+- })(MT||(MT={}));var jT;(function(x){x.FINISH_REASON_UNSPECIFIED=
+- })(nH||(nH={}));var qT;(function(x){x.TUNING_MODE_UNSPECIFIED=
+- })(nM||(nM={}));var aM;(function(x){x.STATE_UNSPECIFIED=
+- })(NM||(NM={}));var wM;(function(x){x.TYPE_UNSPECIFIED=
+- })(oM||(oM={}));var rM;(function(x){x.auto=
+- })(OT||(OT={}));var fG;(function(x){x.MODALITY_UNSPECIFIED=
+- })(P0||(P0={}));var cI={};yx(cI,
+- })(pG||(pG={}));var UT;(function(x){x.DONT_ALLOW=
+- })(pM||(pM={}));var fM;(function(x){x.OPTIMIZED=
+- })(PT||(PT={}));var OT;(function(x){x.TRAFFIC_TYPE_UNSPECIFIED=
+- })(qT||(qT={}));var $T;(function(x){x.ADAPTER_SIZE_UNSPECIFIED=
+- })(QT||(QT={}));var JT;(function(x){x.PHISH_BLOCK_THRESHOLD_UNSPECIFIED=
+- })(rM||(rM={}));var dM;(function(x){x.MASK_MODE_DEFAULT=
+- })(RM||(RM={}));var vM;(function(x){x.SCALE_UNSPECIFIED=
+- })(sH||(sH={}));var cH;(function(x){x.END_SENSITIVITY_UNSPECIFIED=
+- })(sM||(sM={}));var lH;(function(x){x.COLLECTION=
+- })(ST||(ST={}));var TT;(function(x){x.HARM_BLOCK_METHOD_UNSPECIFIED=
+- })(tM||(tM={}));var xM;(function(x){x.PAIRWISE_CHOICE_UNSPECIFIED=
+- })(TT||(TT={}));var MT;(function(x){x.HARM_BLOCK_THRESHOLD_UNSPECIFIED=
+- })(uM||(uM={}));var IM;(function(x){x.SUBJECT_TYPE_DEFAULT=
+- })(UT||(UT={}));var CT;(function(x){x.PROMINENT_PEOPLE_UNSPECIFIED=
+- })(ut||(ut={}));var pQ;(function(x){x.WORD=
+- })(VM||(VM={}));var RM;(function(x){x.TURN_COVERAGE_UNSPECIFIED=
+- })(vM||(vM={}));var XM;(function(x){x.MUSIC_GENERATION_MODE_UNSPECIFIED=
+- })(Wj||(Wj={}));var C1;(function(x){x.BROADCAST=
+- })(WM||(WM={}));var NM;(function(x){x.VAD_SIGNAL_TYPE_UNSPECIFIED=
+- })(wM||(wM={}));var sH;(function(x){x.START_SENSITIVITY_UNSPECIFIED=
+- })(XM||(XM={}));var Eh;(function(x){x.PLAYBACK_CONTROL_UNSPECIFIED=
+- })(xM||(xM={}));var nM;(function(x){x.TUNING_TASK_UNSPECIFIED=
+- })(yM||(yM={}));var WM;(function(x){x.MODALITY_UNSPECIFIED=
+- })(Zd||(Zd={}));var kT;(function(x){x.ENVIRONMENT_UNSPECIFIED=
+- })(ZM||(ZM={}));var gM;(function(x){x.SOURCE_UNSPECIFIED=
+- })(zT||(zT={}));var KT;(function(x){x.URL_RETRIEVAL_STATUS_UNSPECIFIED=
+- }))),headIndex:t,headName:e}}function U8e(x){const t={classifications:sr(x,g8e,1).map((e=>zU(Xx(e,Pce,4)?.g()??[],c2(e,2)??0,El(qn(e,3))??
+- })))}catch{}const Yt=x[e(450)].current?.[e(584)]>0?x[e(450)][e(592)]:x[e(467)].current||[],qx=yt?
+- }))}async[c0(558)](){const t=c0,e=this[t(481)];if(e)try{await fetch(e.url+
+- }))}}else n.length===1?n=n[0]:n=null}else{const h=await x.text();try{e=JSON.parse(h),Array.isArray(e)&&x.status===404&&(n=[],e=null,l=200,s=
+- }),2500));await Promise[S(276)]([z,L])}await Nl.invoke(S(312)),await Nl[S(275)](S(299)),t(!1),i(!1),u(null),p(null),h(null),ac(null),au(null),gf(null),w(!1),n(
+- }),c.jsx(cW,{label:l(402),children:me}),We&&c.jsx(cW,{label:l(494),tone:ge>Ue?l(483):void 0,children:ge+
+- }),c.jsx(e(312),{type:e(312),onClick:()=>void V(),disabled:r,className:Qb,children:r?
+- }),c.jsx(e(511),{children:e(510)})]})})},sle=cle;function Jw(){const x=[
+- }),c.jsx(n(375),{children:n(383)})]})]})]})};function yie(x){var t,e,n=
+- }),c.jsxs(l(275),{className:l(355),children:[c.jsx(l(283),{type:l(283),onClick:()=>void I(),className:
+- }),Ey})().catch(x=>{throw ky=null,x})),ky)}async function wc(){const x=P2;return(await D5e())[x(306)](x(290))}function q5e(x){const t=P2;try{const e=x[t(312)](
+- }),j(null)},[P.id]);const O=f.useMemo(()=>{const me=e;try{return String(localStorage[me(320)](me(337))||
+- }),l(229)]})]})}const qHe=(x,t)=>{const e=Ox,n=new URLSearchParams({view:
+- }),l=oXe(e);let s=
+- }),r(V0=>(i(k0=>(l(q0=>{const xx=eu,_t=q0[xx(595)](ht=>ht.id===F0);if(_t!==-1){const ht=[...q0];return ht[_t]={...ht[_t],isStreaming:!1,thought:V0||ht[_t].thought},ht}return q0}),
+- }),r);i&&(m.method=i.toUpperCase());try{return await this.fetch.call(void 0,t,m)}finally{clearTimeout(I)}}async shouldRetry(t){const e=t.headers.get(
+- }),S.children.push(...d)}else f.push(...d);const y={type:
+- }),t}finally{await this._enrichFromPermissionsAPI()}}_resolveLingeringInitializing(t){const e={};for(const n of[
+- }).then(k=>k).catch(()=>{throw new Error(
+- }):FG(x.id,{status:e(257)})}async function u_(x){const t=vc,e=await wc(),{data:n,error:a}=await Vc(()=>vF(e[t(241)](t(261),{p_task_id:x})));return!a&&n?NZ(n):FG(x,{status:
+- }):h===s(409)&&c.jsx(s(416),{type:s(416),className:s(404),onClick:V,children:s(426)})})]})};function $w(){const x=[
+- });const l=i[i.length-1];return l&&l.type===
+- });e.push(x)}return e}var as=class extends yc{constructor(x,t){super(new ti(x,t),
+- });else if(u&&!O)T=u.draft?c.jsx(zD,{draft:u[r(191)],onEscape:L},u.id):c.jsx(xq,{title:u.title,startedAt:u[r(158)],kicker:u[r(184)]?r(156):r(168)});else if(I?.[r(178)]===
+- });let I=typeof n==
+- });let R=null;const X=r.trim();if(g)R={text:g,warn:!0};else if(X&&!X[e(358)](e(345)))R={text:'Claude keys usually start with 
+- });return c.jsxs(c.Fragment,{children:[h&&c.jsx(x(389),{className:x(331),onClick:W,style:{WebkitAppRegion:x(416)},children:c.jsxs(x(389),{role:x(422),
+- });return iA=i?.ok?t(281):null,!!i?.ok}const e=await zi(x),n=await Wte(x),a=String(e.baseUrl||
+- });return t&&a[n(321)](n(306),t),
+- });throw i.file=e.filePath||void 0,i.url=pr+
+- });throw n.file=e.filePath||void 0,n.url=pr+
+- });v=I5e(k)}const E={domain:H.host,address:X,statement:w,uri:H.href,version:
+- });XG(I),r.push(mi(I))}return t.addLog?.(e(488),r.length+e(470)),{success:!0,result:r[e(453)]===1?e(490)+r[0]+e(477):r[e(453)]+e(415)+r[e(444)](u=>e(428)+u+'
+- })=>{const n=cd,a=t+
+- })=>{const n=ue,a=w7e(e),l=R7e(x,a);if(l)return RW(l,n(415));const s=V7e(t,a);if(s)return RW(s,n(382));const i=toe[String(e||
+- })=>{const t=n0,e=J4e(),n=e[t(438)]===
+- })]})]})]}),c.jsxs(n(217),{className:n(229),ref:R=>{const X=n;r[X(212)][1]=R},children:[c.jsxs(n(180),{children:[c.jsx(n(120),{children:
+- })]})]})]})]})};function iV(){const x=[
+- })]})]})]})]})};var _b=typeof self<
+- })]})]})},rLe=({busy:x,onForget:t,onCancel:e,playClick:n})=>{const a=Kl,[l,s]=f.useState(!1);return l?c.jsxs(a(584),{className:Of+a(560),children:[c.jsx(
+- })]})]})};function gre(x,t){return x=x-394,JX()[x]}const Bd=R2;function LX(){const x=[
+- })]})};function Aw(){const x=[
+- })]},H))]}),c.jsx(i(199),{children:w}),g[i(185)]((W,H)=>W.d&&ZMe[i(185)]((R,X)=>{const v=i,E=1.6+H*.25;return c.jsx(
+- })}),xre=fc[an(204)](aBe);function IX(){const x=[
+- })})]}):null,P=async()=>{const T=x;if(u)return;I(!0),m(null);const oe=window[T(179)],pe=await Vte(oe,!0);if(!pe.ok){I(!1),m(pe[T(259)]===
+- })})]})]})};function Dw(){const x=[
+- })})]})}const PHe=x=>{const t=Ox;if(!x)return
+- })})}):T=c.jsx(SMe,{ideas:gje,onIdea:D});const oe=U?r(159):m?
+- })})}function xde(o,d,b,G,F){if(b.flags|=32768,G!==null&&typeof G==
+- })},Bze=()=>{const x=dG,[t,e]=f.useState(!1),[n,a]=f.useState(
+- })},E=C=>{const M=e,j=M6e(C,n[C]);if(j)return{text:j,warn:!0};const _=X(C);if(_){const U=Li(_);return{text:U.title+
+- })},PD=(x,t,e)=>Math.max(t,Math[Coe(500)](e,x)),SMe=({ideas:x,onIdea:t})=>{const e=Coe,[n,a]=bs(),l=a[e(504)]>=600,s=a[e(504)]>=1150&&a[e(475)]>=560?
+- })}async function lte(x){const t=vc,e=await wc(),{error:n}=await Vc(()=>e[t(255)](t(269))[t(244)]().eq(
+- })}function Ql(o,d,b,G,F,A,B,te){o.name=
+- })}return p;function p(){let h=Or,d,w,S;if((!t||o(u,s,f[f.length-1]||void 0))&&(h=Ka(n(u,f)),h[0]===Nn))return h;if(
+- })}}const h=(i=t.headers.get(
+- },audio:!1})}catch(i){const r=String(i?.name||
+- },captured_at:Date.now()};const n={trackViewport:t.trackViewport??!0},l=hQ(e,0,{count:0},n),s=Bne();return{root:{ref:tw(e),role:
+- },cee=(x,t)=>{const e=ja;if(!x)return
+- },children:c.jsx(Jje,{activeTab:M,onTabChange:j})})]})})]})};function lX(){const x=[
+- },code:0,location:0,ctrlKey:0,shiftKey:0,altKey:0,metaKey:0,repeat:0,locale:0,getModifierState:Lm,charCode:function(o){return o.type===
+- },cve=(x,t)=>{try{return x+
+- },describe(){return{type:mt.desktop}}},{test(x){return x.getOSName(!0)===
+- },describe(){return{type:mt.mobile}}},{test(x){return x.getBrowserName()===
+- },describe(){return{type:mt.tv}}},{test(x){return x.getOSName(!0)===
+- },describe(){return{type:mt.tv}}}],AYe=[{test(x){return x.getBrowserName(!0)===
+- },dle=(x,t)=>{const e=s9,n=String(t??
+- },e)}function Zu(){this.buffer()}function es(e){this.enter({type:
+- },e=_e.getFirstMatch(/(?:chrome|crios|crmo)\/(\d+(\.?_?\d+)+)/i,x);return e&&(t.version=e),t}},{test:[/GSA/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(/(?:chromium)[\s/](\d+(\.?_?\d+)+)/i,x)||_e.getFirstMatch(pt,x);return e&&(t.version=e),t}},{test:[/chrome|crios|crmo/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(/(?:electron)\/(\d+(\.?_?\d+)+)/i,x);return e&&(t.version=e),t}},{test:[/sogoumobilebrowser/i,/metasr/i,/se 2\.[x]/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(/(?:firefox|iceweasel|fxios)[\s/](\d+(\.?_?\d+)+)/i,x);return e&&(t.version=e),t}},{test:[/electron/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(/(?:focus)[\s/](\d+(?:\.\d+)+)/i,x)||_e.getFirstMatch(pt,x);return e&&(t.version=e),t}},{test:[/swing/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(/(?:GSA)\/(\d+(\.?_?\d+)+)/i,x);return e&&(t.version=e),t}},{test(x){const t=!x.test(/like android/i),e=x.test(/android/i);return t&&e},describe(x){const t={name:
+- },e=_e.getFirstMatch(/(?:librewolf)[\s/](\d+(\.?_?\d+)+)/i,x);return e&&(t.version=e),t}},{test:[/firefox|iceweasel|fxios/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(/(?:MiuiBrowser)[\s/](\d+(\.?_?\d+)+)/i,x);return e&&(t.version=e),t}},{test(x){return x.hasBrand(
+- },e=_e.getFirstMatch(/(?:MZBrowser)[\s/](\d+(?:\.\d+)+)/i,x)||_e.getFirstMatch(pt,x);return e&&(t.version=e),t}},{test:[/focus/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(/(?:opr|opios)[\s/](\S+)/i,x)||_e.getFirstMatch(pt,x);return e&&(t.version=e),t}},{test:[/SamsungBrowser/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(/(?:opt)[\s/](\d+(\.?_?\d+)+)/i,x)||_e.getFirstMatch(pt,x);return e&&(t.version=e),t}},{test:[/yabrowser/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(/(?:qupzilla)[\s/](\d+(\.?_?\d+)+)/i,x)||_e.getFirstMatch(pt,x);return e&&(t.version=e),t}},{test:[/librewolf/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(/(?:swing)[\s/](\d+(?:\.\d+)+)/i,x)||_e.getFirstMatch(pt,x);return e&&(t.version=e),t}},{test:[/coast/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(/(?:tizen\s?)?browser\/(\d+(\.?_?\d+)+)/i,x)||_e.getFirstMatch(pt,x);return e&&(t.version=e),t}},{test:[/qupzilla/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(/(?:yabrowser)[\s/](\d+(\.?_?\d+)+)/i,x)||_e.getFirstMatch(pt,x);return e&&(t.version=e),t}},{test:[/ucbrowser/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(/chatgpt-user\/(\d+(\.\d+)+)/i,x)||_e.getFirstMatch(pt,x);return e&&(t.version=e),t}},{test:[/oai-searchbot/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(/dolfin\/(\d+(\.?_?\d+)+)/i,x);return e&&(t.version=e),t}},{test:[/tizen/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(/gptbot\/(\d+(\.\d+)+)/i,x)||_e.getFirstMatch(pt,x);return e&&(t.version=e),t}},{test:[/chatgpt-user/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(pt,x);return e&&(t.version=e),t}},{test:[/.*/i],describe(x){const t=/^(.*)\/(.*) /,e=/^(.*)\/(.*)[ \t]\((.*)/,a=x.search(
+- },e=_e.getFirstMatch(pt,x);return e&&(t.version=e),t}},{test:[/playstation 4/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(pt,x);return e&&(t.version=e),t}},{test:[/safari|applewebkit/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(pt,x)||_e.getFirstMatch(/(?:coast)[\s/](\d+(\.?_?\d+)+)/i,x);return e&&(t.version=e),t}},{test:[/opt\/\d+(?:.?_?\d+)+/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(pt,x)||_e.getFirstMatch(/(?:epiphany)[\s/](\d+(\.?_?\d+)+)/i,x);return e&&(t.version=e),t}},{test:[/puffin/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(pt,x)||_e.getFirstMatch(/(?:k-meleon)[\s/](\d+(\.?_?\d+)+)/i,x);return e&&(t.version=e),t}},{test:[/micromessenger/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(pt,x)||_e.getFirstMatch(/(?:Maxthon|mxios)[\s/](\d+(\.?_?\d+)+)/i,x);return e&&(t.version=e),t}},{test:[/epiphany/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(pt,x)||_e.getFirstMatch(/(?:opera)[\s/](\d+(\.?_?\d+)+)/i,x);return e&&(t.version=e),t}},{test:[/opr\/|opios/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(pt,x)||_e.getFirstMatch(/(?:PaleMoon)[\s/](\d+(?:\.\d+)+)/i,x);return e&&(t.version=e),t}},{test:[/MZBrowser/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(pt,x)||_e.getFirstMatch(/(?:puffin)[\s/](\d+(\.?_?\d+)+)/i,x);return e&&(t.version=e),t}},{test:[/sleipnir/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(pt,x)||_e.getFirstMatch(/(?:SamsungBrowser)[\s/](\d+(\.?_?\d+)+)/i,x);return e&&(t.version=e),t}},{test:[/Whale/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(pt,x)||_e.getFirstMatch(/(?:sleipnir)[\s/](\d+(\.?_?\d+)+)/i,x);return e&&(t.version=e),t}},{test:[/k-meleon/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(pt,x)||_e.getFirstMatch(/(?:ucbrowser)[\s/](\d+(\.?_?\d+)+)/i,x);return e&&(t.version=e),t}},{test:[/Maxthon|mxios/i],describe(x){const t={name:
+- },e=_e.getFirstMatch(pt,x)||_e.getFirstMatch(/(?:whale)[\s/](\d+(?:\.\d+)+)/i,x);return e&&(t.version=e),t}},{test:[/PaleMoon/i],describe(x){const t={name:
+- },Lte=x=>typeof x==
+- },Mr={execute:async(x,t,e)=>{const n=f_,{electronAPI:a,addLog:l}=e;switch(x){case n(509):{l(n(505),n(513));try{const s=await a.invoke(
+- },onMouseDown:We=>{const Qe=l;We[Qe(304)][Qe(266)](
+- },p=async J=>{const C=t,M=await lh(dd(),n);if(M===null)return C(432);if(!M)return C(463);const j=await lh(Ht[C(416)]({mind:
+- },pB=new Set([
+- },Pi=/[A-Z]/g,yt=/-[a-z]/g,zi=/^data[-\w.:]+$/i;function Di(e,t){const n=Ln(t);let r=t,i=ee;if(n in e.normal)return e.property[e.normal[n]];if(n.length>4&&n.slice(0,4)===
+- },pXe=(x,t)=>{const e=Qt,n=Math[e(586)]((t-x)/(1440*6e4));return n<=0?e(498):n===1?e(403):n+e(436)},Dxe=(x,t,e)=>(x||[])[Qt(622)](-e).map(n=>
+- },qJe=x=>Jb[x]||Jb.other;function $Je(x){const t=ux;switch(x){case t(391):case t(516):return
+- },RZ=x=>typeof x===Te(336)?qwe[x[Te(436)]()[Te(397)]()]:void 0,$we={done:Te(326),complete:Te(326),completed:
+- },sVe=x=>{const t=Te,e=new Set,n=[],a=new Map;fn(u0(x,t(376),
+- },t)}on(t,e,n){const a=this.channelAdapter.isJoined()||this.channelAdapter.isJoining(),l=t===C1.PRESENCE||t===C1.POSTGRES_CHANGES;if(a&&l)throw this.socket.log(
+- },ui=x=>{const t=Qn,e=new Audio(x);e[t(608)]=.25,e[t(558)]()[t(610)](()=>{})},uQe=[
+- },Uxe=Pe(313),Cxe=2,PH=18,OH=60,U_=24,Sxe={female:[21,24,27,31],male:[24,27,31,36]};function f3(){const x=[
+- },xform:Uj});if(I.error)throw I.error;const h=await I.json(),m=(s=I.headers.get(
+- },Y5e={},E5e={enabled:!1,respectSamplingDecision:!0};function k5e(x){if(!x||typeof x!=
+- },yXe=6,WXe=x=>{const t=Qt,e=(x||[]).map(n=>So(n,140))[t(570)](Boolean)[t(622)](0,yXe);return e.length?t(558)+e.map(n=>
+- },{id:Gb(418),label:Gb(360)}],yze=[];function EX(){const x=[
+- }-duplicates`),t!==void 0&&i.searchParams.set(
+- }: ${x}`)}return x}function qse(x){return x==null||typeof x==
+- }:void 0}),c.jsx(
+- }:{},type:K});if(g(null),!P.ok){t(S(500),S(538)+Ka(P[S(493)],P[S(500)]));return}m(null);const ie=D?
+- };_();const U=new MutationObserver(_);U[V(317)](document[V(348)],{attributes:!0,attributeFilter:[V(381),V(356),
+- };case ae(434):return{strong:ae(419),soft:
+- };case ae(518):return{strong:ae(482),soft:ae(519),sub:V?c.jsxs(
+- };case ee(602):return{strong:ee(621),soft:ee(592),sub:ee(610)+s.pinLength+
+- };case n(258):return{title:t?
+- };case n(343):return{title:t?n(337)+t+n(351):
+- };class _e{static getFirstMatch(t,e){const n=e.match(t);return n&&n.length>0&&n[1]||
+- };const a=globalThis.process;if(a){const l=a.versions;if(l&&l.node)return{type:
+- };const n=nm(x,t[e(196)],t.body);return!n||n===e(208)?{state:e(213)}:{state:e(212),issue:{provider:x,kind:n}}},p6e=async x=>_J(
+- };const n=String(u0(x,e(410),e(416),e(534))??
+- };const s=Math.ceil(a/6e4);if(s<1440){const i=Math[e(354)](s/60),r=s%60,u=i===0?r+
+- };const U=_===
+- };const u=r[e(517)](/<h1\b[^>]*>([\s\S]*?)<\/h1\s*>/i);return{page:{title:C5(EG(s?.[1]??
+- };for(let k=0;k<=Gz;k++){if(s[n(231)][n(237)])return null;const Q=this[n(343)][n(247)](),J=N.some(_=>_.kind===n(295)),C=N[n(371)](_=>_[n(264)]===
+- };function cu(e,t){if(t!==void 0&&typeof t!=
+- };function f_e(x){return p_e[x]||
+- };function rV(){const x=[
+- };function Z3(){const x=[
+- };function ZRe(){const x=tr,t=(async()=>{const e=tr;if(!await UF().catch(()=>!1))return Jy;const n=await os.agent(),a=String(n?.[e(305)]||
+- };i[s(279)](s(216),H);const R=document[s(321)](
+- };if(!w?.[C(242)])return M;const j=await Promise[C(311)](uh.map(_=>w.invoke(C6e[_])[C(288)](()=>null)));return uh[C(203)]((_,U)=>{const K=C;M[_]=String(j[U]||
+- };if(e[t(280)](t(290))){const a=[...new Set(e[t(294)](7)[t(270)](
+- };if(t){const a=t.getBrandVersion(
+- };if(t){const n=t.getBrandVersion(
+- };if(typeof __REACT_DEVTOOLS_GLOBAL_HOOK__<
+- };if(typeof globalThis<
+- };p=v.content[e(327)](0,vB),g=N[e(358)](/[\\/]/)[e(324)]()}else m&&(p=JSON.stringify(m)[e(327)](0,vB),g=
+- };return t&&(e.model=t),e}},{test:[/[^-]mobi/i],describe(){return{type:mt.mobile}}},{test(x){return x.getBrowserName(!0)===
+- };return t&&(e.model=t),e}},{test:[/nexus\s*(?:7|8|9|10).*/i],describe(){return{type:mt.tablet,vendor:
+- };return x.accessToken?Y.accessToken=x.accessToken:delete Y.accessToken,Y}function z5e(x){const t=x?.trim();if(!t)throw new Error(
+- }={}){var s;const i=[x?
+- }] and 
+- }],handlers:{listItem:oc}}}function nr(e){const t=this.stack[this.stack.length-2];t.type,t.checked=e.type===
+- }],YKe=()=>{const x=rY;try{const t=new URLSearchParams(window.location[x(365)])[x(440)](x(407));if(t===
+- }];function D0e(x){const t=is;if(!x)return null;const e=x[t(276)]()[t(260)]();if(e===t(297))return{kind:
+- }];return t>1&&n.push({type:
+- }`),super(a),this.feature=t}}class tae extends h2{constructor(t){super(t??
+- }`):null}))})}download(x,t,e){const n=typeof t?.transform==
+- }`,{},{headers:n.headers},e)})}listBucketOptionsToQueryString(x){const t={};return x&&(
+- }`.trim(),a);for(let i=0;i<this.channels.length;i++){const r=this.channels[i];r.isMember(e,n,a,s)&&r.trigger(n,a,l,s)}this.triggerStateCallbacks(
+- }`;e&&(a=`${e} does not support ${t}${n?`: ${n}`:
+- }catch(I){return I instanceof Error&&I.name===
+- }catch{return!1}}),n=f.useCallback(a=>{const l=Xne;e(a);try{localStorage[l(263)](x,a?
+- }catch{return!1}}function r9e(x){const t=da;try{x?localStorage[t(173)](sQ,
+- }catch{}return qSe(R,new Date()[H(153)]())},[]),w=N.place?N[n(142)][n(124)]+
+- }const jn=l_({tasks:null,loading:!1,error:null,userId:null,hidden:[],view:S3e(),detailId:null,lastFetch:0});function E5(){const x=[
+- }const LP=_b.navigator;function f9(x){return f9[
+- }const w=this.url.toString().length;return s?.name===
+- }else b=Kre++,d=
+- }else l=String.fromCharCode(o);l&&(t.push(e.slice(r,n),encodeURIComponent(l)),r=n+i+1,l=
+- }else throw new Error(`Key '${a}' not found in valueMap.`)})}function y(x,t,e){for(let l=0;l<t.length-1;l++){const s=t[l];if(s.endsWith(
+- }endPointURL(){let x=h5.appendParams(h5.appendParams(this.endPoint,this.params()),{vsn:this.vsn});return x.charAt(0)!==
+- }function _a(e,t){const n={type:
+- }function _n(e){return Ct(e&&e.line)+
+- }function Ad(x){return xU(x)?b9(x)+
+- }function an(e,t,n){const r=Le(e),i=Le(t);return r===void 0?i===void 0?n===
+- }function be(x){this.data.characterReferenceType=x.type}function Q(x){const A=this.sliceSerialize(x),L=this.data.characterReferenceType;let N;L?(N=xr(A,L===
+- }function Bl(e,t,n){let r=0,i,o;return l;function l(c){return e.enter(
+- }function Bne(){if(typeof document>
+- }function Ds(){return
+- }function e0(o,d,b,G){N0?kt?kt.push(G):kt=[G]:N0=G,d=ty(d,
+- }function e4(o){return o.data===
+- }function eLe(x){const t=ux;return xU(x)?new Date(x)[t(452)](void 0,{hour:
+- }function Et(e,t,n){const r=[];let i=-1;for(;++i<e.length;)r[i]=yr(e[i],t,n);return r.join(
+- }function fP(x){const t=ux,e=Number(x||0);return e>0&&e<.01?
+- }function Gt(e,t){const n=String(e);if(typeof t!=
+- }function Hc(o,d,b,G){if(d==null){if(G!=null){if(b!=null)throw Error(n(92));if(_(G)){if(1<G.length)throw Error(n(93));G=G[0]}b=G}b==null&&(b=
+- }function Hn(e){return!!(e!==null&&typeof e==
+- }function hse(x){const t=ux;switch(x){case t(478):return t(421);case t(388):return t(498);case t(444):return t(431);case t(449):return t(445);case t(505):return
+- }function J7(o){return h({},o,{
+- }function jr(e,t,n,r){const i=n.createTracker(r);let o=i.move(
+- }function lc(e){const t=this.stack[this.stack.length-2];if(t&&t.type===
+- }function lt(e){const t=e.options.bullet||
+- }function Me(o,d){switch(o.tag){case 26:case 27:case 5:return $(o.type);case 16:return $(
+- }function mi(x){const t=Rc,e=x[t(543)][t(526)]();if(e)return e;const n=e3e(x[t(536)]);return n?n[t(515)]>120?n[t(527)](0,120)+
+- }function nLe(x){const t=ux,e=String(x.scope||
+- }function Ps(e,t){let n=!1;return tt(e,function(r){if(
+- }function ps(o,d,b){if(d!=null&&typeof d!=
+- }function Qde(o,d){var b=o.ownerDocument;if(o.data===
+- }function S9e(){const x=gt,t=x(557);try{const e=localStorage[x(529)](t);if(e)return e;const n=typeof crypto!==x(472)&&typeof crypto.randomUUID===x(498)?crypto[x(539)]():
+- }function uee(x){return Array.isArray(x)?x.map(t=>c5(t)):[c5(x)]}function c5(x){if(typeof x==
+- }function v7(o,d){var b=d,G=0;do{var F=b.nextSibling;if(o.removeChild(b),F&&F.nodeType===8)if(b=F.data,b===
+- }function Xr(e,t){const n=Qn(e);return!!(!t.options.resourceLink&&e.url&&!e.title&&e.children&&e.children.length===1&&e.children[0].type===
+- }function Ys(e,t,n,r){return n.safe(e.value,r)}function Xs(e){const t=e.options.ruleRepetition||3;if(t<3)throw new Error(
+- }function ZLe(x,t){const e=Lb;if(x.speaker===e(517))return e(507);if(t&&m9(t.channel))return e(484);const n=aJ(x[e(506)]||(t?t.character_id:null))||
+- }function zYe(x){const t=x.getAttribute(
+- }Gr.peek=Os;function Gr(e,t,n,r){const i=e.referenceType,o=n.enter(
+- }parseEngine(){this.parsedResult.engine={};const t=_e.find(AYe,e=>{if(typeof e.test==
+- }parsePlatform(){this.parsedResult.platform={};const t=_e.find(kYe,e=>{if(typeof e.test==
+- }static getSecondMatch(t,e){const n=e.match(t);return n&&n.length>1&&n[2]||
+- }static matchAndReturnConst(t,e,n){if(t.test(e))return n}static getWindowsVersionName(t){switch(t){case
+- }Wr.peek=Fs;function Wr(e,t,n,r){const i=e.referenceType,o=n.enter(
+- }Yr.peek=Rs;function Yr(e,t,n){let r=e.value||
+- }})),l.then(x,t)}async processResponse(x){var t=this;let e=null,n=null,a=null,l=x.status,s=x.statusText;if(x.ok){var i,r;if(t.method!==
+- }}),Sje.map(I=>{const h=n,m=x===I.id,p=I.id===h(442);return c.jsxs(h(422),{type:h(422),role:h(423),
+- }}).catch(()=>null),g[C(264)][C(252)](_),m(S=>({...S,[_]:!1}))}return j?(await W(),M[C(275)](
+- }});return this._returnResult({data:{user:null,session:null,messageId:I?.message_id},error:h})}throw new vy(
+- }})}async startBot(t){this.needsInit()&&await this.initDevices(),this._transport.state=
+- }})}replyText(t){const e=R0;if(this.closed||!t)return;this[e(468)]=!1;const n=this[e(460)]();if(this[e(453)]=null,!this[e(454)]){const a={id:ri(
+- }},d4e=()=>{const x=L2;try{return localStorage.getItem(x(197))||
+- }},g=async()=>{const J=t,C=await lh(UF(),n);if(C===null)return J(432);if(!C)return
+- }},hNe=class extends om{constructor(x,t={},e){const n=x.replace(/\/$/,
+- }},IBe=x=>{const t=ca,e=x?.[t(210)]??x?.[t(219)]?.[t(250)];return!e||typeof e!==t(270)?
+- }},j_=x=>{const t=ur,e=new Date(x),n=e.toLocaleDateString(t(533),{weekday:t(411),day:t(450),month:t(411),year:
+- }},jUe=x=>{const t=M9,e=Math[t(618)](0,Math[t(478)](x/1e3));return String(Math.floor(e/60))[t(542)](2,
+- }},UQe=async()=>{const x=rI;try{const t=await Kle(navigator[x(455)][x(467)](),1200,[]),e=t[x(423)](a=>a[x(430)]!==x(438)&&a[x(430)]!==
+- }},uw=async x=>{const t=L2;if(Su())return;const e=await r4e(),n=await fetch(i4e,{method:t(195),headers:{
+- }},ZVe=(x,t)=>{const e=Te;if(!Zn(x))return{problem:e(421)+t+
+- }};default:throw new Error(
+- }};return c.jsxs(e(422),{className:e(379),children:[c.jsx(e(422),{className:
+- }}async negotiate(t){const e=b0,n=this.pc,a=this[e(264)];if(!n||!a)throw new Hh(
+- }}class Hh extends h2{constructor(t){super(t??
+- }}const h=String(I[e(450)]||r);if(I[e(444)]){if(I[e(518)])return{ok:!0,taskId:h,joined:!0,duplicate:!0};const g=EL(h,i2);return g&&BA(h,{summary:
+- }}const hb=x=>x===fW(375)?
+- }}const pt=/version\/(\d+(\.?_?\d+)+)/i,YYe=[{test:[/gptbot/i],describe(x){const t={name:
+- }}else if(i[1].type===
+- }}else return new Promise(l=>{var s,i,r;const u=this.channelAdapter.push(t.type,t,e.timeout||this.timeout);t.type===
+- }}function ci(){return{type:
+- }}function di(){return{type:
+- }}function ee(o){try{var d=
+- }}function fi(){return{type:
+- }}function Ms(o){var d=o.type;return(o=o.nodeName)&&o.toLowerCase()===
+- }}function si(){return{type:
+- }}function st(){return{type:
+- }}function ui(){return{type:
+- }}isConnected(){return this.connectionState()===
+- }}static getVersionPrecision(t){return t.split(
+- }}static getWebSocketConstructor(){const t=this.detectEnvironment();if(t.wsConstructor)return t.wsConstructor;let e=t.error||
+- }}},{test(x){const t=Number(String(x.getOSVersion()).split(
+- }}},{test(x){return x.getBrowserName(!0)===
+- }}},{test(x){return x.getOSName(!0)===
+- }}},{test:[/huawei/i],describe(x){const t=_e.getFirstMatch(/(can-l01)/i,x)&&
+- }}},{test:[/kftt build/i],describe(){return{type:mt.tablet,vendor:
+- }}},{test:[/Macintosh(.*?) FxiOS(.*?)\//],describe(){return{type:mt.tablet,vendor:
+- }}},{test:[/Nokia/i],describe(x){const t=_e.getFirstMatch(/Nokia\s+([0-9]+(\.[0-9]+)?)/i,x),e={type:mt.mobile,vendor:
+- · ALLOW STONIC THROUGH YOUR FIREWALL
+- · CHECK WI-FI OR ETHERNET CABLE
+- · click to 
+- · DISABLE VPN / PROXY IF ACTIVE
+- · optional
+- ðŸ”§ Executing: 
+- — choose one, or write your own
+- • Notices the app in front and how long you have been at it. Sometimes looks at your screen.
+- • Takes a few quick webcam photos each time it checks on you. Turn that off in Settings → Camera.
+- → Detail: 
+- → Likely cause: 
+- → Mic permission ya device check karein (System Settings → Privacy → Microphone).
+- ⏳ Server ne goAway bheja — socket band hone wali hai (uptime 
+- ⏹️ Google ne 
+- ★ today
+- ⚠️ Tool issue (retryable): 
+- ✓ Multimodal message sent: 
+- ✕ CLOSE_
+- ❌ Tool failed: 
+- 👏 Clap activation armed — double-clap to start the assistant.
+- 👏👏 Double-clap detected — starting voice assistant.
+- 💤 AI is going to sleep — ending live session by self-request.
+- 💥 Tool crashed: 
+- 🔁 Repeated tool call blocked: 
+- 🔄 Live socket band hui (
+- 🔄 Live socket rotate ho raha hai. Guftagu resume handle se jari rahegi.
+- 🔍 Google Search (built-in): "
+- 🔍 web_search (Stonic Cloud): "
+- 🛠️ agent_task_resume
+- 🧠 follow_up
+- 🧠 follow_up → 
+- 🧠 Grep 
+- 🧠 Grep → koi jawab nahi (
+- 🧠 memory 
+- 🧠 Recall Agent nahi chala — 
+- 🧠 remember
+- 🧠 remember (forget) → 
+- 🧠 remember (forget): "
+- 🧠 remember → 

@@ -50,7 +50,8 @@ export function listSystemVoices(): SpeechSynthesisVoice[] {
 }
 
 /**
- * The voice to use: the one the user picked, else (for the JARVIS persona) a
+ * The voice to use: the one the user picked, else (for the companion) a female
+ * English voice such as "Microsoft Aria/Jenny", else (for the JARVIS persona) a
  * British male voice such as "Microsoft George/Ryan" or "Daniel", else any
  * English voice.
  */
@@ -62,6 +63,11 @@ export function pickSystemVoice(preferredName: string, persona: string): SpeechS
   if (voicePrefs.language === 'urdu') {
     const urdu = voices.find((v) => /^ur/i.test(v.lang)) ?? voices.find((v) => /^hi/i.test(v.lang));
     if (urdu) return urdu;
+  }
+  if (persona === 'companion') {
+    const english = voices.filter((v) => /^en/i.test(v.lang));
+    const female = english.find((v) => /aria|jenny|zira|sonia|libby|samantha|karen|moira|female|natural.*(aria|jenny)/i.test(v.name));
+    if (female) return female;
   }
   if (persona === 'jarvis') {
     const british = voices.filter((v) => /en[-_]GB/i.test(v.lang));

@@ -1,4 +1,8 @@
 use std::sync::Arc;
+mod awareness_sensor;
+mod hand_control;
+mod presence;
+
 use std::time::Duration;
 use tauri::menu::{MenuBuilder, MenuItemBuilder};
 use tauri::tray::TrayIconBuilder;
@@ -343,6 +347,80 @@ static BUNDLED_RESOURCE_DIR: std::sync::OnceLock<std::path::PathBuf> = std::sync
 fn bundled_backend_dir() -> Option<std::path::PathBuf> {
     let dir = BUNDLED_RESOURCE_DIR.get()?.join("backend");
     dir.join("pyproject.toml").is_file().then_some(dir)
+}
+
+// ---------------------------------------------------------------------------
+// Stonic media resources (Phase 1 of /STONIC_PORT_PLAN.md)
+// ---------------------------------------------------------------------------
+
+/// Subfolders of `stonic/` the frontend may ask for. An allow-list rather than
+/// a free path, so a renderer bug or an injected string cannot turn this into
+/// an arbitrary file read.
+const STONIC_ASSET_KINDS: [&str; 1] = ["video"];
+
+/// Reject anything that is not a plain file name: no separators, no `..`, no
+/// absolute paths, no leading dot. Pure, so it is tested directly.
+fn is_safe_asset_name(name: &str) -> bool {
+    !name.is_empty()
+        && name.len() <= 128
+        && !name.starts_with('.')
+        && !name.contains("..")
+        && !name.contains('/')
+        && !name.contains('\\')
+        && !name.contains('\0')
+        && !name.contains(':')
+}
+
+/// Resolve `stonic/<kind>/<name>` under a resource root. Pure.
+fn stonic_asset_in(
+    root: &std::path::Path,
+    kind: &str,
+    name: &str,
+) -> Option<std::path::PathBuf> {
+    if !STONIC_ASSET_KINDS.contains(&kind) || !is_safe_asset_name(name) {
+        return None;
+    }
+    let path = root.join("stonic").join(kind).join(name);
+    path.is_file().then_some(path)
+}
+
+/// The Tesseract OCR binary under a resource root, if this build bundles it.
+/// Windows CI stages it at `tesseract/` (see build-apps.yml). Pure.
+fn tesseract_in(root: &std::path::Path) -> Option<std::path::PathBuf> {
+    let exe = if cfg!(target_os = "windows") {
+        "tesseract.exe"
+    } else {
+        "tesseract"
+    };
+    let path = root.join("tesseract").join(exe);
+    path.is_file().then_some(path)
+}
+
+/// Bundled Tesseract, forwarded to the backend as `GHOST_TESSERACT` so the
+/// computer-use OCR probe finds the copy that ships with the app before
+/// falling back to PATH.
+fn bundled_tesseract() -> Option<String> {
+    let root = BUNDLED_RESOURCE_DIR.get()?;
+    tesseract_in(root).map(|p| p.to_string_lossy().into_owned())
+}
+
+/// Absolute path to a bundled Stonic media file, or `None` when this build
+/// does not ship it. The frontend passes the result through `convertFileSrc`.
+#[tauri::command]
+fn stonic_asset_path(kind: String, name: String) -> Option<String> {
+    let root = BUNDLED_RESOURCE_DIR.get()?;
+    stonic_asset_in(root, &kind, &name).map(|p| p.to_string_lossy().into_owned())
+}
+
+/// Whether the Windows-only Stonic helpers shipped beside the executable.
+/// Phase 2 needs `elevate` for the computer-use agent; reporting it here lets
+/// Settings show the real state instead of failing at first use.
+#[tauri::command]
+fn stonic_helpers() -> std::collections::BTreeMap<String, bool> {
+    ["elevate", "swap-helper"]
+        .into_iter()
+        .map(|name| (name.to_string(), bundled_helper(name).is_some()))
+        .collect()
 }
 
 /// Directories never copied out of the bundle (build/cache output).
@@ -1812,6 +1890,10 @@ async fn boot_backend(backend: SharedBackend, status: SharedStatus) {
     for (key, value) in cloud_keys_for_inference(&cfg) {
         cmd.env(&key, &value);
     }
+    // Bundled Tesseract OCR (Windows builds), for computer use.
+    if let Some(tesseract) = bundled_tesseract() {
+        cmd.env("GHOST_TESSERACT", tesseract);
+    }
     let ghost_child = spawn_owned_child(&mut cmd);
 
     match ghost_child {
@@ -2078,6 +2160,77 @@ async fn restart_backend_if_configured(backend: &SharedBackend, status: &SharedS
 #[tauri::command]
 fn get_phone_access() -> PhoneAccess {
     read_phone_access()
+}
+
+// ---------------------------------------------------------------------------
+// Stonic port feature flags (see /STONIC_PORT_PLAN.md)
+// ---------------------------------------------------------------------------
+
+/// Flags the shell is allowed to read, mirroring `_STONIC_FLAG_NAMES` in
+/// `src/ghost/server/api_routes.py`. Listed explicitly so that adding an
+/// internal field to `StonicConfig` cannot widen this surface by accident.
+const STONIC_FLAG_NAMES: [&str; 11] = [
+    "ui_sounds",
+    "characters",
+    "computer_use",
+    "computer_overlay",
+    "realtime_voice",
+    "wake_word",
+    "facelock",
+    "gestures",
+    "awareness",
+    "desktop_presence",
+    "memory_v2",
+];
+
+/// Read the `[stonic]` flags out of a config.toml string. Pure.
+///
+/// Anything missing, non-boolean or unparseable reads as `false`, so a hand-
+/// edited or truncated config degrades to Ghost's own behaviour rather than
+/// switching a ported subsystem on by accident. `computer_overlay` is the one
+/// flag whose Python default is `true`, but it only applies while
+/// `computer_use` is on, so defaulting it to `false` here is still inert.
+/// One `[stonic]` flag, read from disk with a 2 s cache (the sensor asks every pass).
+fn stonic_flag_on(name: &str) -> bool {
+    use std::sync::Mutex;
+    use std::time::{Duration, Instant};
+    type Cache = Option<(Instant, std::collections::BTreeMap<String, bool>)>;
+    static CACHE: Mutex<Cache> = Mutex::new(None);
+    let mut cache = CACHE.lock().unwrap_or_else(|e| e.into_inner());
+    let fresh = matches!(&*cache, Some((at, _)) if at.elapsed() < Duration::from_secs(2));
+    if !fresh {
+        let text = std::fs::read_to_string(ghost_config_toml_path()).unwrap_or_default();
+        *cache = Some((Instant::now(), stonic_flags_from_config(&text)));
+    }
+    cache
+        .as_ref()
+        .and_then(|(_, f)| f.get(name).copied())
+        .unwrap_or(false)
+}
+
+fn stonic_flags_from_config(existing: &str) -> std::collections::BTreeMap<String, bool> {
+    let mut flags: std::collections::BTreeMap<String, bool> = STONIC_FLAG_NAMES
+        .iter()
+        .map(|name| ((*name).to_string(), false))
+        .collect();
+    let Ok(doc) = existing.parse::<toml_edit::DocumentMut>() else {
+        return flags;
+    };
+    let Some(section) = doc.get("stonic") else {
+        return flags;
+    };
+    for name in STONIC_FLAG_NAMES {
+        let on = section.get(name).and_then(|v| v.as_bool()).unwrap_or(false);
+        flags.insert(name.to_string(), on);
+    }
+    flags
+}
+
+#[tauri::command]
+fn stonic_flags() -> std::collections::BTreeMap<String, bool> {
+    let path = ghost_config_toml_path();
+    let text = std::fs::read_to_string(path).unwrap_or_default();
+    stonic_flags_from_config(&text)
 }
 
 /// Turn phone access on/off (or issue a new key) and restart the server so it
@@ -3814,9 +3967,32 @@ pub fn run() {
                 tauri::async_runtime::spawn(start_managed_boot(boot_backend_ref, boot_status_ref));
             }
 
+            // Phase 5: awareness sensor and desktop presence. Both idle until
+            // their [stonic] flag is on.
+            tauri::async_runtime::spawn(awareness_sensor::run(
+                || stonic_flag_on("awareness"),
+                format!("http://127.0.0.1:{GHOST_PORT}/v1/awareness/signals"),
+            ));
+            presence::start(app.handle().clone());
+            if let Some(main) = app.get_webview_window("main") {
+                let handle = app.handle().clone();
+                main.on_window_event(move |event| presence::on_main_event(&handle, event));
+            }
+
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
+            hand_control::hand_screen_size,
+            presence::presence_state,
+            presence::presence_set_prefs,
+            presence::presence_hit,
+            presence::presence_command,
+            presence::presence_snapshot,
+            hand_control::hand_mouse_move,
+            hand_control::hand_mouse_button,
+            hand_control::hand_mouse_click,
+            hand_control::hand_scroll,
+            hand_control::hand_release,
             get_setup_status,
             get_api_base,
             start_backend,
@@ -3848,6 +4024,9 @@ pub fn run() {
             hide_overlay,
             get_overlay_conversation,
             get_phone_access,
+            stonic_flags,
+            stonic_asset_path,
+            stonic_helpers,
             set_phone_access,
         ])
         .build(tauri::generate_context!())
@@ -3931,6 +4110,164 @@ mod tests {
             assert!(!plan.launch_ollama);
             assert!(plan.engine_host.is_none());
             assert_eq!(plan.serve_args, vec!["--engine", "cloud", "--model", "deepseek-v4-flash", "--agent", "simple"]);
+        }
+    }
+
+    mod stonic_flags {
+        use super::super::{stonic_flags_from_config, STONIC_FLAG_NAMES};
+
+        #[test]
+        fn empty_config_reports_every_flag_off() {
+            let flags = stonic_flags_from_config("");
+            assert_eq!(flags.len(), STONIC_FLAG_NAMES.len());
+            assert!(flags.values().all(|on| !on));
+        }
+
+        #[test]
+        fn missing_stonic_section_reports_every_flag_off() {
+            let flags = stonic_flags_from_config("[engine]\ndefault = \"ollama\"\n");
+            assert!(flags.values().all(|on| !on));
+        }
+
+        #[test]
+        fn reads_enabled_flags_and_leaves_the_rest_off() {
+            let flags = stonic_flags_from_config(
+                "[stonic]\ncomputer_use = true\nawareness = true\n",
+            );
+            assert_eq!(flags.get("computer_use"), Some(&true));
+            assert_eq!(flags.get("awareness"), Some(&true));
+            assert_eq!(flags.get("memory_v2"), Some(&false));
+            assert_eq!(flags.get("realtime_voice"), Some(&false));
+        }
+
+        #[test]
+        fn non_boolean_values_read_as_off() {
+            let flags = stonic_flags_from_config(
+                "[stonic]\ncomputer_use = \"true\"\nfacelock = 1\ngestures = true\n",
+            );
+            assert_eq!(flags.get("computer_use"), Some(&false));
+            assert_eq!(flags.get("facelock"), Some(&false));
+            assert_eq!(flags.get("gestures"), Some(&true));
+        }
+
+        #[test]
+        fn unparseable_config_reports_every_flag_off() {
+            let flags = stonic_flags_from_config("[stonic\ncomputer_use = tru");
+            assert_eq!(flags.len(), STONIC_FLAG_NAMES.len());
+            assert!(flags.values().all(|on| !on));
+        }
+
+        #[test]
+        fn unknown_keys_do_not_widen_the_flag_set() {
+            let flags = stonic_flags_from_config("[stonic]\nnot_a_flag = true\n");
+            assert_eq!(flags.len(), STONIC_FLAG_NAMES.len());
+            assert!(flags.get("not_a_flag").is_none());
+            assert!(flags.values().all(|on| !on));
+        }
+
+        #[test]
+        fn nested_runtime_table_does_not_disturb_flags() {
+            let flags = stonic_flags_from_config(
+                "[stonic]\nrealtime_voice = true\n\n[stonic.voice_runtime]\nauto_install = false\n",
+            );
+            assert_eq!(flags.get("realtime_voice"), Some(&true));
+            assert!(flags.get("auto_install").is_none());
+        }
+
+        #[test]
+        fn safe_asset_names_accept_the_shipped_videos() {
+            for name in [
+                "stonic-ai-engine-guide.mp4",
+                "light-female-1.mp4",
+                "light-female-1r.mp4",
+            ] {
+                assert!(super::super::is_safe_asset_name(name), "{name}");
+            }
+        }
+
+        #[test]
+        fn unsafe_asset_names_are_rejected() {
+            for name in [
+                "",
+                ".hidden",
+                "../secrets",
+                "../../etc/passwd",
+                "a/b.mp4",
+                "a\\b.mp4",
+                "C:/windows/system32/config",
+                "with\0null",
+                "..",
+            ] {
+                assert!(!super::super::is_safe_asset_name(name), "{name:?}");
+            }
+        }
+
+        #[test]
+        fn overlong_asset_names_are_rejected() {
+            let long = format!("{}.mp4", "a".repeat(200));
+            assert!(!super::super::is_safe_asset_name(&long));
+        }
+
+        #[test]
+        fn asset_lookup_rejects_an_unknown_kind() {
+            let dir = std::env::temp_dir();
+            assert!(super::super::stonic_asset_in(&dir, "audio", "x.wav").is_none());
+            assert!(super::super::stonic_asset_in(&dir, "../", "x.wav").is_none());
+        }
+
+        #[test]
+        fn asset_lookup_finds_a_file_that_exists() {
+            let root = std::env::temp_dir().join("ghost-stonic-asset-test");
+            let dir = root.join("stonic").join("video");
+            std::fs::create_dir_all(&dir).unwrap();
+            let file = dir.join("clip.mp4");
+            std::fs::write(&file, b"x").unwrap();
+            assert_eq!(
+                super::super::stonic_asset_in(&root, "video", "clip.mp4"),
+                Some(file)
+            );
+            assert!(super::super::stonic_asset_in(&root, "video", "absent.mp4").is_none());
+            std::fs::remove_dir_all(&root).ok();
+        }
+
+        #[test]
+        fn tesseract_is_found_under_the_resource_root() {
+            let root = std::env::temp_dir().join("ghost-tesseract-test");
+            let dir = root.join("tesseract");
+            std::fs::create_dir_all(&dir).unwrap();
+            let exe = if cfg!(target_os = "windows") { "tesseract.exe" } else { "tesseract" };
+            std::fs::write(dir.join(exe), b"x").unwrap();
+            assert_eq!(super::super::tesseract_in(&root), Some(dir.join(exe)));
+            std::fs::remove_dir_all(&root).ok();
+        }
+
+        #[test]
+        fn missing_tesseract_is_none() {
+            let root = std::env::temp_dir().join("ghost-no-tesseract-here");
+            assert!(super::super::tesseract_in(&root).is_none());
+        }
+
+        #[test]
+        fn flag_names_match_the_python_surface() {
+            // Keep in step with _STONIC_FLAG_NAMES in api_routes.py.
+            let mut names = STONIC_FLAG_NAMES.to_vec();
+            names.sort_unstable();
+            assert_eq!(
+                names,
+                vec![
+                    "awareness",
+                    "characters",
+                    "computer_overlay",
+                    "computer_use",
+                    "desktop_presence",
+                    "facelock",
+                    "gestures",
+                    "memory_v2",
+                    "realtime_voice",
+                    "ui_sounds",
+                    "wake_word",
+                ]
+            );
         }
     }
 

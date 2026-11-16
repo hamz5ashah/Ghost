@@ -1,0 +1,119 @@
+# Ghost realtime voice engine (talk-only) — Phase 3 of STONIC_PORT_PLAN.md.
+# Stonic's pinned set, minus the agent brain's packages, which Ghost does not
+# port: claude-agent-sdk, jsonschema, jsonschema-specifications, mcp, mcp-types, pyjwt, python-multipart, pywin32, referencing, rpds-py, sse-starlette.
+# Without claude-agent-sdk the runtime no longer carries its bundled claude.exe
+# (~342 MB). Install with --no-deps, as Stonic did (reasons in its notes below).
+#
+# Stonic Voice (Beta) engine ke packages — scripts/setup-voice-runtime.js inhein
+# voice-runtime/venv mein lagata hai.
+#
+# Har package ka version jama hua hai: ye wohi versions hain jin par Voice Lab
+# (voice-lab/) aur engine ke test chale (12 Oct 2026). Naya version lena ho to
+# pehle lab mein aazmao, phir yahan poori list dobara banao:
+#
+#   uv pip compile requirements.in -c <lab ka `uv pip freeze`> --python-version 3.11
+#   requirements.in:  pipecat-ai[anthropic,google,webrtc]==1.12.0 / fastapi / uvicorn
+#
+# Install `--no-deps` se hota hai, kyunke chhe packages jaan bujh kar yahan NAHI:
+#
+#   numba, llvmlite, resampy     Pipecat ka doosra resampler; engine soxr istemal karta hai
+#   opencv-python-headless       video ke liye; Beta mein sirf awaaz hai
+#   sympy, mpmath                onnxruntime ke auzaar; model chalane mein nahi lagte
+#
+# Pipecat inhein apni zaroorat likhta hai magar awaaz ki pipeline inhein kabhi
+# load nahi karti — asli baat-cheet ke dauran naapa hua (sys.modules), aur ye
+# akele 268 MB hain (poore runtime ka aadha). stonic-computer/requirements.txt
+# mein gui-agents ke saath yehi kiya gaya hai. Setup script install ke baad
+# tests/selftest.py isi venv se chalata hai, taake koi zaroori cheez reh gayi
+# ho to build wahin ruk jaye.
+#
+# Agent ka dimagh (13 Oct 2026; 5 Nov 2026 se dono voice assistants — New aur
+# Classic — isi par): `claude-agent-sdk` aur us ke saathi — mcp,
+# mcp-types, jsonschema (+ jsonschema-specifications, referencing, rpds-py),
+# pyjwt, python-multipart, pywin32, sse-starlette. SDK ke andar Claude Code ki
+# apni binary aati hai (`_bundled/claude.exe`, ~245 MB) — dimagh wohi process
+# hai, is liye Node.js ki zaroorat nahi. Version badlo to stonic_voice/agent.py
+# ke test (tests/agent_live.py) asli key ke saath dobara chalao.
+aiofiles==25.1.0
+aiohappyeyeballs==2.7.1
+aiohttp==3.14.5
+aioice==0.10.2
+aiortc==1.15.0
+aiosignal==1.4.0
+annotated-doc==0.0.5
+annotated-types==0.8.0
+anthropic==1.13.0
+anyio==4.15.1
+attrs==26.1.0
+av==17.1.0
+certifi==2026.7.22
+cffi==2.1.1
+charset-normalizer==3.5.2
+click==8.5.0
+colorama==0.4.6
+cryptography==50.0.2
+distro==1.9.0
+dnspython==2.9.0
+docopt==0.6.2
+docstring-parser==0.18.0
+fastapi==0.143.0
+flatbuffers==25.12.19
+frozenlist==1.8.0
+google-api-core==2.42.0
+google-auth==2.61.0
+google-cloud-speech==2.41.0
+google-cloud-texttospeech==2.38.0
+google-crc32c==1.9.0
+google-genai==2.29.0
+googleapis-common-protos==1.75.5
+grpcio==1.84.0
+grpcio-status==1.84.0
+h11==0.16.0
+httpcore==1.0.9
+httpcore2==2.13.1
+httpx==0.28.1
+httpx2==2.13.1
+idna==3.20
+ifaddr==0.2.0
+jiter==0.17.0
+loguru==0.7.3
+loudness==0.2.0
+markdown==3.11
+multidict==7.1.0
+num2words==0.5.14
+numpy==2.4.6
+onnxruntime==1.24.4
+openai==3.28.0
+opentelemetry-api==1.45.1
+packaging==26.3
+pillow==12.3.0
+pipecat-ai==1.12.0
+propcache==0.5.4
+proto-plus==1.29.0
+protobuf==6.33.6
+pyasn1==0.6.4
+pyasn1-modules==0.4.2
+pycparser==3.11
+pydantic==2.14.0
+pydantic-core==2.50.0
+pyee==13.0.1
+pylibsrtp==1.0.0
+pyopenssl==26.4.0
+python-dotenv==1.2.4
+pyyaml==6.0.3
+requests==2.34.2
+sentencex==1.0.31
+sniffio==1.3.1
+soundfile==0.13.1
+soxr==1.0.0
+starlette==1.7.0
+tenacity==9.1.4
+truststore==0.10.4
+typing-extensions==4.16.0
+typing-inspection==0.4.4
+urllib3==2.8.0
+uvicorn==0.54.0
+wait-for2==0.4.1
+websockets==16.1.1
+win32-setctime==1.2.0
+yarl==1.25.1

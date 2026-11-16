@@ -20,6 +20,10 @@ import { UpdateChecker } from './components/Desktop/UpdateChecker';
 import { track, hashId } from './lib/analytics';
 import { offerAnalyticsChoice } from './lib/analytics-invitation';
 import { LEADERBOARD_ENABLED } from './lib/supabase';
+import { useStonicSounds } from './hooks/useStonicSounds';
+import { useWakeWord } from './hooks/useWakeWord';
+import { FaceLockGate } from './components/facelock/FaceLockGate';
+import { useAwareness } from './hooks/useAwareness';
 
 export default function App() {
   // The app always opens straight to the main screen. On the desktop, model
@@ -49,7 +53,14 @@ export default function App() {
   // Android app: nothing works until the phone is paired with a Ghost PC.
   const needsMobileConnect = isMobileApp() && !settings.apiUrl;
 
+  // Stonic UI sounds. No-op unless the `ui_sounds` flag is on.
+  useStonicSounds();
+  useWakeWord();
+
   // Read-aloud uses the voice/persona chosen in Settings → Assistant.
+  // Phase 5: awareness lines and desktop-presence relay (no-op unless their flags are on).
+  useAwareness();
+
   useEffect(() => {
     setVoicePreferences({
       voiceName: settings.voiceName,
@@ -218,6 +229,7 @@ export default function App() {
       {optInModalOpen && (
         <OptInModal onClose={() => setOptInModalOpen(false)} />
       )}
+      <FaceLockGate />
     </>
   );
 }

@@ -22,9 +22,10 @@ TTS_BACKEND_ORDER = ("kokoro_onnx", "kokoro", "openai_tts", "cartesia", "elevenl
 # only to ``speech.tts_backend``; if synthesis falls back to another backend we
 # use that backend's own default rather than passing an unrecognized ID through.
 BACKEND_DEFAULT_VOICE = {
-    "kokoro_onnx": "bm_george",  # British male (same voices as kokoro)
-    "kokoro": "bm_george",  # British male
-    "openai_tts": "onyx",  # deepest OpenAI preset
+    # Ghost's default companion is female; a fallback keeps her voice female.
+    "kokoro_onnx": "af_heart",  # American female (same voices as kokoro)
+    "kokoro": "af_heart",  # American female
+    "openai_tts": "nova",  # warm female OpenAI preset
     "cartesia": "",  # no safe static default; let Cartesia choose
     "elevenlabs": "JBFqnCBsd6RMkjVDRZzb",  # "George", British male
 }

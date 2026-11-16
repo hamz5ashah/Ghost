@@ -40,7 +40,7 @@ def test_registered_and_preferred_for_fallback():
     importlib.reload(k)
     assert TTSRegistry.contains("kokoro_onnx")
     assert TTS_BACKEND_ORDER[0] == "kokoro_onnx"
-    assert default_voice_for("kokoro_onnx") == "bm_george"
+    assert default_voice_for("kokoro_onnx") == "af_heart"
 
 
 def test_synthesize_uses_british_english_for_b_voices(tmp_path, monkeypatch):
@@ -58,9 +58,9 @@ def test_synthesize_uses_british_english_for_b_voices(tmp_path, monkeypatch):
     result = backend.synthesize("Good evening, sir.", voice_id="bm_lewis", speed=1.0)
     assert {k: calls[k] for k in ("voice", "lang", "speed")} == {"voice": "bm_lewis", "lang": "en-gb", "speed": 1.0}
     assert result.format == "wav" and result.voice_id == "bm_lewis"
-    # Unknown voices fall back to the default British male voice.
+    # Unknown voices fall back to the default voice (Heart, American female).
     backend.synthesize("Hi", voice_id="nope")
-    assert calls["voice"] == "bm_george"
+    assert calls["voice"] == "af_heart"
 
 
 def test_elevenlabs_catalog_parses_names_and_labels():
@@ -103,3 +103,22 @@ def test_urdu_text_uses_urdu_phonemizer_and_voice(tmp_path, monkeypatch):
     # Urdu voice chosen: it speaks everything, English runs in English.
     backend.synthesize("سسٹم OK ہے", voice_id="hf_alpha")
     assert seen == [("سسٹم", "hf_alpha", "ur"), ("OK", "hf_alpha", "en-us"), ("ہے", "hf_alpha", "ur")]
+
+
+def test_urdu_runs_keep_the_voice_gender(tmp_path, monkeypatch):
+    np = pytest.importorskip("numpy")
+    seen = []
+
+    class FakeEngine:
+        def create(self, text, voice, speed, lang):
+            seen.append((voice, lang))
+            return np.zeros(240, dtype="float32"), 24000
+
+    backend = k.KokoroOnnxTTSBackend(model_path=str(tmp_path))
+    monkeypatch.setattr(backend, "_load", lambda: FakeEngine())
+    backend.synthesize("Hello. السلام علیکم", voice_id="af_heart")
+    assert seen == [("af_heart", "en-us"), ("hf_alpha", "ur")]
+    seen.clear()
+    backend.synthesize("Hello. السلام علیکم", voice_id="am_adam")
+    assert seen == [("am_adam", "en-us"), ("hm_omega", "ur")]
+    assert k.DEFAULT_VOICE == "af_heart" and k.DEFAULT_URDU_VOICE == "hf_alpha"

@@ -25,7 +25,13 @@
       }
     ],
     "security": {
-      "csp": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' http: https: ws: wss:; img-src 'self' data: blob:; media-src 'self' blob:"
+      "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self' http: https: ws: wss:; img-src 'self' data: blob:; media-src 'self' blob: asset: http://asset.localhost",
+      "assetProtocol": {
+        "enable": true,
+        "scope": [
+          "$RESOURCE/stonic/video/*"
+        ]
+      }
     }
   },
   "bundle": {
@@ -67,7 +73,8 @@
       "../../rust/rust-toolchain.toml": "backend/rust/rust-toolchain.toml",
       "../../rust/crates/": "backend/rust/crates/",
       "../../scripts/install/": "backend/scripts/install/",
-      "../../deploy/windows/": "backend/deploy/windows/"
+      "../../deploy/windows/": "backend/deploy/windows/",
+      "resources/stonic/video/": "stonic/video/"
     }
   },
   "plugins": {

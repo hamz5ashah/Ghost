@@ -98,8 +98,53 @@ jobs:
           cp "$(command -v uv)" frontend/src-tauri/binaries/uv-bundle/uv.exe
           frontend/src-tauri/binaries/uv-bundle/uv.exe --version
 
+      # Tesseract OCR for computer use (STONIC_PORT_PLAN.md, phase 2). Stonic's
+      # installer claimed OCR but shipped only the pytesseract wrapper, so
+      # text selection failed mid-task on every machine without Tesseract.
+      # Ghost ships the engine itself: tesseract.exe, its DLLs and English
+      # data only (no training tools, no other languages).
+      - name: Stage Tesseract OCR
+        shell: bash
+        run: |
+          set -euo pipefail
+          choco install tesseract -y --no-progress
+          SRC="/c/Program Files/Tesseract-OCR"
+          [ -f "$SRC/tesseract.exe" ] || { echo "::error::Tesseract install not found at $SRC"; exit 1; }
+          DEST=frontend/src-tauri/binaries/tesseract
+          mkdir -p "$DEST/tessdata"
+          cp "$SRC/tesseract.exe" "$DEST/"
+          cp "$SRC"/*.dll "$DEST/"
+          cp "$SRC/tessdata/eng.traineddata" "$DEST/tessdata/"
+          du -sh "$DEST"
+
+          # Prove the *staged* copy works on its own. PATH is cut to System32
+          # so a DLL left behind cannot be borrowed from the choco install
+          # folder (which choco puts on PATH) and hide a broken bundle.
+          powershell.exe -NoProfile -Command '
+            Add-Type -AssemblyName System.Drawing
+            $bmp = New-Object System.Drawing.Bitmap 900, 160
+            $g = [System.Drawing.Graphics]::FromImage($bmp)
+            $g.Clear([System.Drawing.Color]::White)
+            $font = New-Object System.Drawing.Font("Arial", 48)
+            $g.DrawString("GHOST OCR WORKS", $font, [System.Drawing.Brushes]::Black, 20, 40)
+            $bmp.Save("ocr-probe.png", [System.Drawing.Imaging.ImageFormat]::Png)
+          '
+          OUT=$(PATH="/c/Windows/System32:/c/Windows" TESSDATA_PREFIX="$(cygpath -w "$DEST/tessdata")" \
+                "$DEST/tesseract.exe" ocr-probe.png stdout 2>/dev/null | tr -d '\r')
+          echo "OCR read: $OUT"
+          echo "$OUT" | grep -qi "GHOST OCR WORKS" || { echo "::error::Staged Tesseract could not read the probe image"; exit 1; }
+          PATH="/c/Windows/System32:/c/Windows" "$DEST/tesseract.exe" --list-langs \
+            --tessdata-dir "$(cygpath -w "$DEST/tessdata")" | grep -qx eng \
+            || { echo "::error::Staged Tesseract has no eng data"; exit 1; }
+          echo "Staged Tesseract runs on its own and reads English."
+
       # The Ollama runtime (lib/ollama, CPU + Vulkan) must sit beside
       # ollama.exe; uv.exe goes beside Ghost so the app finds both.
+      # The Stonic helpers (elevate.exe, swap-helper.exe) are Windows-only, so
+      # they are mapped here rather than in tauri.conf.json — that file is
+      # shared with the macOS/Linux jobs, where these binaries do not exist.
+      # Landing them in "./" puts them beside the exe, which is exactly where
+      # bundled_helper() in src/lib.rs looks.
       - name: Write build config
         shell: bash
         run: |
@@ -112,7 +157,9 @@ jobs:
               "resources": {
                 "../../wheels/": "backend/wheels/",
                 "binaries/ollama-runtime-x86_64-pc-windows-msvc/": "./",
-                "binaries/uv-bundle/uv.exe": "uv.exe"
+                "binaries/uv-bundle/uv.exe": "uv.exe",
+                "resources/stonic/win32/": "./",
+                "binaries/tesseract/": "tesseract/"
               }
             }
           }
@@ -134,7 +181,8 @@ jobs:
         run: |
           7z l out/*.exe > contents.txt
           for f in ghost-desktop.exe ollama.exe uv.exe lib/ollama/ggml-base.dll \
-                   backend/pyproject.toml backend/wheels/ghost_rust-; do
+                   backend/pyproject.toml backend/wheels/ghost_rust- \
+                   tesseract/tesseract.exe tesseract/tessdata/eng.traineddata; do
             if ! grep -qF "${f//\//\\}" contents.txt && ! grep -qF "$f" contents.txt; then
               echo "::error::Installer is missing $f"; exit 1
             fi
@@ -182,6 +230,9 @@ jobs:
           export GHOST_HOME="$RUNNER_TEMP/ghost home"
           mkdir -p "$GHOST_HOME"
           printf '[engine]\ndefault = "lmstudio"\n' > "$GHOST_HOME/config.toml"
+          # As the desktop shell does at spawn: point the backend at the
+          # bundled OCR engine (lib.rs, bundled_tesseract).
+          export GHOST_TESSERACT="$(cygpath -w "$APP/tesseract/tesseract.exe")"
           "$APP/uv.exe" run ghost serve --port 8765 --model mock-model > serve.log 2>&1 &
           for i in $(seq 1 60); do curl -sf http://127.0.0.1:8765/health && break; sleep 2; done
           curl -sf http://127.0.0.1:8765/health || { cat serve.log; echo "::error::Ghost server did not start"; exit 1; }
@@ -189,6 +240,11 @@ jobs:
           curl -sf http://127.0.0.1:8765/v1/chat/completions -H 'Content-Type: application/json' \
             -d '{"model":"mock-model","messages":[{"role":"user","content":"hi"}]}' | head -c 300
           echo
+          # The installed app's OCR, as computer use will see it.
+          OCR=$(curl -sf http://127.0.0.1:8765/v1/computer/ocr/status)
+          echo "OCR status: $OCR"
+          echo "$OCR" | grep -q '"available": *true' || { echo "::error::Bundled OCR is not available"; exit 1; }
+          echo "$OCR" | grep -q '"source": *"bundled"' || { echo "::error::OCR did not come from the bundled copy"; exit 1; }
           echo "Smoke test passed."
 
           # Voice round trip (report only): offline Urdu voice -> Whisper.

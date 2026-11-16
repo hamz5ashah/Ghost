@@ -3,6 +3,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { VitePWA } from 'vite-plugin-pwa';
+import { readFileSync } from 'fs';
 
 // VITE_SUPABASE_ANON_KEY is intentionally NOT required here: a missing key
 // disables the savings leaderboard at runtime (see src/lib/supabase.ts) rather
@@ -28,6 +29,40 @@ self.addEventListener('activate', (event) => {
 });
 `;
 
+// Face Lock / hand control (Stonic port, Phase 4): MediaPipe loads its loader
+// script with a <script> tag, and the desktop CSP only allows scripts from the
+// app's own origin — so that one small file (~320 KB) ships with the app. The
+// large WASM binaries and models are downloaded on demand by the backend and
+// served from /facelock-assets/ instead (see ghost/security/facelock_models.py).
+const MEDIAPIPE_LOADER = 'facelock/vision_wasm_internal.js';
+const mediapipeLoader = () => ({
+  name: 'ghost-mediapipe-loader',
+  configureServer(server: { middlewares: { use: (path: string, fn: (req: unknown, res: { setHeader: (k: string, v: string) => void; end: (b: Buffer) => void }) => void) => void } }) {
+    server.middlewares.use(`/${MEDIAPIPE_LOADER}`, (_req, res) => {
+      res.setHeader('Content-Type', 'text/javascript');
+      res.end(readFileSync(path.resolve(import.meta.dirname, 'node_modules/@mediapipe/tasks-vision/wasm/vision_wasm_internal.js')));
+    });
+  },
+  generateBundle(
+    this: { emitFile: (f: { type: 'asset'; fileName: string; source: Buffer }) => void },
+    _options: unknown,
+    bundle: Record<string, unknown>,
+  ) {
+    // ONNX Runtime's bundle points at its default 14 MB .wasm via
+    // new URL(…, import.meta.url), so Vite copies it in. Ghost always sets
+    // ort.env.wasm.wasmPaths to the downloaded, hash-checked copy
+    // (src/lib/facelock/engine.ts), so that default is never fetched — drop it.
+    for (const name of Object.keys(bundle)) {
+      if (/(^|\/)ort-wasm[^/]*\.wasm$/.test(name)) delete bundle[name];
+    }
+    this.emitFile({
+      type: 'asset',
+      fileName: MEDIAPIPE_LOADER,
+      source: readFileSync(path.resolve(import.meta.dirname, 'node_modules/@mediapipe/tasks-vision/wasm/vision_wasm_internal.js')),
+    });
+  },
+});
+
 export default defineConfig(({ mode }) => ({
   // `vite build --mode mobile` builds the Android app: a remote client for
   // Ghost running on the user's PC (see src/components/MobileConnect.tsx).
@@ -46,6 +81,7 @@ export default defineConfig(({ mode }) => ({
         this.emitFile({ type: 'asset', fileName: 'sw.js', source: DESKTOP_SW_CLEANUP });
       },
     },
+    mode !== 'mobile' && mediapipeLoader(),
     react(),
     tailwindcss(),
     VitePWA({
@@ -67,6 +103,8 @@ export default defineConfig(({ mode }) => ({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+        // Only needed once Face Lock or hand control is turned on.
+        globIgnores: ['facelock/**'],
         navigateFallbackDenylist: [/^\/v1\//, /^\/health/, /^\/dashboard/, /^\/api\//],
       },
     }),

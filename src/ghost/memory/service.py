@@ -27,6 +27,7 @@ from ghost.memory.store import (
     TRUST_UNTRUSTED,
     Fact,
     FactStore,
+    configured_backend,
     create_fact_store,
 )
 
@@ -284,7 +285,7 @@ def build_memory_service(
         return None
 
     store = create_fact_store(
-        getattr(mem, "backend", "local"),
+        configured_backend(config),
         path=getattr(mem, "facts_path", None),
         max_facts=getattr(mem, "max_facts", 1000),
     )

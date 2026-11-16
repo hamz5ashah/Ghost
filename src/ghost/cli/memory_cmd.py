@@ -193,12 +193,12 @@ def search(
 
 def _get_fact_store():
     """Instantiate the automatic-memory fact store from config."""
-    from ghost.memory.store import create_fact_store
+    from ghost.memory.store import configured_backend, create_fact_store
 
     config = load_config()
     mem = config.memory
     return create_fact_store(
-        getattr(mem, "backend", "local"),
+        configured_backend(config),
         path=getattr(mem, "facts_path", "~/.ghost/memory_facts.jsonl"),
         max_facts=getattr(mem, "max_facts", 1000),
     )

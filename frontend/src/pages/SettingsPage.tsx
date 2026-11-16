@@ -5,6 +5,7 @@ import {
   Cpu,
   Database,
   Info,
+  ScanFace,
   Check,
   Sun,
   Moon,
@@ -27,6 +28,11 @@ import { useSearchParams } from 'react-router';
 import { useAppStore, type ThemeMode } from '../lib/store';
 import { AboutSection } from '../components/AboutSection';
 import { AssistantSection } from '../components/AssistantSection';
+import { FaceLockSection } from '../components/facelock/FaceLockSection';
+import { HandControlSection } from '../components/gestures/HandControlSection';
+import { AwarenessSection } from '../components/presence/AwarenessSection';
+import { StonicModeSection } from '../components/presence/StonicModeSection';
+import { getStonicFlags } from '../lib/stonic-flags';
 import {
   checkHealth,
   fetchSpeechHealth,
@@ -261,7 +267,7 @@ const themeOptions: { value: ThemeMode; label: string; icon: typeof Sun }[] = [
   { value: 'system', label: 'System', icon: Monitor },
 ];
 
-type SettingsTab = 'general' | 'assistant' | 'model' | 'cloud' | 'phone' | 'tools' | 'usage' | 'data' | 'about';
+type SettingsTab = 'general' | 'assistant' | 'model' | 'cloud' | 'phone' | 'tools' | 'security' | 'usage' | 'data' | 'about';
 
 const SETTINGS_TABS: Array<{
   key: SettingsTab;
@@ -275,6 +281,7 @@ const SETTINGS_TABS: Array<{
   { key: 'cloud', label: 'Cloud providers', description: 'Use Anthropic, DeepSeek, OpenAI and more with your own API key.', icon: Cloud },
   { key: 'phone', label: 'Phone & connection', description: 'Use Ghost from your phone, and the server this app talks to.', icon: Smartphone },
   { key: 'tools', label: 'Tools & memory', description: 'Web search, memory and voice.', icon: Wrench },
+  { key: 'security', label: 'Security & input', description: 'Face Lock and hand control.', icon: ScanFace },
   { key: 'usage', label: 'Usage & cost', description: 'Requests, tokens, energy and what the same work would cost in the cloud.', icon: Activity },
   { key: 'data', label: 'Data', description: 'Export or clear your chats and settings.', icon: Database },
   { key: 'about', label: 'About', description: 'Version, updates and license.', icon: Info },
@@ -283,7 +290,12 @@ const SETTINGS_TABS: Array<{
 export function SettingsPage() {
   // The open tab lives in the URL (?tab=cloud) so other screens can link to it.
   const [searchParams, setSearchParams] = useSearchParams();
-  const visibleTabs = SETTINGS_TABS;
+  // Security & input appears only once Face Lock or hand control is turned on.
+  const [inputFlags, setInputFlags] = useState(false);
+  useEffect(() => {
+    void getStonicFlags().then((f) => setInputFlags(f.facelock || f.gestures));
+  }, []);
+  const visibleTabs = SETTINGS_TABS.filter((t) => t.key !== 'security' || inputFlags);
   const requestedTab = searchParams.get('tab') as SettingsTab | null;
   const activeTab = visibleTabs.find((t) => t.key === requestedTab) ?? visibleTabs[0];
   const tab = activeTab.key;
@@ -875,6 +887,15 @@ export function SettingsPage() {
                   </button>
                 </SettingRow>
               </Section>
+            </div>
+          )}
+
+          {tab === 'security' && (
+            <div className="flex flex-col gap-4">
+              <FaceLockSection />
+              <HandControlSection />
+              <StonicModeSection />
+              <AwarenessSection />
             </div>
           )}
 
