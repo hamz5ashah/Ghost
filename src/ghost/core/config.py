@@ -1634,10 +1634,11 @@ class SpeechConfig:
     # Text-to-speech. ``voice_id`` is interpreted by ``tts_backend`` only --
     # voice IDs are not portable between backends, so if voice output falls
     # back to a different backend that backend's own default voice is used.
-    # Kokoro IDs: bm_george / bm_lewis (British male), bf_emma / bf_isabella
-    # (British female), af_* / am_* (American).
+    # Kokoro IDs: af_heart (American female, the default — Ghost's companion
+    # is female), bf_emma / bf_isabella (British female), bm_george / bm_lewis
+    # (British male), am_* (American male).
     tts_backend: str = "kokoro"  # "kokoro", "openai_tts", "cartesia", "elevenlabs"
-    voice_id: str = "bm_george"
+    voice_id: str = "af_heart"
     voice_speed: float = 1.0
 
 

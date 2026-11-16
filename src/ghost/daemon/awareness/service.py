@@ -261,6 +261,13 @@ def ensure_service(app_state: Any) -> AwarenessService:
                     lambda: str(getattr(app_state, "model", "") or ""),
                 ),
             )
+            # Phase 6: long-term memory and promises (each hook checks memory_v2).
+            try:
+                from ghost.memory.v2.bridge import attach_awareness  # noqa: PLC0415
+
+                attach_awareness(_service)
+            except Exception:  # noqa: BLE001 — awareness runs without memory
+                logger.debug("awareness: memory v2 not attached", exc_info=True)
         return _service
 
 

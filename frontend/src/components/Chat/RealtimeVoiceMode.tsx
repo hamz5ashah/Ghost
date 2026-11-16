@@ -49,8 +49,9 @@ export function RealtimeVoiceMode({ onClose }: { onClose: () => void }) {
         await startRealtimeEngine({
           brain: settings.realtimeBrain,
           voiceMode: settings.realtimeVoiceMode,
-          // Jarvis persona → Stonic's male_jarvis delivery profile.
-          character: settings.persona === 'jarvis' ? { id: 'male_jarvis', gender: 'male' } : {},
+          // Companion → Stonic's female_soulmate (Aoede); Jarvis → male_jarvis (Charon).
+          character: settings.persona === 'jarvis' ? { id: 'male_jarvis', gender: 'male' }
+            : settings.persona === 'companion' ? { id: 'female_soulmate', gender: 'female' } : {},
         });
         if (live) await c.connect();
       } catch (e) {

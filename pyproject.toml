@@ -317,6 +317,11 @@ select = ["E", "F", "I", "W"]
 "src/ghost/voice_sidecar/ghost_voice/*.py" = ["E501"]
 # Awareness prompt and log text is kept verbatim from Stonic (Phase 5).
 "src/ghost/daemon/awareness/*.py" = ["E501"]
+# Memory v2 (Phase 6) carries Stonic's digest/recall prompts, Claude's official
+# memory-tool texts and the secret patterns verbatim — parity-tested byte for
+# byte against the originals, so they are not re-wrapped.
+"src/ghost/memory/v2/**/*.py" = ["E501"]
+"tests/memory/v2/*.py" = ["E501"]
 
 [dependency-groups]
 dev = [

@@ -61,7 +61,7 @@ def test_cartesia_voice_routes_back_to_cartesia_only():
     session = _session(tts_backend="cartesia", voice_id="a-cartesia-uuid")
     assert session.voice_for_backend(_Backend("cartesia"))[0] == "a-cartesia-uuid"
     # ...and must not be handed to Kokoro, which would mis-map its lang code.
-    assert session.voice_for_backend(_Backend("kokoro"))[0] == "bm_george"
+    assert session.voice_for_backend(_Backend("kokoro"))[0] == "af_heart"
 
 
 def test_zero_speed_is_not_silently_rewritten():
@@ -143,7 +143,7 @@ def test_synthesis_failure_falls_back_without_retrying_or_leaking_voice(monkeypa
     assert checked == ["openai_tts", "kokoro_onnx"]
     assert spoken == [
         ("openai_tts", "nova"),
-        ("kokoro_onnx", "bm_george"),
-        ("kokoro_onnx", "bm_george"),
+        ("kokoro_onnx", "af_heart"),
+        ("kokoro_onnx", "af_heart"),
     ]
     assert played == [b"wav", b"wav"]

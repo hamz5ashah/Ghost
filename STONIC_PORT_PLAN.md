@@ -437,7 +437,7 @@ in `~/.ghost/desktop-presence.json`, `enabled: false` by default).
   screen or camera; Ghost's schema offers only `silent` / `speak`, and a
   `look` answer from the model is treated as silent
 - **No memory or promises.** Stonic's awareness wrote to its memory store and
-  tracked promises; that waits for Phase 6. The engine keeps only its own
+  tracked promises; that came in Phase 6 (see below). The engine keeps only its own
   short journal
 - **Awareness context is not injected into chats.** Stonic added the diary to
   ordinary chat prompts; Ghost keeps it to the awareness brain
@@ -472,17 +472,145 @@ in `~/.ghost/desktop-presence.json`, `enabled: false` by default).
       0.59 signatures but not compiled for Windows here (the Windows Rust
       target could not be downloaded); the Windows build confirms it
 
-## Phase 6 — memory merge ⚠ highest risk
+## Phase 6 — memory merge, female companion, Always-Active — complete
 
-Ghost's learning loop (81 modules) and eval harness (147 modules) both read
-`src/ghost/memory/`. Stonic's schema is richer (≈6,600 lines vs 978) and
-different. This is a **migration behind `memory_v2`**, not a replacement, and it
-goes last.
+Stonic's Memory Core and file memory are ported behind `memory_v2`, and
+Ghost's existing memory API is unchanged. The learning loop and eval harness
+keep running on it with no regressions. Stonic's female character is now
+Ghost's default companion, and one switch in Settings turns the full
+companion on.
 
-- [ ] Port `memory/*` (16 modules) and `file-memory/*` (5 modules)
-- [ ] Keep Ghost's `service.py` interface intact
-- [ ] Forward migration with a rollback path
-- [ ] Gate: learning + evals suites still pass
+### Done
+
+**Memory Core (`src/ghost/memory/v2/`, 16 modules → ~11,000 lines of Python).**
+- Storage: SQLite in WAL mode with three FTS5 indexes per searchable table
+  (unicode, trigram and phonetic skeleton), plus bitemporal memories with
+  trust tiers and statuses.
+- Linked records: evidence quotes, entities and aliases, intentions
+  (promises), episodes and character events.
+- Bookkeeping: audit log, tombstones and a durable job queue.
+- Search: reciprocal rank fusion, then FOUND/WEAK/NONE with
+  ACT-R activation, working across Urdu, Roman Urdu, Hindi and English.
+- Digest: the model proposes JSON and code gates it. Every fact must quote
+  the user's own words, so invented memories are refused.
+- Recall agent: the model must cite real `[m…]` tags.
+- Maintenance is code only, with nightly backups and integrity checks.
+- `secrets.py` removes passwords, OTPs, PINs, card numbers, CNICs, IBANs
+  and API keys before anything reaches the disk.
+
+**File memory (`v2/files/`, 5 modules).**
+- Format: Claude's official memory format, a `MEMORY.md` index plus one
+  note per fact.
+- Commands: the `memory_20250818` tool (view/create/str_replace/insert/delete/rename), with
+  its exact texts, and Claude Code-style grep.
+- Safety: path confinement (no `..`, hidden files, reserved names or
+  symlink escapes), size caps and atomic writes.
+- Migration: one-time and backed up, from Memory Core, `MEMORY.md`,
+  `USER.md` and the v1 facts.
+
+**Bridge (`v2/bridge.py`), with the interface left intact.**
+- `V2FactStore` is a registered `FactStore` backend that dual-writes.
+  - The v1 JSONL stays the system of record for the legacy API.
+  - Recallable facts are mirrored into Memory Core.
+  - `list()` returns the v1 facts, then the memories that exist only in v2.
+- `configured_backend(config)` selects `"v2"` when the flag is on;
+  `MemoryService`, the CLI and `load_configured_facts` use it.
+- No public signature changed.
+
+**Migration and rollback.**
+- Forward: on first use, the v1 facts are imported once, after a backup to
+  `memory_v2/backups/pre-v2-memory_facts-<ts>.jsonl`. Quarantined facts stay
+  out of recall.
+- Rollback: `POST /v1/memory/v2/rollback` (allowed while the flag is off)
+  writes the v2-only memories back into the v1 JSONL, so switching the flag
+  off loses nothing. A `DISABLED` file in `memory_v2/` is a kill switch.
+
+**Awareness.**
+- New `promise_due` moment: the 60 s ticker raises it when a promise
+  comes due, at most every 2 h per promise.
+- The awareness prompt gets a memory card and the due block. The card is
+  fetched with a 1.5 s budget, and sensitive memories are never shown to
+  awareness.
+- A spoken line with `about_promise` marks the promise surfaced.
+- Every line that is spoken or held back is recorded as a character event.
+
+**Voice and server.**
+- Realtime voice gets the memory card through a separate `memory` payload
+  field, capped at 4,000 characters.
+- Chat exchanges are recorded as turns over the event bus.
+- `/v1/memory/v2/*` exposes status, recall, ask, remember, follow-up,
+  context, memories, intentions, pause, backup, export, migrate, rollback
+  and notes. Every route except status and rollback returns 403 while the
+  flag is off.
+
+**Female companion as default.**
+- Character: `female_soulmate` is no longer dev-only, and
+  `DEFAULT_CHARACTER = "female_soulmate"` is reported by
+  `/v1/stonic/characters`.
+- Voice defaults:
+  - The sidecar's default gender is female, so Gemini Live uses Aoede
+    (`male_jarvis` still gets Charon).
+  - Kokoro defaults to `af_heart`. The Urdu fallback is `hf_alpha`, and
+    `hm_omega` only for a male English voice, so gender is kept.
+  - Fallback defaults are `af_heart` and OpenAI `nova`.
+- Frontend: the default persona is a new `companion`. It adds warmth only;
+  the baseline still says plainly what Ghost is, with no "never say AI".
+- Avatar: the notch defaults to the light-female figure. It shows
+  `female-light.jpg` as the poster, then ping-pongs `light-female-1.mp4` /
+  `light-female-1r.mp4` with a cross-fade; the orb is opt-in.
+- Wallpaper: the living wallpaper places the figure at Stonic's focus
+  (0.7 / 0.42).
+
+**Always-Active Stonic Mode.**
+- Backend: `ghost.core.stonic_preset` and `GET/POST /v1/stonic/preset`.
+  - It turns on `realtime_voice`, `wake_word`, `awareness`,
+    `desktop_presence`, `ui_sounds`, `characters` and `memory_v2` together.
+  - It keeps your comments and other keys in `config.toml` (tomlkit).
+  - It snapshots the earlier values, and turning it off restores exactly
+    those.
+- Settings: one toggle, which also switches on awareness, the notch and
+  wallpaper, and the companion persona and avatar. The Long-term memory
+  card offers counts, recent memories, promises, forget/done, pause,
+  backup and prepare-rollback.
+
+### Deviations
+
+- **Dual-write, not a replacement.** The v1 JSONL keeps serving the legacy
+  API byte for byte, so learning and evals see no change. Memory Core is
+  added beside it.
+- **Voice memory is a card, not tools.** The realtime sidecar gets the
+  state card in its prompt. Stonic's live `remember`/`recall` tool loop
+  inside the voice engine is not wired, but the same operations are
+  available over `/v1/memory/v2`.
+- **Individual flag defaults are unchanged** (all off). The preset is the
+  only thing that turns them on together; `computer_use` is never part of
+  it.
+- `secrets.py` is ported (redaction before disk). The keyring row under
+  "Not being ported" covers `key-store` only.
+
+### Verified
+
+- Parity with Stonic's JavaScript, run with node on the same inputs:
+  - `normalize` matches on 4,025 cases and `secrets` on 7,541; the lexicon
+    and `official` texts are identical.
+  - 1,128 golden cases are kept in `tests/memory/v2/`.
+- Python: 1,205 new tests (parity, store, search, state card, digest gate,
+  recall agent, service, file memory and its commands, migration, bridge
+  contract, rollback, routes, preset, awareness × memory, sidecar).
+  - Full suite: 24 failed, the pre-existing baseline (live connectors,
+    gemma.cpp, external datasets, web search). 10,923 passed.
+  - Learning and evals: no new failures.
+- Frontend: 280/280 (5 new), `tsc -b` clean, production build OK.
+- Rust: no changes in this phase (90/90 at Phase 5).
+- ruff 25 (unchanged; E501 ignored for the verbatim-text modules of
+  `memory/v2`). `uv.lock` is unchanged, with no new dependencies.
+
+### Remaining
+
+- [ ] On Windows: the light-female clips in the notch (ping-pong
+      cross-fade at real DPI) and the figure on the living wallpaper
+- [ ] A live digest run with the user's own model and key, to tune the
+      monthly cap and the quiet delay against real conversations
 
 ---
 
@@ -496,7 +624,7 @@ goes last.
 | `telemetry` (366) | `/v1/telemetry/energy`, `/v1/savings` |
 | `web-search` (355) | `tools/web_search.py` |
 | `shell-runner` (411) | `tools/shell_exec.py`, `docker_shell_exec.py` |
-| `key-store` (99) + `memory/secrets` (846) | keyring via `secure_store_*` |
+| `key-store` (99) | keyring via `secure_store_*` |
 | `chat-store` (211) | Ghost chat store |
 | `static-server` (180) | FastAPI |
 | `python-runtime` (67) | `prepare_backend_python` |
@@ -521,11 +649,16 @@ computer_use = true
 realtime_voice = true
 awareness = true
 desktop_presence = true
+memory_v2 = true
 wake_word_name = "Ghost"
 
 [stonic.voice_runtime]
 auto_install = true
 ```
+
+Or flip the whole companion on at once with **Settings → Always-Active Stonic
+Mode** (`POST /v1/stonic/preset {"enabled": true}`); switching it off restores
+the flags exactly as they were.
 
 All flags default to `false` (`computer_overlay` defaults `true` but is inert
 while `computer_use` is off). Flag names are defined in three places that must

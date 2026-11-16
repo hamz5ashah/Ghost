@@ -1,6 +1,6 @@
 """Offline natural voice: Kokoro on ONNX Runtime.
 
-Same Kokoro-82M voices as ``kokoro_tts`` (e.g. ``bm_george``, British male)
+Same Kokoro-82M voices as ``kokoro_tts`` (e.g. ``af_heart``, American female)
 but without PyTorch or a system espeak-ng: ``kokoro-onnx`` bundles espeak-ng
 through ``espeakng-loader``, so it installs cleanly on Windows. The model
 files (~350 MB) are downloaded once into ``<config dir>/models/kokoro`` via
@@ -31,19 +31,22 @@ MODEL_FILES: Dict[str, int] = {
     "voices-v1.0.bin": 28_214_398,
 }
 
-DEFAULT_VOICE = "bm_george"
+# Ghost's default companion is female: Heart is Kokoro v1.0's best-rated voice.
+DEFAULT_VOICE = "af_heart"
 # Kokoro has no Urdu voices, but its Hindi voices with espeak-ng's Urdu
 # phonemizer ("ur") speak Urdu-script text naturally.
-DEFAULT_URDU_VOICE = "hm_omega"
+DEFAULT_URDU_VOICE = "hf_alpha"
+# For a male English voice the Urdu runs keep a male voice too.
+DEFAULT_URDU_MALE_VOICE = "hm_omega"
 
 # Voices offered in the app (Kokoro v1.0 names). Prefix: h = Hindi/Urdu,
 # a = American, b = British; then f/m = female/male.
 VOICES: Dict[str, str] = {
     "hm_omega": "Omega — Urdu male",
     "hm_psi": "Psi — Urdu male, softer",
-    "hf_alpha": "Alpha — Urdu female",
+    "hf_alpha": "Alpha — Urdu female (default)",
     "hf_beta": "Beta — Urdu female, softer",
-    "bm_george": "George — British male (default)",
+    "bm_george": "George — British male",
     "bm_lewis": "Lewis — British male, deeper",
     "bm_daniel": "Daniel — British male, calm",
     "bm_fable": "Fable — British male, storyteller",
@@ -53,10 +56,16 @@ VOICES: Dict[str, str] = {
     "am_michael": "Michael — American male",
     "am_adam": "Adam — American male",
     "am_onyx": "Onyx — American male, deep",
-    "af_heart": "Heart — American female",
+    "af_heart": "Heart — American female (default)",
     "af_bella": "Bella — American female",
     "af_nicole": "Nicole — American female, soft",
 }
+
+
+def urdu_voice_for(voice: str) -> str:
+    """The Urdu voice that goes with an English one: same gender (``?f_`` / ``?m_``)."""
+    male = len(voice) > 1 and voice[1] == "m"
+    return DEFAULT_URDU_MALE_VOICE if male else DEFAULT_URDU_VOICE
 
 
 def model_dir() -> Path:
@@ -243,7 +252,7 @@ class KokoroOnnxTTSBackend(TTSBackend):
         # Urdu-script runs use the Urdu phonemizer with an Urdu (Hindi) voice;
         # other runs use English. If the chosen voice is an Urdu voice it
         # speaks everything, so a mixed reply keeps one consistent voice.
-        urdu_voice = voice if voice.startswith("h") else DEFAULT_URDU_VOICE
+        urdu_voice = voice if voice.startswith("h") else urdu_voice_for(voice)
         pieces = []
         sample_rate = 24000
         for chunk, is_urdu in script_runs(text) or [(text, False)]:

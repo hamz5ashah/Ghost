@@ -28,8 +28,12 @@ import tomllib
 logger = logging.getLogger(__name__)
 
 # Characters whose definition exists but which are not offered in the UI.
-# female_soulmate was marked dev-only in Stonic's own file.
-DEV_ONLY = frozenset({"female_soulmate"})
+# Stonic marked female_soulmate dev-only; in Ghost she is the default
+# companion (Phase 6), so nothing is dev-only any more.
+DEV_ONLY: frozenset = frozenset()
+
+#: The character used when the user has not picked one.
+DEFAULT_CHARACTER = "female_soulmate"
 
 
 @dataclass(slots=True)

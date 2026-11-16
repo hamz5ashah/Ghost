@@ -396,6 +396,25 @@ def _ensure_fact_store_backends_registered() -> None:
     """Restore built-in fact-store registrations if a test cleared registries."""
     if not FactStoreRegistry.contains("local"):
         FactStoreRegistry.register_value("local", LocalFactStore)
+    if not FactStoreRegistry.contains("v2"):
+        # Stonic port, phase 6: Memory Core behind the same FactStore API.
+        try:
+            from ghost.memory.v2.bridge import register_backend
+
+            register_backend()
+        except Exception:  # noqa: BLE001 — v2 is optional; "local" always works
+            pass
+
+
+def configured_backend(config: Any) -> str:
+    """The fact-store backend for *config*: ``[memory].backend``, or ``"v2"``
+    when ``[stonic].memory_v2`` is on (Stonic port, phase 6; off by default)."""
+    memory = getattr(config, "memory", None)
+    backend = getattr(memory, "backend", "local") if memory is not None else "local"
+    stonic = getattr(config, "stonic", None)
+    if getattr(stonic, "memory_v2", False) is True and (backend or "local") == "local":
+        return "v2"
+    return backend or "local"
 
 
 def create_fact_store(
@@ -433,7 +452,7 @@ def load_configured_facts(config: Any) -> List[Fact]:
         return []
 
     store = create_fact_store(
-        getattr(memory, "backend", "local"),
+        configured_backend(config),
         path=getattr(memory, "facts_path", None),
         max_facts=getattr(memory, "max_facts", 1000),
     )
@@ -448,6 +467,7 @@ __all__ = [
     "TRUST_AUTO",
     "TRUST_TRUSTED",
     "TRUST_UNTRUSTED",
+    "configured_backend",
     "Fact",
     "FactStore",
     "LocalFactStore",

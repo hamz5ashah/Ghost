@@ -66,6 +66,8 @@ DEFAULT_NAME = "Ghost"
 
 # App ki taraf se aane wale text ki haddein.
 MAX_PROMPT_CHARS = 6000
+# Phase 6 (memory_v2): the app's memory card for this person (pins, profile, promises).
+MAX_MEMORY_CHARS = 4000
 MAX_NAME_CHARS = 60
 MAX_MODEL_CHARS = 120
 MAX_KEY_CHARS = 400
@@ -155,7 +157,8 @@ class Brain:
 class Character:
     id: str = ""
     name: str = ""
-    gender: str = "male"  # male | female
+    # Ghost's default companion is the female character (Aoede's voice).
+    gender: str = "female"  # male | female
     prompt: str = ""
 
 
@@ -192,6 +195,7 @@ class AppConfig:
     keys: Keys
     user_name: str = ""
     history: list[HistoryTurn] = field(default_factory=list)
+    memory: str = ""
 
 
 @dataclass
@@ -207,6 +211,7 @@ class Settings:
     voice_engine: str = "live"  # live | tts
     user_name: str = ""
     history: list[HistoryTurn] = field(default_factory=list)
+    memory: str = ""
 
     @property
     def voice_name(self) -> str:
@@ -382,6 +387,7 @@ def parse_app_config(payload: Any) -> AppConfig:
         keys=keys,
         user_name=_text(payload.get("user_name"), MAX_NAME_CHARS),
         history=_parse_history(payload.get("history")),
+        memory=_text(payload.get("memory"), MAX_MEMORY_CHARS),
     )
 
 
@@ -396,6 +402,7 @@ def _with_app_config(settings: Settings, app: AppConfig) -> Settings:
         app.keys,
     )
     settings.user_name, settings.history = app.user_name, app.history
+    settings.memory = app.memory
     return settings
 
 
@@ -553,8 +560,8 @@ def history_prompt(settings: Settings) -> str:
 
 
 def conversation_prompt(settings: Settings) -> str:
-    """Dimagh ka prompt: kirdar + pichli baat."""
-    parts = (system_prompt(settings), history_prompt(settings))
+    """Dimagh ka prompt: kirdar + (yaadash) + pichli baat."""
+    parts = (system_prompt(settings), settings.memory.strip(), history_prompt(settings))
     return "\n\n".join(part for part in parts if part)
 
 
