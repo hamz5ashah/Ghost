@@ -31,6 +31,7 @@ import { AssistantSection } from '../components/AssistantSection';
 import { FaceLockSection } from '../components/facelock/FaceLockSection';
 import { HandControlSection } from '../components/gestures/HandControlSection';
 import { AwarenessSection } from '../components/presence/AwarenessSection';
+import { StonicModeSection } from '../components/presence/StonicModeSection';
 import { getStonicFlags } from '../lib/stonic-flags';
 import {
   checkHealth,
@@ -893,6 +894,7 @@ export function SettingsPage() {
             <div className="flex flex-col gap-4">
               <FaceLockSection />
               <HandControlSection />
+              <StonicModeSection />
               <AwarenessSection />
             </div>
           )}

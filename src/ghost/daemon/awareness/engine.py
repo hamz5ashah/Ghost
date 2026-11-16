@@ -27,6 +27,7 @@ the line counts as ignored.
 
 from __future__ import annotations
 
+import concurrent.futures
 import json
 import logging
 import os
@@ -102,6 +103,15 @@ def day_of(t_ms: float) -> str:
     return f"{d.year}-{d.month:02d}-{d.day:02d}"
 
 
+#: Stonic's budget for the memory card before a thought (it ran without it past this).
+MEMORY_TIMEOUT_S = 1.5
+_MEMORY_POOL = concurrent.futures.ThreadPoolExecutor(max_workers=2, thread_name_prefix="awareness-memory")
+
+
+def _is_promise_due(trigger: Optional[Dict[str, Any]]) -> bool:
+    return bool(trigger) and trigger.get("kind") == "moment" and trigger.get("what") == "promise_due"
+
+
 def priority(trigger: Dict[str, Any]) -> int:
     kind = trigger.get("kind")
     return 1 if kind == "switch" else 2 if kind == "moment" else 3
@@ -137,10 +147,18 @@ class AwarenessEngine:
         emit: Callable[[Dict[str, Any]], None] = lambda e: None,
         character: Optional[Dict[str, Any]] = None,
         tuning: Optional[Dict[str, Any]] = None,
+        memory: Optional[Callable[[Optional[str]], Optional[Dict[str, Any]]]] = None,
+        promise_raised: Optional[Callable[[List[int]], None]] = None,
+        character_event: Optional[Callable[[Dict[str, Any]], None]] = None,
     ) -> None:
         self.dir = Path(directory)
         self.snapshot_fn = snapshot
         self.think_fn = think
+        # Phase 6 (memory_v2): long-term memory and promises. All optional —
+        # without them the engine runs exactly as in Phase 5.
+        self.memory_fn = memory
+        self.promise_raised_fn = promise_raised
+        self.character_event_fn = character_event
         self.now = now
         self._log = log
         self._emit = emit
@@ -511,11 +529,27 @@ class AwarenessEngine:
             }
             # The model is slow; never hold the lock while waiting for it.
             self._lock.release()
+            due_ids: List[int] = []
             try:
+                mem = self._memory_context()
+                if mem:
+                    ctx["memoryCard"] = mem.get("card") or ""
+                    ctx["dueBlock"] = mem.get("due") or ""
+                    due_ids = list(mem.get("due_ids") or [])
+                # A "promise due" moment with nothing due any more is an ordinary beat.
+                if _is_promise_due(trigger) and not ctx.get("dueBlock"):
+                    ctx["trigger"] = {"kind": "routine"}
                 raw = self.think_fn(brain.build_messages(ctx))
             finally:
                 self._lock.acquire()
             decision = brain.parse_decision(raw)
+            if decision["action"] == "speak" and ctx.get("dueBlock") and (
+                decision.get("aboutPromise") or _is_promise_due(trigger)
+            ):
+                decision["aboutPromise"] = True
+                decision["_dueIds"] = due_ids
+            else:
+                decision.pop("aboutPromise", None)
             self.failures = 0
             self.backoff_reason = None
             self.last_skip = ""
@@ -653,6 +687,31 @@ class AwarenessEngine:
                 self.state["thoughtsToday"] += calls
                 self._persist()
 
+    def on_promise_due(self, count: int = 1) -> bool:
+        """Memory says a promise came due: offer a "promise due" moment."""
+        with self._lock:
+            if not self.was_on or not self._is_on() or not self.attentive:
+                return False
+            current = (self.pending or {}).get("trigger")
+            if current and _is_promise_due(current):
+                return True
+            self._offer({"kind": "moment", "what": "promise_due", "count": max(1, int(count or 1))})
+            return bool(self.pending and _is_promise_due(self.pending["trigger"]))
+
+    def _memory_context(self) -> Optional[Dict[str, Any]]:
+        """The memory card and due promises, within Stonic's 1.5 s budget —
+        too slow and "this thought ran without it"."""
+        if not self.memory_fn:
+            return None
+        future = _MEMORY_POOL.submit(self.memory_fn, self.character.get("id"))
+        try:
+            return future.result(timeout=MEMORY_TIMEOUT_S)
+        except concurrent.futures.TimeoutError:
+            self._log("warn", "Awareness: memory did not answer in time — this thought ran without it.", None)
+            return None
+        except Exception:  # noqa: BLE001 — memory never breaks a thought
+            return None
+
     def beat_now(
         self, trigger: Optional[Dict[str, Any]] = None
     ) -> Optional[Dict[str, Any]]:
@@ -697,6 +756,11 @@ class AwarenessEngine:
             "kind": decision.get("kind"),
         }
         self._remember(thought)
+        if decision.get("aboutPromise") and self.promise_raised_fn:
+            try:
+                self.promise_raised_fn(list(decision.get("_dueIds") or []))
+            except Exception:  # noqa: BLE001 — memory never breaks speech
+                pass
         self.awaiting = {"t": now, "owner": self.character.get("id")}
         self._persist()
         self._emit(
@@ -863,6 +927,21 @@ class AwarenessEngine:
         return [x for x in self.thoughts if x["t"] >= now - THOUGHTS_KEEP_MS]
 
     def _remember(self, thought: Dict[str, Any]) -> None:
+        if self.character_event_fn:
+            # The character's own record (Memory Core character_events): never a user fact.
+            try:
+                self.character_event_fn(
+                    {
+                        "character_id": self.character.get("id") or "ghost",
+                        "kind": "said" if thought.get("spoke") else "silent",
+                        "text": thought.get("say") or thought.get("note") or "",
+                        "ts": int(thought.get("t") or self.now()),
+                        "meta": {k: v for k, v in thought.items() if k in ("mood", "kind", "outcome") and v},
+                        "source_ref": f"awareness:{self.character.get('id') or 'ghost'}:{int(thought.get('t') or 0)}",
+                    }
+                )
+            except Exception:  # noqa: BLE001
+                pass
         both = [*self.thoughts, {k: v for k, v in thought.items() if v is not None}]
         said = [x for x in both if x.get("spoke")][-20:]
         quiet = [x for x in both if not x.get("spoke")][-15:]

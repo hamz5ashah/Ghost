@@ -1446,12 +1446,16 @@ async def stonic_characters(request: Request):
         if not enabled:
             return {"characters": [], "enabled": False}
 
-        from ghost.speech.characters import selectable_characters  # noqa: PLC0415
+        from ghost.speech.characters import (  # noqa: PLC0415
+            DEFAULT_CHARACTER,
+            selectable_characters,
+        )
 
         found = selectable_characters()
         return {
             "characters": [c.to_dict() for c in found],
             "enabled": True,
+            "default": DEFAULT_CHARACTER,
         }
     except Exception as exc:
         logger.warning("Failed to list Stonic characters: %s", exc)
@@ -1612,10 +1616,18 @@ async def realtime_start(request: Request, body: RealtimeStartBody):
 
     try:
         stonic = _realtime_settings(request)
+        memory = ""
+        if _stonic_flag(request, "memory_v2"):
+            # Phase 6: the voice remembers — its memory card goes to the engine.
+            from ghost.memory.v2 import bridge  # noqa: PLC0415
+
+            char_id = str((body.character or {}).get("id") or "") or None
+            memory = await asyncio.to_thread(bridge.voice_memory_card, char_id)
         payload = realtime.build_engine_config(
             brain=body.brain,
             voice_mode=body.voice_mode,
             character=body.character,
+            memory=memory,
             wake_word_name=str(getattr(stonic, "wake_word_name", "") or ""),
         )
         missing = realtime.missing_for(payload)
@@ -2079,6 +2091,389 @@ async def awareness_forget(request: Request):
     return await asyncio.to_thread(svc.forget)
 
 
+# ---------------------------------------------------------------------------
+# Memory v2 (Stonic port, Phase 6) — Memory Core + file memory
+# ---------------------------------------------------------------------------
+
+memory_v2_router = APIRouter(prefix="/v1/memory/v2", tags=["memory-v2"])
+
+
+class MemoryRecallBody(BaseModel):
+    query: str
+    query_en: str = ""
+    mind: str = "voice"
+    character_id: Optional[str] = None
+    k: int = 6
+
+
+class MemoryAskBody(BaseModel):
+    question: str
+    keywords: str = ""
+    character_id: Optional[str] = None
+    recent: List[Dict[str, Any]] = []
+
+
+class MemoryRememberBody(BaseModel):
+    text: str
+    pin: bool = False
+    about: str = ""
+    character_id: Optional[str] = None
+
+
+class MemoryFollowUpBody(BaseModel):
+    what: str
+    when: str = ""
+    done: bool = False
+    character_id: Optional[str] = None
+
+
+class MemoryPatchBody(BaseModel):
+    text: Optional[str] = None
+    text_en: Optional[str] = None
+    type: Optional[str] = None
+    sensitivity: Optional[str] = None
+    triggers: Optional[List[str]] = None
+
+
+class MemoryPinBody(BaseModel):
+    pinned: bool = True
+
+
+class MemoryResolveBody(BaseModel):
+    status: str = "done"
+
+
+class MemoryPauseBody(BaseModel):
+    paused: bool = True
+
+
+class MemoryNotesCommandBody(BaseModel):
+    command: str
+    path: Optional[str] = None
+    file_text: Optional[str] = None
+    old_str: Optional[str] = None
+    new_str: Optional[str] = None
+    insert_line: Optional[int] = None
+    insert_text: Optional[str] = None
+    old_path: Optional[str] = None
+    new_path: Optional[str] = None
+    view_range: Optional[List[int]] = None
+
+
+class MemoryNotesGrepBody(BaseModel):
+    pattern: str
+    path: Optional[str] = None
+    glob: Optional[str] = None
+    output_mode: Optional[str] = None
+    head_limit: Optional[int] = None
+    context: Optional[int] = None
+    case_insensitive: bool = False
+
+
+def _memory_v2(request: Request):
+    """Memory Core, or a 403 response when ``[stonic].memory_v2`` is off."""
+    if not _stonic_flag(request, "memory_v2"):
+        return None, JSONResponse(
+            status_code=403,
+            content={
+                "ok": False,
+                "error": "disabled",
+                "message": "Turn on [stonic].memory_v2 to use memory v2.",
+            },
+        )
+    from ghost.memory.v2 import bridge  # noqa: PLC0415
+
+    core = bridge.get_core()
+    if not core.ensure():
+        return None, JSONResponse(
+            status_code=503, content={"ok": False, "error": core.reason or "off"}
+        )
+    return core, None
+
+
+@memory_v2_router.get("/status")
+async def memory_v2_status(request: Request):
+    if not _stonic_flag(request, "memory_v2"):
+        return {"available": False, "enabled": False}
+    from ghost.memory.v2 import bridge  # noqa: PLC0415
+
+    core = bridge.get_core()
+    status = await asyncio.to_thread(core.status)
+    notes = await asyncio.to_thread(lambda: bridge.get_notes().stats())
+    return {"available": True, **status, "notes": notes}
+
+
+@memory_v2_router.post("/recall")
+async def memory_v2_recall(request: Request, body: MemoryRecallBody):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(
+        core.recall,
+        body.query,
+        query_en=body.query_en,
+        mind=body.mind,
+        character_id=body.character_id,
+        k=body.k,
+    )
+
+
+@memory_v2_router.post("/ask")
+async def memory_v2_ask(request: Request, body: MemoryAskBody):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(
+        core.ask,
+        body.question,
+        keywords=body.keywords,
+        character_id=body.character_id,
+        recent=body.recent,
+    )
+
+
+@memory_v2_router.post("/remember")
+async def memory_v2_remember(request: Request, body: MemoryRememberBody):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(
+        core.remember,
+        body.text,
+        source="user",
+        pin=body.pin,
+        about=body.about,
+        character_id=body.character_id,
+    )
+
+
+@memory_v2_router.post("/follow-up")
+async def memory_v2_follow_up(request: Request, body: MemoryFollowUpBody):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(
+        core.follow_up,
+        body.what,
+        when=body.when,
+        done=body.done,
+        source="user",
+        character_id=body.character_id,
+    )
+
+
+@memory_v2_router.get("/context")
+async def memory_v2_context(
+    request: Request, mind: str = "voice", character_id: Optional[str] = None
+):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(core.context_block, mind, character_id=character_id)
+
+
+@memory_v2_router.get("/memories")
+async def memory_v2_memories(
+    request: Request, status: str = "active,candidate", limit: int = 200
+):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    statuses = [x for x in status.split(",") if x]
+    return await asyncio.to_thread(core.list_memories, status=statuses, limit=limit)
+
+
+@memory_v2_router.get("/memories/{memory_id}")
+async def memory_v2_memory(request: Request, memory_id: int):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(core.memory_detail, memory_id)
+
+
+@memory_v2_router.patch("/memories/{memory_id}")
+async def memory_v2_update(request: Request, memory_id: int, body: MemoryPatchBody):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    patch = {k: v for k, v in body.model_dump().items() if v is not None}
+    return await asyncio.to_thread(core.update_memory, memory_id, patch)
+
+
+@memory_v2_router.post("/memories/{memory_id}/pin")
+async def memory_v2_pin(request: Request, memory_id: int, body: MemoryPinBody):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(core.set_pinned, memory_id, body.pinned)
+
+
+@memory_v2_router.delete("/memories/{memory_id}")
+async def memory_v2_forget(request: Request, memory_id: int, hard: bool = False):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(core.forget_memory, memory_id, hard=hard)
+
+
+@memory_v2_router.get("/intentions")
+async def memory_v2_intentions(request: Request, status: str = "open"):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(core.list_intentions, status=status)
+
+
+@memory_v2_router.post("/intentions/{intention_id}/resolve")
+async def memory_v2_resolve(
+    request: Request, intention_id: int, body: MemoryResolveBody
+):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(core.resolve_intention, intention_id, body.status)
+
+
+@memory_v2_router.post("/pause")
+async def memory_v2_pause(request: Request, body: MemoryPauseBody):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(core.set_paused, body.paused)
+
+
+@memory_v2_router.post("/backup")
+async def memory_v2_backup(request: Request):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(core.backup)
+
+
+@memory_v2_router.get("/export")
+async def memory_v2_export(request: Request):
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    return await asyncio.to_thread(core.store.export_all)
+
+
+@memory_v2_router.post("/migrate")
+async def memory_v2_migrate(request: Request):
+    """Forward migration of the v1 facts (runs once; also runs on first use)."""
+    core, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    from ghost.memory.store import LocalFactStore  # noqa: PLC0415
+    from ghost.memory.v2 import bridge  # noqa: PLC0415
+
+    return await asyncio.to_thread(
+        bridge.migrate_forward,
+        LocalFactStore(bridge._default_facts_path(), max_facts=100_000),
+        core,
+    )
+
+
+@memory_v2_router.post("/rollback")
+async def memory_v2_rollback(request: Request):
+    """Copy v2-only memories into the v1 facts, so memory_v2 can be switched off
+    without losing anything.
+    Allowed while the flag is off too — that is when a rollback is needed."""
+    from ghost.memory.v2 import bridge  # noqa: PLC0415
+
+    return await asyncio.to_thread(bridge.rollback_to_v1)
+
+
+@memory_v2_router.get("/notes")
+async def memory_v2_notes(request: Request):
+    _, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    from ghost.memory.v2 import bridge  # noqa: PLC0415
+
+    notes = bridge.get_notes()
+    return {
+        "ok": True,
+        "items": await asyncio.to_thread(notes.list),
+        "index": await asyncio.to_thread(notes.prompt_index),
+    }
+
+
+@memory_v2_router.post("/notes/command")
+async def memory_v2_notes_command(request: Request, body: MemoryNotesCommandBody):
+    """Anthropic's memory tool (memory_20250818) over the notes folder."""
+    _, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    from ghost.memory.v2 import bridge  # noqa: PLC0415
+
+    args = {k: v for k, v in body.model_dump().items() if v is not None}
+    return await asyncio.to_thread(bridge.get_notes().command, args)
+
+
+@memory_v2_router.post("/notes/grep")
+async def memory_v2_notes_grep(request: Request, body: MemoryNotesGrepBody):
+    _, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    from ghost.memory.v2 import bridge  # noqa: PLC0415
+
+    args = {k: v for k, v in body.model_dump().items() if v is not None}
+    return await asyncio.to_thread(bridge.get_notes().grep, args)
+
+
+@memory_v2_router.post("/notes/migrate")
+async def memory_v2_notes_migrate(request: Request):
+    _, refused = _memory_v2(request)
+    if refused is not None:
+        return refused
+    from ghost.memory.v2 import bridge  # noqa: PLC0415
+
+    return await asyncio.to_thread(bridge.migrate_notes)
+
+
+# ---------------------------------------------------------------------------
+# Always-Active Stonic Mode (preset over the individual flags)
+# ---------------------------------------------------------------------------
+
+
+class StonicPresetBody(BaseModel):
+    enabled: bool = True
+
+
+@stonic_router.get("/preset")
+async def stonic_preset_status(request: Request):
+    from ghost.core import stonic_preset  # noqa: PLC0415
+
+    try:
+        return await asyncio.to_thread(stonic_preset.status)
+    except Exception as exc:  # noqa: BLE001 — advisory, like /flags
+        logger.warning("Failed to read the Stonic preset: %s", exc)
+        return {
+            "preset": stonic_preset.PRESET,
+            "active": False,
+            "flags": {},
+            "can_restore": False,
+        }
+
+
+@stonic_router.post("/preset")
+async def stonic_preset_apply(request: Request, body: StonicPresetBody):
+    """Turn Always-Active Stonic Mode on (all seven flags) or off (each restored)."""
+    from ghost.core import stonic_preset  # noqa: PLC0415
+
+    config = getattr(request.app.state, "config", None)
+    result = await asyncio.to_thread(stonic_preset.apply, body.enabled, config=config)
+    if body.enabled:
+        try:
+            from ghost.memory.v2 import bridge  # noqa: PLC0415
+
+            await asyncio.to_thread(bridge.attach, request.app.state)
+        except Exception:  # noqa: BLE001 — memory starts on next launch instead
+            logger.debug("memory v2 did not start after the preset", exc_info=True)
+    return {"ok": True, **result}
+
+
 @optimize_router.get("/runs/{run_id}")
 async def get_optimize_run(run_id: str, request: Request):
     """Get optimization run details."""
@@ -2141,6 +2536,17 @@ def include_all_routes(app) -> None:
     app.include_router(facelock_router)
     app.include_router(facelock_assets_router)
     app.include_router(awareness_router)
+    app.include_router(memory_v2_router)
+
+    # Memory v2 (Stonic port, phase 6): start Memory Core when the flag is on.
+    @app.on_event("startup")
+    async def _memory_v2_start() -> None:
+        try:
+            from ghost.memory.v2 import bridge  # noqa: PLC0415
+
+            await asyncio.to_thread(bridge.attach, app.state)
+        except Exception:  # noqa: BLE001 — memory never stops the server
+            logger.debug("memory v2 did not start", exc_info=True)
 
     # Agent Manager routes (if available)
     try:
@@ -2181,6 +2587,7 @@ def include_all_routes(app) -> None:
 
 __all__ = [
     "include_all_routes",
+    "memory_v2_router",
     "agents_router",
     "memory_router",
     "traces_router",

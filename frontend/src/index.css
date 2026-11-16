@@ -806,6 +806,10 @@ html.wallpaper-window, html.wallpaper-window body, html.wallpaper-window #root {
 .wallpaper-root { position: fixed; inset: 0; opacity: 0; transition: opacity .9s ease; }
 .wallpaper-root.is-ready { opacity: 1; }
 .wallpaper-field { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.wallpaper-figure { position: absolute; left: 70%; top: 42%; height: 78vh; transform: translate(-50%, -42%); pointer-events: none;
+  mix-blend-mode: screen; opacity: .92;
+  -webkit-mask-image: radial-gradient(ellipse 55% 60% at 50% 45%, #000 55%, transparent 100%);
+  mask-image: radial-gradient(ellipse 55% 60% at 50% 45%, #000 55%, transparent 100%); }
 .wallpaper-vignette { position: absolute; inset: 0; pointer-events: none;
   background: radial-gradient(ellipse at 50% 40%, transparent 55%, rgba(0,0,0,.45) 100%); }
 @media (prefers-reduced-motion: reduce) { .presence-root, .presence-panel { transition: none; animation: none; } }

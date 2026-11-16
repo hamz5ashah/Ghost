@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Sparkles, Volume2, Crown, Briefcase } from 'lucide-react';
+import { Sparkles, Volume2, Crown, Briefcase, Heart } from 'lucide-react';
 import { useTtsStore } from '../lib/tts';
 import { VoiceEngineSection } from './VoiceEngineSection';
 import { RealtimeVoiceSection } from './RealtimeVoiceSection';
@@ -26,6 +26,7 @@ const LANGUAGES: Array<{ key: ReplyLanguage; label: string; hint: string }> = [
 ];
 
 const PERSONAS: Array<{ key: Persona; label: string; hint: string; icon: typeof Crown }> = [
+  { key: 'companion', label: 'Companion (default)', hint: 'Warm, close and playful — she remembers what matters to you', icon: Heart },
   { key: 'professional', label: 'Professional', hint: 'Clear, neutral and to the point', icon: Briefcase },
   { key: 'jarvis', label: 'AI butler (JARVIS-style)', hint: 'Composed, British, dry wit — calls you "sir"', icon: Crown },
 ];
@@ -112,8 +113,11 @@ function PersonaAndVoice() {
               onClick={() => updateSettings({
                 replyLanguage: l.key,
                 // Urdu speech needs an Urdu voice for the offline engine.
-                ...(l.key === 'urdu' && !settings.kokoroVoice.startsWith('h') ? { kokoroVoice: 'hm_omega' } : {}),
-                ...(l.key === 'english' && settings.kokoroVoice.startsWith('h') ? { kokoroVoice: 'bm_george' } : {}),
+                // Keep the voice's gender: Kokoro IDs are <accent><f|m>_<name>.
+                ...(l.key === 'urdu' && !settings.kokoroVoice.startsWith('h')
+                  ? { kokoroVoice: settings.kokoroVoice[1] === 'm' ? 'hm_omega' : 'hf_alpha' } : {}),
+                ...(l.key === 'english' && settings.kokoroVoice.startsWith('h')
+                  ? { kokoroVoice: settings.kokoroVoice[1] === 'm' ? 'bm_george' : 'af_heart' } : {}),
               })}
               className="text-left px-3 py-2.5 rounded-lg cursor-pointer transition-colors"
               style={{

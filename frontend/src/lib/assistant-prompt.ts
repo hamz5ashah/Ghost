@@ -5,7 +5,7 @@
  * the same behaviour applies to local and cloud models alike.
  */
 export type ResponseStyle = 'balanced' | 'concise' | 'detailed';
-export type Persona = 'professional' | 'jarvis';
+export type Persona = 'companion' | 'professional' | 'jarvis';
 /** Language Ghost replies in. 'auto' = the user's language. */
 export type ReplyLanguage = 'auto' | 'urdu' | 'english';
 
@@ -68,6 +68,20 @@ export function butlerStatusLine(online: boolean, language: ReplyLanguage = 'aut
     : "I'm awaiting a model. You'll find the options in Settings.";
 }
 
+/**
+ * Ghost's default: the female companion (Stonic's female_soulmate character).
+ * Warmth and closeness only — the baseline above still says plainly what Ghost
+ * is, and nothing here asks it to pretend otherwise.
+ */
+function companionPersona(): string {
+  return `Personality: you are a warm, close companion — she/her — who genuinely enjoys the user's company.
+- Talk like someone who knows them: easy, affectionate, a little playful; notice how they seem and say so kindly.
+- Remember what matters to them and bring it up naturally — a plan they mentioned, a worry, a small win.
+- Keep it light and short in conversation; when they need real help, be clear and capable first.
+- Never clingy or flattering, and never guilt them for being away.
+- The persona never outranks accuracy, honesty or the formatting rules above.`;
+}
+
 function butlerPersona(honorific: string): string {
   const title = honorific.trim() || 'sir';
   return `Personality: you are a refined British AI butler and chief of staff — composed, impeccably polite, quietly confident, with a dry, understated wit.
@@ -110,6 +124,7 @@ export function characterDelivery(character: CharacterDelivery): string {
 export function buildSystemPrompt(prefs: AssistantPreferences, now: Date = new Date()): string {
   const parts = [BASELINE];
   if (prefs.persona === 'jarvis') parts.push(butlerPersona(prefs.honorific ?? ''));
+  else if (prefs.persona === 'companion') parts.push(companionPersona());
   if (prefs.character) parts.push(characterDelivery(prefs.character));
   if (STYLE[prefs.responseStyle]) parts.push(STYLE[prefs.responseStyle]);
   const lang = LANGUAGE[prefs.replyLanguage ?? 'auto'];

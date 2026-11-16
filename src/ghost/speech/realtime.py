@@ -129,6 +129,7 @@ def build_engine_config(
     character: Optional[Mapping[str, Any]] = None,
     wake_word_name: str = "",
     env: Optional[Mapping[str, str]] = None,
+    memory: str = "",
 ) -> Dict[str, Any]:
     """Build the ``/beta/config`` payload. Pure, so it is easy to test.
 
@@ -148,13 +149,17 @@ def build_engine_config(
         (wake_word_name or "").strip() or str(char.get("name") or "").strip() or "Ghost"
     )
     char.setdefault("name", name)
-    return {
+    payload: Dict[str, Any] = {
         "mode": "custom",
         "voice": mode,
         "brain": {"provider": provider, "model": model},
         "character": char,
         "keys": sent,
     }
+    if memory and memory.strip():
+        # Phase 6 (memory_v2): the voice's memory card, appended by the sidecar.
+        payload["memory"] = memory.strip()
+    return payload
 
 
 def missing_for(payload: Mapping[str, Any]) -> List[str]:

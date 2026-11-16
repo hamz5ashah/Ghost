@@ -1,16 +1,19 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { onPresenceEvent, wakeFor, type PresenceSnapshot } from '../../lib/presence';
 import { createWallpaper, type WallpaperInputs } from '../../lib/wallpaper-gl';
+import { FEMALE_POSTER } from './PresenceAvatar';
 
 /**
  * `?mode=wallpaper` — the living wallpaper behind the desktop icons. The
  * shell attaches this window to the desktop and tells it when it can rest
- * (desktop covered, Windows locked) and when the PC is on battery.
+ * (desktop covered, Windows locked) and when the PC is on battery. The
+ * companion stands to the right; the field's light gathers around her
+ * (Stonic's focus, 0.7 / 0.42).
  */
 export function LivingWallpaper() {
   const canvas = useRef<HTMLCanvasElement>(null);
   const [ready, setReady] = useState(false);
-  const inputs = useRef<WallpaperInputs>({ focusX: 0.5, focusY: 0.14, wake: 0.25, ai: 0, mic: 0, battery: false });
+  const inputs = useRef<WallpaperInputs>({ focusX: 0.7, focusY: 0.42, wake: 0.25, ai: 0, mic: 0, battery: false });
 
   useLayoutEffect(() => {
     document.documentElement.classList.add('wallpaper-window');
@@ -45,6 +48,7 @@ export function LivingWallpaper() {
   return (
     <div className={`wallpaper-root ${ready ? 'is-ready' : ''}`}>
       <canvas ref={canvas} className="wallpaper-field" />
+      <img src={FEMALE_POSTER} alt="" aria-hidden="true" className="wallpaper-figure" />
       <div className="wallpaper-vignette" />
     </div>
   );

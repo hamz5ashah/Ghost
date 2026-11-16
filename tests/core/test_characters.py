@@ -39,11 +39,15 @@ class TestShippedCharacters:
         assert jarvis.script_example_devanagari
         assert "[chuckle]" in jarvis.examples
 
-    def test_soulmate_is_dev_only_and_not_offered(self):
-        assert "female_soulmate" in DEV_ONLY
+    def test_soulmate_is_the_offered_default(self):
+        # Phase 6: Stonic's female character is Ghost's default companion.
+        from ghost.speech.characters import DEFAULT_CHARACTER
+
+        assert "female_soulmate" not in DEV_ONLY
         soulmate = load_character("female_soulmate")
-        assert soulmate is not None and soulmate.dev_only is True
-        assert "female_soulmate" not in {c.id for c in selectable_characters()}
+        assert soulmate is not None and soulmate.dev_only is False
+        assert "female_soulmate" in {c.id for c in selectable_characters()}
+        assert DEFAULT_CHARACTER == "female_soulmate"
 
     def test_jarvis_is_offered(self):
         assert "male_jarvis" in {c.id for c in selectable_characters()}
@@ -216,8 +220,9 @@ class TestCharactersEndpoint:
         assert result["enabled"] is True
         ids = [c["id"] for c in result["characters"]]
         assert "male_jarvis" in ids
-        # Dev-only characters stay out of the picker.
-        assert "female_soulmate" not in ids
+        # The female companion is offered, and is the default.
+        assert "female_soulmate" in ids
+        assert result["default"] == "female_soulmate"
 
     def test_payload_carries_no_prompt_text(self):
         result = self._call(True)
