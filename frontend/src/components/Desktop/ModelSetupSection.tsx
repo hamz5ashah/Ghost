@@ -9,6 +9,7 @@ import {
 import { CLOUD_KEY_STATUS_CHANGED, CLOUD_PROVIDERS } from '../../lib/cloud-providers';
 import { persistAndStartInferenceSource } from '../InferenceSourceSetup';
 import { refreshDesktopStatus, useDesktopStatus } from '../../hooks/useDesktopStatus';
+import { friendlyStartupError } from './DesktopStatusBanner';
 
 const inputStyle = {
   background: 'var(--color-bg-secondary)',
@@ -134,9 +135,15 @@ export function ModelSetupSection() {
           {ready && 'Running — you can chat now.'}
           {notSetUp && !status?.error && 'Not set up yet. Choose a source below and press Start.'}
           {starting && (status?.detail || 'Starting…')}
-          {status?.error && status.error}
+          {status?.error && friendlyStartupError(status.error)}
         </span>
       </div>
+      {status?.error && (
+        <details className="text-xs mb-2">
+          <summary className="cursor-pointer" style={{ color: 'var(--color-text-tertiary)' }}>Technical details</summary>
+          <pre className="mt-1 p-2 rounded-lg overflow-auto max-h-60 whitespace-pre-wrap" style={{ background: 'var(--color-bg-secondary)', color: 'var(--color-text-secondary)' }}>{status.error}</pre>
+        </details>
+      )}
       {starting && (
         <p className="text-xs mb-2" style={{ color: 'var(--color-text-tertiary)' }}>
           The first start can take several minutes (Ghost installs its components and downloads a model).

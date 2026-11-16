@@ -288,7 +288,7 @@ def _write_pid_unlocked(
         return
     if existing is not None and existing != pid and _registered_pid_alive(existing):
         if not (ready and same_launch and current.get("ready") is False):
-            raise RuntimeError(f"Another server is already registered (PID {existing})")
+            _resolve_registered_conflict(existing, current, ready=ready)
     identity = _linux_process_identity(pid)
     if identity is not None:
         secure_write_json(_PID_FILE.with_suffix(".identity.json"), identity)
@@ -304,6 +304,47 @@ def _write_pid_unlocked(
         secure_write_json(_STATE_FILE, state)
     else:
         _STATE_FILE.unlink(missing_ok=True)
+
+
+class ServerAlreadyRunning(RuntimeError):
+    """A healthy Ghost server already owns the registration."""
+
+
+def _server_responding(host: str, port: int, timeout: float = 2.0) -> bool:
+    """True when something answers HTTP on the server's /health endpoint."""
+    import urllib.error
+    import urllib.request
+
+    probe_host = "127.0.0.1" if host in ("", "0.0.0.0") else ("::1" if host == "::" else host)
+    try:
+        with urllib.request.urlopen(f"{_server_url(probe_host, port)}/health", timeout=timeout):
+            return True
+    except urllib.error.HTTPError:
+        return True  # it answered, even if its engine reports unhealthy
+    except (OSError, ValueError):
+        return False
+
+
+def _resolve_registered_conflict(existing: int, current: dict, *, ready: bool) -> None:
+    """Decide what to do when a live process already holds the registration.
+
+    A server that is still starting, or one that answers on its address, keeps
+    it: the caller gets ServerAlreadyRunning. A ready entry whose server no
+    longer answers is a hung orphan: stop it so the bound newcomer takes over.
+    """
+    message = f"Another server is already registered (PID {existing})"
+    recorded = current if current.get("pid") == existing else {}
+    if (
+        not ready
+        or recorded.get("ready") is False
+        or not recorded
+        or _server_responding(recorded["host"], recorded["port"])
+    ):
+        raise ServerAlreadyRunning(message)
+    terminate_process(existing, grace_seconds=5.0)
+    if process_alive(existing):
+        raise RuntimeError(f"{message} and could not be stopped")
+    _clear_state_unlocked(existing)
 
 
 def _read_state() -> dict:

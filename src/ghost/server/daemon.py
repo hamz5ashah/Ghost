@@ -8,10 +8,17 @@ from typing import Any
 
 import uvicorn
 
-from ghost.cli.daemon_cmd import clear_server_state, record_server_state
+from ghost.cli.daemon_cmd import (
+    ServerAlreadyRunning,
+    clear_server_state,
+    record_server_state,
+)
 
 
 class DaemonServer(uvicorn.Server):
+    #: Set when a healthy server already holds the registration.
+    duplicate_of: str | None = None
+
     async def startup(self, sockets: list[socket.socket] | None = None) -> None:
         await super().startup(sockets=sockets)
         if not self.started:
@@ -22,6 +29,14 @@ class DaemonServer(uvicorn.Server):
         host, port = listener.getsockname()[:2]
         try:
             record_server_state(os.getpid(), host, port)
+        except ServerAlreadyRunning as exc:
+            # A healthy Ghost server already holds the registration (often on
+            # another port). Keep serving the caller that launched us, which
+            # may be waiting on this port, but leave its registration alone
+            # instead of crashing with a traceback.
+            self.duplicate_of = str(exc)
+            print(f"Ghost: {exc}; serving without registering.", flush=True)
+            return
         except Exception:
             # A second supervised server must not take over an existing live
             # daemon's entry. Close this listener and its application cleanly.

@@ -179,6 +179,7 @@ def test_other_launch_cannot_claim_live_pending_pid(state_dir, monkeypatch):
 
 def test_same_launch_cannot_replace_ready_server(state_dir, monkeypatch):
     monkeypatch.setattr(daemon_cmd, "_pid_alive", lambda pid: True)
+    monkeypatch.setattr(daemon_cmd, "_server_responding", lambda host, port: True)
     daemon_cmd._write_pid(4321, "127.0.0.1", 8899, launch_token="launch-a")
 
     with pytest.raises(RuntimeError, match="Another server is already registered"):
@@ -266,3 +267,31 @@ def test_cleanup_waits_for_in_progress_registration(state_dir, monkeypatch):
     assert not cleanup.is_alive()
     assert daemon_cmd._read_state()["pid"] == 1234
     assert (state_dir / "server.pid").read_text() == "1234"
+
+
+def test_hung_ready_server_is_stopped_and_replaced(state_dir, monkeypatch):
+    daemon_cmd._write_pid(4321, "127.0.0.1", 8899, launch_token="launch-a")
+    monkeypatch.setattr(daemon_cmd, "_pid_alive", lambda pid: True)
+    monkeypatch.setattr(daemon_cmd, "_server_responding", lambda host, port: False)
+    stopped = []
+    monkeypatch.setattr(daemon_cmd, "terminate_process", lambda pid, **kw: stopped.append(pid))
+    monkeypatch.setattr(daemon_cmd, "process_alive", lambda pid: False)
+
+    daemon_cmd._write_pid(9876, "127.0.0.1", 8765, launch_token="launch-b")
+
+    assert stopped == [4321]
+    assert daemon_cmd._read_pid_file() == 9876
+    assert daemon_cmd._read_state()["port"] == 8765
+
+
+def test_stale_pid_file_is_overwritten(state_dir, monkeypatch):
+    daemon_cmd._write_pid(4321, "127.0.0.1", 8899)
+    monkeypatch.setattr(daemon_cmd, "_pid_alive", lambda pid: False)
+
+    daemon_cmd._write_pid(9876, "127.0.0.1", 8765)
+
+    assert daemon_cmd._read_pid_file() == 9876
+
+
+def test_server_responding_probes_health(monkeypatch):
+    assert daemon_cmd._server_responding("127.0.0.1", 1, timeout=0.2) is False

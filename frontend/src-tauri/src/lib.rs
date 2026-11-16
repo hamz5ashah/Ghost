@@ -1241,6 +1241,32 @@ fn format_port_unavailable(port: u16, reason: &str) -> String {
     )
 }
 
+/// Two 2xx `/health` answers, half a second apart, from the Ghost port.
+async fn existing_ghost_server_healthy() -> bool {
+    let Ok(client) = reqwest::Client::builder()
+        .timeout(Duration::from_secs(2))
+        .build()
+    else {
+        return false;
+    };
+    let url = format!("http://127.0.0.1:{}/health", GHOST_PORT);
+    for attempt in 0..2 {
+        if attempt > 0 {
+            tokio::time::sleep(Duration::from_millis(500)).await;
+        }
+        let ok = client
+            .get(&url)
+            .send()
+            .await
+            .map(|r| r.status().is_success())
+            .unwrap_or(false);
+        if !ok {
+            return false;
+        }
+    }
+    true
+}
+
 fn check_ghost_port_available() -> Result<(), String> {
     match std::net::TcpListener::bind(("127.0.0.1", GHOST_PORT)) {
         Ok(listener) => {
@@ -1264,6 +1290,23 @@ async fn boot_backend(backend: SharedBackend, status: SharedStatus) {
         return;
     };
     let mut pending_rollback = PendingInferenceRollback::new(&cfg);
+    // A healthy Ghost server is already running (left over from an earlier
+    // launch, or started from a terminal): attach to it right away instead of
+    // preparing models and spawning a duplicate backend. A staged API key must
+    // go to a server this instance starts, so that case keeps the full path.
+    if matches!(pending_rollback.staged_credential_present(), Ok(false))
+        && existing_ghost_server_healthy().await
+        && pending_rollback.confirm(&mut cfg).is_ok()
+    {
+        let mut s = status.lock().await;
+        *s = SetupStatus::starting(&cfg);
+        s.phase = "ready".into();
+        s.detail = format!("Connected to existing API server on port {}.", GHOST_PORT);
+        s.server_ready = true;
+        s.model_ready = true;
+        s.ollama_ready = true;
+        return;
+    }
     let plan = boot_plan(&cfg, total_ram_gb());
     {
         let mut s = status.lock().await;
