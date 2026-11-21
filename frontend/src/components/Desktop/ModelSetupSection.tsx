@@ -158,7 +158,7 @@ export function ModelSetupSection() {
           className="text-sm px-3 py-1.5 rounded-lg outline-none w-64"
           style={inputStyle}
         >
-          <option value="ollama">On this PC (Ollama, included)</option>
+          <option value="ollama">On this PC (Phantom, included)</option>
           <option value="cloud">Cloud: DeepSeek, Claude, GPT…</option>
           <option value="custom">My own OpenAI-compatible server</option>
         </select>

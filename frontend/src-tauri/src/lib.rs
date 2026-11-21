@@ -220,6 +220,26 @@ fn background_std_command<S: AsRef<std::ffi::OsStr>>(program: S) -> std::process
     cmd
 }
 
+/// A helper program installed beside the desktop executable (Tauri sidecar).
+fn bundled_sidecar(name: &str) -> Option<String> {
+    let file = if cfg!(target_os = "windows") { format!("{name}.exe") } else { name.to_string() };
+    let path = std::env::current_exe().ok()?.parent()?.join(file);
+    path.is_file().then(|| path.to_string_lossy().into_owned())
+}
+
+/// The local model engine to launch, and the environment variable that sets
+/// its listen address: bundled Phantom, else Phantom on the system, else Ollama.
+fn local_engine_binary() -> (String, &'static str) {
+    if let Some(p) = bundled_sidecar("phantom") {
+        return (p, "PHANTOM_HOST");
+    }
+    let phantom = resolve_bin("phantom");
+    if std::path::Path::new(&phantom).is_file() {
+        return (phantom, "PHANTOM_HOST");
+    }
+    (resolve_bin("ollama"), "OLLAMA_HOST")
+}
+
 /// Resolve full path to a binary by checking common locations.
 /// macOS .app bundles don't inherit the shell PATH, so we probe manually.
 fn resolve_bin(name: &str) -> String {
@@ -1429,13 +1449,15 @@ async fn boot_backend(backend: SharedBackend, status: SharedStatus) {
             s.detail = "Starting inference engine...".into();
         }
 
-        // Try the bundled sidecar first, fall back to system ollama
+        // Ghost's own engine, Phantom (bundled beside the app), serves the
+        // Ollama API on the usual port, so the backend talks to it unchanged.
+        // A system Ollama is only a fallback for builds without Phantom.
         let ollama_child = {
-            let ollama_bin = resolve_bin("ollama");
-            let mut sidecar_cmd = background_command(&ollama_bin);
+            let (engine_bin, host_var) = local_engine_binary();
+            let mut sidecar_cmd = background_command(&engine_bin);
             sidecar_cmd
                 .arg("serve")
-                .env("OLLAMA_HOST", format!("127.0.0.1:{}", OLLAMA_PORT))
+                .env(host_var, format!("127.0.0.1:{}", OLLAMA_PORT))
                 .stdout(std::process::Stdio::null())
                 .stderr(std::process::Stdio::null());
             // Avoid LD_LIBRARY_PATH leak when running inside an AppImage (#455).
@@ -1453,7 +1475,10 @@ async fn boot_backend(backend: SharedBackend, status: SharedStatus) {
         let ollama_url = format!("http://127.0.0.1:{}/api/tags", OLLAMA_PORT);
         if !wait_for_url(&ollama_url, Duration::from_secs(30)).await {
             let mut s = status.lock().await;
-            s.error = Some("Could not start Ollama. Install it from https://ollama.com".into());
+            s.error = Some(format!(
+                "Could not start Ghost's AI engine on port {}. Another program may be using that port; restart your PC and try again.",
+                OLLAMA_PORT
+            ));
             return;
         }
 

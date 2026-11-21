@@ -289,7 +289,7 @@ function DesktopView() {
           <span className="text-sm font-medium">All systems running</span>
         </div>
         <p className="text-xs mb-5" style={{ color: 'var(--color-text-tertiary)' }}>
-          Ollama inference engine, API server, and AI model are active.
+          The Phantom engine, API server and AI model are active.
         </p>
         <button
           onClick={() => navigate('/')}
@@ -366,7 +366,7 @@ function SelfHostedView() {
             </h2>
           </div>
           <p className="text-xs mb-6" style={{ color: 'var(--color-text-tertiary)' }}>
-            One-click install. Bundles Ollama and the server &mdash; no setup required.
+            One-click install. Bundles the Phantom engine and the server &mdash; no setup required.
           </p>
 
           <a

@@ -24,7 +24,7 @@ describe('first-run inference source navigation', () => {
   it('renders both sources without claiming either has started', () => {
     const html = renderToStaticMarkup(<InferenceSourceChooser onChoose={vi.fn()} />);
 
-    expect(html).toContain('Local Ollama');
+    expect(html).toContain('On this PC (Phantom)');
     expect(html).toContain('OpenAI-compatible server');
     expect(html).toContain('Nothing is installed, started, or downloaded until you confirm');
     expect(html).not.toContain('Starting local setup');
@@ -37,8 +37,8 @@ describe('first-run inference source navigation', () => {
 
     expect(html).toContain('may download one model');
     expect(html).toContain('several gigabytes');
-    expect(html).toContain('Going back leaves Ollama stopped');
-    expect(html).toContain('Use Ollama and continue');
+    expect(html).toContain('Going back leaves the local engine stopped');
+    expect(html).toContain('Use this PC and continue');
     expect(html).toContain('Back');
   });
 
@@ -51,7 +51,7 @@ describe('first-run inference source navigation', () => {
     expect(html).toContain('Model ID');
     expect(html).toMatch(/aria-label="Server URL"[^>]*required/);
     expect(html).toMatch(/aria-label="Model ID"[^>]*required/);
-    expect(html).toContain('Ollama will not start or download models');
+    expect(html).toContain('The local engine will not start or download models');
     expect(html).toContain('Cancel');
   });
 

@@ -547,11 +547,11 @@ export function SettingsPage() {
               {isTauri() && <ModelSetupSection />}
 
               <Section title="Local models">
-                <SettingRow label="Local models (Ollama)" description="Models available for local inference">
+                <SettingRow label="Local models (Phantom)" description="Models available for local inference">
                   <OllamaModelList />
                 </SettingRow>
                 <div className="text-xs mt-2 px-1" style={{ color: 'var(--color-text-tertiary)' }}>
-                  Run <code className="px-1 py-0.5 rounded text-[11px]" style={{ background: 'var(--color-bg-tertiary)' }}>ollama pull &lt;model-name&gt;</code> in your terminal to add more models
+                  Add more models from the model picker (Ctrl+K): any Ollama library name or a Hugging Face GGUF (hf.co/…).
                 </div>
               </Section>
 

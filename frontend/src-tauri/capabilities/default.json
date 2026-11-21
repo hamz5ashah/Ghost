@@ -22,7 +22,7 @@
     {
       "identifier": "shell:allow-execute",
       "allow": [
-        { "name": "binaries/ollama", "sidecar": true, "args": true }
+        { "name": "binaries/phantom", "sidecar": true, "args": true }
       ]
     }
   ]

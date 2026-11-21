@@ -70,12 +70,24 @@ jobs:
         with:
           workspaces: 'frontend/src-tauri -> target'
 
-      - name: Download Ollama (bundled local model runner)
+      # Ghost's local model engine: Phantom (github.com/hamz5ashah/phantom),
+      # with llama.cpp's Vulkan build beside it (uses the GPU when present,
+      # otherwise the CPU). Phantom's own setup command picks the right files.
+      - name: Download Phantom engine and llama.cpp
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
-          cd frontend/src-tauri/scripts
-          chmod +x download-ollama.sh
-          ./download-ollama.sh x86_64-pc-windows-msvc
+          set -euo pipefail
+          BIN=frontend/src-tauri/binaries
+          mkdir -p "$BIN"
+          gh release download -R hamz5ashah/phantom --pattern phantom-windows-amd64.exe --dir "$RUNNER_TEMP"
+          cp "$RUNNER_TEMP/phantom-windows-amd64.exe" "$BIN/phantom-x86_64-pc-windows-msvc.exe"
+          PHANTOM_RUNTIME="$BIN/llama-runtime" "$BIN/phantom-x86_64-pc-windows-msvc.exe" setup --backend vulkan
+          # Keep only the server and its libraries (the archive holds ~40 tools).
+          find "$BIN/llama-runtime" -maxdepth 1 -type f -name '*.exe' ! -name 'llama-server.exe' -delete
+          ls -la "$BIN/llama-runtime"
 
       # Pre-build Ghost's Rust extension so users don't need Rust or Visual
       # Studio Build Tools. The desktop app pins the backend to this Python.
@@ -138,8 +150,8 @@ jobs:
             || { echo "::error::Staged Tesseract has no eng data"; exit 1; }
           echo "Staged Tesseract runs on its own and reads English."
 
-      # The Ollama runtime (lib/ollama, CPU + Vulkan) must sit beside
-      # ollama.exe; uv.exe goes beside Ghost so the app finds both.
+      # llama-server and its libraries must sit beside phantom.exe; uv.exe
+      # goes beside Ghost so the app finds both.
       # The Stonic helpers (elevate.exe, swap-helper.exe) are Windows-only, so
       # they are mapped here rather than in tauri.conf.json — that file is
       # shared with the macOS/Linux jobs, where these binaries do not exist.
@@ -152,11 +164,11 @@ jobs:
           {
             "version": "$GHOST_VERSION",
             "bundle": {
-              "externalBin": ["binaries/ollama"],
+              "externalBin": ["binaries/phantom"],
               "createUpdaterArtifacts": false,
               "resources": {
                 "../../wheels/": "backend/wheels/",
-                "binaries/ollama-runtime-x86_64-pc-windows-msvc/": "./",
+                "binaries/llama-runtime/": "./",
                 "binaries/uv-bundle/uv.exe": "uv.exe",
                 "resources/stonic/win32/": "./",
                 "binaries/tesseract/": "tesseract/"
@@ -180,14 +192,14 @@ jobs:
         shell: bash
         run: |
           7z l out/*.exe > contents.txt
-          for f in ghost-desktop.exe ollama.exe uv.exe lib/ollama/ggml-base.dll \
+          for f in ghost-desktop.exe phantom.exe llama-server.exe ggml-vulkan.dll uv.exe \
                    backend/pyproject.toml backend/wheels/ghost_rust- \
                    tesseract/tesseract.exe tesseract/tessdata/eng.traineddata; do
             if ! grep -qF "${f//\//\\}" contents.txt && ! grep -qF "$f" contents.txt; then
               echo "::error::Installer is missing $f"; exit 1
             fi
           done
-          echo "Installer contains Ghost, Ollama + runtime, uv and the backend."
+          echo "Installer contains Ghost, Phantom + llama.cpp, uv and the backend."
 
       # Install the real installer and exercise what Ghost does on first
       # launch, from a folder whose name has spaces (like most user names).
@@ -208,11 +220,22 @@ jobs:
           [ -n "$APP" ] || { echo "::error::Ghost was not installed"; exit 1; }
           echo "Installed at: $APP"
 
-          # Bundled Ollama must start with its runtime DLLs.
-          "$APP/ollama.exe" serve > ollama.log 2>&1 &
+          # The bundled engine, exactly as Ghost starts it: Phantom on the
+          # Ollama port. Pull a small real model and chat with it (no GPU on
+          # this runner, so llama.cpp falls back to the CPU).
+          export PHANTOM_MODELS="$RUNNER_TEMP/phantom models"
+          PHANTOM_HOST=127.0.0.1:11434 PHANTOM_DEBUG=1 "$APP/phantom.exe" serve > phantom.log 2>&1 &
           for i in $(seq 1 30); do curl -sf http://127.0.0.1:11434/api/version && break; sleep 2; done
-          curl -sf http://127.0.0.1:11434/api/version || { cat ollama.log; echo "::error::Bundled Ollama did not start"; exit 1; }
+          curl -sf http://127.0.0.1:11434/api/version || { cat phantom.log; echo "::error::Bundled Phantom did not start"; exit 1; }
           echo
+          curl -sf http://127.0.0.1:11434/api/pull -d '{"model":"smollm2:135m","stream":false}' || { tail -50 phantom.log; echo "::error::Phantom could not pull a model"; exit 1; }
+          echo
+          REPLY=$(curl -sf --max-time 300 http://127.0.0.1:11434/api/chat \
+            -d '{"model":"smollm2:135m","stream":false,"messages":[{"role":"user","content":"Say hello"}]}') \
+            || { tail -80 phantom.log; echo "::error::Phantom could not run the model (llama-server)"; exit 1; }
+          echo "Phantom replied: $REPLY" | head -c 400
+          echo
+          echo "$REPLY" | grep -q '"done":true' || { echo "::error::Unexpected chat reply"; exit 1; }
 
           # First-launch backend setup with the bundled uv and wheel, no Rust.
           WORK="$RUNNER_TEMP/Smoke User Name/Ghost"
@@ -276,7 +299,8 @@ jobs:
           print("heard:", heard["text"])
           PY
           # Stop background servers so the step can finish.
-          taskkill //F //IM ollama.exe //T > /dev/null 2>&1 || true
+          taskkill //F //IM phantom.exe //T > /dev/null 2>&1 || true
+          taskkill //F //IM llama-server.exe //T > /dev/null 2>&1 || true
           taskkill //F //IM python.exe //T > /dev/null 2>&1 || true
           taskkill //F //IM uv.exe //T > /dev/null 2>&1 || true
 
@@ -314,19 +338,24 @@ jobs:
         with:
           workspaces: 'frontend/src-tauri -> target'
 
-      - name: Download Ollama (bundled local model runner)
+      # Phantom engine (universal binary); it downloads llama.cpp on first use.
+      - name: Download Phantom engine
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          cd frontend/src-tauri/scripts
-          chmod +x download-ollama.sh
-          ./download-ollama.sh universal-apple-darwin
+          BIN=frontend/src-tauri/binaries
+          mkdir -p "$BIN"
+          gh release download -R hamz5ashah/phantom --pattern 'phantom-darwin-*' --dir "$RUNNER_TEMP"
+          lipo -create "$RUNNER_TEMP/phantom-darwin-arm64" "$RUNNER_TEMP/phantom-darwin-amd64" -output "$BIN/phantom-universal-apple-darwin"
+          chmod +x "$BIN/phantom-universal-apple-darwin"
           for arch in aarch64 x86_64; do
-            cp ../binaries/ollama-universal-apple-darwin "../binaries/ollama-${arch}-apple-darwin"
+            cp "$BIN/phantom-universal-apple-darwin" "$BIN/phantom-${arch}-apple-darwin"
           done
 
       - name: Write build config
         run: |
           cat > frontend/src-tauri/tauri.build.conf.json <<JSON
-          { "version": "$GHOST_VERSION", "bundle": { "externalBin": ["binaries/ollama"], "createUpdaterArtifacts": false } }
+          { "version": "$GHOST_VERSION", "bundle": { "externalBin": ["binaries/phantom"], "createUpdaterArtifacts": false } }
           JSON
 
       - name: Build macOS app (unsigned)
@@ -376,16 +405,20 @@ jobs:
         with:
           workspaces: 'frontend/src-tauri -> target'
 
-      - name: Download Ollama (bundled local model runner)
+      # Phantom engine; it downloads llama.cpp on first use.
+      - name: Download Phantom engine
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          cd frontend/src-tauri/scripts
-          chmod +x download-ollama.sh
-          ./download-ollama.sh x86_64-unknown-linux-gnu
+          BIN=frontend/src-tauri/binaries
+          mkdir -p "$BIN"
+          gh release download -R hamz5ashah/phantom --pattern phantom-linux-amd64 --dir "$RUNNER_TEMP"
+          install -m 755 "$RUNNER_TEMP/phantom-linux-amd64" "$BIN/phantom-x86_64-unknown-linux-gnu"
 
       - name: Write build config
         run: |
           cat > frontend/src-tauri/tauri.build.conf.json <<JSON
-          { "version": "$GHOST_VERSION", "bundle": { "externalBin": ["binaries/ollama"], "createUpdaterArtifacts": false } }
+          { "version": "$GHOST_VERSION", "bundle": { "externalBin": ["binaries/phantom"], "createUpdaterArtifacts": false } }
           JSON
 
       - name: Build Linux packages

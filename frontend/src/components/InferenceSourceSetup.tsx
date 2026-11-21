@@ -97,10 +97,10 @@ export function InferenceSourceChooser({
           <Cpu size={22} className="shrink-0 mt-0.5" style={{ color: 'var(--color-accent)' }} />
           <span>
             <span className="block text-sm font-semibold" style={{ color: 'var(--color-text)' }}>
-              Local Ollama
+              On this PC (Phantom)
             </span>
             <span className="block text-xs mt-1" style={{ color: 'var(--color-text-secondary)' }}>
-              Run models on this computer. Requires a separate confirmation before Ollama starts or a model downloads.
+              Run models on this computer. Requires a separate confirmation before the local engine starts or a model downloads.
             </span>
           </span>
         </button>
@@ -116,7 +116,7 @@ export function InferenceSourceChooser({
               OpenAI-compatible server
             </span>
             <span className="block text-xs mt-1" style={{ color: 'var(--color-text-secondary)' }}>
-              Connect to LM Studio, vLLM, SGLang, llama.cpp, MLX, or another compatible endpoint. Ollama stays off.
+              Connect to LM Studio, vLLM, SGLang, llama.cpp, MLX, or another compatible endpoint. The local engine stays off.
             </span>
           </span>
         </button>
@@ -185,7 +185,7 @@ export function OllamaConsent({
             Allow local model setup?
           </h2>
           <p className="text-sm leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
-            Ghost will start Ollama and may download one model selected for this computer. Model downloads can use several gigabytes of disk space and network data.
+            Ghost will start Phantom, its built-in engine, and may download one model selected for this computer. Model downloads can use several gigabytes of disk space and network data.
           </p>
         </div>
       </div>
@@ -194,7 +194,7 @@ export function OllamaConsent({
         style={{ background: 'var(--color-accent-subtle)', color: 'var(--color-text-secondary)' }}
       >
         <ShieldCheck size={16} className="shrink-0" style={{ color: 'var(--color-accent)' }} />
-        Going back leaves Ollama stopped and does not save this choice.
+        Going back leaves the local engine stopped and does not save this choice.
       </div>
       {error && <SetupError message={error} />}
       <button
@@ -205,7 +205,7 @@ export function OllamaConsent({
         style={{ background: 'var(--color-accent)', color: 'white' }}
       >
         {busy && <Loader2 size={16} className="animate-spin" />}
-        {busy ? 'Starting local setup...' : 'Use Ollama and continue'}
+        {busy ? 'Starting local setup...' : 'Use this PC and continue'}
       </button>
     </SetupFrame>
   );
@@ -269,7 +269,7 @@ export function CustomEndpointSetup({
             Connect your server
           </h2>
           <p className="text-xs" style={{ color: 'var(--color-text-secondary)' }}>
-            Ghost will connect only after you submit this form. Ollama will not start or download models.
+            Ghost will connect only after you submit this form. The local engine will not start or download models.
           </p>
         </div>
         <label className="text-xs font-medium" style={{ color: 'var(--color-text-secondary)' }}>

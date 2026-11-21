@@ -456,7 +456,7 @@ export function CommandPalette() {
               <span><kbd className="font-mono">Esc</kbd> Close</span>
             </>
           ) : tab === 'catalogue' ? (
-            <span>Models are downloaded from the Ollama registry</span>
+            <span>Models come from the Ollama library or Hugging Face (hf.co/...)</span>
           ) : (
             <button onClick={() => { setCommandPaletteOpen(false); navigate('/settings?tab=cloud'); }} className="cursor-pointer underline" style={{ color: 'var(--color-text-tertiary)' }}>Manage cloud providers in Settings</button>
           )}
