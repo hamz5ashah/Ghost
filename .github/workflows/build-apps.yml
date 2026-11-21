@@ -347,6 +347,25 @@ jobs:
           fi
           echo "Update over a running Ghost works."
 
+          # The installer stopped uv.exe, but the Python server it started is
+          # still listening on 8765: the "Port is not available" case users
+          # hit. The script the app runs before starting must free the port.
+          sleep 2
+          if curl -s -o /dev/null http://127.0.0.1:8765/health; then
+            echo "Leftover Ghost server is still running on 8765 (as expected)."
+            OUT=$(powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass \
+              -File "$(cygpath -w "$GITHUB_WORKSPACE/frontend/src-tauri/scripts/stop-stale-ghost.ps1")" \
+              -Dir "$(cygpath -w "$WORK")" -Port 8765)
+            echo "stop-stale-ghost: $OUT"
+            sleep 2
+            if curl -s -o /dev/null http://127.0.0.1:8765/health; then
+              echo "::error::The leftover Ghost server still holds port 8765"; exit 1
+            fi
+            echo "Leftover Ghost server stopped; port 8765 is free."
+          else
+            echo "No leftover server on 8765 after the update."
+          fi
+
           # Stop background servers so the step can finish.
           taskkill //F //IM phantom.exe //T > /dev/null 2>&1 || true
           taskkill //F //IM llama-server.exe //T > /dev/null 2>&1 || true

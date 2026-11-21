@@ -696,7 +696,65 @@ struct ChildHandle {
 
 impl ChildHandle {
     async fn kill(&mut self) {
+        kill_process_tree(self.child.id());
         let _ = self.child.kill().await;
+    }
+}
+
+/// `Child::kill` ends only that process. `uv run ghost serve` starts Python as
+/// a child, which then keeps running and holding Ghost's port, so a restart
+/// failed with "Port 8000 is not available". End the whole tree.
+fn kill_process_tree(pid: Option<u32>) {
+    let Some(pid) = pid else { return };
+    #[cfg(target_os = "windows")]
+    {
+        let _ = background_std_command("taskkill")
+            .args(["/T", "/F", "/PID", &pid.to_string()])
+            .stdout(std::process::Stdio::null())
+            .stderr(std::process::Stdio::null())
+            .status();
+    }
+    #[cfg(not(target_os = "windows"))]
+    {
+        let _ = background_std_command("pkill")
+            .args(["-KILL", "-P", &pid.to_string()])
+            .status();
+    }
+}
+
+/// If Ghost's port is held by a leftover Ghost backend (left running by an
+/// earlier version or a crash), stop it so this launch can use the port.
+/// Only a process started from the Ghost folder or running `ghost serve` is
+/// touched; any other program on the port is left alone. Returns whether one
+/// was stopped. Windows only (elsewhere the tree kill above prevents leftovers).
+fn stop_stale_ghost_on_port(port: u16, ghost_dir: &std::path::Path) -> bool {
+    #[cfg(target_os = "windows")]
+    {
+        const SCRIPT: &str = include_str!("../scripts/stop-stale-ghost.ps1");
+        let path = std::env::temp_dir().join("ghost-stop-stale.ps1");
+        if std::fs::write(&path, SCRIPT).is_err() {
+            return false;
+        }
+        let out = background_std_command("powershell.exe")
+            .args(["-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-File"])
+            .arg(&path)
+            .arg("-Dir")
+            .arg(ghost_dir)
+            .arg("-Port")
+            .arg(port.to_string())
+            .output();
+        let stopped = out
+            .map(|o| String::from_utf8_lossy(&o.stdout).contains("stopped"))
+            .unwrap_or(false);
+        if stopped {
+            std::thread::sleep(std::time::Duration::from_millis(1000));
+        }
+        stopped
+    }
+    #[cfg(not(target_os = "windows"))]
+    {
+        let _ = (port, ghost_dir);
+        false
     }
 }
 
@@ -1914,9 +1972,16 @@ async fn boot_backend(backend: SharedBackend, status: SharedStatus) {
     }
 
     if let Err(err) = check_ghost_port_available() {
-        let mut s = status.lock().await;
-        s.error = Some(err);
-        return;
+        // A leftover Ghost backend is the usual holder: stop it and retry.
+        let freed = project_root
+            .as_deref()
+            .map(|dir| stop_stale_ghost_on_port(GHOST_PORT, dir))
+            .unwrap_or(false);
+        if !freed || check_ghost_port_available().is_err() {
+            let mut s = status.lock().await;
+            s.error = Some(err);
+            return;
+        }
     }
 
     let root = project_root.as_ref().unwrap();
