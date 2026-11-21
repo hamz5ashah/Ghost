@@ -89,3 +89,29 @@ def test_routes(home, monkeypatch):
         is False
     )
     assert client.get("/v1/stonic/flags").json()["flags"]["memory_v2"] is False
+
+
+def test_set_flag_changes_only_that_flag(home):
+    path = home / "config.toml"
+    path.write_text("# keep me\n[stonic]\nui_sounds = true\n")
+    cfg = GhostConfig()
+    stonic_preset.set_flag("realtime_voice", True, config=cfg)
+    data = tomllib.loads(path.read_text())
+    assert data["stonic"] == {"ui_sounds": True, "realtime_voice": True}
+    assert "# keep me" in path.read_text()
+    assert cfg.stonic.realtime_voice is True
+    stonic_preset.set_flag("realtime_voice", False, config=cfg)
+    assert tomllib.loads(path.read_text())["stonic"]["realtime_voice"] is False
+
+
+def test_flag_endpoint_rejects_unknown_names(home):
+    from ghost.server.api_routes import stonic_router
+
+    app = FastAPI()
+    app.state.config = GhostConfig()
+    app.include_router(stonic_router)
+    client = TestClient(app)
+    ok = client.post("/v1/stonic/flags", json={"name": "realtime_voice", "enabled": True})
+    assert ok.status_code == 200 and ok.json()["flags"] == {"realtime_voice": True}
+    assert client.get("/v1/stonic/flags").json()["flags"]["realtime_voice"] is True
+    assert client.post("/v1/stonic/flags", json={"name": "rm_rf", "enabled": True}).status_code == 400

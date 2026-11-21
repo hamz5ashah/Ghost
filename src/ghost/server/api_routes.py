@@ -1428,6 +1428,25 @@ async def stonic_flags(request: Request):
     return {"flags": flags, "available": True}
 
 
+class StonicFlagBody(BaseModel):
+    name: str
+    enabled: bool = True
+
+
+@stonic_router.post("/flags")
+async def stonic_set_flag(request: Request, body: StonicFlagBody):
+    """Turn one Stonic feature on or off (written to config.toml)."""
+    from ghost.core import stonic_preset  # noqa: PLC0415
+
+    if body.name not in _STONIC_FLAG_NAMES:
+        raise HTTPException(status_code=400, detail=f"Unknown Stonic feature: {body.name}")
+    config = getattr(request.app.state, "config", None)
+    result = await asyncio.to_thread(
+        stonic_preset.set_flag, body.name, body.enabled, config=config
+    )
+    return {"ok": True, "flags": result}
+
+
 @stonic_router.get("/characters")
 async def stonic_characters(request: Request):
     """List the character delivery profiles available to the voice engine.

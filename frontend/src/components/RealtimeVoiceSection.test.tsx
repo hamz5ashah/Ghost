@@ -11,9 +11,12 @@ vi.mock('../lib/store', () => ({
 import { RealtimeVoiceSection } from './RealtimeVoiceSection';
 
 describe('RealtimeVoiceSection', () => {
-  it('renders nothing until the realtime_voice flag is known to be on', () => {
-    // Flags resolve asynchronously and start all-off, so the first render
-    // leaves Settings → Assistant exactly as it was before the port.
-    expect(renderToStaticMarkup(<RealtimeVoiceSection />)).toBe('');
+  it('offers to turn the Stonic voice on while the flag is off', () => {
+    // Flags start all-off, so the first render is the opt-in card: the
+    // realtime engine settings appear only after the user turns it on.
+    const html = renderToStaticMarkup(<RealtimeVoiceSection />);
+    expect(html).toContain('Turn on Stonic voice');
+    expect(html).toContain('Gemini API key');
+    expect(html).not.toContain('Conversation engine');
   });
 });

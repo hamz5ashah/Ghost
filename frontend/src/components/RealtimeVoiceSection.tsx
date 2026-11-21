@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { AudioLines, Check, Download, Ear, Loader2, Radio, Zap } from 'lucide-react';
 import { useAppStore } from '../lib/store';
-import { getStonicFlags } from '../lib/stonic-flags';
+import { getStonicFlags, setStonicFlag } from '../lib/stonic-flags';
 import {
   BRAIN_OPTIONS,
   fetchRealtimeStatus,
@@ -27,7 +27,7 @@ const ENGINES: Array<{ key: ConversationEngine; label: string; hint: string; ico
   },
   {
     key: 'realtime',
-    label: 'Realtime engine',
+    label: 'Stonic voice (realtime)',
     hint: 'Streaming conversation with smart turn-taking. Online, uses your own keys.',
     icon: Zap,
   },
@@ -70,7 +70,33 @@ export function RealtimeVoiceSection() {
     return () => clearInterval(t);
   }, [flagOn, refresh]);
 
-  if (!flagOn) return null;
+  if (!flagOn) {
+    const enable = async () => {
+      setError('');
+      try { await setStonicFlag('realtime_voice', true); setFlagOn(true); }
+      catch (e) { setError(e instanceof Error ? e.message : String(e)); }
+    };
+    return (
+      <div className="rounded-xl p-5" style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)' }}>
+        <h3 className="text-sm font-semibold mb-1 flex items-center gap-2" style={{ color: 'var(--color-text)' }}>
+          <Zap size={15} /> Stonic voice
+        </h3>
+        <p className="text-xs mb-3" style={{ color: 'var(--color-text-tertiary)' }}>
+          Talk with Ghost in realtime, with natural turn-taking and an expressive voice. Online: needs a free Google
+          Gemini API key (Settings → Cloud providers) and a one-time download of about 375 MB.
+        </p>
+        <button
+          type="button"
+          onClick={() => void enable()}
+          className="text-sm px-3 py-1.5 rounded-lg cursor-pointer"
+          style={{ background: 'var(--color-accent)', color: 'white' }}
+        >
+          Turn on Stonic voice
+        </button>
+        {error && <p role="alert" className="text-xs mt-2" style={{ color: 'var(--color-error)' }}>{error}</p>}
+      </div>
+    );
+  }
 
   const runtimeState = status?.runtime.state ?? 'unknown';
   const installing = runtimeState === 'installing';

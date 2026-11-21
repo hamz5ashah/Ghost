@@ -46,3 +46,12 @@ describe('buildSystemPrompt', () => {
     expect(butlerStatusLine(true, 'urdu')).toContain('آن لائن');
   });
 });
+
+describe('creator', () => {
+  it('names Syed Hamza Ali Shah as the developer in every personality', () => {
+    for (const persona of ['companion', 'professional', 'jarvis'] as const) {
+      const prefs = { persona, responseStyle: 'balanced', aboutUser: '', customInstructions: '' } as Parameters<typeof buildSystemPrompt>[0];
+      expect(buildSystemPrompt(prefs)).toContain('developed by Syed Hamza Ali Shah');
+    }
+  });
+});

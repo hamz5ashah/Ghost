@@ -32,7 +32,6 @@ import { FaceLockSection } from '../components/facelock/FaceLockSection';
 import { HandControlSection } from '../components/gestures/HandControlSection';
 import { AwarenessSection } from '../components/presence/AwarenessSection';
 import { StonicModeSection } from '../components/presence/StonicModeSection';
-import { getStonicFlags } from '../lib/stonic-flags';
 import {
   checkHealth,
   fetchSpeechHealth,
@@ -281,7 +280,7 @@ const SETTINGS_TABS: Array<{
   { key: 'cloud', label: 'Cloud providers', description: 'Use Anthropic, DeepSeek, OpenAI and more with your own API key.', icon: Cloud },
   { key: 'phone', label: 'Phone & connection', description: 'Use Ghost from your phone, and the server this app talks to.', icon: Smartphone },
   { key: 'tools', label: 'Tools & memory', description: 'Web search, memory and voice.', icon: Wrench },
-  { key: 'security', label: 'Security & input', description: 'Face Lock and hand control.', icon: ScanFace },
+  { key: 'security', label: 'Stonic & security', description: 'Always-Active Stonic Mode, awareness, Face Lock and hand control.', icon: ScanFace },
   { key: 'usage', label: 'Usage & cost', description: 'Requests, tokens, energy and what the same work would cost in the cloud.', icon: Activity },
   { key: 'data', label: 'Data', description: 'Export or clear your chats and settings.', icon: Database },
   { key: 'about', label: 'About', description: 'Version, updates and license.', icon: Info },
@@ -290,12 +289,8 @@ const SETTINGS_TABS: Array<{
 export function SettingsPage() {
   // The open tab lives in the URL (?tab=cloud) so other screens can link to it.
   const [searchParams, setSearchParams] = useSearchParams();
-  // Security & input appears only once Face Lock or hand control is turned on.
-  const [inputFlags, setInputFlags] = useState(false);
-  useEffect(() => {
-    void getStonicFlags().then((f) => setInputFlags(f.facelock || f.gestures));
-  }, []);
-  const visibleTabs = SETTINGS_TABS.filter((t) => t.key !== 'security' || inputFlags);
+  // Every tab is always reachable: the Stonic features are switched on from there.
+  const visibleTabs = SETTINGS_TABS;
   const requestedTab = searchParams.get('tab') as SettingsTab | null;
   const activeTab = visibleTabs.find((t) => t.key === requestedTab) ?? visibleTabs[0];
   const tab = activeTab.key;
@@ -640,7 +635,7 @@ export function SettingsPage() {
           {tab === 'tools' && (
             <div className="flex flex-col gap-4">
               <Section title="Tools">
-                <SettingRow label="Web Search" description="Tavily key for web search tool">
+                <SettingRow label="Web Search" description="Optional. Without a key Ghost searches with DuckDuckGo (free). A Tavily key (free plan at tavily.com) gives better results.">
                   <ApiKeyInput keyName="TAVILY_API_KEY" placeholder="tvly-..." toolName="web_search" />
                 </SettingRow>
               </Section>

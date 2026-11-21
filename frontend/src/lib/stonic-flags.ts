@@ -100,3 +100,14 @@ export function resetStonicFlags(): void {
   cached = null;
   inFlight = null;
 }
+
+/** Turn one Stonic feature on or off; the next getStonicFlags() re-reads. */
+export async function setStonicFlag(name: keyof StonicFlags, enabled: boolean): Promise<void> {
+  const res = await apiFetch('/v1/stonic/flags', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, enabled }),
+  });
+  if (!res.ok) throw new Error(`Could not change ${name} (HTTP ${res.status})`);
+  resetStonicFlags();
+}

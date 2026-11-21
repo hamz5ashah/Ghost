@@ -143,8 +143,36 @@ def apply(
     return {**status(path), "applied": target}
 
 
+def set_flag(
+    name: str, enabled: bool, *, path: Optional[Path] = None, config: Any = None
+) -> Dict[str, bool]:
+    """Turn one ``[stonic]`` flag on or off in ``config.toml`` (and in memory).
+
+    Unlike the preset this touches only that flag, so e.g. the Stonic voice
+    can be enabled without awareness, the notch or memory v2.
+    """
+    import tomlkit
+
+    path = path or config_path()
+    with _lock:
+        doc = _read_doc(path)
+        if "stonic" not in doc:
+            doc["stonic"] = tomlkit.table()
+        doc["stonic"][name] = bool(enabled)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(tomlkit.dumps(doc), encoding="utf-8")
+    stonic = getattr(config, "stonic", None)
+    if stonic is not None:
+        try:
+            setattr(stonic, name, bool(enabled))
+        except (AttributeError, TypeError):
+            logger.debug("cannot set stonic.%s in memory", name)
+    return {name: bool(enabled)}
+
+
 __all__ = [
     "ALWAYS_ACTIVE_FLAGS",
+    "set_flag",
     "PRESET",
     "apply",
     "config_path",
