@@ -288,12 +288,17 @@ jobs:
 
           # Identity with the user's model through the bundled Phantom, using
           # the same system prompt the app sends (report only: a 0.6B model).
-          PROMPT=$(cd "$GITHUB_WORKSPACE/frontend" && npx --yes tsx -e "import('./src/lib/assistant-prompt.ts').then(m => process.stdout.write(m.buildSystemPrompt({persona:'companion',responseStyle:'balanced',aboutUser:'',customInstructions:''})))" 2>/dev/null || true)
-          if [ -n "$PROMPT" ] && curl -sf --max-time 900 http://127.0.0.1:11434/api/pull -d '{"model":"qwen3:0.6b","stream":false}' > /dev/null; then
-            python - "$PROMPT" <<'PY' || echo "::warning::Identity check did not complete"
-          import json, sys, urllib.request
+          (cd "$GITHUB_WORKSPACE/frontend" && npx --yes tsx scripts/print-system-prompt.ts) > "$RUNNER_TEMP/prompt.txt" \
+            || echo "::warning::Could not build the system prompt"
+          echo "System prompt: $(wc -c < "$RUNNER_TEMP/prompt.txt") bytes"
+          curl -s --max-time 900 http://127.0.0.1:11434/api/pull -d '{"model":"qwen3:0.6b","stream":false}' \
+            || echo "::warning::Could not pull qwen3:0.6b"
+          echo
+          PROMPT_FILE="$RUNNER_TEMP/prompt.txt" python - <<'PY' || echo "::warning::Identity check did not complete"
+          import json, os, urllib.request
+          prompt = open(os.environ["PROMPT_FILE"], encoding="utf-8").read()
           body = {"model": "qwen3:0.6b", "stream": False, "think": False,
-                  "messages": [{"role": "system", "content": sys.argv[1]},
+                  "messages": [{"role": "system", "content": prompt},
                                {"role": "user", "content": "Who developed you?"}]}
           req = urllib.request.Request("http://127.0.0.1:11434/api/chat", json.dumps(body).encode(), {"Content-Type": "application/json"})
           reply = json.loads(urllib.request.urlopen(req, timeout=600).read())["message"]["content"]
@@ -301,9 +306,6 @@ jobs:
           if "Syed Hamza Ali Shah" not in reply:
               print("::warning::The model did not name Syed Hamza Ali Shah")
           PY
-          else
-            echo "::warning::Identity check skipped (prompt or model unavailable)"
-          fi
 
           # Voice round trip (report only): offline Urdu voice -> Whisper.
           # UTF-8 so Urdu text can be printed on the Windows console.
