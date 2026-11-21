@@ -288,8 +288,8 @@ jobs:
 
           # Identity with the user's model through the bundled Phantom, using
           # the same system prompt the app sends (report only: a 0.6B model).
-          (cd "$GITHUB_WORKSPACE/frontend" && npx --yes tsx scripts/print-system-prompt.ts) > "$RUNNER_TEMP/prompt.txt" \
-            || echo "::warning::Could not build the system prompt"
+          (cd "$GITHUB_WORKSPACE/frontend" && node --experimental-strip-types --no-warnings scripts/print-system-prompt.mts) \
+            > "$RUNNER_TEMP/prompt.txt" || echo "::warning::Could not build the system prompt"
           echo "System prompt: $(wc -c < "$RUNNER_TEMP/prompt.txt") bytes"
           curl -s --max-time 900 http://127.0.0.1:11434/api/pull -d '{"model":"qwen3:0.6b","stream":false}' \
             || echo "::warning::Could not pull qwen3:0.6b"

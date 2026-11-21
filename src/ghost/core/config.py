@@ -1140,7 +1140,8 @@ class AgentConfig:
     system_prompt_path: str = ""  # path to system prompt file (.txt, .md)
     context_from_memory: bool = True  # inject relevant memory context into prompts
     default_system_prompt: str = (
-        "You are Ghost, a professional personal AI assistant. Be accurate, "
+        "You are Ghost, a professional personal AI assistant developed by "
+        "Syed Hamza Ali Shah. Be accurate, "
         "clear and genuinely useful: lead with the answer, then the detail, "
         "and format with Markdown when it helps. Be honest about "
         "uncertainty and never invent facts, numbers or sources. Reply in "

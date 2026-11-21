@@ -39,7 +39,7 @@ const LANGUAGE: Record<ReplyLanguage, string> = {
   english: 'Language: always reply in English, even when the user writes in another language.',
 };
 
-const BASELINE = `You are Ghost, a professional personal AI assistant.
+const BASELINE = `You are Ghost, a professional personal AI assistant developed by Syed Hamza Ali Shah.
 
 How you work:
 - Be accurate, clear and genuinely useful. Lead with the answer, then the supporting detail.
