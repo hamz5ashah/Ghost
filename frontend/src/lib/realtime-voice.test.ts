@@ -60,7 +60,7 @@ describe('API calls', () => {
   });
 
   it('status hits the realtime status route', async () => {
-    vi.mocked(fetch).mockResolvedValue(respond({ enabled: false }));
+    vi.mocked(fetch).mockResolvedValue(respond({ enabled: false, runtime: { state: 'missing' }, keys: {} }));
     await fetchRealtimeStatus();
     expect(String(vi.mocked(fetch).mock.calls[0][0])).toContain('/v1/speech/realtime/status');
   });

@@ -49,7 +49,13 @@ async function json<T>(res: Response): Promise<T> {
 }
 
 export async function fetchRealtimeStatus(): Promise<RealtimeStatus> {
-  return json(await apiFetch('/v1/speech/realtime/status'));
+  const raw = (await json(await apiFetch('/v1/speech/realtime/status'))) as Partial<RealtimeStatus> | null;
+  // While the server restarts (or an older one answers), the reply may lack
+  // these fields; treat that as "not ready" rather than crashing Settings.
+  if (!raw || typeof raw !== 'object' || !raw.runtime || !raw.keys) {
+    throw new Error('Realtime engine status is not available yet');
+  }
+  return raw as RealtimeStatus;
 }
 
 export async function installRealtimeRuntime(): Promise<unknown> {

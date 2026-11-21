@@ -2419,6 +2419,37 @@ fn stonic_flags() -> std::collections::BTreeMap<String, bool> {
     stonic_flags_from_config(&text)
 }
 
+/// Set one `[stonic]` flag in a config.toml string, keeping everything else. Pure.
+fn upsert_stonic_flag(existing: &str, name: &str, enabled: bool) -> Result<String, String> {
+    if !STONIC_FLAG_NAMES.contains(&name) {
+        return Err(format!("Unknown Stonic feature: {name}"));
+    }
+    let mut doc = existing
+        .parse::<toml_edit::DocumentMut>()
+        .map_err(|e| format!("Invalid config.toml: {}", e))?;
+    doc["stonic"][name] = toml_edit::value(enabled);
+    Ok(doc.to_string())
+}
+
+/// Turn one Stonic feature on or off and restart the server so it applies.
+/// Done here rather than through the server so it works even while the
+/// server is down or older than this app.
+#[tauri::command]
+async fn set_stonic_flag(
+    name: String,
+    enabled: bool,
+    backend: tauri::State<'_, SharedBackend>,
+    status: tauri::State<'_, SharedStatus>,
+) -> Result<std::collections::BTreeMap<String, bool>, String> {
+    let existing = std::fs::read_to_string(ghost_config_toml_path()).unwrap_or_default();
+    let updated = upsert_stonic_flag(&existing, &name, enabled)?;
+    if updated != existing {
+        write_ghost_config_toml(&updated)?;
+        restart_backend_if_configured(backend.inner(), status.inner()).await;
+    }
+    Ok(stonic_flags_from_config(&updated))
+}
+
 /// Turn phone access on/off (or issue a new key) and restart the server so it
 /// takes effect. Returns the new state for the settings screen.
 #[tauri::command]
@@ -4213,6 +4244,7 @@ pub fn run() {
             get_overlay_conversation,
             get_phone_access,
             stonic_flags,
+            set_stonic_flag,
             stonic_asset_path,
             stonic_helpers,
             set_phone_access,
@@ -5385,6 +5417,19 @@ mod tests {
         };
         let plan = boot_plan(&cfg, 1.0);
         assert_eq!(plan.model_to_pull.as_deref(), Some(super::FALLBACK_MODEL));
+    }
+
+    #[test]
+    fn upsert_stonic_flag_sets_only_that_flag() {
+        let before = "# mine\n[server]\nport = 9000\n\n[stonic]\nui_sounds = true\n";
+        let out = super::upsert_stonic_flag(before, "realtime_voice", true).unwrap();
+        assert!(out.contains("# mine"));
+        let flags = super::stonic_flags_from_config(&out);
+        assert!(flags["realtime_voice"] && flags["ui_sounds"] && !flags["wake_word"]);
+        let off = super::upsert_stonic_flag(&out, "realtime_voice", false).unwrap();
+        assert!(!super::stonic_flags_from_config(&off)["realtime_voice"]);
+        assert!(super::upsert_stonic_flag(before, "rm_rf", true).is_err());
+        assert!(super::upsert_stonic_flag("", "realtime_voice", true).unwrap().contains("realtime_voice = true"));
     }
 
     #[test]

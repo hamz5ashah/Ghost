@@ -5,7 +5,7 @@
 // pending fetch resolves to all-off rather than throwing. That is what keeps
 // each phase of the port independently revertable.
 
-import { apiFetch } from './api';
+import { apiFetch, isTauri } from './api';
 
 export interface StonicFlags {
   /** Phase 1 — UI sound effects on interface events. */
@@ -76,6 +76,14 @@ export async function getStonicFlags(): Promise<StonicFlags> {
   if (inFlight) return inFlight;
   inFlight = (async () => {
     try {
+      // Desktop: the shell reads config.toml directly, so this is right even
+      // while the server is restarting or older than the app.
+      if (isTauri()) {
+        const { invoke } = await import('@tauri-apps/api/core');
+        const flags = normalizeFlags({ flags: await invoke<Record<string, boolean>>('stonic_flags') });
+        cached = flags;
+        return flags;
+      }
       const res = await apiFetch('/v1/stonic/flags');
       if (!res.ok) return { ...STONIC_FLAGS_OFF };
       const flags = normalizeFlags(await res.json());
@@ -103,6 +111,13 @@ export function resetStonicFlags(): void {
 
 /** Turn one Stonic feature on or off; the next getStonicFlags() re-reads. */
 export async function setStonicFlag(name: keyof StonicFlags, enabled: boolean): Promise<void> {
+  if (isTauri()) {
+    // The shell writes config.toml and restarts the server with it.
+    const { invoke } = await import('@tauri-apps/api/core');
+    await invoke('set_stonic_flag', { name, enabled });
+    resetStonicFlags();
+    return;
+  }
   const res = await apiFetch('/v1/stonic/flags', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

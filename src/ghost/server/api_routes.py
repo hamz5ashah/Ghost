@@ -1441,9 +1441,15 @@ async def stonic_set_flag(request: Request, body: StonicFlagBody):
     if body.name not in _STONIC_FLAG_NAMES:
         raise HTTPException(status_code=400, detail=f"Unknown Stonic feature: {body.name}")
     config = getattr(request.app.state, "config", None)
-    result = await asyncio.to_thread(
-        stonic_preset.set_flag, body.name, body.enabled, config=config
-    )
+    try:
+        result = await asyncio.to_thread(
+            stonic_preset.set_flag, body.name, body.enabled, config=config
+        )
+    except Exception as exc:  # noqa: BLE001 — report it; a raw 500 loses CORS headers
+        logger.warning("Could not set Stonic flag %s: %s", body.name, exc)
+        raise HTTPException(
+            status_code=500, detail=f"Could not save the setting: {exc}"
+        ) from exc
     return {"ok": True, "flags": result}
 
 
