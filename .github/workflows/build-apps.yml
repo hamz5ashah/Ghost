@@ -208,7 +208,7 @@ jobs:
         timeout-minutes: 25
         run: |
           set -euo pipefail
-          INSTALLER=$(ls out/*.exe | head -1)
+          INSTALLER="$PWD/$(ls out/*.exe | head -1)"
           # MSYS_NO_PATHCONV: Git Bash would otherwise rewrite "/S" into a
           # drive path, and the installer would wait for clicks forever.
           MSYS_NO_PATHCONV=1 timeout 600 "$INSTALLER" /S
