@@ -335,6 +335,18 @@ jobs:
           print("said :", text)
           print("heard:", heard["text"])
           PY
+          # Update over a running Ghost: phantom.exe and uv.exe from the install
+          # folder are still running here, exactly as on a user's PC. The
+          # installer must stop them itself, or it fails on a locked file.
+          echo "Running before the update:"; tasklist | grep -iE "phantom|uv.exe|llama-server" || true
+          code=0
+          MSYS_NO_PATHCONV=1 timeout 600 "$INSTALLER" /S || code=$?
+          [ "$code" = 0 ] || { echo "::error::Updating over a running Ghost failed (installer exit $code)"; exit 1; }
+          if tasklist | grep -iqE "^(phantom|uv)\.exe"; then
+            tasklist | grep -iE "phantom|uv.exe" || true
+          fi
+          echo "Update over a running Ghost works."
+
           # Stop background servers so the step can finish.
           taskkill //F //IM phantom.exe //T > /dev/null 2>&1 || true
           taskkill //F //IM llama-server.exe //T > /dev/null 2>&1 || true
