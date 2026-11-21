@@ -52,3 +52,8 @@ keyring = { version = "3", features = ["sync-secret-service", "crypto-rust"] }
 [features]
 default = ["custom-protocol"]
 custom-protocol = ["tauri/custom-protocol"]
+
+[target.'cfg(windows)'.dependencies]
+# Let Ghost's own window use the microphone/camera (lib.rs, allow_media_permissions).
+webview2-com = "0.39"
+windows-core = "0.62"

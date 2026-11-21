@@ -220,6 +220,56 @@ fn background_std_command<S: AsRef<std::ffi::OsStr>>(program: S) -> std::process
     cmd
 }
 
+/// Let Ghost's own window use the microphone and camera (voice, Face Lock).
+/// WebView2 otherwise asks once and remembers a "Block" answer forever, which
+/// left the mic off with nothing in Settings able to turn it back on. The
+/// window only ever loads Ghost's own interface, so these are granted, and a
+/// previously saved denial for Ghost's origin is reset.
+#[cfg(target_os = "windows")]
+fn allow_media_permissions(
+    controller: webview2_com::Microsoft::Web::WebView2::Win32::ICoreWebView2Controller,
+) {
+    use webview2_com::Microsoft::Web::WebView2::Win32::*;
+    use webview2_com::{PermissionRequestedEventHandler, SetPermissionStateCompletedHandler};
+    use windows_core::{Interface, HSTRING};
+
+    const MEDIA: [COREWEBVIEW2_PERMISSION_KIND; 2] =
+        [COREWEBVIEW2_PERMISSION_KIND_MICROPHONE, COREWEBVIEW2_PERMISSION_KIND_CAMERA];
+    unsafe {
+        let Ok(core) = controller.CoreWebView2() else { return };
+        let handler = PermissionRequestedEventHandler::create(Box::new(|_, args| {
+            let Some(args) = args else { return Ok(()) };
+            let mut kind = COREWEBVIEW2_PERMISSION_KIND::default();
+            args.PermissionKind(&mut kind)?;
+            if MEDIA.contains(&kind) {
+                args.SetState(COREWEBVIEW2_PERMISSION_STATE_ALLOW)?;
+            }
+            Ok(())
+        }));
+        let mut token = 0i64;
+        let _ = core.add_PermissionRequested(&handler, &mut token);
+
+        // Clear a "Block" saved by an earlier version (WebView2 1.0.1988+).
+        if let Ok(profile) = core
+            .cast::<ICoreWebView2_13>()
+            .and_then(|c| c.Profile())
+            .and_then(|p| p.cast::<ICoreWebView2Profile4>())
+        {
+            for origin in ["http://tauri.localhost", "https://tauri.localhost"] {
+                for kind in MEDIA {
+                    let done = SetPermissionStateCompletedHandler::create(Box::new(|_| Ok(())));
+                    let _ = profile.SetPermissionState(
+                        kind,
+                        &HSTRING::from(origin),
+                        COREWEBVIEW2_PERMISSION_STATE_ALLOW,
+                        &done,
+                    );
+                }
+            }
+        }
+    }
+}
+
 /// A helper program installed beside the desktop executable (Tauri sidecar).
 fn bundled_sidecar(name: &str) -> Option<String> {
     let file = if cfg!(target_os = "windows") { format!("{name}.exe") } else { name.to_string() };
@@ -4261,6 +4311,8 @@ pub fn run() {
             if let Some(main) = app.get_webview_window("main") {
                 let handle = app.handle().clone();
                 main.on_window_event(move |event| presence::on_main_event(&handle, event));
+                #[cfg(target_os = "windows")]
+                let _ = main.with_webview(|wv| allow_media_permissions(wv.controller()));
             }
 
             Ok(())
