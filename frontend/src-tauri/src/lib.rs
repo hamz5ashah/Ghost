@@ -394,29 +394,50 @@ fn bundled_backend_outdated(target: &std::path::Path, version: &str) -> bool {
     }
 }
 
-/// Replace an outdated `~/Ghost` with the backend shipped in this installer.
-/// The Python environment (`.venv`) is carried over so nothing is re-downloaded.
+/// Stop leftover processes started from `dir` (an old backend's Python or uv),
+/// which keep files open and block the update. Windows only; elsewhere open
+/// files do not block replacing them.
+fn stop_processes_under(dir: &std::path::Path) {
+    #[cfg(target_os = "windows")]
+    {
+        let dir = dir.display().to_string().replace('\'', "''");
+        let script = format!(
+            "$d = '{}'.TrimEnd('\\') + '\\'; Get-Process | Where-Object {{ $_.Path -and $_.Path.StartsWith($d, [StringComparison]::OrdinalIgnoreCase) }} | Stop-Process -Force -ErrorAction SilentlyContinue",
+            dir
+        );
+        let _ = background_std_command("powershell.exe")
+            .args(["-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-Command", script.as_str()])
+            .status();
+        std::thread::sleep(std::time::Duration::from_millis(800));
+    }
+    #[cfg(not(target_os = "windows"))]
+    let _ = dir;
+}
+
+/// Update an outdated `~/Ghost` in place with the backend shipped in this
+/// installer. Each shipped folder is replaced and each shipped file
+/// overwritten; everything else (the `.venv` Python environment, user files)
+/// stays. No folder is renamed, so a stray open handle cannot block it.
 fn refresh_bundled_backend(bundled: &std::path::Path, target: &std::path::Path, version: &str) -> Result<(), String> {
-    let staging = target.with_extension("installing");
-    let old = target.with_extension("old");
-    let _ = std::fs::remove_dir_all(&staging);
-    let _ = std::fs::remove_dir_all(&old);
+    stop_processes_under(target);
     let fail = |e: std::io::Error| format!("Could not update Ghost in {}: {}", target.display(), e);
-    copy_dir_recursive(bundled, &staging).map_err(|e| {
-        let _ = std::fs::remove_dir_all(&staging);
-        fail(e)
-    })?;
-    let venv = target.join(".venv");
-    if venv.is_dir() {
-        let _ = std::fs::rename(&venv, staging.join(".venv"));
+    for entry in std::fs::read_dir(bundled).map_err(fail)? {
+        let entry = entry.map_err(fail)?;
+        let name = entry.file_name();
+        if BUNDLE_COPY_SKIP.iter().any(|skip| name == *skip) || name == ".venv" {
+            continue;
+        }
+        let to = target.join(&name);
+        if entry.file_type().map_err(fail)?.is_dir() {
+            // Drop files the new version no longer ships; anything still
+            // locked is simply overwritten by the copy below.
+            let _ = std::fs::remove_dir_all(&to);
+            copy_dir_recursive(&entry.path(), &to).map_err(fail)?;
+        } else {
+            std::fs::copy(entry.path(), &to).map_err(fail)?;
+        }
     }
-    std::fs::rename(target, &old).map_err(fail)?;
-    if let Err(e) = std::fs::rename(&staging, target) {
-        let _ = std::fs::rename(&old, target);
-        return Err(fail(e));
-    }
-    let _ = std::fs::write(target.join(BUNDLE_MARKER), version);
-    let _ = std::fs::remove_dir_all(&old);
+    std::fs::write(target.join(BUNDLE_MARKER), version).map_err(fail)?;
     Ok(())
 }
 
@@ -1624,9 +1645,9 @@ async fn boot_backend(backend: SharedBackend, status: SharedStatus) {
                 s.detail = "Updating Ghost...".into();
             }
             if let Err(err) = refresh_bundled_backend(&bundled, &target_path, version) {
-                let mut s = status.lock().await;
-                s.error = Some(err);
-                return;
+                // Not fatal: start the backend that is already there and try
+                // the update again on the next launch.
+                eprintln!("[ghost] backend update deferred: {err}");
             }
         }
     }
