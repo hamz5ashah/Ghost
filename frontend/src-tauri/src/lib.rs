@@ -342,6 +342,83 @@ fn bundled_helper(name: &str) -> Option<String> {
 
 /// Set once at startup from Tauri's resource directory.
 static BUNDLED_RESOURCE_DIR: std::sync::OnceLock<std::path::PathBuf> = std::sync::OnceLock::new();
+/// The installed app's version (set at startup); marks which build `~/Ghost` came from.
+static APP_VERSION: std::sync::OnceLock<String> = std::sync::OnceLock::new();
+
+/// Runs before any page script on every load. Earlier builds registered a
+/// caching service worker; WebView2 never routes a worker's update request to
+/// the app, so that worker kept serving the old interface forever. Remove it
+/// (and its caches) here, then reload once onto the bundled interface.
+/// Conversations and settings in localStorage are untouched.
+const STALE_UI_CLEANUP_JS: &str = r#"(function () {
+  try {
+    if (!('serviceWorker' in navigator)) return;
+    navigator.serviceWorker.getRegistrations().then(function (regs) {
+      if (!regs.length) return;
+      var controlled = !!navigator.serviceWorker.controller;
+      Promise.all(regs.map(function (r) { return r.unregister(); }))
+        .then(function () {
+          return window.caches
+            ? caches.keys().then(function (k) { return Promise.all(k.map(function (n) { return caches.delete(n); })); })
+            : null;
+        })
+        .then(function () {
+          if (controlled && !sessionStorage.getItem('ghost-stale-ui-cleared')) {
+            sessionStorage.setItem('ghost-stale-ui-cleared', '1');
+            location.reload();
+          }
+        });
+    });
+  } catch (e) {}
+})();"#;
+
+fn stale_ui_cleanup_plugin<R: tauri::Runtime>() -> tauri::plugin::TauriPlugin<R> {
+    tauri::plugin::Builder::new("stale-ui-cleanup")
+        .js_init_script(STALE_UI_CLEANUP_JS.to_string())
+        .build()
+}
+
+/// Marker written into a backend folder that the installer copied.
+const BUNDLE_MARKER: &str = ".ghost-bundle-version";
+
+/// Whether `target` holds a backend copied by an *older* installer and should be
+/// replaced. A developer checkout (has `.git`) is never touched.
+fn bundled_backend_outdated(target: &std::path::Path, version: &str) -> bool {
+    if !target.join("pyproject.toml").is_file() || target.join(".git").exists() {
+        return false;
+    }
+    match std::fs::read_to_string(target.join(BUNDLE_MARKER)) {
+        Ok(found) => found.trim() != version,
+        // Installs from before the marker existed.
+        Err(_) => true,
+    }
+}
+
+/// Replace an outdated `~/Ghost` with the backend shipped in this installer.
+/// The Python environment (`.venv`) is carried over so nothing is re-downloaded.
+fn refresh_bundled_backend(bundled: &std::path::Path, target: &std::path::Path, version: &str) -> Result<(), String> {
+    let staging = target.with_extension("installing");
+    let old = target.with_extension("old");
+    let _ = std::fs::remove_dir_all(&staging);
+    let _ = std::fs::remove_dir_all(&old);
+    let fail = |e: std::io::Error| format!("Could not update Ghost in {}: {}", target.display(), e);
+    copy_dir_recursive(bundled, &staging).map_err(|e| {
+        let _ = std::fs::remove_dir_all(&staging);
+        fail(e)
+    })?;
+    let venv = target.join(".venv");
+    if venv.is_dir() {
+        let _ = std::fs::rename(&venv, staging.join(".venv"));
+    }
+    std::fs::rename(target, &old).map_err(fail)?;
+    if let Err(e) = std::fs::rename(&staging, target) {
+        let _ = std::fs::rename(&old, target);
+        return Err(fail(e));
+    }
+    let _ = std::fs::write(target.join(BUNDLE_MARKER), version);
+    let _ = std::fs::remove_dir_all(&old);
+    Ok(())
+}
 
 /// The backend source shipped inside the installer, if this build has one.
 fn bundled_backend_dir() -> Option<std::path::PathBuf> {
@@ -1537,6 +1614,23 @@ async fn boot_backend(backend: SharedBackend, status: SharedStatus) {
         return;
     }
 
+    // An update installs a new backend, but `~/Ghost` keeps the copy made at
+    // first launch. Replace it when it came from an older installer.
+    if let (Some(bundled), Some(version)) = (bundled_backend_dir(), APP_VERSION.get()) {
+        let target_path = std::path::PathBuf::from(home_dir()).join("Ghost");
+        if bundled_backend_outdated(&target_path, version) {
+            {
+                let mut s = status.lock().await;
+                s.detail = "Updating Ghost...".into();
+            }
+            if let Err(err) = refresh_bundled_backend(&bundled, &target_path, version) {
+                let mut s = status.lock().await;
+                s.error = Some(err);
+                return;
+            }
+        }
+    }
+
     let mut project_root = find_project_root();
 
     // Installed builds carry the backend source; copy it on first launch so a
@@ -1553,6 +1647,9 @@ async fn boot_backend(backend: SharedBackend, status: SharedStatus) {
                     let mut s = status.lock().await;
                     s.error = Some(err);
                     return;
+                }
+                if let Some(version) = APP_VERSION.get() {
+                    let _ = std::fs::write(target_path.join(BUNDLE_MARKER), version);
                 }
                 project_root = Some(target_path);
             }
@@ -3921,6 +4018,7 @@ pub fn run() {
     let boot_status_ref = status.clone();
 
     tauri::Builder::default()
+        .plugin(stale_ui_cleanup_plugin())
         .manage(backend.clone())
         .manage(status.clone())
         .plugin(tauri_plugin_notification::init())
@@ -3942,6 +4040,7 @@ pub fn run() {
             if let Ok(dir) = app.path().resource_dir() {
                 let _ = BUNDLED_RESOURCE_DIR.set(dir);
             }
+            let _ = APP_VERSION.set(app.package_info().version.to_string());
             // System tray
             let show = MenuItemBuilder::with_id("show", "Show / Hide").build(app)?;
             let health = MenuItemBuilder::with_id("health", "Health: starting...")
@@ -4091,7 +4190,10 @@ pub fn run() {
 #[cfg(test)]
 mod tests {
     mod bundled_backend {
-        use super::super::{bundled_rust_wheel, install_bundled_backend};
+        use super::super::{
+            bundled_backend_outdated, bundled_rust_wheel, install_bundled_backend,
+            refresh_bundled_backend, BUNDLE_MARKER,
+        };
 
         #[test]
         fn finds_the_bundled_wheel_only_when_present() {
@@ -4125,6 +4227,34 @@ mod tests {
             assert!(!dst.join("src/ghost/__pycache__").exists());
             assert!(!dst.join("rust/target").exists());
             assert!(!tmp.join("Ghost.installing").exists());
+            let _ = std::fs::remove_dir_all(&tmp);
+        }
+
+        #[test]
+        fn refreshes_an_older_install_and_keeps_its_python_env() {
+            let tmp = std::env::temp_dir().join(format!("ghost-refresh-test-{}", std::process::id()));
+            let _ = std::fs::remove_dir_all(&tmp);
+            let src = tmp.join("backend");
+            std::fs::create_dir_all(src.join("src")).unwrap();
+            std::fs::write(src.join("pyproject.toml"), "new").unwrap();
+            let dst = tmp.join("Ghost");
+            std::fs::create_dir_all(dst.join(".venv")).unwrap();
+            std::fs::write(dst.join("pyproject.toml"), "old").unwrap();
+            std::fs::write(dst.join(".venv/marker"), "env").unwrap();
+
+            // No marker: installed before versions were recorded.
+            assert!(bundled_backend_outdated(&dst, "1.1.20"));
+            refresh_bundled_backend(&src, &dst, "1.1.20").unwrap();
+            assert_eq!(std::fs::read_to_string(dst.join("pyproject.toml")).unwrap(), "new");
+            assert!(dst.join(".venv/marker").is_file());
+            assert_eq!(std::fs::read_to_string(dst.join(BUNDLE_MARKER)).unwrap(), "1.1.20");
+            assert!(!bundled_backend_outdated(&dst, "1.1.20"));
+            assert!(bundled_backend_outdated(&dst, "1.1.21"));
+            assert!(!tmp.join("Ghost.old").exists());
+
+            // A developer checkout is never replaced.
+            std::fs::create_dir_all(dst.join(".git")).unwrap();
+            assert!(!bundled_backend_outdated(&dst, "9.9.9"));
             let _ = std::fs::remove_dir_all(&tmp);
         }
     }
