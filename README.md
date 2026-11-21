@@ -4,6 +4,17 @@
   <p><i>Personal AI, On Personal Devices.</i></p>
 </div>
 
+<p align="center">
+  <img alt="Ghost main screen" src="docs/screenshots/main.png" width="900">
+</p>
+
+<p align="center">
+  <img alt="Assistant settings: personality, Urdu/English and voice" src="docs/screenshots/settings.png" width="440">
+  <img alt="AI Model settings" src="docs/screenshots/settings-model.png" width="440">
+</p>
+
+**Download:** Windows installer and Android app on the [Releases page](https://github.com/hamz5ashah/Ghost/releases/latest).
+
 ---
 
 Ghost is a framework for local-first personal AI. It runs language models on your own hardware by default and calls cloud APIs only when you choose to. It provides:

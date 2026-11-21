@@ -64,7 +64,7 @@ export function VoiceEngineSection() {
 
   // 'auto' shows as the natural voice when it is ready, else the system voice.
   const engine: Exclude<VoiceEngine, 'auto'> = settings.voiceEngine === 'auto'
-    ? (engines?.kokoro_onnx.available ? 'kokoro_onnx' : 'system')
+    ? (engines?.kokoro_onnx?.available ? 'kokoro_onnx' : 'system')
     : settings.voiceEngine;
 
   const refresh = useCallback(async () => {
@@ -79,14 +79,14 @@ export function VoiceEngineSection() {
   useEffect(() => { void refresh(); }, [refresh]);
 
   // ElevenLabs: load the voices in the user's account once it is connected.
-  const elevenReady = !!engines?.elevenlabs.available || elevenConnected;
+  const elevenReady = !!engines?.elevenlabs?.available || elevenConnected;
   useEffect(() => {
     if (engine !== 'elevenlabs' || !elevenReady) return;
     fetchElevenLabsVoices().then(setAccountVoices).catch(() => setAccountVoices([]));
   }, [engine, elevenReady]);
 
   // Poll while the offline voice downloads.
-  const downloading = engines?.kokoro_onnx.download.state === 'downloading';
+  const downloading = engines?.kokoro_onnx?.download?.state === 'downloading';
   useEffect(() => {
     if (!downloading) return;
     const t = setInterval(() => { void refresh(); }, 1500);
@@ -142,7 +142,7 @@ export function VoiceEngineSection() {
         {ENGINES.map((e) => {
           const active = engine === e.key;
           const Icon = e.icon;
-          const ready = e.key === 'system' || (e.key === 'kokoro_onnx' ? !!kokoro?.available : !!engines?.elevenlabs.available || elevenConnected);
+          const ready = e.key === 'system' || (e.key === 'kokoro_onnx' ? !!kokoro?.available : !!engines?.elevenlabs?.available || elevenConnected);
           return (
             <button
               key={e.key}
